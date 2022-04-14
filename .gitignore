@@ -33,3 +33,7 @@ local
 
 # vercel
 .vercel
+
+#others
+package-lock.json
+.idea
