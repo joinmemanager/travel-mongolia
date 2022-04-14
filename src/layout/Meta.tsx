@@ -1,16 +1,17 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
+import { FC } from 'react';
 
 import { AppConfig } from '@/utils/AppConfig';
 
-type IMetaProps = {
-  title: string;
-  description: string;
+export type IMetaProps = {
+  title?: string;
+  description?: string;
   canonical?: string;
 };
 
-const Meta = (props: IMetaProps) => {
+const Meta: FC<IMetaProps> = (props) => {
   const router = useRouter();
 
   return (
@@ -46,6 +47,7 @@ const Meta = (props: IMetaProps) => {
           href={`${router.basePath}/favicon.ico`}
           key="favicon"
         />
+        <title>{props.title}</title>
       </Head>
       <NextSeo
         title={props.title}
@@ -63,4 +65,8 @@ const Meta = (props: IMetaProps) => {
   );
 };
 
+Meta.defaultProps = {
+  title: AppConfig.title,
+  description: AppConfig.description,
+};
 export { Meta };

@@ -14,6 +14,10 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
+      lineHeight: {
+        'leading-normal': '1.25',
+        12: '3rem',
+      },
       colors: {
         gray: {
           100: '#f7fafc',
