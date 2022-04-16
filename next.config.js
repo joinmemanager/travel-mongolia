@@ -23,5 +23,20 @@ module.exports = withPlugins(
     // So, the source code is "basePath-ready".
     // You can remove `basePath` if you don't need it.
     reactStrictMode: true,
+    webpack(config) {
+      config.module.rules.push({
+        test: /\.svg$/i,
+        issuer: { and: [/\.(js|ts|md)x?$/] },
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              prettier: true,
+            },
+          },
+        ],
+      });
+      return config;
+    },
   })
 );

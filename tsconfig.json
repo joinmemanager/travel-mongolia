@@ -39,6 +39,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/public/*": ["./public/*"],
+      "icons": ["./public/assets/icons/*"],
+      "icons/*": ["./public/assets/icons/*"],
+      "images": ["./public/assets/images/*"],
+      "images/*": ["./public/assets/images/*"],
       "components": ["./src/components"],
       "components/*": ["./src/components/*"]
     }

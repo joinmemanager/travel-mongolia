@@ -1,6 +1,6 @@
 .login-wrapper {
     background-color: #1C182E;
-    background-image: url("../../public/assets/images/blur.png");
+    background-image: url("../../public/assets/images/vector/blur.png");
     background-position: left bottom;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -10,7 +10,7 @@
 .login-wrapper:after {
     position: absolute;
     content: '';
-    background-image: url("../../public/assets/images/bull.png");
+    background-image: url("../../public/assets/images/vector/bull.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
