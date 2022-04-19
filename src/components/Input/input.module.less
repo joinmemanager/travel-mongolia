@@ -1,17 +1,51 @@
 @import "src/styles/variables";
 
 .input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #fff;
     border-radius: @br;
+    overflow: hidden;
+    padding: 0 14px;
     color: #0F1820;
-    padding: 14px;
+    gap: 10px;
+
+    & > * {
+        color: #0F1820;
+    }
+
+    input {
+        padding: 14px 0;
+        flex: 1;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1;
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+    }
+
+    :global {
+        .prefix, .suffix {
+            display: inline-flex;
+            max-height: 50px;
+            min-height: 20px;
+            min-width: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.label {
+    font-family: 'Bull', sans-serif;
+    font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 1;
-
-    &:focus {
-        outline: none;
-        box-shadow: none;
-        border: none;
-    }
+    line-height: @line-height;
+    margin-bottom: 8px;
+    display: inline-block;
 }

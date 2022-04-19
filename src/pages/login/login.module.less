@@ -1,0 +1,25 @@
+@import "src/styles/variables";
+
+.login {
+    width: 395px;
+    :global {
+        .inputs {
+            .input-comp {
+                width: 100%;
+
+                &:not(:last-of-type) {
+                    margin-bottom: 24px;
+                }
+            }
+            .forget-password {
+                color: @primary;
+                float: right;
+                margin: 8px 0 30px;
+            }
+
+            & ~ * {
+                clear: both;
+            }
+        }
+    }
+}
