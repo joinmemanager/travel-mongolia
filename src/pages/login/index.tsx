@@ -8,7 +8,9 @@ import React, { FC } from 'react';
 import { AuthMeta } from '@/templates/AuthMeta';
 
 import AuthHeader from './common/AuthHeader';
+import AuthOr from './common/AuthOr';
 import AuthTitle from './common/AuthTitle';
+import SubmitButton from './common/SubmitButton';
 import styles from './login.module.less';
 
 const Login: FC<any> = () => {
@@ -39,7 +41,8 @@ const Login: FC<any> = () => {
             <span className="forget-password">Нууц үг сэргээх?</span>
           </Link>
         </div>
-        <h1>Login</h1>
+        <AuthOr />
+        <SubmitButton label="Нэвтрэх" />
       </div>
     </AuthMeta>
   );

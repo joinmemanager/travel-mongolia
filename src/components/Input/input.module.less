@@ -6,10 +6,10 @@
     justify-content: space-between;
     background-color: #fff;
     border-radius: @br;
-    overflow: hidden;
     padding: 0 14px;
     color: #0F1820;
     gap: 10px;
+    position: relative;
 
     & > * {
         color: #0F1820;
@@ -36,6 +36,16 @@
             min-width: 20px;
             align-items: center;
             justify-content: center;
+        }
+
+        .error {
+            position: absolute;
+            width: 100%;
+            color: #f95050;
+            bottom: 0;
+            left: 0;
+            font-size: 12px;
+            transform: translateY(calc(100% + 3px));
         }
     }
 }

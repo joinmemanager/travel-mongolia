@@ -7,6 +7,8 @@ export interface InputProps extends HTMLProps<HTMLInputElement> {
   prefix?: any;
   suffix?: any;
   label?: any;
+  errorText?: string;
+  error?: boolean;
 }
 
 export const Input: FC<InputProps> = ({
@@ -14,6 +16,8 @@ export const Input: FC<InputProps> = ({
   suffix,
   label,
   name,
+  errorText,
+  error,
   ...props
 }) => {
   return (
@@ -27,6 +31,7 @@ export const Input: FC<InputProps> = ({
         className={cn('input-comp', {
           [styles.input || '']: styles.input,
           [name || '']: name,
+          error: name,
         })}
       >
         {prefix && <span className="prefix">{prefix}</span>}
@@ -38,6 +43,7 @@ export const Input: FC<InputProps> = ({
           })}
         />
         {suffix && <span className="suffix">{suffix}</span>}
+        {!!error && <span className="error">{errorText}</span>}
       </div>
     </>
   );
