@@ -11,6 +11,21 @@
                     margin-bottom: 24px;
                 }
             }
+
+            .forget-password {
+                color: @primary;
+                float: right;
+                margin: 8px 0 30px;
+                font-size: 10px;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            & ~ * {
+                clear: both;
+            }
         }
     }
 }
