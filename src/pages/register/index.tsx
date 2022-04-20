@@ -4,6 +4,7 @@ import CheckmarkIcon from 'icons/checkmark.svg';
 import Email from 'icons/email.svg';
 import Eye from 'icons/eye.svg';
 import Lock from 'icons/lock.svg';
+import { useRouter } from 'next/router';
 import React, { FC, useState } from 'react';
 
 import AuthHeader from '@/pages/login/common/AuthHeader';
@@ -15,6 +16,7 @@ import { AuthMeta } from '@/templates/AuthMeta';
 import styles from './register.module.less';
 
 const Register: FC<any> = () => {
+  const { push } = useRouter();
   const [check, setCheck] = useState(false);
   return (
     <AuthMeta title="TESLATRADERS | Бүртгүүлэх">
@@ -67,7 +69,10 @@ const Register: FC<any> = () => {
           </span>
         </div>
         <AuthOr />
-        <SubmitButton label="Бүртгүүлэх" />
+
+        <SubmitButton onClick={() => push('/register/success')} type="button">
+          Бүртгүүлэх
+        </SubmitButton>
       </div>
     </AuthMeta>
   );

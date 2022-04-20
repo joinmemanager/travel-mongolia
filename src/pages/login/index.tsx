@@ -43,7 +43,7 @@ const Login: FC<any> = () => {
           </Link>
         </div>
         <AuthOr />
-        <SubmitButton label="Нэвтрэх" />
+        <SubmitButton>Нэвтрэх</SubmitButton>
       </div>
     </AuthMeta>
   );
