@@ -36,6 +36,7 @@ const Login: FC<any> = () => {
             suffix={<Eye />}
             placeholder="Нууц үг"
             name="password"
+            type="password"
           />
           <Link href="/forget-password">
             <span className="forget-password">Нууц үг сэргээх?</span>
