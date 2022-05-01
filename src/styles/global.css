@@ -17,6 +17,9 @@ a {
     @apply my-6;
 }
 
+html, body {
+    background-color: #F6F8FD;
+}
 
 .container, .container-fluid {
     padding-left: 8px;
