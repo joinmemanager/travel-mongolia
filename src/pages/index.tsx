@@ -9,16 +9,10 @@ const Index = () => {
   return (
     <Main
       meta={
-        <Meta
-          title="Next.js Boilerplate Presentation"
-          description="Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
-        />
+        <Meta title="Teslatraders" description="Everything about trading" />
       }
     >
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-      doloremque dolorum eius esse exercitationem inventore maiores molestias
-      necessitatibus pariatur placeat, porro quae quasi qui veritatis,
-      voluptatem. Est quisquam quo saepe!
+      <div style={{ height: 577, backgroundColor: '#1C182E' }}></div>
     </Main>
   );
 };
