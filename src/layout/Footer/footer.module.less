@@ -1,2 +1,42 @@
 .footer {
+  background-color: #1C182E;
+  height: 270px;
+  padding-top: 25px;
+
+  :global {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      flex-direction: column;
+    }
+
+    .f-col {
+      .f-title {
+        color: #90FF12;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+
+      .footer-nav {
+        display: block;
+        margin-bottom: 10px;
+        color: #B9B9B9;
+        font-size: 12px;
+      }
+    }
+
+    .copyright-section {
+      border-top: 1px solid #494949;
+      padding: 19px 0;
+
+      .left {
+        font-weight: 400;
+        font-size: 12px;
+        color: #B9B9B9;
+      }
+    }
+  }
 }
