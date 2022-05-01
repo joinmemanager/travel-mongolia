@@ -36,4 +36,5 @@ local
 
 #others
 package-lock.json
+yarn.lock
 .idea

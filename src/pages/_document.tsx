@@ -5,7 +5,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-// @ts-ignore
 import { ServerStyleSheet } from 'styled-components';
 
 import { AppConfig } from '@/utils/AppConfig';
