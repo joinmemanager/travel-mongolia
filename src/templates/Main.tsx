@@ -11,7 +11,7 @@ type IMainProps = {
 const Main = (props: IMainProps) => (
   <>
     <div className="meta">{props.meta}</div>
-    <div className="flex min-h-full flex-col justify-between">
+    <div className="flex flex-col justify-between min-h-full">
       <div>
         <Header />
       </div>
