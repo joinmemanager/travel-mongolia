@@ -14,7 +14,9 @@ const AuthHeader: FC<AuthHeaderProps> = ({ linkQ, linkA = '', href }) => (
   <div
     className={cn('auth-form-header', { [styles.header || '']: styles.header })}
   >
-    <img src={logo?.src} alt="" className="logo" height={50} />
+    <Link href="/">
+      <img src={logo?.src} alt="" className="logo" height={50} />
+    </Link>
     <Link href={href}>
       <div className="register-link">
         {!!linkQ && <span className="q">{linkQ}</span>}

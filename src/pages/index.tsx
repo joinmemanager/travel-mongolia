@@ -15,7 +15,10 @@ const Index = () => {
         />
       }
     >
-      sdamnida
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+      doloremque dolorum eius esse exercitationem inventore maiores molestias
+      necessitatibus pariatur placeat, porro quae quasi qui veritatis,
+      voluptatem. Est quisquam quo saepe!
     </Main>
   );
 };
