@@ -1,0 +1,51 @@
+@import "src/styles/variables";
+
+.mainBanner {
+  height: 554px;
+
+  :global {
+    .meta {
+      position: absolute;
+      top: 28%;
+      left: 20%;
+      .main-title {
+        font-weight: 700;
+        font-size: 85px;
+        background: linear-gradient(262.53deg, #90FF12 -3.65%, #F9FC47 117.84%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 12%;
+      }
+      .buttons {
+        .register-btn {
+          background: linear-gradient(262.53deg, #90FF12 -3.65%, #F9FC47 117.84%);
+          border-radius: 4px;
+          padding: 10px 20px;
+          color: #141414;
+        }
+        .download-btn {
+          border-radius: 4px;
+          padding: 10px 14px;
+        }
+        .btn-text {
+          color: #141414;
+        }
+      }
+    }
+  }
+}
+.onlineCourse {
+  background: #E5E5E5;
+  :global {
+    .o-subtitle {
+      font-weight: 700;
+      font-size: 16px;
+      color: #B9B9B9;
+    }
+    .o-title {
+      font-weight: 700;
+      font-size: 24px;
+      color: #141414;
+    }
+  }
+}

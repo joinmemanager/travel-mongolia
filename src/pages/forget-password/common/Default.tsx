@@ -1,6 +1,5 @@
 import { Input } from 'components';
 import EmailIcon from 'icons/email.svg';
-import React from 'react';
 
 import AuthTitle from '@/pages/login/common/AuthTitle';
 import SubmitButton from '@/pages/login/common/SubmitButton';

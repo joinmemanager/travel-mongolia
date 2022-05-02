@@ -12,32 +12,35 @@ const navs = [
 ];
 
 const Header = () => (
-  <div className={styles.header}>
-    <div className="container">
-      <div className="content flex items-center justify-between">
-        <Link href="/">
-          <a className="logo-link">
-            <Image src={logo} />
-          </a>
-        </Link>
-        <div className="navs flex">
-          {navs.map((item) => (
-            <Link key={item.id} href={item.url}>
-              <a className="nav-link mr-10">{item.title}</a>
+  <>
+    <div className={styles.header}>
+      <div className="container">
+        <div className="flex justify-between items-center content">
+          <Link href="/">
+            <a className="logo-link">
+              <Image src={logo} />
+            </a>
+          </Link>
+          <div className="flex navs">
+            {navs.map((item) => (
+              <Link key={item.id} href={item.url}>
+                <a className="mr-10 nav-link">{item.title}</a>
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center buttons">
+            <Link href="/login">
+              <a className="mr-10 text-white">Нэвтрэх</a>
             </Link>
-          ))}
-        </div>
-        <div className="buttons flex items-center">
-          <Link href="/login">
-            <a className="mr-10 text-white">Нэвтрэх</a>
-          </Link>
-          <Link href="/register">
-            <a className="register-btn">Бүртгүүлэх</a>
-          </Link>
+            <Link href="/register">
+              <a className="register-btn">Бүртгүүлэх</a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div className={styles.ph} />
+  </>
 );
 
 export default Header;
