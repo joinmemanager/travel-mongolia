@@ -6,7 +6,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   relative?: boolean;
 }
 
-const Container: React.FC<ContainerProps> = ({
+export const Container: React.FC<ContainerProps> = ({
   children,
   isFluid,
   relative,
@@ -20,5 +20,3 @@ const Container: React.FC<ContainerProps> = ({
     {children}
   </div>
 );
-
-export default Container;

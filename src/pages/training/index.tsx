@@ -1,18 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
+import { Card, Container } from 'components';
 
-const TrainingWrapper = styled.div`
-  animation: 0.2s ease-out 0s 1 fadeIn;
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-`;
+import { Meta } from '@/layout/Meta';
+import { Main } from '@/templates/Main';
 
-const Training = () => <TrainingWrapper>Training</TrainingWrapper>;
+import styles from './training.module.less';
+
+const Training = () => (
+  <Main meta={<Meta />}>
+    <Container className={styles.training}>
+      <div className="training-content">
+        <h1 className="section-title">Сургалтын агуулга</h1>
+        <Card>
+          <h1 className="main-title">
+            Манай Онлайн сургалтын төв нь үндсэн 4 хэсгээс бүрдэнэ.
+          </h1>
+          <hr />
+        </Card>
+      </div>
+      <div className="payment-summary">
+        <h1 className="section-title">Төлбөрийн мэдээлэл</h1>
+        <Card>aa</Card>
+      </div>
+    </Container>
+  </Main>
+);
 
 export default Training;
