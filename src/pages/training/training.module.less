@@ -27,6 +27,7 @@
 
       .card-wrapper {
         padding: 23px 30px;
+        margin-bottom: 48px;
       }
     }
     .payment-summary {
@@ -35,6 +36,54 @@
       .card-wrapper {
         padding: 20px;
         box-shadow: 0 20px 13px rgba(15, 14, 94, 0.035), 0 8.14815px 6.51852px rgba(15, 14, 94, 0.0274815), 0 1.85185px 3.14815px rgba(15, 14, 94, 0.0168519);
+      }
+
+      .course-shorty {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        border-bottom: 3px dashed #F4F4F4;
+        padding-bottom: 30px;
+
+        span.icon {
+          width: 28px;
+          height: 28px;
+          flex: 0 0 28px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #1C182E;
+          border-radius: 3px;
+
+          svg {
+            width: 15px;
+            color: #91F322;
+          }
+        }
+        .short-desc {
+          flex: 1;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 1.22;
+          color: #141414;
+        }
+      }
+
+      .total {
+        margin-bottom: 18px;
+        span {
+          font-style: normal;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 54px;
+          color: #141414;
+        }
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
     }
   }
