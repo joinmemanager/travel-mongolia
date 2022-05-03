@@ -2,7 +2,7 @@
 
 .mainBanner {
   height: 554px;
-
+  position: relative;
   :global {
     .meta {
       position: absolute;
@@ -110,6 +110,80 @@
               height: 100%;
               right: -74px;
               top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.ourVision {
+  height: 582px;
+  position: relative;
+  :global {
+    .content {
+      position: relative;
+      padding-top: 117px;
+      .c-subtitle {
+        background: -webkit-linear-gradient(262.53deg, #90FF12 -3.65%, #F9FC47 117.84%);;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+      .c-title {
+        font-weight: 700;
+        font-size: 24px;
+        color: #fff;
+      }
+      .para {
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 180%;
+        max-width: 604px;
+        text-align: justify;
+      }
+    }
+  }
+}
+.stats {
+  :global {
+    .stats-body {
+      padding-top: 106px;
+      .s-subtitle {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        color: #B9B9B9;
+        margin-bottom: 5px;
+      }
+      .s-title {
+        font-weight: 700;
+        font-size: 24px;
+        color: #141414;
+        margin-bottom: 82px;
+      }
+      .stat-els {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 159px;
+        .stat {
+          display: flex;
+          align-items: center;
+          .stat-meta {
+            .stat-amount {
+              font-weight: 700;
+              font-size: 40px;
+              color: #141414;
+            }
+            .stat-label {
+              font-weight: 500;
+              font-size: 20px;
+              color: #494949;
             }
           }
         }
