@@ -191,3 +191,103 @@
     }
   }
 }
+.news {
+  padding: 105px 0;
+  background-color: #1C182E;
+  :global {
+    .blog-subtitle {
+      background: -webkit-linear-gradient(262.53deg, #90FF12 -3.65%, #F9FC47 117.84%);;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .blog-title {
+      font-weight: 700;
+      font-size: 24px;
+      color: #FFFFFF;
+      margin-bottom: 68px;
+    }
+    .news-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-column-gap: 29px;
+      grid-row-gap: 80px;
+      .news-item {
+        .news-title {
+          color: #fff;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          margin-top: 10px;
+        }
+        .news-desc {
+          color: rgba(255, 255, 255, 0.6);
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .bottom {
+          margin-top: 40px;
+          .left {
+            font-weight: 400;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+          }
+          .right {
+            .more-btn {
+              font-weight: 400;
+              font-size: 14px;
+              color: #91F322;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.partners {
+  padding: 55px 0;
+  :global {
+    .p-subtitle {
+      font-weight: 700;
+      font-size: 16px;
+      color: #B9B9B9;
+    }
+    .p-title {
+      font-weight: 700;
+      font-size: 24px;
+      color: #141414;
+    }
+    .logos {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      grid-gap: 55px;
+      margin: 90px 0;
+    }
+  }
+}
+.heatmap {
+  background-color: #1C182E;
+  padding: 50px 0;
+  :global {
+    .h-subtitle {
+      background: linear-gradient(262.53deg, #90FF12 -3.65%, #F9FC47 117.84%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .h-title {
+      font-weight: 500;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+  }
+}
