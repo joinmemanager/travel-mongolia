@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
 import visionBanner from '@/public/assets/images/home/our_vision.jpg';
+import rocket from '@/public/assets/images/home/rocket.png';
+import { isMobile } from '@/utils/isMobile';
 
 import styles from './home.module.less';
 
@@ -11,7 +13,7 @@ const OurVision = () => (
     >
       <Image
         alt="Mountains"
-        src={visionBanner}
+        src={isMobile() ? rocket : visionBanner}
         layout="fill"
         objectFit="cover"
       />
