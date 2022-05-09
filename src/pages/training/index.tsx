@@ -1,9 +1,13 @@
 import { Button, Card, Container } from 'components';
+import GolomtIcon from 'icons/bank/golomt.svg';
+import DownloadIcon from 'icons/download.svg';
 import StarIcon from 'icons/star.svg';
 
 import { Meta } from '@/layout/Meta';
 import { Main } from '@/templates/Main';
 
+import DepositMethod from './_common/DepositMethod';
+import MethodButton from './_common/MethodButton';
 import styles from './training.module.less';
 
 const Training = () => (
@@ -38,9 +42,13 @@ const Training = () => (
             <span className="label">Нийт төлбөр</span>
             <span className="price">249$</span>
           </div>
+          <div className="methods">
+            <MethodButton icon={<GolomtIcon />} label="Голомт банкаар" />
+            <DepositMethod />
+          </div>
           <div className="actions">
             <Button type="secondary" block>
-              PDF танилцуулга татах
+              <DownloadIcon /> PDF танилцуулга татах
             </Button>
             <Button block>Төлбөр төлөх</Button>
           </div>

@@ -80,10 +80,84 @@
         }
       }
 
+      .methods {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
       .actions {
         display: flex;
         flex-direction: column;
         gap: 12px;
+
+        .btn-secondary {
+          gap: 12px;
+        }
+
+        svg {
+          width: 24px;
+        }
+      }
+    }
+  }
+}
+
+.deposit-section {
+  padding: 0 16px 16px;
+
+  :global {
+    .qr {
+      margin: 0 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        display: inline-block;
+        background-color: #fff;
+      }
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      .item {
+        .key {
+          font-weight: 500;
+          font-size: 14px;
+          color: #494949;
+          margin-bottom: 4px;
+        }
+        .value {
+          font-weight: 500;
+          font-size: 12px;
+          color: #141414;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 5px;
+        }
+      }
+    }
+    button.copy {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      transition: background-color 0.2s ease-in-out;
+
+      svg {
+        width: 12px;
+      }
+      &:hover {
+        background-color: #eee;
       }
     }
   }
