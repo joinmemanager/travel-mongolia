@@ -9,9 +9,18 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  @media only screen and (max-width: 992px) {
+    height: 86px;
+    left: 0;
+    right: 0;
+  }
+
   :global {
     .content {
-      .main-logo {
+      .logo-link {
+        @media only screen and (max-width: 992px) {
+          width: 155px;
+        }
       }
       .navs {
         .nav-link {
@@ -38,11 +47,4 @@
     height: 86px;
   }
 }
-.mobileHeader {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #1C182E;
-  height: 86px;
-  z-index: 10;
-}
+

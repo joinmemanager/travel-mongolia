@@ -9,13 +9,20 @@ import styles from './home.module.less';
 const OurVision = () => (
   <div className={styles.ourVision}>
     <div
-      style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 0 }}
+      style={{
+        width: isMobile() ? '50%' : '100%',
+        height: isMobile() ? '50%' : '100%',
+        position: 'absolute',
+        top: isMobile() ? 15 : 'unset',
+        right: isMobile() ? 30 : 'unset',
+        zIndex: 0,
+      }}
     >
       <Image
         alt="Mountains"
         src={isMobile() ? rocket : visionBanner}
         layout="fill"
-        objectFit="cover"
+        objectFit={isMobile() ? 'contain' : 'cover'}
       />
     </div>
     <div className="container content">
