@@ -34,55 +34,57 @@ const Register: FC<any> = () => {
           <AuthHeader
             linkQ="Аль хэдийн бүртгэлтэй юу?"
             linkA="Нэвтрэх"
-            href="/register"
+            href="/login"
           />
-          <AuthTitle title="Бүртгүүлэх" />
-          <div className="inputs">
-            <div className="full_name">
-              <div className="fn">
-                <Input label="Овог" name="first_name" />
+          <div className="register-section">
+            <AuthTitle title="Бүртгүүлэх" />
+            <div className="inputs">
+              <div className="full_name">
+                <div className="fn">
+                  <Input label="Овог" name="first_name" />
+                </div>
+                <div className="ln">
+                  <Input label="Нэр" name="last_name" />
+                </div>
               </div>
-              <div className="ln">
-                <Input label="Нэр" name="last_name" />
-              </div>
+              <Input
+                label="Имэйл хаяг"
+                prefix={<Email />}
+                placeholder="Имэйл хаяг"
+                name="email"
+              />
+              <Input
+                label="Нууц үг"
+                prefix={<Lock style={{ width: 15 }} />}
+                suffix={<Eye />}
+                placeholder="Нууц үг"
+                type="password"
+                name="password"
+              />
+              <Input
+                label="Нууц үг давтах"
+                prefix={<Lock style={{ width: 15 }} />}
+                suffix={<Eye />}
+                placeholder="Нууц үг давтах"
+                type="password"
+                name="password_repeat"
+              />
             </div>
-            <Input
-              label="Имэйл хаяг"
-              prefix={<Email />}
-              placeholder="Имэйл хаяг"
-              name="email"
-            />
-            <Input
-              label="Нууц үг"
-              prefix={<Lock style={{ width: 15 }} />}
-              suffix={<Eye />}
-              placeholder="Нууц үг"
-              type="password"
-              name="password"
-            />
-            <Input
-              label="Нууц үг давтах"
-              prefix={<Lock style={{ width: 15 }} />}
-              suffix={<Eye />}
-              placeholder="Нууц үг давтах"
-              type="password"
-              name="password_repeat"
-            />
-          </div>
-          <div className="terms-cond" onClick={() => setCheck(!check)}>
-            <span className={cn('check', { checked: check })}>
-              <CheckmarkIcon />
-            </span>
-            <span className="term">
-              <a href="#">Үйлчилгээний нөхцөл</a> болон{' '}
-              <a href="#">Нууцлалын бодлогыг</a> хүлээн зөвшөөрч байна.
-            </span>
-          </div>
-          <AuthOr />
+            <div className="terms-cond" onClick={() => setCheck(!check)}>
+              <span className={cn('check', { checked: check })}>
+                <CheckmarkIcon />
+              </span>
+              <span className="term">
+                <a href="#">Үйлчилгээний нөхцөл</a> болон{' '}
+                <a href="#">Нууцлалын бодлогыг</a> хүлээн зөвшөөрч байна.
+              </span>
+            </div>
+            <AuthOr />
 
-          <SubmitButton onClick={() => setSuccess(true)} type="button">
-            Бүртгүүлэх
-          </SubmitButton>
+            <SubmitButton onClick={() => setSuccess(true)} type="button">
+              Бүртгүүлэх
+            </SubmitButton>
+          </div>
         </div>
       )}
     </AuthMeta>

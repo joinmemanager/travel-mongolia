@@ -7,12 +7,10 @@ import styles from '../forget-password.module.less';
 
 const Success = () => (
   <div className={styles.success}>
-    <div className={styles.success}>
-      <AuthHeader href="#" />
-      <div className="content">
-        <img src={shield?.src} alt="" />
-        <p>Нууц үг амжилттай шинэчлэгдлээ</p>
-      </div>
+    <AuthHeader href="#" />
+    <div className="content">
+      <img src={shield?.src} alt="" />
+      <p>Нууц үг амжилттай шинэчлэгдлээ</p>
     </div>
   </div>
 );

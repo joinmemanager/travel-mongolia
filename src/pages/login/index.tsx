@@ -22,28 +22,30 @@ const Login: FC<any> = () => {
           linkA="Энд дарж бүртгүүлнэ үү."
           href="/register"
         />
-        <AuthTitle title="Нэвтрэх" />
-        <div className="inputs">
-          <Input
-            label="Имэйл хаяг"
-            prefix={<Email />}
-            placeholder="Имэйл хаяг"
-            name="email"
-          />
-          <Input
-            label="Нууц үг"
-            prefix={<Lock style={{ width: 15 }} />}
-            suffix={<Eye />}
-            placeholder="Нууц үг"
-            name="password"
-            type="password"
-          />
-          <Link href="/forget-password">
-            <span className="forget-password">Нууц үг сэргээх?</span>
-          </Link>
+        <div className="login-section">
+          <AuthTitle title="Нэвтрэх" />
+          <div className="inputs">
+            <Input
+              label="Имэйл хаяг"
+              prefix={<Email />}
+              placeholder="Имэйл хаяг"
+              name="email"
+            />
+            <Input
+              label="Нууц үг"
+              prefix={<Lock style={{ width: 15 }} />}
+              suffix={<Eye />}
+              placeholder="Нууц үг"
+              name="password"
+              type="password"
+            />
+            <Link href="/forget-password" passHref>
+              <span className="forget-password">Нууц үг сэргээх?</span>
+            </Link>
+          </div>
+          <AuthOr />
+          <SubmitButton>Нэвтрэх</SubmitButton>
         </div>
-        <AuthOr />
-        <SubmitButton>Нэвтрэх</SubmitButton>
       </div>
     </AuthMeta>
   );

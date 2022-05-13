@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { IMetaProps, Meta } from '@/layout/Meta';
 
-import styles from './AuthMeta.module.css';
+import styles from './AuthMeta.module.less';
 
 export const AuthMeta: FC<IMetaProps & any> = ({
   children,

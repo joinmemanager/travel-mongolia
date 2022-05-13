@@ -12,21 +12,26 @@ const ForgetPassword: FC<any> = () => {
   const [type, setType] = useState('');
   return (
     <AuthMeta title="TESLATRADERS | Нууц үг сэргээх">
-      <div className={styles['forget-password']}>
-        {type !== 'success' && (
-          <AuthHeader
-            linkQ="Аль хэдийн бүртгэлтэй юу?"
-            linkA="Нэвтрэх"
-            href="/register"
-          />
-        )}
+      {type === 'success' ? (
+        <SuccessType />
+      ) : (
+        <div className={styles['forget-password']}>
+          {type !== 'success' && (
+            <AuthHeader
+              linkQ="Аль хэдийн бүртгэлтэй юу?"
+              linkA="Нэвтрэх"
+              href="/register"
+            />
+          )}
 
-        {!type && <DefaultType onSubmit={() => setType('password')} />}
-        {type === 'password' && (
-          <PasswordType onSubmit={() => setType('success')} />
-        )}
-        {type === 'success' && <SuccessType />}
-      </div>
+          <div className="forget-password-section">
+            {!type && <DefaultType onSubmit={() => setType('password')} />}
+            {type === 'password' && (
+              <PasswordType onSubmit={() => setType('success')} />
+            )}
+          </div>
+        </div>
+      )}
     </AuthMeta>
   );
 };
