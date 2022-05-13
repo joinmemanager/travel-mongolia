@@ -2,10 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'public/assets/images/logo-full-white.png';
 
+import TradingView from '@/layout/Header/TradingView';
+
 import styles from './header.module.less';
 
 const DesktopHeader = ({ navs }: any) => (
   <>
+    <TradingView />
     <div className={styles.header}>
       <div className="container">
         <div className="flex justify-between items-center content">
