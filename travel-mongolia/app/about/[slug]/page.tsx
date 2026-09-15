@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import React from 'react';
-import AboutShowcase from '../../components/AboutShowcase';
+import AboutShowcase from '../../../components/AboutShowcase';
 
 interface Props {
   params: Promise<{ slug: string }>;
