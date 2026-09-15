@@ -30,8 +30,10 @@ export const FOOD_SPOTS: FoodSpot[] = [
     location: 'Төв аймаг / Хөдөө хээр',
     region: 'Төвийн бүс',
     specialty: 'Улайсгасан чулууны жигнүүр',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
-    description: 'Голын улайсгасан чулуугаар төмөр саванд жигнэж болгосон шүүслэг, уламжлалт хүндэтгэлийн зоог.',
+    image:
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Голын улайсгасан чулуугаар төмөр саванд жигнэж болгосон шүүслэг, уламжлалт хүндэтгэлийн зоог.',
   },
   {
     id: 'mongolian-dairy-platter',
@@ -41,8 +43,10 @@ export const FOOD_SPOTS: FoodSpot[] = [
     location: 'Архангай аймаг',
     region: 'Хангайн бүс',
     specialty: 'Өрөм, ааруул, ээзгий',
-    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80',
-    description: 'Сарлаг, үхрийн шинэ сүүгээр бэлтгэсэн шар тос, өрөм, ааруулын амталгаа бүхий танин мэдэхүйн хөтөлбөр.',
+    image:
+      'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Сарлаг, үхрийн шинэ сүүгээр бэлтгэсэн шар тос, өрөм, ааруулын амталгаа бүхий танин мэдэхүйн хөтөлбөр.',
   },
   {
     id: 'bulgan-saikhan-airag',
@@ -52,8 +56,10 @@ export const FOOD_SPOTS: FoodSpot[] = [
     location: 'Булган аймаг, Сайхан сум',
     region: 'Хангайн бүс',
     specialty: 'Хөхүүрийн гүүний айраг',
-    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=80',
-    description: 'Монголын хамгийн алдартай Булганы Сайханы айргийг хөхүүрээс нь шууд аягалж, исгэх арга барилтай танилцах.',
+    image:
+      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Монголын хамгийн алдартай Булганы Сайханы айргийг хөхүүрээс нь шууд аягалж, исгэх арга барилтай танилцах.',
   },
   {
     id: 'suutei-tsai-tradition',
@@ -63,8 +69,10 @@ export const FOOD_SPOTS: FoodSpot[] = [
     location: 'Улаанбаатар / Орон нутаг',
     region: 'Бүх бүс',
     specialty: 'Борцтой хийцтэй цай',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=80',
-    description: 'Шар тос, арвайн гурил, борцоор сүлсэн эрч хүч сэргээх нүүдэлчдийн өтгөн хийцтэй цайны соёл.',
+    image:
+      'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Шар тос, арвайн гурил, борцоор сүлсэн эрч хүч сэргээх нүүдэлчдийн өтгөн хийцтэй цайны соёл.',
   },
   {
     id: 'buuz-dumpling-masterclass',
@@ -74,8 +82,10 @@ export const FOOD_SPOTS: FoodSpot[] = [
     location: 'Улаанбаатар хот',
     region: 'Төвийн бүс',
     specialty: 'Гар хийцийн бууз, хуушуур',
-    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=900&q=80',
-    description: 'Мах татах, гурил зуурах, олон янзын хээгээр бууз чимхэж сурах гадаад, дотоодын аялагчдад зориулсан сургалт.',
+    image:
+      'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Мах татах, гурил зуурах, олон янзын хээгээр бууз чимхэж сурах гадаад, дотоодын аялагчдад зориулсан сургалт.',
   },
   {
     id: 'ub-nomadic-food-tour',
@@ -85,7 +95,9 @@ export const FOOD_SPOTS: FoodSpot[] = [
     location: 'Улаанбаатар хот',
     region: 'Төвийн бүс',
     specialty: 'Орчин үеийн ба уламжлалт фьюшн',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
-    description: 'Эртний уламжлалт болон орчин үеийн монгол үндэсний ресторануудаар зочилж, шилдэг амтуудыг нэг дороос турших.',
+    image:
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Эртний уламжлалт болон орчин үеийн монгол үндэсний ресторануудаар зочилж, шилдэг амтуудыг нэг дороос турших.',
   },
 ];

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+
+import L from 'leaflet';
+import React, { useEffect, useRef } from 'react';
 
 export interface RouteMapData {
   name: string;
@@ -37,7 +38,8 @@ export default function RealRouteMap({ route }: Props) {
     L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
       {
-        attribution: 'Tiles &copy; Esri &mdash; National Geographic, DeLorme, NAVTEQ',
+        attribution:
+          'Tiles &copy; Esri &mdash; National Geographic, DeLorme, NAVTEQ',
         maxZoom: 18,
       }
     ).addTo(map);
@@ -119,9 +121,15 @@ export default function RealRouteMap({ route }: Props) {
 
       marker.bindPopup(`
         <div style="font-family: inherit; padding: 4px; min-width: 140px;">
-          <div style="font-size: 10px; font-weight: 800; color: #15803d; text-transform: uppercase;">Stop #${index + 1}</div>
-          <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-top: 2px;">${stop.name}</div>
-          <div style="font-size: 11px; color: #64748b; margin-top: 2px;">${stop.highlight}</div>
+          <div style="font-size: 10px; font-weight: 800; color: #15803d; text-transform: uppercase;">Stop #${
+            index + 1
+          }</div>
+          <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-top: 2px;">${
+            stop.name
+          }</div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 2px;">${
+            stop.highlight
+          }</div>
         </div>
       `);
 
@@ -137,9 +145,12 @@ export default function RealRouteMap({ route }: Props) {
 
   return (
     <div className="relative w-full h-full min-h-[550px] lg:min-h-[640px]">
-      <div ref={mapContainerRef} className="w-full h-full rounded-2xl overflow-hidden z-0" />
-      
-      <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-neutral-200 shadow-sm text-xs flex items-center gap-3 pointer-events-none">
+      <div
+        ref={mapContainerRef}
+        className="overflow-hidden z-0 w-full h-full rounded-2xl"
+      />
+
+      <div className="flex absolute bottom-4 left-4 z-10 gap-3 items-center py-2 px-3.5 text-xs bg-white/90 rounded-xl border border-neutral-200 shadow-sm backdrop-blur-md pointer-events-none">
         <span className="font-bold text-neutral-800">{route.name}</span>
         <span className="text-neutral-400">|</span>
         <span className="font-semibold text-[#15803d]">{route.distance}</span>

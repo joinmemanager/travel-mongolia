@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface UtilityCard {
   title: string;
@@ -33,14 +33,17 @@ const PLAN_DATA: Record<string, PlanGroupData> = {
   // 1. ИРЭХЭЭС ӨМНӨ & ИРЭХ
   'before-you-go': {
     title: 'Ирэхээс өмнө & Ирэх',
-    subtitle: 'Визний журам, аяллын улирал, гар тээш, валют, SIM картын бүрэн лавлах',
-    heroImage: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2000',
+    subtitle:
+      'Визний журам, аяллын улирал, гар тээш, валют, SIM картын бүрэн лавлах',
+    heroImage:
+      'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2000',
     sections: [
       {
         id: 'visa-weather',
         tabLabel: 'Виз, цаг агаар, бэлтгэл',
         title: 'Виз, цаг агаар & Юу авчрах вэ?',
-        subtitle: 'Хилээр нэвтрэхээс эхлээд аяллын цүнхээ хэрхэн зөв бэлтгэх зөвлөмж',
+        subtitle:
+          'Хилээр нэвтрэхээс эхлээд аяллын цүнхээ хэрхэн зөв бэлтгэх зөвлөмж',
         items: [
           {
             icon: '🛂',
@@ -87,7 +90,8 @@ const PLAN_DATA: Record<string, PlanGroupData> = {
         id: 'money-sim',
         tabLabel: 'Мөнгө, SIM & Нислэг',
         title: 'Мөнгө, Төлбөр, SIM & Нисэх буудал',
-        subtitle: 'Орон нутгийн харилцаа холбоо, карт болон бэлэн мөнгөний хэрэглээ',
+        subtitle:
+          'Орон нутгийн харилцаа холбоо, карт болон бэлэн мөнгөний хэрэглээ',
         items: [
           {
             icon: '💳',
@@ -136,14 +140,17 @@ const PLAN_DATA: Record<string, PlanGroupData> = {
   // 2. ТЭЭВЭР & БАЙРЛАХ ГАЗАР
   'transport-stay': {
     title: 'Тээвэр & Байрлах газар',
-    subtitle: 'Бартаат замын тээврийн хэрэгсэл, дотоод нислэг, гэр кэмп, зочид буудлын сонголтууд',
-    heroImage: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2000',
+    subtitle:
+      'Бартаат замын тээврийн хэрэгсэл, дотоод нислэг, гэр кэмп, зочид буудлын сонголтууд',
+    heroImage:
+      'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2000',
     sections: [
       {
         id: 'vehicles-flight',
         tabLabel: 'Машин түрээс, Дотоод нислэг',
         title: 'Тээврийн сонголтууд & Бартаат зам',
-        subtitle: 'Монгол орны уудам нутагт шилжин явах тохиромжтой хувилбарууд',
+        subtitle:
+          'Монгол орны уудам нутагт шилжин явах тохиромжтой хувилбарууд',
         items: [
           {
             icon: '🚙',
@@ -177,7 +184,8 @@ const PLAN_DATA: Record<string, PlanGroupData> = {
         id: 'accommodation-types',
         tabLabel: 'Байрлах газрууд (Гэр кэмп, Зочид буудал)',
         title: 'Байрлах сонголтууд & Монгол ахуй',
-        subtitle: 'Тансаг зэрэглэлийн гэр вилланаас авахуулаад малчин айл, майхант отог',
+        subtitle:
+          'Тансаг зэрэглэлийн гэр вилланаас авахуулаад малчин айл, майхант отог',
         items: [
           {
             icon: '🛖',
@@ -213,8 +221,10 @@ const PLAN_DATA: Record<string, PlanGroupData> = {
   // 3. ҮЙЛЧИЛГЭЭ & АЮУЛГҮЙ БАЙДАЛ
   'safety-faq': {
     title: 'Үйлчилгээ & Аюулгүй байдал',
-    subtitle: 'Аяллын компани сонгох, эмнэлгийн тусламж, соёлын ёс зүй болон түгээмэл асуултууд',
-    heroImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000',
+    subtitle:
+      'Аяллын компани сонгох, эмнэлгийн тусламж, соёлын ёс зүй болон түгээмэл асуултууд',
+    heroImage:
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000',
     sections: [
       {
         id: 'safety-health',
@@ -307,11 +317,10 @@ export default function PlanShowcase({
         }
       }, 150);
       return () => clearTimeout(timer);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (currentGroup.sections[0]) {
-        setActiveTab(currentGroup.sections[0].id);
-      }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (currentGroup.sections[0]) {
+      setActiveTab(currentGroup.sections[0].id);
     }
   }, [subSlug, groupKey, currentGroup]);
 
@@ -328,10 +337,9 @@ export default function PlanShowcase({
   };
 
   return (
-    <div className="w-full bg-[#fafaf9] text-neutral-900 pb-36 font-sans">
-      
+    <div className="pb-36 w-full font-sans text-neutral-900 bg-[#fafaf9]">
       {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[50vh] min-h-[400px] flex flex-col items-center justify-center overflow-hidden">
+      <section className="flex overflow-hidden relative flex-col justify-center items-center w-full h-[50vh] min-h-[400px]">
         <Image
           src={currentGroup.heroImage}
           alt={currentGroup.title}
@@ -340,22 +348,22 @@ export default function PlanShowcase({
           unoptimized
           className="object-cover brightness-[0.65]"
         />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <span className="text-white/80 uppercase tracking-widest text-xs font-bold mb-3 block">
+        <div className="relative z-10 px-4 mx-auto max-w-4xl text-center">
+          <span className="block mb-3 text-xs font-bold tracking-widest text-white/80 uppercase">
             Аяллаа төлөвлөх
           </span>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight drop-shadow-md mb-4">
+          <h1 className="mb-4 text-3xl font-black tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl">
             {currentGroup.title}
           </h1>
-          <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-light">
+          <p className="mx-auto max-w-2xl text-sm font-light text-white/90 sm:text-base md:text-lg">
             {currentGroup.subtitle}
           </p>
         </div>
       </section>
 
       {/* 2. НААЛДДАГ ДЭД ЦЭС */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto scrollbar-none">
+      <div className="sticky top-0 z-40 bg-white/95 border-b border-gray-100 backdrop-blur-md shadow-xs">
+        <div className="flex overflow-x-auto gap-2 justify-start items-center py-4 px-6 mx-auto max-w-7xl sm:gap-3 sm:justify-center sm:px-10 scrollbar-none">
           {currentGroup.sections.map((sec) => {
             const isActive = activeTab === sec.id;
             return (
@@ -376,48 +384,52 @@ export default function PlanShowcase({
       </div>
 
       {/* 3. ХЭРЭГСЭЛ, ЗӨВЛӨМЖИЙН БҮТЭЦ (SWISS PRACTICAL CARDS) */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-16 space-y-32">
+      <div className="px-6 mx-auto mt-16 space-y-32 max-w-7xl sm:px-10">
         {currentGroup.sections.map((section) => (
           <section key={section.id} id={section.id} className="scroll-mt-28">
-            
-            <div className="border-b border-neutral-200 pb-4 mb-10">
-              <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight">
+            <div className="pb-4 mb-10 border-b border-neutral-200">
+              <h2 className="text-2xl font-black tracking-tight text-neutral-900 sm:text-3xl">
                 {section.title}
               </h2>
-              <p className="text-xs sm:text-sm text-neutral-500 mt-1">
+              <p className="mt-1 text-xs text-neutral-500 sm:text-sm">
                 {section.subtitle}
               </p>
             </div>
 
             {/* Картууд: 2 эсвэл 3 баганатай практик блокууд */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {section.items.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white rounded-3xl p-8 border border-neutral-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                  className="flex flex-col justify-between p-8 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 shadow-xs"
                 >
                   <div>
                     {/* Толгойн хэсэг */}
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex justify-between items-center mb-4">
                       <span className="text-3xl">{item.icon}</span>
-                      <span className="bg-emerald-50 text-[#15803d] text-[11px] font-bold px-3 py-1 rounded-full">
+                      <span className="py-1 px-3 text-[11px] font-bold text-[#15803d] bg-emerald-50 rounded-full">
                         {item.badge}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                    <h3 className="mb-2 text-xl font-bold text-neutral-900">
                       {item.title}
                     </h3>
 
-                    <p className="text-xs text-neutral-600 font-light leading-relaxed mb-6">
+                    <p className="mb-6 text-xs font-light leading-relaxed text-neutral-600">
                       {item.desc}
                     </p>
 
                     {/* Буллет жагсаалт */}
-                    <div className="space-y-2.5 mb-6">
+                    <div className="mb-6 space-y-2.5">
                       {item.bullets.map((b, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs text-neutral-700">
-                          <span className="text-[#15803d] font-bold mt-0.5">•</span>
+                        <div
+                          key={i}
+                          className="flex gap-2.5 items-start text-xs text-neutral-700"
+                        >
+                          <span className="mt-0.5 font-bold text-[#15803d]">
+                            •
+                          </span>
                           <span className="leading-snug">{b}</span>
                         </div>
                       ))}
@@ -426,8 +438,8 @@ export default function PlanShowcase({
 
                   {/* Зөвлөгөө / Тэмдэглэл */}
                   {item.tips && (
-                    <div className="pt-4 border-t border-neutral-100 bg-neutral-50/60 -mx-8 -mb-8 p-6 rounded-b-3xl mt-4">
-                      <p className="text-[11px] text-neutral-600 font-medium leading-relaxed">
+                    <div className="p-6 pt-4 -mx-8 mt-4 -mb-8 bg-neutral-50/60 rounded-b-3xl border-t border-neutral-100">
+                      <p className="text-[11px] font-medium leading-relaxed text-neutral-600">
                         💡 {item.tips}
                       </p>
                     </div>
@@ -435,34 +447,32 @@ export default function PlanShowcase({
                 </div>
               ))}
             </div>
-
           </section>
         ))}
 
         {/* 4. ДООД ТАЛЫН ИНТЕРАКТИВ ТӨЛӨВЛӨГЧИЙН ХОЛБООС БАННЕР */}
-        <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+        <div className="flex flex-col gap-8 justify-between items-center p-8 text-white bg-neutral-900 rounded-3xl shadow-xl sm:p-14 md:flex-row">
           <div className="max-w-xl">
-            <span className="text-xs uppercase tracking-widest text-emerald-400 font-bold block mb-2">
+            <span className="block mb-2 text-xs font-bold tracking-widest text-emerald-400 uppercase">
               ИНТЕРАКТИВ СИСТЕМ (C08)
             </span>
-            <h3 className="text-2xl sm:text-4xl font-black mb-3 leading-tight">
+            <h3 className="mb-3 text-2xl font-black leading-tight sm:text-4xl">
               Өөрийн аяллын төлөвлөгөөг шууд гаргах
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
-              Газруудаа сонгож, өдрөөр хуваарилан газрын зураг дээр маршрут болон нийт туулах зайгаа автоматаар тооцоолоорой.
+            <p className="text-xs font-light leading-relaxed text-neutral-300 sm:text-sm">
+              Газруудаа сонгож, өдрөөр хуваарилан газрын зураг дээр маршрут
+              болон нийт туулах зайгаа автоматаар тооцоолоорой.
             </p>
           </div>
           <Link
             href="/plan/planner"
-            className="whitespace-nowrap px-8 py-4 bg-[#15803d] hover:bg-emerald-600 text-white text-sm font-bold rounded-2xl transition-all shadow-lg hover:shadow-emerald-900/40 flex items-center gap-2"
+            className="flex gap-2 items-center py-4 px-8 text-sm font-bold text-white whitespace-nowrap bg-[#15803d] hover:bg-emerald-600 rounded-2xl shadow-lg hover:shadow-emerald-900/40 transition-all"
           >
             <span>Төлөвлөгч рүү очих</span>
             <span>→</span>
           </Link>
         </div>
-
       </div>
-
     </div>
   );
 }

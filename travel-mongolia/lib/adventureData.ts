@@ -34,8 +34,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Баруун бүс',
     difficulty: 'Хүнд',
     season: '6 - 8 сар',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
-    description: 'Хүйтэн оргил (4374м) руу мэргэжлийн хөтөчтэй авирах болон Потанины мөсөн голоор алхах адал явдал.',
+    image:
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Хүйтэн оргил (4374м) руу мэргэжлийн хөтөчтэй авирах болон Потанины мөсөн голоор алхах адал явдал.',
   },
   {
     id: 'khuvsgul-horse-trek',
@@ -46,8 +48,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Хангайн бүс',
     difficulty: 'Дунд',
     season: '6 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
-    description: 'Олон өдрийн морин аяллаар тайгын гүн дэх цаатны урцад очиж, онгон дагшин байгальтай танилцах.',
+    image:
+      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Олон өдрийн морин аяллаар тайгын гүн дэх цаатны урцад очиж, онгон дагшин байгальтай танилцах.',
   },
   {
     id: 'gobi-camel-expedition',
@@ -58,8 +62,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Говийн бүс',
     difficulty: 'Хялбар',
     season: '5 - 10 сар',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
-    description: 'Хоёр бөхт тэмээгээр дуут манхныг даван нар жаргахыг ажиглах жинхэнэ нүүдэлчдийн арга барил.',
+    image:
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Хоёр бөхт тэмээгээр дуут манхныг даван нар жаргахыг ажиглах жинхэнэ нүүдэлчдийн арга барил.',
   },
   {
     id: 'orkhon-kayaking',
@@ -70,8 +76,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Төвийн бүс',
     difficulty: 'Дунд',
     season: '6 - 8 сар',
-    image: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=900&q=80',
-    description: 'Галт уулын чулуулаг бүхий Улаан цутгалангийн хөндийгөөр урсах түргэн урсгалт усаар сэлэх сорилт.',
+    image:
+      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Галт уулын чулуулаг бүхий Улаан цутгалангийн хөндийгөөр урсах түргэн урсгалт усаар сэлэх сорилт.',
   },
   {
     id: 'gobi-4x4-expedition',
@@ -82,8 +90,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Говийн бүс',
     difficulty: 'Ахисан',
     season: '5 - 10 сар',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80',
-    description: 'Замгүй уудам говь, үлэг гүрвэлийн олдворт улаан цав, хавцлуудаар туулах тусгай тээврийн экспедиц.',
+    image:
+      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Замгүй уудам говь, үлэг гүрвэлийн олдворт улаан цав, хавцлуудаар туулах тусгай тээврийн экспедиц.',
   },
   {
     id: 'sky-resort-winter',
@@ -94,8 +104,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Төвийн бүс',
     difficulty: 'Бүх түвшин',
     season: '11 - 3 сар',
-    image: 'https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=900&q=80',
-    description: 'Олон улсын стандартад нийцсэн цанын бааз, гэрэлтүүлэгтэй шөнийн гулгалт, өвлийн аялал.',
+    image:
+      'https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Олон улсын стандартад нийцсэн цанын бааз, гэрэлтүүлэгтэй шөнийн гулгалт, өвлийн аялал.',
   },
   {
     id: 'khentii-hiking',
@@ -106,8 +118,10 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Төвийн бүс',
     difficulty: 'Хүндэвтэр',
     season: '6 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=900&q=80',
-    description: 'Хэнтийн нурууны ноён оргил (2799м) өөд хадархаг нуруугаар алхах 1-2 өдрийн хайкинг.',
+    image:
+      'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Хэнтийн нурууны ноён оргил (2799м) өөд хадархаг нуруугаар алхах 1-2 өдрийн хайкинг.',
   },
   {
     id: 'terelj-cycling',
@@ -118,7 +132,9 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     region: 'Төвийн бүс',
     difficulty: 'Дунд',
     season: '5 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80',
-    description: 'Горхи Тэрэлжийн байгалийн цогцолборт газрын хөвөө замаар уулын дугуйгаар жийх адал явдал.',
+    image:
+      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Горхи Тэрэлжийн байгалийн цогцолборт газрын хөвөө замаар уулын дугуйгаар жийх адал явдал.',
   },
 ];

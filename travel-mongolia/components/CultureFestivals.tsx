@@ -1,10 +1,12 @@
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+
 import { client } from '@/lib/contentful';
 
 // Зургийн URL-ийг Contentful-ийн ямар ч бүтцээс алдаагүй гаргаж авах туслах функц
 function getImageUrl(imageField: any): string {
-  if (!imageField) return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
+  if (!imageField)
+    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
 
   // Хэрэв зураг нь массив (олон зураг) байвал хамгийн эхнийхийг авна
   const target = Array.isArray(imageField) ? imageField[0] : imageField;
@@ -30,7 +32,7 @@ function renderRichText(node: any): any {
 
   if (node.nodeType === 'paragraph') {
     return (
-      <p className="text-neutral-600 text-sm leading-relaxed mb-2">
+      <p className="mb-2 text-sm leading-relaxed text-neutral-600">
         {node.content?.map((child: any, idx: number) => (
           <React.Fragment key={idx}>{renderRichText(child)}</React.Fragment>
         ))}
@@ -81,53 +83,56 @@ export default async function CultureFestivals() {
   const items = await getFestivals();
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section className="py-20 px-6 mx-auto max-w-7xl">
       {/* Дээд гарчиг */}
       <div className="mb-12">
-        <span className="text-[#15803d] text-xs font-bold tracking-widest uppercase">
+        <span className="text-xs font-bold tracking-widest text-[#15803d] uppercase">
           CULTURE & HERITAGE
         </span>
-        <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mt-2 mb-4">
+        <h2 className="mt-2 mb-4 text-3xl font-bold text-neutral-900 sm:text-4xl">
           Монголын Уламжлалт Баяр Наадам
         </h2>
-        <p className="text-neutral-600 max-w-3xl text-sm sm:text-base leading-relaxed">
-          Дэлхийд цор ганц нүүдэлчин түмний онцлог, эртний ёс заншил, улирлын мөчлөгт нийцсэн өвөрмөц баяруудыг өөрийн биеэр мэдрээрэй.
+        <p className="max-w-3xl text-sm leading-relaxed text-neutral-600 sm:text-base">
+          Дэлхийд цор ганц нүүдэлчин түмний онцлог, эртний ёс заншил, улирлын
+          мөчлөгт нийцсэн өвөрмөц баяруудыг өөрийн биеэр мэдрээрэй.
         </p>
       </div>
 
       {/* Картууд */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {items.map((item: any) => {
           const f = item.fields;
-          
+
           // Энд зургаа ямар ч бүтцээс ухаж олох функцийг дуудаж байна:
-          const fullImgUrl = getImageUrl(f.image || f.coverImage || f.thumbnail);
+          const fullImgUrl = getImageUrl(
+            f.image || f.coverImage || f.thumbnail
+          );
 
           return (
-            <div 
-              key={item.sys.id} 
-              className="group bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
+            <div
+              key={item.sys.id}
+              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-neutral-100 shadow-sm hover:shadow-md transition-all duration-300"
             >
               {/* Зураг */}
-              <div className="relative h-64 sm:h-72 w-full overflow-hidden">
+              <div className="overflow-hidden relative w-full h-64 sm:h-72">
                 <Image
                   src={fullImgUrl}
                   alt={f.title || 'Culture'}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
                 {/* Шошгууд */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <div className="flex absolute inset-x-4 top-4 justify-between items-center pointer-events-none">
                   {f.tag && (
-                    <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
+                    <span className="py-1.5 px-3 text-xs font-medium text-white bg-black/50 rounded-full border border-white/20 backdrop-blur-md">
                       {f.tag}
                     </span>
                   )}
                   {f.date && (
-                    <span className="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-neutral-900 text-xs font-semibold shadow-sm ml-auto">
+                    <span className="py-1.5 px-3 ml-auto text-xs font-semibold text-neutral-900 bg-white/90 rounded-full shadow-sm backdrop-blur-md">
                       🗓️ {f.date}
                     </span>
                   )}
@@ -143,13 +148,13 @@ export default async function CultureFestivals() {
               </div>
 
               {/* Мэдээлэл */}
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+              <div className="flex flex-col flex-1 justify-between p-6 sm:p-8">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-[#15803d] transition-colors">
+                  <h3 className="mb-3 text-xl font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors sm:text-2xl">
                     {f.title}
                   </h3>
-                  
-                  <div className="text-neutral-600 text-sm leading-relaxed line-clamp-3">
+
+                  <div className="text-sm leading-relaxed text-neutral-600 line-clamp-3">
                     {typeof f.description === 'object' ? (
                       renderRichText(f.description)
                     ) : (

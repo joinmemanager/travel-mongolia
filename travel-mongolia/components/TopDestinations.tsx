@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import React, { useRef } from 'react';
+
 import { useLanguage } from './LanguageContext';
 
 interface Props {
@@ -25,32 +26,31 @@ export default function TopDestinations({ items }: Props) {
   }
 
   return (
-    <section className="py-20 bg-white overflow-hidden border-t border-gray-100">
-      
+    <section className="overflow-hidden py-20 bg-white border-t border-gray-100">
       {/* 1. ТОЛГОЙ ХЭСЭГ: Ердийн өргөнтэй (max-w-7xl) хүрээндээ байна */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="flex items-end justify-between mb-8">
+      <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
+        <div className="flex justify-between items-end mb-8">
           <div>
-            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#15803d] block mb-2">
+            <span className="block mb-2 text-xs font-semibold tracking-[0.2em] text-[#15803d] uppercase">
               FEATURED DESTINATIONS
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               {t.featuredPlaces || 'Top Destinations'}
             </h2>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex gap-2 items-center">
             <button
               onClick={() => scroll('left')}
               aria-label="Өмнөх"
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-gray-900 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95 bg-white z-10"
+              className="flex z-10 justify-center items-center w-10 h-10 text-gray-600 hover:text-black bg-white rounded-full border border-gray-200 hover:border-gray-900 shadow-sm transition-all active:scale-95 cursor-pointer"
             >
               ‹
             </button>
             <button
               onClick={() => scroll('right')}
               aria-label="Дараах"
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-gray-900 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95 bg-white z-10"
+              className="flex z-10 justify-center items-center w-10 h-10 text-gray-600 hover:text-black bg-white rounded-full border border-gray-200 hover:border-gray-900 shadow-sm transition-all active:scale-95 cursor-pointer"
             >
               ›
             </button>
@@ -62,15 +62,15 @@ export default function TopDestinations({ items }: Props) {
       <div className="relative w-full">
         <div
           ref={sliderRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth pb-6 select-none pl-6 sm:pl-10 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+4rem))] pr-16"
+          className="flex overflow-x-auto gap-6 pr-16 pb-6 pl-6 scroll-smooth select-none sm:pl-10 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+4rem))]"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {items.map((item: any) => {
             const imageField = item.fields?.coverImage || item.fields?.image;
             const imageUrl = imageField?.fields?.file?.url
-              ? (imageField.fields.file.url.startsWith('//')
-                  ? `https:${imageField.fields.file.url}`
-                  : imageField.fields.file.url)
+              ? imageField.fields.file.url.startsWith('//')
+                ? `https:${imageField.fields.file.url}`
+                : imageField.fields.file.url
               : 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop';
 
             const title = item.fields?.title || 'Destination';
@@ -79,7 +79,7 @@ export default function TopDestinations({ items }: Props) {
               <Link
                 key={item.sys.id}
                 href={`/destination/${item.sys.id}`}
-                className="relative flex-shrink-0 w-[290px] sm:w-[330px] h-[430px] rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-300"
+                className="group overflow-hidden relative shrink-0 w-[290px] h-[430px] rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 sm:w-[330px]"
               >
                 {/* Зураг */}
                 <Image
@@ -88,15 +88,15 @@ export default function TopDestinations({ items }: Props) {
                   fill
                   sizes="330px"
                   unoptimized
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
                 {/* Доод талын зөөлөн сүүдэр */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                 {/* Нэр */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-2xl font-bold text-white tracking-tight drop-shadow-md">
+                <div className="absolute inset-x-6 bottom-6">
+                  <h3 className="text-2xl font-bold tracking-tight text-white drop-shadow-md">
                     {title}
                   </h3>
                 </div>
@@ -106,9 +106,8 @@ export default function TopDestinations({ items }: Props) {
         </div>
 
         {/* 3. ДЭЛГЭЦИЙН ЗАХЫН ЗӨӨЛӨН ЦАЙРАЛТ (Зөвхөн баруун захад тулсан хэсэгт л харагдана) */}
-        <div className="pointer-events-none absolute top-0 bottom-6 right-0 w-24 sm:w-40 bg-gradient-to-l from-white via-white/40 to-transparent" />
+        <div className="absolute top-0 right-0 bottom-6 w-24 bg-gradient-to-l from-white via-white/40 to-transparent pointer-events-none sm:w-40" />
       </div>
-
     </section>
   );
 }

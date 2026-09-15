@@ -32,8 +32,10 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     location: 'Төв аймаг, Хустай БЦГ',
     region: 'Төвийн бүс',
     bestTime: 'Өглөө эрт, үдэш бүрий',
-    image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
-    description: 'Дэлхийд цор ганц үлдсэн зэрлэг адуу болох Пржевальскийн тахийг байгаль дээр нь харах тусгай бүс.',
+    image:
+      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Дэлхийд цор ганц үлдсэн зэрлэг адуу болох Пржевальскийн тахийг байгаль дээр нь харах тусгай бүс.',
   },
   {
     id: 'altai-snow-leopard',
@@ -43,8 +45,10 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     location: 'Ховд, Баян-Өлгий аймаг',
     region: 'Баруун бүс',
     bestTime: '1 - 3, 10 - 11 сар',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
-    description: 'Хадат өндөр уулсын ноён саарал ирвэсийг мэргэжлийн ренжер, хөтөч нарын хамт дурандах экспедиц.',
+    image:
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Хадат өндөр уулсын ноён саарал ирвэсийг мэргэжлийн ренжер, хөтөч нарын хамт дурандах экспедиц.',
   },
   {
     id: 'great-gobi-mazaalai',
@@ -54,8 +58,10 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     location: 'Говь-Алтай аймаг',
     region: 'Говийн бүс',
     bestTime: '5, 9 сар',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
-    description: 'Дэлхийд 50 орчим л үлдсэн говийн нэн ховор баавгай мазаалай болон зэрлэг хавтгайн дархан цаазтай нутаг.',
+    image:
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Дэлхийд 50 орчим л үлдсэн говийн нэн ховор баавгай мазаалай болон зэрлэг хавтгайн дархан цаазтай нутаг.',
   },
   {
     id: 'sharga-saiga',
@@ -65,8 +71,10 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     location: 'Говь-Алтай аймаг, Шаргын говь',
     region: 'Баруун бүс',
     bestTime: '6 - 10 сар',
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
-    description: 'Мөстлөгийн үеэс өнөөг хүртэл амьд үлдсэн шовгор хоншоорт содон хөхтөн бөхөнгийн сүрэг.',
+    image:
+      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Мөстлөгийн үеэс өнөөг хүртэл амьд үлдсэн шовгор хоншоорт содон хөхтөн бөхөнгийн сүрэг.',
   },
   {
     id: 'ogii-lake-birds',
@@ -76,8 +84,10 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     location: 'Архангай аймаг, Өгий нуур',
     region: 'Хангайн бүс',
     bestTime: '5, 9 сар',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
-    description: 'Рамсарын конвенцод бүртгэлтэй, 150 гаруй зүйл усны болон нүүдлийн шувуудыг ажиглах таатай орчин.',
+    image:
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Рамсарын конвенцод бүртгэлтэй, 150 гаруй зүйл усны болон нүүдлийн шувуудыг ажиглах таатай орчин.',
   },
   {
     id: 'yolyn-am-ibex',
@@ -87,7 +97,9 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     location: 'Өмнөговь аймаг, Гурвансайхан БЦГ',
     region: 'Говийн бүс',
     bestTime: 'Өглөө эрт',
-    image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=900&q=80',
-    description: 'Гүн хавцлын эгц хадан хясаагаар дүүлэн явах зэрлэг ямаа янгир болон угалз аргалийн сүрэг.',
+    image:
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Гүн хавцлын эгц хадан хясаагаар дүүлэн явах зэрлэг ямаа янгир болон угалз аргалийн сүрэг.',
   },
 ];

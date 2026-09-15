@@ -32,8 +32,10 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     location: 'Өвөрхангай аймаг',
     region: 'Хангайн бүс',
     season: '6 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
-    description: 'Жинхэнэ нүүдэлчин айлын өдөр тутмын амьдралтай танилцаж, халуун цай, зочломтгой занг мэдрэх аялал.',
+    image:
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Жинхэнэ нүүдэлчин айлын өдөр тутмын амьдралтай танилцаж, халуун цай, зочломтгой занг мэдрэх аялал.',
   },
   {
     id: 'terelj-traditional-ger',
@@ -43,8 +45,10 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     location: 'Төв аймаг',
     region: 'Төвийн бүс',
     season: 'Бүх улирал',
-    image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=900&q=80',
-    description: 'Олон зуун жилийн уламжлалт дугуй эсгий гэрт хоноглож, одот тэнгэр дор тав тухтай амрах боломж.',
+    image:
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Олон зуун жилийн уламжлалт дугуй эсгий гэрт хоноглож, одот тэнгэр дор тав тухтай амрах боломж.',
   },
   {
     id: 'bulgan-airag-experience',
@@ -54,8 +58,10 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     location: 'Булган аймаг',
     region: 'Хангайн бүс',
     season: '7 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
-    description: 'Хөхүүрийн айраг бүлэх, исгэх уламжлалт технологитой танилцаж, амталгаа хийх өвөрмөц туршлага.',
+    image:
+      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Хөхүүрийн айраг бүлэх, исгэх уламжлалт технологитой танилцаж, амталгаа хийх өвөрмөц туршлага.',
   },
   {
     id: 'khentii-horse-riding',
@@ -65,8 +71,10 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     location: 'Хэнтий аймаг',
     region: 'Зүүн бүс',
     season: '5 - 10 сар',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
-    description: 'Тал нутгийн уудам хөндийгөөр монгол эмээл, хазаартай морь унаж, чөлөөтэй давхих эрх чөлөө.',
+    image:
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Тал нутгийн уудам хөндийгөөр монгол эмээл, хазаартай морь унаж, чөлөөтэй давхих эрх чөлөө.',
   },
   {
     id: 'arvaikheer-dairy-making',
@@ -76,8 +84,10 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     location: 'Архангай аймаг',
     region: 'Хангайн бүс',
     season: '6 - 8 сар',
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
-    description: 'Сүү хөөрүүлэх, өрөм загсаах, ээзгий болон ааруул хатаах нүүдэлчдийн экологийн цэвэр хүнсний соёл.',
+    image:
+      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Сүү хөөрүүлэх, өрөм загсаах, ээзгий болон ааруул хатаах нүүдэлчдийн экологийн цэвэр хүнсний соёл.',
   },
   {
     id: 'altai-seasonal-migration',
@@ -87,7 +97,9 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     location: 'Баян-Өлгий аймаг',
     region: 'Баруун бүс',
     season: '5 болон 9 сар',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
-    description: 'Зуслан, намаржааны хооронд хэдэн зуун мал тууж, нүүдлийн ачаатай хамт алхах ховор мэдрэмж.',
+    image:
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Зуслан, намаржааны хооронд хэдэн зуун мал тууж, нүүдлийн ачаатай хамт алхах ховор мэдрэмж.',
   },
 ];

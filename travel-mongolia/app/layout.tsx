@@ -1,9 +1,12 @@
-import { Rubik } from 'next/font/google';
 import './globals.css';
-import Navbar from '../components/Navbar';
-import { LanguageProvider } from '../components/LanguageContext';
-import Footer from '@/components/Footer';
+
+import { Rubik } from 'next/font/google';
 import Script from 'next/script';
+
+import Footer from '@/components/Footer';
+
+import { LanguageProvider } from '../components/LanguageContext';
+import Navbar from '../components/Navbar';
 
 const rubik = Rubik({
   subsets: ['latin', 'cyrillic'],
@@ -14,7 +17,8 @@ const rubik = Rubik({
 
 export const metadata = {
   title: 'Travel Mongolia | Discover the Land of Blue Sky',
-  description: 'Experience authentic nomadic culture, stunning landscapes, and unforgettable journeys in Mongolia.',
+  description:
+    'Experience authentic nomadic culture, stunning landscapes, and unforgettable journeys in Mongolia.',
 };
 
 export default function RootLayout({
@@ -24,7 +28,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="mn">
-      <body className={`${rubik.className} bg-white text-neutral-900 antialiased`}>
+      <body
+        className={`${rubik.className} bg-white text-neutral-900 antialiased`}
+      >
         <LanguageProvider>
           {/* Дээд талын үндсэн цэс */}
           <Navbar />

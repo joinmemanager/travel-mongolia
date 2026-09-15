@@ -32,8 +32,10 @@ export const NATURE_SPOTS: NatureSpot[] = [
     location: 'Хөвсгөл аймаг',
     region: 'Хангайн бүс',
     season: '6 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
-    description: 'Дэлхийн хамгийн эртний бөгөөд цэнгэг уст нууруудын нэг, Монголын хөх сувд.',
+    image:
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Дэлхийн хамгийн эртний бөгөөд цэнгэг уст нууруудын нэг, Монголын хөх сувд.',
   },
   {
     id: 'khongor-sand-dunes',
@@ -43,7 +45,8 @@ export const NATURE_SPOTS: NatureSpot[] = [
     location: 'Өмнөговь аймаг',
     region: 'Говийн бүс',
     season: '5 - 10 сар',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
+    image:
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
     description: '180 км үргэлжлэх Дуут манхан, нар жаргах үеийн элсэн долгио.',
   },
   {
@@ -54,8 +57,10 @@ export const NATURE_SPOTS: NatureSpot[] = [
     location: 'Өмнөговь аймаг',
     region: 'Говийн бүс',
     season: 'Бүх улирал',
-    image: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=900&q=80',
-    description: 'Гэрлийн бохирдолгүй задгай огторгуй дор Тэнгэрийн заадлыг нүдээр харах боломж.',
+    image:
+      'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Гэрлийн бохирдолгүй задгай огторгуй дор Тэнгэрийн заадлыг нүдээр харах боломж.',
   },
   {
     id: 'altai-tavan-bogd',
@@ -65,8 +70,10 @@ export const NATURE_SPOTS: NatureSpot[] = [
     location: 'Баян-Өлгий аймаг',
     region: 'Баруун бүс',
     season: '6 - 8 сар',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
-    description: 'Монгол орны хамгийн өндөр цэг хүйтэн оргил болон Потанины мөсөн гол.',
+    image:
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Монгол орны хамгийн өндөр цэг хүйтэн оргил болон Потанины мөсөн гол.',
   },
   {
     id: 'orkhon-valley',
@@ -76,8 +83,10 @@ export const NATURE_SPOTS: NatureSpot[] = [
     location: 'Өвөрхангай аймаг',
     region: 'Төвийн бүс',
     season: '5 - 10 сар',
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
-    description: 'ЮНЕСКО-ийн соёлын болон байгалийн өвд бүртгэгдсэн түүхэн, үзэсгэлэнт хөндий.',
+    image:
+      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
+    description:
+      'ЮНЕСКО-ийн соёлын болон байгалийн өвд бүртгэгдсэн түүхэн, үзэсгэлэнт хөндий.',
   },
   {
     id: 'terelj-camping',
@@ -87,7 +96,9 @@ export const NATURE_SPOTS: NatureSpot[] = [
     location: 'Төв аймаг',
     region: 'Төвийн бүс',
     season: '5 - 9 сар',
-    image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=900&q=80',
-    description: 'Улаанбаатараас ойр, хадат уулс, голын хөвөөгөөр аялж майхантай хоноглох таатай бүс.',
+    image:
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=900&q=80',
+    description:
+      'Улаанбаатараас ойр, хадат уулс, голын хөвөөгөөр аялж майхантай хоноглох таатай бүс.',
   },
 ];

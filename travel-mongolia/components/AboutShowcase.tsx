@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 interface SubSection {
   id: string;
@@ -160,7 +160,11 @@ const SLUG_TO_GROUP: Record<string, string> = {
   modern: 'nature_group',
 };
 
-export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?: string }) {
+export default function AboutShowcase({
+  defaultSlug = 'glance',
+}: {
+  defaultSlug?: string;
+}) {
   const currentGroupKey = SLUG_TO_GROUP[defaultSlug] || 'history_group';
   const currentGroup = ABOUT_GROUPS[currentGroupKey];
 
@@ -175,7 +179,8 @@ export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -70;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
@@ -189,7 +194,10 @@ export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?
     }
 
     // Дэд сэдэв сонгосон үед тухайн сэдэв рүү гүйнэ
-    if (defaultSlug && currentGroup.sections.some((s) => s.id === defaultSlug)) {
+    if (
+      defaultSlug &&
+      currentGroup.sections.some((s) => s.id === defaultSlug)
+    ) {
       setActiveTab(defaultSlug);
       setTimeout(() => {
         scrollToSection(defaultSlug);
@@ -200,7 +208,7 @@ export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?
   return (
     <div className="w-full bg-white">
       {/* 1. ТОМ HERO ЗУРАГ БОЛОН ҮНДСЭН ГАРЧИГ */}
-      <section className="relative w-full h-[55vh] min-h-[420px] max-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="flex overflow-hidden relative justify-center items-center w-full h-[55vh] min-h-[420px] max-h-[600px]">
         <Image
           src={currentGroup.heroImage}
           alt={currentGroup.title}
@@ -209,22 +217,22 @@ export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?
           unoptimized
           className="object-cover brightness-[0.7]"
         />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <span className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80 font-bold mb-3 block">
+        <div className="relative z-10 px-4 mx-auto max-w-4xl text-center">
+          <span className="block mb-3 text-xs font-bold tracking-[0.25em] text-white/80 uppercase sm:text-sm">
             Монголын тухай
           </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-sans font-bold text-white tracking-tight drop-shadow-md mb-4">
+          <h1 className="mb-4 font-sans text-4xl font-bold tracking-tight text-white drop-shadow-md sm:text-6xl md:text-7xl">
             {currentGroup.title}
           </h1>
-          <p className="text-sm sm:text-lg text-white/90 font-light max-w-2xl mx-auto drop-shadow-sm">
+          <p className="mx-auto max-w-2xl text-sm font-light text-white/90 drop-shadow-sm sm:text-lg">
             {currentGroup.subtitle}
           </p>
         </div>
       </section>
 
       {/* 2. ДЭЭД ХАНАНД НААЛДАЖ ҮЛДЭХ ТАБУУД (STICKY PILLS) */}
-      <section className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-xs">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-center gap-3 sm:gap-4 overflow-x-auto scrollbar-none">
+      <section className="sticky top-0 z-40 w-full bg-white/95 border-b border-neutral-200/80 backdrop-blur-md shadow-xs">
+        <div className="flex overflow-x-auto gap-3 justify-center items-center p-4 mx-auto max-w-6xl sm:gap-4 scrollbar-none">
           {currentGroup.sections.map((sec) => {
             const isSelected = sec.id === activeTab;
             return (
@@ -245,7 +253,7 @@ export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?
       </section>
 
       {/* 3. БҮХ ДЭД ХЭСГҮҮД ДООШОО ЦУВРАН БАЙРЛАХ БҮТЭЦ */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 space-y-28">
+      <div className="py-16 px-6 mx-auto space-y-28 max-w-6xl sm:px-10">
         {currentGroup.sections.map((sec, index) => {
           const isImageLeft = index % 2 === 0;
           return (
@@ -277,13 +285,13 @@ export default function AboutShowcase({ defaultSlug = 'glance' }: { defaultSlug?
                   isImageLeft ? 'lg:pl-4' : 'lg:col-start-1 lg:pr-4'
                 }`}
               >
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-3">
+                <span className="mb-3 text-xs font-bold tracking-wider text-emerald-700 uppercase">
                   {sec.category}
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 mb-6 leading-tight">
+                <h2 className="mb-6 text-3xl font-bold tracking-tight leading-tight text-neutral-900 sm:text-4xl">
                   {sec.title}
                 </h2>
-                <p className="text-neutral-600 text-base sm:text-lg leading-relaxed">
+                <p className="text-base leading-relaxed text-neutral-600 sm:text-lg">
                   {sec.description}
                 </p>
               </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export type Language = 'mn' | 'en' | 'ru' | 'zh' | 'ja' | 'ko';
 
@@ -21,7 +21,8 @@ export const DICTIONARY = {
     search: 'Хайх',
     heroTag: 'DISCOVER THE LAND OF BLUE SKY',
     heroTitle: 'Монголд тавтай морил',
-    heroDesc: 'Нүүдэлчдийн өлгий нутаг, онгон дагшин байгаль, хязгааргүй уудам тал нутгаар хамтдаа аялцгаая.',
+    heroDesc:
+      'Нүүдэлчдийн өлгий нутаг, онгон дагшин байгаль, хязгааргүй уудам тал нутгаар хамтдаа аялцгаая.',
     featuredPlaces: 'Онцлох газрууд',
     viewAll: 'Дэлгэрэнгүй үзэх',
     mapTitle: 'Монгол улсын аймгууд',
@@ -36,7 +37,8 @@ export const DICTIONARY = {
     search: 'Search',
     heroTag: 'DISCOVER THE LAND OF BLUE SKY',
     heroTitle: 'Welcome to Mongolia',
-    heroDesc: 'Explore the untouched landscapes, nomadic culture, and boundless steppes.',
+    heroDesc:
+      'Explore the untouched landscapes, nomadic culture, and boundless steppes.',
     featuredPlaces: 'Featured Places',
     viewAll: 'Explore all',
     mapTitle: 'Provinces of Mongolia',
@@ -51,7 +53,8 @@ export const DICTIONARY = {
     search: 'Поиск',
     heroTag: 'ОТКРОЙТЕ ДЛЯ СЕБЯ СТРАНУ СИНЕГО НЕБА',
     heroTitle: 'Добро пожаловать в Монголию',
-    heroDesc: 'Откройте для себя родину кочевников, нетронутую природу и бескрайние степи.',
+    heroDesc:
+      'Откройте для себя родину кочевников, нетронутую природу и бескрайние степи.',
     featuredPlaces: 'Популярные места',
     viewAll: 'Смотреть все',
     mapTitle: 'Аймаки Монголии',
@@ -96,7 +99,8 @@ export const DICTIONARY = {
     search: '검색',
     heroTag: '푸른 하늘의 나라를 만나보세요',
     heroTitle: '몽골에 오신 것을 환영합니다',
-    heroDesc: '유목민의 고향, 순수한 대자연, 끝없이 펼쳐진 초원을 경험해보세요.',
+    heroDesc:
+      '유목민의 고향, 순수한 대자연, 끝없이 펼쳐진 초원을 경험해보세요.',
     featuredPlaces: '추천 명소',
     viewAll: '더 알아보기',
     mapTitle: '몽골의 아이막(주)',
@@ -109,7 +113,7 @@ export const DICTIONARY = {
 interface LanguageContextProps {
   locale: Language;
   setLocale: (lang: Language) => void;
-  t: (typeof DICTIONARY)['mn'];
+  t: typeof DICTIONARY['mn'];
 }
 
 const LanguageContext = createContext<LanguageContextProps>({
@@ -134,7 +138,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t: DICTIONARY[locale] }}>
+    <LanguageContext.Provider
+      value={{ locale, setLocale, t: DICTIONARY[locale] }}
+    >
       {children}
     </LanguageContext.Provider>
   );
