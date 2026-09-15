@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-green: #15803d; /* Голлох ногоон өнгө */
+  --primary-green-hover: #166534; /* Хулгана очих үеийн бараан ногоон */
+  --accent-blue: #0284c7; /* Хослох цэнхэр өнгө */
+}
+
+@import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 1. Сансрын зураг дээрх газрын нэрсийг 100% цэвэр, тод, хурц харагдуулах */
+.high-contrast-labels {
+  filter: contrast(180%) brightness(125%) drop-shadow(0px 0px 2.5px rgba(0, 0, 0, 0.95)) !important;
+}
+
+/* 2. Дэвсгэр хиймэл дагуулыг улам шүүслэг, тод өнгөтэй болгох (нэрс нь товойж уншигдана) */
+.satellite-base-layer {
+  filter: contrast(110%) saturate(115%) brightness(88%) !important;
+}
+
+/* Google Translate-ийн дээд талын баннерыг бүрэн устгах */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+/* Баннерын үүсгэсэн 40px орчим хоосон зайг арилгаж биеийг дээш наах */
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+/* Орчуулгын текстийн ард гардаг шар дэвсгэр, хүрээг арилгах */
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}/* Google Translate-ийн бүх төрлийн толгой iframe-ийг алга болгох */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc,
+iframe[id=":1.container"],
+iframe[id=":2.container"],
+#goog-gt-tt {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0px !important;
+  width: 0px !important;
+  pointer-events: none !important;
+}
+
+/* Баннерын үүсгэсэн 40px дээрх хоосон зайг арилгаж сайтын навигацийг оройд нь наах */
+html, body {
+  top: 0px !important;
+  position: static !important;
+  margin-top: 0px !important;
+}
+
+/* Орчуулсан текстэн дээр хулгана очиход шар дэвсгэр үүсэхгүй болгох */
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+/* Хөтчийн скроллбарыг бүх платформоос нуух */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -20,7 +20,7 @@ const ForgetPassword: FC<any> = () => {
             <AuthHeader
               linkQ="Аль хэдийн бүртгэлтэй юу?"
               linkA="Нэвтрэх"
-              href="/register"
+              href="/login"
             />
           )}
 
