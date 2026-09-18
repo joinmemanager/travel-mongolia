@@ -1,3 +1,4 @@
+import Link from 'next/link';
 'use client';
 
 import React, { useRef } from 'react';
@@ -303,3 +304,4 @@ export default function AtAGlancePage() {
     </main>
   );
 }
+
