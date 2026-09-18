@@ -95,7 +95,7 @@ export default function Navbar() {
             className="group flex gap-1 items-center"
           >
             <span className="text-2xl font-black tracking-tight text-gray-900 sm:text-3xl">
-              mongolia<span className="text-[#15803d]">.</span>
+              Mongolia<span className="text-[#15803d]">.</span>
             </span>
           </Link>
 
@@ -362,460 +362,354 @@ export default function Navbar() {
             onMouseLeave={handleMouseLeave}
           >
             <div className="py-10 px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
-              {/* --- 01. МОНГОЛЫН ТУХАЙ --- */}
+              {/* --- 01. МОНГОЛЫН ТУХАЙ ДЭЛГЭГДДЭГ ЦЭС --- */}
               {activeMenu === 'about' && (
-                <div className="grid grid-cols-3 gap-10">
-                  <div className="pr-6 space-y-4 border-r border-gray-100">
-                    <span className="block text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors cursor-pointer hover:text-emerald-950">
-                      Ерөнхий & Түүх
-                    </span>
-                    <ul className="space-y-2.5 text-sm text-gray-700">
-                      <li>
-                        <Link
-                          href="/about/at-a-glance"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Монгол орныг товчхон (Газар нутаг, бэлгэдэл)
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/history"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Монголын түүх (Хүннү, Их Монгол Улс, 20-р зуун)
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/people"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Монгол хүн, хэл, үндэстний онцлог
-                        </Link>
-                      </li>
-                    </ul>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                  {/* 1-Р БАГАНА */}
+                  <div className="space-y-8 pr-6 border-r border-gray-100">
+                    {/* 01. Монгол орныг товчхон */}
+                    <div className="space-y-3">
+                      <Link href="/about/at-a-glance" onClick={closeMenu} className="block group">
+  <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors group-hover:underline">
+    01. МОНГОЛ ОРНЫГ ТОВЧХОН
+  </h4>
+  <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+    Mongolia at a Glance
+  </span>
+</Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/at-a-glance#overview" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Монгол Улсын тухай үндсэн мэдээлэл</Link></li>
+                        <li><Link href="/about/at-a-glance#population" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хүн ам, нийслэл</Link></li>
+                        <li><Link href="/about/at-a-glance#geography" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Газар нутаг</Link></li>
+                        <li><Link href="/about/at-a-glance#symbols" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Төрийн болон үндэсний бэлгэдэл</Link></li>
+                        <li><Link href="/about/at-a-glance#facts" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Монгол орны онцлог тоо, баримтууд</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* 02. Монголын түүх */}
+                    <div className="space-y-3">
+                      <Link href="/about/history" onClick={closeMenu} className="block group">
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] group-hover:underline uppercase">
+                          02. МОНГОЛЫН ТҮҮХ
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          History of Mongolia
+                        </span>
+                      </Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/history#topic-ancient" onClick={closeMenu} className="block hover:text-[#15803d]">Эртний Монгол нутаг</Link></li>
+                        <li><Link href="/about/history#topic-hunnu" onClick={closeMenu} className="block hover:text-[#15803d]">Хүннү ба эртний улсууд</Link></li>
+                        <li><Link href="/about/history#topic-great-mongol" onClick={closeMenu} className="block hover:text-[#15803d]">Их Монгол Улс</Link></li>
+                        <li><Link href="/about/history#topic-empire" onClick={closeMenu} className="block hover:text-[#15803d]">Монголын эзэнт гүрэн</Link></li>
+                        <li><Link href="/about/history#topic-17-19th-century" onClick={closeMenu} className="block hover:text-[#15803d]">XVII–XIX зуун</Link></li>
+                        <li><Link href="/about/history#topic-20th-century" onClick={closeMenu} className="block hover:text-[#15803d]">XX зууны Монгол</Link></li>
+                        <li><Link href="/about/history#topic-modern" onClick={closeMenu} className="block hover:text-[#15803d]">Орчин үеийн Монгол Улс</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* 03. Монгол хүн, хэл */}
+                    <div className="space-y-3">
+                      <Link href="/about/people" onClick={closeMenu} className="block group">
+  <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors group-hover:underline">
+    03. МОНГОЛ ХҮН, ХЭЛ, ҮНДЭСТНИЙ ОНЦЛОГ
+  </h4>
+  <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+    People, Language & Identity
+  </span>
+</Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/identity#topic-mongolians" onClick={closeMenu} className="block hover:text-[#15803d]">Монголчууд</Link></li>
+                        <li><Link href="/about/identity#topic-ethnic-groups" onClick={closeMenu} className="block hover:text-[#15803d]">Угсаатны бүлгүүд</Link></li>
+                        <li><Link href="/about/identity#topic-language" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол хэл</Link></li>
+                        <li><Link href="/about/identity#topic-script" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол бичиг</Link></li>
+                        <li><Link href="/about/identity#topic-names" onClick={closeMenu} className="block hover:text-[#15803d]">Нэр, овог</Link></li>
+                        <li><Link href="/about/identity#topic-hospitality" onClick={closeMenu} className="block hover:text-[#15803d]">Зочломтгой зан</Link></li>
+                        <li><Link href="/about/identity#topic-lifestyle" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол хүний амьдралын хэв маяг</Link></li>
+                      </ul>
+                    </div>
                   </div>
 
-                  <div className="pr-6 space-y-4 border-r border-gray-100">
-                    <span className="block text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors cursor-pointer hover:text-emerald-950">
-                      Ахуй, Ёс заншил & Соёл
-                    </span>
-                    <ul className="space-y-2.5 text-sm text-gray-700">
-                      <li>
-                        <Link
-                          href="/about/nomadic-life"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Нүүдэлчин ахуй (Гэр, 5 хошуу мал, нүүдэл)
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/traditions"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Ёс заншил, уламжлал, шүтлэг
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/culture"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Соёл ба өв (Хөгжим, бүжиг, урлаг)
-                        </Link>
-                      </li>
-                    </ul>
+                  {/* 2-Р БАГАНА */}
+                  <div className="space-y-8 pr-6 border-r border-gray-100">
+                    {/* 04. Нүүдэлчин ахуй */}
+                    <div className="space-y-3">
+                      <Link href="/about/nomadic-life" onClick={closeMenu} className="block group">
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] group-hover:underline uppercase">
+                          04. НҮҮДЭЛЧИН АХУЙ
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Nomadic Life
+                        </span>
+                      </Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/nomadic-life#topic-culture" onClick={closeMenu} className="block hover:text-[#15803d]">Нүүдлийн соёл</Link></li>
+                        <li><Link href="/about/nomadic-life#topic-livestock" onClick={closeMenu} className="block hover:text-[#15803d]">Таван хошуу мал</Link></li>
+                        <li><Link href="/about/nomadic-life#topic-migration" onClick={closeMenu} className="block hover:text-[#15803d]">Улирлын нүүдэл</Link></li>
+                        <li><Link href="/about/nomadic-life#topic-ger" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол гэр</Link></li>
+                        <li><Link href="/about/nomadic-life#topic-horse" onClick={closeMenu} className="block hover:text-[#15803d]">Морь, адууны соёл</Link></li>
+                        <li><Link href="/about/nomadic-life#topic-herder-household" onClick={closeMenu} className="block hover:text-[#15803d]">Малчин өрхийн амьдрал</Link></li>
+                        <li><Link href="/about/nomadic-life#topic-nature-harmony" onClick={closeMenu} className="block hover:text-[#15803d]">Байгальтай зохицон амьдрах ухаан</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* 05. Ёс заншил */}
+                    <div className="space-y-3">
+                      <Link href="/about/traditions" onClick={closeMenu} className="block group">
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] group-hover:underline uppercase">
+                          05. ЁС ЗАНШИЛ, УЛАМЖЛАЛ, ШҮТЛЭГ
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Traditions, Customs & Beliefs
+                        </span>
+                      </Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/traditions#topic-birth-naming" onClick={closeMenu} className="block hover:text-[#15803d]">Төрөх, нэр өгөх ёс</Link></li>
+                        <li><Link href="/about/traditions#topic-wedding" onClick={closeMenu} className="block hover:text-[#15803d]">Хуримын ёс</Link></li>
+                        <li><Link href="/about/traditions#topic-hospitality" onClick={closeMenu} className="block hover:text-[#15803d]">Зочлох, дайлах ёс</Link></li>
+                        <li><Link href="/about/traditions#topic-tsagaan-sar" onClick={closeMenu} className="block hover:text-[#15803d]">Цагаан сар</Link></li>
+                        <li><Link href="/about/traditions#topic-naadam" onClick={closeMenu} className="block hover:text-[#15803d]">Наадам</Link></li>
+                        <li><Link href="/about/traditions#topic-shamanism" onClick={closeMenu} className="block hover:text-[#15803d]">Бөө мөргөл</Link></li>
+                        <li><Link href="/about/traditions#topic-buddhism" onClick={closeMenu} className="block hover:text-[#15803d]">Буддын шашин</Link></li>
+                        <li><Link href="/about/traditions#topic-folklore" onClick={closeMenu} className="block hover:text-[#15803d]">Ардын шүтлэг, домог</Link></li>
+                        <li><Link href="/about/traditions#topic-festivals" onClick={closeMenu} className="block hover:text-[#15803d]">Уламжлалт баяр, зан үйл</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* 06. Соёл ба өв */}
+                    <div className="space-y-3">
+                      <Link href="/about/culture" onClick={closeMenu} className="block group">
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] group-hover:underline uppercase">
+                          06. СОЁЛ БА ӨВ
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Culture & Heritage
+                        </span>
+                      </Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/culture#topic-unesco" onClick={closeMenu} className="block hover:text-[#15803d]">UNESCO өв</Link></li>
+                        <li><Link href="/about/culture#topic-archaeology" onClick={closeMenu} className="block hover:text-[#15803d]">Археологийн өв</Link></li>
+                        <li><Link href="/about/culture#topic-monuments" onClick={closeMenu} className="block hover:text-[#15803d]">Түүх, соёлын дурсгал</Link></li>
+                        <li><Link href="/about/culture#topic-music" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол хөгжим</Link></li>
+                        <li><Link href="/about/culture#topic-performing-arts" onClick={closeMenu} className="block hover:text-[#15803d]">Бүжиг, тайзны урлаг</Link></li>
+                        <li><Link href="/about/culture#topic-literature" onClick={closeMenu} className="block hover:text-[#15803d]">Уран зохиол</Link></li>
+                        <li><Link href="/about/culture#topic-fine-arts" onClick={closeMenu} className="block hover:text-[#15803d]">Дүрслэх урлаг</Link></li>
+                        <li><Link href="/about/culture#topic-crafts" onClick={closeMenu} className="block hover:text-[#15803d]">Гар урлал</Link></li>
+                        <li><Link href="/about/culture#topic-costumes" onClick={closeMenu} className="block hover:text-[#15803d]">Үндэсний хувцас</Link></li>
+                        <li><Link href="/about/culture#topic-architecture" onClick={closeMenu} className="block hover:text-[#15803d]">Архитектур</Link></li>
+                      </ul>
+                    </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <span className="block text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors cursor-pointer hover:text-emerald-950">
-                      Байгаль & Өнөөгийн дүр төрх
-                    </span>
-                    <ul className="space-y-2.5 text-sm text-gray-700">
-                      <li>
-                        <Link
-                          href="/about/food"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Монгол хоол, ундаа
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/nature"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Байгаль, газарзүй, амьтан
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/modern"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Өнөөгийн Монгол (Хотын амьдрал, залуусын соёл)
-                        </Link>
-                      </li>
-                    </ul>
+                  {/* 3-Р БАГАНА */}
+                  <div className="space-y-8">
+                    {/* 07. Монгол хоол, ундаа */}
+                    <div className="space-y-3">
+                      <Link href="/about/food" onClick={closeMenu} className="block group">
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] group-hover:underline uppercase">
+                          07. МОНГОЛ ХООЛ, УНДАА
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Mongolian Food & Drink
+                        </span>
+                      </Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/food#topic-culture" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол хоолны соёл</Link></li>
+                        <li><Link href="/about/food#topic-meat" onClick={closeMenu} className="block hover:text-[#15803d]">Махан хоол</Link></li>
+                        <li><Link href="/about/food#topic-dairy" onClick={closeMenu} className="block hover:text-[#15803d]">Цагаан идээ</Link></li>
+                        <li><Link href="/about/food#topic-pastry" onClick={closeMenu} className="block hover:text-[#15803d]">Гурилан хоол</Link></li>
+                        <li><Link href="/about/food#topic-airag" onClick={closeMenu} className="block hover:text-[#15803d]">Айраг</Link></li>
+                        <li><Link href="/about/food#topic-tea" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол цай</Link></li>
+                        <li><Link href="/about/food#topic-regional" onClick={closeMenu} className="block hover:text-[#15803d]">Бүс нутгийн хоол</Link></li>
+                        <li><Link href="/about/food#topic-processing" onClick={closeMenu} className="block hover:text-[#15803d]">Уламжлалт хүнс боловсруулах арга</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* 08. Байгаль, газарзүй */}
+                    <div className="space-y-3">
+                      <Link href="/about/nature" onClick={closeMenu} className="block group">
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] group-hover:underline uppercase">
+                          08. БАЙГАЛЬ, ГАЗАРЗҮЙ, АМЬТАН
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Nature, Geography & Wildlife
+                        </span>
+                      </Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/nature#topic-geography" onClick={closeMenu} className="block hover:text-[#15803d]">Монгол орны газарзүй</Link></li>
+                        <li><Link href="/about/nature#topic-climate" onClick={closeMenu} className="block hover:text-[#15803d]">Уур амьсгал</Link></li>
+                        <li><Link href="/about/nature#topic-gobi" onClick={closeMenu} className="block hover:text-[#15803d]">Говь</Link></li>
+                        <li><Link href="/about/nature#topic-steppe" onClick={closeMenu} className="block hover:text-[#15803d]">Тал хээр</Link></li>
+                        <li><Link href="/about/nature#topic-mountains" onClick={closeMenu} className="block hover:text-[#15803d]">Уулс</Link></li>
+                        <li><Link href="/about/nature#topic-taiga" onClick={closeMenu} className="block hover:text-[#15803d]">Ой, тайга</Link></li>
+                        <li><Link href="/about/nature#topic-rivers-lakes" onClick={closeMenu} className="block hover:text-[#15803d]">Гол, нуур</Link></li>
+                        <li><Link href="/about/nature#topic-flora" onClick={closeMenu} className="block hover:text-[#15803d]">Ургамлын аймаг</Link></li>
+                        <li><Link href="/about/nature#topic-wildlife" onClick={closeMenu} className="block hover:text-[#15803d]">Зэрлэг амьтад</Link></li>
+                        <li><Link href="/about/nature#topic-geology" onClick={closeMenu} className="block hover:text-[#15803d]">Геологи</Link></li>
+                        <li><Link href="/about/nature#topic-paleontology" onClick={closeMenu} className="block hover:text-[#15803d]">Палеонтологи, үлэг гүрвэл</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* 09. Өнөөгийн Монгол */}
+                    <div className="space-y-3">
+                      <Link href="/about/modern" onClick={closeMenu} className="block group">
+  <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors group-hover:underline">
+    09. ӨНӨӨГИЙН МОНГОЛ
+  </h4>
+  <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+    Mongolia Today
+  </span>
+</Link>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/about/today#topic-lifestyle" onClick={closeMenu} className="block hover:text-[#15803d]">Орчин үеийн Монголын амьдрал</Link></li>
+                        <li><Link href="/about/today#topic-urban-rural" onClick={closeMenu} className="block hover:text-[#15803d]">Хот ба хөдөөгийн амьдрал</Link></li>
+                        <li><Link href="/about/today#topic-creative-arts" onClick={closeMenu} className="block hover:text-[#15803d]">Орчин үеийн урлаг, бүтээлч салбар</Link></li>
+                        <li><Link href="/about/today#topic-sports" onClick={closeMenu} className="block hover:text-[#15803d]">Спорт</Link></li>
+                        <li><Link href="/about/today#topic-music" onClick={closeMenu} className="block hover:text-[#15803d]">Хөгжим</Link></li>
+                        <li><Link href="/about/today#topic-youth-culture" onClick={closeMenu} className="block hover:text-[#15803d]">Залуусын соёл</Link></li>
+                        <li><Link href="/about/today#topic-modern-heritage" onClick={closeMenu} className="block hover:text-[#15803d]">Уламжлал ба орчин үе</Link></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               )}
 
               {/* --- 02. ЗОРИХ ГАЗРУУД --- */}
               {activeMenu === 'destinations' && (
-                <div className="grid grid-cols-5 gap-8">
-                  {/* Багана 1: Бүс нутгаар */}
-                  <div className="pr-6 space-y-6 border-r border-gray-100">
-                    <div>
-                      <Link
-                        href="/destination/region"
-                        onClick={closeMenu}
-                        className="block mb-3 text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950"
-                      >
-                        Аяллын бүсээр
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+                  {/* БАГАНА 1 */}
+                  <div className="space-y-6 pr-6 border-r border-gray-100">
+                    <div className="space-y-3">
+                      <Link href="/destination/regions" onClick={closeMenu}>
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
+                          01. АЯЛЛЫН БҮСЭЭР
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Travel Regions
+                        </span>
                       </Link>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li>
-                          <Link
-                            href="/destination/region?region=central"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Төв Монгол
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/region?region=khangai"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Хангайн бүс
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/region?region=khuvsgul-north"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Хөвсгөл ба Хойд Монгол
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/region?region=altai-west"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Алтай ба Баруун Монгол
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/region?region=gobi"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Говийн бүс
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/region?region=eastern"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Зүүн Монгол
-                          </Link>
-                        </li>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/destination/region/central" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Төв Монгол</Link></li>
+                        <li><Link href="/destination/region/khangai" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хангайн бүс</Link></li>
+                        <li><Link href="/destination/region/khovsgol-north" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хөвсгөл ба Хойд Монгол</Link></li>
+                        <li><Link href="/destination/region/altai-west" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Алтай ба Баруун Монгол</Link></li>
+                        <li><Link href="/destination/region/gobi" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Говийн бүс</Link></li>
+                        <li><Link href="/destination/region/east" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Зүүн Монгол</Link></li>
                       </ul>
                     </div>
 
-                    <div className="pt-2 border-t border-gray-100">
-                      <h4 className="mb-2 text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors cursor-pointer hover:text-emerald-950">
-                        Аймаг, хотоор
+                    <div className="pt-4 border-t border-gray-100 space-y-3">
+                      <Link href="/destination/province" onClick={closeMenu}>
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
+                          02. АЙМАГ, ХОТООР
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Provinces & City
+                        </span>
+                      </Link>
+                      <Link
+                        href="/destination/province"
+                        onClick={closeMenu}
+                        className="block text-sm font-bold text-gray-900 hover:text-[#15803d] transition-colors"
+                      >
+                        21 аймаг + Улаанбаатар →
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* БАГАНА 2 */}
+                  <div className="space-y-3">
+                    <Link href="/destination/strictly-protected" onClick={closeMenu}>
+                      <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
+                        03. ТУСГАЙ ХАМГААЛАЛТТАЙ ГАЗРААР
                       </h4>
-                      <Link
-                        href="/destination/region"
-                        onClick={closeMenu}
-                        className="flex justify-between items-center text-sm font-semibold text-gray-900 hover:text-[#15803d] transition-colors"
-                      >
-                        <span>21 аймаг + Улаанбаатар</span>
-                        <span>→</span>
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Багана 2: Тусгай хамгаалалттай газраар */}
-                  <div className="space-y-4">
-                    <Link href="/destination/protected" onClick={closeMenu}>
-                      <span className="block text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors cursor-pointer hover:text-emerald-950">
-                        ТУСГАЙ ХАМГААЛАЛТТАЙ ГАЗРААР
+                      <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                        Protected Areas
                       </span>
                     </Link>
-                    <ul className="space-y-2.5 text-sm text-gray-700">
-                      <li>
-                        <Link
-                          href="/destination/protected#strictly-protected"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Дархан цаазат газар
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/destination/protected#national-parks"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Байгалийн цогцолборт газар
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/destination/protected#nature-reserves"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Байгалийн нөөц газар
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/destination/protected#natural-monuments"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Байгалийн дурсгалт газар
-                        </Link>
-                      </li>
+                    <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                      <li><Link href="/destination/strictly-protected?type=spa" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Дархан цаазат газар</Link></li>
+                      <li><Link href="/destination/strictly-protected?type=np" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Байгалийн цогцолборт газар</Link></li>
+                      <li><Link href="/destination/strictly-protected?type=nr" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Байгалийн нөөц газар</Link></li>
+                      <li><Link href="/destination/strictly-protected?type=nm" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Байгалийн дурсгалт газар</Link></li>
                     </ul>
                   </div>
 
-                  {/* Багана 3: Байгалийн тогтоц */}
-                  <div className="pr-6 space-y-4 border-r border-gray-100">
-                    <Link
-                      href="/destination/landscapes"
-                      onClick={closeMenu}
-                      className="block mb-3 text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950"
-                    >
-                      Байгалийн тогтоц, ландшафтаар
+                  {/* БАГАНА 3 */}
+                  <div className="space-y-3 pr-6 border-r border-gray-100">
+                    <Link href="/destination/landscapes" onClick={closeMenu}>
+                      <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
+                        04. БАЙГАЛИЙН ТОГТОЦ, ЛАНДШАФТААР
+                      </h4>
+                      <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                        Natural Landscapes
+                      </span>
                     </Link>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      <li>
-                        <Link
-                          href="/destination/landscapes?section=mountains-lakes-rivers"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Уул, нуур, гол мөрөн
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/destination/landscapes?section=gobi-dunes"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Говь, элсэн манхан
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/destination/landscapes?section=canyons-valleys"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Хавцал, хөндий, ой, тайга
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/destination/landscapes?section=glaciers-caves"
-                          onClick={closeMenu}
-                          className="block hover:text-[#15803d] transition-colors"
-                        >
-                          Мөсөн гол, агуй, геологийн тогтоц
-                        </Link>
-                      </li>
+                    <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                      <li><Link href="/destination/landscapes?type=mountains-rivers" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Уул, нуур, гол мөрөн</Link></li>
+                      <li><Link href="/destination/landscapes?type=gobi-dunes" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Говь, элсэн манхан</Link></li>
+                      <li><Link href="/destination/landscapes?type=valleys-forests" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хавцал, хөндий, ой, тайга</Link></li>
+                      <li><Link href="/destination/landscapes?type=glaciers-caves" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Мөсөн гол, агуй, геологийн тогтоц</Link></li>
                     </ul>
                   </div>
 
-                  {/* Багана 4: Маршрутаар & Газрын зураг */}
-                  <div className="flex flex-col justify-between">
-                    <div>
-                      <Link
-                        href="/destination/routes"
-                        onClick={closeMenu}
-                        className="block mb-3 text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950"
-                      >
-                        Аяллын маршрут, замаар
+                  {/* БАГАНА 4 */}
+                  <div className="space-y-6">
+                    <div className="space-y-3">
+                      <Link href="/destination/routes" onClick={closeMenu}>
+                        <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
+                          05. АЯЛЛЫН МАРШРУТ, ЗАМААР
+                        </h4>
+                        <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                          Travel Routes & Itineraries
+                        </span>
                       </Link>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li>
-                          <Link
-                            href="/destination/routes#gobi-circuit"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Говийн тойрог
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/routes#orkhon-valley"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Орхоны хөндийн маршрут
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/routes#khuvsgul-route"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Хөвсгөлийн маршрут
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/routes#altai-route"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Алтайн маршрут
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/routes#eastern-route"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Зүүн Монголын маршрут
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/routes#ub-daytrips"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Улаанбаатараас гарах богино замууд
-                          </Link>
-                        </li>
+                      <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                        <li><Link href="/destination/routes?route=gobi" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Говийн тойрог</Link></li>
+                        <li><Link href="/destination/routes?route=orkhon" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Орхоны хөндийн маршрут</Link></li>
+                        <li><Link href="/destination/routes?route=khovsgol" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хөвсгөлийн маршрут</Link></li>
+                        <li><Link href="/destination/routes?route=altai" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Алтайн маршрут</Link></li>
+                        <li><Link href="/destination/routes?route=east" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Зүүн Монголын маршрут</Link></li>
+                        <li><Link href="/destination/routes?route=ub-short" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Улаанбаатараас гарах богино замууд</Link></li>
                       </ul>
                     </div>
 
-                    <div className="p-4 mt-6 bg-neutral-50 rounded-2xl border border-neutral-100">
-                      <span className="block text-xs font-bold tracking-wider text-[#15803d] uppercase">
-                        Газрын зургаас хайх (C07)
-                      </span>
-                      <p className="mt-1 mb-3 text-xs text-gray-500">
-                        Бүх газар, ТХГН, өв газруудыг интерактив газрын зураг
-                        дээр шүүж харах.
+                    {/* Газрын зураг баннер */}
+                    <div className="p-4 bg-neutral-50 rounded-xl space-y-2">
+                      <h5 className="text-xs font-bold text-gray-900">
+                        ГАЗРЫН ЗУРГААС ХАЙХ (C07)
+                      </h5>
+                      <p className="text-[11px] text-gray-500 leading-snug">
+                        Бүх газар, ТХГН, өв газруудыг интерактив газрын зураг дээр шүүж харах.
                       </p>
                       <Link
                         href="/destination/map"
                         onClick={closeMenu}
-                        className="inline-flex justify-center items-center py-2.5 px-4 w-full text-xs font-bold text-white bg-black hover:bg-neutral-800 rounded-xl transition-all"
+                        className="inline-flex items-center justify-center w-full px-3 py-2 text-xs font-semibold text-white bg-black rounded-lg hover:bg-neutral-800 transition-colors"
                       >
                         Газрын зураг нээх →
                       </Link>
                     </div>
                   </div>
 
-                  {/* Багана 5: Түүх, соёлын газруудаар */}
-                  <div className="space-y-6">
-                    <div>
-                      <Link
-                        href="/destination/heritage"
-                        onClick={closeMenu}
-                        className="block mb-3 text-xs font-bold tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950"
-                      >
-                        Түүх, соёлын газруудаар
-                      </Link>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li>
-                          <Link
-                            href="/destination/heritage#unesco-sites"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            UNESCO Дэлхийн өв
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/heritage#archaeology"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Археологийн дурсгал
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/heritage#monasteries"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Хийд ба сүмүүд
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/heritage#ancient-cities"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Түүхэн хот, суурингийн туурь
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/heritage#petroglyphs"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Хадны зураг, бичээс
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/heritage#monuments"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Хөшөө дурсгал, хүн чулуу
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/destination/heritage#nomadic-zones"
-                            onClick={closeMenu}
-                            className="block hover:text-[#15803d] transition-colors"
-                          >
-                            Нүүдэлчдийн соёлын бүс
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
+                  {/* БАГАНА 5 */}
+                  <div className="space-y-3">
+                    <Link href="/destination/heritage" onClick={closeMenu}>
+                      <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
+                        06. ТҮҮХ, СОЁЛЫН ГАЗРУУДААР
+                      </h4>
+                      <span className="block text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
+                        Historical & Cultural Sites
+                      </span>
+                    </Link>
+                    <ul className="space-y-2 text-sm font-normal text-neutral-700">
+                      <li><Link href="/destination/heritage?type=unesco" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">UNESCO Дэлхийн өв</Link></li>
+                      <li><Link href="/destination/heritage?type=archaeology" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Археологийн дурсгал</Link></li>
+                      <li><Link href="/destination/heritage?type=monasteries" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хийд ба сүмүүд</Link></li>
+                      <li><Link href="/destination/heritage?type=ancient-cities" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Түүхэн хот, суурингийн туурь</Link></li>
+                      <li><Link href="/destination/heritage?type=petroglyphs" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хадны зураг, бичээс</Link></li>
+                      <li><Link href="/destination/heritage?type=monuments" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хөшөө дурсгал, хүн чулуу</Link></li>
+                      <li><Link href="/destination/heritage?type=nomadic-culture" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Нүүдэлчдийн соёлын бүс</Link></li>
+                    </ul>
                   </div>
                 </div>
               )}

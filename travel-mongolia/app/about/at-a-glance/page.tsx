@@ -1,21 +1,174 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
+interface GlanceItem {
+  title: string;
+  desc: string;
+  thumb: string;
+}
+
+interface GlanceSection {
+  id: string;
+  num: string;
+  tag: string;
+  title: string;
+  desc: string;
+  imageUrl: string;
+  items: GlanceItem[];
+}
+
+const GLANCE_SECTIONS: GlanceSection[] = [
+  {
+    id: 'overview',
+    num: '01',
+    tag: 'Ерөнхий мэдээлэл & Хил хязгаар',
+    title: 'Монгол Улсын тухай үндсэн мэдээлэл',
+    desc: 'Монгол Улс нь Төв Азийн өндөрлөг бүсэд оршдог, хойд талаараа ОХУ, өмнө талаараа БНХАУ-тай хиллэдэг далайд гарцгүй, бүрэн эрхт ардчилсан парламентын засаглалтай улс юм.',
+    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200',
+    items: [
+      {
+        title: 'Байршил & Хил хязгаар',
+        desc: 'Төв Азийн зүрхэнд оршдог бөгөөд хойд талаараа 3,543 км, өмнө талаараа 4,709 км хиллэдэг.',
+        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+      },
+      {
+        title: 'Төрийн байгуулал',
+        desc: 'Парламентын засаглалтай бүрэн эрхт ардчилсан улс бөгөөд Үндсэн хуульт засаглалтай.',
+        thumb: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600',
+      },
+      {
+        title: 'Цагийн бүс & Мөнгөн тэмдэгт',
+        desc: 'UTC+8 цагийн бүс, үндэсний мөнгөн тэмдэгт нь төгрөг (MNT) бөгөөд дижитал төлбөр өндөр хөгжсөн.',
+        thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600',
+      },
+    ],
+  },
+  {
+    id: 'population',
+    num: '02',
+    tag: 'Ард түмэн ба нийгэм',
+    title: 'Хүн ам, нийслэл',
+    desc: 'Монгол Улсын нийт хүн ам 3.5 сая давсан бөгөөд залуу үеийн эзлэх хувь өндөр, нийслэл Улаанбаатар хотод хүн амын талаас илүү хувь нь төвлөрөн амьдардаг.',
+    imageUrl: 'https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=1200',
+    items: [
+      {
+        title: 'Нийслэл Улаанбаатар',
+        desc: 'Эдийн засаг, соёл, боловсролын төв бөгөөд 1.6 сая гаруй оршин суугчтай орчин үеийн их хот.',
+        thumb: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=600',
+      },
+      {
+        title: 'Хүн амын нягтрал',
+        desc: 'Нэг хавтгай дөрвөлжин км-т ногдох нягтралаараа дэлхийн хамгийн сийрэг суурьшилтай орон.',
+        thumb: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600',
+      },
+      {
+        title: 'Залуусын орон',
+        desc: 'Хүн амын 60 гаруй хувийг 35 хүртэлх насны залуус эзэлдэг эрч хүчтэй нийгэм.',
+        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+      },
+    ],
+  },
+  {
+    id: 'geography',
+    num: '03',
+    tag: 'Уудам газар нутаг',
+    title: 'Газар нутаг & Байгалийн бүс',
+    desc: '1,564,116 хавтгай дөрвөлжин километр нутаг дэвсгэртэй бөгөөд хэмжээгээрээ дэлхийд 18 дугаарт эрэмбэлэгддэг, хангай говь хосолсон үзэсгэлэнт байгальтай.',
+    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200',
+    items: [
+      {
+        title: 'Байгалийн олон янз байдал',
+        desc: 'Хөвсгөлийн тайга, Хангайн нуруу, Дорнодын уудам тал, Өмнөд говь хосолсон дөрвөн бүслүүр.',
+        thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600',
+      },
+      {
+        title: 'Хамгийн өндөр цэг',
+        desc: 'Алтай Таван Богдын Хүйтэн оргил бөгөөд далайн түвшнээс дээш 4,374 метр өндөр.',
+        thumb: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600',
+      },
+      {
+        title: 'Цэнгэг нуур, мөрөн',
+        desc: 'Дэлхийн цэнгэг усны 1%-ийг агуулдаг Хөвсгөл далай, Сэлэнгэ, Орхон зэрэг ариун мөрөн голууд.',
+        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+      },
+    ],
+  },
+  {
+    id: 'symbols',
+    num: '04',
+    tag: 'Тусгаар тогтнолын илэрхийлэл',
+    title: 'Төрийн болон үндэсний бэлгэдэл',
+    desc: 'Монгол түмний тусгаар тогтнол, түүхэн уламжлал, оюун санааны гүн утга агуулгыг илэрхийлсэн төрийн далбаа, сүлд болон үндэсний бахархалт бэлгэдлүүд.',
+    imageUrl: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200',
+    items: [
+      {
+        title: 'Төрийн далбаа & Соёмбо',
+        desc: 'Мөнх хөх тэнгэр, гал голомт, ухаарал ба бат бэхийн бэлгэдэл болсон алтан соёмбо үсэг.',
+        thumb: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=600',
+      },
+      {
+        title: 'Төрийн сүлд',
+        desc: 'Хийморь бадраах эрдэнэт хүлэг морь, бадамлянхуа цэцэг, эв нэгдлийн бат холбоот сүлд.',
+        thumb: 'https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=600',
+      },
+      {
+        title: 'Үндэсний бахархалт шувуу',
+        desc: 'Хурд хүч, эрх чөлөө, тэнгэрлиг чанарын дээд илэрхийлэл болсон идлэг шонхор шувуу.',
+        thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600',
+      },
+    ],
+  },
+  {
+    id: 'facts',
+    num: '05',
+    tag: 'Дэлхийд данстай баримтууд',
+    title: 'Монгол орны онцлог тоо, баримтууд',
+    desc: 'Жилд 250 гаруй нартай цэлмэг өдөртэй, дэлхийн анхны дархан цаазат газар Богдхан уул, палеонтологийн хосгүй олдворуудаараа дэлхийд гайхагдсан баримтууд.',
+    imageUrl: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200',
+    items: [
+      {
+        title: '250+ Нартай өдөр',
+        desc: 'Дэлхийд "Мөнх хөх тэнгэрийн орон" хэмээн нэрлэгддэг тунгалаг, цэлмэг өдрүүдийн баялаг.',
+        thumb: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=600',
+      },
+      {
+        title: 'Анхны дархан цаазат газар',
+        desc: 'Богдхан уулыг 1778 онд дархалсан нь дэлхийн анхны албан ёсны байгалийн тусгай хамгаалалттай газар юм.',
+        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+      },
+      {
+        title: 'Үлэг гүрвэлийн өлгий',
+        desc: 'Баянзаг болон говиос олдсон үлэг гүрвэлийн анхны өндөг, олдворууд дэлхийн шинжлэх ухаанд хувьсгал хийсэн.',
+        thumb: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600',
+      },
+    ],
+  },
+];
 
 export default function AtAGlancePage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === 'left' ? -350 : 350;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-[#15803d] selection:text-white">
-      
+    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=2400"
+          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2400"
           alt="Монгол орныг товчхон"
           fill
           priority
           unoptimized
-          className="object-cover brightness-[0.58]"
+          className="object-cover brightness-[0.55]"
         />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
@@ -25,248 +178,127 @@ export default function AtAGlancePage() {
             Монгол орныг товчхон
           </h1>
           <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
-            Хөх тэнгэрийн орон, эртний нүүдэлчдийн өлгий нутгийн газар зүй, хүн ам, төрийн бэлгэдэл ба гол тоон баримтууд
+            Мөнх хөх тэнгэрийн орон, нүүдэлчдийн өлгий нутгийн тухай үндсэн тоо баримтууд болон ерөнхий мэдээлэл
           </p>
         </div>
       </section>
 
       {/* 2. НААЛДДАГ НАВИГАЦИ */}
       <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex items-center justify-start sm:justify-center gap-3 overflow-x-auto scrollbar-none text-sm font-bold">
-          <a href="#overview" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Үндсэн мэдээлэл</a>
-          <a href="#population" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Хүн ам & Нийслэл</a>
-          <a href="#geography" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Газар нутаг</a>
-          <a href="#symbols" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Төрийн бэлгэдэл</a>
-          <a href="#etymology" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Монгол нэрийн учир</a>
-          <a href="#facts" className="px-5 py-2.5 rounded-full bg-[#15803d] text-white whitespace-nowrap shadow-xs">Онцлог тоо баримтууд</a>
+        <div className="relative w-full max-w-7xl mx-auto flex items-center px-2 sm:px-6">
+          <button
+            type="button"
+            onClick={() => handleScroll('left')}
+            aria-label="Previous"
+            className="absolute left-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-emerald-200 shadow-md flex items-center justify-center text-emerald-800 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+
+          <div
+            ref={scrollRef}
+            className="w-full py-3 px-12 flex items-center gap-2.5 overflow-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden text-xs sm:text-sm font-bold"
+          >
+            {GLANCE_SECTIONS.map((sec) => (
+              <a
+                key={sec.id}
+                href={`#${sec.id}`}
+                className="px-4 py-2 rounded-full bg-emerald-50/70 border border-emerald-100 text-emerald-950 hover:bg-[#15803d] hover:text-white transition-colors whitespace-nowrap shrink-0"
+              >
+                {sec.title}
+              </a>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => handleScroll('right')}
+            aria-label="Next"
+            className="absolute right-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-emerald-200 shadow-md flex items-center justify-center text-emerald-800 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 space-y-36">
-
-        {/* 1. ҮНДСЭН МЭДЭЭЛЭЛ */}
-        <section id="overview" className="scroll-mt-28">
-          <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">01. Ерөнхий тойм</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
-              Монгол Улсын тухай үндсэн мэдээлэл
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-neutral-700 font-normal leading-relaxed">
-              <p>
-                Монгол Улс нь Төв Азийн өндөрлөгт, ОХУ болон БНХАУ гэсэн хоёр их гүрний дунд оршдог, далайд гарцгүй бүрэн эрхт тусгаар улс юм.
-              </p>
-              <p>
-                Парламентын засаглалтай ардчилсан улс бөгөөд олон намын тогтолцоо, хүний эрх, чөлөөт эдийн засгийг эрхэмлэн хөгжиж байна. Мянга мянган жилийн нүүдлийн мал аж ахуйн соёлоо орчин үеийн соёлтой хослуулан авч үлдсэн дэлхийн ховорхон түшиц нутаг юм.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3">
-                <div className="bg-neutral-50 p-6 rounded-3xl border border-neutral-200">
-                  <span className="text-xs sm:text-sm text-neutral-500 block font-bold uppercase tracking-wider mb-1">Төрийн байгууламж</span>
-                  <strong className="text-lg sm:text-xl text-neutral-900 font-bold block">Парламентын засаглал</strong>
-                </div>
-                <div className="bg-neutral-50 p-6 rounded-3xl border border-neutral-200">
-                  <span className="text-xs sm:text-sm text-neutral-500 block font-bold uppercase tracking-wider mb-1">Мөнгөн тэмдэгт</span>
-                  <strong className="text-lg sm:text-xl text-neutral-900 font-bold block">Төгрөг (MNT, ₮)</strong>
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-5 relative h-96 sm:h-[460px] rounded-3xl overflow-hidden shadow-lg">
-              <Image
-                src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1200"
-                alt="Монгол ахуй"
-                fill
-                unoptimized
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* 2. ХҮН АМ & НИЙСЛЭЛ */}
-        <section id="population" className="scroll-mt-28">
-          <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">02. Демографи & Төв</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
-              Хүн ам, нийслэл хот
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-neutral-50 rounded-3xl p-8 sm:p-10 border border-neutral-200 flex flex-col justify-between">
-              <div>
-                <span className="text-4xl sm:text-5xl font-black text-[#15803d] block mb-3">3.5+ Сая</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Нийт хүн ам</h3>
-                <p className="text-base text-neutral-600 font-normal leading-relaxed">
-                  Хүн амын 60 гаруй хувийг 35-аас доош насны залуучууд эзэлдэг дэлхийн хамгийн залуу үндэстнүүдийн нэг.
+      {/* 3. ДЭЛГЭРЭНГҮЙ ХЭСГҮҮД */}
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-16 space-y-28">
+        {GLANCE_SECTIONS.map((sec) => (
+          <section
+            key={sec.id}
+            id={sec.id}
+            className="scroll-mt-28 space-y-10"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-6 space-y-5">
+                <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
+                  {sec.title}
+                </h2>
+                <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
+                  {sec.desc}
                 </p>
-              </div>
-              <span className="text-xs sm:text-sm font-bold text-neutral-400 mt-6 block uppercase tracking-wider">Дундаж наслалт: 71 нас</span>
-            </div>
-
-            <div className="bg-neutral-50 rounded-3xl p-8 sm:p-10 border border-neutral-200 flex flex-col justify-between">
-              <div>
-                <span className="text-4xl sm:text-5xl font-black text-neutral-900 block mb-3">Улаанбаатар</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Нийслэл хот</h3>
-                <p className="text-base text-neutral-600 font-normal leading-relaxed">
-                  Монгол Улсын улс төр, эдийн засаг, боловсролын төв. Нийт хүн амын тал хувь нь аж төрж байна.
-                </p>
-              </div>
-              <span className="text-xs sm:text-sm font-bold text-neutral-400 mt-6 block uppercase tracking-wider">Үүссэн он: 1639</span>
-            </div>
-
-            <div className="bg-neutral-50 rounded-3xl p-8 sm:p-10 border border-neutral-200 flex flex-col justify-between">
-              <div>
-                <span className="text-4xl sm:text-5xl font-black text-[#15803d] block mb-3">2.2 хүн/км²</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Хүн амын нягтрал</h3>
-                <p className="text-base text-neutral-600 font-normal leading-relaxed">
-                  Дэлхийн хамгийн сийрэг хүн амтай тусгаар улс. Уудам тал нутагт тайван, амар амгалан амьдрах боломж.
-                </p>
-              </div>
-              <span className="text-xs sm:text-sm font-bold text-neutral-400 mt-6 block uppercase tracking-wider">Дэлхийд нягтралаараа #1</span>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. ГАЗАР НУТАГ */}
-        <section id="geography" className="scroll-mt-28">
-          <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">03. Газар зүй & Байгаль</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
-              Газар нутгийн онцлог
-            </h2>
-          </div>
-
-          <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-14">
-            <div className="max-w-3xl space-y-6">
-              <span className="text-emerald-400 text-sm font-black uppercase tracking-widest block">Дэлхийд 18-р байр</span>
-              <h3 className="text-4xl sm:text-6xl font-black leading-tight">1,564,116 км²</h3>
-              <p className="text-base sm:text-xl text-neutral-300 font-light leading-relaxed">
-                Баруун Европтой тэнцэхүйц уудам нутагтай. Хойноосоо урагшаа мөнх цаст уулс, хөвч тайга ой, тал хээр, өмнөд хэсэгтээ алдарт говийн экосистем хослон оршдог.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-neutral-800 text-sm sm:text-base">
-                <div>
-                  <span className="text-neutral-400 block mb-1">Хамгийн өндөр цэг:</span>
-                  <strong className="text-white text-base sm:text-lg">Хүйтэн оргил (4,374 м)</strong>
-                </div>
-                <div>
-                  <span className="text-neutral-400 block mb-1">Хамгийн нам дор цэг:</span>
-                  <strong className="text-white text-base sm:text-lg">Хөх нуур (560 м)</strong>
-                </div>
-                <div>
-                  <span className="text-neutral-400 block mb-1">Хилийн нийт урт:</span>
-                  <strong className="text-white text-base sm:text-lg">8,252.7 км</strong>
+                <div className="pt-2">
+                  <Link
+                    href={`/about/at-a-glance/${sec.id}`}
+                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
+                  >
+                    <span>Дэлгэрэнгүй</span>
+                    <svg 
+                      className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* 4. ТӨРИЙН БОЛОН ҮНДЭСНИЙ БЭЛГЭДЭЛ */}
-        <section id="symbols" className="scroll-mt-28">
-          <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">04. Төрийн үнэт зүйл</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
-              Төрийн болон үндэсний бэлгэдэл
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-8 rounded-3xl border border-neutral-200 bg-white shadow-xs">
-              <span className="text-4xl block mb-4">🇲🇳</span>
-              <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Төрийн далбаа</h4>
-              <p className="text-base text-neutral-600 leading-relaxed">
-                Улаан (бадран мандах), Хөх (мөнх тэнгэр), Алтан Соёмбо тэмдгээр баялаг тусгаар тогтнолын бэлгэдэл.
-              </p>
+              <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
+                <Image
+                  src={sec.imageUrl}
+                  alt={sec.title}
+                  fill
+                  unoptimized
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
 
-            <div className="p-8 rounded-3xl border border-neutral-200 bg-white shadow-xs">
-              <span className="text-4xl block mb-4">☀️</span>
-              <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Соёмбо үсэг</h4>
-              <p className="text-base text-neutral-600 leading-relaxed">
-                Гал, нар, сар, загас, сум бүхий монгол түмний өнө мөнхийн эв нэгдэл, эрх чөлөөний илэрхийлэл.
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {sec.items.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
+                >
+                  <div className="relative w-full h-48 sm:h-52 overflow-hidden">
+                    <Image
+                      src={item.thumb}
+                      alt={item.title}
+                      fill
+                      unoptimized
+                      className="object-cover group-hover/card:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-2">
+                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-[#15803d] transition-colors leading-snug">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <div className="p-8 rounded-3xl border border-neutral-200 bg-white shadow-xs">
-              <span className="text-4xl block mb-4">🐎</span>
-              <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Төрийн сүлд</h4>
-              <p className="text-base text-neutral-600 leading-relaxed">
-                Бадамлянхуа цэцэг дээрх эрдэнийн хүлэг морь, алтан соёмбо, мөнх тэнгэрийн хээ угалз.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-3xl border border-neutral-200 bg-white shadow-xs">
-              <span className="text-4xl block mb-4">🦅</span>
-              <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">Үндэсний бахархал</h4>
-              <p className="text-base text-neutral-600 leading-relaxed">
-                Үндэсний бахархалт шувуу шонхор, бахархалт хайрхан Бурхан Халдун, үндэсний их өв морин хуур.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. МОНГОЛ НЭРИЙН ТУХАЙ */}
-        <section id="etymology" className="scroll-mt-28">
-          <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">05. Түүхэн сурвалж</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
-              Монгол нэрийн тухай
-            </h2>
-          </div>
-
-          <div className="bg-neutral-50 p-8 sm:p-14 rounded-3xl border border-neutral-200">
-            <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-5">
-              “Мөнх гал” буюу мөнхөд асаж дүрэлзэх ариун гал голомт
-            </h3>
-            <div className="space-y-5 text-base sm:text-lg text-neutral-700 font-normal leading-relaxed">
-              <p>
-                Эрдэмтэн судлаачид <strong>“Монгол”</strong> хэмээх нэрийг эртний хэлний <em>“Мөнх-Гал”</em> буюу унтрашгүй ариун гал голомт гэсэн утгаас үүссэн гэж тайлбарладаг. Мөн түүнчлэн зориг төгөлдөр, баатарлаг гэсэн санааг илэрхийлдэг.
-              </p>
-              <p>
-                Энэхүү нэр нь Тан улсын сурвалж бичигт <em>“Мэнгу”</em> нэрээр анх тэмдэглэгдэж, улмаар 1206 онд Их Эзэн Чингис хаан Их Монгол Улсыг тунхагласнаар нийт нүүдэлчин овог аймгуудын нэгдсэн үндэсний нэр болж мөнхөрсөн түүхтэй.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 6. ОНЦЛОГ ТОО, БАРИМТУУД */}
-        <section id="facts" className="scroll-mt-28">
-          <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">06. Factsheet</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
-              Монгол орны онцлог тоо, баримтууд
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-200 text-center">
-              <span className="text-4xl sm:text-5xl font-black text-[#15803d] block mb-2">250+</span>
-              <strong className="text-sm sm:text-base uppercase tracking-wider text-neutral-900 block mb-1">Нартай өдөр</strong>
-              <span className="text-xs sm:text-sm text-neutral-500">Жилд нар гийгүүлэх өдөр</span>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-200 text-center">
-              <span className="text-4xl sm:text-5xl font-black text-neutral-900 block mb-2">70M+</span>
-              <strong className="text-sm sm:text-base uppercase tracking-wider text-neutral-900 block mb-1">Таван хошуу мал</strong>
-              <span className="text-xs sm:text-sm text-neutral-500">Хүн амаасаа 20 дахин олон</span>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-200 text-center">
-              <span className="text-4xl sm:text-5xl font-black text-neutral-900 block mb-2">1,580м</span>
-              <strong className="text-sm sm:text-base uppercase tracking-wider text-neutral-900 block mb-1">Дундаж өндөр</strong>
-              <span className="text-xs sm:text-sm text-neutral-500">Далайн түвшнээс дээш өндөр</span>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-200 text-center">
-              <span className="text-4xl sm:text-5xl font-black text-[#15803d] block mb-2">1206</span>
-              <strong className="text-sm sm:text-base uppercase tracking-wider text-neutral-900 block mb-1">Их Монгол Улс</strong>
-              <span className="text-xs sm:text-sm text-neutral-500">Түүхийг өөрчилсөн он</span>
-            </div>
-          </div>
-        </section>
-
+          </section>
+        ))}
       </div>
     </main>
   );
