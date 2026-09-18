@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { PlaceItem } from '@/components/InteractiveExplorerMap';
 
 const InteractiveExplorerMap = dynamic(() => import('@/components/InteractiveExplorerMap'), {

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { client } from '@/lib/contentful';
 import { notFound } from 'next/navigation';
 

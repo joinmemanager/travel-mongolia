@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+
 
 // Олон улсын үндсэн шууд нислэгүүд
 const FLIGHT_ROUTES = [

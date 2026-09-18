@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+
 
 // Визний мэдээллийн жишээ өгөгдөл
 const VISA_COUNTRIES = [

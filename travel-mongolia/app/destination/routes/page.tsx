@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { RouteMapData } from '@/components/RealRouteMap';
 
 const RealRouteMap = dynamic(() => import('@/components/RealRouteMap'), {

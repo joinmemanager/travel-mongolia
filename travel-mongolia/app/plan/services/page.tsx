@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+
 
 // Үйлчилгээ эрхлэгчдийн каталог өгөгдөл
 const SERVICES_DATA = {

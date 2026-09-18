@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+
 
 import CultureFestivals from '../components/CultureFestivals';
 import HeroText from '../components/HeroText';
