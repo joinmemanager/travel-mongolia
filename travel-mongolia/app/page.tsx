@@ -7,7 +7,8 @@ import HeroText from '../components/HeroText';
 import RegionMap from '../components/RegionMap';
 import SeasonRecommendations from '../components/SeasonRecommendations';
 import TopDestinations from '../components/TopDestinations';
-import { client } from '../lib/contentful';
+import { client as baseClient } from '../lib/contentful';
+const client = baseClient as any;
 
 async function getDestinations() {
   try {

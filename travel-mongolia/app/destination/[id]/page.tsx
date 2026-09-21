@@ -3,8 +3,11 @@ export const dynamic = 'force-dynamic';
 import React from 'react';
 import Image from 'next/image';
 
-import { client } from '@/lib/contentful';
 import { notFound } from 'next/navigation';
+
+const client = {
+  getEntry: async (_id: string) => null,
+};
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -54,7 +57,7 @@ export default async function DestinationDetailPage({ params }: Props) {
     notFound();
   }
 
-  const fields = destination.fields as any;
+  const fields = (destination as any).fields as any;
   const imageField = fields.image || fields.coverImage;
   const imageUrl = imageField?.fields?.file?.url
     ? (imageField.fields.file.url.startsWith('//')
@@ -77,13 +80,13 @@ export default async function DestinationDetailPage({ params }: Props) {
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="absolute top-28 left-6 sm:left-12 lg:left-16 z-20">
-          <Link
-            href="/#highlights"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md border border-white/10 transition-all text-xs sm:text-sm font-sans font-medium cursor-pointer"
-          >
-            <span>←</span>
-            <span>Нүүр хуудас руу буцах</span>
-          </Link>
+          <a
+  href="/#highlights"
+  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md transition-all text-sm font-medium"
+>
+  <span>&larr;</span>
+  <span>Нүүр хуудас руу буцах</span>
+</a>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
