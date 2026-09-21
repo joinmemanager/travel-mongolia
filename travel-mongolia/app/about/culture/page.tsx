@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import React, { useRef } from 'react';
 
 
@@ -366,7 +365,7 @@ export default function CulturePage() {
                 </p>
 
                 <div>
-                  <Link
+                  <a
                     href={`/about/culture/${sec.id}`}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-900 text-white hover:bg-[#15803d] transition-all font-bold text-sm sm:text-base shadow-sm group/btn"
                   >
@@ -380,7 +379,7 @@ export default function CulturePage() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                  </Link>
+                  </a>
                 </div>
               </div>
 
