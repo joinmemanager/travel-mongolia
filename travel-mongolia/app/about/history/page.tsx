@@ -1,8 +1,6 @@
 'use client';
 
-import Link from 'next/link';
 import React, { useRef } from 'react';
-import Image from 'next/image';
 
 
 interface HistoryPeriod {
@@ -220,12 +218,12 @@ export default function HistoryPage() {
             <h3 className="text-2xl sm:text-4xl font-black">03. Монгол хүн, хэл, үндэстний онцлог</h3>
             <p className="text-sm sm:text-base text-neutral-400 mt-2">Олон ястны өлгий нутаг, монгол бичиг, зан заншил</p>
           </div>
-          <Link
+          <a
             href="/about/people"
             className="px-8 py-4 bg-[#15803d] hover:bg-emerald-600 text-white text-sm font-bold rounded-2xl transition-colors whitespace-nowrap shadow-sm"
           >
             Үргэлжлүүлэн үзэх →
-          </Link>
+          </a>
         </div>
       </div>
 
