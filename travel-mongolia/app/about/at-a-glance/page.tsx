@@ -163,14 +163,11 @@ export default function AtAGlancePage() {
     <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2400"
-          alt="Монгол орныг товчхон"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.55]"
-        />
+        <img
+  src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2400"
+  alt="Монгол орныг товчхон"
+  className="absolute inset-0 w-full h-full object-cover brightness-[0.55]"
+/>
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             01. Mongolia at a Glance
