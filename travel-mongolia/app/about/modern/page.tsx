@@ -163,14 +163,7 @@ export default function ModernMongoliaPage() {
     <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400"
-          alt="Өнөөгийн Монгол"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.55]"
-        />
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400" alt="Өнөөгийн Монгол" className="absolute inset-0 w-full h-full object-cover brightness-[0.55]" />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             09. Mongolia Today
@@ -262,13 +255,7 @@ export default function ModernMongoliaPage() {
               </div>
 
               <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
-                <Image
-                  src={sec.imageUrl}
-                  alt={sec.title}
-                  fill
-                  unoptimized
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <img src={sec.imageUrl} alt={sec.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
 
@@ -279,13 +266,7 @@ export default function ModernMongoliaPage() {
                   className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
                 >
                   <div className="relative w-full h-48 sm:h-52 overflow-hidden">
-                    <Image
-                      src={item.thumb}
-                      alt={item.title}
-                      fill
-                      unoptimized
-                      className="object-cover group-hover/card:scale-105 transition-transform duration-500"
-                    />
+                    <img src={item.thumb} alt={item.title} className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-2">
                     <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-[#15803d] transition-colors leading-snug">

@@ -115,14 +115,7 @@ export default function HistoryPage() {
       
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=2400"
-          alt="Монголын түүх"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.58]"
-        />
+        <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=2400" alt="Монголын түүх" className="absolute inset-0 w-full h-full object-cover brightness-[0.58]" />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             02. History of Mongolia
@@ -203,13 +196,7 @@ export default function HistoryPage() {
               {/* Баруун тал: Зураг */}
               <div className="lg:col-span-5">
                 <div className="relative w-full h-[360px] sm:h-[480px] rounded-3xl overflow-hidden shadow-lg">
-                  <Image
-                    src={period.imageUrl}
-                    alt={period.title}
-                    fill
-                    unoptimized
-                    className="object-cover"
-                  />
+                  <img src={period.imageUrl} alt={period.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
                     <span className="text-xs uppercase font-bold tracking-widest text-emerald-300 block mb-1">
