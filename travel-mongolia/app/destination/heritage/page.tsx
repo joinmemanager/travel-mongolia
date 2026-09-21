@@ -308,7 +308,7 @@ export default function HeritageDestinationsPage() {
               ))}
 
               {/* 4 ДЭХ ТОМ КАРТ: "БҮГДИЙГ ҮЗЭХ" */}
-              <Link
+              <a
                 href={`/destination/heritage/${sec.id}`}
                 className="group relative rounded-3xl overflow-hidden bg-emerald-50/70 border-2 border-dashed border-emerald-300 hover:border-[#15803d] hover:bg-emerald-100/70 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center h-80 sm:h-96 cursor-pointer shadow-sm hover:shadow-xl"
               >
@@ -326,7 +326,7 @@ export default function HeritageDestinationsPage() {
                 <p className="text-xs text-neutral-500 font-medium mt-2">
                   Интерактив газрын зураг, байршил & дэлгэрэнгүй
                 </p>
-              </Link>
+              </a>
             </div>
 
           </section>
