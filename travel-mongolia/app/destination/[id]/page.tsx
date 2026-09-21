@@ -1,23 +1,20 @@
 export const dynamic = 'force-dynamic';
 
 import React from 'react';
-import Image from 'next/image';
-
-import { notFound } from 'next/navigation';
 
 const client = {
   getEntry: async (_id: string) => null,
 };
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }> | { id: string };
 }
 
 async function getDestination(id: string) {
   try {
     const entry = await client.getEntry(id);
     return entry;
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }
@@ -50,14 +47,28 @@ function parseRichText(node: any): any {
 }
 
 export default async function DestinationDetailPage({ params }: Props) {
-  const { id } = await params;
+  const resolvedParams = await params;
+  const id = resolvedParams?.id || '';
   const destination = await getDestination(id);
 
   if (!destination) {
-    notFound();
+    return (
+      <main className="min-h-screen flex items-center justify-center bg-neutral-50 px-6">
+        <div className="text-center max-w-md bg-white p-8 rounded-3xl shadow-sm border border-neutral-100">
+          <h2 className="text-2xl font-bold text-neutral-800 mb-2">Мэдээлэл олдсонгүй</h2>
+          <p className="text-neutral-600 mb-6 text-sm">Энэхүү аяллын бүсийн дэлгэрэнгүй мэдээлэл тун удахгүй нэмэгдэх болно.</p>
+          <a 
+            href="/#highlights" 
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white font-medium text-sm hover:bg-emerald-700 transition-colors"
+          >
+            &larr; Буцах
+          </a>
+        </div>
+      </main>
+    );
   }
 
-  const fields = (destination as any).fields as any;
+  const fields = ((destination as any)?.fields || {}) as any;
   const imageField = fields.image || fields.coverImage;
   const imageUrl = imageField?.fields?.file?.url
     ? (imageField.fields.file.url.startsWith('//')
@@ -68,30 +79,27 @@ export default async function DestinationDetailPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white pb-24">
       <section className="relative h-[65vh] min-h-[480px] w-full flex items-center justify-center">
-        <Image
+        <img
           src={imageUrl}
           alt={fields.title || 'Destination'}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
 
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="absolute top-28 left-6 sm:left-12 lg:left-16 z-20">
           <a
-  href="/#highlights"
-  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md transition-all text-sm font-medium"
->
-  <span>&larr;</span>
-  <span>Нүүр хуудас руу буцах</span>
-</a>
+            href="/#highlights"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md transition-all text-sm font-medium"
+          >
+            <span>&larr;</span>
+            <span>Нүүр хуудас руу буцах</span>
+          </a>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-sans font-medium tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] leading-tight">
-            {fields.title}
+            {fields.title || 'Destination'}
           </h1>
         </div>
       </section>
