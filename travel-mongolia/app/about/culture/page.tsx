@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React, { useRef } from 'react';
-import Image from 'next/image';
+
 
 
 interface CultureItem {
