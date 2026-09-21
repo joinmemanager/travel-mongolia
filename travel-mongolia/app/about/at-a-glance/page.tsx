@@ -240,21 +240,21 @@ export default function AtAGlancePage() {
                   {sec.desc}
                 </p>
                 <div className="pt-2">
-                  <Link
-                    href={`/about/at-a-glance/${sec.id}`}
-                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
-                  >
-                    <span>Дэлгэрэнгүй</span>
-                    <svg 
-                      className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor" 
-                      strokeWidth="2.5"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </Link>
+                  <a
+  href={`/about/at-a-glance/${sec.id}`}
+  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
+>
+  <span>Дэлгэрэнгүй</span>
+  <svg 
+    className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor" 
+    strokeWidth="2.5"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  </svg>
+</a>
                 </div>
               </div>
 
