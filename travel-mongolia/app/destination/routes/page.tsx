@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import React, { useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
