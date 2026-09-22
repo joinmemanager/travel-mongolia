@@ -31,21 +31,28 @@ export default function Navbar() {
   }, []);
 
   // Хэл солих үед сайтын бүх текстийг нэгэн зэрэг орчуулах
+  const clearGoogTransCookie = () => {
+    const hostname = window.location.hostname;
+    const bareHost = hostname.replace(/^www\./, '');
+    const domains = [hostname, `.${hostname}`, bareHost, `.${bareHost}`];
+    domains.forEach((domain) => {
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain}`;
+    });
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  };
+
   const handleLanguageChange = (langCode: string) => {
     setSelectedLang(langCode);
     setIsLangOpen(false);
 
+    clearGoogTransCookie();
+
     if (langCode === 'mn') {
-      document.cookie =
-        'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
-      window.location.reload();
+      document.cookie = 'googtrans=/mn/mn; path=/;';
     } else {
-      document.cookie = `/mn/${langCode}; path=/;`;
       document.cookie = `googtrans=/mn/${langCode}; path=/;`;
-      document.cookie = `googtrans=/mn/${langCode}; path=/; domain=${window.location.hostname}`;
-      window.location.reload();
     }
+    window.location.reload();
   };
 
   // Скролл хийхэд навигацийн арын дэвсгэр сүүдэртэй болох
