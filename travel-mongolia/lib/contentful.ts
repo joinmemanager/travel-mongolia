@@ -1,4 +1,6 @@
-export const client = {
-  getEntries: async (_params?: any) => ({ items: [] as any[] }),
-  getEntry: async (_id?: any) => null,
-};
+import { createClient } from 'contentful';
+
+export const client = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID as string,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
+});
