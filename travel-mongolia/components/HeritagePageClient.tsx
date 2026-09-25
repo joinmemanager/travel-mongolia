@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface PlaceCard {
+  id: string;
   name: string;
   region: string;
   img: string;
@@ -112,9 +113,9 @@ export default function HeritagePageClient({
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {sec.places.map((place, idx) => (
+              {sec.places.map((place) => (
               <Link
-                key={idx}
+                key={place.id}
                 href={`/destination/heritage/place/${place.id}`}
                 className="group relative rounded-3xl overflow-hidden bg-white border border-neutral-100/90 shadow-sm hover:shadow-xl hover:border-[#15803d]/60 transition-all duration-300 flex flex-col h-80 sm:h-96"
               >
