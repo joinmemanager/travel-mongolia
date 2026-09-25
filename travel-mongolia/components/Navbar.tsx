@@ -94,20 +94,24 @@ export default function Navbar() {
         }`}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="flex justify-between items-center px-6 mx-auto max-w-7xl h-20 sm:px-10 lg:px-16">
+        <div className="flex justify-between items-center px-6 mx-auto max-w-7xl h-20 sm:px-10">
           {/* 1. LOGO */}
           <Link
             href="/"
             onClick={closeMenu}
-            className="group flex gap-1 items-center"
+            className="group flex gap-1 items-center shrink-0"
           >
-            <span className="text-2xl font-black tracking-tight text-gray-900 sm:text-3xl">
+            {/* notranslate: Google Translate <font>-оор ороож цэгийг дараагийн мөр рүү унагаахаас сэргийлнэ */}
+            <span
+              translate="no"
+              className="notranslate whitespace-nowrap text-2xl font-black tracking-tight text-gray-900 sm:text-3xl"
+            >
               Mongolia<span className="text-[#15803d]">.</span>
             </span>
           </Link>
 
           {/* 2. 5 ҮНДСЭН ТОЛГОЙ ЦЭС */}
-          <nav className="hidden gap-7 items-center h-full xl:flex">
+          <nav className="hidden gap-5 items-center h-full xl:flex">
             {/* 01. МОНГОЛЫН ТУХАЙ */}
             <div
               className="flex items-center h-full"
