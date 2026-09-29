@@ -1,7 +1,21 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useMemo, useState } from 'react';
+import Link from 'next/link';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+import { SITE_SEARCH_INDEX } from '@/lib/searchIndex';
+import { scoreMatch, tokenizeQuery } from '@/lib/searchText';
+
+// Contentful зэрэг гаднаас ирсэн, өөр хуудас руу холбогдох хайлтын үр дүн
+export interface ExternalSearchItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  group: string;
+  href: string;
+  keywords: string[];
+}
 
 interface DestinationItem {
   id: string;
@@ -271,12 +285,93 @@ const DESTINATIONS: DestinationItem[] = [
   },
 ];
 
+const REGION_TITLES: Record<string, string> = Object.fromEntries(
+  REGION_CAROUSEL.map((r) => [r.id, r.title])
+);
+
+// Газрын бүх мэдээллийг хайлтад ашиглана (нэр, аймаг, бүс, төрөл, улирал, тайлбар)
+function destinationSearchFields(item: DestinationItem): string[] {
+  return [
+    item.province,
+    `${item.province} аймаг`,
+    REGION_TITLES[item.region] || '',
+    item.category,
+    item.tag,
+    item.season,
+    item.description,
+  ];
+}
+
+const SITE_PAGE_ITEMS: ExternalSearchItem[] = SITE_SEARCH_INDEX.map((p) => ({
+  id: `page-${p.id}`,
+  title: p.title,
+  subtitle: p.description,
+  group: p.category,
+  href: p.href,
+  keywords: p.keywords,
+}));
+
+const MAX_PER_GROUP = 5;
+
+function SuggestionGroup({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="py-1">
+      <span className="block px-5 pt-2 pb-1 text-[10px] font-bold tracking-wider text-emerald-700 uppercase">
+        {title}
+      </span>
+      {children}
+    </div>
+  );
+}
+
+function SuggestionText({ title, subtitle }: { title: string; subtitle: string }) {
+  return (
+    <>
+      <span className="block text-sm font-semibold text-gray-900">{title}</span>
+      {subtitle && (
+        <span className="block text-xs text-gray-500 truncate">{subtitle}</span>
+      )}
+    </>
+  );
+}
+
+function SuggestionButton({
+  onClick,
+  title,
+  subtitle,
+}: {
+  onClick: () => void;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="block py-2 px-5 w-full text-left hover:bg-emerald-50 transition-colors cursor-pointer"
+    >
+      <SuggestionText title={title} subtitle={subtitle} />
+    </button>
+  );
+}
+
 export default function RegionDirectory({
   initialSubSlug,
+  externalItems = [],
 }: {
   initialSubSlug?: string;
+  externalItems?: ExternalSearchItem[];
 }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchBoxRef = useRef<HTMLDivElement>(null);
+  const resultsRef = useRef<HTMLElement>(null);
   const [selectedRegion, setSelectedRegion] = useState(initialSubSlug || 'all');
   const [selectedProvinces, setSelectedProvinces] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -302,6 +397,8 @@ export default function RegionDirectory({
     setSelectedSeasons([]);
   };
 
+  const queryTokens = useMemo(() => tokenizeQuery(searchQuery), [searchQuery]);
+
   const filteredItems = useMemo(() => {
     return DESTINATIONS.filter((item) => {
       if (selectedRegion !== 'all' && item.region !== selectedRegion)
@@ -319,26 +416,96 @@ export default function RegionDirectory({
       if (selectedSeasons.length > 0 && !selectedSeasons.includes(item.season))
         return false;
       if (
-        searchQuery.trim() &&
-        !item.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        !item.province.toLowerCase().includes(searchQuery.toLowerCase())
+        queryTokens.length > 0 &&
+        scoreMatch(queryTokens, item.title, destinationSearchFields(item)) === 0
       ) {
         return false;
       }
       return true;
     });
   }, [
-    searchQuery,
+    queryTokens,
     selectedRegion,
     selectedProvinces,
     selectedCategories,
     selectedSeasons,
   ]);
 
+  // Хайлтын талбарын доор гарах санал болгох жагсаалт
+  const suggestions = useMemo(() => {
+    if (queryTokens.length === 0) return null;
+
+    const rank = <T,>(items: T[], score: (item: T) => number) =>
+      items
+        .map((item) => ({ item, score: score(item) }))
+        .filter((r) => r.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, MAX_PER_GROUP)
+        .map((r) => r.item);
+
+    const regions = rank(
+      REGION_CAROUSEL.filter((r) => r.id !== 'all'),
+      (r) => scoreMatch(queryTokens, r.title, [])
+    );
+    const places = rank(DESTINATIONS, (d) =>
+      scoreMatch(queryTokens, d.title, destinationSearchFields(d))
+    );
+
+    const externalGroups = new Map<string, ExternalSearchItem[]>();
+    for (const item of [...externalItems, ...SITE_PAGE_ITEMS]) {
+      const list = externalGroups.get(item.group) || [];
+      list.push(item);
+      externalGroups.set(item.group, list);
+    }
+    const links = [...externalGroups.entries()]
+      .map(([group, items]) => ({
+        group,
+        items: rank(items, (i) =>
+          scoreMatch(queryTokens, i.title, [i.subtitle, ...i.keywords])
+        ),
+      }))
+      .filter((g) => g.items.length > 0);
+
+    const total =
+      regions.length +
+      places.length +
+      links.reduce((n, g) => n + g.items.length, 0);
+
+    return { regions, places, links, total };
+  }, [queryTokens, externalItems]);
+
+  // Хайлтын хайрцгаас гадуур дарахад санал болгох жагсаалтыг хаана
+  useEffect(() => {
+    const onPointerDown = (e: PointerEvent) => {
+      if (!searchBoxRef.current?.contains(e.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, []);
+
+  const scrollToResults = () => {
+    setShowSuggestions(false);
+    resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const selectRegion = (regionId: string) => {
+    setSelectedRegion(regionId);
+    setSearchQuery('');
+    scrollToResults();
+  };
+
+  const selectPlace = (item: DestinationItem) => {
+    setSelectedRegion('all');
+    setSearchQuery(item.title);
+    scrollToResults();
+  };
+
   return (
     <div className="pb-20 w-full bg-neutral-50/50">
       {/* 1. HERO ХЭСЭГ ХАЙЛТЫН ТАЛБАРТАЙ */}
-      <section className="flex overflow-hidden relative flex-col justify-center items-center w-full h-[50vh] min-h-[400px]">
+      <section className="flex relative flex-col justify-center items-center w-full h-[50vh] min-h-[400px]">
         <Image
           src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2000"
           alt="Зорих газрууд"
@@ -355,14 +522,76 @@ export default function RegionDirectory({
             Монголын 21 аймаг, зургаан бүсийн онцлох газруудыг нээгээрэй
           </p>
 
-          <div className="relative mx-auto max-w-xl">
+          <div ref={searchBoxRef} className="relative mx-auto max-w-xl">
             <input
-              type="text"
+              type="search"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setShowSuggestions(true);
+              }}
+              onFocus={() => setShowSuggestions(true)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') scrollToResults();
+                if (e.key === 'Escape') setShowSuggestions(false);
+              }}
               placeholder="Газар, аймаг, сэдвээр хайх..."
+              aria-label="Зорих газар хайх"
               className="py-3.5 pr-6 pl-12 w-full text-sm text-gray-800 bg-white rounded-full focus:outline-none ring-2 ring-emerald-600/30 shadow-xl"
             />
+
+            {showSuggestions && suggestions && (
+              <div className="overflow-y-auto absolute inset-x-0 top-full z-30 mt-2 max-h-[60vh] text-left bg-white rounded-2xl border border-gray-100 shadow-2xl">
+                {suggestions.total === 0 ? (
+                  <p className="py-6 px-5 text-sm text-center text-gray-500">
+                    “{searchQuery.trim()}” гэсэн үгээр илэрц олдсонгүй
+                  </p>
+                ) : (
+                  <div className="py-2">
+                    {suggestions.regions.length > 0 && (
+                      <SuggestionGroup title="Бүс нутаг">
+                        {suggestions.regions.map((r) => (
+                          <SuggestionButton
+                            key={r.id}
+                            onClick={() => selectRegion(r.id)}
+                            title={r.title}
+                            subtitle={`${r.count} газар`}
+                          />
+                        ))}
+                      </SuggestionGroup>
+                    )}
+
+                    {suggestions.places.length > 0 && (
+                      <SuggestionGroup title="Зорих газрууд">
+                        {suggestions.places.map((d) => (
+                          <SuggestionButton
+                            key={d.id}
+                            onClick={() => selectPlace(d)}
+                            title={d.title}
+                            subtitle={`${d.province} аймаг · ${d.category}`}
+                          />
+                        ))}
+                      </SuggestionGroup>
+                    )}
+
+                    {suggestions.links.map((g) => (
+                      <SuggestionGroup key={g.group} title={g.group}>
+                        {g.items.map((i) => (
+                          <Link
+                            key={i.id}
+                            href={i.href}
+                            onClick={() => setShowSuggestions(false)}
+                            className="block py-2 px-5 hover:bg-emerald-50 transition-colors"
+                          >
+                            <SuggestionText title={i.title} subtitle={i.subtitle} />
+                          </Link>
+                        ))}
+                      </SuggestionGroup>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
             <svg
               className="absolute top-1/2 left-4 w-5 h-5 text-gray-400 -translate-y-1/2"
               fill="none"
@@ -560,7 +789,7 @@ export default function RegionDirectory({
           </aside>
 
           {/* БАРУУН ТАЛ: КАРТУУДЫН ЖАГСААЛТ */}
-          <main className="space-y-6 lg:col-span-9">
+          <main ref={resultsRef} className="scroll-mt-24 space-y-6 lg:col-span-9">
             <div className="flex justify-between items-center">
               <span className="text-base font-bold text-gray-900">
                 {filteredItems.length} газар олдлоо
