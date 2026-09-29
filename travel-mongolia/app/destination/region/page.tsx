@@ -9,7 +9,7 @@ export default async function RegionPage({ searchParams }: Props) {
   const { region } = await searchParams;
   return (
     <main className="min-h-screen bg-white">
-      <RegionDirectory initialSubSlug={region} />
+      <RegionDirectory key={region ?? 'all'} initialSubSlug={region} />
     </main>
   );
 }

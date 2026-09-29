@@ -590,7 +590,7 @@ export default function Navbar() {
                   {/* БАГАНА 1 */}
                   <div className="space-y-6 pr-6 border-r border-gray-100">
                     <div className="space-y-3">
-                      <Link href="/destination/regions" onClick={closeMenu}>
+                      <Link href="/destination/region" onClick={closeMenu}>
                         <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
                           01. АЯЛЛЫН БҮСЭЭР
                         </h4>
@@ -599,17 +599,17 @@ export default function Navbar() {
                         </span>
                       </Link>
                       <ul className="space-y-2 text-sm font-normal text-neutral-700">
-                        <li><Link href="/destination/region/central" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Төв Монгол</Link></li>
-                        <li><Link href="/destination/region/khangai" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хангайн бүс</Link></li>
-                        <li><Link href="/destination/region/khovsgol-north" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хөвсгөл ба Хойд Монгол</Link></li>
-                        <li><Link href="/destination/region/altai-west" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Алтай ба Баруун Монгол</Link></li>
-                        <li><Link href="/destination/region/gobi" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Говийн бүс</Link></li>
-                        <li><Link href="/destination/region/east" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Зүүн Монгол</Link></li>
+                        <li><Link href="/destination/region?region=central" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Төв Монгол</Link></li>
+                        <li><Link href="/destination/region?region=khangai" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хангайн бүс</Link></li>
+                        <li><Link href="/destination/region?region=khuvsgul-north" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Хөвсгөл ба Хойд Монгол</Link></li>
+                        <li><Link href="/destination/region?region=altai-west" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Алтай ба Баруун Монгол</Link></li>
+                        <li><Link href="/destination/region?region=gobi" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Говийн бүс</Link></li>
+                        <li><Link href="/destination/region?region=eastern" onClick={closeMenu} className="block hover:text-[#15803d] transition-colors">Зүүн Монгол</Link></li>
                       </ul>
                     </div>
 
                     <div className="pt-4 border-t border-gray-100 space-y-3">
-                      <Link href="/destination/province" onClick={closeMenu}>
+                      <Link href="/destination/region" onClick={closeMenu}>
                         <h4 className="text-xs font-black tracking-wider text-[#15803d] uppercase transition-colors hover:text-emerald-950">
                           02. АЙМАГ, ХОТООР
                         </h4>
@@ -618,7 +618,7 @@ export default function Navbar() {
                         </span>
                       </Link>
                       <Link
-                        href="/destination/province"
+                        href="/destination/region"
                         onClick={closeMenu}
                         className="block text-sm font-bold text-gray-900 hover:text-[#15803d] transition-colors"
                       >
