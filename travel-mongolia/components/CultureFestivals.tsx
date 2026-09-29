@@ -52,20 +52,11 @@ function renderRichText(node: any): any {
 async function getFestivals() {
   try {
     const res = await client.getEntries({
+      content_type: 'cultureHeritage',
       limit: 50,
     });
 
-    const festivals = res.items.filter((item: any) => {
-      const type = item.sys.contentType?.sys?.id?.toLowerCase() || '';
-      const title = String(item.fields?.title || '').toLowerCase();
-      return (
-        type.includes('festival') ||
-        type.includes('culture') ||
-        type.includes('heritage') ||
-        title.includes('наадам') ||
-        title.includes('цагаан сар')
-      );
-    });
+    const festivals = res.items;
 
     // Хэрэв order дугаар байвал түүгээр нь эрэмбэлнэ
     return festivals.sort((a: any, b: any) => {
