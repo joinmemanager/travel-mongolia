@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import './globals.css';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Rubik } from 'next/font/google';
 import Script from 'next/script';
 
@@ -21,6 +22,10 @@ export const metadata = {
   title: 'Travel Mongolia | Discover the Land of Blue Sky',
   description:
     'Experience authentic nomadic culture, stunning landscapes, and unforgettable journeys in Mongolia.',
+  // Google Search Console-д сайтын эзэмшлийг баталгаажуулах
+  verification: {
+    google: 'zRrRNy93t2vrJ0mbrdKRgk-zHX0UZazj7BHcjprmSnI',
+  },
 };
 
 export default function RootLayout({
@@ -78,6 +83,8 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </body>
+      {/* Google Analytics 4: root layout-д нэг л удаа ачаалагдана */}
+      <GoogleAnalytics gaId="G-PBZBEDW93X" />
     </html>
   );
 }
