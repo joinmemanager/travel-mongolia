@@ -1,20 +1,25 @@
 export const dynamic = 'force-dynamic';
 
+import { notFound } from 'next/navigation';
 import React from 'react';
 
-const client = {
-  getEntry: async (_id: string) => null,
-};
+import { client } from '@/lib/contentful';
 
 interface Props {
-  params: Promise<{ id: string }> | { id: string };
+  params: Promise<{ id: string }>;
 }
 
+// Зөвхөн 'destination' төрлийн entry-г id-аар нь татна
 async function getDestination(id: string) {
   try {
-    const entry = await client.getEntry(id);
-    return entry;
-  } catch (_error) {
+    const res = await client.getEntries({
+      content_type: 'destination',
+      'sys.id': id,
+      limit: 1,
+    });
+    return res.items[0] || null;
+  } catch (err) {
+    console.error('Destination татахад алдаа гарлаа:', err);
     return null;
   }
 }
@@ -47,28 +52,14 @@ function parseRichText(node: any): any {
 }
 
 export default async function DestinationDetailPage({ params }: Props) {
-  const resolvedParams = await params;
-  const id = resolvedParams?.id || '';
+  const { id } = await params;
   const destination = await getDestination(id);
 
   if (!destination) {
-    return (
-      <main className="min-h-screen flex items-center justify-center bg-neutral-50 px-6">
-        <div className="text-center max-w-md bg-white p-8 rounded-3xl shadow-sm border border-neutral-100">
-          <h2 className="text-2xl font-bold text-neutral-800 mb-2">Мэдээлэл олдсонгүй</h2>
-          <p className="text-neutral-600 mb-6 text-sm">Энэхүү аяллын бүсийн дэлгэрэнгүй мэдээлэл тун удахгүй нэмэгдэх болно.</p>
-          <a 
-            href="/#highlights" 
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white font-medium text-sm hover:bg-emerald-700 transition-colors"
-          >
-            &larr; Буцах
-          </a>
-        </div>
-      </main>
-    );
+    notFound();
   }
 
-  const fields = ((destination as any)?.fields || {}) as any;
+  const fields = destination.fields as any;
   const imageField = fields.image || fields.coverImage;
   const imageUrl = imageField?.fields?.file?.url
     ? (imageField.fields.file.url.startsWith('//')

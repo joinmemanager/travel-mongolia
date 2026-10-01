@@ -37,7 +37,7 @@ The user's machine has no Node/npm/gh on PATH, so local builds and type checks c
 
 ## Config gotchas
 
-- Three Next config files exist. Next loads `next.config.js` first, so **only `next.config.js` is used**. It sets `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds`, which means type errors do not fail a deploy. It also means the `images.remotePatterns` in `next.config.ts` are ignored. `next/image` with a remote URL (Contentful `images.ctfassets.net`, Unsplash) therefore needs the `unoptimized` prop, otherwise the image breaks.
+- `next.config.js` is the only Next config (do not add `.mjs`/`.ts` variants, since Next would load `.js` first and silently ignore them). It sets `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds`, so type errors do not fail a deploy. `images.remotePatterns` allows `images.ctfassets.net` and `images.unsplash.com`. Any other remote host used with `next/image` must be added there or use `unoptimized`.
 - `app/layout.tsx` sets `dynamic = 'force-dynamic'`, so all pages render per request.
 - Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`.
 
@@ -59,7 +59,7 @@ Rules for Contentful code:
 - Field names differ per type. For example, `heritagePlace` uses `name` and `region`, while most other types use `title`. Rich-text fields are rendered by small hand-written recursive renderers in each file.
 - Fetching happens in server components through `lib/contentful.ts`. Pass the data down as props to `'use client'` components. The access token is not exposed to the browser.
 
-Known broken: `app/destination/[id]/page.tsx` has a stubbed `client.getEntry` that always returns null, so home slider cards (`/destination/<entryId>`) show "Мэдээлэл олдсонгүй".
+`/destination/[id]` renders a `destination` entry by Contentful entry id (home slider cards link there) and calls `notFound()` for unknown ids.
 
 ## Navigation and routing
 

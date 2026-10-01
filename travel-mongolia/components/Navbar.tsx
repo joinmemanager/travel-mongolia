@@ -13,12 +13,22 @@ const LANGUAGES = [
   { code: 'ja', label: 'JA', name: '日本語' },
 ];
 
+// Нарийн дэлгэцийн цэсэнд харагдах 5 үндсэн цэс (desktop-ийн дараалалтай ижил)
+const MAIN_MENUS = [
+  { id: 'about', label: 'Монголын тухай' },
+  { id: 'destinations', label: 'Зорих газрууд' },
+  { id: 'things-to-do', label: 'Үзэх, хийх зүйлс' },
+  { id: 'inspiration', label: 'Аялах сэдэл' },
+  { id: 'plan', label: 'Аяллаа төлөвлөх' },
+];
+
 export default function Navbar() {
   const [selectedLang, setSelectedLang] = useState('mn');
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const menuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -79,6 +89,7 @@ export default function Navbar() {
   const closeMenu = () => {
     if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
     setActiveMenu(null);
+    setIsMobileOpen(false);
   };
 
   const currentLang =
@@ -111,7 +122,7 @@ export default function Navbar() {
           </Link>
 
           {/* 2. 5 ҮНДСЭН ТОЛГОЙ ЦЭС */}
-          <nav className="hidden gap-5 items-center h-full xl:flex">
+          <nav className="hidden gap-4 items-center h-full min-[1200px]:flex xl:gap-5">
             {/* 01. МОНГОЛЫН ТУХАЙ */}
             <div
               className="flex items-center h-full"
@@ -319,7 +330,7 @@ export default function Navbar() {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <span className="hidden sm:inline">Хайх</span>
+              <span className="hidden sm:inline min-[1200px]:hidden xl:inline">Хайх</span>
             </button>
 
             {/* ХЭЛ СОНГОГЧ ТОХИРГОО */}
@@ -360,8 +371,60 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* Нарийн дэлгэц (< 1200px) дээр үндсэн цэсийг нээх товч */}
+            <button
+              type="button"
+              onClick={() => {
+                if (isMobileOpen) closeMenu();
+                setIsMobileOpen(!isMobileOpen);
+              }}
+              aria-label={isMobileOpen ? 'Цэс хаах' : 'Цэс нээх'}
+              aria-expanded={isMobileOpen}
+              className="flex justify-center items-center w-10 h-10 text-gray-800 hover:bg-gray-100 rounded-full transition-colors cursor-pointer min-[1200px]:hidden"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    isMobileOpen
+                      ? 'M6 18L18 6M6 6l12 12'
+                      : 'M4 6h16M4 12h16M4 18h16'
+                  }
+                />
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Нарийн дэлгэцийн үндсэн цэсийн жагсаалт. Сонгосон цэсийн дэлгэрэнгүй нь доорх mega menu-д гарна */}
+        {isMobileOpen && (
+          <nav className="flex overflow-x-auto gap-2 px-6 pb-4 mx-auto max-w-7xl sm:px-10 min-[1200px]:hidden">
+            {MAIN_MENUS.map((menu) => (
+              <button
+                key={menu.id}
+                type="button"
+                onClick={() =>
+                  setActiveMenu(activeMenu === menu.id ? null : menu.id)
+                }
+                className={`shrink-0 py-2 px-4 text-sm font-semibold rounded-full border transition-colors cursor-pointer ${
+                  activeMenu === menu.id
+                    ? 'text-white bg-[#15803d] border-[#15803d]'
+                    : 'text-gray-700 bg-white border-gray-200 hover:border-gray-400'
+                }`}
+              >
+                {menu.label}
+              </button>
+            ))}
+          </nav>
+        )}
 
         {/* 4. ДООШОО ДЭЛГЭГДДЭГ MEGA MENU ХЭСЭГ */}
         {activeMenu && (
