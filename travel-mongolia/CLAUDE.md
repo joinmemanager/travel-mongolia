@@ -4,6 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
+## Ажлын дүрэм
+
+- **`main` руу шууд push хийхгүй.** `main` руу орсон бүх зүйл travelhubmongolia.com дээр шууд гардаг.
+- Ажил бүрийг `main`-аас салгасан тусдаа branch дээр хийнэ (жишээ нь `fix/festival-images`, `feat/region-search`). Тэр branch-аа GitHub руу push хийнэ.
+- Push хийсний дараа Vercel-ийн preview deploy дуусахыг хүлээгээд **preview URL-ыг хэрэглэгчид өгнө**. URL-ыг ингэж олно:
+  1. Branch бүр тогтмол хаягтай: `https://travel-mongolia-ilas-git-<branch>-joinme1.vercel.app`. Branch нэр дэх `/`-г `-` болгоно. Жишээ нь `fix/festival-images` → `travel-mongolia-ilas-git-fix-festival-images-joinme1.vercel.app`. Энэ хаяг тухайн branch-ийн хамгийн сүүлийн deploy руу заана.
+  2. Build амжилттай болсныг `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status` хаягийн `Vercel – travel-mongolia-ilas` мөрөөс шалгаад, дараа нь хаягийг өгнө. JSON-д `state` талбар `context`-оос 5 мөрийн өмнө байдаг. Нэвтрээгүй үед GitHub API цагт 60 хүсэлт зөвшөөрдөг тул 40 секунд тутам эсвэл түүнээс цөөн удаа шалгана.
+  3. travelhubmongolia.com-ыг **`travel-mongolia-ilas`** project serve хийдэг (2026-10-01-нд шалгасан). Тиймээс preview-г тэр project-оос өгнө. `travel-mongolia` project-ийн preview build fail болдог, `travel-mongolia.vercel.app` нь хуучин өөр сайт.
+  4. Preview холбоосууд Vercel-ийн хамгаалалттай (302 → нэвтрэх хуудас). Хэрэглэгч Vercel эрхээрээ нэвтэрч байж үзнэ. Байхгүй branch-ийн хаяг 404 буцаана.
+- Хэрэглэгч preview дээр шалгаад **зөвшөөрсний дараа л** `main` руу merge хийж push хийнэ. Зөвшөөрөл ажил бүрт тусдаа авна.
+- **`app/layout.tsx` дахь Google tag-уудыг хэзээ ч устгах, өөрчлөхгүй.** Энэ нь `metadata.verification.google` (Search Console-ийн verification meta tag, `zRrRNy93t2vrJ0mbrdKRgk-zHX0UZazj7BHcjprmSnI`) болон `<GoogleAnalytics gaId="G-PBZBEDW93X" />` (GA4) хоёр юм. `layout.tsx` эсвэл `metadata`-г дахин бичих, merge conflict шийдэх үед энэ хоёрыг яг хэвээр нь үлдээнэ. GA-г нэг л удаа ачаалах ёстой тул өөр газар давхар GA/GTM код нэмэхгүй.
+
 ## Project
 
 Travel Mongolia (travelhubmongolia.com) is a Mongolian-language travel guide built with Next.js 16 App Router, React 19, Tailwind v4 and Contentful. The git repo root is the parent directory (`teslatraders/`), and this app lives in `travel-mongolia/`. Run all commands from `travel-mongolia/`. UI text and code comments are in Mongolian, so keep new ones in Mongolian too.
@@ -20,7 +32,7 @@ There is no test suite.
 
 ## Deployment
 
-Pushing to `main` on GitHub (`joinmemanager/travel-mongolia`) triggers automatic Vercel deploys. There is no manual deploy step. Four Vercel projects build every commit. `travel-mongolia-ddf6` has been failing on every commit and is not the production site. To see deploy results, check the commit status at `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status`.
+Pushing to `main` on GitHub (`joinmemanager/travel-mongolia`) triggers automatic Vercel production deploys, and pushing any other branch creates preview deploys. There is no manual deploy step. See "Ажлын дүрэм" above for the branch and preview workflow. Four Vercel projects build every commit. `travel-mongolia-ddf6` has been failing on every commit and is not the production site. To see deploy results, check the commit status at `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status`.
 
 The user's machine has no Node/npm/gh on PATH, so local builds and type checks cannot run. Vercel is the first real build. Git has no global identity configured, so commit with `git -c user.name="dashka0212" -c user.email="44989745+dashka0212@users.noreply.github.com" commit ...`.
 
