@@ -4,6 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
+## Ажлын дүрэм
+
+- **`main` руу шууд push хийхгүй.** `main` руу орсон бүх зүйл travelhubmongolia.com дээр шууд гардаг.
+- Ажил бүрийг `main`-аас салгасан тусдаа branch дээр хийнэ (жишээ нь `fix/festival-images`, `feat/region-search`). Тэр branch-аа GitHub руу push хийнэ.
+- Push хийсний дараа Vercel-ийн preview deploy дуусахыг хүлээгээд **preview URL-ыг хэрэглэгчид өгнө**. URL-ыг ингэж олно:
+  1. `https://api.github.com/repos/joinmemanager/travel-mongolia/deployments?ref=<branch>` хаягаас `"Preview – travel-mongolia"` орчны deployment-ийг олно.
+  2. Тэр deployment-ийн `statuses_url` дотроос `environment_url`-ыг авна.
+- Хэрэглэгч preview дээр шалгаад **зөвшөөрсний дараа л** `main` руу merge хийж push хийнэ. Зөвшөөрөл ажил бүрт тусдаа авна.
+
 ## Project
 
 Travel Mongolia (travelhubmongolia.com) is a Mongolian-language travel guide built with Next.js 16 App Router, React 19, Tailwind v4 and Contentful. The git repo root is the parent directory (`teslatraders/`), and this app lives in `travel-mongolia/`. Run all commands from `travel-mongolia/`. UI text and code comments are in Mongolian, so keep new ones in Mongolian too.
@@ -20,7 +29,7 @@ There is no test suite.
 
 ## Deployment
 
-Pushing to `main` on GitHub (`joinmemanager/travel-mongolia`) triggers automatic Vercel deploys. There is no manual deploy step. Four Vercel projects build every commit. `travel-mongolia-ddf6` has been failing on every commit and is not the production site. To see deploy results, check the commit status at `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status`.
+Pushing to `main` on GitHub (`joinmemanager/travel-mongolia`) triggers automatic Vercel production deploys, and pushing any other branch creates preview deploys. There is no manual deploy step. See "Ажлын дүрэм" above for the branch and preview workflow. Four Vercel projects build every commit. `travel-mongolia-ddf6` has been failing on every commit and is not the production site. To see deploy results, check the commit status at `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status`.
 
 The user's machine has no Node/npm/gh on PATH, so local builds and type checks cannot run. Vercel is the first real build. Git has no global identity configured, so commit with `git -c user.name="dashka0212" -c user.email="44989745+dashka0212@users.noreply.github.com" commit ...`.
 
