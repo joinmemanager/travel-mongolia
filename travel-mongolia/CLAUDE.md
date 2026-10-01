@@ -9,11 +9,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **`main` руу шууд push хийхгүй.** `main` руу орсон бүх зүйл travelhubmongolia.com дээр шууд гардаг.
 - Ажил бүрийг `main`-аас салгасан тусдаа branch дээр хийнэ (жишээ нь `fix/festival-images`, `feat/region-search`). Тэр branch-аа GitHub руу push хийнэ.
 - Push хийсний дараа Vercel-ийн preview deploy дуусахыг хүлээгээд **preview URL-ыг хэрэглэгчид өгнө**. URL-ыг ингэж олно:
-  1. Branch бүр тогтмол хаягтай: `https://travel-mongolia-web-git-<branch>-joinme1.vercel.app`. Branch нэр дэх `/`-г `-` болгоно. Жишээ нь `fix/festival-images` → `travel-mongolia-web-git-fix-festival-images-joinme1.vercel.app`. Энэ хаяг тухайн branch-ийн хамгийн сүүлийн deploy руу заана.
-  2. Build амжилттай болсныг `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status` хаягийн `Vercel – travel-mongolia-web` мөрөөс шалгаад, дараа нь хаягийг өгнө. Нэвтрээгүй үед GitHub API цагт 60 хүсэлт зөвшөөрдөг тул 20 секунд тутам эсвэл түүнээс цөөн удаа шалгана.
-  3. `Preview – travel-mongolia` project-ийн preview build fail болдог (2026-10-01-ний байдлаар). Тиймээс `-web` project-ийн preview-г өгнө.
+  1. Branch бүр тогтмол хаягтай: `https://travel-mongolia-ilas-git-<branch>-joinme1.vercel.app`. Branch нэр дэх `/`-г `-` болгоно. Жишээ нь `fix/festival-images` → `travel-mongolia-ilas-git-fix-festival-images-joinme1.vercel.app`. Энэ хаяг тухайн branch-ийн хамгийн сүүлийн deploy руу заана.
+  2. Build амжилттай болсныг `https://api.github.com/repos/joinmemanager/travel-mongolia/commits/<sha>/status` хаягийн `Vercel – travel-mongolia-ilas` мөрөөс шалгаад, дараа нь хаягийг өгнө. JSON-д `state` талбар `context`-оос 5 мөрийн өмнө байдаг. Нэвтрээгүй үед GitHub API цагт 60 хүсэлт зөвшөөрдөг тул 40 секунд тутам эсвэл түүнээс цөөн удаа шалгана.
+  3. travelhubmongolia.com-ыг **`travel-mongolia-ilas`** project serve хийдэг (2026-10-01-нд шалгасан). Тиймээс preview-г тэр project-оос өгнө. `travel-mongolia` project-ийн preview build fail болдог, `travel-mongolia.vercel.app` нь хуучин өөр сайт.
   4. Preview холбоосууд Vercel-ийн хамгаалалттай (302 → нэвтрэх хуудас). Хэрэглэгч Vercel эрхээрээ нэвтэрч байж үзнэ. Байхгүй branch-ийн хаяг 404 буцаана.
 - Хэрэглэгч preview дээр шалгаад **зөвшөөрсний дараа л** `main` руу merge хийж push хийнэ. Зөвшөөрөл ажил бүрт тусдаа авна.
+- **`app/layout.tsx` дахь Google tag-уудыг хэзээ ч устгах, өөрчлөхгүй.** Энэ нь `metadata.verification.google` (Search Console-ийн verification meta tag, `zRrRNy93t2vrJ0mbrdKRgk-zHX0UZazj7BHcjprmSnI`) болон `<GoogleAnalytics gaId="G-PBZBEDW93X" />` (GA4) хоёр юм. `layout.tsx` эсвэл `metadata`-г дахин бичих, merge conflict шийдэх үед энэ хоёрыг яг хэвээр нь үлдээнэ. GA-г нэг л удаа ачаалах ёстой тул өөр газар давхар GA/GTM код нэмэхгүй.
 
 ## Project
 
