@@ -122,7 +122,7 @@ export default function Navbar() {
           </Link>
 
           {/* 2. 5 ҮНДСЭН ТОЛГОЙ ЦЭС */}
-          <nav className="hidden gap-5 items-center h-full xl:flex">
+          <nav className="hidden gap-4 items-center h-full min-[1200px]:flex xl:gap-5">
             {/* 01. МОНГОЛЫН ТУХАЙ */}
             <div
               className="flex items-center h-full"
@@ -330,7 +330,7 @@ export default function Navbar() {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <span className="hidden sm:inline">Хайх</span>
+              <span className="hidden sm:inline min-[1200px]:hidden xl:inline">Хайх</span>
             </button>
 
             {/* ХЭЛ СОНГОГЧ ТОХИРГОО */}
@@ -372,7 +372,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Нарийн дэлгэц (< 1280px) дээр үндсэн цэсийг нээх товч */}
+            {/* Нарийн дэлгэц (< 1200px) дээр үндсэн цэсийг нээх товч */}
             <button
               type="button"
               onClick={() => {
@@ -381,7 +381,7 @@ export default function Navbar() {
               }}
               aria-label={isMobileOpen ? 'Цэс хаах' : 'Цэс нээх'}
               aria-expanded={isMobileOpen}
-              className="flex justify-center items-center w-10 h-10 text-gray-800 hover:bg-gray-100 rounded-full transition-colors cursor-pointer xl:hidden"
+              className="flex justify-center items-center w-10 h-10 text-gray-800 hover:bg-gray-100 rounded-full transition-colors cursor-pointer min-[1200px]:hidden"
             >
               <svg
                 className="w-6 h-6"
@@ -406,7 +406,7 @@ export default function Navbar() {
 
         {/* Нарийн дэлгэцийн үндсэн цэсийн жагсаалт. Сонгосон цэсийн дэлгэрэнгүй нь доорх mega menu-д гарна */}
         {isMobileOpen && (
-          <nav className="flex overflow-x-auto gap-2 px-6 pb-4 mx-auto max-w-7xl sm:px-10 xl:hidden">
+          <nav className="flex overflow-x-auto gap-2 px-6 pb-4 mx-auto max-w-7xl sm:px-10 min-[1200px]:hidden">
             {MAIN_MENUS.map((menu) => (
               <button
                 key={menu.id}
