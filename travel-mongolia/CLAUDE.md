@@ -9,8 +9,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **`main` руу шууд push хийхгүй.** `main` руу орсон бүх зүйл travelhubmongolia.com дээр шууд гардаг.
 - Ажил бүрийг `main`-аас салгасан тусдаа branch дээр хийнэ (жишээ нь `fix/festival-images`, `feat/region-search`). Тэр branch-аа GitHub руу push хийнэ.
 - Push хийсний дараа Vercel-ийн preview deploy дуусахыг хүлээгээд **preview URL-ыг хэрэглэгчид өгнө**. URL-ыг ингэж олно:
-  1. `https://api.github.com/repos/joinmemanager/travel-mongolia/deployments?ref=<branch>` хаягаас `"Preview – travel-mongolia"` орчны deployment-ийг олно.
+  1. `https://api.github.com/repos/joinmemanager/travel-mongolia/deployments?sha=<бүтэн commit sha>` хаягаас `"Preview – travel-mongolia-web"` орчны deployment-ийг олно. `?ref=<branch>` гэж хайвал юу ч олдохгүй.
   2. Тэр deployment-ийн `statuses_url` дотроос `environment_url`-ыг авна.
+  3. `Preview – travel-mongolia` project-ийн preview build fail болдог (2026-10-01-ний байдлаар). Тиймээс `-web` project-ийн preview-г өгнө.
+  4. Preview холбоосууд Vercel-ийн хамгаалалттай (302 → нэвтрэх хуудас). Хэрэглэгч Vercel эрхээрээ нэвтэрч байж үзнэ.
 - Хэрэглэгч preview дээр шалгаад **зөвшөөрсний дараа л** `main` руу merge хийж push хийнэ. Зөвшөөрөл ажил бүрт тусдаа авна.
 
 ## Project
