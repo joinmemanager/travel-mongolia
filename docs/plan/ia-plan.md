@@ -108,9 +108,9 @@
 
 | Үе | Ажил | Хугацаа |
 |---|---|---|
-| 5а | Шинэ цэс + footer (серверийн HTML), эвдэрсэн холбоос засах, 2 redirect | 3–5 өдөр |
+| 5а | Шинэ цэс + footer (серверийн HTML). 77 "Дэлгэрэнгүй" холбоосыг энд хийхгүй, тусдаа ажлаар засна (5-р хэсэг). 2 redirect нь 5в-д шилжсэн. | 3–5 өдөр |
 | 5б | `/respect` hub (C13) + дэд хуудсууд | 2–3 өдөр |
-| 5в | `/stories` hub (C10) | 2–3 өдөр |
+| 5в | `/stories` hub (C10) + 2 redirect (`/inspiration/stories`, `/inspiration/magazine` → `/stories`) | 2–3 өдөр |
 | 5г | `/impact` hub (C14) | 1–2 өдөр |
 | 6 | Contentful-ын шинэ content type (Local Provider, Community Experience, Story, Visitor Guidance, Local Product) + slug талбар | 1 долоо хоног |
 | 7 | `/local` hub (C11) + профайл + шүүлтүүр | 1–2 долоо хоног |
