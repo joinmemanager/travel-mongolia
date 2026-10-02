@@ -124,10 +124,11 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             </span>
           </Link>
 
-          {/* 2. ҮНДСЭН ЦЭС. 6 хэсэг 1280px-д багтахаар 1200–1279px дээр 13px, түүнээс дээш 14px */}
+          {/* 2. ҮНДСЭН ЦЭС. 6 хэсэг нэг мөрөнд багтахаар (Rubik фонтоор хэмжиж тооцсон):
+              1200–1239px: 13px, 1240–1279px: 14px, 1280px-ээс дээш: 15px */}
           <nav
             aria-label="Үндсэн цэс"
-            className="hidden gap-3 items-center h-full min-[1200px]:flex"
+            className="hidden gap-2.5 items-center h-full min-[1200px]:flex"
           >
             {sections.map((section) => {
               const isActive = activeMenu === section.id;
@@ -142,7 +143,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                     aria-expanded={isActive}
                     aria-controls={`nav-panel-${section.id}`}
                     onClick={() => setActiveMenu(isActive ? null : section.id)}
-                    className={`whitespace-nowrap text-[13px] xl:text-sm font-semibold transition-colors flex items-center gap-1.5 py-2 cursor-pointer ${
+                    className={`whitespace-nowrap text-[13px] min-[1240px]:text-sm xl:text-[15px] font-semibold transition-colors flex items-center gap-1 py-2 cursor-pointer ${
                       isActive
                         ? 'text-[#15803d]'
                         : 'text-gray-700 hover:text-black'
@@ -150,7 +151,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                   >
                     <span {...labelProps}>{labelOf(section)}</span>
                     <svg
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      className={`w-3 h-3 transition-transform duration-200 ${
                         isActive ? 'rotate-180 text-[#15803d]' : 'text-gray-400'
                       }`}
                       fill="none"
@@ -342,6 +343,23 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                           </span>
                         )}
                       </NavItemLink>
+                      {item.children && item.children.length > 0 && (
+                        <ul className="mt-3 space-y-2 text-sm font-normal text-neutral-700">
+                          {item.children.map((child) => (
+                            <li key={`${child.href}-${child.mn}`}>
+                              <NavItemLink
+                                item={child}
+                                english={isEnglish}
+                                onClick={closeMenu}
+                                className="block hover:text-[#15803d] transition-colors"
+                                comingSoonClassName="ml-2 py-0.5 px-1.5 text-[10px] font-bold text-amber-800 bg-amber-100 rounded-full"
+                              >
+                                <span {...labelProps}>{labelOf(child)}</span>
+                              </NavItemLink>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>
