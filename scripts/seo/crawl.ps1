@@ -4,9 +4,9 @@
   Node/Python шаардлагагүй, Windows PowerShell 5.1 дээр ажиллана.
 
 .DESCRIPTION
-  1. sitemap.xml-ийн бүх URL, нүүр хуудас, Navbar.tsx-ийн цэсний холбоосуудаас эхэлж
-     сайтын доторх бүх холбоосыг мөлхөнө (mega-menu нь client талд л зурагддаг тул
-     цэсний холбоосыг эх кодоос уншина).
+  1. sitemap.xml-ийн бүх URL, нүүр хуудас, цэс/footer-ийн холбоосуудаас эхэлж
+     сайтын доторх бүх холбоосыг мөлхөнө. Цэсийг нүүр хуудасны <header>, <footer>-оос
+     уншина (-MenuSource өгвөл хуучин аргаар эх кодоос уншина).
   2. URL бүрийн status, redirect, title, description, H1, canonical, robots, JSON-LD,
      орж ирэх дотоод холбоосын тоог crawl.csv-д, холбоосуудыг links.csv-д хадгална.
   3. Монгол хэлээр report.md тайлан гаргана.
@@ -29,7 +29,6 @@ param(
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 if (-not $OutDir) { $OutDir = Join-Path $repoRoot "docs\baseline\$Date" }
-if (-not $MenuSource) { $MenuSource = Join-Path $repoRoot 'travel-mongolia\components\Navbar.tsx' }
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -127,13 +126,28 @@ if ($sm.status -eq 200) {
 }
 $sitemapUrls = @($sitemapUrls | Select-Object -Unique)
 
-Write-Host "Цэсний холбоосуудыг $MenuSource-оос уншиж байна..."
 $menuUrls = @()
-if (Test-Path $MenuSource) {
+if ($MenuSource) {
+  # Хуучин арга: цэс client талд л зурагддаг байсан үед эх кодоос унших
+  Write-Host "Цэсний холбоосуудыг $MenuSource-оос уншиж байна..."
+  $menuLabel = "Цэс ($(Split-Path $MenuSource -Leaf))"
   $src = [IO.File]::ReadAllText($MenuSource, [Text.Encoding]::UTF8)
   foreach ($m in [regex]::Matches($src, 'href=\{?["''`](/[^"''`]*)["''`]')) {
     $n = Resolve-SiteUrl $m.Groups[1].Value $baseUri
     if ($n) { $menuUrls += $n }
+  }
+} else {
+  # 2026-10-02-ноос хойш цэс, footer серверийн HTML-д бүрэн байдаг тул нүүр хуудасны
+  # <header>, <footer> доторх холбоосыг уншина. Ингэснээр production дээр яг харагдаж
+  # буй цэсийг (бэлэн биш зүйлсгүйгээр) тооцно.
+  Write-Host "Цэс, footer-ийн холбоосыг нүүр хуудасны HTML-ээс уншиж байна..."
+  $menuLabel = 'Цэс/footer'
+  $homePage = Invoke-Fetch $homeUrl
+  foreach ($block in [regex]::Matches($homePage.body, '<(header|footer)\b.*?</\1>', 'Singleline')) {
+    foreach ($m in [regex]::Matches($block.Value, '<a\b[^>]*?\shref="([^"]*)"')) {
+      $n = Resolve-SiteUrl $m.Groups[1].Value $baseUri
+      if ($n) { $menuUrls += $n }
+    }
   }
 }
 $menuUrls = @($menuUrls | Select-Object -Unique)
@@ -263,7 +277,7 @@ if ($notCrawled -gt 0) { W "- Хязгаар ($MaxPages)-аас хэтэрсэн
 W "- sitemap.xml: status $($sm.status), **$($sitemapRaw.Count)** URL"
 $nonCanonHost = @($sitemapRaw | Where-Object { -not $_.StartsWith($baseUri.GetLeftPart('Authority')) })
 W "- sitemap-д ``$($baseUri.GetLeftPart('Authority'))``-оор эхлээгүй URL: **$($nonCanonHost.Count)**"
-W "- Цэсний (Navbar.tsx) дотоод холбоос: **$($menuUrls.Count)**"
+W "- $menuLabel дахь дотоод холбоос: **$($menuUrls.Count)**"
 W ''
 W '| Status | Тоо |'
 W '|---|---|'
@@ -282,7 +296,7 @@ if ($brokenLinked.Count -eq 0) { W '_Олдсонгүй._' } else {
   W '|---|---|---|'
   foreach ($b in $brokenLinked) {
     $from = @()
-    if ($b.in_menu) { $from += 'Цэс (Navbar.tsx)' }
+    if ($b.in_menu) { $from += $menuLabel }
     $srcs = @($edges | Where-Object { $_.target -eq $b.url } | ForEach-Object { Get-PathKey $_.source } | Select-Object -Unique)
     if ($srcs.Count -gt 0) {
       $shown = ($srcs | Select-Object -First 3) -join ', '
@@ -400,7 +414,7 @@ W ''
 # --- Орж ирэх холбоосгүй
 W '## 8. Сайтын аль ч хуудаснаас холбоосгүй (orphan) хуудсууд'
 W ''
-W 'sitemap-д байгаа, 200 буцаадаг ч мөлхсөн HTML-ийн аль ч хуудаснаас `<a href>` холбоос ирдэггүй хуудсууд. Цэсний холбоосууд browser дээр л зурагддаг тул Google тэдгээрийг харахгүй байж магадгүй гэдгийг анхаарна уу.'
+W 'sitemap-д байгаа, 200 буцаадаг ч мөлхсөн HTML-ийн аль ч хуудаснаас `<a href>` холбоос ирдэггүй хуудсууд.'
 W ''
 $orphans = @($rows | Where-Object { $_.in_sitemap -and $_.status -eq 200 -and [int]$_.inlinks -eq 0 -and $_.url -ne $homeUrl })
 if ($orphans.Count -eq 0) { W '_Олдсонгүй._' } else {
