@@ -2,7 +2,24 @@
 
 import Link from 'next/link';
 
-export default function Footer() {
+import type { NavItem, NavSection } from '@/lib/navigation';
+
+import NavItemLink from './NavItemLink';
+import { useSiteLang } from './useSiteLang';
+
+// Баганын холбоосууд lib/navigation.ts-ийн FOOTER_NAVIGATION, FOOTER_LEGAL-аас ирнэ
+export default function Footer({
+  groups,
+  legal,
+}: {
+  groups: NavSection[];
+  legal: NavItem[];
+}) {
+  const isEnglish = useSiteLang() === 'en';
+  const labelOf = (x: { mn: string; en: string }) => (isEnglish ? x.en : x.mn);
+  const comingSoon =
+    'ml-2 py-0.5 px-1.5 text-[10px] font-bold text-amber-200 bg-amber-900/40 rounded-full';
+
   return (
     <footer className="pt-16 pb-12 text-white bg-[#1a1a1a] border-t border-neutral-800">
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
@@ -68,73 +85,28 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 2-р багана: Бүс нутаг */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-wider text-neutral-200 uppercase">
-              Бүс нутаг
-            </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-400">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Төв ба Хангай
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Хөвсгөл & Хойд бүс
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Говь нутаг
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Алтай & Баруун бүс
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Дорнод тал нутаг
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* 3-р багана: Хэрэгцээт мэдээлэл */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-wider text-neutral-200 uppercase">
-              Хэрэгцээт мэдээлэл
-            </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-400">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Виз & Зорчих нөхцөл
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Цаг агаар ба улирал
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Тээвэр, машин түрээс
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Аяллын аюулгүй байдал
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Түгээмэл асуултууд
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* 2–3-р багана: Бүс нутаг, Хэрэгцээт мэдээлэл */}
+          {groups.map((group) => (
+            <div key={group.id} className="space-y-4">
+              <h4 className="text-sm font-bold tracking-wider text-neutral-200 uppercase">
+                {labelOf(group)}
+              </h4>
+              <ul className="space-y-2.5 text-sm text-neutral-400">
+                {group.items.map((item) => (
+                  <li key={`${item.href}-${item.mn}`}>
+                    <NavItemLink
+                      item={item}
+                      english={isEnglish}
+                      className="hover:text-white transition-colors"
+                      comingSoonClassName={comingSoon}
+                    >
+                      {labelOf(item)}
+                    </NavItemLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           {/* 4-р багана: Холбоо барих мэдээлэл */}
           <div className="space-y-4">
@@ -180,15 +152,17 @@ export default function Footer() {
             хамгаалагдсан.
           </p>
           <div className="flex gap-6 items-center">
-            <Link href="/" className="hover:text-neutral-300 transition-colors">
-              Нууцлалын бодлого
-            </Link>
-            <Link href="/" className="hover:text-neutral-300 transition-colors">
-              Үйлчилгээний нөхцөл
-            </Link>
-            <Link href="/" className="hover:text-neutral-300 transition-colors">
-              Холбоо барих
-            </Link>
+            {legal.map((item) => (
+              <NavItemLink
+                key={`${item.href}-${item.mn}`}
+                item={item}
+                english={isEnglish}
+                className="hover:text-neutral-300 transition-colors"
+                comingSoonClassName={comingSoon}
+              >
+                {labelOf(item)}
+              </NavItemLink>
+            ))}
           </div>
         </div>
       </div>

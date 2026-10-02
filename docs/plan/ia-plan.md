@@ -110,7 +110,7 @@
 |---|---|---|
 | 5а | Шинэ цэс + footer (серверийн HTML). 77 "Дэлгэрэнгүй" холбоосыг энд хийхгүй, тусдаа ажлаар засна (5-р хэсэг). 2 redirect нь 5в-д шилжсэн. | 3–5 өдөр |
 | 5б | `/respect` hub (C13) + дэд хуудсууд | 2–3 өдөр |
-| 5в | `/stories` hub (C10) + 2 redirect (`/inspiration/stories`, `/inspiration/magazine` → `/stories`) | 2–3 өдөр |
+| 5в | `/stories` hub (C10) + 2 redirect (`/inspiration/stories`, `/inspiration/magazine` → `/stories`). 5а-д түр шийдэл хийсэн: цэсний "Түүхүүд" нь `/inspiration/stories` руу (дэд холбоос: `/inspiration/hidden`, `/inspiration/top-lists`), "Фото/видео түүх" нь `/inspiration/magazine` руу заадаг. 5в үед `lib/navigation.ts`-д эдгээрийг `/stories` (болон `/stories/photo-video`) руу сольж, redirect хийнэ. | 2–3 өдөр |
 | 5г | `/impact` hub (C14) | 1–2 өдөр |
 | 6 | Contentful-ын шинэ content type (Local Provider, Community Experience, Story, Visitor Guidance, Local Product) + slug талбар | 1 долоо хоног |
 | 7 | `/local` hub (C11) + профайл + шүүлтүүр | 1–2 долоо хоног |
