@@ -1,5 +1,8 @@
 import { client } from '@/lib/contentful';
 import HeritagePageClient from '@/components/HeritagePageClient';
+import { metaFor } from '@/lib/pageMeta';
+
+export const metadata = metaFor('/destination/heritage');
 
 function getImageUrl(imageField: any): string {
   if (!imageField)

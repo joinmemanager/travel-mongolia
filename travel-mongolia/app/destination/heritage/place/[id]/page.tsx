@@ -1,8 +1,43 @@
 import { client } from '@/lib/contentful';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { cache } from 'react';
 import MongoliaLocatorMap from '@/components/MongoliaLocatorMap';
 import WeatherWidget from '@/components/WeatherWidget';
+import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
+const getPlace = cache(async (id: string) => {
+  try {
+    return (await client.getEntry(id)) as any;
+  } catch (err) {
+    console.error('Heritage place fetch error:', err);
+    return null;
+  }
+});
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const entry = await getPlace(id);
+  if (!entry) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+
+  const f = entry.fields;
+  const plain = richTextToPlain(f.description);
+  return pageMetadata({
+    title: f.region ? `${f.name}, ${f.region}` : f.name,
+    description: truncate(
+      plain || `${f.name}: Монголын түүх, соёлын дурсгалт газар. Байршил, цаг агаар, аялах мэдээлэл.`
+    ),
+    path: `/destination/heritage/place/${id}`,
+    image: getImageUrl(f.image),
+  });
+}
 
 function getImageUrl(imageField: any): string {
   if (!imageField)
@@ -44,32 +79,40 @@ export default async function HeritagePlaceDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const entry = await getPlace(id);
 
-  let entry: any = null;
-  try {
-    entry = await client.getEntry(id);
-  } catch (err) {
-    console.error('Heritage place fetch error:', err);
-  }
-
-  if (!entry) {
-    return (
-      <main className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-2xl font-bold text-neutral-900">Мэдээлэл олдсонгүй</h1>
-        <Link href="/destination/heritage" className="text-[#15803d] font-semibold mt-4 inline-block">
-          ← Буцах
-        </Link>
-      </main>
-    );
-  }
+  // Байхгүй хуудсыг 404 болгосноор Google хоосон хуудсыг index-д оруулахгүй
+  if (!entry) notFound();
 
   const f = entry.fields;
   const imgUrl = getImageUrl(f.image);
   const lat = f.coordinates?.lat;
   const lon = f.coordinates?.lon;
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristAttraction',
+    name: f.name,
+    description: truncate(richTextToPlain(f.description), 300) || undefined,
+    image: imgUrl,
+    url: `${SITE_URL}/destination/heritage/place/${id}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: f.region || undefined,
+      addressCountry: 'MN',
+    },
+    geo:
+      typeof lat === 'number' && typeof lon === 'number'
+        ? { '@type': 'GeoCoordinates', latitude: lat, longitude: lon }
+        : undefined,
+  };
+
   return (
     <main className="w-full bg-white text-neutral-900 pb-28 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative w-full h-[40vh] min-h-[300px] flex items-end overflow-hidden">
         <Image
           src={imgUrl}

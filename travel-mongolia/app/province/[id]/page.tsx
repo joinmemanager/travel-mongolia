@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import React from 'react';
+import React, { cache } from 'react';
 import Image from 'next/image';
 
 import { client } from '@/lib/contentful';
+import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -31,7 +33,8 @@ function parseRichText(node: any): any {
   return null;
 }
 
-async function getProvinceFromContentful(rawId: string) {
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
+const getProvinceFromContentful = cache(async (rawId: string) => {
   const cleanId = decodeURIComponent(rawId).toLowerCase().trim();
 
   try {
@@ -61,6 +64,26 @@ async function getProvinceFromContentful(rawId: string) {
     console.error('Contentful алдаа:', error);
     return null;
   }
+});
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const entry = await getProvinceFromContentful(id);
+  // Contentful-д байхгүй аймгийн түр хуудсыг хайлтад оруулахгүй
+  if (!entry) return { title: 'Аймгийн мэдээлэл', robots: { index: false } };
+
+  const f = entry.fields as any;
+  const name = f.title || f.name;
+  const imgUrl = (f.image || f.coverImage)?.fields?.file?.url;
+  return pageMetadata({
+    title: `${name}: үзэх газрууд, аялах мэдээлэл`,
+    description: truncate(
+      richTextToPlain(f.description2 || f.description || f.description1) ||
+        `${name}-д аялах гарын авлага: үзэх газрууд, төв, хүн ам, газар нутгийн мэдээлэл.`
+    ),
+    path: `/province/${id}`,
+    image: imgUrl ? (imgUrl.startsWith('//') ? `https:${imgUrl}` : imgUrl) : undefined,
+  });
 }
 
 export default async function ProvinceDetailPage({ params }: Props) {

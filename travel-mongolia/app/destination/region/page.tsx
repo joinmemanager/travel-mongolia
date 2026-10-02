@@ -3,6 +3,9 @@ import RegionDirectory, {
   type ExternalSearchItem,
 } from '@/components/RegionDirectory';
 import { client } from '@/lib/contentful';
+import { metaFor } from '@/lib/pageMeta';
+
+export const metadata = metaFor('/destination/region');
 
 interface Props {
   searchParams: Promise<{ region?: string }>;

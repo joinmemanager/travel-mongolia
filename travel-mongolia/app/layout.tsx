@@ -3,10 +3,12 @@ export const dynamic = 'force-dynamic';
 import './globals.css';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
+import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
 import Script from 'next/script';
 
 import Footer from '@/components/Footer';
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 import { LanguageProvider } from '../components/LanguageContext';
 import Navbar from '../components/Navbar';
@@ -18,14 +20,46 @@ const rubik = Rubik({
   display: 'swap',
 });
 
-export const metadata = {
-  title: 'Travel Mongolia | Discover the Land of Blue Sky',
-  description:
-    'Experience authentic nomadic culture, stunning landscapes, and unforgettable journeys in Mongolia.',
+const siteDescription =
+  'Монголд аялах бүх мэдээлэл нэг дор: үзэх газрууд, нүүдэлчин соёл, баяр наадам, аяллын маршрут, байрлах газар, аяллын зөвлөгөө.';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Travel Mongolia | Монголд аялах аяллын гарын авлага',
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: siteDescription,
+  applicationName: SITE_NAME,
+  alternates: { canonical: '/' },
+  openGraph: {
+    siteName: SITE_NAME,
+    locale: 'mn_MN',
+    type: 'website',
+    url: '/',
+    title: 'Travel Mongolia | Монголд аялах аяллын гарын авлага',
+    description: siteDescription,
+    images: [{ url: DEFAULT_OG_IMAGE }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [DEFAULT_OG_IMAGE],
+  },
+  robots: { index: true, follow: true },
   // Google Search Console-д сайтын эзэмшлийг баталгаажуулах
   verification: {
     google: 'zRrRNy93t2vrJ0mbrdKRgk-zHX0UZazj7BHcjprmSnI',
   },
+};
+
+// Google-д сайтын нэрийг таниулах бүтэцтэй өгөгдөл
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: 'mn',
+  description: siteDescription,
 };
 
 export default function RootLayout({
@@ -38,6 +72,10 @@ export default function RootLayout({
       <body
         className={`${rubik.className} bg-white text-neutral-900 antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <LanguageProvider>
           {/* Дээд талын үндсэн цэс */}
           <Navbar />

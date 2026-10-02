@@ -1,5 +1,8 @@
 import React from 'react';
 import ExperienceShowcase from '@/components/ExperienceShowcase';
+import { metaFor } from '@/lib/pageMeta';
+
+export const metadata = metaFor('/things-to-do/festivals');
 
 interface Props {
   searchParams: Promise<{ section?: string }>;
