@@ -430,12 +430,14 @@ export default function InteractiveMapExplorerPage() {
                 <div className="text-[11px] font-bold text-[#15803d] uppercase">{selectedPlace.aimag}</div>
                 <div className="text-xs font-black text-neutral-900 truncate">{selectedPlace.name}</div>
               </div>
-              <Link
-                href={`/destination/explore/${selectedPlace.id}`}
-                className="px-3.5 py-2 rounded-xl bg-[#15803d] text-white text-xs font-bold hover:bg-emerald-800 transition-colors whitespace-nowrap"
-              >
-                Дэлгэрэнгүй үзэх →
-              </Link>
+              {selectedPlace.moreHref && (
+                <Link
+                  href={selectedPlace.moreHref}
+                  className="px-3.5 py-2 rounded-xl bg-[#15803d] text-white text-xs font-bold hover:bg-emerald-800 transition-colors whitespace-nowrap"
+                >
+                  Дэлгэрэнгүй үзэх →
+                </Link>
+              )}
             </div>
           )}
         </aside>

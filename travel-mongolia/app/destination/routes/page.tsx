@@ -19,6 +19,8 @@ const RealRouteMap = dynamic(() => import('@/components/RealRouteMap'), {
 
 interface RouteItem extends RouteMapData {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   subtitle: string;
   road: string;
   season: string;
@@ -29,6 +31,7 @@ interface RouteItem extends RouteMapData {
 const ROUTES_LIST: RouteItem[] = [
   {
     id: 'gobi-circuit',
+    moreHref: '/inspiration/itineraries',
     name: 'Говийн тойрог',
     subtitle: 'Classic Gobi Desert Loop',
     duration: '7 хоног',
@@ -59,6 +62,7 @@ const ROUTES_LIST: RouteItem[] = [
   },
   {
     id: 'orkhon-valley',
+    moreHref: '/inspiration/itineraries',
     name: 'Орхоны хөндийн маршрут',
     subtitle: 'Historic Orkhon Valley Route',
     duration: '5 хоног',
@@ -85,6 +89,7 @@ const ROUTES_LIST: RouteItem[] = [
   },
   {
     id: 'khuvsgul-route',
+    moreHref: '/inspiration/itineraries',
     name: 'Хөвсгөлийн маршрут',
     subtitle: 'Northern Lake Khuvsgul Expedition',
     duration: '6 хоног',
@@ -111,6 +116,7 @@ const ROUTES_LIST: RouteItem[] = [
   },
   {
     id: 'altai-route',
+    moreHref: '/inspiration/itineraries',
     name: 'Алтайн маршрут',
     subtitle: 'Western Altai Mountain Route',
     duration: '12 хоног',
@@ -137,6 +143,7 @@ const ROUTES_LIST: RouteItem[] = [
   },
   {
     id: 'eastern-route',
+    moreHref: '/inspiration/itineraries',
     name: 'Зүүн Монголын маршрут',
     subtitle: 'Eastern Steppes & Historic Route',
     duration: '6 хоног',
@@ -336,13 +343,15 @@ export default function ScenicRoutesPage() {
 
             </div>
 
+            {selectedRoute.moreHref && (
             <Link
-              href={`/destination/routes/${selectedRoute.id}`}
+              href={selectedRoute.moreHref}
               className="w-full py-3.5 px-4 rounded-xl bg-[#15803d] hover:bg-emerald-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm"
             >
               <span>Дэлгэрэнгүй маршрут, бааз & зочид буудал</span>
               <span>→</span>
             </Link>
+            )}
           </div>
 
           {/* БАРУУН ТАЛ: БОДИТ LEAFLET ИНТЕРАКТИВ ГАЗРЫН ЗУРАГ */}

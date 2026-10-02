@@ -10,6 +10,8 @@ interface GlanceItem {
 
 interface GlanceSection {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   num: string;
   tag: string;
   title: string;
@@ -46,6 +48,7 @@ const GLANCE_SECTIONS: GlanceSection[] = [
   },
   {
     id: 'population',
+    moreHref: '/about/people',
     num: '02',
     tag: 'Ард түмэн ба нийгэм',
     title: 'Хүн ам, нийслэл',
@@ -71,6 +74,7 @@ const GLANCE_SECTIONS: GlanceSection[] = [
   },
   {
     id: 'geography',
+    moreHref: '/about/nature#geography',
     num: '03',
     tag: 'Уудам газар нутаг',
     title: 'Газар нутаг & Байгалийн бүс',
@@ -236,9 +240,10 @@ export default function AtAGlancePage() {
                 <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
                   {sec.desc}
                 </p>
+                {sec.moreHref && (
                 <div className="pt-2">
                   <a
-  href={`/about/at-a-glance/${sec.id}`}
+  href={sec.moreHref}
   className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
 >
   <span>Дэлгэрэнгүй</span>
@@ -253,6 +258,7 @@ export default function AtAGlancePage() {
   </svg>
 </a>
                 </div>
+                )}
               </div>
 
               <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
