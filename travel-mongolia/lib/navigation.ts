@@ -82,7 +82,13 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Шилдэг жагсаалтууд', 'Top Lists', '/inspiration/top-lists'),
         ],
       },
-      { mn: 'Арга хэмжээ, баяр наадам', en: 'Events', href: '/things-to-do/events', ready: true },
+      {
+        mn: 'Арга хэмжээ, баяр наадам', en: 'Events', href: '/things-to-do/events', ready: true,
+        children: [
+          page('Баяр наадам, арга хэмжээ', 'Events', '/things-to-do/events'),
+          page('Фестивалиуд', 'Festivals', '/things-to-do/festivals'),
+        ],
+      },
       { mn: 'Газрын зураг', en: 'Map', href: '/destination/map', ready: true },
     ],
   },
