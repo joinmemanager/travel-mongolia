@@ -1,7 +1,11 @@
 import { client } from '@/lib/contentful';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { cache } from 'react';
 import HeritagePlaceCard from '@/components/HeritagePlaceCard';
+import { pageMetadata, truncate } from '@/lib/seo';
 
 function getImageUrl(imageField: any): string {
   if (!imageField)
@@ -16,7 +20,8 @@ function getImageUrl(imageField: any): string {
   return url.startsWith('//') ? `https:${url}` : url;
 }
 
-async function getHeritageCategory(category: string) {
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
+const getHeritageCategory = cache(async (category: string) => {
   try {
     // Нүүр хуудас slug-гүй ангилалд sys.id ашигладаг тул хоёуланг нь дэмжинэ
     const res = await client.getEntries({
@@ -58,6 +63,26 @@ async function getHeritageCategory(category: string) {
     console.error('Heritage category fetch error:', err);
     return null;
   }
+});
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const data = await getHeritageCategory(decodeURIComponent(category));
+  if (!data) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+
+  const names = data.places.slice(0, 4).map((p: any) => p.name).filter(Boolean);
+  return pageMetadata({
+    title: `${data.title}: Монголын түүхэн өв`,
+    description: truncate(
+      `Монголын ${data.title}${names.length ? `: ${names.join(', ')}` : ''} болон бусад дурсгалт газруудын байршил, зураг, тайлбар.`
+    ),
+    path: `/destination/heritage/${category}`,
+    image: data.places[0]?.img,
+  });
 }
 
 export default async function HeritageCategoryPage({
@@ -68,16 +93,8 @@ export default async function HeritageCategoryPage({
   const { category } = await params;
   const data = await getHeritageCategory(decodeURIComponent(category));
 
-  if (!data) {
-    return (
-      <main className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-2xl font-bold text-neutral-900">Мэдээлэл олдсонгүй</h1>
-        <Link href="/destination/heritage" className="text-[#15803d] font-semibold mt-4 inline-block">
-          ← Буцах
-        </Link>
-      </main>
-    );
-  }
+  // Байхгүй хуудсыг 404 болгосноор Google хоосон хуудсыг index-д оруулахгүй
+  if (!data) notFound();
 
   const heroImg = data.places[0]?.img || getImageUrl(null);
 

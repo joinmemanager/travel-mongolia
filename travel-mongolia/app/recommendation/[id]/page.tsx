@@ -1,20 +1,43 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import type { Metadata } from 'next';
+import { cache } from 'react';
+
 import { client } from '@/lib/contentful';
+import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-async function getRecommendation(id: string) {
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
+const getRecommendation = cache(async (id: string) => {
   try {
     const entry = await client.getEntry(id);
     return entry;
   } catch (error) {
     return null;
   }
+});
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const item = await getRecommendation(id);
+  if (!item) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+
+  const fields = item.fields as any;
+  const url = (fields.image || fields.coverImage)?.fields?.file?.url;
+  return pageMetadata({
+    title: fields.title,
+    description: truncate(
+      richTextToPlain(fields.description) ||
+        `${fields.title}: Монголд аялахад санал болгох газар, туршлага.`
+    ),
+    path: `/recommendation/${id}`,
+    image: url ? (url.startsWith('//') ? `https:${url}` : url) : undefined,
+  });
 }
 
 export default async function RecommendationDetailPage({ params }: Props) {
