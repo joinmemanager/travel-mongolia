@@ -1,16 +1,19 @@
 export const dynamic = 'force-dynamic';
 
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import React from 'react';
+import React, { cache } from 'react';
 
 import { client } from '@/lib/contentful';
+import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// Зөвхөн 'destination' төрлийн entry-г id-аар нь татна
-async function getDestination(id: string) {
+// Зөвхөн 'destination' төрлийн entry-г id-аар нь татна.
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
+const getDestination = cache(async (id: string) => {
   try {
     const res = await client.getEntries({
       content_type: 'destination',
@@ -22,6 +25,30 @@ async function getDestination(id: string) {
     console.error('Destination татахад алдаа гарлаа:', err);
     return null;
   }
+});
+
+function getImageUrl(fields: any): string | undefined {
+  const url = (fields.image || fields.coverImage)?.fields?.file?.url;
+  if (!url) return undefined;
+  return url.startsWith('//') ? `https:${url}` : url;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const destination = await getDestination(id);
+  if (!destination) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+
+  const fields = destination.fields as any;
+  return pageMetadata({
+    title: fields.title,
+    description: truncate(
+      richTextToPlain(fields.description) ||
+        fields.subtitle ||
+        `${fields.title}: Монголд аялах онцлох газар, үзэх зүйлс, аяллын мэдээлэл.`
+    ),
+    path: `/destination/${id}`,
+    image: getImageUrl(fields),
+  });
 }
 
 function parseRichText(node: any): any {
@@ -60,12 +87,9 @@ export default async function DestinationDetailPage({ params }: Props) {
   }
 
   const fields = destination.fields as any;
-  const imageField = fields.image || fields.coverImage;
-  const imageUrl = imageField?.fields?.file?.url
-    ? (imageField.fields.file.url.startsWith('//')
-        ? `https:${imageField.fields.file.url}`
-        : imageField.fields.file.url)
-    : 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
+  const imageUrl =
+    getImageUrl(fields) ||
+    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
 
   return (
     <main className="min-h-screen bg-white pb-24">

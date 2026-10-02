@@ -228,7 +228,9 @@ export default function InteractiveMapExplorerPage() {
 
   return (
     <main className="w-full h-[calc(100vh-64px)] flex flex-col bg-white overflow-hidden font-sans">
-      
+      {/* Газрын зургийн загварыг эвдэхгүйн тулд H1-ийг зөвхөн хайлтын систем, дэлгэц уншигчид харагдуулна */}
+      <h1 className="sr-only">Монголын аяллын интерактив газрын зураг</h1>
+
       {/* 1. ДЭЭД ХЭСЭГ: 21 АЙМГИЙН СУМТАЙ ХЭВТЭЭ ШҮҮЛТҮҮР */}
       <header className="h-14 border-b border-neutral-200 px-3 sm:px-6 flex items-center justify-between gap-3 shrink-0 bg-white z-20">
         
