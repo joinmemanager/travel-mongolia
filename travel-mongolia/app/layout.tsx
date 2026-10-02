@@ -8,6 +8,14 @@ import { Rubik } from 'next/font/google';
 import Script from 'next/script';
 
 import Footer from '@/components/Footer';
+import {
+  FOOTER_LEGAL,
+  FOOTER_NAVIGATION,
+  MAIN_NAVIGATION,
+  showUnreadyNavItems,
+  visibleItems,
+  visibleSections,
+} from '@/lib/navigation';
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 import { LanguageProvider } from '../components/LanguageContext';
@@ -67,6 +75,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Production дээр бэлэн биш цэсийг нуух, preview дээр "Тун удахгүй"-гээр харуулах
+  const showUnready = showUnreadyNavItems();
+
   return (
     <html lang="mn">
       <body
@@ -78,9 +89,12 @@ export default function RootLayout({
         />
         <LanguageProvider>
           {/* Дээд талын үндсэн цэс */}
-          <Navbar />
+          <Navbar sections={visibleSections(MAIN_NAVIGATION, showUnready)} />
           {children}
-          <Footer />
+          <Footer
+            groups={visibleSections(FOOTER_NAVIGATION, showUnready)}
+            legal={visibleItems(FOOTER_LEGAL, showUnready)}
+          />
         </LanguageProvider>
 
         {/* Google Translate-ийн илүүдэл баннерыг нуух тусгай загвар */}
