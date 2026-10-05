@@ -1,11 +1,21 @@
-import Link from 'next/link';
-
+import DarkPanel from '@/components/design/DarkPanel';
+import ImageCard from '@/components/design/ImageCard';
+import PatternBand from '@/components/design/PatternBand';
 import GuidePage from '@/components/GuidePage';
+import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { RESPECT_HUB as hub } from '@/lib/respectData';
 
 export const metadata = metaFor('/respect');
+
+// Дэд хуудасны картын зураг (Монголынх нь шалгагдсан, docs/plan/images.md)
+const SUBPAGE_IMAGES: Record<string, SiteImage> = {
+  '/respect/etiquette': IMAGES.lakeGers,
+  '/respect/nature': IMAGES.whiteHorse,
+  '/respect/accessible': IMAGES.herderBoy,
+  '/plan/safety-info': IMAGES.redCliffs,
+};
 
 export default function RespectHubPage() {
   return (
@@ -20,33 +30,12 @@ export default function RespectHubPage() {
       intro={hub.intro}
       sections={[]}
       related={hub.related}
+      bottomBand={<PatternBand />}
     >
-      {/* Аялагчийн амлалт */}
-      <section
-        id="pledge"
-        className="scroll-mt-28 p-8 sm:p-10 rounded-3xl bg-[#15803d] text-white shadow-sm"
-      >
-        <h2 className="text-2xl sm:text-3xl font-black mb-2">{hub.pledgeTitle}</h2>
-        <p className="mb-8 text-sm text-white/80">{hub.pledgeIntro}</p>
-        <ol className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {hub.pledge.map((item, i) => (
-            <li
-              key={item.title}
-              className="flex gap-4 p-5 rounded-2xl bg-white/10 border border-white/15"
-            >
-              <span className="text-2xl font-black text-white/60 tabular-nums">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div>
-                <h3 className="text-base font-bold mb-1">{item.title}</h3>
-                <p className="text-sm text-white/85 leading-relaxed">{item.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {/* Аялагчийн амлалт: бараан ногоон самбар */}
+      <DarkPanel id="pledge" title={hub.pledgeTitle} intro={hub.pledgeIntro} items={hub.pledge} />
 
-      {/* Дэд хуудсууд */}
+      {/* Дэд хуудсууд: зурагтай картууд */}
       <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
         <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-6">
           {hub.subpagesTitle}
@@ -55,18 +44,13 @@ export default function RespectHubPage() {
           {/* Production дээр draft/planned дэд хуудсыг харуулахгүй */}
           {hub.subpages.filter((page) => liveHref(page.href)).map((page) => (
             <li key={page.href}>
-              <Link
+              <ImageCard
                 href={page.href}
-                className="group block p-6 h-full rounded-2xl bg-[#fcfbf9] border border-neutral-200 hover:border-[#15803d] transition-colors"
-              >
-                <span className="flex justify-between items-center mb-2 text-lg font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
-                  {page.label}
-                  <span aria-hidden="true">→</span>
-                </span>
-                <span className="block text-sm text-neutral-600 leading-relaxed">
-                  {page.desc}
-                </span>
-              </Link>
+                image={SUBPAGE_IMAGES[page.href]}
+                title={page.label}
+                desc={page.desc}
+                sizes="(max-width: 640px) 100vw, 420px"
+              />
             </li>
           ))}
         </ul>

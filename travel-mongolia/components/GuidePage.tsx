@@ -17,6 +17,7 @@ export default function GuidePage({
   sections,
   related,
   children,
+  bottomBand,
 }: {
   crumbs: Crumb[];
   kicker: string;
@@ -27,12 +28,14 @@ export default function GuidePage({
   related: GuideLink[];
   // Хэсгүүдийн өмнө харуулах нэмэлт контент (жишээ нь hub хуудасны амлалт)
   children?: React.ReactNode;
+  // Хуудасны хамгийн доор, footer-ийн яг дээр харуулах тууз (components/design/PatternBand)
+  bottomBand?: React.ReactNode;
 }) {
   // Production дээр draft/planned хуудас руу заасан холбоосыг харуулахгүй
   const liveRelated = related.filter((link) => liveHref(link.href));
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className={`min-h-screen bg-[#fcfbf9] text-neutral-900 ${bottomBand ? '' : 'pb-32'}`}>
       {/* Толгой хэсэг */}
       <header className="border-b border-neutral-200 bg-white pt-12 pb-12 px-6 sm:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
@@ -133,6 +136,7 @@ export default function GuidePage({
           )}
         </div>
       </div>
+      {bottomBand && <div className="mt-32">{bottomBand}</div>}
     </main>
   );
 }

@@ -1,7 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
+import ImageCard from '@/components/design/ImageCard';
+import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
+import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import {
@@ -21,34 +23,32 @@ const CATEGORY_LABEL = Object.fromEntries(
 
 const LATEST_COUNT = 6;
 
+// Одоо байгаа хуудсуудын картын зураг (Монголынх нь шалгагдсан, docs/plan/images.md).
+// 6-р үед Contentful-ын Story төрлийн coverImage-ээр солигдоно.
+const STORY_IMAGES: Record<string, SiteImage> = {
+  heritage: IMAGES.chinggisStatue,
+  hidden: IMAGES.redCliffs,
+  'local-stories': IMAGES.herderBoy,
+  magazine: IMAGES.gerStars,
+  'top-lists': IMAGES.camels,
+  culture: IMAGES.gerCamp,
+  traditions: IMAGES.lakeGers,
+  nature: IMAGES.whiteHorse,
+  'nomadic-life': IMAGES.herdSnow,
+  food: IMAGES.gerCamp,
+  people: IMAGES.eagleHunter,
+};
+
+// Зурагтай карт (components/design/ImageCard)
 function StoryCardView({ story }: { story: StoryCard }) {
   return (
-    <Link
+    <ImageCard
       href={story.href}
-      className="group flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-neutral-200/80 shadow-sm hover:border-[#15803d] hover:shadow-md transition-all"
-    >
-      {story.imageUrl && (
-        <div className="relative w-full h-44">
-          <Image
-            src={story.imageUrl}
-            alt={story.title}
-            fill
-            unoptimized
-            className="object-cover"
-          />
-        </div>
-      )}
-      <div className="flex flex-col flex-1 p-6">
-        <span className="mb-2 text-[10px] font-bold tracking-widest text-[#15803d] uppercase">
-          {CATEGORY_LABEL[story.category]}
-        </span>
-        <h3 className="mb-2 text-lg font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
-          {story.title}
-        </h3>
-        <p className="flex-1 text-sm text-neutral-600 leading-relaxed">{story.excerpt}</p>
-        <span aria-hidden="true" className="mt-4 text-sm font-bold text-neutral-900">→</span>
-      </div>
-    </Link>
+      image={STORY_IMAGES[story.id]}
+      eyebrow={CATEGORY_LABEL[story.category]}
+      title={story.title}
+      desc={story.excerpt}
+    />
   );
 }
 
@@ -71,7 +71,7 @@ export default async function StoriesHubPage() {
     .slice(0, LATEST_COUNT);
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
       <HubHeader
         crumbs={[
           { label: 'Нүүр', href: '/' },
@@ -163,6 +163,11 @@ export default async function StoriesHubPage() {
             </section>
           );
         })}
+      </div>
+
+      {/* Хээтэй тууз: footer-ийн яг дээр */}
+      <div className="mt-32">
+        <PatternBand />
       </div>
     </main>
   );

@@ -1,6 +1,8 @@
-import Link from 'next/link';
 import React from 'react';
 
+import DarkPanel from '@/components/design/DarkPanel';
+import LinkCard from '@/components/design/LinkCard';
+import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
 import { IMPACT_HUB as hub, partnerMailto } from '@/lib/impactData';
 import { liveHref } from '@/lib/navigation';
@@ -73,7 +75,7 @@ export default async function ImpactHubPage() {
   const provinces = (await getProvinceLinks()).filter((p) => liveHref(p.href));
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
       <HubHeader
         crumbs={[
           { label: 'Нүүр', href: '/' },
@@ -131,23 +133,12 @@ export default async function ImpactHubPage() {
           {/* 03. Аймаг, DMO: Contentful-ын аймгууд автоматаар */}
           <Section id="provinces" index={3} title={hub.provinces.title} intro={hub.provinces.intro}>
             {provinces.length > 0 ? (
-              <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {provinces.map((p) => (
-                  <li key={p.href}>
-                    <Link
-                      href={p.href}
-                      className="group block p-5 h-full rounded-2xl bg-[#fcfbf9] border border-neutral-200 hover:border-[#15803d] transition-colors"
-                    >
-                      <span className="block font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
-                        {p.title}
-                      </span>
-                      {p.center && (
-                        <span className="block mt-1 text-xs text-neutral-500">{p.center}</span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              // Холбоосны карт (components/design/LinkCard)
+              <LinkCard
+                bare
+                columns={3}
+                links={provinces.map((p) => ({ label: p.title, href: p.href, desc: p.center }))}
+              />
             ) : (
               <EmptyNote text={hub.provinces.empty} />
             )}
@@ -158,23 +149,19 @@ export default async function ImpactHubPage() {
             <PartnerButton label={hub.businesses.cta} subject={hub.businesses.mailSubject} />
           </Section>
 
-          {/* 05. Хандивлагч, хөрөнгө оруулагч */}
-          <Section id="donors" index={5} title={hub.donors.title} intro={hub.donors.intro}>
-            <ol className="space-y-4">
-              {hub.donors.outcomes.map((outcome, i) => (
-                <li key={outcome.title} className="flex gap-4">
-                  <span className="text-xl font-black text-[#15803d]/50 tabular-nums">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="text-base font-bold text-neutral-900">{outcome.title}</h3>
-                    <p className="text-sm text-neutral-600 leading-relaxed">{outcome.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Section>
+          {/* 05. Хандивлагч, хөрөнгө оруулагч: бараан ногоон самбар */}
+          <DarkPanel
+            id="donors"
+            title={hub.donors.title}
+            intro={hub.donors.intro}
+            items={hub.donors.outcomes}
+          />
         </div>
+      </div>
+
+      {/* Хээтэй тууз: footer-ийн яг дээр */}
+      <div className="mt-32">
+        <PatternBand />
       </div>
     </main>
   );
