@@ -1,5 +1,7 @@
 'use client';
 
+import { liveHref } from '@/lib/navigation';
+
 import React, { useRef } from 'react';
 
 
@@ -237,10 +239,10 @@ export default function PeoplePage() {
                 <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
                   {sec.desc}
                 </p>
-                {sec.moreHref && (
+                {liveHref(sec.moreHref) && (
                 <div className="pt-2">
                   <a
-                    href={sec.moreHref}
+                    href={liveHref(sec.moreHref)}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>

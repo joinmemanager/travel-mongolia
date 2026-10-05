@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { liveHref } from '@/lib/navigation';
 import type { GuideLink, GuideSection } from '@/lib/respectData';
 
 import Breadcrumbs, { type Crumb } from './Breadcrumbs';
@@ -27,6 +28,9 @@ export default function GuidePage({
   // Хэсгүүдийн өмнө харуулах нэмэлт контент (жишээ нь hub хуудасны амлалт)
   children?: React.ReactNode;
 }) {
+  // Production дээр draft/planned хуудас руу заасан холбоосыг харуулахгүй
+  const liveRelated = related.filter((link) => liveHref(link.href));
+
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
       {/* Толгой хэсэг */}
@@ -107,13 +111,13 @@ export default function GuidePage({
           ))}
 
           {/* Холбогдох хуудсууд */}
-          {related.length > 0 && (
+          {liveRelated.length > 0 && (
             <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
               <h2 className="text-lg font-black text-neutral-900 mb-4">
                 Холбогдох хуудсууд
               </h2>
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {related.map((link) => (
+                {liveRelated.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}

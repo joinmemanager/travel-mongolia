@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { liveHref } from '@/lib/navigation';
 import { SITE_URL } from '@/lib/seo';
 
 export interface Crumb {
@@ -33,10 +34,17 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
           const isLast = i === items.length - 1;
           return (
             <li key={item.href} className="flex gap-1.5 items-center">
-              {isLast ? (
-                <span aria-current="page" className="font-semibold text-neutral-800">
-                  {item.label}
-                </span>
+              {/* Сүүлийн элемент эсвэл production дээр нийтлэгдээгүй хуудас: холбоосгүй */}
+              {isLast || !liveHref(item.href) ? (
+                <>
+                  <span
+                    aria-current={isLast ? 'page' : undefined}
+                    className={isLast ? 'font-semibold text-neutral-800' : ''}
+                  >
+                    {item.label}
+                  </span>
+                  {!isLast && <span aria-hidden="true" className="text-neutral-300">/</span>}
+                </>
               ) : (
                 <>
                   <Link href={item.href} className="hover:text-[#15803d] transition-colors">

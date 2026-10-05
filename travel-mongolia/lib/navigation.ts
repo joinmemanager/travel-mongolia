@@ -182,11 +182,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Үр өгөөж & түншлэл',
     en: 'Impact & Partners',
     items: [
-      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact', status: 'planned' },
-      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact/projects', status: 'planned' },
-      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact/provinces', status: 'planned' },
-      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact/businesses', status: 'planned' },
-      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact/donors', status: 'planned' },
+      // /impact/* дэд хуудсын оронд нэг хуудасны хэсгүүд рүү anchor-оор заана (ia-plan.md 5г)
+      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact#local-impact', status: 'draft' },
+      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact#projects', status: 'draft' },
+      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'draft' },
+      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'draft' },
+      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'draft' },
     ],
   },
 ];
@@ -226,17 +227,26 @@ export const FOOTER_LEGAL: NavItem[] = [
   { mn: 'Холбоо барих', en: 'Contact', href: 'mailto:contact@joinme.mn', status: 'live' },
 ];
 
-// Preview (эсвэл local) орчин эсэх. Серверт дуудна (VERCEL_ENV нь client-д байхгүй).
+// Цэсэнд (одоохондоо) ороогүй хуудсуудын төлөв. Цэсний зүйлтэй адил дүрмээр ажиллана.
+export const PAGE_STATUS: Record<string, NavStatus> = {
+  // Түүх & өв hub (C10). Цэсний "Түүхүүд", "Фото/видео түүх" /stories live болох өдөр
+  // энд шилжиж, /inspiration/stories, /inspiration/magazine-аас redirect хийнэ (ia-plan.md 5в).
+  '/stories': 'draft',
+  '/stories/photo-video': 'draft',
+};
+
+// Preview (эсвэл local) орчин эсэх. SITE_ENV-ийг next.config.js build хийх үед server,
+// client хоёуланд нь өгдөг тул client компонентод ч ажиллана.
 // Preview дээр live бус зүйлс ч харагдана, production дээр зөвхөн live.
 export function isPreviewEnv(): boolean {
-  return process.env.VERCEL_ENV !== 'production';
+  return (process.env.SITE_ENV || process.env.VERCEL_ENV) !== 'production';
 }
 
 // ---------------------------------------------------------------- хуудасны төлөв
-// Хуудасны төлвийг цэсний status-аас уншина (нэг эх сурвалж). live биш хуудас
-// production дээр robots noindex, sitemap-д орохгүй, цэсэнд харагдахгүй. Хуудас өөрөө
-// 200 буцаана, ингэснээр түүн рүү заасан холбоос эвдрэхгүй.
-// Цэсэнд огт байхгүй хуудсыг live гэж үзнэ.
+// Хуудасны төлвийг PAGE_STATUS болон цэсний status-аас уншина (нэг эх сурвалж). live
+// биш хуудас production дээр robots noindex, sitemap-д орохгүй, цэсэнд харагдахгүй, түүн
+// рүү заасан товч, холбоос (liveHref) нуугдана. Хуудас өөрөө 200 буцаана.
+// Аль алинд нь байхгүй хуудсыг live гэж үзнэ.
 
 const pathOf = (href: string) => href.split(/[?#]/)[0];
 
@@ -248,10 +258,19 @@ function allNavItems(): NavItem[] {
 }
 
 export function isPageLive(path: string): boolean {
+  if (PAGE_STATUS[path] && PAGE_STATUS[path] !== 'live') return false;
   const entries = allNavItems().filter(
     (i) => i.href.startsWith('/') && pathOf(i.href) === path
   );
   return entries.every((i) => i.status === 'live');
+}
+
+// Хуудас доторх товч, холбоосонд: production дээр live биш хуудас руу заавал undefined
+// буцаана (товчийг харуулахгүй). Сайтаас гадуурх холбоос, preview дээр хэвээр.
+export function liveHref(href?: string): string | undefined {
+  if (!href) return undefined;
+  if (!href.startsWith('/') || isPreviewEnv()) return href;
+  return isPageLive(pathOf(href)) ? href : undefined;
 }
 
 // Энэ орчинд (production) хуудсыг хайлтаас нуух ёстой эсэх

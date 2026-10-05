@@ -1,5 +1,7 @@
 'use client';
 
+import { liveHref } from '@/lib/navigation';
+
 import Link from 'next/link';
 
 import React, { useRef } from 'react';
@@ -412,9 +414,9 @@ export default function NaturalLandscapesPage() {
               ))}
 
               {/* 4 ДЭХ ТОМ КАРТ: "БҮГДИЙГ ҮЗЭХ" */}
-              {sec.moreHref && (
+              {liveHref(sec.moreHref) && (
               <Link
-                href={sec.moreHref}
+                href={liveHref(sec.moreHref)}
                 className="group relative rounded-3xl overflow-hidden bg-emerald-50/70 border-2 border-dashed border-emerald-300 hover:border-[#15803d] hover:bg-emerald-100/70 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center h-80 sm:h-96 cursor-pointer shadow-sm hover:shadow-xl"
               >
                 <div className="w-14 h-14 rounded-full bg-[#15803d] text-white flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-800 transition-all shadow-md">

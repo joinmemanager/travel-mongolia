@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import GuidePage from '@/components/GuidePage';
+import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { RESPECT_HUB as hub } from '@/lib/respectData';
 
@@ -51,7 +52,8 @@ export default function RespectHubPage() {
           {hub.subpagesTitle}
         </h2>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {hub.subpages.map((page) => (
+          {/* Production дээр draft/planned дэд хуудсыг харуулахгүй */}
+          {hub.subpages.filter((page) => liveHref(page.href)).map((page) => (
             <li key={page.href}>
               <Link
                 href={page.href}

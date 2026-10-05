@@ -1,5 +1,7 @@
 'use client';
 
+import { liveHref } from '@/lib/navigation';
+
 import Link from 'next/link';
 
 import React, { useState, useMemo, useRef } from 'react';
@@ -430,9 +432,9 @@ export default function InteractiveMapExplorerPage() {
                 <div className="text-[11px] font-bold text-[#15803d] uppercase">{selectedPlace.aimag}</div>
                 <div className="text-xs font-black text-neutral-900 truncate">{selectedPlace.name}</div>
               </div>
-              {selectedPlace.moreHref && (
+              {liveHref(selectedPlace.moreHref) && (
                 <Link
-                  href={selectedPlace.moreHref}
+                  href={liveHref(selectedPlace.moreHref)}
                   className="px-3.5 py-2 rounded-xl bg-[#15803d] text-white text-xs font-bold hover:bg-emerald-800 transition-colors whitespace-nowrap"
                 >
                   Дэлгэрэнгүй үзэх →
