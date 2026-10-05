@@ -576,7 +576,7 @@ export default function InspirationShowcase({
                     0{idx + 1}
                   </span>
                   <div className="flex-1 h-[1px] bg-neutral-200" />
-                  <span className="text-xs font-black tracking-[0.25em] text-[#15803d] uppercase">
+                  <span className="text-xs font-black tracking-[0.25em] text-brand-700 uppercase">
                     {sec.tab}
                   </span>
                 </div>
@@ -598,13 +598,13 @@ export default function InspirationShowcase({
                   <div className="grid grid-cols-1 gap-8 items-start lg:grid-cols-12">
                     <div className="lg:col-span-8">
                       <div className="flex gap-3 items-center mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase">
-                        <span className="text-[#15803d]">ОНЦЛОХ НИЙТЛЭЛ</span>
+                        <span className="text-brand-700">ОНЦЛОХ НИЙТЛЭЛ</span>
                         <span>•</span>
                         <span>⏱️ {sec.cover.readTime}</span>
                         <span>•</span>
                         <span>{sec.cover.date}</span>
                       </div>
-                      <h3 className="mb-4 text-3xl font-black tracking-tight leading-tight text-neutral-900 group-hover:text-[#15803d] transition-colors sm:text-4xl">
+                      <h3 className="mb-4 text-3xl font-black tracking-tight leading-tight text-neutral-900 group-hover:text-brand-700 transition-colors sm:text-4xl">
                         {sec.cover.title}
                       </h3>
                       <p className="text-base font-light leading-relaxed text-neutral-600">
@@ -619,7 +619,7 @@ export default function InspirationShowcase({
                         “Онгон дагшин орчин, хүмүүсийн эгэл амьдралын холбоог
                         хамгийн тодоор илэрхийлсэн аяллын шилдэг эссэ.”
                       </p>
-                      <span className="inline-flex gap-2 items-center pb-1 text-xs font-black tracking-wider text-neutral-900 group-hover:text-[#15803d] uppercase border-b border-neutral-900">
+                      <span className="inline-flex gap-2 items-center pb-1 text-xs font-black tracking-wider text-neutral-900 group-hover:text-brand-700 uppercase border-b border-neutral-900">
                         Бүрэн эхийг унших →
                       </span>
                     </div>
@@ -651,7 +651,7 @@ export default function InspirationShowcase({
                           <span>•</span>
                           <span>{item.readTime}</span>
                         </div>
-                        <h4 className="mb-2 text-lg font-bold leading-snug text-neutral-900 group-hover:text-[#15803d] transition-colors line-clamp-2">
+                        <h4 className="mb-2 text-lg font-bold leading-snug text-neutral-900 group-hover:text-brand-700 transition-colors line-clamp-2">
                           {item.title}
                         </h4>
                         <p className="text-xs font-light leading-relaxed text-neutral-500 line-clamp-2">
@@ -662,7 +662,7 @@ export default function InspirationShowcase({
                         <span className="text-[11px] text-neutral-400">
                           {item.date}
                         </span>
-                        <span className="font-bold text-neutral-900 group-hover:text-[#15803d]">
+                        <span className="font-bold text-neutral-900 group-hover:text-brand-700">
                           Унших →
                         </span>
                       </div>
@@ -725,13 +725,13 @@ export default function InspirationShowcase({
                           key={idx}
                           className="flex gap-2 items-center text-xs text-white/90"
                         >
-                          <span className="font-bold text-emerald-400">✓</span>
+                          <span className="font-bold text-brand-400">✓</span>
                           <span>{h}</span>
                         </div>
                       ))}
                     </div>
 
-                    <button className="py-3 w-full text-xs font-bold text-neutral-900 hover:text-white bg-white hover:bg-[#15803d] rounded-2xl shadow-md transition-all cursor-pointer">
+                    <button className="py-3 w-full text-xs font-bold text-neutral-900 hover:text-white bg-white hover:bg-brand-700 rounded-2xl shadow-md transition-all cursor-pointer">
                       {season.name} аяллын хөтөлбөр үзэх →
                     </button>
                   </div>
@@ -748,7 +748,7 @@ export default function InspirationShowcase({
               <div
                 key={style.id}
                 id={style.id}
-                className="group grid overflow-hidden relative grid-cols-1 rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-500 cursor-pointer scroll-mt-28 lg:grid-cols-12 shadow-xs"
+                className="group grid overflow-hidden relative grid-cols-1 rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-500 cursor-pointer scroll-mt-28 lg:grid-cols-12 shadow-xs hover:border-brand-300"
               >
                 {/* Зүүн зураг */}
                 <div className="overflow-hidden relative min-h-[340px] lg:col-span-6 lg:min-h-[420px]">
@@ -771,14 +771,14 @@ export default function InspirationShowcase({
                       {style.tags.map((t, idx) => (
                         <span
                           key={idx}
-                          className="py-1 px-3 text-xs font-bold text-[#15803d] bg-emerald-50 rounded-lg"
+                          className="py-1 px-3 text-xs font-bold text-brand-700 bg-brand-50 rounded-lg"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
 
-                    <h3 className="mb-3 text-2xl font-black text-neutral-900 group-hover:text-[#15803d] transition-colors sm:text-3xl">
+                    <h3 className="mb-3 text-2xl font-black text-neutral-900 group-hover:text-brand-700 transition-colors sm:text-3xl">
                       {style.title}
                     </h3>
 
@@ -795,7 +795,7 @@ export default function InspirationShowcase({
                           key={i}
                           className="flex gap-2 items-center text-xs text-neutral-800"
                         >
-                          <span className="font-bold text-[#15803d]">●</span>
+                          <span className="font-bold text-brand-700">●</span>
                           <span>{f}</span>
                         </div>
                       ))}
@@ -806,7 +806,7 @@ export default function InspirationShowcase({
                     <span className="text-xs font-bold text-neutral-400">
                       Холбогдох аяллууд
                     </span>
-                    <span className="inline-flex gap-1 items-center text-xs font-black text-neutral-900 group-hover:text-[#15803d]">
+                    <span className="inline-flex gap-1 items-center text-xs font-black text-neutral-900 group-hover:text-brand-700">
                       Дэлгэрэнгүй үзэх →
                     </span>
                   </div>
@@ -823,7 +823,7 @@ export default function InspirationShowcase({
               <div
                 key={itin.id}
                 id={itin.id}
-                className="group grid overflow-hidden grid-cols-1 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 scroll-mt-28 lg:grid-cols-12 shadow-xs"
+                className="group grid overflow-hidden grid-cols-1 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 scroll-mt-28 lg:grid-cols-12 shadow-xs hover:border-brand-300"
               >
                 {/* Зүүн зураг ба Хугацаа */}
                 <div className="overflow-hidden relative min-h-[300px] lg:col-span-5">
@@ -839,7 +839,7 @@ export default function InspirationShowcase({
                     ⏱️ {itin.duration}
                   </div>
                   <div className="absolute inset-x-5 bottom-5">
-                    <span className="block mb-1 text-[11px] font-bold text-emerald-400">
+                    <span className="block mb-1 text-[11px] font-bold text-brand-400">
                       МАРШРУТЫН БАРИМЖАА:
                     </span>
                     <p className="text-xs font-medium leading-relaxed text-white drop-shadow-sm">
@@ -851,11 +851,11 @@ export default function InspirationShowcase({
                 {/* Баруун тал: Замын зураглал & Буудлууд */}
                 <div className="flex flex-col justify-between p-8 sm:p-10 lg:col-span-7">
                   <div>
-                    <span className="block mb-2 text-xs font-bold tracking-wider text-[#15803d] uppercase">
+                    <span className="block mb-2 text-xs font-bold tracking-wider text-brand-700 uppercase">
                       ЧИГЛЭЛ: {itin.route}
                     </span>
 
-                    <h3 className="mb-5 text-2xl font-black leading-snug text-neutral-900 group-hover:text-[#15803d] transition-colors">
+                    <h3 className="mb-5 text-2xl font-black leading-snug text-neutral-900 group-hover:text-brand-700 transition-colors">
                       {itin.title}
                     </h3>
 
@@ -866,7 +866,7 @@ export default function InspirationShowcase({
                           key={sIdx}
                           className="flex gap-2 items-center text-xs text-neutral-700"
                         >
-                          <span className="flex shrink-0 justify-center items-center w-5 h-5 text-[10px] font-bold text-white bg-[#15803d] rounded-full">
+                          <span className="flex shrink-0 justify-center items-center w-5 h-5 text-[10px] font-bold text-white bg-brand-700 rounded-full">
                             {sIdx + 1}
                           </span>
                           <span className="line-clamp-1">{stop}</span>
@@ -879,7 +879,7 @@ export default function InspirationShowcase({
                     <span className="text-xs font-bold text-neutral-400">
                       Газрын зураг & Өдрүүдийн хуваарь
                     </span>
-                    <button className="py-2.5 px-5 text-xs font-bold text-white bg-neutral-900 hover:bg-[#15803d] rounded-xl transition-colors cursor-pointer shadow-xs">
+                    <button className="py-2.5 px-5 text-xs font-bold text-white bg-brand-700 hover:bg-brand-800 rounded-xl transition-colors cursor-pointer shadow-xs">
                       Хөтөлбөр татаж авах / Нээх →
                     </button>
                   </div>

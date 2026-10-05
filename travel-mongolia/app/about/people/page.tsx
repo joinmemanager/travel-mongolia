@@ -164,12 +164,12 @@ export default function PeoplePage() {
   };
 
   return (
-    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
+    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-brand-700 selection:text-white">
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2400" alt="Монгол хүн, хэл, үндэстний онцлог" className="absolute inset-0 w-full h-full object-cover brightness-[0.55]" />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
+          <span className="text-brand-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             03. People, Language & Identity
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
@@ -188,7 +188,7 @@ export default function PeoplePage() {
             type="button"
             onClick={() => handleScroll('left')}
             aria-label="Previous"
-            className="absolute left-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-emerald-200 shadow-md flex items-center justify-center text-emerald-800 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+            className="absolute left-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-brand-200 shadow-md flex items-center justify-center text-brand-800 hover:bg-brand-700 hover:text-white transition-all cursor-pointer"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -203,7 +203,7 @@ export default function PeoplePage() {
               <a
                 key={sec.id}
                 href={`#${sec.id}`}
-                className="px-4 py-2 rounded-full bg-emerald-50/70 border border-emerald-100 text-emerald-950 hover:bg-[#15803d] hover:text-white transition-colors whitespace-nowrap shrink-0"
+                className="px-4 py-2 rounded-full bg-brand-50/70 border border-brand-100 text-brand-950 hover:bg-brand-700 hover:text-white transition-colors whitespace-nowrap shrink-0"
               >
                 {sec.title}
               </a>
@@ -214,7 +214,7 @@ export default function PeoplePage() {
             type="button"
             onClick={() => handleScroll('right')}
             aria-label="Next"
-            className="absolute right-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-emerald-200 shadow-md flex items-center justify-center text-emerald-800 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+            className="absolute right-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-brand-200 shadow-md flex items-center justify-center text-brand-800 hover:bg-brand-700 hover:text-white transition-all cursor-pointer"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -243,7 +243,7 @@ export default function PeoplePage() {
                 <div className="pt-2">
                   <a
                     href={liveHref(sec.moreHref)}
-                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
+                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-brand-700 text-white hover:bg-brand-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
                     <svg 
@@ -260,7 +260,7 @@ export default function PeoplePage() {
                 )}
               </div>
 
-              <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
+              <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-brand-100">
                 <img src={sec.imageUrl} alt={sec.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
@@ -269,13 +269,13 @@ export default function PeoplePage() {
               {sec.items.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
+                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-brand-700/50 transition-all duration-300 flex flex-col"
                 >
                   <div className="relative w-full h-48 sm:h-52 overflow-hidden">
                     <img src={item.thumb} alt={item.title} className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-2">
-                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-[#15803d] transition-colors leading-snug">
+                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-brand-700 transition-colors leading-snug">
                       {item.title}
                     </h4>
                     <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed">

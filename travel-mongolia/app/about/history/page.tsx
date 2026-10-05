@@ -109,13 +109,13 @@ const HISTORY_DATA: HistoryPeriod[] = [
 
 export default function HistoryPage() {
   return (
-    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-[#15803d] selection:text-white">
+    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-brand-700 selection:text-white">
       
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=2400" alt="Монголын түүх" className="absolute inset-0 w-full h-full object-cover brightness-[0.58]" />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
+          <span className="text-brand-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             02. History of Mongolia
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
@@ -152,7 +152,7 @@ export default function HistoryPage() {
           >
             {/* Толгойн үе шат ба дугаар */}
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-4xl sm:text-6xl font-black text-[#15803d]">
+              <span className="text-4xl sm:text-6xl font-black text-brand-700">
                 0{idx + 1}
               </span>
               <div className="h-[1px] bg-neutral-200 flex-1" />
@@ -165,7 +165,7 @@ export default function HistoryPage() {
               
               {/* Зүүн тал: Тайлбар болон Баримтууд */}
               <div className="lg:col-span-7">
-                <span className="inline-block bg-emerald-50 text-[#15803d] text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-4">
+                <span className="inline-block bg-brand-50 text-brand-700 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-4">
                   {period.badge}
                 </span>
 
@@ -184,7 +184,7 @@ export default function HistoryPage() {
                   </span>
                   {period.facts.map((fact, fIdx) => (
                     <div key={fIdx} className="flex items-start gap-3 text-base sm:text-lg text-neutral-800">
-                      <span className="text-[#15803d] font-black text-xl leading-none mt-0.5">•</span>
+                      <span className="text-brand-700 font-black text-xl leading-none mt-0.5">•</span>
                       <span className="leading-relaxed font-normal">{fact}</span>
                     </div>
                   ))}
@@ -197,7 +197,7 @@ export default function HistoryPage() {
                   <img src={period.imageUrl} alt={period.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <span className="text-xs uppercase font-bold tracking-widest text-emerald-300 block mb-1">
+                    <span className="text-xs uppercase font-bold tracking-widest text-brand-300 block mb-1">
                       Үе шат 0{idx + 1}
                     </span>
                     <p className="text-base sm:text-lg font-bold text-white">{period.title}</p>
@@ -210,9 +210,9 @@ export default function HistoryPage() {
         ))}
 
         {/* 4. ДАРААГИЙН ХУУДАС РУУ ШИЛЖИХ БАННЕР */}
-        <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-14 flex flex-col sm:flex-row items-center justify-between gap-8">
+        <div className="bg-brand-950 text-white rounded-3xl p-8 sm:p-14 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
-            <span className="text-xs sm:text-sm uppercase tracking-widest text-emerald-400 font-bold block mb-2">
+            <span className="text-xs sm:text-sm uppercase tracking-widest text-brand-400 font-bold block mb-2">
               Дараагийн сэдэв
             </span>
             <h3 className="text-2xl sm:text-4xl font-black">03. Монгол хүн, хэл, үндэстний онцлог</h3>
@@ -220,7 +220,7 @@ export default function HistoryPage() {
           </div>
           <a
             href="/about/people"
-            className="px-8 py-4 bg-[#15803d] hover:bg-emerald-600 text-white text-sm font-bold rounded-2xl transition-colors whitespace-nowrap shadow-sm"
+            className="px-8 py-4 bg-brand-700 hover:bg-brand-600 text-white text-sm font-bold rounded-2xl transition-colors whitespace-nowrap shadow-sm"
           >
             Үргэлжлүүлэн үзэх →
           </a>

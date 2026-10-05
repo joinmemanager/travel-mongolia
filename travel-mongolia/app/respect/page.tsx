@@ -24,22 +24,23 @@ export default function RespectHubPage() {
       {/* Аялагчийн амлалт */}
       <section
         id="pledge"
-        className="scroll-mt-28 p-8 sm:p-10 rounded-3xl bg-[#15803d] text-white shadow-sm"
+        className="scroll-mt-28 p-8 sm:p-10 rounded-3xl bg-white border border-t-4 border-brand-100 border-t-brand-600 shadow-sm"
       >
-        <h2 className="text-2xl sm:text-3xl font-black mb-2">{hub.pledgeTitle}</h2>
-        <p className="mb-8 text-sm text-white/80">{hub.pledgeIntro}</p>
+        <h2 className="text-2xl sm:text-3xl font-black text-brand-950 mb-2">{hub.pledgeTitle}</h2>
+        <p className="mb-8 text-sm text-neutral-700">{hub.pledgeIntro}</p>
         <ol className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {hub.pledge.map((item, i) => (
             <li
               key={item.title}
-              className="flex gap-4 p-5 rounded-2xl bg-white/10 border border-white/15"
+              className="flex gap-4 p-5 rounded-2xl bg-brand-50 border border-brand-100"
             >
-              <span className="text-2xl font-black text-white/60 tabular-nums">
-                {String(i + 1).padStart(2, '0')}
+              {/* Дугаарласан ногоон дугуй */}
+              <span className="flex justify-center items-center w-9 h-9 shrink-0 text-sm font-black text-white bg-brand-700 rounded-full tabular-nums">
+                {i + 1}
               </span>
               <div>
-                <h3 className="text-base font-bold mb-1">{item.title}</h3>
-                <p className="text-sm text-white/85 leading-relaxed">{item.text}</p>
+                <h3 className="text-base font-bold text-brand-950 mb-1">{item.title}</h3>
+                <p className="text-sm text-neutral-700 leading-relaxed">{item.text}</p>
               </div>
             </li>
           ))}
@@ -47,8 +48,8 @@ export default function RespectHubPage() {
       </section>
 
       {/* Дэд хуудсууд */}
-      <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
-        <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-6">
+      <section className="p-8 sm:p-10 rounded-3xl border border-brand-100 bg-brand-50 shadow-sm">
+        <h2 className="text-2xl sm:text-3xl font-black text-brand-950 mb-6">
           {hub.subpagesTitle}
         </h2>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -57,13 +58,18 @@ export default function RespectHubPage() {
             <li key={page.href}>
               <Link
                 href={page.href}
-                className="group block p-6 h-full rounded-2xl bg-[#fcfbf9] border border-neutral-200 hover:border-[#15803d] transition-colors"
+                className="group block p-6 h-full rounded-2xl bg-white border border-t-4 border-brand-100 border-t-brand-600 hover:border-brand-600 hover:shadow-lg hover:shadow-brand-900/10 transition-all"
               >
-                <span className="flex justify-between items-center mb-2 text-lg font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
+                <span className="flex justify-between items-center mb-2 text-lg font-bold text-brand-950 group-hover:text-brand-700 transition-colors">
                   {page.label}
-                  <span aria-hidden="true">→</span>
+                  <span
+                    aria-hidden="true"
+                    className="flex justify-center items-center w-8 h-8 text-brand-700 bg-brand-100 rounded-full"
+                  >
+                    →
+                  </span>
                 </span>
-                <span className="block text-sm text-neutral-600 leading-relaxed">
+                <span className="block text-sm text-neutral-700 leading-relaxed">
                   {page.desc}
                 </span>
               </Link>

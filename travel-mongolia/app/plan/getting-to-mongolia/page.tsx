@@ -33,12 +33,12 @@ export default function GettingToMongoliaPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
       {/* Толгой хэсэг */}
       <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
+            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-brand-700 uppercase">
               05. АЯЛЛАА ТӨЛӨВЛӨХ
             </span>
             <span className="text-neutral-300">•</span>
@@ -71,7 +71,7 @@ export default function GettingToMongoliaPage() {
                 onClick={() => setActiveNav(item.id)}
                 className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                   activeNav === item.id
-                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
+                    ? 'bg-brand-700/10 text-brand-700 font-bold'
                     : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                 }`}
               >
@@ -89,7 +89,7 @@ export default function GettingToMongoliaPage() {
             </Link>
             <Link
               href="/plan/getting-around"
-              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
+              className="text-[11px] font-bold text-brand-700 hover:text-brand-950 flex items-center justify-between px-2"
             >
               <span>Дараах: 03. Дотор аялах</span>
               <span>→</span>
@@ -103,7 +103,7 @@ export default function GettingToMongoliaPage() {
           {/* 01. ОЛОН УЛСЫН НИСЛЭГ */}
           <section id="flights" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 01</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 01</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Олон улсын нислэг
@@ -114,7 +114,7 @@ export default function GettingToMongoliaPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {FLIGHT_ROUTES.map((route, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-[#fcfbf9] border border-neutral-200/80">
+                <div key={i} className="p-4 rounded-2xl bg-brand-50 border border-neutral-200/80">
                   <span className="text-xs font-bold text-neutral-900 block mb-1">
                     ✈️ {route.from}
                   </span>
@@ -131,7 +131,7 @@ export default function GettingToMongoliaPage() {
               ))}
             </div>
 
-            <div className="mt-6 pt-5 border-t border-neutral-100 flex flex-wrap gap-4 text-xs font-semibold text-[#15803d]">
+            <div className="mt-6 pt-5 border-t border-neutral-100 flex flex-wrap gap-4 text-xs font-semibold text-brand-700">
               <a href="https://www.miat.com" target="_blank" rel="noreferrer" className="hover:underline">
                 MIAT Mongolian Airlines (Албан ёсны сайт) ↗
               </a>
@@ -149,7 +149,7 @@ export default function GettingToMongoliaPage() {
           {/* 02. ЧИНГИС ХААН НИСЭХ БУУДАЛ */}
           <section id="airport" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 02</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 02</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               "Чингис Хаан" олон улсын нисэх буудал (UBN)
@@ -159,8 +159,8 @@ export default function GettingToMongoliaPage() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
-                <span className="text-[10px] font-bold text-[#15803d] uppercase tracking-wider block mb-1">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
+                <span className="text-[10px] font-bold text-brand-700 uppercase tracking-wider block mb-1">
                   Сонголт 01
                 </span>
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">🚌 Экспресс Автобус</h4>
@@ -172,8 +172,8 @@ export default function GettingToMongoliaPage() {
                 </span>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
-                <span className="text-[10px] font-bold text-[#15803d] uppercase tracking-wider block mb-1">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
+                <span className="text-[10px] font-bold text-brand-700 uppercase tracking-wider block mb-1">
                   Сонголт 02
                 </span>
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">🚕 Албан ёсны Такси</h4>
@@ -185,8 +185,8 @@ export default function GettingToMongoliaPage() {
                 </span>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
-                <span className="text-[10px] font-bold text-[#15803d] uppercase tracking-wider block mb-1">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
+                <span className="text-[10px] font-bold text-brand-700 uppercase tracking-wider block mb-1">
                   Сонголт 03
                 </span>
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">🚐 Аяллын тосох үйлчилгээ</h4>
@@ -203,7 +203,7 @@ export default function GettingToMongoliaPage() {
           {/* 03. ТӨМӨР ЗАМ */}
           <section id="railway" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 03</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 03</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Транс-Монголын төмөр зам
@@ -213,24 +213,24 @@ export default function GettingToMongoliaPage() {
             </p>
 
             <div className="space-y-3">
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h4 className="text-xs font-bold text-neutral-900">Бээжин ➔ Улаанбаатар (К3 / К23 галт тэрэг)</h4>
                   <p className="text-xs text-neutral-500">Замын-Үүдийн боомтоор орж ирдэг. Нийт аяллын хугацаа 27-30 цаг.</p>
                 </div>
-                <span className="text-xs font-mono font-semibold text-[#15803d] shrink-0">Долоо хоногт 2 удаа</span>
+                <span className="text-xs font-mono font-semibold text-brand-700 shrink-0">Долоо хоногт 2 удаа</span>
               </div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h4 className="text-xs font-bold text-neutral-900">Эрхүү / Улаан-Үд ➔ Улаанбаатар</h4>
                   <p className="text-xs text-neutral-500">Байгал нуурын эргээр тойрч, Сүхбаатарын боомтоор дамжин ирдэг шууд галт тэрэг.</p>
                 </div>
-                <span className="text-xs font-mono font-semibold text-[#15803d] shrink-0">Тогтмол хуваарьтай</span>
+                <span className="text-xs font-mono font-semibold text-brand-700 shrink-0">Тогтмол хуваарьтай</span>
               </div>
             </div>
 
-            <div className="mt-4 text-xs font-semibold text-[#15803d]">
+            <div className="mt-4 text-xs font-semibold text-brand-700">
               <a href="https://eticket.ubtz.mn" target="_blank" rel="noreferrer" className="hover:underline">
                 УБТЗ онлайн тасалбар захиалга (eticket.ubtz.mn) ↗
               </a>
@@ -240,7 +240,7 @@ export default function GettingToMongoliaPage() {
           {/* 04. ХИЛЭЭР НЭВТРЭХ */}
           <section id="borders" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 04</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 04</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Хилийн боомтууд & Автомашинаар нэвтрэх
@@ -251,10 +251,10 @@ export default function GettingToMongoliaPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {BORDER_CROSSINGS.map((b, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
+                <div key={i} className="p-4 rounded-2xl bg-brand-50 border border-neutral-200">
                   <div className="flex items-center justify-between mb-1">
                     <h4 className="text-xs font-bold text-neutral-900">{b.name}</h4>
-                    <span className="text-[10px] font-mono bg-emerald-100 text-[#15803d] px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-mono bg-brand-100 text-brand-700 px-2 py-0.5 rounded">
                       {b.status}
                     </span>
                   </div>

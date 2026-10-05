@@ -53,12 +53,12 @@ export default function SafetyInfoPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
       {/* Толгой хэсэг */}
       <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
+            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-brand-700 uppercase">
               05. АЯЛЛАА ТӨЛӨВЛӨХ
             </span>
             <span className="text-neutral-300">•</span>
@@ -91,7 +91,7 @@ export default function SafetyInfoPage() {
                 onClick={() => setActiveNav(item.id)}
                 className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                   activeNav === item.id
-                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
+                    ? 'bg-brand-700/10 text-brand-700 font-bold'
                     : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                 }`}
               >
@@ -109,7 +109,7 @@ export default function SafetyInfoPage() {
             </Link>
             <Link
               href="/planner"
-              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
+              className="text-[11px] font-bold text-brand-700 hover:text-brand-950 flex items-center justify-between px-2"
             >
               <span>Дараах: 07. Төлөвлөгч хэрэгсэл</span>
               <span>→</span>
@@ -123,13 +123,13 @@ export default function SafetyInfoPage() {
           {/* 01. ЕРӨНХИЙ АЮУЛГҮЙ БАЙДАЛ */}
           <section id="safety" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 01</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 01</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Ерөнхий аюулгүй байдал
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">🏙️ Хотод (Улаанбаатар)</h4>
                 <ul className="text-xs text-neutral-600 space-y-2 leading-relaxed">
                   <li>• Зах, автобусны буудал, жуулчдын бөөгнөрөл ихтэй газруудад үүргэвч, түрийвчээ сонор сэрэмжтэй авч явах.</li>
@@ -138,7 +138,7 @@ export default function SafetyInfoPage() {
                 </ul>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">🏕️ Хөдөө хээр аялалд</h4>
                 <ul className="text-xs text-neutral-600 space-y-2 leading-relaxed">
                   <li>• Цаг агаар огцом хувирдаг (зун ч мөндөр орох, цасан шуурга тавих магадлалтай) тул дулаан хувцсаа үргэлж бэлэн байлгах.</li>
@@ -152,27 +152,27 @@ export default function SafetyInfoPage() {
           {/* 02. ОРОН НУТГИЙН ХУУЛЬ ДҮРЭМ */}
           <section id="local-laws" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 02</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 02</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Орон нутгийн хууль & Дүрэм журам
             </h2>
             <div className="space-y-4">
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">🚁 Дроны дүрэм (UAV Regulation)</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed">
                   Монгол Улсад дроныг зөвхөн үзэгдэх орчинд (VLOS), 120 метрээс дээшгүй өндөрт нисгэнэ. Нисэх буудал, цэргийн бааз, хилийн бүсээс 10 км-ийн зайд зөвшөөрөлгүй нисгэвэл хуулийн хариуцлага хүлээлгэдэг.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">🌲 Тусгай хамгаалалттай газар нутгийн дүрэм (National Parks)</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed">
                   Дархан цаазат болон БЦГ-т нэвтрэхэд хураамж төлдөг. Ил задгай гал түлэхийг хатуу хориглох бөгөөд хогоо заавал буцааж авч гарах (Leave No Trace) дүрэм үйлчилнэ.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">🛂 Хилийн зурвас бүсэд зорчих зөвшөөрөл</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed">
                   Алтай Таван Богд, Мэнэнгийн тал зэрэг улсын хилд ойр газруудаар аялах бол Хилийн цэргийн удирдах газраас урьдчилан зөвшөөрөл авах шаардлагатай. (Тур операторууд ихэвчлэн үүнийг зохицуулж өгдөг).
@@ -184,7 +184,7 @@ export default function SafetyInfoPage() {
           {/* 03. АЯЛАГЧИЙН ЁС ЗҮЙ */}
           <section id="etiquette" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 03</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 03</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Аялагчийн ёс зүй & Цээрлэх зүйлс (Nomadic Taboos)
@@ -194,8 +194,8 @@ export default function SafetyInfoPage() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200">
-                <span className="text-xs font-bold text-[#15803d] block mb-1">Зөв үйлдэл (Do’s)</span>
+              <div className="p-4 rounded-xl bg-brand-50/50 border border-brand-200">
+                <span className="text-xs font-bold text-brand-700 block mb-1">Зөв үйлдэл (Do’s)</span>
                 <ul className="text-xs text-neutral-700 space-y-1.5 list-disc list-inside">
                   <li>Гэрт ороод баруун талаар нь тойрч суух</li>
                   <li>Цай, хоолыг баруун гараараа эсвэл хоёр гардан авах</li>
@@ -219,7 +219,7 @@ export default function SafetyInfoPage() {
           {/* 04. ЭРҮҮЛ МЭНД & ЭМИЙН САН */}
           <section id="health" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 04</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 04</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Эрүүл мэнд & Эмийн бэлтгэл
@@ -229,15 +229,15 @@ export default function SafetyInfoPage() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">Хоол шингээлт</h4>
                 <p className="text-xs text-neutral-600">Монгол үндэсний махан хоол, цагаан идээнд дасаагүйгээс ходоод хямрахад уух эм, фермент, идэвхжүүлсэн нүүрс.</p>
               </div>
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">Харшил & Шавьж</h4>
                 <p className="text-xs text-neutral-600">Тал хээрийн ургамлын тоосны харшлын эм, тайга, нуурын хөвөөний шумуул, хөх түрүүний эсрэг цацлага (DEET).</p>
               </div>
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">Нар, хуурайшилт</h4>
                 <p className="text-xs text-neutral-600">Монгол орны хуурай, нарлаг уур амьсгалаас хамгаалах өндөр хамгаалалттай нарны тос, хамрын чийгшүүлэгч дусаалга.</p>
               </div>
@@ -247,7 +247,7 @@ export default function SafetyInfoPage() {
           {/* 05. EMERGENCY ТУСЛАМЖИЙН УТАС */}
           <section id="emergency" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 05</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 05</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Шуурхай тусламж & Emergency утаснууд
@@ -258,14 +258,14 @@ export default function SafetyInfoPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {EMERGENCY_NUMBERS.map((item, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200 flex items-center justify-between">
+                <div key={idx} className="p-5 rounded-2xl bg-brand-50 border border-neutral-200 flex items-center justify-between">
                   <div>
                     <h4 className="text-xs font-bold text-neutral-900 mb-0.5">{item.name}</h4>
                     <p className="text-[11px] text-neutral-500">{item.note}</p>
                   </div>
                   <a
                     href={`tel:${item.number}`}
-                    className="px-4 py-2 rounded-xl bg-emerald-50 text-[#15803d] font-mono font-black text-base hover:bg-[#15803d] hover:text-white transition-all shadow-sm"
+                    className="px-4 py-2 rounded-xl bg-brand-50 text-brand-700 font-mono font-black text-base hover:bg-brand-700 hover:text-white transition-all shadow-sm"
                   >
                     📞 {item.number}
                   </a>
@@ -281,7 +281,7 @@ export default function SafetyInfoPage() {
           {/* 06. ТҮГЭЭМЭЛ АСУУЛТ ХАРИУЛТ (FAQ) */}
           <section id="faq" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 06</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 06</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Түгээмэл асуултууд (FAQ)
@@ -297,12 +297,12 @@ export default function SafetyInfoPage() {
                     <button
                       type="button"
                       onClick={() => toggleFaq(idx)}
-                      className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#fcfbf9] transition-colors cursor-pointer"
+                      className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-brand-50 transition-colors cursor-pointer"
                     >
                       <span className="text-xs sm:text-sm font-bold text-neutral-900">
                         {item.q}
                       </span>
-                      <span className="text-sm font-mono text-[#15803d] shrink-0">
+                      <span className="text-sm font-mono text-brand-700 shrink-0">
                         {isOpen ? '−' : '+'}
                       </span>
                     </button>

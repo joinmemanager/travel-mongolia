@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function StrictlyProtectedPage() {
   return (
-    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-[#15803d] selection:text-white">
+    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-brand-700 selection:text-white">
       
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
@@ -19,7 +19,7 @@ export default function StrictlyProtectedPage() {
           className="object-cover brightness-[0.58]"
         />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
+          <span className="text-brand-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             Special Protected Areas
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
@@ -38,7 +38,7 @@ export default function StrictlyProtectedPage() {
           <a href="#bogdkhan" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Богдхан уул</a>
           <a href="#gobi" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Их говийн ДЦГ</a>
           <a href="#khokh-serkh" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Хөх сэрхийн нуруу</a>
-          <a href="#rules" className="px-5 py-2.5 rounded-full bg-[#15803d] text-white whitespace-nowrap shadow-xs">Мөрдөх журам</a>
+          <a href="#rules" className="px-5 py-2.5 rounded-full bg-brand-700 text-white whitespace-nowrap shadow-xs">Мөрдөх журам</a>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ export default function StrictlyProtectedPage() {
         {/* 1. ДАРХАН ЦААЗЫН ТУХАЙ */}
         <section id="about" className="scroll-mt-28">
           <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">01. Хамгаалалтын статус</span>
+            <span className="text-sm font-black uppercase tracking-widest text-brand-700 block mb-2">01. Хамгаалалтын статус</span>
             <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
               Дархан цааз ба онгон байгаль
             </h2>
@@ -87,14 +87,14 @@ export default function StrictlyProtectedPage() {
         {/* 2. БОГДХАН УУЛ */}
         <section id="bogdkhan" className="scroll-mt-28">
           <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">02. Түүхэн өв</span>
+            <span className="text-sm font-black uppercase tracking-widest text-brand-700 block mb-2">02. Түүхэн өв</span>
             <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
               Богдхан уулын дархан цаазат газар
             </h2>
           </div>
 
           <div className="bg-neutral-50 p-8 sm:p-14 rounded-3xl border border-neutral-200 space-y-6">
-            <span className="text-xs sm:text-sm font-black uppercase tracking-widest text-[#15803d] block">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-widest text-brand-700 block">
               1778 онд албан ёсоор дархалсан дэлхийн анхны дархан цаазат уул
             </span>
             <h3 className="text-2xl sm:text-4xl font-black text-neutral-900 leading-tight">
@@ -109,7 +109,7 @@ export default function StrictlyProtectedPage() {
         {/* 3. ИХ ГОВИЙН ДЦГ */}
         <section id="gobi" className="scroll-mt-28">
           <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">03. Говийн экосистем</span>
+            <span className="text-sm font-black uppercase tracking-widest text-brand-700 block mb-2">03. Говийн экосистем</span>
             <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
               Их говийн дархан цаазат газар
             </h2>
@@ -117,7 +117,7 @@ export default function StrictlyProtectedPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="border border-neutral-200 p-8 sm:p-10 rounded-3xl bg-white shadow-xs space-y-4">
-              <span className="text-sm uppercase tracking-widest text-[#15803d] font-black block">А хэсэг</span>
+              <span className="text-sm uppercase tracking-widest text-brand-700 font-black block">А хэсэг</span>
               <h4 className="text-2xl font-bold text-neutral-900">Мазаалай ба Хавтгай</h4>
               <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
                 Дэлхийд цор ганц говьд амьдардаг мазаалай баавгай болон зэрлэг тэмээ хавтгайн хамгийн сүүлчийн уугуул нутаг юм.
@@ -136,14 +136,14 @@ export default function StrictlyProtectedPage() {
         {/* 4. МӨРДӨХ ЖУРАМ */}
         <section id="rules" className="scroll-mt-28">
           <div className="border-b border-neutral-200 pb-5 mb-10">
-            <span className="text-sm font-black uppercase tracking-widest text-[#15803d] block mb-2">04. Журам ба горим</span>
+            <span className="text-sm font-black uppercase tracking-widest text-brand-700 block mb-2">04. Журам ба горим</span>
             <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight">
               Аялагчдын анхаарах зүйлс
             </h2>
           </div>
 
-          <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-14 space-y-6">
-            <h3 className="text-2xl sm:text-3xl font-bold text-emerald-400">
+          <div className="bg-brand-950 text-white rounded-3xl p-8 sm:p-14 space-y-6">
+            <h3 className="text-2xl sm:text-3xl font-bold text-brand-400">
               Дархан цаазат бүсэд нэвтрэхэд тавигдах шаардлага
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 text-base sm:text-lg">

@@ -15,7 +15,7 @@ export default async function PhotoVideoStoriesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
       <HubHeader
         crumbs={[
           { label: 'Нүүр', href: '/' },
@@ -34,17 +34,17 @@ export default async function PhotoVideoStoriesPage() {
             <li key={story.id}>
               <Link
                 href={story.href}
-                className="group block p-6 h-full bg-white rounded-3xl border border-neutral-200/80 shadow-sm hover:border-[#15803d] transition-colors"
+                className="group block p-6 h-full bg-white rounded-3xl border border-t-4 border-brand-100 border-t-brand-600 shadow-sm hover:border-brand-600 hover:shadow-lg hover:shadow-brand-900/10 transition-all"
               >
-                <h2 className="mb-2 text-lg font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
+                <h2 className="mb-2 text-lg font-bold text-brand-950 group-hover:text-brand-700 transition-colors">
                   {story.title}
                 </h2>
-                <p className="text-sm text-neutral-600 leading-relaxed">{story.excerpt}</p>
+                <p className="text-sm text-neutral-700 leading-relaxed">{story.excerpt}</p>
               </Link>
             </li>
           ))}
           <li>
-            <div className="flex items-center justify-center p-6 h-full min-h-32 rounded-3xl border border-dashed border-neutral-300 text-sm text-neutral-500">
+            <div className="flex items-center justify-center p-6 h-full min-h-32 rounded-3xl border-2 border-dashed border-brand-200 text-sm font-semibold text-brand-800">
               Фото, видео түүхүүд удахгүй нэмэгдэнэ
             </div>
           </li>

@@ -31,7 +31,7 @@ export default function HeritagePageClient({
   };
 
   return (
-    <main className="w-full bg-white text-neutral-900 pb-28 font-sans selection:bg-[#15803d] selection:text-white">
+    <main className="w-full bg-white text-neutral-900 pb-28 font-sans selection:bg-brand-700 selection:text-white">
       <section className="relative w-full h-[45vh] min-h-[350px] flex items-center justify-center overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2400"
@@ -42,7 +42,7 @@ export default function HeritagePageClient({
           className="object-cover brightness-[0.45]"
         />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-xs sm:text-sm font-black mb-3 block">
+          <span className="text-brand-400 uppercase tracking-[0.3em] text-xs sm:text-sm font-black mb-3 block">
             05. Heritage Destinations
           </span>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-3">
@@ -60,7 +60,7 @@ export default function HeritagePageClient({
             type="button"
             onClick={() => handleScroll('left')}
             aria-label="Previous"
-            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-brand-700 hover:text-white transition-all cursor-pointer"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -77,7 +77,7 @@ export default function HeritagePageClient({
               <a  
               key={sec.id}
                 href={`#${sec.id}`}
-                className="px-4 py-2 rounded-full bg-neutral-100 hover:bg-[#15803d] text-neutral-800 hover:text-white transition-colors whitespace-nowrap shrink-0"
+                className="px-4 py-2 rounded-full bg-neutral-100 hover:bg-brand-700 text-neutral-800 hover:text-white transition-colors whitespace-nowrap shrink-0"
               >
                 {sec.title}
               </a>
@@ -88,7 +88,7 @@ export default function HeritagePageClient({
             type="button"
             onClick={() => handleScroll('right')}
             aria-label="Next"
-            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-brand-700 hover:text-white transition-all cursor-pointer"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -104,7 +104,7 @@ export default function HeritagePageClient({
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 tracking-tight">
                 {sec.title}
               </h2>
-              <span className="text-xs sm:text-sm font-bold text-[#15803d] bg-emerald-50 px-4 py-1 rounded-full border border-emerald-200">
+              <span className="text-xs sm:text-sm font-bold text-brand-700 bg-brand-50 px-4 py-1 rounded-full border border-brand-200">
                 {sec.count}
               </span>
             </div>
@@ -116,14 +116,14 @@ export default function HeritagePageClient({
 
               <Link
                 href={`/destination/heritage/${sec.id}`}
-                className="group relative rounded-3xl overflow-hidden bg-emerald-50/70 border-2 border-dashed border-emerald-300 hover:border-[#15803d] hover:bg-emerald-100/70 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center h-80 sm:h-96 cursor-pointer shadow-sm hover:shadow-xl"
+                className="group relative rounded-3xl overflow-hidden bg-brand-50/70 border-2 border-dashed border-brand-300 hover:border-brand-700 hover:bg-brand-100/70 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center h-80 sm:h-96 cursor-pointer shadow-sm hover:shadow-xl"
               >
-                <div className="w-14 h-14 rounded-full bg-[#15803d] text-white flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-800 transition-all shadow-md">
+                <div className="w-14 h-14 rounded-full bg-brand-700 text-white flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-brand-800 transition-all shadow-md">
                   <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </div>
-                <span className="text-base font-black text-[#15803d] uppercase tracking-wider">
+                <span className="text-base font-black text-brand-700 uppercase tracking-wider">
                   +{sec.remainingCount} дурсгал
                 </span>
                 <span className="text-sm sm:text-base text-neutral-900 font-extrabold mt-1">

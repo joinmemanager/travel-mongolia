@@ -285,7 +285,7 @@ export default function AboutShowcase({
                   isImageLeft ? 'lg:pl-4' : 'lg:col-start-1 lg:pr-4'
                 }`}
               >
-                <span className="mb-3 text-xs font-bold tracking-wider text-emerald-700 uppercase">
+                <span className="mb-3 text-xs font-bold tracking-wider text-brand-700 uppercase">
                   {sec.category}
                 </span>
                 <h2 className="mb-6 text-3xl font-bold tracking-tight leading-tight text-neutral-900 sm:text-4xl">

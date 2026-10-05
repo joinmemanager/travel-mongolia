@@ -120,7 +120,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               translate="no"
               className="notranslate whitespace-nowrap text-2xl font-black tracking-tight text-gray-900 sm:text-3xl"
             >
-              Mongolia<span className="text-[#15803d]">.</span>
+              Mongolia<span className="text-brand-700">.</span>
             </span>
           </Link>
 
@@ -145,14 +145,14 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                     onClick={() => setActiveMenu(isActive ? null : section.id)}
                     className={`whitespace-nowrap text-[13px] min-[1240px]:text-sm xl:text-[15px] font-semibold transition-colors flex items-center gap-1 py-2 cursor-pointer ${
                       isActive
-                        ? 'text-[#15803d]'
+                        ? 'text-brand-700'
                         : 'text-gray-700 hover:text-black'
                     }`}
                   >
                     <span {...labelProps}>{labelOf(section)}</span>
                     <svg
                       className={`w-3 h-3 transition-transform duration-200 ${
-                        isActive ? 'rotate-180 text-[#15803d]' : 'text-gray-400'
+                        isActive ? 'rotate-180 text-brand-700' : 'text-gray-400'
                       }`}
                       fill="none"
                       viewBox="0 0 24 24"
@@ -180,7 +180,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               className="flex gap-2 items-center py-2 px-3 text-sm font-semibold text-gray-700 hover:text-black hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             >
               <svg
-                className="w-4 h-4 text-[#15803d]"
+                className="w-4 h-4 text-brand-700"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -201,7 +201,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                 onClick={() => setIsLangOpen(!isLangOpen)}
                 className="flex gap-2 items-center py-1.5 px-3 text-xs font-bold text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors cursor-pointer"
               >
-                <span className="font-black text-[#15803d]">
+                <span className="font-black text-brand-700">
                   {currentLang.label}
                 </span>
                 <span className="min-[1200px]:hidden">{currentLang.name}</span>
@@ -220,7 +220,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                       onClick={() => handleLanguageChange(item.code)}
                       className={`w-full flex items-center justify-between px-3.5 py-2 text-xs text-left hover:bg-neutral-50 transition-colors ${
                         selectedLang === item.code
-                          ? 'text-[#15803d] font-bold bg-green-50/60'
+                          ? 'text-brand-700 font-bold bg-brand-50/60'
                           : 'text-neutral-700'
                       }`}
                     >
@@ -281,7 +281,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                 }
                 className={`shrink-0 py-2 px-4 text-sm font-semibold rounded-full border transition-colors cursor-pointer ${
                   activeMenu === section.id
-                    ? 'text-white bg-[#15803d] border-[#15803d]'
+                    ? 'text-white bg-brand-700 border-brand-700'
                     : 'text-gray-700 bg-white border-gray-200 hover:border-gray-400'
                 }`}
               >
@@ -333,7 +333,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                       >
                         <span
                           {...labelProps}
-                          className={`block text-xs font-black tracking-wider text-[#15803d] uppercase group-hover:underline ${labelProps.className || ''}`}
+                          className={`block text-xs font-black tracking-wider text-brand-700 uppercase group-hover:underline ${labelProps.className || ''}`}
                         >
                           {labelOf(item)}
                         </span>
@@ -351,7 +351,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                                 item={child}
                                 english={isEnglish}
                                 onClick={closeMenu}
-                                className="block hover:text-[#15803d] transition-colors"
+                                className="block hover:text-brand-700 transition-colors"
                                 badgeClassName="ml-2 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
                               >
                                 <span {...labelProps}>{labelOf(child)}</span>
@@ -400,7 +400,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Юу хайж байна? (Жишээ: Хөвсгөл, Виз, Төлөвлөгч, Бааз, Машин...)"
-                className="py-3.5 px-5 w-full text-sm font-medium text-neutral-900 placeholder:text-neutral-400 bg-neutral-50 focus:bg-white rounded-2xl border border-neutral-200 focus:border-[#15803d] outline-none transition-all"
+                className="py-3.5 px-5 w-full text-sm font-medium text-neutral-900 placeholder:text-neutral-400 bg-neutral-50 focus:bg-white rounded-2xl border border-neutral-200 focus:border-brand-700 outline-none transition-all"
                 autoFocus
               />
               {searchQuery && (
@@ -436,7 +436,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                         key={item}
                         type="button"
                         onClick={() => setSearchQuery(item)}
-                        className="py-1.5 px-3 text-xs font-medium text-neutral-700 hover:text-white bg-neutral-100 hover:bg-[#15803d] rounded-xl transition-colors cursor-pointer"
+                        className="py-1.5 px-3 text-xs font-medium text-neutral-700 hover:text-white bg-neutral-100 hover:bg-brand-700 rounded-xl transition-colors cursor-pointer"
                       >
                         {item}
                       </button>
@@ -600,13 +600,13 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                         setIsSearchOpen(false);
                         setSearchQuery('');
                       }}
-                      className="group block p-3.5 bg-neutral-50 hover:bg-emerald-50/60 rounded-2xl border border-neutral-100 hover:border-emerald-200 transition-all"
+                      className="group block p-3.5 bg-neutral-50 hover:bg-brand-50/60 rounded-2xl border border-neutral-100 hover:border-brand-200 transition-all"
                     >
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-xs font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
+                        <span className="text-xs font-bold text-neutral-900 group-hover:text-brand-700 transition-colors">
                           {item.title}
                         </span>
-                        <span className="py-0.5 px-2 font-mono text-[10px] font-bold text-neutral-600 group-hover:text-[#15803d] bg-neutral-200/60 group-hover:bg-emerald-100 rounded transition-colors">
+                        <span className="py-0.5 px-2 font-mono text-[10px] font-bold text-neutral-600 group-hover:text-brand-700 bg-neutral-200/60 group-hover:bg-brand-100 rounded transition-colors">
                           {item.category}
                         </span>
                       </div>

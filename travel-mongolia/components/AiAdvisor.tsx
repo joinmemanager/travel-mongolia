@@ -61,7 +61,7 @@ export default function AiAdvisor({
   return (
     <div className="flex flex-col p-6 bg-[#fdf4f5] rounded-2xl border border-red-100 shadow-sm">
       <div className="flex flex-col items-center mb-4 text-center">
-        <div className="flex justify-center items-center mb-3 w-12 h-12 bg-[#15803d] rounded-full shadow-md">
+        <div className="flex justify-center items-center mb-3 w-12 h-12 bg-brand-700 rounded-full shadow-md">
           <svg
             className="w-6 h-6 text-white"
             fill="currentColor"
@@ -131,12 +131,12 @@ export default function AiAdvisor({
           onChange={(e) => setInput(e.target.value)}
           placeholder="Өөр асуулт асуух..."
           disabled={loading}
-          className="flex-1 py-2.5 px-3.5 text-xs text-gray-800 placeholder:text-gray-400 bg-white rounded-xl border border-red-200 focus:outline-none focus:ring-2 focus:ring-[#15803d]"
+          className="flex-1 py-2.5 px-3.5 text-xs text-gray-800 placeholder:text-gray-400 bg-white rounded-xl border border-red-200 focus:outline-none focus:ring-2 focus:ring-brand-700"
         />
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="py-2.5 px-4 text-xs font-semibold text-white bg-[#15803d] hover:bg-[#b80015] rounded-xl disabled:opacity-50 transition-colors cursor-pointer"
+          className="py-2.5 px-4 text-xs font-semibold text-white bg-brand-700 hover:bg-[#b80015] rounded-xl disabled:opacity-50 transition-colors cursor-pointer"
         >
           Илгээх
         </button>

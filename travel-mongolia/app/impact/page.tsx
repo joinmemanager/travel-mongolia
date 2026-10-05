@@ -36,13 +36,18 @@ function Section({
   return (
     <section
       id={id}
-      className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm"
+      // Цагаан болон цайвар ногоон дэвсгэрийг ээлжлэн, дээд талдаа ногоон зураас
+      className={`scroll-mt-28 p-8 sm:p-10 rounded-3xl border border-t-4 border-brand-100 border-t-brand-600 shadow-sm ${
+        index % 2 === 1 ? 'bg-white' : 'bg-brand-50'
+      }`}
     >
-      <span className="block mb-2 text-[11px] font-mono font-bold text-[#15803d]">
-        {String(index).padStart(2, '0')}
-      </span>
-      <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">{title}</h2>
-      <p className="mb-6 text-sm text-neutral-600 leading-relaxed max-w-3xl">{intro}</p>
+      <div className="flex gap-4 items-center mb-4">
+        <span className="flex justify-center items-center w-10 h-10 shrink-0 text-sm font-black text-brand-800 bg-brand-100 rounded-full">
+          {String(index).padStart(2, '0')}
+        </span>
+        <h2 className="text-2xl sm:text-3xl font-black text-brand-950">{title}</h2>
+      </div>
+      <p className="mb-6 text-sm text-neutral-700 leading-relaxed max-w-3xl">{intro}</p>
       {children}
     </section>
   );
@@ -50,7 +55,7 @@ function Section({
 
 function EmptyNote({ text }: { text: string }) {
   return (
-    <div className="flex items-center justify-center p-6 min-h-24 rounded-2xl border border-dashed border-neutral-300 text-sm text-neutral-500">
+    <div className="flex items-center justify-center p-6 min-h-24 rounded-2xl border-2 border-dashed border-brand-200 bg-white text-sm font-semibold text-brand-800">
       {text}
     </div>
   );
@@ -58,10 +63,7 @@ function EmptyNote({ text }: { text: string }) {
 
 function PartnerButton({ label, subject }: { label: string; subject: string }) {
   return (
-    <a
-      href={partnerMailto(subject)}
-      className="inline-flex gap-2 items-center py-3 px-6 text-sm font-bold text-white bg-neutral-900 hover:bg-[#15803d] rounded-full transition-colors"
-    >
+    <a href={partnerMailto(subject)} className="btn-primary">
       {label}
       <span aria-hidden="true">→</span>
     </a>
@@ -73,7 +75,7 @@ export default async function ImpactHubPage() {
   const provinces = (await getProvinceLinks()).filter((p) => liveHref(p.href));
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
       <HubHeader
         crumbs={[
           { label: 'Нүүр', href: '/' },
@@ -87,8 +89,8 @@ export default async function ImpactHubPage() {
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 flex flex-col lg:flex-row gap-12 items-start">
         {/* Зүүн талын хэсгийн жагсаалт */}
-        <aside className="hidden lg:block w-64 shrink-0 sticky top-28 space-y-2 bg-white p-5 rounded-2xl border border-neutral-200/80 shadow-sm">
-          <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-3 px-2">
+        <aside className="hidden lg:block w-64 shrink-0 sticky top-28 space-y-2 bg-white p-5 rounded-2xl border border-brand-100 shadow-sm">
+          <span className="text-[10px] font-bold tracking-widest text-brand-800 uppercase block mb-3 px-2">
             Хэсгүүд
           </span>
           <nav className="space-y-1">
@@ -96,7 +98,7 @@ export default async function ImpactHubPage() {
               <a
                 key={sec.id}
                 href={`#${sec.id}`}
-                className="block px-3 py-2 rounded-xl text-xs font-semibold text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 transition-all"
+                className="block px-3 py-2 rounded-xl text-xs font-semibold text-neutral-700 hover:bg-brand-50 hover:text-brand-800 transition-all"
               >
                 {String(i + 1).padStart(2, '0')}. {sec.title}
               </a>
@@ -111,10 +113,22 @@ export default async function ImpactHubPage() {
               {hub.localImpact.metrics.map((metric) => (
                 <li
                   key={metric}
-                  className="p-6 rounded-2xl bg-[#fcfbf9] border border-neutral-200"
+                  className="flex gap-4 items-start p-6 rounded-2xl bg-white border border-brand-100"
                 >
-                  <span className="block mb-2 text-sm font-bold text-neutral-900">{metric}</span>
-                  <span className="text-xs font-semibold text-neutral-400">Мэдээлэл удахгүй</span>
+                  {/* Цайвар ногоон дугуй дэвсгэртэй icon */}
+                  <span
+                    aria-hidden="true"
+                    className="flex justify-center items-center w-10 h-10 shrink-0 bg-brand-100 rounded-full"
+                  >
+                    <svg className="w-5 h-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M7 15l4-4 3 3 5-6" />
+                    </svg>
+                  </span>
+                  <span>
+                    <span className="block mb-1 text-sm font-bold text-brand-950">{metric}</span>
+                    {/* Тоо зохиохгүй: бодит өгөгдөл цугларахаас өмнө */}
+                    <span className="text-xs font-semibold text-neutral-600">Мэдээлэл удахгүй</span>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -136,13 +150,13 @@ export default async function ImpactHubPage() {
                   <li key={p.href}>
                     <Link
                       href={p.href}
-                      className="group block p-5 h-full rounded-2xl bg-[#fcfbf9] border border-neutral-200 hover:border-[#15803d] transition-colors"
+                      className="group block p-5 h-full rounded-2xl bg-white border border-brand-100 hover:border-brand-600 hover:shadow-lg hover:shadow-brand-900/10 transition-all"
                     >
-                      <span className="block font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
+                      <span className="block font-bold text-brand-950 group-hover:text-brand-700 transition-colors">
                         {p.title}
                       </span>
                       {p.center && (
-                        <span className="block mt-1 text-xs text-neutral-500">{p.center}</span>
+                        <span className="block mt-1 text-xs text-neutral-600">{p.center}</span>
                       )}
                     </Link>
                   </li>
@@ -163,12 +177,12 @@ export default async function ImpactHubPage() {
             <ol className="space-y-4">
               {hub.donors.outcomes.map((outcome, i) => (
                 <li key={outcome.title} className="flex gap-4">
-                  <span className="text-xl font-black text-[#15803d]/50 tabular-nums">
-                    {String(i + 1).padStart(2, '0')}
+                  <span className="flex justify-center items-center w-9 h-9 shrink-0 text-sm font-black text-white bg-brand-700 rounded-full tabular-nums">
+                    {i + 1}
                   </span>
                   <div>
-                    <h3 className="text-base font-bold text-neutral-900">{outcome.title}</h3>
-                    <p className="text-sm text-neutral-600 leading-relaxed">{outcome.text}</p>
+                    <h3 className="text-base font-bold text-brand-950">{outcome.title}</h3>
+                    <p className="text-sm text-neutral-700 leading-relaxed">{outcome.text}</p>
                   </div>
                 </li>
               ))}

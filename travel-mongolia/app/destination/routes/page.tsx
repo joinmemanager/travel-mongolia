@@ -207,7 +207,7 @@ export default function ScenicRoutesPage() {
   };
 
   return (
-    <main className="w-full bg-[#f8fafc] text-neutral-900 pb-20 font-sans selection:bg-[#15803d] selection:text-white">
+    <main className="w-full bg-[#f8fafc] text-neutral-900 pb-20 font-sans selection:bg-brand-700 selection:text-white">
       
      {/* 1. HERO ТОМ ЗУРАГТАЙ ТОЛГОЙ ХЭСЭГ */}
       <section className="relative w-full h-[45vh] min-h-[350px] flex items-center justify-center overflow-hidden">
@@ -220,7 +220,7 @@ export default function ScenicRoutesPage() {
           className="object-cover brightness-[0.45]"
         />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-xs sm:text-sm font-black mb-3 block">
+          <span className="text-brand-400 uppercase tracking-[0.3em] text-xs sm:text-sm font-black mb-3 block">
             06. Scenic Routes & Travel Corridors
           </span>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-3">
@@ -240,7 +240,7 @@ export default function ScenicRoutesPage() {
             type="button"
             onClick={() => handleScroll('left')}
             aria-label="Previous"
-            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-brand-700 hover:text-white transition-all cursor-pointer"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -258,7 +258,7 @@ export default function ScenicRoutesPage() {
                 onClick={() => setSelectedRoute(route)}
                 className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                   selectedRoute.id === route.id
-                    ? 'bg-[#15803d] text-white shadow-md shadow-emerald-700/25 scale-102'
+                    ? 'bg-brand-700 text-white shadow-md shadow-brand-700/25 scale-102'
                     : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
                 }`}
               >
@@ -272,7 +272,7 @@ export default function ScenicRoutesPage() {
             type="button"
             onClick={() => handleScroll('right')}
             aria-label="Next"
-            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
+            className="shrink-0 w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center text-neutral-700 hover:bg-brand-700 hover:text-white transition-all cursor-pointer"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -299,7 +299,7 @@ export default function ScenicRoutesPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4 text-white">
-                  <span className="text-[10px] font-bold text-emerald-300 uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold text-brand-300 uppercase tracking-wider block">
                     {selectedRoute.subtitle}
                   </span>
                   <h2 className="text-xl sm:text-2xl font-black">{selectedRoute.name}</h2>
@@ -313,7 +313,7 @@ export default function ScenicRoutesPage() {
                 </div>
                 <div className="p-3 bg-neutral-50 rounded-xl border border-neutral-100">
                   <span className="text-neutral-400 block text-[11px]">Замын урт:</span>
-                  <span className="font-extrabold text-[#15803d] text-sm">📍 {selectedRoute.distance}</span>
+                  <span className="font-extrabold text-brand-700 text-sm">📍 {selectedRoute.distance}</span>
                 </div>
               </div>
 
@@ -329,10 +329,10 @@ export default function ScenicRoutesPage() {
                   {selectedRoute.stops.map((stop, i) => (
                     <div
                       key={i}
-                      className="flex items-center justify-between text-xs p-2 rounded-xl bg-neutral-50 hover:bg-emerald-50/60 border border-neutral-100 transition-colors"
+                      className="flex items-center justify-between text-xs p-2 rounded-xl bg-neutral-50 hover:bg-brand-50/60 border border-neutral-100 transition-colors"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="w-5 h-5 rounded-full bg-[#15803d] text-white flex items-center justify-center font-bold text-[10px]">
+                        <span className="w-5 h-5 rounded-full bg-brand-700 text-white flex items-center justify-center font-bold text-[10px]">
                           {i + 1}
                         </span>
                         <span className="font-bold text-neutral-800">{stop.name}</span>
@@ -348,7 +348,7 @@ export default function ScenicRoutesPage() {
             {liveHref(selectedRoute.moreHref) && (
             <Link
               href={liveHref(selectedRoute.moreHref)}
-              className="w-full py-3.5 px-4 rounded-xl bg-[#15803d] hover:bg-emerald-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm"
+              className="w-full py-3.5 px-4 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm"
             >
               <span>Дэлгэрэнгүй маршрут, бааз & зочид буудал</span>
               <span>→</span>

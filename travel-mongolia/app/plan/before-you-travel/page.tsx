@@ -70,12 +70,12 @@ export default function BeforeYouTravelPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
       {/* Толгой хэсэг: Field Guide Cover */}
       <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
+            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-brand-700 uppercase">
               05. АЯЛЛАА ТӨЛӨВЛӨХ
             </span>
             <span className="text-neutral-300">•</span>
@@ -108,7 +108,7 @@ export default function BeforeYouTravelPage() {
                 onClick={() => setActiveNav(item.id)}
                 className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                   activeNav === item.id
-                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
+                    ? 'bg-brand-700/10 text-brand-700 font-bold'
                     : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                 }`}
               >
@@ -120,7 +120,7 @@ export default function BeforeYouTravelPage() {
           <div className="pt-4 mt-4 border-t border-neutral-100">
             <Link
               href="/plan/getting-to-mongolia"
-              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
+              className="text-[11px] font-bold text-brand-700 hover:text-brand-950 flex items-center justify-between px-2"
             >
               <span>Дараах: 02. Ирэх зам</span>
               <span>→</span>
@@ -134,7 +134,7 @@ export default function BeforeYouTravelPage() {
           {/* 01. ВИЗ (VISA CHECKER) */}
           <section id="visa" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 01</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 01</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Визний шаардлага & Шалгагч
@@ -144,7 +144,7 @@ export default function BeforeYouTravelPage() {
             </p>
 
             {/* Интерактив виз шалгах хайрцаг */}
-            <div className="bg-[#fcfbf9] border border-neutral-200 rounded-2xl p-6 mb-6">
+            <div className="bg-brand-50 border border-neutral-200 rounded-2xl p-6 mb-6">
               <label className="text-xs font-bold text-neutral-700 block mb-2">
                 Иргэншил / Улсаа сонгож шалгана уу:
               </label>
@@ -152,7 +152,7 @@ export default function BeforeYouTravelPage() {
                 <select
                   value={selectedCountry}
                   onChange={(e) => setSelectedCountry(e.target.value)}
-                  className="w-full sm:w-72 bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-xs font-semibold text-neutral-800 outline-none focus:border-[#15803d]"
+                  className="w-full sm:w-72 bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-xs font-semibold text-neutral-800 outline-none focus:border-brand-700"
                 >
                   {VISA_COUNTRIES.map((c) => (
                     <option key={c.country} value={c.country}>
@@ -165,7 +165,7 @@ export default function BeforeYouTravelPage() {
                   <span
                     className={`text-xs font-bold px-3 py-1.5 rounded-full ${
                       currentCountryData.status === 'Визгүй'
-                        ? 'bg-emerald-100 text-[#15803d] border border-emerald-200'
+                        ? 'bg-brand-100 text-brand-700 border border-brand-200'
                         : 'bg-amber-100 text-amber-800 border border-amber-200'
                     }`}
                   >
@@ -181,7 +181,7 @@ export default function BeforeYouTravelPage() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 text-xs font-semibold text-[#15803d]">
+            <div className="flex flex-wrap gap-4 text-xs font-semibold text-brand-700">
               <a
                 href="https://evisa.mn"
                 target="_blank"
@@ -207,14 +207,14 @@ export default function BeforeYouTravelPage() {
           {/* 02. ХЭЗЭЭ АЯЛАХ ВЭ? */}
           <section id="when-to-visit" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 02</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 02</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Хэзээ аялах хамгийн тохиромжтой вэ?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
               <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-100">
-                <span className="text-xs font-bold text-[#15803d] uppercase tracking-wider block mb-1">
+                <span className="text-xs font-bold text-brand-700 uppercase tracking-wider block mb-1">
                   Аяллын оргил үе (6 - 8 сар)
                 </span>
                 <h4 className="text-base font-extrabold text-neutral-900 mb-2">Зуны улирал</h4>
@@ -248,7 +248,7 @@ export default function BeforeYouTravelPage() {
           {/* 03. ЦАГ АГААРЫН ТӨЛӨВ */}
           <section id="weather" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 03</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 03</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Саруудын цаг агаар & Дундаж температур
@@ -260,14 +260,14 @@ export default function BeforeYouTravelPage() {
             {/* Цаг агаарын хүснэгт */}
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
               {WEATHER_DATA.map((w) => (
-                <div key={w.month} className="p-4 rounded-xl border border-neutral-200/70 bg-[#fcfbf9]">
+                <div key={w.month} className="p-4 rounded-xl border border-neutral-200/70 bg-brand-50">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-xs font-bold text-neutral-900">{w.month}</span>
                     <span className="text-[10px] font-mono bg-neutral-200/60 text-neutral-700 px-2 py-0.5 rounded-md">
                       {w.tag}
                     </span>
                   </div>
-                  <div className="text-sm font-mono font-black text-[#15803d] mb-1">
+                  <div className="text-sm font-mono font-black text-brand-700 mb-1">
                     {w.temp}
                   </div>
                   <p className="text-[11px] text-neutral-500 leading-tight">
@@ -281,7 +281,7 @@ export default function BeforeYouTravelPage() {
           {/* 04. ЧЕКЛИСТ (ЮУ АВЧРАХ ВЭ?) */}
           <section id="packing" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 04</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 04</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
               <h2 className="text-2xl sm:text-3xl font-black text-neutral-900">
@@ -302,15 +302,15 @@ export default function BeforeYouTravelPage() {
                   onClick={() => toggleCheck(item.id)}
                   className={`flex items-start gap-3.5 p-3.5 rounded-xl border transition-all cursor-pointer ${
                     item.checked
-                      ? 'bg-emerald-50/50 border-[#15803d]/40 text-neutral-400 line-through'
-                      : 'bg-[#fcfbf9] border-neutral-200/80 hover:border-neutral-300 text-neutral-800'
+                      ? 'bg-brand-50/50 border-brand-700/40 text-neutral-400 line-through'
+                      : 'bg-brand-50 border-neutral-200/80 hover:border-neutral-300 text-neutral-800'
                   }`}
                 >
                   <input
                     type="checkbox"
                     checked={item.checked}
                     onChange={() => {}}
-                    className="mt-0.5 w-4 h-4 text-[#15803d] rounded focus:ring-0 cursor-pointer"
+                    className="mt-0.5 w-4 h-4 text-brand-700 rounded focus:ring-0 cursor-pointer"
                   />
                   <div className="flex-1">
                     <span className="text-xs sm:text-sm font-medium block">
@@ -328,20 +328,20 @@ export default function BeforeYouTravelPage() {
           {/* 05. МӨНГӨ, ТӨЛБӨР ТООЦОО */}
           <section id="money" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 05</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 05</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Мөнгө, валют & Төлбөрийн хэрэгсэл
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">💵 Валют & Бэлэн мөнгө</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed">
                   Монгол Улсын албан ёсны мөнгөн тэмдэгт нь <strong>Төгрөг (MNT)</strong>. Улаанбаатар хотын банк, валют арилжааны цэгүүд дээр ам.доллар, евро, юань, воныг чөлөөтэй сольж болно. Хөдөө орон нутагт зорчихдоо бэлэн төгрөгтэй явах нь хамгийн найдвартай.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
+              <div className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
                 <h4 className="text-sm font-bold text-neutral-900 mb-2">💳 Карт & ATM</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed">
                   Нийслэл хотод Visa, Mastercard бүх супермаркет, ресторанд ашиглагдана. Орон нутгийн сум, суурингийн төвүүдэд Хаан банк, Голомт банкны ATM-ууд байрладаг.
@@ -353,7 +353,7 @@ export default function BeforeYouTravelPage() {
           {/* 06. SIM КАРТ / ХОЛБОО */}
           <section id="sim-internet" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 06</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 06</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               SIM Карт & Интернет сүлжээ
@@ -362,11 +362,11 @@ export default function BeforeYouTravelPage() {
               Чингис Хаан олон улсын нисэх буудал болон хотын төвд оператор компаниудын салбараас eSIM эсвэл физик SIM худалдан авах боломжтой.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">Mobicom & Unitel</h4>
                 <p className="text-xs text-neutral-600">Хөдөө орон нутаг, авто замын дагуу хамгийн өргөн 4G/LTE сүлжээтэй үндсэн операторууд.</p>
               </div>
-              <div className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9]">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-brand-50">
                 <h4 className="text-xs font-bold text-neutral-900 mb-1">eSIM боломжтой</h4>
                 <p className="text-xs text-neutral-600">Airalo, Nomad эсвэл дотоодын операторуудын eSIM-ийг онлайнаар шууд идэвхжүүлэх боломжтой.</p>
               </div>
@@ -376,7 +376,7 @@ export default function BeforeYouTravelPage() {
           {/* 07. АЯЛЛЫН ДААТГАЛ */}
           <section id="insurance" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 07</span>
+              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 07</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
               Аяллын даатгал & Зөвлөмж
@@ -384,7 +384,7 @@ export default function BeforeYouTravelPage() {
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal mb-4">
               Монгол орны уудам нутаг, бартаат зам, морин аялал зэрэг идэвхтэй хөдөлгөөн их шаарддаг тул <strong>яаралтай тусламж, эмнэлгийн тээвэрлэлт (medical evacuation)</strong> багтсан олон улсын аяллын даатгалд хамрагдахыг зөвлөдөг.
             </p>
-            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-[#15803d] font-medium">
+            <div className="p-4 rounded-xl bg-brand-50 border border-brand-200 text-xs text-brand-700 font-medium">
               💡 Зөвлөмж: Хэрэв морь унах, мотоцикл эсвэл ууланд авирах гэж байгаа бол гэрээндээ "Extreme / Adventure sports" даатгалыг тусгайлан багтаагаарай.
             </div>
           </section>

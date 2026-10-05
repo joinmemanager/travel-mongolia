@@ -31,7 +31,7 @@ export default function TopDestinations({ items }: Props) {
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
         <div className="flex justify-between items-end mb-8">
           <div>
-            <span className="block mb-2 text-xs font-semibold tracking-[0.2em] text-[#15803d] uppercase">
+            <span className="block mb-2 text-xs font-semibold tracking-[0.2em] text-brand-700 uppercase">
               FEATURED DESTINATIONS
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

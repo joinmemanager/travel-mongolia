@@ -31,7 +31,7 @@ export default function EventsPage() {
   return (
     <main className="min-h-screen bg-[#fafafa] pb-24">
       {/* Header Banner */}
-      <section className="relative bg-neutral-900 text-white py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
+      <section className="relative bg-brand-950 text-white py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <img
             src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=80"
@@ -40,7 +40,7 @@ export default function EventsPage() {
           />
         </div>
         <div className="relative max-w-6xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-400">
             07. ҮЗЭХ, ХИЙХ ЗҮЙЛС
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mt-3 mb-4">
@@ -110,7 +110,7 @@ export default function EventsPage() {
           {filteredSpots.map((spot) => (
             <div
               key={spot.id}
-              className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:border-brand-300"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -128,10 +128,10 @@ export default function EventsPage() {
 
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-[11px] font-medium text-emerald-700 uppercase tracking-wide">
+                  <span className="text-[11px] font-medium text-brand-700 uppercase tracking-wide">
                     {spot.location} • {spot.region}
                   </span>
-                  <h3 className="text-lg font-bold text-neutral-900 mt-1 mb-2 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="text-lg font-bold text-neutral-900 mt-1 mb-2 group-hover:text-brand-700 transition-colors">
                     {spot.title}
                   </h3>
                   <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">

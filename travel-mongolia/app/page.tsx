@@ -42,7 +42,7 @@ export default async function Home() {
   const recommendations = await getRecommendations();
 
   return (
-    <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
+    <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-brand-700">
       {/* 1. HERO ХЭСЭГ (ВИДЕО ДЭВСГЭР) */}
       <section className="flex overflow-hidden relative justify-center items-center w-full h-[90vh] text-center">
         <video
@@ -75,7 +75,7 @@ export default async function Home() {
       {/* 4. ҮЗЭХ, ХИЙХ ЗҮЙЛС: ОЛОН ХЭЛБЭРТ КОНТЕНТ */}
       <section className="py-16 px-6 mx-auto max-w-7xl sm:px-10">
         <div className="mb-8">
-          <span className="block mb-1 text-xs font-bold tracking-widest text-[#15803d] uppercase">
+          <span className="block mb-1 text-xs font-bold tracking-widest text-brand-700 uppercase">
             Олон хэлбэрт контент
           </span>
           <h2 className="text-2xl font-black tracking-tight text-neutral-900 sm:text-4xl">
@@ -168,7 +168,7 @@ export default async function Home() {
       <section className="py-16 px-6 mx-auto max-w-7xl sm:px-10">
         <div className="flex flex-col gap-3 justify-between pb-4 mb-10 border-b border-neutral-200 sm:flex-row sm:items-end">
           <div>
-            <span className="block mb-1 text-xs font-bold tracking-widest text-[#15803d] uppercase">
+            <span className="block mb-1 text-xs font-bold tracking-widest text-brand-700 uppercase">
               Аяллын чиглэл
             </span>
             <h2 className="text-2xl font-black tracking-tight text-neutral-900 sm:text-4xl">
@@ -177,7 +177,7 @@ export default async function Home() {
           </div>
           <Link
             href="/inspiration/itineraries"
-            className="flex gap-1 items-center text-xs font-bold text-neutral-900 hover:text-[#15803d]"
+            className="flex gap-1 items-center text-xs font-bold text-neutral-900 hover:text-brand-700"
           >
             Бүх маршрутыг харах →
           </Link>
@@ -202,7 +202,7 @@ export default async function Home() {
           ].map((itin, idx) => (
             <div
               key={idx}
-              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 sm:flex-row shadow-xs"
+              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 sm:flex-row shadow-xs hover:border-brand-300"
             >
               <div className="overflow-hidden relative w-full h-56 sm:w-2/5 sm:h-auto">
                 <Image
@@ -218,10 +218,10 @@ export default async function Home() {
               </div>
               <div className="flex flex-col flex-1 justify-between p-6">
                 <div>
-                  <span className="block mb-1.5 text-[11px] font-bold text-[#15803d]">
+                  <span className="block mb-1.5 text-[11px] font-bold text-brand-700">
                     ЧИГЛЭЛ: {itin.route}
                   </span>
-                  <h3 className="text-lg font-bold leading-snug text-neutral-900 group-hover:text-[#15803d] transition-colors">
+                  <h3 className="text-lg font-bold leading-snug text-neutral-900 group-hover:text-brand-700 transition-colors">
                     {itin.title}
                   </h3>
                 </div>

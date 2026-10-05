@@ -244,7 +244,7 @@ export default function InteractiveMapExplorerPage() {
             type="button"
             onClick={() => scrollAimag('left')}
             aria-label="Previous Aimags"
-            className="shrink-0 w-7 h-7 rounded-full bg-white border border-neutral-200 shadow-2xs flex items-center justify-center text-neutral-600 hover:bg-[#15803d] hover:text-white hover:border-[#15803d] transition-all cursor-pointer z-10"
+            className="shrink-0 w-7 h-7 rounded-full bg-white border border-neutral-200 shadow-2xs flex items-center justify-center text-neutral-600 hover:bg-brand-700 hover:text-white hover:border-brand-700 transition-all cursor-pointer z-10"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -263,7 +263,7 @@ export default function InteractiveMapExplorerPage() {
                 onClick={() => setSelectedAimag(aimag)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
                   selectedAimag === aimag
-                    ? 'bg-[#15803d] text-white shadow-xs'
+                    ? 'bg-brand-700 text-white shadow-xs'
                     : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 hover:text-neutral-900'
                 }`}
               >
@@ -277,7 +277,7 @@ export default function InteractiveMapExplorerPage() {
             type="button"
             onClick={() => scrollAimag('right')}
             aria-label="Next Aimags"
-            className="shrink-0 w-7 h-7 rounded-full bg-white border border-neutral-200 shadow-2xs flex items-center justify-center text-neutral-600 hover:bg-[#15803d] hover:text-white hover:border-[#15803d] transition-all cursor-pointer z-10"
+            className="shrink-0 w-7 h-7 rounded-full bg-white border border-neutral-200 shadow-2xs flex items-center justify-center text-neutral-600 hover:bg-brand-700 hover:text-white hover:border-brand-700 transition-all cursor-pointer z-10"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -292,7 +292,7 @@ export default function InteractiveMapExplorerPage() {
             placeholder="Хайх..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 rounded-full bg-neutral-100 text-xs font-medium text-neutral-800 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#15803d]"
+            className="w-full pl-8 pr-3 py-1.5 rounded-full bg-neutral-100 text-xs font-medium text-neutral-800 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-700"
           />
           <svg
             className="w-3.5 h-3.5 text-neutral-400 absolute left-2.5 top-1/2 -translate-y-1/2"
@@ -319,7 +319,7 @@ export default function InteractiveMapExplorerPage() {
                 type="button"
                 onClick={() => scrollCategory('left')}
                 aria-label="Previous Category"
-                className="shrink-0 w-6 h-6 rounded-full bg-neutral-50 hover:bg-[#15803d] text-neutral-500 hover:text-white border border-neutral-200 flex items-center justify-center transition-all cursor-pointer z-10"
+                className="shrink-0 w-6 h-6 rounded-full bg-neutral-50 hover:bg-brand-700 text-neutral-500 hover:text-white border border-neutral-200 flex items-center justify-center transition-all cursor-pointer z-10"
               >
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -338,7 +338,7 @@ export default function InteractiveMapExplorerPage() {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer ${
                       selectedCategory === cat.id
-                        ? 'bg-emerald-100 text-[#15803d]'
+                        ? 'bg-brand-100 text-brand-700'
                         : 'bg-neutral-100/80 text-neutral-600 hover:bg-neutral-200/70 hover:text-neutral-900'
                     }`}
                   >
@@ -353,7 +353,7 @@ export default function InteractiveMapExplorerPage() {
                 type="button"
                 onClick={() => scrollCategory('right')}
                 aria-label="Next Category"
-                className="shrink-0 w-6 h-6 rounded-full bg-neutral-50 hover:bg-[#15803d] text-neutral-500 hover:text-white border border-neutral-200 flex items-center justify-center transition-all cursor-pointer z-10"
+                className="shrink-0 w-6 h-6 rounded-full bg-neutral-50 hover:bg-brand-700 text-neutral-500 hover:text-white border border-neutral-200 flex items-center justify-center transition-all cursor-pointer z-10"
               >
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -365,7 +365,7 @@ export default function InteractiveMapExplorerPage() {
           {/* Илэрцийн гарчиг */}
           <div className="px-4 py-2 text-[11px] font-bold text-neutral-500 uppercase tracking-wider bg-neutral-100/60 border-b border-neutral-200 flex justify-between">
             <span>Илэрц ({filteredPlaces.length})</span>
-            <span className="text-[#15803d] font-extrabold">{selectedAimag}</span>
+            <span className="text-brand-700 font-extrabold">{selectedAimag}</span>
           </div>
 
           {/* Газруудын гүйдэг жагсаалт */}
@@ -378,7 +378,7 @@ export default function InteractiveMapExplorerPage() {
                   onClick={() => setSelectedPlace(place)}
                   className={`p-3 rounded-2xl cursor-pointer transition-all flex gap-3 bg-white border ${
                     isSelected
-                      ? 'border-[#15803d] ring-2 ring-[#15803d]/20 shadow-sm'
+                      ? 'border-brand-700 ring-2 ring-brand-700/20 shadow-sm'
                       : 'border-neutral-200 hover:border-neutral-300'
                   }`}
                 >
@@ -395,7 +395,7 @@ export default function InteractiveMapExplorerPage() {
                   <div className="flex-1 min-w-0 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px] font-extrabold text-[#15803d] uppercase tracking-wider">
+                        <span className="text-[10px] font-extrabold text-brand-700 uppercase tracking-wider">
                           {place.aimag}
                         </span>
                         <span className="text-[11px] font-bold text-amber-500 flex items-center">
@@ -429,13 +429,13 @@ export default function InteractiveMapExplorerPage() {
           {selectedPlace && (
             <div className="p-3.5 bg-white border-t border-neutral-200 flex items-center justify-between gap-3 shadow-lg">
               <div className="truncate">
-                <div className="text-[11px] font-bold text-[#15803d] uppercase">{selectedPlace.aimag}</div>
+                <div className="text-[11px] font-bold text-brand-700 uppercase">{selectedPlace.aimag}</div>
                 <div className="text-xs font-black text-neutral-900 truncate">{selectedPlace.name}</div>
               </div>
               {liveHref(selectedPlace.moreHref) && (
                 <Link
                   href={liveHref(selectedPlace.moreHref)}
-                  className="px-3.5 py-2 rounded-xl bg-[#15803d] text-white text-xs font-bold hover:bg-emerald-800 transition-colors whitespace-nowrap"
+                  className="px-3.5 py-2 rounded-xl bg-brand-700 text-white text-xs font-bold hover:bg-brand-800 transition-colors whitespace-nowrap"
                 >
                   Дэлгэрэнгүй үзэх →
                 </Link>
