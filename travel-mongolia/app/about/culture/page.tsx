@@ -1,5 +1,9 @@
 'use client';
 
+import Image from 'next/image';
+
+import { OrnamentRule } from '@/components/Ornament';
+import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 
 import React, { useRef } from 'react';
@@ -285,6 +289,41 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
 ];
 
+// "Монгол сэтгүүл" пилот (docs/plan/design-brief.md): хэсэг бүрийн том зураг.
+// Хуучин зургуудын ихэнх нь Монголынх биш байсан (docs/plan/images.md) тул баталгаатай
+// Монгол зургаар сольсон. Alt нь зурган дээр бодитоор байгаа зүйлийг тайлбарлана.
+const SECTION_IMAGES: Record<string, SiteImage> = {
+  unesco: IMAGES.whiteHorse,
+  archeology: IMAGES.redCliffs,
+  monuments: IMAGES.lakeGers,
+  music: IMAGES.gerStars,
+  'dance-stage': IMAGES.herderBoy,
+  literature: IMAGES.camels,
+  'fine-arts': IMAGES.eagleHunter,
+  crafts: IMAGES.herdSnow,
+  costume: IMAGES.eagleHunter,
+  architecture: IMAGES.gerCamp,
+};
+
+// Нэртэй жижиг картуудад (жишээ нь "Эрдэнэ зуу") өөр газрын зураг тавьбал төөрөгдүүлэх тул
+// бодит зураг орох хүртэл хээтэй орон зай харуулна.
+function ItemVisual() {
+  return (
+    <div
+      aria-hidden="true"
+      className="flex relative justify-center items-center w-full h-40 bg-cream border-b border-ink/10"
+    >
+      <svg viewBox="0 0 24 24" className="w-10 h-10 text-gold">
+        <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round">
+          <path d="M12 2 L22 12 L12 22 L2 12 Z" />
+          <path d="M12 6.5 L17.5 12 L12 17.5 L6.5 12 Z" />
+          <path d="M7 7 L17 17 M17 7 L7 17" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 export default function CulturePage() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -296,32 +335,40 @@ export default function CulturePage() {
   };
 
   return (
-    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
-      
-      {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2400" alt="Соёл ба өв" className="absolute inset-0 w-full h-full object-cover brightness-[0.58]" />
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
+    <main className="w-full bg-cream text-ink font-sans selection:bg-gold selection:text-night">
+
+      {/* 1. HERO ХЭСЭГ: дэлгэц дүүрэн зураг, доод талдаа бараан градиент */}
+      <section className="flex overflow-hidden relative items-end w-full min-h-[78vh] bg-night">
+        <Image
+          src={IMAGES.chinggisStatue.src}
+          alt={IMAGES.chinggisStatue.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-night via-night/55 to-night/10" />
+        <div className="relative px-6 pt-32 pb-14 mx-auto w-full max-w-[1200px] sm:px-10">
+          <span className="block mb-4 text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
             06. Culture & Heritage
           </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
+          <h1 className="mb-6 font-serif text-5xl font-bold leading-[1.05] text-white sm:text-7xl">
             Соёл ба өв
           </h1>
-          <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
+          <p className="max-w-3xl text-base leading-relaxed text-white/90 sm:text-xl">
             ЮНЕСКО-д бүртгэгдсэн дэлхийн өвүүд, эртний археологийн олдворууд, хөгжим, бүжиг, дүрслэх урлаг хийгээд монгол хүний ур ухааны цогц илэрхийлэл
           </p>
         </div>
       </section>
 
       {/* 2. НААЛДДАГ НАВИГАЦИ */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
-        <div className="relative w-full max-w-7xl mx-auto flex items-center px-2 sm:px-6">
+      <div className="sticky top-0 z-40 bg-cream/95 border-b backdrop-blur-md border-ink/10">
+        <div className="flex relative items-center px-2 mx-auto w-full max-w-[1200px] sm:px-6">
           <button
             type="button"
             onClick={() => handleScroll('left')}
             aria-label="Previous"
-            className="absolute left-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-neutral-200 shadow-md flex items-center justify-center text-neutral-800 hover:bg-neutral-900 hover:text-white transition-all cursor-pointer"
+            className="flex absolute left-2 z-10 justify-center items-center w-9 h-9 text-ink bg-white rounded-full border transition-colors cursor-pointer border-ink/15 hover:border-gold"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -330,15 +377,16 @@ export default function CulturePage() {
 
           <div
             ref={scrollRef}
-            className="w-full py-3 px-10 flex items-center gap-2 overflow-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden text-xs sm:text-sm font-bold"
+            className="w-full py-3 px-10 flex items-center gap-6 overflow-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden text-sm"
           >
             {CULTURE_SECTIONS.map((sec) => (
               <a
                 key={sec.id}
                 href={`#${sec.id}`}
-                className="px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap shrink-0"
+                className="py-2 whitespace-nowrap shrink-0 text-ink-muted hover:text-ink transition-colors"
               >
-                {sec.num}. {sec.title}
+                <span className="mr-1.5 font-serif text-gold-ink">{sec.num}.</span>
+                {sec.title}
               </a>
             ))}
           </div>
@@ -347,7 +395,7 @@ export default function CulturePage() {
             type="button"
             onClick={() => handleScroll('right')}
             aria-label="Next"
-            className="absolute right-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-neutral-200 shadow-md flex items-center justify-center text-neutral-800 hover:bg-neutral-900 hover:text-white transition-all cursor-pointer"
+            className="flex absolute right-2 z-10 justify-center items-center w-9 h-9 text-ink bg-white rounded-full border transition-colors cursor-pointer border-ink/15 hover:border-gold"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -356,81 +404,91 @@ export default function CulturePage() {
         </div>
       </div>
 
-      {/* 3. БҮХ 10 ХЭСГИЙН БҮТЭЦ */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-16 space-y-28">
-        {CULTURE_SECTIONS.map((sec) => (
+      {/* 3. БҮХ 10 ХЭСГИЙН БҮТЭЦ: зураг ба текст ээлжилсэн мөрүүд, цөцгий/цагаан дэвсгэр */}
+      {CULTURE_SECTIONS.map((sec, index) => {
+        const image = SECTION_IMAGES[sec.id] || IMAGES.gerCamp;
+        const imageLeft = index % 2 === 1;
+        return (
           <section
             key={sec.id}
             id={sec.id}
-            className="scroll-mt-28 space-y-10"
+            className={`scroll-mt-16 py-20 ${index % 2 === 0 ? 'bg-cream' : 'bg-white'}`}
           >
-            {/* ДЭЭД ХЭСЭГ: ЗҮҮН ТАЛД ТЕКСТ, БАРУУН ТАЛД ЗУРАГ */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              {/* Зүүн тал */}
-              <div className="lg:col-span-6 space-y-6">
-                <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
-                  {sec.title}
-                </h2>
-                <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
-                  {sec.desc}
-                </p>
+            <div className="px-6 mx-auto space-y-12 max-w-[1200px] sm:px-10">
+              <div className="grid grid-cols-1 gap-10 items-center lg:grid-cols-2 lg:gap-16">
 
-                {liveHref(sec.moreHref) && (
-                <div>
-                  <a
-                    href={liveHref(sec.moreHref)}
-                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-900 text-white hover:bg-[#15803d] transition-all font-bold text-sm sm:text-base shadow-sm group/btn"
-                  >
-                    <span>Дэлгэрэнгүй</span>
-                    <svg 
-                      className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor" 
-                      strokeWidth="2.5"
+                {/* Текст */}
+                <div className={`space-y-6 ${imageLeft ? 'lg:order-2' : ''}`}>
+                  <span className="block text-[11px] font-semibold tracking-[0.25em] text-gold-ink uppercase">
+                    {sec.num}
+                  </span>
+                  <h2 className="font-serif text-4xl font-bold leading-tight text-ink sm:text-5xl">
+                    {sec.title}
+                  </h2>
+                  <OrnamentRule />
+                  <p className="text-base leading-relaxed text-ink-muted sm:text-lg">
+                    {sec.desc}
+                  </p>
+
+                  {liveHref(sec.moreHref) && (
+                  <div>
+                    <a
+                      href={liveHref(sec.moreHref)}
+                      className="group/btn inline-flex gap-2.5 items-center py-3 px-6 text-sm font-semibold text-cream bg-night rounded-xl transition-colors hover:bg-ink"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </a>
+                      <span>Дэлгэрэнгүй</span>
+                      <svg
+                        className="w-4 h-4 text-gold transition-transform transform group-hover/btn:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </a>
+                  </div>
+                  )}
                 </div>
-                )}
+
+                {/* Зураг */}
+                <div className={`group overflow-hidden relative w-full rounded-xl aspect-[3/2] ${imageLeft ? 'lg:order-1' : ''}`}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
               </div>
 
-              {/* Баруун тал */}
-              <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[320px] rounded-3xl overflow-hidden shadow-md group">
-                <img src={sec.imageUrl} alt={sec.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              {/* ДООД ТАЛ: 3 ТАЙЛБАР КАРТУУД */}
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                {sec.items.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="group/card flex overflow-hidden flex-col bg-white rounded-xl border transition-colors border-ink/10 hover:border-gold"
+                  >
+                    <ItemVisual />
+
+                    <div className="flex flex-col flex-1 justify-between p-6 space-y-2">
+                      <h4 className="font-serif text-xl font-bold leading-snug text-ink transition-colors group-hover/card:text-gold-ink">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm leading-relaxed text-ink-muted sm:text-base">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-            </div>
-
-            {/* ДООД ТАЛ: 3 ТАЙЛБАР КАРТУУД */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {sec.items.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative w-full h-48 sm:h-52 overflow-hidden">
-                    <img src={item.thumb} alt={item.title} className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" />
-                  </div>
-
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-2">
-                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-[#15803d] transition-colors leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
-        ))}
-      </div>
+        );
+      })}
 
     </main>
   );
 }
-

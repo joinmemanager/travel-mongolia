@@ -1,14 +1,21 @@
+import Image from 'next/image';
 import React from 'react';
+
+import type { SiteImage } from '@/lib/images';
 
 import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 
-// Hub хуудсуудын толгой хэсэг (/plan/*, GuidePage-ийн загвартай ижил): замчлал, шошго, H1
+// "Монгол сэтгүүл" толгой хэсэг (docs/plan/design-brief.md):
+//   image өгвөл: дэлгэц дүүрэн зураг, доод талдаа зөөлөн бараан градиент, цагаан serif гарчиг
+//   image-гүй бол: цөцгий дэвсгэр, бэхэн serif гарчиг
+// Аль алинд нь жижиг, зайтай eyebrow шошго гарчгийн дээр.
 export default function HubHeader({
   crumbs,
   kicker,
   kickerEn,
   title,
   intro,
+  image,
   children,
 }: {
   crumbs: Crumb[];
@@ -16,25 +23,51 @@ export default function HubHeader({
   kickerEn: string;
   title: string;
   intro: string;
+  image?: SiteImage;
   children?: React.ReactNode;
 }) {
-  return (
-    <header className="border-b border-neutral-200 bg-white pt-12 pb-12 px-6 sm:px-12 lg:px-16">
-      <div className="max-w-7xl mx-auto">
-        <Breadcrumbs items={crumbs} />
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
-            {kicker}
-          </span>
-          <span className="text-neutral-300">•</span>
-          <span className="text-[11px] font-mono text-neutral-500 uppercase">{kickerEn}</span>
+  if (image) {
+    return (
+      <header className="flex overflow-hidden relative items-end w-full min-h-[78vh] bg-night">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        {/* Доод талын зөөлөн бараан градиент: цагаан текст уншигдахуйц */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-night via-night/55 to-night/10"
+        />
+        <div className="relative px-6 pt-32 pb-14 mx-auto w-full max-w-[1200px] sm:px-10">
+          <Breadcrumbs items={crumbs} tone="dark" />
+          <p className="mb-4 text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
+            {kicker} <span aria-hidden="true">·</span> {kickerEn}
+          </p>
+          <h1 className="mb-5 max-w-3xl font-serif text-4xl font-bold leading-[1.1] text-white sm:text-6xl">
+            {title}
+          </h1>
+          <p className="max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">{intro}</p>
+          {children}
         </div>
-        <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-neutral-900 mb-4">
+      </header>
+    );
+  }
+
+  return (
+    <header className="px-6 pt-14 pb-14 bg-cream border-b border-ink/10 sm:px-10">
+      <div className="mx-auto max-w-[1200px]">
+        <Breadcrumbs items={crumbs} />
+        <p className="mb-4 text-[11px] font-semibold tracking-[0.25em] text-gold-ink uppercase">
+          {kicker} <span aria-hidden="true">·</span> {kickerEn}
+        </p>
+        <h1 className="mb-5 max-w-3xl font-serif text-4xl font-bold leading-[1.1] text-ink sm:text-6xl">
           {title}
         </h1>
-        <p className="text-sm sm:text-base text-neutral-600 max-w-2xl font-normal leading-relaxed">
-          {intro}
-        </p>
+        <p className="max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">{intro}</p>
         {children}
       </div>
     </header>

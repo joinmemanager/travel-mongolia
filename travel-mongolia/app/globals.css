@@ -24,6 +24,25 @@ html {
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* "Монгол сэтгүүл": гарчгийн serif фонт (app/layout.tsx-ийн Playfair Display) */
+  --font-serif: var(--font-playfair), Georgia, 'Times New Roman', serif;
+}
+
+/* ------------------------------------------------------------------ "Монгол сэтгүүл" өнгө
+   Дүрэм: docs/plan/design-brief.md. UI-ийн үндсэн 3 өнгө: cream, ink, night.
+   gold нь зөвхөн жижиг шошго, хээ, hover-т. brand (ногоон) нь зөвхөн лого, текст доторх холбоос.
+   WCAG AA: ink/cream 16.2, ink-muted/cream 6.7, cream/night 15.6, night-muted/night 9.3,
+   gold/night 5.1, gold-ink/cream 5.0, brand/cream 4.7. gold/cream 3.05 тул gold-ийг
+   цайвар дэвсгэр дээр текстэд хэрэглэхгүй (gold-ink хэрэглэнэ). */
+@theme {
+  --color-cream: #faf8f4;
+  --color-ink: #1c1b19;
+  --color-ink-muted: #5c5850;
+  --color-night: #14202b;
+  --color-night-muted: #c9c2b5;
+  --color-gold: #b8862f;
+  --color-gold-ink: #8a6420;
+  --color-brand: #15803d;
 }
 
 @media (prefers-color-scheme: dark) {

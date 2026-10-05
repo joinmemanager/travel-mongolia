@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
+import { IMAGES } from '@/lib/images';
 
 import { client } from '@/lib/contentful';
 
 // Зургийн URL-ийг Contentful-ийн ямар ч бүтцээс алдаагүй гаргаж авах туслах функц
 function getImageUrl(imageField: any): string {
   if (!imageField)
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
+    return IMAGES.gerCamp.src;
 
   // Хэрэв зураг нь массив (олон зураг) байвал хамгийн эхнийхийг авна
   const target = Array.isArray(imageField) ? imageField[0] : imageField;
@@ -18,7 +19,7 @@ function getImageUrl(imageField: any): string {
   }
 
   if (!url) {
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
+    return IMAGES.gerCamp.src;
   }
 
   return url.startsWith('//') ? `https:${url}` : url;
@@ -77,10 +78,10 @@ export default async function CultureFestivals() {
     <section className="py-20 px-6 mx-auto max-w-7xl">
       {/* Дээд гарчиг */}
       <div className="mb-12">
-        <span className="text-xs font-bold tracking-widest text-[#15803d] uppercase">
+        <span className="text-[11px] font-semibold tracking-[0.25em] text-gold-ink uppercase">
           CULTURE & HERITAGE
         </span>
-        <h2 className="mt-2 mb-4 text-3xl font-bold text-neutral-900 sm:text-4xl">
+        <h2 className="mt-2 mb-4 font-serif text-3xl font-bold text-ink sm:text-4xl">
           Монголын Уламжлалт Баяр Наадам
         </h2>
         <p className="max-w-3xl text-sm leading-relaxed text-neutral-600 sm:text-base">
@@ -102,7 +103,7 @@ export default async function CultureFestivals() {
           return (
             <div
               key={item.sys.id}
-              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-neutral-100 shadow-sm hover:shadow-md transition-all duration-300"
+              className="group flex overflow-hidden flex-col bg-white rounded-xl border border-ink/10 hover:border-gold transition-all duration-300"
             >
               {/* Зураг */}
               <div className="overflow-hidden relative w-full h-64 sm:h-72">
@@ -141,7 +142,7 @@ export default async function CultureFestivals() {
               {/* Мэдээлэл */}
               <div className="flex flex-col flex-1 justify-between p-6 sm:p-8">
                 <div>
-                  <h3 className="mb-3 text-xl font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors sm:text-2xl">
+                  <h3 className="font-serif mb-3 text-xl font-bold text-neutral-900 group-hover:text-gold-ink transition-colors sm:text-2xl">
                     {f.title}
                   </h3>
 

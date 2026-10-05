@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef } from 'react';
+import { IMAGES } from '@/lib/images';
 
 import { useLanguage } from './LanguageContext';
 
@@ -31,10 +32,10 @@ export default function TopDestinations({ items }: Props) {
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
         <div className="flex justify-between items-end mb-8">
           <div>
-            <span className="block mb-2 text-xs font-semibold tracking-[0.2em] text-[#15803d] uppercase">
+            <span className="block mb-2 text-[11px] font-semibold tracking-[0.25em] text-gold-ink uppercase">
               FEATURED DESTINATIONS
             </span>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-serif font-bold text-ink sm:text-4xl">
               {t.featuredPlaces || 'Top Destinations'}
             </h2>
           </div>
@@ -71,7 +72,7 @@ export default function TopDestinations({ items }: Props) {
               ? imageField.fields.file.url.startsWith('//')
                 ? `https:${imageField.fields.file.url}`
                 : imageField.fields.file.url
-              : 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop';
+              : IMAGES.gerCamp.src;
 
             const title = item.fields?.title || 'Destination';
 
@@ -79,7 +80,7 @@ export default function TopDestinations({ items }: Props) {
               <Link
                 key={item.sys.id}
                 href={`/destination/${item.sys.id}`}
-                className="group overflow-hidden relative shrink-0 w-[290px] h-[430px] rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 sm:w-[330px]"
+                className="group overflow-hidden relative shrink-0 w-[290px] h-[430px] rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 sm:w-[330px]"
               >
                 {/* Зураг */}
                 <Image
@@ -96,7 +97,7 @@ export default function TopDestinations({ items }: Props) {
 
                 {/* Нэр */}
                 <div className="absolute inset-x-6 bottom-6">
-                  <h3 className="text-2xl font-bold tracking-tight text-white drop-shadow-md">
+                  <h3 className="font-serif text-2xl font-bold tracking-tight text-white drop-shadow-md">
                     {title}
                   </h3>
                 </div>

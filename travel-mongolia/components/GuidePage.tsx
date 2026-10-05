@@ -1,19 +1,22 @@
 import Link from 'next/link';
 import React from 'react';
 
+import type { SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import type { GuideLink, GuideSection } from '@/lib/respectData';
 
-import Breadcrumbs, { type Crumb } from './Breadcrumbs';
+import type { Crumb } from './Breadcrumbs';
+import HubHeader from './HubHeader';
 
-// Гарын авлага маягийн хуудас (/plan/* хуудсуудын загвартай ижил):
-// толгой хэсэг (замчлал, H1), зүүн талд хэсгийн жагсаалт, баруун талд хэсгүүд.
+// Гарын авлага маягийн хуудас ("Монгол сэтгүүл", docs/plan/design-brief.md):
+// толгой хэсэг (HubHeader, зурагтай бол дэлгэц дүүрэн), зүүн талд хэсгийн жагсаалт, хэсгүүд.
 export default function GuidePage({
   crumbs,
   kicker,
   kickerEn,
   title,
   intro,
+  image,
   sections,
   related,
   children,
@@ -23,6 +26,7 @@ export default function GuidePage({
   kickerEn: string;
   title: string;
   intro: string;
+  image?: SiteImage;
   sections: GuideSection[];
   related: GuideLink[];
   // Хэсгүүдийн өмнө харуулах нэмэлт контент (жишээ нь hub хуудасны амлалт)
@@ -32,34 +36,21 @@ export default function GuidePage({
   const liveRelated = related.filter((link) => liveHref(link.href));
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
-      {/* Толгой хэсэг */}
-      <header className="border-b border-neutral-200 bg-white pt-12 pb-12 px-6 sm:px-12 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={crumbs} />
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
-              {kicker}
-            </span>
-            <span className="text-neutral-300">•</span>
-            <span className="text-[11px] font-mono text-neutral-500 uppercase">
-              {kickerEn}
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-neutral-900 mb-4">
-            {title}
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-600 max-w-2xl font-normal leading-relaxed">
-            {intro}
-          </p>
-        </div>
-      </header>
+    <main className="min-h-screen bg-cream text-ink pb-28">
+      <HubHeader
+        crumbs={crumbs}
+        kicker={kicker}
+        kickerEn={kickerEn}
+        title={title}
+        intro={intro}
+        image={image}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 flex flex-col lg:flex-row gap-12 items-start">
+      <div className="flex flex-col gap-12 items-start px-6 pt-16 mx-auto max-w-[1200px] sm:px-10 lg:flex-row">
         {/* Зүүн талын хэсгийн жагсаалт */}
         {sections.length > 0 && (
-          <aside className="hidden lg:block w-64 shrink-0 sticky top-28 space-y-2 bg-white p-5 rounded-2xl border border-neutral-200/80 shadow-sm">
-            <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-3 px-2">
+          <aside className="hidden sticky top-28 shrink-0 p-5 w-64 bg-white rounded-xl border border-ink/10 lg:block">
+            <span className="block mb-3 px-2 text-[11px] font-semibold tracking-[0.25em] text-gold-ink uppercase">
               Сэдвийн жагсаалт
             </span>
             <nav className="space-y-1">
@@ -67,42 +58,36 @@ export default function GuidePage({
                 <a
                   key={sec.id}
                   href={`#${sec.id}`}
-                  className="block px-3 py-2 rounded-xl text-xs font-semibold text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 transition-all"
+                  className="block py-2 px-3 text-sm text-ink-muted hover:text-ink rounded-lg hover:bg-cream transition-colors"
                 >
-                  {String(i + 1).padStart(2, '0')}. {sec.title}
+                  <span className="mr-2 font-serif text-gold-ink">{i + 1}.</span>
+                  {sec.title}
                 </a>
               ))}
             </nav>
           </aside>
         )}
 
-        <div className="flex-1 w-full space-y-16">
+        <div className="flex-1 space-y-12 w-full">
           {children}
 
           {sections.map((sec, i) => (
             <section
               key={sec.id}
               id={sec.id}
-              className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm"
+              className="scroll-mt-28 p-8 bg-white rounded-xl border border-ink/10 sm:p-12"
             >
-              <span className="block mb-2 text-[11px] font-mono font-bold text-[#15803d]">
+              <p className="mb-2 font-serif text-sm text-gold-ink">
                 {String(i + 1).padStart(2, '0')}
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
-                {sec.title}
-              </h2>
+              </p>
+              <h2 className="mb-5 font-serif text-2xl font-bold text-ink sm:text-3xl">{sec.title}</h2>
               {sec.intro && (
-                <p className="mb-5 text-sm text-neutral-600 leading-relaxed">
-                  {sec.intro}
-                </p>
+                <p className="mb-6 text-base leading-relaxed text-ink-muted">{sec.intro}</p>
               )}
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {sec.points.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-3 text-sm text-neutral-700 leading-relaxed"
-                  >
-                    <span aria-hidden="true" className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[#15803d]" />
+                  <li key={point} className="flex gap-4 text-base leading-relaxed text-ink">
+                    <span aria-hidden="true" className="mt-2.5 w-1.5 h-1.5 shrink-0 bg-gold rotate-45" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -112,19 +97,17 @@ export default function GuidePage({
 
           {/* Холбогдох хуудсууд */}
           {liveRelated.length > 0 && (
-            <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
-              <h2 className="text-lg font-black text-neutral-900 mb-4">
-                Холбогдох хуудсууд
-              </h2>
+            <section className="p-8 bg-white rounded-xl border border-ink/10 sm:p-12">
+              <h2 className="mb-6 font-serif text-xl font-bold text-ink">Холбогдох хуудсууд</h2>
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {liveRelated.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="flex justify-between items-center p-4 rounded-2xl bg-[#fcfbf9] border border-neutral-200 text-sm font-semibold text-neutral-800 hover:border-[#15803d] hover:text-[#15803d] transition-colors"
+                      className="group flex justify-between items-center p-4 text-sm font-semibold text-ink bg-cream rounded-xl border border-ink/10 hover:border-gold transition-colors"
                     >
                       <span>{link.label}</span>
-                      <span aria-hidden="true">→</span>
+                      <span aria-hidden="true" className="text-gold-ink transition-transform group-hover:translate-x-1">→</span>
                     </Link>
                   </li>
                 ))}

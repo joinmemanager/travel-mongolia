@@ -1,11 +1,22 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import GuidePage from '@/components/GuidePage';
+import SectionHeading from '@/components/SectionHeading';
+import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { RESPECT_HUB as hub } from '@/lib/respectData';
 
 export const metadata = metaFor('/respect');
+
+// Дэд хуудасны картын зураг ("Монгол сэтгүүл" пилот, docs/plan/images.md)
+const SUBPAGE_IMAGES: Record<string, SiteImage> = {
+  '/respect/etiquette': IMAGES.lakeGers,
+  '/respect/nature': IMAGES.whiteHorse,
+  '/respect/accessible': IMAGES.herderBoy,
+  '/plan/safety-info': IMAGES.redCliffs,
+};
 
 export default function RespectHubPage() {
   return (
@@ -18,57 +29,60 @@ export default function RespectHubPage() {
       kickerEn={hub.kickerEn}
       title={hub.title}
       intro={hub.intro}
+      image={IMAGES.gerCamp}
       sections={[]}
       related={hub.related}
     >
-      {/* Аялагчийн амлалт */}
-      <section
-        id="pledge"
-        className="scroll-mt-28 p-8 sm:p-10 rounded-3xl bg-[#15803d] text-white shadow-sm"
-      >
-        <h2 className="text-2xl sm:text-3xl font-black mb-2">{hub.pledgeTitle}</h2>
-        <p className="mb-8 text-sm text-white/80">{hub.pledgeIntro}</p>
-        <ol className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      {/* Аялагчийн амлалт: бараан хэсэг */}
+      <section id="pledge" className="scroll-mt-28 p-8 bg-night rounded-xl sm:p-12">
+        <SectionHeading eyebrow={hub.pledgeIntro} title={hub.pledgeTitle} tone="dark" />
+        <ol className="grid grid-cols-1 gap-x-10 gap-y-8 mt-10 md:grid-cols-2">
           {hub.pledge.map((item, i) => (
-            <li
-              key={item.title}
-              className="flex gap-4 p-5 rounded-2xl bg-white/10 border border-white/15"
-            >
-              <span className="text-2xl font-black text-white/60 tabular-nums">
-                {String(i + 1).padStart(2, '0')}
+            <li key={item.title} className="flex gap-5">
+              <span className="font-serif text-3xl font-bold leading-none text-gold tabular-nums">
+                {i + 1}
               </span>
               <div>
-                <h3 className="text-base font-bold mb-1">{item.title}</h3>
-                <p className="text-sm text-white/85 leading-relaxed">{item.text}</p>
+                <h3 className="mb-1 font-serif text-lg font-bold text-white">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-night-muted">{item.text}</p>
               </div>
             </li>
           ))}
         </ol>
       </section>
 
-      {/* Дэд хуудсууд */}
-      <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
-        <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-6">
-          {hub.subpagesTitle}
-        </h2>
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {/* Дэд хуудсууд: зурган дээрээ гарчигтай картууд */}
+      <section>
+        <SectionHeading title={hub.subpagesTitle} />
+        <ul className="grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2">
           {/* Production дээр draft/planned дэд хуудсыг харуулахгүй */}
-          {hub.subpages.filter((page) => liveHref(page.href)).map((page) => (
-            <li key={page.href}>
-              <Link
-                href={page.href}
-                className="group block p-6 h-full rounded-2xl bg-[#fcfbf9] border border-neutral-200 hover:border-[#15803d] transition-colors"
-              >
-                <span className="flex justify-between items-center mb-2 text-lg font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
-                  {page.label}
-                  <span aria-hidden="true">→</span>
-                </span>
-                <span className="block text-sm text-neutral-600 leading-relaxed">
-                  {page.desc}
-                </span>
-              </Link>
-            </li>
-          ))}
+          {hub.subpages.filter((page) => liveHref(page.href)).map((page) => {
+            const image = SUBPAGE_IMAGES[page.href] || IMAGES.gerCamp;
+            return (
+              <li key={page.href}>
+                <Link
+                  href={page.href}
+                  className="group block overflow-hidden relative rounded-xl aspect-[3/2] bg-night"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 560px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/30 to-transparent"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-6">
+                    <h3 className="mb-1 font-serif text-2xl font-bold text-white">{page.label}</h3>
+                    <p className="text-sm leading-relaxed text-white/85">{page.desc}</p>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </section>
     </GuidePage>

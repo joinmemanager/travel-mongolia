@@ -5,6 +5,8 @@
 // талбаруудтай (title, excerpt, slug -> href, category, coverImage, publishDate, featured)
 // нийцэхээр хийгдсэн тул зөвхөн getStories()-г солиход хангалттай.
 
+import { IMAGES, type SiteImage } from './images';
+
 export type StoryCategoryId =
   | 'culture'
   | 'nature'
@@ -25,7 +27,8 @@ export interface StoryCard {
   excerpt: string;
   href: string;
   category: StoryCategoryId;
-  imageUrl?: string;
+  // Contentful-ын coverImage-д тохирно (alt тексттэй)
+  image?: SiteImage;
   // ISO огноо. Байхгүй бол "Сүүлийн түүхүүд" хэсэгт тодорхойлсон дарааллаар гарна
   publishedAt?: string;
   featured?: boolean;
@@ -123,7 +126,25 @@ const EXISTING_CONTENT: StoryCard[] = [
   },
 ];
 
+// Одоо байгаа хуудсуудын картын зураг (Монголынх нь шалгагдсан, docs/plan/images.md)
+const EXISTING_IMAGES: Record<string, SiteImage> = {
+  heritage: IMAGES.chinggisStatue,
+  hidden: IMAGES.redCliffs,
+  'local-stories': IMAGES.herderBoy,
+  magazine: IMAGES.gerStars,
+  'top-lists': IMAGES.camels,
+  culture: IMAGES.gerCamp,
+  traditions: IMAGES.lakeGers,
+  nature: IMAGES.whiteHorse,
+  'nomadic-life': IMAGES.herdSnow,
+  food: IMAGES.gerCamp,
+  people: IMAGES.eagleHunter,
+};
+
 // 6-р үед энд Contentful-ын Story төрлийг татна
 export async function getStories(): Promise<StoryCard[]> {
-  return EXISTING_CONTENT;
+  return EXISTING_CONTENT.map((story) => ({
+    ...story,
+    image: story.image || EXISTING_IMAGES[story.id],
+  }));
 }

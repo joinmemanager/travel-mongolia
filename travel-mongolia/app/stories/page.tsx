@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
 import HubHeader from '@/components/HubHeader';
+import SectionHeading from '@/components/SectionHeading';
+import { IMAGES } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import {
@@ -13,6 +16,7 @@ import {
 
 // "Түүх & өв" hub (ia-plan.md C10, 5в). Төлөв: draft (lib/navigation.ts PAGE_STATUS).
 // НООРОГ: одоохондоо сайтад байгаа хуудсуудыг карт болгосон (lib/stories.ts).
+// Загвар: "Монгол сэтгүүл" (docs/plan/design-brief.md).
 export const metadata = metaFor('/stories');
 
 const CATEGORY_LABEL = Object.fromEntries(
@@ -21,32 +25,36 @@ const CATEGORY_LABEL = Object.fromEntries(
 
 const LATEST_COUNT = 6;
 
-function StoryCardView({ story }: { story: StoryCard }) {
+// Зурган дээрээ гарчигтай карт (4:5 эсвэл онцлох нь 3:2), hover үед зураг томорно
+function StoryCardView({ story, wide = false }: { story: StoryCard; wide?: boolean }) {
   return (
     <Link
       href={story.href}
-      className="group flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-neutral-200/80 shadow-sm hover:border-[#15803d] hover:shadow-md transition-all"
+      className={`group block overflow-hidden relative rounded-xl bg-night ${
+        wide ? 'aspect-[3/2]' : 'aspect-[4/5]'
+      }`}
     >
-      {story.imageUrl && (
-        <div className="relative w-full h-44">
-          <Image
-            src={story.imageUrl}
-            alt={story.title}
-            fill
-            unoptimized
-            className="object-cover"
-          />
-        </div>
+      {story.image && (
+        <Image
+          src={story.image.src}
+          alt={story.image.alt}
+          fill
+          sizes={wide ? '(max-width: 768px) 100vw, 600px' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 390px'}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       )}
-      <div className="flex flex-col flex-1 p-6">
-        <span className="mb-2 text-[10px] font-bold tracking-widest text-[#15803d] uppercase">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/30 to-transparent"
+      />
+      <div className="absolute inset-x-0 bottom-0 p-6">
+        <p className="mb-2 text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
           {CATEGORY_LABEL[story.category]}
-        </span>
-        <h3 className="mb-2 text-lg font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors">
+        </p>
+        <h3 className="mb-2 font-serif text-xl font-bold leading-snug text-white sm:text-2xl">
           {story.title}
         </h3>
-        <p className="flex-1 text-sm text-neutral-600 leading-relaxed">{story.excerpt}</p>
-        <span aria-hidden="true" className="mt-4 text-sm font-bold text-neutral-900">→</span>
+        <p className="text-sm leading-relaxed text-white/85 line-clamp-2">{story.excerpt}</p>
       </div>
     </Link>
   );
@@ -54,9 +62,33 @@ function StoryCardView({ story }: { story: StoryCard }) {
 
 function EmptyCard() {
   return (
-    <div className="flex items-center justify-center p-6 h-full min-h-32 rounded-3xl border border-dashed border-neutral-300 text-sm text-neutral-500">
+    <div className="flex justify-center items-center p-6 h-full min-h-40 text-sm text-ink-muted rounded-xl border border-dashed border-ink/20">
       Түүх удахгүй нэмэгдэнэ
     </div>
+  );
+}
+
+// Хэсгүүд цөцгий ба цагаан дэвсгэрийг ээлжлэн
+function Band({
+  index,
+  id,
+  eyebrow,
+  title,
+  children,
+}: {
+  index: number;
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className={`scroll-mt-8 py-20 ${index % 2 === 0 ? 'bg-cream' : 'bg-white'}`}>
+      <div className="px-6 mx-auto max-w-[1200px] sm:px-10">
+        <SectionHeading eyebrow={eyebrow} title={title} className="mb-10" />
+        {children}
+      </div>
+    </section>
   );
 }
 
@@ -70,8 +102,10 @@ export default async function StoriesHubPage() {
     .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
     .slice(0, LATEST_COUNT);
 
+  let band = 0;
+
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+    <main className="min-h-screen bg-cream text-ink">
       <HubHeader
         crumbs={[
           { label: 'Нүүр', href: '/' },
@@ -81,6 +115,7 @@ export default async function StoriesHubPage() {
         kickerEn="STORIES & HERITAGE"
         title="Монголын түүхүүд"
         intro="Монголын соёл, байгаль, нүүдэлчдийн амьдрал, хоол, хүмүүсийн тухай түүхүүд. Сэдвээ сонгоод уншаарай."
+        image={IMAGES.eagleHunter}
       >
         {/* Ангиллын товчлол */}
         <nav aria-label="Түүхийн ангилал" className="flex flex-wrap gap-2 mt-8">
@@ -88,7 +123,7 @@ export default async function StoriesHubPage() {
             <a
               key={c.id}
               href={`#${c.id}`}
-              className="py-2 px-4 text-xs font-bold text-neutral-700 bg-neutral-100 hover:bg-neutral-900 hover:text-white rounded-full transition-colors"
+              className="py-2 px-4 text-xs font-semibold text-white rounded-full border border-white/40 hover:border-gold hover:text-gold transition-colors"
             >
               {c.mn}
             </a>
@@ -96,74 +131,67 @@ export default async function StoriesHubPage() {
         </nav>
       </HubHeader>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 space-y-16">
-        {/* Онцлох түүх */}
-        {featured.length > 0 && (
-          <section>
-            <h2 className="mb-6 text-2xl sm:text-3xl font-black text-neutral-900">Онцлох түүх</h2>
-            <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {featured.map((story) => (
-                <li key={story.id}>
-                  <StoryCardView story={story} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+      {featured.length > 0 && (
+        <Band index={band++} title="Онцлох түүх">
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {featured.map((story) => (
+              <li key={story.id}>
+                <StoryCardView story={story} wide />
+              </li>
+            ))}
+          </ul>
+        </Band>
+      )}
 
-        {/* Сүүлийн түүхүүд */}
-        {latest.length > 0 && (
-          <section>
-            <h2 className="mb-6 text-2xl sm:text-3xl font-black text-neutral-900">Сүүлийн түүхүүд</h2>
+      {latest.length > 0 && (
+        <Band index={band++} title="Сүүлийн түүхүүд">
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {latest.map((story) => (
+              <li key={story.id}>
+                <StoryCardView story={story} />
+              </li>
+            ))}
+          </ul>
+        </Band>
+      )}
+
+      {STORY_CATEGORIES.map((category) => {
+        const items = stories.filter((s) => s.category === category.id);
+        return (
+          <Band
+            key={category.id}
+            index={band++}
+            id={category.id}
+            eyebrow={category.en}
+            title={category.mn}
+          >
             <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {latest.map((story) => (
-                <li key={story.id}>
-                  <StoryCardView story={story} />
+              {items.length > 0 ? (
+                items.map((story) => (
+                  <li key={story.id}>
+                    <StoryCardView story={story} />
+                  </li>
+                ))
+              ) : (
+                <li>
+                  <EmptyCard />
                 </li>
-              ))}
+              )}
+              {category.id === 'photo-video' && liveHref('/stories/photo-video') && (
+                <li className="flex items-center">
+                  <Link
+                    href="/stories/photo-video"
+                    className="group inline-flex gap-2 items-center py-3 px-6 text-sm font-semibold text-cream bg-night rounded-xl hover:bg-ink transition-colors"
+                  >
+                    Бүх фото/видео түүх
+                    <span aria-hidden="true" className="text-gold transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                </li>
+              )}
             </ul>
-          </section>
-        )}
-
-        {/* Ангилал тус бүр */}
-        {STORY_CATEGORIES.map((category) => {
-          const items = stories.filter((s) => s.category === category.id);
-          return (
-            <section key={category.id} id={category.id} className="scroll-mt-8">
-              <div className="flex gap-3 items-baseline mb-6">
-                <h2 className="text-2xl font-black text-neutral-900">{category.mn}</h2>
-                <span className="text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
-                  {category.en}
-                </span>
-              </div>
-              <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {items.length > 0 ? (
-                  items.map((story) => (
-                    <li key={story.id}>
-                      <StoryCardView story={story} />
-                    </li>
-                  ))
-                ) : (
-                  <li>
-                    <EmptyCard />
-                  </li>
-                )}
-                {category.id === 'photo-video' && liveHref('/stories/photo-video') && (
-                  <li>
-                    <Link
-                      href="/stories/photo-video"
-                      className="flex items-center justify-between p-6 h-full rounded-3xl bg-[#15803d] text-white font-bold hover:bg-emerald-800 transition-colors"
-                    >
-                      Бүх фото/видео түүх
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  </li>
-                )}
-              </ul>
-            </section>
-          );
-        })}
-      </div>
+          </Band>
+        );
+      })}
     </main>
   );
 }

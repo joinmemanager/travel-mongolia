@@ -4,7 +4,7 @@ import './globals.css';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
-import { Rubik } from 'next/font/google';
+import { Playfair_Display, Rubik } from 'next/font/google';
 import Script from 'next/script';
 
 import Footer from '@/components/Footer';
@@ -25,6 +25,14 @@ const rubik = Rubik({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-rubik',
+  display: 'swap',
+});
+
+// "Монгол сэтгүүл": гарчгийн serif фонт (globals.css-ийн --font-serif, font-serif класс)
+const playfair = Playfair_Display({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['600', '700'],
+  variable: '--font-playfair',
   display: 'swap',
 });
 
@@ -81,7 +89,7 @@ export default function RootLayout({
   return (
     <html lang="mn">
       <body
-        className={`${rubik.className} bg-white text-neutral-900 antialiased`}
+        className={`${rubik.className} ${playfair.variable} bg-white text-neutral-900 antialiased`}
       >
         <script
           type="application/ld+json"
