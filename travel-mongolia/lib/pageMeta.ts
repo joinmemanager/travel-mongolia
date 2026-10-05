@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { isDraftPage } from './navigation';
+import { isUnpublishedPage } from './navigation';
 import { pageMetadata } from './seo';
 
 // Статик хуудас бүрийн хайлтад харагдах гарчиг, тайлбар.
@@ -242,8 +242,8 @@ export type StaticPath = keyof typeof PAGE_META;
 
 export function metaFor(path: StaticPath): Metadata {
   const meta = pageMetadata({ ...PAGE_META[path], path });
-  // Цэсэнд ready:false хуудсыг production дээр хайлтаас нуух (lib/navigation.ts)
-  return isDraftPage(path)
+  // Цэсэнд live биш (draft/planned) хуудсыг production дээр хайлтаас нуух (lib/navigation.ts)
+  return isUnpublishedPage(path)
     ? { ...meta, robots: { index: false, follow: true } }
     : meta;
 }

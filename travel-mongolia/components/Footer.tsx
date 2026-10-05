@@ -17,8 +17,8 @@ export default function Footer({
 }) {
   const isEnglish = useSiteLang() === 'en';
   const labelOf = (x: { mn: string; en: string }) => (isEnglish ? x.en : x.mn);
-  const comingSoon =
-    'ml-2 py-0.5 px-1.5 text-[10px] font-bold text-amber-200 bg-amber-900/40 rounded-full';
+  const badgeClass =
+    'ml-2 py-0.5 px-1.5 text-[10px] font-bold rounded-full';
 
   return (
     <footer className="pt-16 pb-12 text-white bg-[#1a1a1a] border-t border-neutral-800">
@@ -98,7 +98,8 @@ export default function Footer({
                       item={item}
                       english={isEnglish}
                       className="hover:text-white transition-colors"
-                      comingSoonClassName={comingSoon}
+                      badgeClassName={badgeClass}
+                      tone="dark"
                     >
                       {labelOf(item)}
                     </NavItemLink>
@@ -158,7 +159,8 @@ export default function Footer({
                 item={item}
                 english={isEnglish}
                 className="hover:text-neutral-300 transition-colors"
-                comingSoonClassName={comingSoon}
+                badgeClassName={badgeClass}
+                tone="dark"
               >
                 {labelOf(item)}
               </NavItemLink>
