@@ -14,6 +14,8 @@ interface PlaceCard {
 
 interface LandscapeCategory {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   title: string;
   count: string;
   places: PlaceCard[];
@@ -23,6 +25,7 @@ interface LandscapeCategory {
 const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   {
     id: 'mountains',
+    moreHref: '/destination/map',
     title: 'Уул, нуруу',
     count: 'Нийт 40+ сүрлэг хайрхан',
     places: [
@@ -46,6 +49,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'lakes',
+    moreHref: '/destination/map',
     title: 'Нуур',
     count: 'Нийт 30+ үзэсгэлэнт нуур',
     places: [
@@ -69,6 +73,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'rivers',
+    moreHref: '/destination/map',
     title: 'Гол, мөрөн',
     count: 'Нийт 25+ гол мөрөн',
     places: [
@@ -92,6 +97,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'gobi',
+    moreHref: '/destination/map',
     title: 'Говь, цөл',
     count: 'Нийт 20+ онцлох говийн нутаг',
     places: [
@@ -115,6 +121,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'sand-dunes',
+    moreHref: '/destination/map',
     title: 'Элсэн манхан',
     count: 'Нийт 15+ их элс',
     places: [
@@ -138,6 +145,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'canyons',
+    moreHref: '/destination/map',
     title: 'Хавцал, хөндий',
     count: 'Нийт 25+ байгалийн хавцал',
     places: [
@@ -161,6 +169,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'forest-taiga',
+    moreHref: '/destination/map',
     title: 'Ой, тайга',
     count: 'Нийт 18+ онцлох ойн бүс',
     places: [
@@ -184,6 +193,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'steppes',
+    moreHref: '/destination/map',
     title: 'Тал хээр',
     count: 'Нийт 16+ уудам тал',
     places: [
@@ -207,6 +217,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'glaciers',
+    moreHref: '/destination/map',
     title: 'Мөсөн гол',
     count: 'Нийт 10+ мөнх цас, мөсөн гол',
     places: [
@@ -230,6 +241,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'springs',
+    moreHref: '/destination/map',
     title: 'Рашаан',
     count: 'Нийт 30+ эрдэст рашаан булаг',
     places: [
@@ -253,6 +265,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
   },
   {
     id: 'caves-geology',
+    moreHref: '/destination/map',
     title: 'Агуй, геологийн тогтоц',
     count: 'Нийт 25+ байгалийн хосгүй бүтэц',
     places: [
@@ -399,8 +412,9 @@ export default function NaturalLandscapesPage() {
               ))}
 
               {/* 4 ДЭХ ТОМ КАРТ: "БҮГДИЙГ ҮЗЭХ" */}
+              {sec.moreHref && (
               <Link
-                href={`/destination/landscapes/${sec.id}`}
+                href={sec.moreHref}
                 className="group relative rounded-3xl overflow-hidden bg-emerald-50/70 border-2 border-dashed border-emerald-300 hover:border-[#15803d] hover:bg-emerald-100/70 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center h-80 sm:h-96 cursor-pointer shadow-sm hover:shadow-xl"
               >
                 <div className="w-14 h-14 rounded-full bg-[#15803d] text-white flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-800 transition-all shadow-md">
@@ -418,6 +432,7 @@ export default function NaturalLandscapesPage() {
                   Интерактив газрын зураг, байршил & дэлгэрэнгүй
                 </p>
               </Link>
+              )}
             </div>
 
           </section>

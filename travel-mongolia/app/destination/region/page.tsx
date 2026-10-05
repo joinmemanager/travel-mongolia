@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import RegionDirectory, {
   type ExternalSearchItem,
@@ -21,8 +22,17 @@ function plainText(value: any): string {
   return '';
 }
 
-// Contentful-д нэмсэн түүхэн өв, аймгуудыг хайлтад оруулна
-async function getContentfulSearchItems(): Promise<ExternalSearchItem[]> {
+interface ProvinceLink {
+  title: string;
+  center: string;
+  href: string;
+}
+
+// Contentful-д нэмсэн түүхэн өв, аймгуудыг хайлт болон "Аймаг, хотууд" хэсэгт ашиглана
+async function getContentfulData(): Promise<{
+  searchItems: ExternalSearchItem[];
+  provinces: ProvinceLink[];
+}> {
   try {
     const [places, provinces] = await Promise.all([
       client.getEntries({ content_type: 'heritagePlace', limit: 200 }),
@@ -56,24 +66,70 @@ async function getContentfulSearchItems(): Promise<ExternalSearchItem[]> {
       };
     });
 
-    return [...placeItems, ...provinceItems].filter((i) => i.title);
+    const provinceLinks = provinceItems
+      .filter((i) => i.title)
+      .map((i) => ({
+        title: i.title,
+        center: i.subtitle,
+        href: i.href,
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title, 'mn'));
+
+    return {
+      searchItems: [...placeItems, ...provinceItems].filter((i) => i.title),
+      provinces: provinceLinks,
+    };
   } catch (err) {
     console.error('Хайлтын Contentful өгөгдөл татахад алдаа гарлаа:', err);
-    return [];
+    return { searchItems: [], provinces: [] };
   }
 }
 
 export default async function RegionPage({ searchParams }: Props) {
   const { region } = await searchParams;
-  const externalItems = await getContentfulSearchItems();
+  const { searchItems, provinces } = await getContentfulData();
 
   return (
     <main className="min-h-screen bg-white">
       <RegionDirectory
         key={region ?? 'all'}
         initialSubSlug={region}
-        externalItems={externalItems}
+        externalItems={searchItems}
       />
+
+      {/* Contentful-д нэмэгдсэн аймаг бүр энд автоматаар холбогдоно (цэсний "Аймгууд" энэ хэсэг рүү заана) */}
+      {provinces.length > 0 && (
+        <section
+          id="provinces"
+          className="scroll-mt-24 px-4 py-16 mx-auto max-w-7xl sm:px-6"
+        >
+          <h2 className="mb-2 text-2xl font-black tracking-tight text-gray-900 sm:text-3xl">
+            Аймаг, хотууд
+          </h2>
+          <p className="mb-8 text-sm text-gray-500">
+            Аймаг, хот бүрийн үзэх газрууд, аялах мэдээлэл
+          </p>
+          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {provinces.map((p) => (
+              <li key={p.href}>
+                <Link
+                  href={p.href}
+                  className="group block p-5 h-full bg-white rounded-2xl border border-gray-100 hover:border-emerald-200 hover:shadow-lg transition-all shadow-xs"
+                >
+                  <span className="block text-base font-bold text-gray-900 group-hover:text-[#15803d] transition-colors">
+                    {p.title}
+                  </span>
+                  {p.center && (
+                    <span className="block mt-1 text-xs text-gray-500">
+                      {p.center}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </main>
   );
 }

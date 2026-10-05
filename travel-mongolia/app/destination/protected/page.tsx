@@ -14,6 +14,8 @@ interface PlaceCard {
 
 interface CategoryData {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   title: string;
   count: string;
   places: PlaceCard[];
@@ -23,6 +25,7 @@ interface CategoryData {
 const CATEGORIES: CategoryData[] = [
   {
     id: 'strictly-protected',
+    moreHref: '/destination/strictly-protected',
     title: 'Дархан цаазат газар',
     count: 'Нийт 22 бүс нутаг',
     places: [
@@ -46,6 +49,7 @@ const CATEGORIES: CategoryData[] = [
   },
   {
     id: 'national-parks',
+    moreHref: '/destination/national-parks',
     title: 'Байгалийн цогцолборт газар',
     count: 'Нийт 37 бүс нутаг',
     places: [
@@ -69,6 +73,7 @@ const CATEGORIES: CategoryData[] = [
   },
   {
     id: 'nature-reserves',
+    moreHref: '/destination/nature-reserves',
     title: 'Байгалийн нөөц газар',
     count: 'Нийт 36 бүс нутаг',
     places: [
@@ -92,6 +97,7 @@ const CATEGORIES: CategoryData[] = [
   },
   {
     id: 'natural-monuments',
+    moreHref: '/destination/natural-monuments',
     title: 'Байгалийн дурсгалт газар',
     count: 'Нийт 14 бүс нутаг',
     places: [
@@ -240,8 +246,9 @@ export default function ProtectedAreasPage() {
               ))}
 
               {/* 4 ДЭХ ТОМ КАРТ: "БҮГДИЙГ ҮЗЭХ" */}
+              {sec.moreHref && (
               <Link
-                href={`/destination/protected/${sec.id}`}
+                href={sec.moreHref}
                 className="group relative rounded-3xl overflow-hidden bg-emerald-50/70 border-2 border-dashed border-emerald-300 hover:border-[#15803d] hover:bg-emerald-100/70 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center h-80 sm:h-96 cursor-pointer shadow-sm hover:shadow-xl"
               >
                 <div className="w-14 h-14 rounded-full bg-[#15803d] text-white flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-800 transition-all shadow-md">
@@ -259,6 +266,7 @@ export default function ProtectedAreasPage() {
                   Интерактив газрын зураг, байршил & дэлгэрэнгүй мэдээлэл
                 </p>
               </Link>
+              )}
             </div>
 
           </section>

@@ -11,6 +11,8 @@ interface SubItem {
 
 interface NomadicSection {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   title: string;
   desc: string;
   imageUrl: string;
@@ -20,6 +22,7 @@ interface NomadicSection {
 const NOMADIC_SECTIONS: NomadicSection[] = [
   {
     id: 'ger',
+    moreHref: '/things-to-do/nomadic?cat=ger-stay',
     title: 'Монгол гэр',
     desc: 'Нүүдэлчдийн олон зуун жилийн ахуй амьдралын ухааны охь болсон, байгалийн эрс тэс уур амьсгалд төгс зохицсон, угсарч буулгахад хялбар сууц.',
     imageUrl: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1200',
@@ -43,6 +46,7 @@ const NOMADIC_SECTIONS: NomadicSection[] = [
   },
   {
     id: 'five-animals',
+    moreHref: '/things-to-do/nomadic?cat=herding',
     title: 'Таван хошуу мал',
     desc: 'Адуу, үхэр, тэмээ, хонь, ямаа буюу монгол түмний амин зуулга, өмсөх хувцас, идэх хүнс, уналга хөсгийн эх үүсвэр болсон таван эрдэнэ.',
     imageUrl: 'https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?q=80&w=1200',
@@ -66,6 +70,7 @@ const NOMADIC_SECTIONS: NomadicSection[] = [
   },
   {
     id: 'four-seasons',
+    moreHref: '/things-to-do/nomadic?cat=migration',
     title: 'Дөрвөн улирлын нүүдэл',
     desc: 'Бэлчээрийн соргог, усны тунгалгийг даган хаваржаа, зуслан, намаржаа, өвөлжөөний хооронд жил бүр нүүдэллэн амьдрах эко ухаан.',
     imageUrl: 'https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1200',
@@ -89,6 +94,7 @@ const NOMADIC_SECTIONS: NomadicSection[] = [
   },
   {
     id: 'herding',
+    moreHref: '/things-to-do/nomadic?cat=herding',
     title: 'Мал маллах ухаан',
     desc: 'Байгаль дэлхий, цаг агаарын шинж байдал, од эрхэсээр цаг уурыг шинжиж мал сүргээ төллүүлэх, хариулах үе уламжилсан арга барил.',
     imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1200',
@@ -273,9 +279,10 @@ export default function NomadicLifePage() {
                   {sec.desc}
                 </p>
 
+                {sec.moreHref && (
                 <div className="pt-2">
                   <a
-                    href={`/about/nomadic-life/${sec.id}`}
+                    href={sec.moreHref}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
@@ -290,6 +297,7 @@ export default function NomadicLifePage() {
                     </svg>
                   </a>
                 </div>
+                )}
               </div>
 
               {/* Баруун тал: Зураг */}

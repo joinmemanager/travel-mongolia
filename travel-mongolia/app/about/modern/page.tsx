@@ -11,6 +11,8 @@ interface ModernItem {
 
 interface ModernSection {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   num: string;
   tag: string;
   title: string;
@@ -97,6 +99,7 @@ const MODERN_SECTIONS: ModernSection[] = [
   },
   {
     id: 'music',
+    moreHref: '/things-to-do/festivals',
     num: '04',
     tag: 'Аялгуу эгшиг',
     title: 'Хөгжим & Фестивалиуд',
@@ -233,9 +236,10 @@ export default function ModernMongoliaPage() {
                 <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
                   {sec.desc}
                 </p>
+                {sec.moreHref && (
                 <div className="pt-2">
                   <a
-                    href={`/about/modern/${sec.id}`}
+                    href={sec.moreHref}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
@@ -250,6 +254,7 @@ export default function ModernMongoliaPage() {
                     </svg>
                   </a>
                 </div>
+                )}
               </div>
 
               <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">

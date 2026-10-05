@@ -11,6 +11,8 @@ interface FoodSubItem {
 
 interface FoodSection {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   title: string;
   desc: string;
   imageUrl: string;
@@ -20,6 +22,7 @@ interface FoodSection {
 const FOOD_SECTIONS: FoodSection[] = [
   {
     id: 'food-culture',
+    moreHref: '/things-to-do/food',
     title: 'Монгол хоолны соёл',
     desc: 'Байгаль цаг уурын эрс тэс уур амьсгалд зохицсон, улирлын чанартай хооллолтын гүн ухаан. Өвөл, хаварт “улаан идээ” буюу махаар биеийн дулааныг тэтгэж, зун, намарт “цагаан идээ”-гээр гэдэс дотроо цэвэрлэж ундаалдаг.',
     imageUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200',
@@ -43,6 +46,7 @@ const FOOD_SECTIONS: FoodSection[] = [
   },
   {
     id: 'meat-dishes',
+    moreHref: '/things-to-do/food?cat=national-dishes',
     title: 'Махан хоол',
     desc: 'Байгалийн бэлчээрийн 80 гаруй төрлийн эмийн ургамлаар хооллосон малын мах нь өөрөө биологийн өндөр идэвхт чанартай байдаг.',
     imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200',
@@ -66,6 +70,7 @@ const FOOD_SECTIONS: FoodSection[] = [
   },
   {
     id: 'dairy',
+    moreHref: '/things-to-do/food?cat=dairy-products',
     title: 'Цагаан идээ',
     desc: 'Таван хошуу малын сүүг боловсруулан гаргаж авдаг байгалийн цэвэр кальци, амин дэм, ашигтай бактериар баялаг эрүүл мэндийн ундарга.',
     imageUrl: 'https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?q=80&w=1200',
@@ -89,6 +94,7 @@ const FOOD_SECTIONS: FoodSection[] = [
   },
   {
     id: 'flour-dishes',
+    moreHref: '/things-to-do/food?cat=national-dishes',
     title: 'Гурилан хоол',
     desc: 'Гар аргаар элдсэн нимгэн гурил, татсан шинэ махаар хийдэг монгол түмний өдөр тутмын болон баярын хүндэт зоогууд.',
     imageUrl: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200',
@@ -112,6 +118,7 @@ const FOOD_SECTIONS: FoodSection[] = [
   },
   {
     id: 'airag',
+    moreHref: '/things-to-do/food?cat=airag-fermentation',
     title: 'Айраг',
     desc: 'Гүүний саам сүүг ширэн хөхүүрт олон мянган удаа бүлж исгэдэг биеийн тамирыг сэргээгч, ЮНЕСКО-д бүртгэгдсэн ундаа.',
     imageUrl: 'https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?q=80&w=1200',
@@ -135,6 +142,7 @@ const FOOD_SECTIONS: FoodSection[] = [
   },
   {
     id: 'mongolian-tea',
+    moreHref: '/things-to-do/food?cat=mongolian-tea',
     title: 'Монгол цай',
     desc: 'Нүүдэлчдийн өглөө бүхэн шинэ чанасан сүүтэй цайны дээжийг тэнгэр хангайдаа өргөж эхэлдэг.',
     imageUrl: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=1200',
@@ -158,6 +166,7 @@ const FOOD_SECTIONS: FoodSection[] = [
   },
   {
     id: 'regional-cuisine',
+    moreHref: '/things-to-do/food?cat=regional-food',
     title: 'Бүс нутгийн хоол',
     desc: 'Хангай, говь, тал хээр, баруун хязгаарын ястан ястны байгаль цаг уур, өв соёлоо дагасан өвөрмөц хоол хүнс.',
     imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200',
@@ -295,9 +304,10 @@ export default function MongolianFoodPage() {
                   {sec.desc}
                 </p>
 
+                {sec.moreHref && (
                 <div className="pt-2">
                   <a
-                    href={`/about/food/${sec.id}`}
+                    href={sec.moreHref}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
@@ -312,6 +322,7 @@ export default function MongolianFoodPage() {
                     </svg>
                   </a>
                 </div>
+                )}
               </div>
 
               <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">

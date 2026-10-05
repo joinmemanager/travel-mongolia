@@ -11,6 +11,8 @@ interface NatureItem {
 
 interface NatureSection {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   title: string;
   desc: string;
   imageUrl: string;
@@ -20,6 +22,7 @@ interface NatureSection {
 const NATURE_SECTIONS: NatureSection[] = [
   {
     id: 'geography',
+    moreHref: '/destination/region',
     title: 'Монгол орны газарзүй',
     desc: 'Далайд гарцгүй, далайн түвшнээс дунджаар 1,580 метр өндөрт орших 1.5 сая хавтгай дөрвөлжин километр уудам нутаг.',
     imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1400',
@@ -43,6 +46,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'climate',
+    moreHref: '/inspiration/seasons',
     title: 'Уур амьсгал',
     desc: 'Жилд дунджаар 250 гаруй цэлмэг өдөртэй тул “Мөнх хөх тэнгэрийн орон” хэмээн алдаршсан дөрвөн улирлын ялгаралтай бүс.',
     imageUrl: 'https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1400',
@@ -66,6 +70,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'gobi',
+    moreHref: '/things-to-do/nature?cat=gobi',
     title: 'Говь',
     desc: 'Хонгорын элс, Баянзаг, Хэрмэн цав зэрэг байгалийн уран баримал болсон элсэн манхан, заган ой бүхий дэлхийд ховор говь.',
     imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1400',
@@ -89,6 +94,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'steppe',
+    moreHref: '/destination/landscapes#steppes',
     title: 'Тал хээр',
     desc: 'Нүд алдам үргэлжлэх Дорнодын уудам тал нутаг, нүүдэлчин амьдралын өлгий болсон хялганат ногоон далай.',
     imageUrl: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1400',
@@ -112,6 +118,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'mountains',
+    moreHref: '/things-to-do/nature?cat=mountains',
     title: 'Уулс',
     desc: 'Монгол Алтай, Хангай, Хэнтийн нуруудын өндөр сүрлэг оргилууд, мөсөн голууд болон хад хавцлын гайхамшиг.',
     imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1400',
@@ -135,6 +142,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'taiga',
+    moreHref: '/things-to-do/nature?cat=forest',
     title: 'Ой, тайга',
     desc: 'Хөвсгөл, Хэнтийн хөвч тайга, хар мод, хуш моддын анхилуун үнэр, цаатнуудын нутагладаг онгон зэрлэг байгаль.',
     imageUrl: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1400',
@@ -158,6 +166,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'lakes-rivers',
+    moreHref: '/things-to-do/nature?cat=lakes-rivers',
     title: 'Гол, нуур',
     desc: 'Дэлхийн цэнгэг усны 1 хувийг агуулдаг “Далай ээж” Хөвсгөл нуураас эхлээд Хойд мөсөн далай, Номхон далайн ай савын голууд.',
     imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400',
@@ -204,6 +213,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'wildlife',
+    moreHref: '/things-to-do/wildlife',
     title: 'Зэрлэг амьтад',
     desc: 'Дэлхийд цор ганц говийн мазаалай баавгай, цоохор ирвэс, тахь адуу, хавтгай тэмээний өлгий нутаг.',
     imageUrl: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1400',
@@ -227,6 +237,7 @@ const NATURE_SECTIONS: NatureSection[] = [
   },
   {
     id: 'geology',
+    moreHref: '/destination/landscapes#caves-geology',
     title: 'Геологи',
     desc: 'Төв Азийн нугачаа үүссэн эртний үеийн чулуулаг, унтарсан галт уулс, халуун рашаан ба эрдэс баялгийн их уурхай.',
     imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400',
@@ -364,9 +375,10 @@ export default function NaturePage() {
                   {sec.desc}
                 </p>
 
+                {sec.moreHref && (
                 <div className="pt-2">
                   <a
-                    href={`/about/nature/${sec.id}`}
+                    href={sec.moreHref}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
@@ -381,6 +393,7 @@ export default function NaturePage() {
                     </svg>
                   </a>
                 </div>
+                )}
               </div>
 
               <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">

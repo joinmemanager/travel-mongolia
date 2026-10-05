@@ -51,7 +51,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Зорих газрууд', en: 'Destinations', href: '/destination/region', ready: true,
         children: [
-          page('Бүс нутаг, аймгууд', 'Regions & Provinces', '/destination/region'),
+          page('Бүс нутгууд', 'Regions', '/destination/region'),
+          page('Аймгууд', 'Provinces', '/destination/region#provinces'),
           page('Түүхэн өв, дурсгалт газрууд', 'Heritage Sites', '/destination/heritage'),
           page('Байгалийн тогтоц, ландшафт', 'Landscapes', '/destination/landscapes'),
           page('Тусгай хамгаалалттай газрууд', 'Protected Areas', '/destination/protected'),

@@ -12,6 +12,8 @@ interface CultureItem {
 
 interface SubTopic {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   num: string;
   badge: string;
   title: string;
@@ -23,6 +25,7 @@ interface SubTopic {
 const CULTURE_SECTIONS: SubTopic[] = [
   {
     id: 'unesco',
+    moreHref: '/destination/heritage/unesco',
     num: '01',
     badge: 'Дэлхийн үнэт өв',
     title: 'UNESCO өв',
@@ -48,6 +51,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'archeology',
+    moreHref: '/things-to-do/culture?cat=archaeology',
     num: '02',
     badge: 'Чулуун ба хүрэл зэвсэг',
     title: 'Археологийн өв',
@@ -73,6 +77,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'monuments',
+    moreHref: '/things-to-do/culture?cat=historical-sites',
     num: '03',
     badge: 'Хөшөө дурсгал ба хот суурин',
     title: 'Түүх, соёлын дурсгал',
@@ -98,6 +103,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'music',
+    moreHref: '/things-to-do/culture?cat=music-dance',
     num: '04',
     badge: 'Аялгуу эгшиг',
     title: 'Монгол хөгжим',
@@ -123,6 +129,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'dance-stage',
+    moreHref: '/things-to-do/culture?cat=music-dance',
     num: '05',
     badge: 'Хөдөлгөөний урлаг',
     title: 'Бүжиг, тайзны урлаг',
@@ -173,6 +180,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'fine-arts',
+    moreHref: '/things-to-do/culture?cat=arts',
     num: '07',
     badge: 'Зураг ба цутгуур',
     title: 'Дүрслэх урлаг',
@@ -198,6 +206,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'crafts',
+    moreHref: '/things-to-do/culture?cat=crafts',
     num: '08',
     badge: 'Уран дарх & Оёдол',
     title: 'Гар урлал',
@@ -248,6 +257,7 @@ const CULTURE_SECTIONS: SubTopic[] = [
   },
   {
     id: 'architecture',
+    moreHref: '/things-to-do/culture?cat=monasteries',
     num: '10',
     badge: 'Хот байгуулалт & Сүм хийд',
     title: 'Архитектур',
@@ -364,9 +374,10 @@ export default function CulturePage() {
                   {sec.desc}
                 </p>
 
+                {sec.moreHref && (
                 <div>
                   <a
-                    href={`/about/culture/${sec.id}`}
+                    href={sec.moreHref}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-900 text-white hover:bg-[#15803d] transition-all font-bold text-sm sm:text-base shadow-sm group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
@@ -381,6 +392,7 @@ export default function CulturePage() {
                     </svg>
                   </a>
                 </div>
+                )}
               </div>
 
               {/* Баруун тал */}

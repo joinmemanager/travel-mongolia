@@ -15,6 +15,9 @@ export interface PlaceItem {
   rating: number;
   image: string;
   description: string;
+  // "Дэлгэрэнгүй үзэх" товч хаашаа заах. Газар бүрийн хуудас одоогоор байхгүй тул
+  // хоосон, товч нуугдана (docs/plan/broken-links.md)
+  moreHref?: string;
 }
 
 // 21 аймаг тус бүрийн төв координат болон ойртох zoom түвшин

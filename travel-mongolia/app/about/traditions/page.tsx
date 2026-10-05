@@ -11,6 +11,8 @@ interface TraditionItem {
 
 interface TraditionSection {
   id: string;
+  // "Дэлгэрэнгүй" товч хаашаа заах (docs/plan/broken-links.md). Байхгүй бол товч харагдахгүй
+  moreHref?: string;
   num: string;
   tag: string;
   title: string;
@@ -72,6 +74,7 @@ const TRADITION_SECTIONS: TraditionSection[] = [
   },
   {
     id: 'hospitality',
+    moreHref: '/things-to-do/nomadic?cat=visit-herder',
     num: '03',
     tag: 'Хүндэтгэл ба нөхөрлөл',
     title: 'Зочлох, дайлах ёс',
@@ -97,6 +100,7 @@ const TRADITION_SECTIONS: TraditionSection[] = [
   },
   {
     id: 'tsagaan-sar',
+    moreHref: '/things-to-do/events?cat=tsagaan-sar',
     num: '04',
     tag: 'Хаврын тэргүүн баяр',
     title: 'Цагаан сар',
@@ -122,6 +126,7 @@ const TRADITION_SECTIONS: TraditionSection[] = [
   },
   {
     id: 'naadam',
+    moreHref: '/recommendation/46P2ZsGTkRyowahv3BBgde',
     num: '05',
     tag: 'Төрт ёсны цэнгэл',
     title: 'Үндэсний их баяр Наадам',
@@ -172,6 +177,7 @@ const TRADITION_SECTIONS: TraditionSection[] = [
   },
   {
     id: 'buddhism',
+    moreHref: '/things-to-do/culture?cat=monasteries',
     num: '07',
     tag: 'Гэгээрэл ба амар амгалан',
     title: 'Буддын шашин',
@@ -222,6 +228,7 @@ const TRADITION_SECTIONS: TraditionSection[] = [
   },
   {
     id: 'rituals',
+    moreHref: '/things-to-do/events',
     num: '09',
     tag: 'Улирлын баяр & Өв соёл',
     title: 'Уламжлалт баяр, зан үйл',
@@ -340,9 +347,10 @@ export default function TraditionsPage() {
                   {sec.desc}
                 </p>
 
+                {sec.moreHref && (
                 <div className="pt-2">
                   <a
-                    href={`/about/traditions/${sec.id}`}
+                    href={sec.moreHref}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
@@ -357,6 +365,7 @@ export default function TraditionsPage() {
                     </svg>
                   </a>
                 </div>
+                )}
               </div>
 
               {/* Баруун тал: Зураг */}
