@@ -164,11 +164,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Хүндэтгэлтэй аялал',
     en: 'Travel with Respect',
     items: [
-      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', ready: true },
-      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', ready: true },
-      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', ready: true },
+      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', ready: false },
+      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', ready: false },
+      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', ready: false },
       { mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', ready: true },
-      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', ready: true },
+      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', ready: false },
     ],
   },
   {
@@ -223,6 +223,34 @@ export const FOOTER_LEGAL: NavItem[] = [
 // Production дээр бэлэн биш зүйлсийг хасна. Серверт дуудна (VERCEL_ENV нь client-д байхгүй).
 export function showUnreadyNavItems(): boolean {
   return process.env.VERCEL_ENV !== 'production';
+}
+
+// ---------------------------------------------------------------- хуудасны бэлэн байдал
+// Хуудас бэлэн эсэхийг цэсний ready-ээс уншина (нэг эх сурвалж). ready:false хуудас:
+//   - Preview дээр бүрэн харагдана
+//   - Production дээр robots noindex, sitemap-д орохгүй, цэсэнд харагдахгүй
+//   - Хуудас өөрөө 200 буцаана, ингэснээр түүн рүү заасан холбоос эвдрэхгүй
+// Цэсэнд огт байхгүй хуудсыг бэлэн гэж үзнэ.
+
+const pathOf = (href: string) => href.split(/[?#]/)[0];
+
+function allNavItems(): NavItem[] {
+  return [...MAIN_NAVIGATION, ...FOOTER_NAVIGATION]
+    .flatMap((s) => s.items)
+    .concat(FOOTER_LEGAL)
+    .flatMap((i) => [i, ...(i.children || [])]);
+}
+
+export function isPageReady(path: string): boolean {
+  const entries = allNavItems().filter(
+    (i) => i.href.startsWith('/') && pathOf(i.href) === path
+  );
+  return entries.every((i) => i.ready);
+}
+
+// Энэ орчинд (production) хуудсыг хайлтаас нуух ёстой эсэх
+export function isDraftPage(path: string): boolean {
+  return !showUnreadyNavItems() && !isPageReady(path);
 }
 
 export function visibleSections(
