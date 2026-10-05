@@ -77,7 +77,7 @@ export default async function CultureFestivals() {
     <section className="py-20 px-6 mx-auto max-w-7xl">
       {/* Дээд гарчиг */}
       <div className="mb-12">
-        <span className="text-xs font-bold tracking-widest text-brand-700 uppercase">
+        <span className="text-xs font-bold tracking-widest text-[#15803d] uppercase">
           CULTURE & HERITAGE
         </span>
         <h2 className="mt-2 mb-4 text-3xl font-bold text-neutral-900 sm:text-4xl">
@@ -102,7 +102,7 @@ export default async function CultureFestivals() {
           return (
             <div
               key={item.sys.id}
-              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-neutral-100 shadow-sm hover:shadow-md transition-all duration-300 hover:border-brand-300"
+              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-neutral-100 shadow-sm hover:shadow-md transition-all duration-300"
             >
               {/* Зураг */}
               <div className="overflow-hidden relative w-full h-64 sm:h-72">
@@ -141,7 +141,7 @@ export default async function CultureFestivals() {
               {/* Мэдээлэл */}
               <div className="flex flex-col flex-1 justify-between p-6 sm:p-8">
                 <div>
-                  <h3 className="mb-3 text-xl font-bold text-neutral-900 group-hover:text-brand-700 transition-colors sm:text-2xl">
+                  <h3 className="mb-3 text-xl font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors sm:text-2xl">
                     {f.title}
                   </h3>
 

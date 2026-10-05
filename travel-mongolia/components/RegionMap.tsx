@@ -549,7 +549,7 @@ export default function RegionMap() {
     >
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
         <div className="mb-12">
-          <span className="block mb-2 text-xs font-semibold tracking-[0.2em] text-brand-700 uppercase">
+          <span className="block mb-2 text-xs font-semibold tracking-[0.2em] text-[#15803d] uppercase">
             {t.heroTag}
           </span>
           <h2 className="text-3xl font-black tracking-tight text-gray-900 sm:text-5xl">
@@ -559,7 +559,7 @@ export default function RegionMap() {
 
         <div className="grid grid-cols-1 gap-8 items-center lg:grid-cols-12">
           {/* ЗҮҮН ТАЛ */}
-          <div className="flex overflow-hidden relative flex-col justify-between text-white bg-brand-950 rounded-3xl shadow-2xl lg:col-span-5">
+          <div className="flex overflow-hidden relative flex-col justify-between text-white bg-neutral-900 rounded-3xl shadow-2xl lg:col-span-5">
             <div className="relative w-full h-64 bg-black sm:h-72">
               {activeProvince.images.length === 1 ? (
                 <Image
@@ -595,14 +595,14 @@ export default function RegionMap() {
               <button
                 onClick={handlePrev}
                 aria-label="Өмнөх"
-                className="flex absolute top-1/2 left-4 z-10 justify-center items-center w-10 h-10 text-white bg-black/60 hover:bg-brand-700 rounded-full shadow-lg backdrop-blur-sm transition-all -translate-y-1/2 cursor-pointer"
+                className="flex absolute top-1/2 left-4 z-10 justify-center items-center w-10 h-10 text-white bg-black/60 hover:bg-[#15803d] rounded-full shadow-lg backdrop-blur-sm transition-all -translate-y-1/2 cursor-pointer"
               >
                 ‹
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Дараах"
-                className="flex absolute top-1/2 right-4 z-10 justify-center items-center w-10 h-10 text-white bg-black/60 hover:bg-brand-700 rounded-full shadow-lg backdrop-blur-sm transition-all -translate-y-1/2 cursor-pointer"
+                className="flex absolute top-1/2 right-4 z-10 justify-center items-center w-10 h-10 text-white bg-black/60 hover:bg-[#15803d] rounded-full shadow-lg backdrop-blur-sm transition-all -translate-y-1/2 cursor-pointer"
               >
                 ›
               </button>
@@ -619,7 +619,7 @@ export default function RegionMap() {
               <div className="mt-4">
                 <Link
                   href={`/province/${PROVINCES[currentIndex].id}`}
-                  className="inline-flex gap-1.5 items-center text-sm font-semibold text-brand-700 hover:text-red-400 transition-colors"
+                  className="inline-flex gap-1.5 items-center text-sm font-semibold text-[#15803d] hover:text-red-400 transition-colors"
                 >
                   <span>Дэлгэрэнгүй үзэх</span>
                   <span>→</span>
@@ -707,7 +707,7 @@ export default function RegionMap() {
                   onClick={() => setCurrentIndex(idx)}
                   className={`text-xs px-3 py-1.5 rounded-full font-medium transition-all cursor-pointer ${
                     prov.id === activeProvince.id
-                      ? 'bg-brand-700 text-white shadow-md scale-105 font-bold'
+                      ? 'bg-[#15803d] text-white shadow-md scale-105 font-bold'
                       : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                   }`}
                 >

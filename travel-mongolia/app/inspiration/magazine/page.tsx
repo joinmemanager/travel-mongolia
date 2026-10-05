@@ -168,12 +168,12 @@ function MagazineContent() {
   };
 
   return (
-    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32 pt-8">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32 pt-8">
       {/* Сэтгүүлийн толгой хэсэг */}
       <header className="pt-12 pb-8 px-6 sm:px-12 max-w-7xl mx-auto border-b border-neutral-200">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-brand-700 font-bold block mb-2">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#15803d] font-bold block mb-2">
               Volume 01 • Digital Issue
             </span>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-neutral-900 uppercase">
@@ -187,12 +187,12 @@ function MagazineContent() {
       </header>
 
       {/* Шүүлтүүр товчлуурууд - Дээд талд наалдаж үлдэнэ */}
-      <div className="sticky top-0 z-40 bg-brand-50/95 backdrop-blur-md border-b border-neutral-200 py-4 shadow-sm">
+      <div className="sticky top-0 z-40 bg-[#fcfbf9]/95 backdrop-blur-md border-b border-neutral-200 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 flex flex-wrap gap-2.5">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer bg-brand-700 text-white hover:bg-brand-950 shadow-sm"
+            className="px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer bg-[#15803d] text-white hover:bg-emerald-950 shadow-sm"
           >
             Бүгд (Эхлэл)
           </button>
@@ -202,7 +202,7 @@ function MagazineContent() {
               key={sec.id}
               type="button"
               onClick={() => scrollToSection(sec.id)}
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer bg-white border border-neutral-200 text-neutral-700 hover:border-brand-700 hover:text-brand-700"
+              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer bg-white border border-neutral-200 text-neutral-700 hover:border-[#15803d] hover:text-[#15803d]"
             >
               {sec.label}
             </button>
@@ -226,7 +226,7 @@ function MagazineContent() {
               {/* Хэсгийн гарчиг */}
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-3 border-b border-neutral-100">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-brand-700 font-bold">
+                  <span className="text-xs font-mono text-[#15803d] font-bold">
                     0{idx + 1}
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
@@ -242,7 +242,7 @@ function MagazineContent() {
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {/* 1. Lead Story - Том өргөн блок (3 багана эзэлнэ) */}
                 {lead && (
-                  <article className="group relative rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-900 md:col-span-2 lg:col-span-3 min-h-[420px] flex flex-col justify-end p-8 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 hover:border-brand-300">
+                  <article className="group relative rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-900 md:col-span-2 lg:col-span-3 min-h-[420px] flex flex-col justify-end p-8 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300">
                     <img
                       src={lead.image}
                       alt={lead.title}
@@ -251,14 +251,14 @@ function MagazineContent() {
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/40 to-transparent" />
                     <div className="relative z-10 max-w-2xl text-white">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="bg-brand-700 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">
+                        <span className="bg-[#15803d] text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">
                           {sec.label}
                         </span>
                         <span className="text-xs text-neutral-200">
                           {lead.readTime} • {lead.date}
                         </span>
                       </div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 group-hover:text-brand-300 transition-colors leading-tight">
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 group-hover:text-emerald-300 transition-colors leading-tight">
                         {lead.title}
                       </h3>
                       <p className="text-sm text-neutral-200 line-clamp-2 font-light">
@@ -270,7 +270,7 @@ function MagazineContent() {
 
                 {/* 2. Side Story - Өндөр босоо блок (1 багана эзэлнэ) */}
                 {second && (
-                  <article className="group relative rounded-3xl overflow-hidden border border-neutral-200 bg-white md:col-span-1 lg:col-span-1 min-h-[420px] flex flex-col justify-between p-6 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 hover:border-brand-300">
+                  <article className="group relative rounded-3xl overflow-hidden border border-neutral-200 bg-white md:col-span-1 lg:col-span-1 min-h-[420px] flex flex-col justify-between p-6 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300">
                     <div className="relative h-52 rounded-2xl overflow-hidden mb-4">
                       <img
                         src={second.image}
@@ -283,14 +283,14 @@ function MagazineContent() {
                         <span className="text-[11px] text-neutral-400 block mb-2 font-mono">
                           {second.date} • {second.readTime}
                         </span>
-                        <h4 className="text-base font-bold text-neutral-900 group-hover:text-brand-700 transition-colors line-clamp-3 mb-2 leading-snug">
+                        <h4 className="text-base font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors line-clamp-3 mb-2 leading-snug">
                           {second.title}
                         </h4>
                         <p className="text-xs text-neutral-600 line-clamp-3 leading-relaxed">
                           {second.description}
                         </p>
                       </div>
-                      <span className="text-xs font-bold text-brand-700 group-hover:text-brand-950 pt-4 inline-flex items-center gap-1 transition-colors">
+                      <span className="text-xs font-bold text-[#15803d] group-hover:text-emerald-950 pt-4 inline-flex items-center gap-1 transition-colors">
                         Унших <span>→</span>
                       </span>
                     </div>
@@ -312,14 +312,14 @@ function MagazineContent() {
                         <div className="text-[11px] text-neutral-400 mb-2 font-mono">
                           {third.date} • {third.readTime}
                         </div>
-                        <h4 className="text-xl font-bold text-neutral-900 group-hover:text-brand-700 transition-colors line-clamp-2 mb-3">
+                        <h4 className="text-xl font-bold text-neutral-900 group-hover:text-[#15803d] transition-colors line-clamp-2 mb-3">
                           {third.title}
                         </h4>
                         <p className="text-sm text-neutral-600 line-clamp-3 leading-relaxed">
                           {third.description}
                         </p>
                       </div>
-                      <span className="text-xs font-bold text-brand-700 group-hover:text-brand-950 pt-4 inline-flex items-center gap-1 transition-colors">
+                      <span className="text-xs font-bold text-[#15803d] group-hover:text-emerald-950 pt-4 inline-flex items-center gap-1 transition-colors">
                         Дэлгэрэнгүй унших <span>→</span>
                       </span>
                     </div>
@@ -336,7 +336,7 @@ function MagazineContent() {
 
 export default function MagazinePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-brand-50 text-neutral-700 p-12">Уншиж байна...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#fcfbf9] text-neutral-700 p-12">Уншиж байна...</div>}>
       <MagazineContent />
     </Suspense>
   );

@@ -296,13 +296,13 @@ export default function CulturePage() {
   };
 
   return (
-    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-brand-700 selection:text-white">
+    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       
       {/* 1. HERO ХЭСЭГ */}
       <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2400" alt="Соёл ба өв" className="absolute inset-0 w-full h-full object-cover brightness-[0.58]" />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-brand-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
+          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
             06. Culture & Heritage
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
@@ -380,7 +380,7 @@ export default function CulturePage() {
                 <div>
                   <a
                     href={liveHref(sec.moreHref)}
-                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-brand-700 text-white hover:bg-brand-800 transition-all font-bold text-sm sm:text-base shadow-sm group/btn"
+                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-900 text-white hover:bg-[#15803d] transition-all font-bold text-sm sm:text-base shadow-sm group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>
                     <svg 
@@ -409,14 +409,14 @@ export default function CulturePage() {
               {sec.items.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-brand-700/50 transition-all duration-300 flex flex-col"
+                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
                 >
                   <div className="relative w-full h-48 sm:h-52 overflow-hidden">
                     <img src={item.thumb} alt={item.title} className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" />
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-2">
-                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-brand-700 transition-colors leading-snug">
+                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-[#15803d] transition-colors leading-snug">
                       {item.title}
                     </h4>
                     <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed">

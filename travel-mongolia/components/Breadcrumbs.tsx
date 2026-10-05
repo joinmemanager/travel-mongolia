@@ -9,33 +9,9 @@ export interface Crumb {
   href: string;
 }
 
-const TONES = {
-  // Цайвар дэвсгэр: ногоон холбоос
-  light: {
-    link: 'font-semibold text-brand-700 hover:text-brand-900 hover:underline',
-    current: 'font-semibold text-brand-950',
-    plain: 'text-neutral-600',
-    sep: 'text-brand-300',
-  },
-  // Зурагтай, бараан ногоон overlay дээр
-  dark: {
-    link: 'font-semibold text-brand-200 hover:text-white hover:underline',
-    current: 'font-semibold text-white',
-    plain: 'text-brand-100',
-    sep: 'text-brand-400',
-  },
-};
-
 // Хуудасны дээд талын замчлал + Google-д зориулсан BreadcrumbList бүтэцтэй өгөгдөл.
 // Сүүлийн элемент нь одоогийн хуудас (холбоосгүй).
-export default function Breadcrumbs({
-  items,
-  tone = 'light',
-}: {
-  items: Crumb[];
-  tone?: 'light' | 'dark';
-}) {
-  const t = TONES[tone];
+export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -48,32 +24,34 @@ export default function Breadcrumbs({
   };
 
   return (
-    <nav aria-label="Замчлал" className="mb-5">
+    <nav aria-label="Замчлал" className="mb-4">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ol className="flex flex-wrap gap-1.5 items-center text-xs">
+      <ol className="flex flex-wrap gap-1.5 items-center text-xs text-neutral-500">
         {items.map((item, i) => {
           const isLast = i === items.length - 1;
-          // Сүүлийн элемент эсвэл production дээр нийтлэгдээгүй хуудас: холбоосгүй
-          const linked = !isLast && liveHref(item.href);
           return (
             <li key={item.href} className="flex gap-1.5 items-center">
-              {linked ? (
-                <Link href={item.href} className={`${t.link} transition-colors`}>
-                  {item.label}
-                </Link>
+              {/* Сүүлийн элемент эсвэл production дээр нийтлэгдээгүй хуудас: холбоосгүй */}
+              {isLast || !liveHref(item.href) ? (
+                <>
+                  <span
+                    aria-current={isLast ? 'page' : undefined}
+                    className={isLast ? 'font-semibold text-neutral-800' : ''}
+                  >
+                    {item.label}
+                  </span>
+                  {!isLast && <span aria-hidden="true" className="text-neutral-300">/</span>}
+                </>
               ) : (
-                <span
-                  aria-current={isLast ? 'page' : undefined}
-                  className={isLast ? t.current : t.plain}
-                >
-                  {item.label}
-                </span>
-              )}
-              {!isLast && (
-                <span aria-hidden="true" className={t.sep}>/</span>
+                <>
+                  <Link href={item.href} className="hover:text-[#15803d] transition-colors">
+                    {item.label}
+                  </Link>
+                  <span aria-hidden="true" className="text-neutral-300">/</span>
+                </>
               )}
             </li>
           );

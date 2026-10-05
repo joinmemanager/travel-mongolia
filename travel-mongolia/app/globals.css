@@ -2,49 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-green: #15803d; /* Голлох ногоон өнгө */
+  --primary-green-hover: #166534; /* Хулгана очих үеийн бараан ногоон */
+  --accent-blue: #0284c7; /* Хослох цэнхэр өнгө */
+}
+
 @import "tailwindcss";
-
-/* ------------------------------------------------------------------ Өнгөний систем
-   Сайтын бүх өнгө энд нэг газар. Лого, идэвхтэй цэсний ногоон (#15803d) = brand-700.
-   Tailwind-д bg-brand-700, text-brand-900, border-sand-200 гэх мэтээр хэрэглэнэ.
-
-   WCAG AA (энгийн текст 4.5:1):
-     brand-700 текст / цагаан дэвсгэр ........ 5.0:1
-     brand-700 текст / brand-50 дэвсгэр ....... 4.8:1
-     цагаан текст / brand-700 товч ............ 5.0:1
-     brand-900 гарчиг / цагаан ................ 9.9:1
-     brand-800 текст / brand-100 шошго ........ 6.5:1
-     brand-200 текст / brand-950 footer ....... 13:1
-     sand-800 текст / sand-100 дэвсгэр ........ 6.4:1
-   brand-500/600-г текстэд хэрэглэхгүй (цагаан дээр 4.5:1 хүрэхгүй). */
-@theme {
-  --color-brand-50: #f0fdf4;
-  --color-brand-100: #dcfce7;
-  --color-brand-200: #bbf7d0;
-  --color-brand-300: #86efac;
-  --color-brand-400: #4ade80;
-  --color-brand-500: #22c55e;
-  --color-brand-600: #16a34a;
-  --color-brand-700: #15803d;
-  --color-brand-800: #166534;
-  --color-brand-900: #14532d;
-  --color-brand-950: #052e16;
-
-  /* Нэмэлт өнгө: элсэн шаргал. Бага хэмжээгээр (тэмдэг, онцлох дэвсгэр) */
-  --color-sand-50: #fbf8f1;
-  --color-sand-100: #f4ecda;
-  --color-sand-200: #e9d8b4;
-  --color-sand-800: #6b4f1d;
-}
-
-/* Товч: үндсэн нь бүтэн ногоон, хоёрдогч нь ногоон хүрээтэй */
-@utility btn-primary {
-  @apply inline-flex items-center gap-2 py-3 px-6 text-sm font-bold text-white bg-brand-700 rounded-full transition-colors hover:bg-brand-800;
-}
-
-@utility btn-secondary {
-  @apply inline-flex items-center gap-2 py-3 px-6 text-sm font-bold text-brand-700 bg-white border-2 border-brand-700 rounded-full transition-colors hover:bg-brand-50;
-}
 html {
   scroll-behavior: smooth;
 }

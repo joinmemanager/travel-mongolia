@@ -82,11 +82,11 @@ function SeasonsContent() {
   }, [seasonParam]);
 
   return (
-    <main className="min-h-screen bg-brand-50 text-neutral-900 flex flex-col justify-between pb-8">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 flex flex-col justify-between pb-8">
       {/* Дээд хэсэг: Толгой мэдээлэл */}
       <div className="pt-10 pb-6 px-6 sm:px-12 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200">
         <div>
-          <span className="text-[11px] font-bold tracking-[0.3em] text-brand-700 uppercase block mb-1">
+          <span className="text-[11px] font-bold tracking-[0.3em] text-[#15803d] uppercase block mb-1">
             02. АЯЛАХ СЭДЭЛ
           </span>
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-neutral-900">
@@ -109,7 +109,7 @@ function SeasonsContent() {
               onClick={() => setActiveSeason(season.id)}
               className={`relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ease-out flex flex-col justify-end border ${
                 isActive
-                  ? 'lg:flex-[3.5] flex-[4] border-brand-700/40 shadow-xl ring-2 ring-brand-700/20'
+                  ? 'lg:flex-[3.5] flex-[4] border-[#15803d]/40 shadow-xl ring-2 ring-[#15803d]/20'
                   : 'lg:flex-[1] flex-[1] border-neutral-200 hover:border-neutral-300 shadow-sm bg-white'
               }`}
             >
@@ -150,7 +150,7 @@ function SeasonsContent() {
               {isActive && (
                 <div className="relative z-10 p-6 sm:p-10 max-w-2xl text-white">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="bg-brand-700 text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
+                    <span className="bg-[#15803d] text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
                       {season.period}
                     </span>
                     <span className="text-xs font-mono text-neutral-200 bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded-full">
@@ -161,7 +161,7 @@ function SeasonsContent() {
                   <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-2 text-white">
                     {season.name}
                   </h2>
-                  <p className="text-xs sm:text-sm font-semibold text-brand-300 mb-3 tracking-wide">
+                  <p className="text-xs sm:text-sm font-semibold text-emerald-300 mb-3 tracking-wide">
                     {season.tagline}
                   </p>
                   <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-light mb-6 line-clamp-3 sm:line-clamp-none">
@@ -171,13 +171,13 @@ function SeasonsContent() {
                   {/* Highlights & Best Places */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/20">
                     <div>
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-brand-300 block mb-2">
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-300 block mb-2">
                         Онцлох үйл ажиллагаа:
                       </span>
                       <ul className="space-y-1 text-xs text-neutral-200">
                         {season.highlights.map((h, i) => (
                           <li key={i} className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand-400" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                             {h}
                           </li>
                         ))}
@@ -185,13 +185,13 @@ function SeasonsContent() {
                     </div>
 
                     <div>
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-brand-300 block mb-2">
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-300 block mb-2">
                         Аялахад тохиромжтой:
                       </span>
                       <ul className="space-y-1 text-xs text-neutral-200">
                         {season.bestPlaces.map((p, i) => (
                           <li key={i} className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand-400" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                             {p}
                           </li>
                         ))}
@@ -208,7 +208,7 @@ function SeasonsContent() {
       {/* Доод хөл тайлбар */}
       <div className="pt-2 px-6 max-w-7xl mx-auto w-full flex items-center justify-between text-xs text-neutral-500">
         <span>Улирлын багана дээр дарж дэлгэрүүлэн үзнэ үү</span>
-        <Link href="/inspiration/styles" className="font-semibold text-brand-700 hover:text-brand-950 transition-colors">
+        <Link href="/inspiration/styles" className="font-semibold text-[#15803d] hover:text-emerald-950 transition-colors">
           Дараах: 03. Хэв маягаар →
         </Link>
       </div>
@@ -218,7 +218,7 @@ function SeasonsContent() {
 
 export default function SeasonsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-brand-50 text-neutral-700 p-10">Уншиж байна...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#fcfbf9] text-neutral-700 p-10">Уншиж байна...</div>}>
       <SeasonsContent />
     </Suspense>
   );

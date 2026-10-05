@@ -110,7 +110,7 @@ export default function PlannerPage() {
   const activeDayPlaces = days[activeDayIndex]?.places || [];
 
   return (
-    <main className="min-h-screen bg-brand-50 text-neutral-900 flex flex-col">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 flex flex-col">
       {/* Дээд статус мөр */}
       <header className="border-b border-neutral-200 bg-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sticky top-0 z-30 shadow-xs">
         <div className="flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function PlannerPage() {
           <div>
             <h1 className="text-base font-black text-neutral-900 flex items-center gap-2">
               <span>Аяллын интерактив төлөвлөгч</span>
-              <span className="text-[10px] font-mono bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full font-bold">
+              <span className="text-[10px] font-mono bg-emerald-100 text-[#15803d] px-2 py-0.5 rounded-full font-bold">
                 C08 SYSTEM
               </span>
             </h1>
@@ -132,12 +132,12 @@ export default function PlannerPage() {
           <div className="bg-neutral-100 px-3 py-1.5 rounded-xl font-mono text-neutral-600">
             Нийт хугацаа: <strong>{days.length} өдөр</strong>
           </div>
-          <div className="bg-brand-50 px-3 py-1.5 rounded-xl font-mono text-brand-700">
+          <div className="bg-emerald-50 px-3 py-1.5 rounded-xl font-mono text-[#15803d]">
             Сонгосон газар: <strong>{totalPlacesCount}</strong>
           </div>
           <button
             onClick={() => window.print()}
-            className="px-4 py-1.5 bg-brand-700 hover:bg-brand-800 text-white font-bold rounded-xl transition-all cursor-pointer"
+            className="px-4 py-1.5 bg-neutral-900 hover:bg-black text-white font-bold rounded-xl transition-all cursor-pointer"
           >
             Хэвлэх / PDF татах
           </button>
@@ -158,7 +158,7 @@ export default function PlannerPage() {
               </span>
               <button
                 onClick={addDay}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 flex items-center gap-1 cursor-pointer"
               >
                 + Өдөр нэмэх
               </button>
@@ -171,7 +171,7 @@ export default function PlannerPage() {
                   onClick={() => setActiveDayIndex(idx)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold shrink-0 transition-all cursor-pointer ${
                     activeDayIndex === idx
-                      ? 'bg-brand-700 text-white shadow-sm'
+                      ? 'bg-[#15803d] text-white shadow-sm'
                       : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                   }`}
                 >
@@ -182,7 +182,7 @@ export default function PlannerPage() {
           </div>
 
           {/* Идэвхтэй өдрийн дэлгэрэнгүй жагсаалт */}
-          <div className="p-5 rounded-3xl bg-brand-50 border border-neutral-200 flex-1">
+          <div className="p-5 rounded-3xl bg-[#fcfbf9] border border-neutral-200 flex-1">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-black text-neutral-900">
                 Өдөр {days[activeDayIndex]?.dayNumber} хуваарь
@@ -210,7 +210,7 @@ export default function PlannerPage() {
                     className="p-3.5 bg-white rounded-2xl border border-neutral-200/80 flex items-center justify-between shadow-2xs"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-full bg-brand-700 text-white text-[11px] font-mono font-bold flex items-center justify-center shrink-0">
+                      <span className="w-6 h-6 rounded-full bg-[#15803d] text-white text-[11px] font-mono font-bold flex items-center justify-center shrink-0">
                         {pIdx + 1}
                       </span>
                       <div>
@@ -245,7 +245,7 @@ export default function PlannerPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Газрын нэрээр хайх..."
-                className="flex-1 bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-brand-700"
+                className="flex-1 bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-[#15803d]"
               />
               <select
                 value={selectedRegion}
@@ -268,7 +268,7 @@ export default function PlannerPage() {
                 return (
                   <div
                     key={place.id}
-                    className="p-3 rounded-xl border border-neutral-200/60 bg-brand-50 flex items-center justify-between"
+                    className="p-3 rounded-xl border border-neutral-200/60 bg-[#fcfbf9] flex items-center justify-between"
                   >
                     <div>
                       <h4 className="text-xs font-bold text-neutral-900">{place.name}</h4>
@@ -280,7 +280,7 @@ export default function PlannerPage() {
                       className={`text-xs px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                         isAlreadyAdded
                           ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed'
-                          : 'bg-brand-700 hover:bg-brand-950 text-white'
+                          : 'bg-[#15803d] hover:bg-emerald-950 text-white'
                       }`}
                     >
                       {isAlreadyAdded ? 'Нэмэгдсэн' : '+ Нэмэх'}
@@ -302,7 +302,7 @@ export default function PlannerPage() {
             {/* Толгой хэсэг */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-100 pb-4 z-10">
               <div>
-                <span className="text-[10px] font-mono uppercase font-bold text-brand-700 tracking-widest block mb-0.5">
+                <span className="text-[10px] font-mono uppercase font-bold text-[#15803d] tracking-widest block mb-0.5">
                   MAP ROUTE OVERVIEW
                 </span>
                 <h3 className="text-lg font-black text-neutral-900">
@@ -328,21 +328,21 @@ export default function PlannerPage() {
               ) : (
                 <div className="relative max-w-lg mx-auto space-y-6">
                   {/* Босоо холбоос шугам */}
-                  <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-dashed border-l-2 border-brand-400 z-0" />
+                  <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-dashed border-l-2 border-emerald-400 z-0" />
 
                   {activeDayPlaces.map((p, idx) => (
                     <div key={p.id} className="relative flex items-center gap-4 z-10">
-                      <div className="w-8 h-8 rounded-full bg-brand-700 text-white font-mono font-bold text-xs flex items-center justify-center shadow-md">
+                      <div className="w-8 h-8 rounded-full bg-[#15803d] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md">
                         {idx + 1}
                       </div>
-                      <div className="flex-1 bg-brand-50 border border-neutral-200 rounded-2xl p-4 flex items-center justify-between shadow-2xs">
+                      <div className="flex-1 bg-[#fcfbf9] border border-neutral-200 rounded-2xl p-4 flex items-center justify-between shadow-2xs">
                         <div>
                           <h4 className="text-xs sm:text-sm font-bold text-neutral-900">{p.name}</h4>
                           <span className="text-[11px] text-neutral-500 font-mono">
                             Координат: {p.lat.toFixed(2)}°N, {p.lng.toFixed(2)}°E
                           </span>
                         </div>
-                        <span className="text-[10px] font-mono bg-brand-50 text-brand-700 px-2 py-1 rounded-md font-bold">
+                        <span className="text-[10px] font-mono bg-emerald-50 text-[#15803d] px-2 py-1 rounded-md font-bold">
                           Stop #{idx + 1}
                         </span>
                       </div>

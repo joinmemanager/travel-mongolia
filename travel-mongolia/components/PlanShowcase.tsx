@@ -401,13 +401,13 @@ export default function PlanShowcase({
               {section.items.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col justify-between p-8 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 shadow-xs hover:border-brand-300"
+                  className="flex flex-col justify-between p-8 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all duration-300 shadow-xs"
                 >
                   <div>
                     {/* Толгойн хэсэг */}
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-3xl">{item.icon}</span>
-                      <span className="py-1 px-3 text-[11px] font-bold text-brand-700 bg-brand-50 rounded-full">
+                      <span className="py-1 px-3 text-[11px] font-bold text-[#15803d] bg-emerald-50 rounded-full">
                         {item.badge}
                       </span>
                     </div>
@@ -427,7 +427,7 @@ export default function PlanShowcase({
                           key={i}
                           className="flex gap-2.5 items-start text-xs text-neutral-700"
                         >
-                          <span className="mt-0.5 font-bold text-brand-700">
+                          <span className="mt-0.5 font-bold text-[#15803d]">
                             •
                           </span>
                           <span className="leading-snug">{b}</span>
@@ -451,9 +451,9 @@ export default function PlanShowcase({
         ))}
 
         {/* 4. ДООД ТАЛЫН ИНТЕРАКТИВ ТӨЛӨВЛӨГЧИЙН ХОЛБООС БАННЕР */}
-        <div className="flex flex-col gap-8 justify-between items-center p-8 text-white bg-brand-950 rounded-3xl shadow-xl sm:p-14 md:flex-row">
+        <div className="flex flex-col gap-8 justify-between items-center p-8 text-white bg-neutral-900 rounded-3xl shadow-xl sm:p-14 md:flex-row">
           <div className="max-w-xl">
-            <span className="block mb-2 text-xs font-bold tracking-widest text-brand-400 uppercase">
+            <span className="block mb-2 text-xs font-bold tracking-widest text-emerald-400 uppercase">
               ИНТЕРАКТИВ СИСТЕМ (C08)
             </span>
             <h3 className="mb-3 text-2xl font-black leading-tight sm:text-4xl">
@@ -466,7 +466,7 @@ export default function PlanShowcase({
           </div>
           <Link
             href="/plan/planner"
-            className="flex gap-2 items-center py-4 px-8 text-sm font-bold text-white whitespace-nowrap bg-brand-700 hover:bg-brand-600 rounded-2xl shadow-lg hover:shadow-brand-900/40 transition-all"
+            className="flex gap-2 items-center py-4 px-8 text-sm font-bold text-white whitespace-nowrap bg-[#15803d] hover:bg-emerald-600 rounded-2xl shadow-lg hover:shadow-emerald-900/40 transition-all"
           >
             <span>Төлөвлөгч рүү очих</span>
             <span>→</span>

@@ -33,7 +33,7 @@ const scrollContainerRef = useRef<HTMLDivElement>(null);
   return (
     <main className="min-h-screen bg-[#fafafa] pb-24">
       {/* Header Banner */}
-      <section className="relative bg-brand-950 text-white py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
+      <section className="relative bg-neutral-900 text-white py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <img
             src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=80"
@@ -42,7 +42,7 @@ const scrollContainerRef = useRef<HTMLDivElement>(null);
           />
         </div>
         <div className="relative max-w-6xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-400">
+          <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
             02. ҮЗЭХ, ХИЙХ ЗҮЙЛС
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mt-3 mb-4">
@@ -112,7 +112,7 @@ const scrollContainerRef = useRef<HTMLDivElement>(null);
           {filteredSpots.map((spot) => (
             <div
               key={spot.id}
-              className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:border-brand-300"
+              className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -131,7 +131,7 @@ const scrollContainerRef = useRef<HTMLDivElement>(null);
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between text-[11px] font-medium text-neutral-500 mb-1">
-                    <span className="text-brand-700 uppercase tracking-wide font-semibold">
+                    <span className="text-emerald-700 uppercase tracking-wide font-semibold">
                       {spot.location} • {spot.region}
                     </span>
                     <span className="px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 text-[10px]">
@@ -139,7 +139,7 @@ const scrollContainerRef = useRef<HTMLDivElement>(null);
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-neutral-900 mt-1 mb-2 group-hover:text-brand-700 transition-colors">
+                  <h3 className="text-lg font-bold text-neutral-900 mt-1 mb-2 group-hover:text-emerald-700 transition-colors">
                     {spot.title}
                   </h3>
                   <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">

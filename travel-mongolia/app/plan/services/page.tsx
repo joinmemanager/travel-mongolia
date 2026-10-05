@@ -138,12 +138,12 @@ export default function ServicesPage() {
     : SERVICES_DATA.agencies.filter((a) => a.featured);
 
   return (
-    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
       {/* Толгой хэсэг */}
       <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-brand-700 uppercase">
+            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
               05. АЯЛЛАА ТӨЛӨВЛӨХ
             </span>
             <span className="text-neutral-300">•</span>
@@ -176,7 +176,7 @@ export default function ServicesPage() {
                 onClick={() => setActiveNav(item.id)}
                 className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                   activeNav === item.id
-                    ? 'bg-brand-700/10 text-brand-700 font-bold'
+                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
                     : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                 }`}
               >
@@ -194,7 +194,7 @@ export default function ServicesPage() {
             </Link>
             <Link
               href="/plan/safety-info"
-              className="text-[11px] font-bold text-brand-700 hover:text-brand-950 flex items-center justify-between px-2"
+              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
             >
               <span>Дараах: 06. Аюулгүй байдал</span>
               <span>→</span>
@@ -208,7 +208,7 @@ export default function ServicesPage() {
           {/* 01. АЯЛЛЫН КОМПАНИУД */}
           <section id="agencies" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 01</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 01</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Аяллын тур оператор компаниуд
@@ -224,7 +224,7 @@ export default function ServicesPage() {
               <button
                 type="button"
                 onClick={() => setIsAgenciesExpanded(!isAgenciesExpanded)}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <span>{isAgenciesExpanded ? 'Хураах ▴' : `Бүгдийг үзэх (${SERVICES_DATA.agencies.length - 4} компани) ▾`}</span>
               </button>
@@ -234,7 +234,7 @@ export default function ServicesPage() {
               {visibleAgencies.map((agency, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl bg-brand-50 border border-neutral-200 flex flex-col justify-between hover:border-neutral-300 transition-all"
+                  className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200 flex flex-col justify-between hover:border-neutral-300 transition-all"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -243,7 +243,7 @@ export default function ServicesPage() {
                         {agency.established}
                       </span>
                     </div>
-                    <div className="text-[11px] text-brand-700 font-semibold mb-1">
+                    <div className="text-[11px] text-[#15803d] font-semibold mb-1">
                       {agency.type}
                     </div>
                     <div className="text-[11px] text-neutral-500 mb-2">
@@ -258,7 +258,7 @@ export default function ServicesPage() {
                     href={agency.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-between w-full pt-3 border-t border-neutral-200/60 text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors"
+                    className="inline-flex items-center justify-between w-full pt-3 border-t border-neutral-200/60 text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors"
                   >
                     <span>Вэбсайт руу зочлох</span>
                     <span>↗</span>
@@ -271,7 +271,7 @@ export default function ServicesPage() {
           {/* 02. ХӨТӨЧ, ОРЧУУЛАГЧ */}
           <section id="guides" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 02</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 02</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Хөтөч & Орчуулагчийн үйлчилгээ
@@ -282,9 +282,9 @@ export default function ServicesPage() {
 
             <div className="space-y-4">
               {SERVICES_DATA.guides.map((g, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
+                <div key={idx} className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
                   <h4 className="text-sm font-bold text-neutral-900 mb-1">{g.title}</h4>
-                  <div className="text-xs font-semibold text-brand-700 mb-2 font-mono">
+                  <div className="text-xs font-semibold text-[#15803d] mb-2 font-mono">
                     Боломжит хэлнүүд: {g.lang}
                   </div>
                   <p className="text-xs text-neutral-600 leading-relaxed mb-3">
@@ -293,7 +293,7 @@ export default function ServicesPage() {
                   <div className="text-[11px] text-neutral-500 font-medium pt-2 border-t border-neutral-100 flex items-center justify-between">
                     <span>{g.contact}</span>
                     {g.link !== '#' && (
-                      <a href={g.link} target="_blank" rel="noreferrer" className="text-brand-700 font-bold hover:underline">
+                      <a href={g.link} target="_blank" rel="noreferrer" className="text-[#15803d] font-bold hover:underline">
                         Холбоотой танилцах ↗
                       </a>
                     )}
@@ -306,7 +306,7 @@ export default function ServicesPage() {
           {/* 03. ЖОЛООЧ & 4X4 ТЭЭВЭР */}
           <section id="drivers" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 03</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 03</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Жолооч & Бартаат замын тээвэр
@@ -317,10 +317,10 @@ export default function ServicesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {SERVICES_DATA.drivers.map((d, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-brand-50 border border-neutral-200">
+                <div key={idx} className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200">
                   <h4 className="text-sm font-bold text-neutral-900 mb-1">{d.vehicle}</h4>
                   <div className="flex items-center gap-3 text-xs text-neutral-500 font-mono mb-2">
-                    <span className="bg-brand-50 text-brand-700 px-2 py-0.5 rounded font-bold">Багтаамж: {d.capacity}</span>
+                    <span className="bg-emerald-50 text-[#15803d] px-2 py-0.5 rounded font-bold">Багтаамж: {d.capacity}</span>
                     <span>Бүс: {d.area}</span>
                   </div>
                   <p className="text-xs text-neutral-600 leading-relaxed">
@@ -334,7 +334,7 @@ export default function ServicesPage() {
           {/* 04. ОРОН НУТГИЙН ҮЙЛЧИЛГЭЭ */}
           <section id="local-services" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 04</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 04</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Орон нутгийн туслах үйлчилгээнүүд
@@ -345,7 +345,7 @@ export default function ServicesPage() {
 
             <div className="space-y-3">
               {SERVICES_DATA.localServices.map((s, idx) => (
-                <div key={idx} className="p-4 rounded-xl border border-neutral-200 bg-brand-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div key={idx} className="p-4 rounded-xl border border-neutral-200 bg-[#fcfbf9] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h4 className="text-xs font-bold text-neutral-900 mb-0.5">{s.name}</h4>
                     <span className="text-[11px] text-neutral-400 block mb-1">Нийлүүлэгчид: {s.provider}</span>
@@ -359,13 +359,13 @@ export default function ServicesPage() {
           {/* 05. ЗАХИАЛГЫН ЗӨВЛӨМЖ */}
           <section id="tips" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 05</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 05</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Үйлчилгээ сонгох практик зөвлөмжүүд
             </h2>
             <div className="space-y-2.5 text-xs text-neutral-700">
-              <div className="p-3.5 rounded-xl bg-brand-50/70 border border-brand-200 font-medium">
+              <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200 font-medium">
                 📄 <strong>Албан ёсны гэрээ:</strong> Аяллын компанитай заавал албан ёсны гэрээ байгуулж, үнэнд хоол, шатахуун, буудал, музейн тасалбар багтсан эсэхийг урьдчилан тусгуулаарай.
               </div>
               <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 font-medium">

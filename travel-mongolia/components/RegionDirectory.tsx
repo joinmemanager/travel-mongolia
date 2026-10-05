@@ -322,7 +322,7 @@ function SuggestionGroup({
 }) {
   return (
     <div className="py-1">
-      <span className="block px-5 pt-2 pb-1 text-[10px] font-bold tracking-wider text-brand-700 uppercase">
+      <span className="block px-5 pt-2 pb-1 text-[10px] font-bold tracking-wider text-emerald-700 uppercase">
         {title}
       </span>
       {children}
@@ -354,7 +354,7 @@ function SuggestionButton({
     <button
       type="button"
       onClick={onClick}
-      className="block py-2 px-5 w-full text-left hover:bg-brand-50 transition-colors cursor-pointer"
+      className="block py-2 px-5 w-full text-left hover:bg-emerald-50 transition-colors cursor-pointer"
     >
       <SuggestionText title={title} subtitle={subtitle} />
     </button>
@@ -537,7 +537,7 @@ export default function RegionDirectory({
               }}
               placeholder="Газар, аймаг, сэдвээр хайх..."
               aria-label="Зорих газар хайх"
-              className="py-3.5 pr-6 pl-12 w-full text-sm text-gray-800 bg-white rounded-full focus:outline-none ring-2 ring-brand-600/30 shadow-xl"
+              className="py-3.5 pr-6 pl-12 w-full text-sm text-gray-800 bg-white rounded-full focus:outline-none ring-2 ring-emerald-600/30 shadow-xl"
             />
 
             {showSuggestions && suggestions && (
@@ -581,7 +581,7 @@ export default function RegionDirectory({
                             key={i.id}
                             href={i.href}
                             onClick={() => setShowSuggestions(false)}
-                            className="block py-2 px-5 hover:bg-brand-50 transition-colors"
+                            className="block py-2 px-5 hover:bg-emerald-50 transition-colors"
                           >
                             <SuggestionText title={i.title} subtitle={i.subtitle} />
                           </Link>
@@ -620,7 +620,7 @@ export default function RegionDirectory({
                   key={reg.id}
                   onClick={() => setSelectedRegion(reg.id)}
                   className={`group w-full flex flex-col text-left p-1 rounded-2xl transition-all cursor-pointer ${
-                    isSelected ? 'ring-2 ring-brand-600' : 'hover:opacity-90'
+                    isSelected ? 'ring-2 ring-emerald-600' : 'hover:opacity-90'
                   }`}
                 >
                   <div className="aspect-[16/11] overflow-hidden relative mb-2 w-full rounded-xl shadow-xs">
@@ -655,7 +655,7 @@ export default function RegionDirectory({
               <span className="text-sm font-bold text-gray-900">Шүүлтүүр</span>
               <button
                 onClick={clearAllFilters}
-                className="text-xs font-semibold text-brand-700 hover:underline"
+                className="text-xs font-semibold text-emerald-700 hover:underline"
               >
                 Цэвэрлэх
               </button>
@@ -678,7 +678,7 @@ export default function RegionDirectory({
                         name="region_filter"
                         checked={selectedRegion === r.id}
                         onChange={() => setSelectedRegion(r.id)}
-                        className="w-4 h-4 rounded accent-brand-700"
+                        className="w-4 h-4 rounded accent-emerald-700"
                       />
                       {r.title}
                     </span>
@@ -718,7 +718,7 @@ export default function RegionDirectory({
                             prov
                           )
                         }
-                        className="w-4 h-4 rounded accent-brand-700"
+                        className="w-4 h-4 rounded accent-emerald-700"
                       />
                       {prov}
                     </span>
@@ -750,7 +750,7 @@ export default function RegionDirectory({
                               cat
                             )
                           }
-                          className="w-4 h-4 rounded accent-brand-700"
+                          className="w-4 h-4 rounded accent-emerald-700"
                         />
                         {cat}
                       </span>
@@ -778,7 +778,7 @@ export default function RegionDirectory({
                         onChange={() =>
                           toggleFilter(selectedSeasons, setSelectedSeasons, sea)
                         }
-                        className="w-4 h-4 rounded accent-brand-700"
+                        className="w-4 h-4 rounded accent-emerald-700"
                       />
                       {sea}
                     </span>
@@ -808,7 +808,7 @@ export default function RegionDirectory({
               {filteredItems.map((item) => (
                 <div
                   key={item.id}
-                  className="group flex overflow-hidden flex-col bg-white rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 shadow-xs hover:border-brand-300"
+                  className="group flex overflow-hidden flex-col bg-white rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 shadow-xs"
                 >
                   <div className="overflow-hidden relative w-full h-48">
                     <Image

@@ -33,7 +33,7 @@ export default function SeasonRecommendations({ items }: Props) {
         <div className="grid grid-cols-1 gap-8 items-stretch mb-8 lg:grid-cols-12">
           {/* Зүүн гарчиг */}
           <div className="flex flex-col justify-start pt-2 lg:col-span-4">
-            <span className="block mb-3 text-xs font-semibold tracking-[0.2em] text-brand-700 uppercase">
+            <span className="block mb-3 text-xs font-semibold tracking-[0.2em] text-[#15803d] uppercase">
               RECOMMENDATIONS
             </span>
             <h2 className="text-3xl font-bold tracking-normal leading-[1.2] text-neutral-900 sm:text-4xl">

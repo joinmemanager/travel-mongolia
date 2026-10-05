@@ -41,7 +41,6 @@ The user's machine has no Node/npm/gh on PATH, so local builds and type checks c
 
 - `next.config.js` is the only Next config (do not add `.mjs`/`.ts` variants, since Next would load `.js` first and silently ignore them). It sets `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds`, so type errors do not fail a deploy. `images.remotePatterns` allows `images.ctfassets.net` and `images.unsplash.com`. Any other remote host used with `next/image` must be added there or use `unoptimized`.
 - `app/layout.tsx` sets `dynamic = 'force-dynamic'`, so all pages render per request.
-- Colours come from one place: the `@theme` block in `app/globals.css` (`brand-50`…`brand-950` green scale where `brand-700` = the logo green `#15803d`, plus a small `sand` accent). Use `bg-brand-700`, `text-brand-950`, etc. Do not write raw hex colours or `emerald-*`/`green-*` in classNames (SVG/map code that needs a literal hex is the exception). Buttons use the `btn-primary` / `btn-secondary` utilities from the same file. Do not use `brand-500`/`600` for text: they fail WCAG AA on white. Hub/guide pages share `HubHeader` (green gradient, or dark-green overlay when given `imageUrl`) and alternate white / `brand-50` sections.
 - Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`.
 
 ## Content architecture

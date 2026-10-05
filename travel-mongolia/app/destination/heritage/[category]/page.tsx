@@ -99,7 +99,7 @@ export default async function HeritageCategoryPage({
   const heroImg = data.places[0]?.img || getImageUrl(null);
 
   return (
-    <main className="w-full bg-white text-neutral-900 pb-28 font-sans selection:bg-brand-700 selection:text-white">
+    <main className="w-full bg-white text-neutral-900 pb-28 font-sans selection:bg-[#15803d] selection:text-white">
       <section className="relative w-full h-[40vh] min-h-[300px] flex items-end overflow-hidden">
         <Image
           src={heroImg}

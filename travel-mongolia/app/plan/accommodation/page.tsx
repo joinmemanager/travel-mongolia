@@ -405,7 +405,7 @@ export default function AccommodationPage() {
         {list.map((place, idx) => (
           <div
             key={idx}
-            className="p-5 rounded-2xl bg-brand-50 border border-neutral-200 flex flex-col justify-between hover:border-neutral-300 hover:shadow-sm transition-all"
+            className="p-5 rounded-2xl bg-[#fcfbf9] border border-neutral-200 flex flex-col justify-between hover:border-neutral-300 hover:shadow-sm transition-all"
           >
             <div>
               <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -414,7 +414,7 @@ export default function AccommodationPage() {
                   {place.tag}
                 </span>
               </div>
-              <div className="text-[11px] text-brand-700 font-semibold mb-2 flex items-center gap-1.5">
+              <div className="text-[11px] text-[#15803d] font-semibold mb-2 flex items-center gap-1.5">
                 <span>📍 {place.location}</span>
                 <span>•</span>
                 <span>{place.rating}</span>
@@ -428,7 +428,7 @@ export default function AccommodationPage() {
               href={place.link}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-between w-full pt-3 border-t border-neutral-200/60 text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors"
+              className="inline-flex items-center justify-between w-full pt-3 border-t border-neutral-200/60 text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors"
             >
               <span>Албан ёсны сайт / Захиалах</span>
               <span>↗</span>
@@ -440,12 +440,12 @@ export default function AccommodationPage() {
   };
 
   return (
-    <main className="min-h-screen bg-brand-50 text-neutral-900 pb-32">
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
       {/* Толгой хэсэг */}
       <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-brand-700 uppercase">
+            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
               05. АЯЛЛАА ТӨЛӨВЛӨХ
             </span>
             <span className="text-neutral-300">•</span>
@@ -478,7 +478,7 @@ export default function AccommodationPage() {
                 onClick={() => setActiveNav(item.id)}
                 className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                   activeNav === item.id
-                    ? 'bg-brand-700/10 text-brand-700 font-bold'
+                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
                     : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                 }`}
               >
@@ -496,7 +496,7 @@ export default function AccommodationPage() {
             </Link>
             <Link
               href="/plan/services"
-              className="text-[11px] font-bold text-brand-700 hover:text-brand-950 flex items-center justify-between px-2"
+              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
             >
               <span>Дараах: 05. Үйлчилгээ</span>
               <span>→</span>
@@ -510,7 +510,7 @@ export default function AccommodationPage() {
           {/* 01. ЗОЧИД БУУДАЛ */}
           <section id="hotels" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 01</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 01</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Зочид буудал (Hotels)
@@ -526,7 +526,7 @@ export default function AccommodationPage() {
               <button
                 type="button"
                 onClick={() => toggleExpand('hotels')}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <span>{expandedSections.hotels ? 'Хураах ▴' : 'Бүгдийг үзэх (Бусад 5 газар) ▾'}</span>
               </button>
@@ -538,7 +538,7 @@ export default function AccommodationPage() {
           {/* 02. ЖУУЛЧНЫ БААЗ */}
           <section id="tourist-camps" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 02</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 02</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Жуулчны бааз (Tourist Camps)
@@ -554,7 +554,7 @@ export default function AccommodationPage() {
               <button
                 type="button"
                 onClick={() => toggleExpand('touristCamps')}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <span>{expandedSections.touristCamps ? 'Хураах ▴' : 'Бүгдийг үзэх (Бусад 5 бааз) ▾'}</span>
               </button>
@@ -566,7 +566,7 @@ export default function AccommodationPage() {
           {/* 03. GER CAMP & GLAMPING */}
           <section id="ger-camps" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 03</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 03</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Тансаг зэрэглэлийн Ger Camp & Glamping
@@ -582,7 +582,7 @@ export default function AccommodationPage() {
               <button
                 type="button"
                 onClick={() => toggleExpand('gerCamps')}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <span>{expandedSections.gerCamps ? 'Хураах ▴' : 'Бүгдийг үзэх (Нэмэлт ложууд) ▾'}</span>
               </button>
@@ -594,7 +594,7 @@ export default function AccommodationPage() {
           {/* 04. GUESTHOUSE / HOSTEL */}
           <section id="hostels" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 04</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 04</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Guesthouse & Hostel (Төсөвт аялагчид)
@@ -610,7 +610,7 @@ export default function AccommodationPage() {
               <button
                 type="button"
                 onClick={() => toggleExpand('hostels')}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <span>{expandedSections.hostels ? 'Хураах ▴' : 'Бүгдийг үзэх ▾'}</span>
               </button>
@@ -622,7 +622,7 @@ export default function AccommodationPage() {
           {/* 05. МАЛЧИН АЙЛЫН ГЭРТ ХОНОГЛОХ */}
           <section id="nomad-stay" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 05</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 05</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3">
               Малчин айлын гэрт хоноглох (Nomad Homestay)
@@ -638,7 +638,7 @@ export default function AccommodationPage() {
               <button
                 type="button"
                 onClick={() => toggleExpand('nomadStay')}
-                className="text-xs font-bold text-brand-700 hover:text-brand-950 transition-colors flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#15803d] hover:text-emerald-950 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <span>{expandedSections.nomadStay ? 'Хураах ▴' : 'Бүгдийг үзэх ▾'}</span>
               </button>
@@ -650,7 +650,7 @@ export default function AccommodationPage() {
           {/* 06. ХАРЬЦУУЛСАН ХҮСНЭГТ */}
           <section id="comparison" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[11px] font-mono font-bold text-brand-700">SECTION 06</span>
+              <span className="text-[11px] font-mono font-bold text-[#15803d]">SECTION 06</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-2">
               Байрлах газрын харьцуулсан хүснэгт
@@ -673,13 +673,13 @@ export default function AccommodationPage() {
                 </thead>
                 <tbody className="divide-y divide-neutral-100 font-normal">
                   {ACCOMMODATION_COMPARISON.map((item, idx) => (
-                    <tr key={idx} className="hover:bg-brand-50 transition-colors">
+                    <tr key={idx} className="hover:bg-[#fcfbf9] transition-colors">
                       <td className="py-3.5 px-3 font-bold text-neutral-900">{item.type}</td>
                       <td className="py-3.5 px-3 text-neutral-600">{item.location}</td>
                       <td className="py-3.5 px-3">{item.comfort}</td>
                       <td className="py-3.5 px-3 text-neutral-600">{item.wifi}</td>
                       <td className="py-3.5 px-3 text-neutral-600">{item.bathroom}</td>
-                      <td className="py-3.5 px-3 font-mono font-bold text-brand-700">{item.price}</td>
+                      <td className="py-3.5 px-3 font-mono font-bold text-[#15803d]">{item.price}</td>
                     </tr>
                   ))}
                 </tbody>

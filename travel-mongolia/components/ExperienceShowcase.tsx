@@ -231,7 +231,7 @@ export default function ExperienceShowcase({
                   onClick={() => setSelectedCategory(tab.key)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                     isActive
-                      ? 'bg-brand-700 text-white shadow-sm'
+                      ? 'bg-[#15803d] text-white shadow-sm'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -276,7 +276,7 @@ export default function ExperienceShowcase({
           {filteredExperiences.map((exp) => (
             <div
               key={exp.id}
-              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 sm:flex-row shadow-xs hover:border-brand-300"
+              className="group flex overflow-hidden flex-col bg-white rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 sm:flex-row shadow-xs"
             >
               {/* Зүүн тал: Зураг & Шошгууд */}
               <div className="overflow-hidden relative shrink-0 w-full h-64 sm:w-2/5 sm:h-auto">
@@ -294,7 +294,7 @@ export default function ExperienceShowcase({
                   <span
                     className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full w-fit ${
                       exp.difficulty === 'Хялбар'
-                        ? 'bg-brand-100 text-brand-800'
+                        ? 'bg-emerald-100 text-emerald-800'
                         : exp.difficulty === 'Дунд'
                         ? 'bg-amber-100 text-amber-800'
                         : 'bg-rose-100 text-rose-800'
@@ -314,7 +314,7 @@ export default function ExperienceShowcase({
                     <span>🗓️ {exp.bestSeason}</span>
                   </div>
 
-                  <h3 className="mb-2 text-lg font-bold leading-snug text-gray-900 group-hover:text-brand-700 transition-colors">
+                  <h3 className="mb-2 text-lg font-bold leading-snug text-gray-900 group-hover:text-[#15803d] transition-colors">
                     {exp.title}
                   </h3>
 
@@ -329,7 +329,7 @@ export default function ExperienceShowcase({
                         key={i}
                         className="flex gap-2 items-center text-xs text-gray-700"
                       >
-                        <span className="font-bold text-brand-700">✓</span>
+                        <span className="font-bold text-[#15803d]">✓</span>
                         <span>{point}</span>
                       </div>
                     ))}
@@ -340,7 +340,7 @@ export default function ExperienceShowcase({
                   <span className="text-xs font-bold text-gray-900">
                     Бүрэн хөтөлбөр харах
                   </span>
-                  <button className="flex justify-center items-center w-9 h-9 text-gray-800 group-hover:text-white bg-gray-100 group-hover:bg-brand-700 rounded-full transition-all cursor-pointer">
+                  <button className="flex justify-center items-center w-9 h-9 text-gray-800 group-hover:text-white bg-gray-100 group-hover:bg-[#15803d] rounded-full transition-all cursor-pointer">
                     →
                   </button>
                 </div>

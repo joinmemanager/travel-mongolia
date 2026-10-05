@@ -21,17 +21,17 @@ export default function Footer({
     'ml-2 py-0.5 px-1.5 text-[10px] font-bold rounded-full';
 
   return (
-    <footer className="pt-16 pb-12 text-white bg-brand-950 border-t border-brand-900">
+    <footer className="pt-16 pb-12 text-white bg-[#1a1a1a] border-t border-neutral-800">
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 gap-10 pb-12 border-b border-brand-900 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 pb-12 border-b border-neutral-800 md:grid-cols-2 lg:grid-cols-5">
           {/* 1-р багана: Лого, танилцуулга & Сошиал холбоосууд */}
           <div className="space-y-5 lg:col-span-2">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-black tracking-tighter text-white">
-                mongolia<span className="text-brand-400">.</span>
+                mongolia<span className="text-[#15803d]">.</span>
               </span>
             </Link>
-            <p className="max-w-sm text-sm leading-relaxed text-brand-200">
+            <p className="max-w-sm text-sm leading-relaxed text-neutral-400">
               Монгол орны онгон дагшин байгаль, нүүдэлчдийн олон зуун жилийн
               баялаг өв соёл, хязгааргүй уудам тал нутгийн аяллыг албан ёсны
               мэдээллээр хүргэж байна.
@@ -39,7 +39,7 @@ export default function Footer({
 
             {/* Сошиал сувгууд */}
             <div className="space-y-2">
-              <span className="block text-xs font-semibold tracking-wider text-brand-200 uppercase">
+              <span className="block text-xs font-semibold tracking-wider text-neutral-400 uppercase">
                 Биднийг дагаарай
               </span>
               <div className="flex gap-3 items-center">
@@ -48,7 +48,7 @@ export default function Footer({
                   href="https://www.facebook.com/profile.php?id=61592368934535"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-center items-center w-9 h-9 text-brand-100 hover:text-white bg-brand-900 hover:bg-brand-700 rounded-full border border-brand-800 hover:border-brand-500 transition-all"
+                  className="flex justify-center items-center w-9 h-9 text-neutral-300 hover:text-white bg-neutral-900 hover:bg-[#15803d] rounded-full border border-neutral-700 hover:border-[#15803d] transition-all"
                   aria-label="Facebook"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ export default function Footer({
                   href="https://www.instagram.com/travelhubmongolia/?__d=1utm_sourceig_embed"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-center items-center w-9 h-9 text-brand-100 hover:text-white bg-brand-900 hover:bg-brand-700 rounded-full border border-brand-800 hover:border-brand-500 transition-all"
+                  className="flex justify-center items-center w-9 h-9 text-neutral-300 hover:text-white bg-neutral-900 hover:bg-[#15803d] rounded-full border border-neutral-700 hover:border-[#15803d] transition-all"
                   aria-label="Instagram"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@ export default function Footer({
                   href="https://www.youtube.com/@travelhubmongolia7049"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-center items-center w-9 h-9 text-brand-100 hover:text-white bg-brand-900 hover:bg-brand-700 rounded-full border border-brand-800 hover:border-brand-500 transition-all"
+                  className="flex justify-center items-center w-9 h-9 text-neutral-300 hover:text-white bg-neutral-900 hover:bg-[#15803d] rounded-full border border-neutral-700 hover:border-[#15803d] transition-all"
                   aria-label="YouTube"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -88,10 +88,10 @@ export default function Footer({
           {/* 2–3-р багана: Бүс нутаг, Хэрэгцээт мэдээлэл */}
           {groups.map((group) => (
             <div key={group.id} className="space-y-4">
-              <h4 className="text-sm font-bold tracking-wider text-white uppercase">
+              <h4 className="text-sm font-bold tracking-wider text-neutral-200 uppercase">
                 {labelOf(group)}
               </h4>
-              <ul className="space-y-2.5 text-sm text-brand-200">
+              <ul className="space-y-2.5 text-sm text-neutral-400">
                 {group.items.map((item) => (
                   <li key={`${item.href}-${item.mn}`}>
                     <NavItemLink
@@ -111,13 +111,13 @@ export default function Footer({
 
           {/* 4-р багана: Холбоо барих мэдээлэл */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold tracking-wider text-white uppercase">
+            <h4 className="text-sm font-bold tracking-wider text-neutral-200 uppercase">
               Холбоо барих
             </h4>
-            <div className="space-y-3 text-sm text-brand-200">
+            <div className="space-y-3 text-sm text-neutral-400">
               {/* Имэйл */}
               <div className="flex gap-2.5 items-start">
-                <span className="mt-0.5 text-brand-400">✉</span>
+                <span className="mt-0.5 text-[#15803d]">✉</span>
                 <a
                   href="mailto:contact@joinme.mn"
                   className="hover:text-white transition-colors"
@@ -128,7 +128,7 @@ export default function Footer({
 
               {/* Утас */}
               <div className="flex gap-2.5 items-start">
-                <span className="mt-0.5 text-brand-400">📞</span>
+                <span className="mt-0.5 text-[#15803d]">📞</span>
                 <a
                   href="tel:+97677443939"
                   className="hover:text-white transition-colors"
@@ -139,7 +139,7 @@ export default function Footer({
 
               {/* Хаяг */}
               <div className="flex gap-2.5 items-start">
-                <span className="mt-0.5 text-brand-400">📍</span>
+                <span className="mt-0.5 text-[#15803d]">📍</span>
                 <span>Улаанбаатар хот, Сүхбаатар дүүрэг, Чонон бөрт төв</span>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function Footer({
         </div>
 
         {/* Доод хэсэг */}
-        <div className="flex flex-col gap-4 justify-between items-center pt-8 text-xs text-brand-300 sm:flex-row">
+        <div className="flex flex-col gap-4 justify-between items-center pt-8 text-xs text-neutral-500 sm:flex-row">
           <p>
             © {new Date().getFullYear()} Mongolia Tourism. Бүх эрх хуулиар
             хамгаалагдсан.
@@ -158,7 +158,7 @@ export default function Footer({
                 key={`${item.href}-${item.mn}`}
                 item={item}
                 english={isEnglish}
-                className="hover:text-brand-100 transition-colors"
+                className="hover:text-neutral-300 transition-colors"
                 badgeClassName={badgeClass}
                 tone="dark"
               >

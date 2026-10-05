@@ -153,7 +153,7 @@ export default function RealRouteMap({ route }: Props) {
       <div className="flex absolute bottom-4 left-4 z-10 gap-3 items-center py-2 px-3.5 text-xs bg-white/90 rounded-xl border border-neutral-200 shadow-sm backdrop-blur-md pointer-events-none">
         <span className="font-bold text-neutral-800">{route.name}</span>
         <span className="text-neutral-400">|</span>
-        <span className="font-semibold text-brand-700">{route.distance}</span>
+        <span className="font-semibold text-[#15803d]">{route.distance}</span>
         <span className="text-neutral-400">|</span>
         <span className="text-neutral-600">{route.duration}</span>
       </div>

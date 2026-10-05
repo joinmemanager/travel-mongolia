@@ -114,9 +114,9 @@ export default async function RegionPage({ searchParams }: Props) {
               <li key={p.href}>
                 <Link
                   href={p.href}
-                  className="group block p-5 h-full bg-white rounded-2xl border border-gray-100 hover:border-brand-200 hover:shadow-lg transition-all shadow-xs"
+                  className="group block p-5 h-full bg-white rounded-2xl border border-gray-100 hover:border-emerald-200 hover:shadow-lg transition-all shadow-xs"
                 >
-                  <span className="block text-base font-bold text-gray-900 group-hover:text-brand-700 transition-colors">
+                  <span className="block text-base font-bold text-gray-900 group-hover:text-[#15803d] transition-colors">
                     {p.title}
                   </span>
                   {p.center && (
