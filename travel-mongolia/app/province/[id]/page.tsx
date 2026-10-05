@@ -159,8 +159,9 @@ export default async function ProvinceDetailPage({ params }: Props) {
         </div>
       </section>
 
-     {/* 2. SUB-NAVIGATION (Томруулсан, цэвэрхэн Arial/Sans фонттой цэс) */}
-      <nav className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200">
+     {/* 2. SUB-NAVIGATION. Үндсэн header гүйлгэхэд нуугддаг (sticky биш) тул top-0:
+         header харагдаж байхад түүний доор, нуугдсаны дараа дэлгэцийн дээд ирмэгт наалдана */}
+      <nav className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200">
         <div className="max-w-5xl mx-auto px-6 flex items-center justify-center gap-8 sm:gap-14 overflow-x-auto py-5 text-base sm:text-lg font-normal font-sans tracking-tight text-neutral-600 no-scrollbar">
           <a
             href="#overview"
@@ -191,7 +192,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
 
       <div className="max-w-4xl mx-auto px-6 sm:px-10">
         {/* Хэсэг 1: Ерөнхий танилцуулга */}
-        <section id="overview" className="pt-16 scroll-mt-36">
+        <section id="overview" className="pt-16 scroll-mt-20">
           <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
             Танилцуулга
           </h2>
@@ -207,7 +208,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
         </section>
 
         {/* Хэсэг 2: Тоон үзүүлэлтүүд */}
-        <section id="facts" className="pt-16 scroll-mt-36 border-t border-neutral-100 mt-12">
+        <section id="facts" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
           <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
             Аймгийн үзүүлэлтүүд
           </h2>
@@ -234,7 +235,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
         </section>
 
         {/* Хэсэг 3: Үзэх газрууд */}
-        <section id="highlights" className="pt-16 scroll-mt-36 border-t border-neutral-100 mt-12">
+        <section id="highlights" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
           <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
             Онцлох газрууд
           </h2>
@@ -252,7 +253,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
         </section>
 
         {/* Хэсэг 4: Аяллын зөвлөмж */}
-        <section id="guide" className="pt-16 scroll-mt-36 border-t border-neutral-100 mt-12">
+        <section id="guide" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
           <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-4">
             Аялахад анхаарах зүйлс
           </h2>
