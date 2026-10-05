@@ -141,6 +141,7 @@ const NOMADIC_SECTIONS: NomadicSection[] = [
   },
   {
     id: 'eco-culture',
+    moreHref: '/respect/nature#tradition',
     title: 'Байгаль хамгаалах уламжлал',
     desc: 'Ус, булаг шанд руу сүү, цус дусаахгүй байх, газар шороог сэндийлэхгүй байх зэрэг нүүдэлчдийн байгальтайгаа зохицсон ариун ёс.',
     imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200',

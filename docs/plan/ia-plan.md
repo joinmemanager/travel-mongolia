@@ -174,7 +174,7 @@
 | 11 | Ургамлын аймаг | `/about/nature#flora` | |
 | 12 | Палеонтологи, үлэг гүрвэл | `/about/nature#paleontology` | |
 | 13 | Ахуйн багаж, хэрэгсэл | `/about/nomadic-life#tools` | |
-| 14 | Байгаль хамгаалах уламжлал | `/about/nomadic-life#eco-culture` | **5б**: `/respect/nature` бэлэн болоход тийш чиглүүлнэ |
+| 14 | Байгаль хамгаалах уламжлал | `/about/nomadic-life#eco-culture` | ✅ **5б-д хийгдсэн**: товч `/respect/nature#tradition` руу заадаг болсон |
 | 15 | Монгол ардын тоглоом наадам | `/about/nomadic-life#games` | |
 | 16 | Монголчууд | `/about/people#mongolians` | |
 | 17 | Угсаатны бүлгүүд | `/about/people#ethnic-groups` | |
