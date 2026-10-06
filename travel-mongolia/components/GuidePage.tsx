@@ -1,78 +1,82 @@
-import Link from 'next/link';
 import React from 'react';
 
-import { liveHref } from '@/lib/navigation';
 import type { GuideLink, GuideSection } from '@/lib/respectData';
 
-import Breadcrumbs, { type Crumb } from './Breadcrumbs';
+import type { Crumb } from './Breadcrumbs';
+import LinkCard from './design/LinkCard';
+import HubHeader from './HubHeader';
 
-// Гарын авлага маягийн хуудас (/plan/* хуудсуудын загвартай ижил):
-// толгой хэсэг (замчлал, H1), зүүн талд хэсгийн жагсаалт, баруун талд хэсгүүд.
+export interface TocItem {
+  id: string;
+  label: string;
+}
+
+// "Гарын авлага/нийтлэл" загвар (docs/plan/templates.md): /plan/*, /respect/*.
+// Текст толгой (HubHeader) → зүүн талд наалддаг сэдвийн жагсаалт → хэсгүүд →
+// доод хэсэгт "Холбогдох хуудсууд" холбоосны карт (components/design/LinkCard).
+// Хэсгүүдийг өгөгдлөөр (sections) эсвэл өөрийн JSX-ээр (children + toc) дамжуулж болно.
 export default function GuidePage({
   crumbs,
   kicker,
   kickerEn,
   title,
   intro,
-  sections,
+  sections = [],
+  toc,
+  activeToc,
+  onTocSelect,
   related,
   children,
   bottomBand,
 }: {
-  crumbs: Crumb[];
+  crumbs?: Crumb[];
   kicker: string;
   kickerEn: string;
   title: string;
   intro: string;
-  sections: GuideSection[];
+  sections?: GuideSection[];
+  // Хэсгүүдийг children-ээр өгөх үед зүүн талын жагсаалт (жишээ нь /plan/* хуудсууд)
+  toc?: TocItem[];
+  // Сонгогдсон сэдвийг тодруулах (сонголттой)
+  activeToc?: string;
+  onTocSelect?: (id: string) => void;
   related: GuideLink[];
   // Хэсгүүдийн өмнө харуулах нэмэлт контент (жишээ нь hub хуудасны амлалт)
   children?: React.ReactNode;
   // Хуудасны хамгийн доор, footer-ийн яг дээр харуулах тууз (components/design/PatternBand)
   bottomBand?: React.ReactNode;
 }) {
-  // Production дээр draft/planned хуудас руу заасан холбоосыг харуулахгүй
-  const liveRelated = related.filter((link) => liveHref(link.href));
+  const tocItems: TocItem[] =
+    toc ||
+    sections.map((sec, i) => ({
+      id: sec.id,
+      label: `${String(i + 1).padStart(2, '0')}. ${sec.title}`,
+    }));
 
   return (
     <main className={`min-h-screen bg-[#fcfbf9] text-neutral-900 ${bottomBand ? '' : 'pb-32'}`}>
-      {/* Толгой хэсэг */}
-      <header className="border-b border-neutral-200 bg-white pt-12 pb-12 px-6 sm:px-12 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={crumbs} />
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
-              {kicker}
-            </span>
-            <span className="text-neutral-300">•</span>
-            <span className="text-[11px] font-mono text-neutral-500 uppercase">
-              {kickerEn}
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-neutral-900 mb-4">
-            {title}
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-600 max-w-2xl font-normal leading-relaxed">
-            {intro}
-          </p>
-        </div>
-      </header>
+      <HubHeader crumbs={crumbs} kicker={kicker} kickerEn={kickerEn} title={title} intro={intro} />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 flex flex-col lg:flex-row gap-12 items-start">
-        {/* Зүүн талын хэсгийн жагсаалт */}
-        {sections.length > 0 && (
+        {/* Зүүн талын сэдвийн жагсаалт */}
+        {tocItems.length > 0 && (
           <aside className="hidden lg:block w-64 shrink-0 sticky top-28 space-y-2 bg-white p-5 rounded-2xl border border-neutral-200/80 shadow-sm">
             <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-3 px-2">
               Сэдвийн жагсаалт
             </span>
             <nav className="space-y-1">
-              {sections.map((sec, i) => (
+              {tocItems.map((item) => (
                 <a
-                  key={sec.id}
-                  href={`#${sec.id}`}
-                  className="block px-3 py-2 rounded-xl text-xs font-semibold text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 transition-all"
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={onTocSelect ? () => onTocSelect(item.id) : undefined}
+                  className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+                    activeToc === item.id
+                      ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
+                      : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
+                  }`}
                 >
-                  {String(i + 1).padStart(2, '0')}. {sec.title}
+                  {item.label}
                 </a>
               ))}
             </nav>
@@ -113,27 +117,8 @@ export default function GuidePage({
             </section>
           ))}
 
-          {/* Холбогдох хуудсууд */}
-          {liveRelated.length > 0 && (
-            <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
-              <h2 className="text-lg font-black text-neutral-900 mb-4">
-                Холбогдох хуудсууд
-              </h2>
-              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {liveRelated.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="flex justify-between items-center p-4 rounded-2xl bg-[#fcfbf9] border border-neutral-200 text-sm font-semibold text-neutral-800 hover:border-[#15803d] hover:text-[#15803d] transition-colors"
-                    >
-                      <span>{link.label}</span>
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          {/* Холбогдох хуудсууд: холбоосны карт (production дээр нийтлэгдээгүйг нууна) */}
+          <LinkCard title="Холбогдох хуудсууд" links={related} />
         </div>
       </div>
       {bottomBand && <div className="mt-32">{bottomBand}</div>}

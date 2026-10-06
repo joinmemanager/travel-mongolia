@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import GuidePage from '@/components/GuidePage';
 
 
 // Олон улсын үндсэн шууд нислэгүүд
@@ -33,72 +33,19 @@ export default function GettingToMongoliaPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
-      {/* Толгой хэсэг */}
-      <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
-              05. АЯЛЛАА ТӨЛӨВЛӨХ
-            </span>
-            <span className="text-neutral-300">•</span>
-            <span className="text-[11px] font-mono text-neutral-500 uppercase">
-              GETTING TO MONGOLIA
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-neutral-900 mb-4">
-            Монголд ирэх
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-600 max-w-2xl font-normal leading-relaxed">
-            Агаар, төмөр зам болон хуурай замын хилийн боомтоор Монгол Улсад хэрхэн ирэх тухай нарийвчилсан мэдээлэл, нисэх буудлаас хотын төв хүрэх тээвэр.
-          </p>
-        </div>
-      </header>
-
-      {/* Их бие: Sticky sidebar + Content */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 flex flex-col lg:flex-row gap-12 items-start">
-        
-        {/* Зүүн талын Sticky Sidebar */}
-        <aside className="hidden lg:block w-64 shrink-0 sticky top-28 space-y-2 bg-white p-5 rounded-2xl border border-neutral-200/80 shadow-sm">
-          <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-3 px-2">
-            Сэдвийн жагсаалт
-          </span>
-          <nav className="space-y-1">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setActiveNav(item.id)}
-                className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-                  activeNav === item.id
-                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
-                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="pt-4 mt-4 border-t border-neutral-100 flex flex-col gap-2">
-            <Link
-              href="/plan/before-you-travel"
-              className="text-[11px] font-semibold text-neutral-500 hover:text-neutral-900 px-2"
-            >
-              ← Өмнөх: 01. Ирэхээс өмнө
-            </Link>
-            <Link
-              href="/plan/getting-around"
-              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
-            >
-              <span>Дараах: 03. Дотор аялах</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </aside>
-
-        {/* Баруун талын дэлгэрэнгүй хэсгүүд */}
-        <div className="flex-1 w-full space-y-16">
+    <GuidePage
+      kicker="05. АЯЛЛАА ТӨЛӨВЛӨХ"
+      kickerEn="GETTING TO MONGOLIA"
+      title="Монголд ирэх"
+      intro="Агаар, төмөр зам болон хуурай замын хилийн боомтоор Монгол Улсад хэрхэн ирэх тухай нарийвчилсан мэдээлэл, нисэх буудлаас хотын төв хүрэх тээвэр."
+      toc={navItems}
+      activeToc={activeNav}
+      onTocSelect={setActiveNav}
+      related={[
+          { label: 'Өмнөх: 01. Ирэхээс өмнө', href: '/plan/before-you-travel' },
+          { label: 'Дараах: 03. Дотор аялах', href: '/plan/getting-around' },
+      ]}
+    >
 
           {/* 01. ОЛОН УЛСЫН НИСЛЭГ */}
           <section id="flights" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
@@ -273,9 +220,6 @@ export default function GettingToMongoliaPage() {
             </div>
           </section>
 
-        </div>
-
-      </div>
-    </main>
+    </GuidePage>
   );
 }

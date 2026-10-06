@@ -11,7 +11,7 @@ export default function HubHeader({
   intro,
   children,
 }: {
-  crumbs: Crumb[];
+  crumbs?: Crumb[];
   kicker: string;
   kickerEn: string;
   title: string;
@@ -21,7 +21,7 @@ export default function HubHeader({
   return (
     <header className="border-b border-neutral-200 bg-white pt-12 pb-12 px-6 sm:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        <Breadcrumbs items={crumbs} />
+        {crumbs && crumbs.length > 0 && <Breadcrumbs items={crumbs} />}
         <div className="flex items-center gap-2 mb-3">
           <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
             {kicker}
