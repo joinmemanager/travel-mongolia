@@ -24,7 +24,7 @@ export default async function FestivalsPage() {
     <CategoryListing
       hero={IMAGES.eagleHunter}
       kicker="ҮЗЭХ, ХИЙХ ЗҮЙЛС"
-      title="Фестивалиуд"
+      title="Баяр наадам, арга хэмжээ"
       intro="Монголд жил бүр болдог фестивалиуд: Үндэсний их баяр наадам, Алтайн бүргэдийн баяр, Тэмээний баяр болон бусад."
       categories={categories}
       spots={events.map((e) => ({
