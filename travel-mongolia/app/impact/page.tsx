@@ -4,6 +4,7 @@ import DarkPanel from '@/components/design/DarkPanel';
 import LinkCard from '@/components/design/LinkCard';
 import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
+import { computeImpact } from '@/lib/impact';
 import { IMPACT_HUB as hub, partnerMailto } from '@/lib/impactData';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
@@ -13,6 +14,8 @@ import { getProvinceLinks } from '@/lib/provinces';
 // /impact/* дэд хуудсын оронд нэг хуудас, 5 хэсэг. Цэс хэсэг бүр рүү anchor-оор заана.
 // НООРОГ текст: lib/impactData.ts
 export const metadata = metaFor('/impact');
+// Contentful-д шинэ entry нийтлэгдэхэд Impact-ын тоо цагт нэг шинэчлэгдэнэ
+export const revalidate = 3600;
 
 const SECTIONS = [
   { id: 'local-impact', title: hub.localImpact.title },
@@ -73,6 +76,8 @@ function PartnerButton({ label, subject }: { label: string; subject: string }) {
 export default async function ImpactHubPage() {
   // Аймгийн хуудсууд live биш болбол production дээр харагдахгүй
   const provinces = (await getProvinceLinks()).filter((p) => liveHref(p.href));
+  // Impact Dashboard v1: Contentful-аас автоматаар (lib/impact.ts)
+  const impact = await computeImpact();
 
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
@@ -107,19 +112,30 @@ export default async function ImpactHubPage() {
         </aside>
 
         <div className="flex-1 w-full space-y-16">
-          {/* 01. Орон нутгийн үр өгөөж: зөвхөн үзүүлэлтийн нэр, тоо зохиохгүй */}
+          {/* 01. Орон нутгийн үр өгөөж: Contentful-ын бодит тоо, өгөгдөлгүй бол "Мэдээлэл удахгүй" */}
           <Section id="local-impact" index={1} title={hub.localImpact.title} intro={hub.localImpact.intro}>
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {hub.localImpact.metrics.map((metric) => (
-                <li
-                  key={metric}
-                  className="p-6 rounded-2xl bg-[#fcfbf9] border border-neutral-200"
-                >
-                  <span className="block mb-2 text-sm font-bold text-neutral-900">{metric}</span>
-                  <span className="text-xs font-semibold text-neutral-400">Мэдээлэл удахгүй</span>
-                </li>
-              ))}
+              {hub.localImpact.metrics.map((metric) => {
+                const m = impact[metric.key];
+                return (
+                  <li
+                    key={metric.key}
+                    className="p-6 rounded-2xl bg-[#fcfbf9] border border-neutral-200"
+                  >
+                    <span className="block mb-2 text-sm font-bold text-neutral-900">{metric.label}</span>
+                    {m.value !== null ? (
+                      <>
+                        <span className="block text-3xl font-black text-[#15803d]">{m.value}</span>
+                        {m.note && <span className="block mt-1 text-xs text-neutral-500">{m.note}</span>}
+                      </>
+                    ) : (
+                      <span className="text-xs font-semibold text-neutral-400">Мэдээлэл удахгүй</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
+            <p className="mt-4 text-xs text-neutral-400">{hub.localImpact.sourceNote}</p>
           </Section>
 
           {/* 02. Түншлэлийн төслүүд */}
