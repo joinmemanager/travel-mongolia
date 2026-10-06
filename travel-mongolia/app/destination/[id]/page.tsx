@@ -4,9 +4,11 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import React, { cache } from 'react';
 
+import { GuidanceBlock } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getDestinationCards } from '@/lib/places';
+import { getGuidanceFor } from '@/lib/localContent';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
@@ -90,6 +92,9 @@ export default async function DestinationDetailPage({ params }: Props) {
   // Ихэнх газар координатгүй тул зайгаар эрэмбэлэхгүй: "Бусад газрууд"
   const others = (await getDestinationCards()).filter((p) => p.id !== destination.sys.id).slice(0, 3);
 
+  // Хэрхэн зөв аялах (visitorGuidance)
+  const guidance = await getGuidanceFor(destination.sys.id);
+
   return (
     <PlaceTemplate
       image={{ src: imageUrl, alt: fields.title || 'Destination' }}
@@ -111,6 +116,7 @@ export default async function DestinationDetailPage({ params }: Props) {
           </p>
         )}
       </div>
+      <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );
 }

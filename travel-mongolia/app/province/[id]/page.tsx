@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import React, { cache } from 'react';
 
+import { GuidanceBlock } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { client } from '@/lib/contentful';
 import { getHeritagePlaceCards } from '@/lib/places';
+import { getGuidanceFor } from '@/lib/localContent';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
@@ -130,6 +132,9 @@ export default async function ProvinceDetailPage({ params }: Props) {
     .filter((p) => p.region && p.region.includes(provinceStem))
     .slice(0, 3);
 
+  // Хэрхэн зөв аялах (visitorGuidance)
+  const guidance = contentfulEntry ? await getGuidanceFor(contentfulEntry.sys.id) : [];
+
   return (
     <PlaceTemplate
       image={{ src: province.image, alt: province.name }}
@@ -218,6 +223,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
             Аялалд гарахаас өмнө цаг агаарын нөхцөл байдал, зам харгуй болон шатахуун түгээх станцын байршлыг урьдчилан судлахыг зөвлөж байна. Мөн орон нутгийн байгаль хамгаалагчидтай холбогдон тусгай хамгаалалттай газар нутгийн дэглэмтэй танилцаарай.
           </p>
         </section>
+      <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );
 }

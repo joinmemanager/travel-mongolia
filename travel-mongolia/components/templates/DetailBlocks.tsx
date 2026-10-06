@@ -105,3 +105,32 @@ export function RefLink({ href, title }: { href: string; title: string }) {
     </Link>
   );
 }
+
+// "Хэрхэн зөв аялах": тухайн газарт холбогдсон visitorGuidance entry-үүд (баримт бичгийн 7, 8-р хэсэг).
+// Entry байхгүй бол юу ч харагдахгүй.
+export function GuidanceBlock({
+  items,
+}: {
+  items: { id: string; culturalEtiquette: string[]; natureGuidance: string[]; safety: string[]; season: string; source: string }[];
+}) {
+  if (items.length === 0) return null;
+  const groups = [
+    { title: 'Соёлын ёс', points: items.flatMap((g) => g.culturalEtiquette) },
+    { title: 'Байгаль хамгаалал', points: items.flatMap((g) => g.natureGuidance) },
+    { title: 'Аюулгүй байдал', points: items.flatMap((g) => g.safety) },
+  ].filter((g) => g.points.length > 0);
+  const sources = items.map((g) => g.source).filter(Boolean);
+  return (
+    <InfoBlock id="guidance" title="Хэрхэн зөв аялах">
+      <div className="space-y-6">
+        {groups.map((g) => (
+          <div key={g.title}>
+            <h3 className="mb-3 text-sm font-bold tracking-wider text-[#15803d] uppercase">{g.title}</h3>
+            <BulletList items={g.points} />
+          </div>
+        ))}
+        {sources.length > 0 && <p className="text-xs text-neutral-500">Эх сурвалж: {sources.join('; ')}</p>}
+      </div>
+    </InfoBlock>
+  );
+}
