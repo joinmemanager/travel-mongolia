@@ -1,10 +1,12 @@
 import Link from 'next/link';
 
+import ComingSoon from '@/components/design/ComingSoon';
 import ImageCard from '@/components/design/ImageCard';
 import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
 import { IMAGES, type SiteImage } from '@/lib/images';
-import { isPreviewEnv, liveHref } from '@/lib/navigation';
+import { liveHref } from '@/lib/navigation';
+import { SAMPLE_PREFIX } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 import {
   getStories,
@@ -55,22 +57,11 @@ function StoryCardView({ story }: { story: StoryCard }) {
   );
 }
 
-function EmptyCard() {
-  return (
-    <div className="flex items-center justify-center p-6 h-full min-h-32 rounded-3xl border border-dashed border-neutral-300 text-sm text-neutral-500">
-      Түүх удахгүй нэмэгдэнэ
-    </div>
-  );
-}
-
 export default async function StoriesHubPage() {
   // Production дээр нийтлэгдээгүй хуудас руу заасан картыг харуулахгүй
   const stories = (await getStories()).filter((s) => liveHref(s.href));
-  // Production дээр түүхгүй ангиллыг (цэс, хэсэг) нуух. Preview дээр "удахгүй" карттай харагдана.
-  const preview = isPreviewEnv();
-  const categories = STORY_CATEGORIES.filter(
-    (c) => preview || stories.some((s) => s.category === c.id)
-  );
+  // Бүх ангилал харагдана. "[ЖИШЭЭ]"-ээс бусад түүхгүй ангилалд "Тун удахгүй" блок.
+  const categories = STORY_CATEGORIES;
 
   const featured = stories.filter((s) => s.featured);
   const latest = stories
@@ -136,6 +127,7 @@ export default async function StoriesHubPage() {
         {/* Ангилал тус бүр */}
         {categories.map((category) => {
           const items = stories.filter((s) => s.category === category.id);
+          const isEmpty = !items.some((s) => !s.title.startsWith(SAMPLE_PREFIX));
           return (
             <section key={category.id} id={category.id} className="scroll-mt-8">
               <div className="flex gap-3 items-baseline mb-6">
@@ -144,18 +136,17 @@ export default async function StoriesHubPage() {
                   {category.en}
                 </span>
               </div>
+              {isEmpty && (
+                <div className="mb-6">
+                  <ComingSoon title={`${category.mn}: түүхүүд удахгүй нэмэгдэнэ.`} />
+                </div>
+              )}
               <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {items.length > 0 ? (
-                  items.map((story) => (
-                    <li key={story.id}>
-                      <StoryCardView story={story} />
-                    </li>
-                  ))
-                ) : (
-                  <li>
-                    <EmptyCard />
+                {items.map((story) => (
+                  <li key={story.id}>
+                    <StoryCardView story={story} />
                   </li>
-                )}
+                ))}
                 {category.id === 'photo-video' && liveHref('/stories/photo-video') && (
                   <li>
                     <Link

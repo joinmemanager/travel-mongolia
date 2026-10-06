@@ -28,6 +28,7 @@ export default function GuidePage({
   related,
   children,
   bottomBand,
+  notice,
 }: {
   crumbs?: Crumb[];
   kicker: string;
@@ -45,6 +46,8 @@ export default function GuidePage({
   children?: React.ReactNode;
   // Хуудасны хамгийн доор, footer-ийн яг дээр харуулах тууз (components/design/PatternBand)
   bottomBand?: React.ReactNode;
+  // Толгой хэсэгт харагдах жижиг тэмдэглэл (жишээ нь "Энэ гарын авлагыг шинэчилж байна")
+  notice?: string;
 }) {
   const tocItems: TocItem[] =
     toc ||
@@ -55,7 +58,14 @@ export default function GuidePage({
 
   return (
     <main className={`min-h-screen bg-[#fcfbf9] text-neutral-900 ${bottomBand ? '' : 'pb-32'}`}>
-      <HubHeader crumbs={crumbs} kicker={kicker} kickerEn={kickerEn} title={title} intro={intro} />
+      <HubHeader crumbs={crumbs} kicker={kicker} kickerEn={kickerEn} title={title} intro={intro}>
+        {notice && (
+          <p className="inline-flex gap-2 items-center py-1.5 px-3 mt-5 text-xs font-semibold rounded-full text-[#15803d] bg-emerald-50 border border-emerald-200">
+            <span aria-hidden="true">✎</span>
+            {notice}
+          </p>
+        )}
+      </HubHeader>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 flex flex-col lg:flex-row gap-12 items-start">
         {/* Зүүн талын сэдвийн жагсаалт */}

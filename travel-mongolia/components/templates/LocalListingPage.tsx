@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ComingSoon from '@/components/design/ComingSoon';
 import LinkCard from '@/components/design/LinkCard';
 import type { SiteImage } from '@/lib/images';
 import {
@@ -7,7 +8,9 @@ import {
   type LocalProduct,
   type LocalProvider,
   providerTypeLabel,
+  SAMPLE_PREFIX,
 } from '@/lib/localContent';
+import { inviteSubject, LOCAL_INVITES } from '@/lib/localInvites';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
 import CategoryListing, { type ListingSpot } from './CategoryListing';
@@ -80,6 +83,7 @@ export default function LocalListingPage({
   countLabel,
   spots,
   current,
+  inviteKey,
 }: {
   hero: SiteImage;
   kicker: string;
@@ -88,7 +92,12 @@ export default function LocalListingPage({
   countLabel: string;
   spots: ListingSpot[];
   current: string;
+  // Хоосон үеийн урилга (lib/localInvites.ts)
+  inviteKey: string;
 }) {
+  // "[ЖИШЭЭ]"-ээс бусад entry байхгүй бол "Тун удахгүй" блок (preview дээр жишээ картууд доор нь харагдана)
+  const isEmpty = !spots.some((s) => !s.title.startsWith(SAMPLE_PREFIX));
+  const invite = LOCAL_INVITES[inviteKey];
   // Шүүлтүүр: жагсаалтад байгаа аймгууд
   const provinces = Array.from(new Set(spots.map((s) => s.categoryKey).filter((k) => k !== 'other')));
   const categories = [
@@ -106,7 +115,11 @@ export default function LocalListingPage({
       spots={spots}
       countLabel={countLabel}
       cta="Дэлгэрэнгүй"
-      emptyText="Удахгүй нэмэгдэнэ."
+      notice={
+        isEmpty && invite ? (
+          <ComingSoon title={invite.text} invite={invite.invite} ctaSubject={inviteSubject(inviteKey)} />
+        ) : undefined
+      }
       footer={
         <LinkCard
           title="Нутгийн Монгол"

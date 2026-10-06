@@ -7,10 +7,10 @@ import HubHeader from '@/components/HubHeader';
 import LocalHubClient, { type HubSection } from '@/components/LocalHubClient';
 import { LOCAL_PAGES } from '@/components/templates/LocalListingPage';
 import { IMAGES } from '@/lib/images';
-import { getExperiences, getProviders, PROVIDER_TYPES } from '@/lib/localContent';
+import { getExperiences, getProviders, PROVIDER_TYPES, SAMPLE_PREFIX } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 
-// "Нутгийн Монгол" hub (Б хэсэг). Төлөв: draft (lib/navigation.ts PAGE_STATUS).
+// "Нутгийн Монгол" hub (Б хэсэг). Төлөв: soft (lib/navigation.ts PAGE_STATUS).
 // Hub загвар: зурагтай картууд → нэг бараан ногоон самбар → холбоосны карт.
 export const dynamic = 'force-dynamic';
 export const metadata = metaFor('/local');
@@ -31,6 +31,7 @@ export default async function LocalHubPage() {
       id: t.id,
       title: t.mn,
       href: t.href,
+      inviteKey: t.id,
       items: providers
         .filter((p) => p.providerType === t.id)
         .map((p) => ({
@@ -41,12 +42,14 @@ export default async function LocalHubPage() {
           image: p.photos[0] || IMAGES.herderBoy,
           localOwned: p.localOwned,
           community: Boolean(p.communityParticipation),
+          isSample: p.name.startsWith(SAMPLE_PREFIX),
         })),
     })),
     {
       id: 'experiences',
       title: 'Нутгийн туршлага',
       href: '/local/experiences',
+      inviteKey: 'experiences',
       // Туршлагын нутгийн өмчлөл, оролцоог зохион байгуулагчаас нь авна
       items: experiences.map((x) => {
         const host = providers.find((p) => p.id === x.hostId);
@@ -58,6 +61,7 @@ export default async function LocalHubPage() {
           image: x.photos[0] || IMAGES.gerCamp,
           localOwned: Boolean(host?.localOwned),
           community: Boolean(x.community || host?.communityParticipation),
+          isSample: x.title.startsWith(SAMPLE_PREFIX),
         };
       }),
     },

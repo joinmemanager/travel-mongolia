@@ -1,11 +1,13 @@
 import Link from 'next/link';
 
+import ComingSoon from '@/components/design/ComingSoon';
 import HubHeader from '@/components/HubHeader';
+import { SAMPLE_PREFIX } from '@/lib/localContent';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { getStories } from '@/lib/stories';
 
-// Фото/видео түүх (ia-plan.md C10, 5в). Төлөв: live (lib/navigation.ts PAGE_STATUS).
+// Фото/видео түүх (ia-plan.md C10, 5в). Төлөв: soft (lib/navigation.ts PAGE_STATUS), анхны фото/видео нийтлэл орсны дараа live.
 // НООРОГ: Contentful-ын Story төрөл (6-р үе) бэлэн болтол одоо байгаа нийтлэлүүд рүү холбоно.
 export const metadata = metaFor('/stories/photo-video');
 
@@ -29,6 +31,12 @@ export default async function PhotoVideoStoriesPage() {
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12">
+        {/* "[ЖИШЭЭ]"-ээс бусад фото/видео нийтлэлгүй бол "Тун удахгүй" блок */}
+        {!stories.some((s) => !s.title.startsWith(SAMPLE_PREFIX)) && (
+          <div className="mb-10">
+            <ComingSoon title="Фото, видео түүхүүд удахгүй нэмэгдэнэ." />
+          </div>
+        )}
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stories.map((story) => (
             <li key={story.id}>
@@ -43,11 +51,6 @@ export default async function PhotoVideoStoriesPage() {
               </Link>
             </li>
           ))}
-          <li>
-            <div className="flex items-center justify-center p-6 h-full min-h-32 rounded-3xl border border-dashed border-neutral-300 text-sm text-neutral-500">
-              Фото, видео түүхүүд удахгүй нэмэгдэнэ
-            </div>
-          </li>
         </ul>
       </div>
     </main>

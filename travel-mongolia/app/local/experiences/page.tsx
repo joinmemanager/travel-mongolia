@@ -5,7 +5,7 @@ import { IMAGES } from '@/lib/images';
 import { getExperiences } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 
-// Нутгийн Монгол: Нутгийн туршлага (Б хэсэг, draft). "Ангиллын жагсаалт" загвар.
+// Нутгийн Монгол: Нутгийн туршлага (Б хэсэг, soft). "Ангиллын жагсаалт" загвар.
 export const dynamic = 'force-dynamic';
 export const metadata = metaFor('/local/experiences');
 
@@ -20,6 +20,7 @@ export default async function Page() {
       countLabel="туршлага олдлоо"
       spots={experiences.map(experienceSpot)}
       current="/local/experiences"
+      inviteKey="experiences"
     />
   );
 }

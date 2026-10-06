@@ -1,12 +1,13 @@
 import React from 'react';
 
+import ComingSoon from '@/components/design/ComingSoon';
 import DarkPanel from '@/components/design/DarkPanel';
 import LinkCard from '@/components/design/LinkCard';
 import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
 import { computeImpact } from '@/lib/impact';
 import { IMPACT_HUB as hub, partnerMailto } from '@/lib/impactData';
-import { isPreviewEnv, liveHref } from '@/lib/navigation';
+import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { getProvinceLinks } from '@/lib/provinces';
 
@@ -78,12 +79,12 @@ export default async function ImpactHubPage() {
   const provinces = (await getProvinceLinks()).filter((p) => liveHref(p.href));
   // Impact Dashboard v1: Contentful-аас автоматаар (lib/impact.ts)
   const impact = await computeImpact();
-  // /impact soft төлөвтэй: production дээр өгөгдөлгүй (эсвэл 0) KPI картыг нуух. Preview дээр бүгд харагдана.
-  const preview = isPreviewEnv();
+  // Өгөгдөлтэй (0-ээс их) KPI картууд. Бусдын оронд нэг "Тун удахгүй" блок (preview, production ижил).
   const metrics = hub.localImpact.metrics.filter((metric) => {
     const v = impact[metric.key].value;
-    return preview || (v !== null && !/^0%?$/.test(v));
+    return v !== null && !/^0%?$/.test(v);
   });
+  const hasPending = metrics.length < hub.localImpact.metrics.length;
 
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
@@ -144,6 +145,11 @@ export default async function ImpactHubPage() {
             </ul>
             )}
             {metrics.length > 0 && <p className="mt-4 text-xs text-neutral-400">{hub.localImpact.sourceNote}</p>}
+            {hasPending && (
+              <div className={metrics.length > 0 ? 'mt-6' : ''}>
+                <ComingSoon title="Үр дүнгийн тоо мэдээлэл удахгүй нийтлэгдэнэ" />
+              </div>
+            )}
           </Section>
 
           {/* 02. Түншлэлийн төслүүд */}

@@ -8,7 +8,6 @@ import { Rubik } from 'next/font/google';
 import Script from 'next/script';
 
 import Footer from '@/components/Footer';
-import { getEmptySources } from '@/lib/contentAvailability';
 import {
   FOOTER_LEGAL,
   FOOTER_NAVIGATION,
@@ -71,15 +70,13 @@ const websiteJsonLd = {
   description: siteDescription,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   // Production дээр зөвхөн live цэсийг харуулах. Preview дээр бүгд ("Ноорог", "Тун удахгүй" тэмдэгтэй)
   const preview = isPreviewEnv();
-  // Contentful-д entry-гүй цэсний зүйлсийг production дээр нуух (lib/contentAvailability.ts)
-  const emptySources = await getEmptySources();
 
   return (
     <html lang="mn">
@@ -92,11 +89,11 @@ export default async function RootLayout({
         />
         <LanguageProvider>
           {/* Дээд талын үндсэн цэс */}
-          <Navbar sections={visibleSections(MAIN_NAVIGATION, preview, emptySources)} />
+          <Navbar sections={visibleSections(MAIN_NAVIGATION, preview)} />
           {children}
           <Footer
-            groups={visibleSections(FOOTER_NAVIGATION, preview, emptySources)}
-            legal={visibleItems(FOOTER_LEGAL, preview, emptySources)}
+            groups={visibleSections(FOOTER_NAVIGATION, preview)}
+            legal={visibleItems(FOOTER_LEGAL, preview)}
           />
         </LanguageProvider>
 

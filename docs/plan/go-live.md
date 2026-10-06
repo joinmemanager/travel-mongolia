@@ -23,14 +23,15 @@
 
 ## 2. Draft → live (`travel-mongolia/lib/navigation.ts`)
 
-Төлөвүүд: `live` (бүрэн), `soft` (цэсэнд харагдана, нээгдэнэ, гэхдээ noindex, sitemap-гүй), `draft` (зөвхөн preview), `planned`. Contentful-аас уншдаг цэсний зүйл (`source`) entry-гүй бол production дээр автоматаар нуугдана.
+Төлөвүүд: `live` (бүрэн), `soft` (цэсэнд харагдана, нээгдэнэ, гэхдээ noindex, sitemap-гүй), `draft` (зөвхөн preview), `planned`. Contentful-аас уншдаг хоосон ангилалд ("[ЖИШЭЭ]"-г тооцохгүй) "Тун удахгүй" блок харагдана, `/local/*`-д урилга, "Хамтран ажиллах" товчтой.
 
-- [ ] `/local` hub: `PAGE_STATUS['/local']`-ийг `'live'` болгох. Ингэснээр `/local/<slug>` профайлууд ч live болно.
-- [ ] Цэсний "Нутгийн Монгол" хэсгийн 6 зүйл ба "Туршлагууд" (`/local/experiences`): `status: 'live'`.
-- [x] `/stories`, `/stories/photo-video`: live (feat/soft-launch).
+- [ ] `/local` hub: одоо `soft` (feat/soft-launch). Бүрэн нээх үед `PAGE_STATUS['/local']`-ийг `'live'` болгох. Ингэснээр `/local/<slug>` профайлууд ч live болно.
+- [ ] Цэсний "Нутгийн Монгол" хэсгийн 6 зүйл ба "Туршлагууд": одоо `soft`. Бүрэн нээх үед `status: 'live'`.
+- [x] `/stories`: live (feat/soft-launch).
+- [ ] `/stories/photo-video`: одоо `soft`. Анхны фото/видео нийтлэл орсны дараа эзэмшигчийн шийдвэрээр `live`.
 - [x] Цэсний "Түүхүүд" → `/stories`, "Фото/видео түүх" → `/stories/photo-video` (feat/soft-launch).
-- [ ] `/respect`, `/respect/etiquette`, `/respect/nature`, `/respect/accessible`: `status: 'live'`.
-- [x] `/impact`: `soft` (цэсэнд харагдана, noindex). Хоосон KPI production дээр нуугдана. Бүрэн нээх үед `live` болгоно.
+- [ ] `/respect`, `/respect/etiquette`, `/respect/nature`, `/respect/accessible`: одоо `soft`, "Энэ гарын авлагыг шинэчилж байна" тэмдэглэлтэй. Текст шалгагдсаны дараа `lib/respectData.ts`-ийн `RESPECT_REVIEW_NOTICE`-ийг '' болгож, `status: 'live'`.
+- [x] `/impact`: `soft` (цэсэнд харагдана, noindex). Өгөгдөлгүй KPI-ийн оронд "Үр дүнгийн тоо мэдээлэл удахгүй нийтлэгдэнэ" блок. Бүрэн нээх үед `live` болгоно.
 - [ ] Live болгосны дараа "Холбоотой аялал, туршлага, үйлчилгээ" хэсэг газрын хуудсуудад автоматаар гарч эхэлнэ. Учир нь `/local` хуудсууд руу заасан картууд нээгдэнэ. Preview дээр шалгах.
 
 ## 3. Redirect (`travel-mongolia/next.config.js` → `redirects()`)

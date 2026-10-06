@@ -13,17 +13,6 @@
 
 export type NavStatus = 'live' | 'soft' | 'draft' | 'planned';
 
-// Contentful-аас уншдаг хэсэг. Production дээр "[ЖИШЭЭ]"-ээс бусад entry байхгүй бол тэр
-// цэсний зүйл нуугдана, анхны entry нэмэгдэхэд автоматаар харагдана (lib/contentAvailability.ts).
-export type ContentSource =
-  | 'local:experiences'
-  | 'local:guide'
-  | 'local:herder-family'
-  | 'local:artisan'
-  | 'local:food'
-  | 'local:products'
-  | 'stories:photo-video';
-
 export interface NavItem {
   mn: string;
   en: string;
@@ -33,8 +22,6 @@ export interface NavItem {
   external?: boolean;
   // Dropdown-д зүйлийн доор жижиг холбоосоор харагдах дэд хуудсууд
   children?: NavItem[];
-  // Contentful-аас уншдаг бол түүний эх сурвалж (хоосон бол production дээр нуугдана)
-  source?: ContentSource;
 }
 
 // Нийтлэгдсэн, сайтын доторх энгийн холбоос (дэд холбоосуудад)
@@ -127,7 +114,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Аяллын маршрутууд', 'Itineraries', '/inspiration/itineraries'),
         ],
       },
-      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'draft', source: 'local:experiences' },
+      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'soft' },
       { mn: 'Байр', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
       { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', status: 'live' },
       {
@@ -157,7 +144,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live' },
       { mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live' },
       // Түр: /stories бэлэн болох хүртэл (ia-plan.md 5в үед /stories руу сольж redirect хийнэ)
-      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/stories/photo-video', status: 'live', source: 'stories:photo-video' },
+      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/stories/photo-video', status: 'soft' },
       {
         mn: 'Аялахаас өмнө', en: 'Learn Before You Go', href: '/plan/before-you-travel', status: 'live',
         children: [
@@ -172,12 +159,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Нутгийн Монгол',
     en: 'Local Mongolia',
     items: [
-      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'draft', source: 'local:experiences' },
-      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'draft', source: 'local:guide' },
-      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'draft', source: 'local:herder-family' },
-      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'draft', source: 'local:artisan' },
-      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'draft', source: 'local:food' },
-      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'draft', source: 'local:products' },
+      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'soft' },
+      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'soft' },
+      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'soft' },
+      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'soft' },
+      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'soft' },
+      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'soft' },
     ],
   },
   {
@@ -185,11 +172,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Хүндэтгэлтэй аялал',
     en: 'Travel with Respect',
     items: [
-      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', status: 'draft' },
-      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'draft' },
-      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'draft' },
+      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', status: 'soft' },
+      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'soft' },
+      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'soft' },
       { mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', status: 'live' },
-      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'draft' },
+      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'soft' },
     ],
   },
   {
@@ -246,9 +233,10 @@ export const FOOTER_LEGAL: NavItem[] = [
 export const PAGE_STATUS: Record<string, NavStatus> = {
   // Түүх & өв hub (C10): live. /stories/<slug> нийтлэлүүд энэ төлвийг өвлөнө.
   '/stories': 'live',
-  '/stories/photo-video': 'live',
-  // Нутгийн Монгол hub (Б хэсэг). /local/<slug> профайлууд энэ төлвийг өвлөнө.
-  '/local': 'draft',
+  // Анхны фото/видео нийтлэл орох хүртэл soft (live болгохыг эзэмшигч шийднэ)
+  '/stories/photo-video': 'soft',
+  // Нутгийн Монгол hub: soft. /local/<slug> профайлууд энэ төлвийг өвлөнө.
+  '/local': 'soft',
 };
 
 // Өөр хаяг руу байнгын redirect хийдэг хаягууд (next.config.js). Sitemap-д оруулахгүй.
@@ -323,33 +311,29 @@ export function isUnpublishedPage(path: string): boolean {
   return !isPreviewEnv() && !isPageIndexable(path);
 }
 
-// Production дээр цэсэнд харагдах зүйл: live эсвэл soft, мөн Contentful-ын эх сурвалж нь хоосон биш
-const shownInProduction = (i: NavItem, emptySources: Set<ContentSource>) =>
-  OPENNESS[i.status] >= OPENNESS.soft && !(i.source && emptySources.has(i.source));
+// Production дээр цэсэнд харагдах зүйл: live эсвэл soft
+const shownInProduction = (i: NavItem) => OPENNESS[i.status] >= OPENNESS.soft;
 
-// emptySources: production дээр entry-гүй Contentful эх сурвалжууд (lib/contentAvailability.ts)
 export function visibleSections(
   sections: NavSection[],
-  preview: boolean,
-  emptySources: Set<ContentSource> = new Set()
+  preview: boolean
 ): NavSection[] {
   if (preview) return sections;
   return sections
-    .map((s) => ({ ...s, items: visibleItems(s.items, false, emptySources) }))
+    .map((s) => ({ ...s, items: visibleItems(s.items, false) }))
     .filter((s) => s.items.length > 0);
 }
 
 export function visibleItems(
   items: NavItem[],
-  preview: boolean,
-  emptySources: Set<ContentSource> = new Set()
+  preview: boolean
 ): NavItem[] {
   if (preview) return items;
   return items
-    .filter((i) => shownInProduction(i, emptySources))
+    .filter(shownInProduction)
     .map((i) =>
       i.children
-        ? { ...i, children: i.children.filter((c) => shownInProduction(c, emptySources)) }
+        ? { ...i, children: i.children.filter(shownInProduction) }
         : i
     );
 }

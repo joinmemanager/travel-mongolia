@@ -5,7 +5,7 @@ import { IMAGES } from '@/lib/images';
 import { getProviders } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 
-// Нутгийн Монгол: Гар урлаач (Б хэсэг, draft). "Ангиллын жагсаалт" загвар.
+// Нутгийн Монгол: Гар урлаач (Б хэсэг, soft). "Ангиллын жагсаалт" загвар.
 export const dynamic = 'force-dynamic';
 export const metadata = metaFor('/local/artisans');
 
@@ -20,6 +20,7 @@ export default async function Page() {
       countLabel="гар урлаач олдлоо"
       spots={providers.map(providerSpot)}
       current="/local/artisans"
+      inviteKey="artisan"
     />
   );
 }
