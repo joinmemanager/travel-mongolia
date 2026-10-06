@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import React, { cache } from 'react';
 
-import { GuidanceBlock } from '@/components/templates/DetailBlocks';
+import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import RelatedBookings from '@/components/templates/RelatedBookings';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { client } from '@/lib/contentful';
 import { getHeritagePlaceCards } from '@/lib/places';
 import { getGuidanceFor } from '@/lib/localContent';
+import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
@@ -132,6 +134,15 @@ export default async function ProvinceDetailPage({ params }: Props) {
     .filter((p) => p.region && p.region.includes(provinceStem))
     .slice(0, 3);
 
+  // Холбоотой аялал, туршлага, үйлчилгээ: related_* талбар, байхгүй бол ижил аймаг
+  const placeFields: any = contentfulEntry?.fields || {};
+  const related = await getRelatedItems({
+    experienceIds: linkIds(placeFields.relatedExperience),
+    providerIds: linkIds(placeFields.relatedProvider),
+    productIds: linkIds(placeFields.relatedProduct),
+    provinceText: province.name,
+  });
+
   // Хэрхэн зөв аялах (visitorGuidance)
   const guidance = contentfulEntry ? await getGuidanceFor(contentfulEntry.sys.id) : [];
 
@@ -140,6 +151,8 @@ export default async function ProvinceDetailPage({ params }: Props) {
       image={{ src: province.image, alt: province.name }}
       title={province.name}
       back={{ href: '/#map', label: 'Нүүр хуудас руу буцах' }}
+      analytics={{ content_type: 'province', content_id: id, province: province.name }}
+      bookings={<RelatedBookings items={related} campaign="province" contentId={id} />}
       nav={[
         { id: 'overview', label: 'Тойм мэдээлэл' },
         { id: 'facts', label: 'Үзүүлэлтүүд' },
@@ -223,6 +236,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
             Аялалд гарахаас өмнө цаг агаарын нөхцөл байдал, зам харгуй болон шатахуун түгээх станцын байршлыг урьдчилан судлахыг зөвлөж байна. Мөн орон нутгийн байгаль хамгаалагчидтай холбогдон тусгай хамгаалалттай газар нутгийн дэглэмтэй танилцаарай.
           </p>
         </section>
+      <PlaceEsgBlocks fields={contentfulEntry?.fields} />
       <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );

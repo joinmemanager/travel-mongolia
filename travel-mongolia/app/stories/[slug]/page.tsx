@@ -5,6 +5,7 @@ import React from 'react';
 import StoryTemplate from '@/components/templates/StoryTemplate';
 import { getStoryBySlug } from '@/lib/localContent';
 import { entryMeta } from '@/lib/pageMeta';
+import { getRelatedItems } from '@/lib/related';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
 // Contentful-ын 'story' төрлийн нийтлэл (/stories-ийн draft төлвийг өвлөнө)
@@ -30,5 +31,11 @@ export default async function StoryPage({ params }: Props) {
   const { slug } = await params;
   const s = await getStoryBySlug(slug);
   if (!s) notFound();
-  return <StoryTemplate story={s} />;
+  // Нийтлэлд холбосон туршлага, бүтээгдэхүүн; байхгүй бол байршлын аймгийнх
+  const bookings = await getRelatedItems({
+    experienceIds: s.relatedExperience.map((r) => r.id),
+    productIds: s.relatedProduct.map((r) => r.id),
+    provinceText: s.location,
+  });
+  return <StoryTemplate story={s} bookings={bookings} />;
 }

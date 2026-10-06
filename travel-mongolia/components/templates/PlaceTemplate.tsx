@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { ContentContext, type ContentContextValue } from '@/components/Analytics';
 import ImageCard from '@/components/design/ImageCard';
 import LinkCard, { type LinkCardItem } from '@/components/design/LinkCard';
 import type { PlaceCardData } from '@/lib/places';
@@ -20,6 +21,8 @@ export default function PlaceTemplate({
   nav,
   aside,
   nearby,
+  bookings,
+  analytics,
   links,
   children,
 }: {
@@ -35,11 +38,16 @@ export default function PlaceTemplate({
   aside?: React.ReactNode;
   // Ойролцоох (эсвэл бусад) газрууд. Хоосон бол хэсэг харагдахгүй
   nearby?: { title: string; places: PlaceCardData[] };
+  // "Холбоотой аялал, туршлага, үйлчилгээ" (components/templates/RelatedBookings)
+  bookings?: React.ReactNode;
+  // GA4: content_id, content_type, province (components/Analytics.tsx)
+  analytics?: ContentContextValue;
   links: LinkCardItem[];
   children: React.ReactNode;
 }) {
   return (
     <main className="w-full min-h-screen bg-white text-neutral-900 pb-28 font-sans">
+      {analytics && <ContentContext value={analytics} />}
       {jsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       )}
@@ -81,6 +89,7 @@ export default function PlaceTemplate({
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-20 space-y-12">
+        {bookings}
         {nearby && nearby.places.length > 0 && (
           <section>
             <h2 className="mb-6 text-2xl sm:text-3xl font-black tracking-tight text-neutral-900">{nearby.title}</h2>

@@ -3,9 +3,11 @@ import React from 'react';
 import RichText from '@/components/RichText';
 import { IMAGES } from '@/lib/images';
 import { type EventItem, eventDateLabel } from '@/lib/localContent';
+import type { RelatedItem } from '@/lib/related';
 
 import { BulletList, FactsCard, InfoBlock, RefLink } from './DetailBlocks';
 import PlaceTemplate from './PlaceTemplate';
+import RelatedBookings from './RelatedBookings';
 
 // "Арга хэмжээ" загвар (/recommendation/<slug>): баримт бичгийн 7-р хэсгийн Event block-ууд
 // (огноо, нутгийн зохион байгуулагч, соёлын утга, зөв оролцох зөвлөмж, нутгийн үйлчилгээ,
@@ -13,10 +15,13 @@ import PlaceTemplate from './PlaceTemplate';
 export default function EventTemplate({
   event: e,
   others,
+  related,
   back,
 }: {
   event: EventItem;
   others: EventItem[];
+  // Нутгийн үйлчилгээ; байхгүй бол ижил аймгийнх (lib/related.ts)
+  related: RelatedItem[];
   back: { href: string; label: string };
 }) {
   return (
@@ -25,6 +30,8 @@ export default function EventTemplate({
       title={e.title}
       subtitle={[eventDateLabel(e), e.province].filter(Boolean).join(' · ')}
       back={back}
+      analytics={{ content_type: 'event', content_id: e.slug, province: e.province }}
+      bookings={<RelatedBookings items={related} campaign="event" contentId={e.slug} />}
       nearby={{
         title: 'Бусад баяр наадам',
         places: others.map((o) => ({
@@ -48,6 +55,8 @@ export default function EventTemplate({
             { label: 'Зохион байгуулагч', value: e.organizer },
           ]}
           bookingUrl={e.bookingUrl}
+          campaign="event"
+          contentId={e.slug}
           bookingLabel="Аялал захиалах"
         />
       }

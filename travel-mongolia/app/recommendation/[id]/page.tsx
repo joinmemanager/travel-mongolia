@@ -10,6 +10,7 @@ import {
   getEventBySlug,
   recommendationToEvent,
 } from '@/lib/localContent';
+import { getRelatedItems } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 // Арга хэмжээний дэлгэрэнгүй ("Арга хэмжээ" загвар). Эхлээд 'event' төрлөөс slug-аар,
@@ -74,10 +75,16 @@ export default async function EventPage({ params }: Props) {
   }
 
   const others = (await getAllEvents()).filter((o) => o.id !== item.event.id).slice(0, 3);
+  // Арга хэмжээний нутгийн үйлчилгээ; байхгүй бол ижил аймгийнх
+  const related = await getRelatedItems({
+    providerIds: item.event.localServices.map((r) => r.id),
+    provinceText: item.event.province,
+  });
   return (
     <EventTemplate
       event={item.event}
       others={others}
+      related={related}
       back={
         item.kind === 'event'
           ? { href: '/things-to-do/festivals', label: 'Фестивалиуд' }

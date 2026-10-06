@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import type { NavItem, NavSection } from '@/lib/navigation';
 
+import Analytics from './Analytics';
 import NavItemLink from './NavItemLink';
 import { useSiteLang } from './useSiteLang';
 
@@ -22,6 +23,8 @@ export default function Footer({
 
   return (
     <footer className="pt-16 pb-12 text-white bg-[#1a1a1a] border-t border-neutral-800">
+      {/* GA4 контентын хэмжилт (docs/analytics.md). Харагдах зүйлгүй. */}
+      <Analytics />
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
         <div className="grid grid-cols-1 gap-10 pb-12 border-b border-neutral-800 md:grid-cols-2 lg:grid-cols-5">
           {/* 1-р багана: Лого, танилцуулга & Сошиал холбоосууд */}

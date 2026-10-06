@@ -2,33 +2,26 @@ import React from 'react';
 
 import RichText from '@/components/RichText';
 import { IMAGES } from '@/lib/images';
-import type { CommunityExperience, LocalProduct } from '@/lib/localContent';
+import type { CommunityExperience } from '@/lib/localContent';
+import type { RelatedItem } from '@/lib/related';
 
 import { FactsCard, InfoBlock, RefLink } from './DetailBlocks';
 import PlaceTemplate from './PlaceTemplate';
+import RelatedBookings from './RelatedBookings';
 
 // "Туршлага" загвар (/local/experiences/<slug>): баримт бичгийн 7-р хэсгийн Experience block-ууд
 // (хэн зохион байгуулдаг, нутгийн оролцоо, юу сурах/мэдрэх, бүлгийн хэмжээ,
 // соёлын зөв харилцаа, захиалга). Хоосон хэсэг харагдахгүй.
 export default function ExperienceTemplate({
   experience: x,
-  others,
-  products,
+  related,
+  isLocalProvider,
 }: {
   experience: CommunityExperience;
-  others: CommunityExperience[];
-  products: LocalProduct[];
+  // Зохион байгуулагч, холбоотой бүтээгдэхүүн; байхгүй бол ижил аймгийнх (lib/related.ts)
+  related: RelatedItem[];
+  isLocalProvider: boolean;
 }) {
-  const related = [
-    ...products.map((p) => ({ id: p.id, href: p.href, title: p.name, region: p.origin, image: p.photos[0] })),
-    ...others.map((o) => ({
-      id: o.id,
-      href: o.href,
-      title: o.title,
-      region: [o.province, o.duration].filter(Boolean).join(' · '),
-      image: o.photos[0],
-    })),
-  ].slice(0, 6);
 
   return (
     <PlaceTemplate
@@ -36,7 +29,8 @@ export default function ExperienceTemplate({
       title={x.title}
       subtitle={[x.province, x.duration].filter(Boolean).join(' · ')}
       back={{ href: '/local/experiences', label: 'Нутгийн туршлага' }}
-      nearby={{ title: 'Бусад туршлага', places: related }}
+      analytics={{ content_type: 'experience', content_id: x.slug, province: x.province }}
+      bookings={<RelatedBookings items={related} campaign="experience" contentId={x.slug} />}
       links={[
         { label: 'Нутгийн туршлага', href: '/local/experiences' },
         { label: 'Малчин өрх', href: '/local/herder-families' },
@@ -54,6 +48,10 @@ export default function ExperienceTemplate({
             { label: 'Үнэ', value: x.price },
           ]}
           bookingUrl={x.bookingUrl}
+          campaign="experience"
+          contentId={x.slug}
+          providerId={x.hostId}
+          isLocalProvider={isLocalProvider}
         />
       }
     >

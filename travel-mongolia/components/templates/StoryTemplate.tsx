@@ -4,17 +4,19 @@ import React from 'react';
 import RichText from '@/components/RichText';
 import { IMAGES } from '@/lib/images';
 import { formatDate, type StoryEntry } from '@/lib/localContent';
+import type { RelatedItem } from '@/lib/related';
 import { STORY_CATEGORIES } from '@/lib/stories';
 
 import { InfoBlock } from './DetailBlocks';
 import PlaceTemplate from './PlaceTemplate';
+import RelatedBookings from './RelatedBookings';
 
 const LANGUAGE: Record<string, string> = { mn: 'Монгол', en: 'English', zh: '中文' };
 
 // "Нийтлэл" загвар (/stories/<slug>): баримт бичгийн 7-р хэсгийн Article/Story block-ууд
 // (эх сурвалж, зохиогч/ярилцагч, зураг/видео, холбоотой газар, холбоотой туршлага, хэл,
 // шинэчилсэн огноо).
-export default function StoryTemplate({ story: s }: { story: StoryEntry }) {
+export default function StoryTemplate({ story: s, bookings }: { story: StoryEntry; bookings: RelatedItem[] }) {
   const topic = STORY_CATEGORIES.find((c) => c.id === s.topic);
   const related = [...s.relatedPlace, ...s.relatedExperience, ...s.relatedProduct];
 
@@ -24,6 +26,8 @@ export default function StoryTemplate({ story: s }: { story: StoryEntry }) {
       title={s.title}
       subtitle={[topic?.mn, s.location].filter(Boolean).join(' · ')}
       back={{ href: '/stories', label: 'Түүх & өв' }}
+      analytics={{ content_type: 'story', content_id: s.slug, province: s.location }}
+      bookings={<RelatedBookings items={bookings} campaign="story" contentId={s.slug} />}
       links={related.map((r) => ({ label: r.title, href: r.href }))}
       aside={
         <div className="lg:sticky lg:top-28 p-6 rounded-2xl border border-neutral-200 bg-[#fcfbf9]">

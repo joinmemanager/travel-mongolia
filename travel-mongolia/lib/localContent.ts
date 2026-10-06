@@ -12,10 +12,6 @@ import { assetUrl } from '@/lib/places';
 
 export const SAMPLE_PREFIX = '[ЖИШЭЭ]';
 
-// "Захиалах" товч: bookingUrl байхгүй бол joinme.mn (lib/navigation.ts-ийн BOOK_NOW_URL-тэй ижил utm)
-export const JOINME_BOOKING_URL =
-  'https://joinme.mn?utm_source=travelhubmongolia&utm_medium=referral&utm_campaign=local';
-
 export type ProviderType =
   | 'herder-family'
   | 'guide'

@@ -3,11 +3,13 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { cache } from 'react';
 import MongoliaLocatorMap from '@/components/MongoliaLocatorMap';
 import WeatherWidget from '@/components/WeatherWidget';
-import { GuidanceBlock } from '@/components/templates/DetailBlocks';
+import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import RelatedBookings from '@/components/templates/RelatedBookings';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getHeritagePlaceCards, nearestPlaces } from '@/lib/places';
 import { getGuidanceFor } from '@/lib/localContent';
+import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 
 // 'heritagePlace' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
@@ -112,6 +114,16 @@ export default async function HeritagePlaceDetailPage({
   const hasCoords = typeof lat === 'number' && typeof lon === 'number';
   const nearby = hasCoords ? nearestPlaces({ lat, lon }, await getHeritagePlaceCards(), entry.sys.id) : [];
 
+  // Холбоотой аялал, туршлага, үйлчилгээ: related_* талбар, байхгүй бол ижил аймаг
+  const placeFields: any = entry.fields || {};
+  const related = await getRelatedItems({
+    experienceIds: linkIds(placeFields.relatedExperience),
+    providerIds: linkIds(placeFields.relatedProvider),
+    productIds: linkIds(placeFields.relatedProduct),
+    provinceText: placeFields.province || placeFields.region,
+    near: hasCoords ? [{ lat, lon }] : [],
+  });
+
   // Хэрхэн зөв аялах (visitorGuidance)
   const guidance = await getGuidanceFor(entry.sys.id);
 
@@ -121,6 +133,8 @@ export default async function HeritagePlaceDetailPage({
       title={f.name}
       subtitle={f.region}
       back={{ href: '/destination/heritage', label: 'Бүх түүхэн өв' }}
+      analytics={{ content_type: 'heritage', content_id: entryKey(entry), province: placeFields.province || placeFields.region || '' }}
+      bookings={<RelatedBookings items={related} campaign="heritage" contentId={entryKey(entry)} />}
       jsonLd={jsonLd}
       nearby={{ title: 'Ойролцоох газрууд', places: nearby }}
       links={[
@@ -148,6 +162,7 @@ export default async function HeritagePlaceDetailPage({
       ) : (
         <p className="text-neutral-500 italic">Энэ газрын дэлгэрэнгүй тайлбар удахгүй нэмэгдэнэ.</p>
       )}
+      <PlaceEsgBlocks fields={(found.entry as any).fields} />
       <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );
