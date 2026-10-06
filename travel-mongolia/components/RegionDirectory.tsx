@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import ImageHero from '@/components/templates/ImageHero';
+import { IMAGES } from '@/lib/images';
 import { SITE_SEARCH_INDEX } from '@/lib/searchIndex';
 import { scoreMatch, tokenizeQuery } from '@/lib/searchText';
 
@@ -507,10 +508,7 @@ export default function RegionDirectory({
     <div className="pb-20 w-full bg-neutral-50/50">
       {/* 1. HERO ХЭСЭГ ХАЙЛТЫН ТАЛБАРТАЙ */}
       <ImageHero
-        image={{
-          src: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2000',
-          alt: 'Зорих газрууд',
-        }}
+        image={IMAGES.gerCamp}
         title="Зорих газрууд"
         intro="Монголын 21 аймаг, зургаан бүсийн онцлох газруудыг нээгээрэй"
       >

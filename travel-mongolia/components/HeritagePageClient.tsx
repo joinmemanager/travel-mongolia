@@ -3,6 +3,7 @@
 import React from 'react';
 
 import CategoryDirectory, { DirectoryGroupSection } from '@/components/templates/CategoryDirectory';
+import { IMAGES } from '@/lib/images';
 
 // Нүүр хуудсанд ангилал бүрээс хэдэн карт харуулах вэ; бүгдийг нь /destination/heritage/[category] дээр харуулна
 const PREVIEW_COUNT = 3;
@@ -30,10 +31,7 @@ export default function HeritagePageClient({
 }) {
   return (
     <CategoryDirectory
-      hero={{
-        src: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2400',
-        alt: 'Түүх, соёлын газруудаар',
-      }}
+      hero={IMAGES.chinggisStatue}
       kicker="05. Heritage Destinations"
       title="Түүх, соёлын газруудаар"
       intro="ЮНЕСКО-гийн дэлхийн өв, эртний хаадын нийслэл хотууд, сүм хийд ба нүүдэлчдийн амьд соёл"
