@@ -1,111 +1,88 @@
-import Link from 'next/link';
-import Image from 'next/image';
-
 import type { Metadata } from 'next';
-import { cache } from 'react';
-
-import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
-import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { notFound, permanentRedirect } from 'next/navigation';
+import React, { cache } from 'react';
+
+import EventTemplate from '@/components/templates/EventTemplate';
+import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
+import {
+  type EventItem,
+  getAllEvents,
+  getEventBySlug,
+  recommendationToEvent,
+} from '@/lib/localContent';
+import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
+
+// Арга хэмжээний дэлгэрэнгүй ("Арга хэмжээ" загвар). Эхлээд 'event' төрлөөс slug-аар,
+// олдохгүй бол хуучин 'recommendation' (наадмууд)-аас slug эсвэл хуучин ID-аар хайна.
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// 'recommendation' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
-// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
-const getRecommendation = cache(async (param: string) => getEntryBySlugOrId('recommendation', param));
+type Found =
+  | { kind: 'event'; event: EventItem }
+  | { kind: 'recommendation'; event: EventItem; entry: any; matchedBy: 'slug' | 'id' };
+
+const getItem = cache(async (param: string): Promise<Found | null> => {
+  const event = await getEventBySlug(param);
+  if (event) return { kind: 'event', event };
+  const found = await getEntryBySlugOrId('recommendation', param);
+  if (!found) return null;
+  return { kind: 'recommendation', event: recommendationToEvent(found.entry), entry: found.entry, matchedBy: found.matchedBy };
+});
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const found = await getRecommendation(id);
-  const item = found?.entry;
+  const item = await getItem(id);
   if (!item) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
 
-  const fields = item.fields as any;
-  const url = (fields.image || fields.coverImage)?.fields?.file?.url;
+  const e = item.event;
+  if (item.kind === 'recommendation') {
+    // Хуучин хуудастай ижил гарчиг, тайлбар
+    const fields = item.entry.fields as any;
+    const url = (fields.image || fields.coverImage)?.fields?.file?.url;
+    return pageMetadata({
+      title: fields.title,
+      description: truncate(
+        richTextToPlain(fields.description) ||
+          `${fields.title}: Монголд аялахад санал болгох газар, туршлага.`
+      ),
+      path: `/recommendation/${entryKey(item.entry)}`,
+      image: url ? (url.startsWith('//') ? `https:${url}` : url) : undefined,
+    });
+  }
   return pageMetadata({
-    title: fields.title,
+    title: e.title,
     description: truncate(
-      richTextToPlain(fields.description) ||
-        `${fields.title}: Монголд аялахад санал болгох газар, туршлага.`
+      richTextToPlain(e.culturalMeaning) ||
+        `${e.title}: ${[e.province, e.organizer].filter(Boolean).join(', ')}. Огноо, соёлын утга, зөв оролцох зөвлөмж.`
     ),
-    path: `/recommendation/${entryKey(item)}`,
-    image: url ? (url.startsWith('//') ? `https:${url}` : url) : undefined,
+    path: `/recommendation/${e.slug}`,
+    image: e.photos[0]?.src,
   });
 }
 
-export default async function RecommendationDetailPage({ params }: Props) {
+export default async function EventPage({ params }: Props) {
   const { id } = await params;
-  const found = await getRecommendation(id);
+  const item = await getItem(id);
+  if (!item) notFound();
 
-  if (!found) {
-    notFound();
-  }
-  const item = found.entry;
   // Хуучин ID хаягаар орж ирвэл slug хаяг руу байнгын redirect
-  if (found.matchedBy === 'id' && entryKey(item) !== id) {
-    permanentRedirect(`/recommendation/${entryKey(item)}`);
+  if (item.kind === 'recommendation' && item.matchedBy === 'id' && entryKey(item.entry) !== id) {
+    permanentRedirect(`/recommendation/${entryKey(item.entry)}`);
   }
 
-  const fields = item.fields as any;
-  const imageField = fields.image || fields.coverImage;
-  const imageUrl = imageField?.fields?.file?.url
-    ? (imageField.fields.file.url.startsWith('//')
-        ? `https:${imageField.fields.file.url}`
-        : imageField.fields.file.url)
-    : 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
-
+  const others = (await getAllEvents()).filter((o) => o.id !== item.event.id).slice(0, 3);
   return (
-    <main className="min-h-screen bg-white pb-24">
-      {/* 1. HERO ХЭСЭГ */}
-      <section className="relative h-[65vh] min-h-[460px] w-full">
-        {/* Арын том зураг */}
-        <Image
-          src={imageUrl}
-          alt={fields.title || 'Recommendation'}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-
-        {/* Нэгдсэн бараан уусалттай бүрхүүл */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/25" />
-
-        {/* Буцах товч (Дээд талын байрлал) */}
-        <div className="absolute top-28 left-6 sm:left-12 lg:left-16 z-20">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md border border-white/10 transition-all text-xs sm:text-sm font-medium cursor-pointer"
-          >
-            <span>←</span>
-            <span>Нүүр хуудас руу буцах</span>
-          </Link>
-        </div>
-
-        {/* Гарчиг (Доод талын байрлал) */}
-        <div className="absolute bottom-12 left-6 sm:left-12 lg:left-16 right-6 max-w-5xl z-20">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-md">
-            {fields.title}
-          </h1>
-        </div>
-      </section>
-
-      {/* 2. АГУУЛГЫН ХЭСЭГ */}
-      <div className="max-w-4xl mx-auto px-6 sm:px-10 mt-12">
-        <div className="prose prose-lg text-neutral-700 leading-relaxed">
-          {fields.description ? (
-            <p className="text-base sm:text-lg whitespace-pre-line text-neutral-800">
-              {fields.description}
-            </p>
-          ) : (
-            <p className="text-base sm:text-lg text-neutral-500 italic">
-              Тун удахгүй дэлгэрэнгүй мэдээлэл нэмэгдэнэ...
-            </p>
-          )}
-        </div>
-      </div>
-    </main>
+    <EventTemplate
+      event={item.event}
+      others={others}
+      back={
+        item.kind === 'event'
+          ? { href: '/things-to-do/festivals', label: 'Фестивалиуд' }
+          : { href: '/', label: 'Нүүр хуудас руу буцах' }
+      }
+    />
   );
 }

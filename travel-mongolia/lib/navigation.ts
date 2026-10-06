@@ -112,7 +112,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Аяллын маршрутууд', 'Itineraries', '/inspiration/itineraries'),
         ],
       },
-      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'planned' },
+      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'draft' },
       { mn: 'Байр', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
       { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', status: 'live' },
       {
@@ -157,12 +157,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Нутгийн Монгол',
     en: 'Local Mongolia',
     items: [
-      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'planned' },
-      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'planned' },
-      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'planned' },
-      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'planned' },
-      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'planned' },
-      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'planned' },
+      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'draft' },
+      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'draft' },
+      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'draft' },
+      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'draft' },
+      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'draft' },
+      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'draft' },
     ],
   },
   {
@@ -233,6 +233,8 @@ export const PAGE_STATUS: Record<string, NavStatus> = {
   // энд шилжиж, /inspiration/stories, /inspiration/magazine-аас redirect хийнэ (ia-plan.md 5в).
   '/stories': 'draft',
   '/stories/photo-video': 'draft',
+  // Нутгийн Монгол hub (Б хэсэг). /local/<slug> профайлууд энэ төлвийг өвлөнө.
+  '/local': 'draft',
 };
 
 // Preview (эсвэл local) орчин эсэх. SITE_ENV-ийг next.config.js build хийх үед server,
@@ -259,6 +261,11 @@ function allNavItems(): NavItem[] {
 
 export function isPageLive(path: string): boolean {
   if (PAGE_STATUS[path] && PAGE_STATUS[path] !== 'live') return false;
+  // PAGE_STATUS-д бүртгэгдсэн хуудасны доорх хуудсууд (жишээ нь /local/<slug>) эцгийнхээ төлвийг өвлөнө
+  const parent = Object.keys(PAGE_STATUS).find(
+    (p) => PAGE_STATUS[p] !== 'live' && path.startsWith(`${p}/`)
+  );
+  if (parent) return false;
   const entries = allNavItems().filter(
     (i) => i.href.startsWith('/') && pathOf(i.href) === path
   );
