@@ -14,6 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   3. travelhubmongolia.com-ыг **`travel-mongolia-ilas`** project serve хийдэг (2026-10-01-нд шалгасан). Тиймээс preview-г тэр project-оос өгнө. `travel-mongolia` project-ийн preview build fail болдог, `travel-mongolia.vercel.app` нь хуучин өөр сайт.
   4. Preview холбоосууд Vercel-ийн хамгаалалттай (302 → нэвтрэх хуудас). Хэрэглэгч Vercel эрхээрээ нэвтэрч байж үзнэ. Байхгүй branch-ийн хаяг 404 буцаана.
 - Хэрэглэгч preview дээр шалгаад **зөвшөөрсний дараа л** `main` руу merge хийж push хийнэ. Зөвшөөрөл ажил бүрт тусдаа авна.
+- **`main` руу merge хийх бүрт `staging` branch-ийг шинэчилнэ**, ингэснээр `staging` нь `main`-тэй үргэлж ижил байна: `git push origin main:staging` (fast-forward). `staging` дээр шууд ажил хийхгүй.
 - **`app/layout.tsx` дахь Google tag-уудыг хэзээ ч устгах, өөрчлөхгүй.** Энэ нь `metadata.verification.google` (Search Console-ийн verification meta tag, `zRrRNy93t2vrJ0mbrdKRgk-zHX0UZazj7BHcjprmSnI`) болон `<GoogleAnalytics gaId="G-PBZBEDW93X" />` (GA4) хоёр юм. `layout.tsx` эсвэл `metadata`-г дахин бичих, merge conflict шийдэх үед энэ хоёрыг яг хэвээр нь үлдээнэ. GA-г нэг л удаа ачаалах ёстой тул өөр газар давхар GA/GTM код нэмэхгүй.
 - **Төлөвлөгөө: [`docs/plan/ia-plan.md`](../docs/plan/ia-plan.md)-г дагана.** Энэ нь Travel Hub Mongolia 2.0-ийн **батлагдсан** цэс, URL бүтэц, шинэ hub хуудсууд болон хэрэгжүүлэх дарааллын төлөвлөгөө. Эзэмшигч 2026-10-02-нд баталсан. Файл repo-ийн үндсэн хавтсанд, app-ийн гадна байрладаг. Цэс, хаяг, шинэ хуудастай холбоотой ажил эхлэхийн өмнө үүнийг уншина. Эзэмшигчийн шийдвэрүүд төлөвлөгөөний 7-р хэсэгт бий. Тэнд "шийдээгүй" гэж үлдсэн асуудлаар таамаглахгүй, эхлээд асууна.
 
@@ -41,7 +42,7 @@ The user's machine has no Node/npm/gh on PATH, so local builds and type checks c
 
 - `next.config.js` is the only Next config (do not add `.mjs`/`.ts` variants, since Next would load `.js` first and silently ignore them). It sets `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds`, so type errors do not fail a deploy. `images.remotePatterns` allows `images.ctfassets.net` and `images.unsplash.com`. Any other remote host used with `next/image` must be added there or use `unoptimized`.
 - `app/layout.tsx` sets `dynamic = 'force-dynamic'`, so all pages render per request.
-- Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`.
+- Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`, `CONTENTFUL_MANAGEMENT_TOKEN` (`scripts/contentful/*.ps1` only; never commit or print it).
 
 ## Content architecture
 
