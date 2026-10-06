@@ -47,7 +47,7 @@ async function getContentfulData(): Promise<{
         title: String(f.name || ''),
         subtitle: String(f.region || ''),
         group: 'Түүхэн өв',
-        href: `/destination/heritage/place/${item.sys.id}`,
+        href: `/destination/heritage/place/${f.slug || item.sys.id}`,
         keywords: [plainText(f.description)],
       };
     });

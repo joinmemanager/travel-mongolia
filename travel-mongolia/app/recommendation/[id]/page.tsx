@@ -4,27 +4,22 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { cache } from 'react';
 
-import { client } from '@/lib/contentful';
+import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
-const getRecommendation = cache(async (id: string) => {
-  try {
-    const entry = await client.getEntry(id);
-    return entry;
-  } catch (error) {
-    return null;
-  }
-});
+// 'recommendation' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
+const getRecommendation = cache(async (param: string) => getEntryBySlugOrId('recommendation', param));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const item = await getRecommendation(id);
+  const found = await getRecommendation(id);
+  const item = found?.entry;
   if (!item) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
 
   const fields = item.fields as any;
@@ -35,17 +30,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       richTextToPlain(fields.description) ||
         `${fields.title}: Монголд аялахад санал болгох газар, туршлага.`
     ),
-    path: `/recommendation/${id}`,
+    path: `/recommendation/${entryKey(item)}`,
     image: url ? (url.startsWith('//') ? `https:${url}` : url) : undefined,
   });
 }
 
 export default async function RecommendationDetailPage({ params }: Props) {
   const { id } = await params;
-  const item = await getRecommendation(id);
+  const found = await getRecommendation(id);
 
-  if (!item) {
+  if (!found) {
     notFound();
+  }
+  const item = found.entry;
+  // Хуучин ID хаягаар орж ирвэл slug хаяг руу байнгын redirect
+  if (found.matchedBy === 'id' && entryKey(item) !== id) {
+    permanentRedirect(`/recommendation/${entryKey(item)}`);
   }
 
   const fields = item.fields as any;

@@ -35,7 +35,7 @@ export async function getHeritagePlaceCards(): Promise<PlaceCardData[]> {
       const src = assetUrl(f.image);
       return {
         id: item.sys.id,
-        href: `/destination/heritage/place/${item.sys.id}`,
+        href: `/destination/heritage/place/${f.slug || item.sys.id}`,
         title: String(f.name || ''),
         region: f.region || undefined,
         image: src ? { src, alt: String(f.name || '') } : undefined,
@@ -58,7 +58,7 @@ export async function getDestinationCards(): Promise<PlaceCardData[]> {
       const src = assetUrl(f.image || f.coverImage);
       return {
         id: item.sys.id,
-        href: `/destination/${item.sys.id}`,
+        href: `/destination/${f.slug || item.sys.id}`,
         title: String(f.title || ''),
         region: f.subtitle || undefined,
         image: src ? { src, alt: String(f.title || '') } : undefined,
