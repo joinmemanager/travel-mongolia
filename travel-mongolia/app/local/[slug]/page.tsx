@@ -43,5 +43,4 @@ export default async function ProviderPage({ params }: Props) {
     exclude: [p.id],
   });
   return <ProfileTemplate provider={p} related={related} />;
-  );
 }

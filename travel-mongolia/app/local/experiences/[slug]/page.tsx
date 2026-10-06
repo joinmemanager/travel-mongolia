@@ -44,5 +44,4 @@ export default async function ExperiencePage({ params }: Props) {
     exclude: [x.id],
   });
   return <ExperienceTemplate experience={x} related={related} isLocalProvider={Boolean(host?.localOwned)} />;
-  );
 }
