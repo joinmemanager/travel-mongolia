@@ -5,7 +5,7 @@ import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { getStories } from '@/lib/stories';
 
-// Фото/видео түүх (ia-plan.md C10, 5в). Төлөв: draft (lib/navigation.ts PAGE_STATUS).
+// Фото/видео түүх (ia-plan.md C10, 5в). Төлөв: live (lib/navigation.ts PAGE_STATUS).
 // НООРОГ: Contentful-ын Story төрөл (6-р үе) бэлэн болтол одоо байгаа нийтлэлүүд рүү холбоно.
 export const metadata = metaFor('/stories/photo-video');
 

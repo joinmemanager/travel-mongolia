@@ -6,7 +6,7 @@ import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
 import { computeImpact } from '@/lib/impact';
 import { IMPACT_HUB as hub, partnerMailto } from '@/lib/impactData';
-import { liveHref } from '@/lib/navigation';
+import { isPreviewEnv, liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { getProvinceLinks } from '@/lib/provinces';
 
@@ -78,6 +78,12 @@ export default async function ImpactHubPage() {
   const provinces = (await getProvinceLinks()).filter((p) => liveHref(p.href));
   // Impact Dashboard v1: Contentful-аас автоматаар (lib/impact.ts)
   const impact = await computeImpact();
+  // /impact soft төлөвтэй: production дээр өгөгдөлгүй (эсвэл 0) KPI картыг нуух. Preview дээр бүгд харагдана.
+  const preview = isPreviewEnv();
+  const metrics = hub.localImpact.metrics.filter((metric) => {
+    const v = impact[metric.key].value;
+    return preview || (v !== null && !/^0%?$/.test(v));
+  });
 
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
@@ -114,8 +120,9 @@ export default async function ImpactHubPage() {
         <div className="flex-1 w-full space-y-16">
           {/* 01. Орон нутгийн үр өгөөж: Contentful-ын бодит тоо, өгөгдөлгүй бол "Мэдээлэл удахгүй" */}
           <Section id="local-impact" index={1} title={hub.localImpact.title} intro={hub.localImpact.intro}>
+            {metrics.length > 0 && (
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {hub.localImpact.metrics.map((metric) => {
+              {metrics.map((metric) => {
                 const m = impact[metric.key];
                 return (
                   <li
@@ -135,7 +142,8 @@ export default async function ImpactHubPage() {
                 );
               })}
             </ul>
-            <p className="mt-4 text-xs text-neutral-400">{hub.localImpact.sourceNote}</p>
+            )}
+            {metrics.length > 0 && <p className="mt-4 text-xs text-neutral-400">{hub.localImpact.sourceNote}</p>}
           </Section>
 
           {/* 02. Түншлэлийн төслүүд */}

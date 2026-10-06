@@ -23,19 +23,20 @@
 
 ## 2. Draft → live (`travel-mongolia/lib/navigation.ts`)
 
+Төлөвүүд: `live` (бүрэн), `soft` (цэсэнд харагдана, нээгдэнэ, гэхдээ noindex, sitemap-гүй), `draft` (зөвхөн preview), `planned`. Contentful-аас уншдаг цэсний зүйл (`source`) entry-гүй бол production дээр автоматаар нуугдана.
+
 - [ ] `/local` hub: `PAGE_STATUS['/local']`-ийг `'live'` болгох. Ингэснээр `/local/<slug>` профайлууд ч live болно.
 - [ ] Цэсний "Нутгийн Монгол" хэсгийн 6 зүйл ба "Туршлагууд" (`/local/experiences`): `status: 'live'`.
-- [ ] `/stories`, `/stories/photo-video`: `PAGE_STATUS`-д `'live'`. Ингэснээр `/stories/<slug>` нийтлэлүүд ч live болно.
-- [ ] Цэсний "Түүхүүд" → `/stories`, "Фото/видео түүх" → `/stories/photo-video` руу шилжүүлэх (ia-plan.md 5в).
+- [x] `/stories`, `/stories/photo-video`: live (feat/soft-launch).
+- [x] Цэсний "Түүхүүд" → `/stories`, "Фото/видео түүх" → `/stories/photo-video` (feat/soft-launch).
 - [ ] `/respect`, `/respect/etiquette`, `/respect/nature`, `/respect/accessible`: `status: 'live'`.
-- [ ] `/impact` (5 anchor холбоос): `status: 'live'`.
+- [x] `/impact`: `soft` (цэсэнд харагдана, noindex). Хоосон KPI production дээр нуугдана. Бүрэн нээх үед `live` болгоно.
 - [ ] Live болгосны дараа "Холбоотой аялал, туршлага, үйлчилгээ" хэсэг газрын хуудсуудад автоматаар гарч эхэлнэ. Учир нь `/local` хуудсууд руу заасан картууд нээгдэнэ. Preview дээр шалгах.
 
 ## 3. Redirect (`travel-mongolia/next.config.js` → `redirects()`)
 
-- [ ] `/inspiration/stories` → `/stories` (байнгын).
-- [ ] `/inspiration/magazine` → `/stories` (байнгын).
-- [ ] Сайт доторх эдгээр хаяг руу заасан холбоосуудыг шинэ хаяг руу солих (`lib/stories.ts`, цэс, `RelatedBookings` биш бусад).
+- [x] `/inspiration/stories` → `/stories`, `/inspiration/magazine` → `/stories` (байнгын, `next.config.js`).
+- [x] Сайт доторх холбоосууд шинэчлэгдсэн (цэс, `lib/stories.ts`, inspiration-ийн дараах/өмнөх холбоос).
 - [ ] Хуучин ID хаягууд slug руу redirect хийж байгааг шалгах (`/destination/<id>`, `/destination/heritage/place/<id>`, `/recommendation/<id>`).
 
 ## 4. SEO шалгалт

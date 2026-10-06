@@ -4,7 +4,7 @@ import ImageCard from '@/components/design/ImageCard';
 import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
 import { IMAGES, type SiteImage } from '@/lib/images';
-import { liveHref } from '@/lib/navigation';
+import { isPreviewEnv, liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import {
   getStories,
@@ -13,8 +13,8 @@ import {
   type StoryCategoryId,
 } from '@/lib/stories';
 
-// "Түүх & өв" hub (ia-plan.md C10, 5в). Төлөв: draft (lib/navigation.ts PAGE_STATUS).
-// НООРОГ: одоохондоо сайтад байгаа хуудсуудыг карт болгосон (lib/stories.ts).
+// "Түүх & өв" hub (ia-plan.md C10, 5в). Төлөв: live (lib/navigation.ts PAGE_STATUS).
+// Сайтад байгаа хуудсуудын карт + Contentful-ын 'story' нийтлэлүүд (lib/stories.ts).
 export const metadata = metaFor('/stories');
 
 const CATEGORY_LABEL = Object.fromEntries(
@@ -66,6 +66,11 @@ function EmptyCard() {
 export default async function StoriesHubPage() {
   // Production дээр нийтлэгдээгүй хуудас руу заасан картыг харуулахгүй
   const stories = (await getStories()).filter((s) => liveHref(s.href));
+  // Production дээр түүхгүй ангиллыг (цэс, хэсэг) нуух. Preview дээр "удахгүй" карттай харагдана.
+  const preview = isPreviewEnv();
+  const categories = STORY_CATEGORIES.filter(
+    (c) => preview || stories.some((s) => s.category === c.id)
+  );
 
   const featured = stories.filter((s) => s.featured);
   const latest = stories
@@ -87,7 +92,7 @@ export default async function StoriesHubPage() {
       >
         {/* Ангиллын товчлол */}
         <nav aria-label="Түүхийн ангилал" className="flex flex-wrap gap-2 mt-8">
-          {STORY_CATEGORIES.map((c) => (
+          {categories.map((c) => (
             <a
               key={c.id}
               href={`#${c.id}`}
@@ -129,7 +134,7 @@ export default async function StoriesHubPage() {
         )}
 
         {/* Ангилал тус бүр */}
-        {STORY_CATEGORIES.map((category) => {
+        {categories.map((category) => {
           const items = stories.filter((s) => s.category === category.id);
           return (
             <section key={category.id} id={category.id} className="scroll-mt-8">

@@ -5,6 +5,13 @@ const nextConfig = {
   env: {
     SITE_ENV: process.env.VERCEL_ENV || 'development',
   },
+  // ia-plan.md 5в: хуучин "Түүхүүд", "Фото/видео түүх" хаягууд Түүх & өв hub руу (lib/navigation.ts REDIRECTED_PATHS)
+  async redirects() {
+    return [
+      { source: '/inspiration/stories', destination: '/stories', permanent: true },
+      { source: '/inspiration/magazine', destination: '/stories', permanent: true },
+    ];
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -62,20 +62,6 @@ const EXISTING_CONTENT: StoryCard[] = [
     featured: true,
   },
   {
-    id: 'local-stories',
-    title: 'Нутгийн хүмүүсийн түүх',
-    excerpt: 'Малчид, урлаачид, хөтөч нарын амьдрал, туршлагаас сэдэвлэсэн түүхүүд.',
-    href: '/inspiration/stories',
-    category: 'people',
-  },
-  {
-    id: 'magazine',
-    title: 'Аяллын нийтлэлүүд',
-    excerpt: 'Монголын аялал, соёл, байгаль, хүмүүсийн тухай нийтлэл, ярилцлага.',
-    href: '/inspiration/magazine',
-    category: 'photo-video',
-  },
-  {
     id: 'top-lists',
     title: 'Шилдэг жагсаалтууд',
     excerpt: 'Монголд заавал очих газрууд, заавал турших туршлага, шилдэг нуур, уулс.',

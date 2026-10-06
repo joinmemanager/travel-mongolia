@@ -112,7 +112,7 @@ export default function ItinerariesPage() {
         aspect: item.aspect,
       }))}
       footerLinks={[
-        { label: 'Эхлэл рүү буцах (01. Magazine)', href: '/inspiration/magazine' },
+        { label: 'Эхлэл рүү буцах (01. Magazine)', href: '/stories' },
       ]}
       footerNote="Нийт 7 хэсэг бүрэн хийгдэж дууслаа"
     />

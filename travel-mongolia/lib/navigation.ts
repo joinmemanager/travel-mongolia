@@ -7,9 +7,22 @@
 //             тэмдэгтэй. Production дээр цэсэнд харагдахгүй, noindex, sitemap-д орохгүй.
 //   planned - хуудас хараахан байхгүй. Preview дээр "Тун удахгүй", дарагдахгүй.
 //             Production дээр харагдахгүй.
+//   soft    - хэсэгчлэн нээсэн. Production дээр цэсэнд харагдаж, хуудас нээгдэнэ, гэхдээ
+//             noindex, sitemap-д орохгүй (Google-д хараахан бүртгүүлэхгүй).
 // Production дээр нэг ч live зүйлгүй хэсэг бүхэлдээ нуугдана.
 
-export type NavStatus = 'live' | 'draft' | 'planned';
+export type NavStatus = 'live' | 'soft' | 'draft' | 'planned';
+
+// Contentful-аас уншдаг хэсэг. Production дээр "[ЖИШЭЭ]"-ээс бусад entry байхгүй бол тэр
+// цэсний зүйл нуугдана, анхны entry нэмэгдэхэд автоматаар харагдана (lib/contentAvailability.ts).
+export type ContentSource =
+  | 'local:experiences'
+  | 'local:guide'
+  | 'local:herder-family'
+  | 'local:artisan'
+  | 'local:food'
+  | 'local:products'
+  | 'stories:photo-video';
 
 export interface NavItem {
   mn: string;
@@ -20,6 +33,8 @@ export interface NavItem {
   external?: boolean;
   // Dropdown-д зүйлийн доор жижиг холбоосоор харагдах дэд хуудсууд
   children?: NavItem[];
+  // Contentful-аас уншдаг бол түүний эх сурвалж (хоосон бол production дээр нуугдана)
+  source?: ContentSource;
 }
 
 // Нийтлэгдсэн, сайтын доторх энгийн холбоос (дэд холбоосуудад)
@@ -82,8 +97,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
         ],
       },
       {
-        // Түр: /stories бэлэн болох хүртэл (ia-plan.md 5в үед /stories руу сольж redirect хийнэ)
-        mn: 'Түүхүүд', en: 'Stories', href: '/inspiration/stories', status: 'live',
+        // ia-plan.md 5в: /inspiration/stories, /inspiration/magazine нь /stories руу redirect (next.config.js)
+        mn: 'Түүхүүд', en: 'Stories', href: '/stories', status: 'live',
         children: [
           page('Нууц үзэсгэлэнт газрууд', 'Hidden Mongolia', '/inspiration/hidden'),
           page('Шилдэг жагсаалтууд', 'Top Lists', '/inspiration/top-lists'),
@@ -112,7 +127,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Аяллын маршрутууд', 'Itineraries', '/inspiration/itineraries'),
         ],
       },
-      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'draft' },
+      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'draft', source: 'local:experiences' },
       { mn: 'Байр', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
       { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', status: 'live' },
       {
@@ -142,7 +157,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live' },
       { mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live' },
       // Түр: /stories бэлэн болох хүртэл (ia-plan.md 5в үед /stories руу сольж redirect хийнэ)
-      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/inspiration/magazine', status: 'live' },
+      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/stories/photo-video', status: 'live', source: 'stories:photo-video' },
       {
         mn: 'Аялахаас өмнө', en: 'Learn Before You Go', href: '/plan/before-you-travel', status: 'live',
         children: [
@@ -157,12 +172,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Нутгийн Монгол',
     en: 'Local Mongolia',
     items: [
-      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'draft' },
-      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'draft' },
-      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'draft' },
-      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'draft' },
-      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'draft' },
-      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'draft' },
+      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'draft', source: 'local:experiences' },
+      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'draft', source: 'local:guide' },
+      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'draft', source: 'local:herder-family' },
+      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'draft', source: 'local:artisan' },
+      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'draft', source: 'local:food' },
+      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'draft', source: 'local:products' },
     ],
   },
   {
@@ -183,11 +198,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
     en: 'Impact & Partners',
     items: [
       // /impact/* дэд хуудсын оронд нэг хуудасны хэсгүүд рүү anchor-оор заана (ia-plan.md 5г)
-      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact#local-impact', status: 'draft' },
-      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact#projects', status: 'draft' },
-      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'draft' },
-      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'draft' },
-      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'draft' },
+      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact#local-impact', status: 'soft' },
+      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact#projects', status: 'soft' },
+      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'soft' },
+      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'soft' },
+      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'soft' },
     ],
   },
 ];
@@ -229,12 +244,17 @@ export const FOOTER_LEGAL: NavItem[] = [
 
 // Цэсэнд (одоохондоо) ороогүй хуудсуудын төлөв. Цэсний зүйлтэй адил дүрмээр ажиллана.
 export const PAGE_STATUS: Record<string, NavStatus> = {
-  // Түүх & өв hub (C10). Цэсний "Түүхүүд", "Фото/видео түүх" /stories live болох өдөр
-  // энд шилжиж, /inspiration/stories, /inspiration/magazine-аас redirect хийнэ (ia-plan.md 5в).
-  '/stories': 'draft',
-  '/stories/photo-video': 'draft',
+  // Түүх & өв hub (C10): live. /stories/<slug> нийтлэлүүд энэ төлвийг өвлөнө.
+  '/stories': 'live',
+  '/stories/photo-video': 'live',
   // Нутгийн Монгол hub (Б хэсэг). /local/<slug> профайлууд энэ төлвийг өвлөнө.
   '/local': 'draft',
+};
+
+// Өөр хаяг руу байнгын redirect хийдэг хаягууд (next.config.js). Sitemap-д оруулахгүй.
+export const REDIRECTED_PATHS: Record<string, string> = {
+  '/inspiration/stories': '/stories',
+  '/inspiration/magazine': '/stories',
 };
 
 // Preview (эсвэл local) орчин эсэх. SITE_ENV-ийг next.config.js build хийх үед server,
@@ -259,17 +279,35 @@ function allNavItems(): NavItem[] {
     .flatMap((i) => [i, ...(i.children || [])]);
 }
 
-export function isPageLive(path: string): boolean {
-  if (PAGE_STATUS[path] && PAGE_STATUS[path] !== 'live') return false;
-  // PAGE_STATUS-д бүртгэгдсэн хуудасны доорх хуудсууд (жишээ нь /local/<slug>) эцгийнхээ төлвийг өвлөнө
-  const parent = Object.keys(PAGE_STATUS).find(
-    (p) => PAGE_STATUS[p] !== 'live' && path.startsWith(`${p}/`)
-  );
-  if (parent) return false;
+// Нээлттэй байдлын дараалал: planned < draft < soft < live
+const OPENNESS: Record<NavStatus, number> = { planned: 0, draft: 1, soft: 2, live: 3 };
+
+// Хуудасны төлөв: PAGE_STATUS (эсвэл хамгийн ойрын эцэг хуудасных, жишээ нь /local/<slug> нь
+// /local-ийнх), үгүй бол цэсний зүйлсийн хамгийн хаалттай төлөв, аль алинд нь байхгүй бол live.
+export function pageStatus(path: string): NavStatus {
+  if (PAGE_STATUS[path]) return PAGE_STATUS[path];
+  const parent = Object.keys(PAGE_STATUS)
+    .filter((p) => path.startsWith(`${p}/`))
+    .sort((a, b) => b.length - a.length)[0];
+  if (parent && PAGE_STATUS[parent] !== 'live') return PAGE_STATUS[parent];
   const entries = allNavItems().filter(
     (i) => i.href.startsWith('/') && pathOf(i.href) === path
   );
-  return entries.every((i) => i.status === 'live');
+  if (entries.length === 0) return 'live';
+  return entries.reduce<NavStatus>(
+    (acc, i) => (OPENNESS[i.status] < OPENNESS[acc] ? i.status : acc),
+    'live'
+  );
+}
+
+// Production дээр нээгдэх (цэс, холбоосонд харагдах) хуудас: live эсвэл soft
+export function isPageLive(path: string): boolean {
+  return OPENNESS[pageStatus(path)] >= OPENNESS.soft;
+}
+
+// Хайлтад бүртгүүлэх (index, sitemap) хуудас: зөвхөн live
+export function isPageIndexable(path: string): boolean {
+  return pageStatus(path) === 'live';
 }
 
 // Хуудас доторх товч, холбоосонд: production дээр live биш хуудас руу заавал undefined
@@ -280,28 +318,38 @@ export function liveHref(href?: string): string | undefined {
   return isPageLive(pathOf(href)) ? href : undefined;
 }
 
-// Энэ орчинд (production) хуудсыг хайлтаас нуух ёстой эсэх
+// Энэ орчинд (production) хуудсыг хайлтаас нуух ёстой эсэх (noindex, sitemap-гүй): live биш бүх хуудас
 export function isUnpublishedPage(path: string): boolean {
-  return !isPreviewEnv() && !isPageLive(path);
+  return !isPreviewEnv() && !isPageIndexable(path);
 }
 
+// Production дээр цэсэнд харагдах зүйл: live эсвэл soft, мөн Contentful-ын эх сурвалж нь хоосон биш
+const shownInProduction = (i: NavItem, emptySources: Set<ContentSource>) =>
+  OPENNESS[i.status] >= OPENNESS.soft && !(i.source && emptySources.has(i.source));
+
+// emptySources: production дээр entry-гүй Contentful эх сурвалжууд (lib/contentAvailability.ts)
 export function visibleSections(
   sections: NavSection[],
-  preview: boolean
+  preview: boolean,
+  emptySources: Set<ContentSource> = new Set()
 ): NavSection[] {
   if (preview) return sections;
   return sections
-    .map((s) => ({ ...s, items: visibleItems(s.items, false) }))
+    .map((s) => ({ ...s, items: visibleItems(s.items, false, emptySources) }))
     .filter((s) => s.items.length > 0);
 }
 
-export function visibleItems(items: NavItem[], preview: boolean): NavItem[] {
+export function visibleItems(
+  items: NavItem[],
+  preview: boolean,
+  emptySources: Set<ContentSource> = new Set()
+): NavItem[] {
   if (preview) return items;
   return items
-    .filter((i) => i.status === 'live')
+    .filter((i) => shownInProduction(i, emptySources))
     .map((i) =>
       i.children
-        ? { ...i, children: i.children.filter((c) => c.status === 'live') }
+        ? { ...i, children: i.children.filter((c) => shownInProduction(c, emptySources)) }
         : i
     );
 }
