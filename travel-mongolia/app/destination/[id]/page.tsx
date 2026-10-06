@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import React, { cache } from 'react';
 
-import { GuidanceBlock } from '@/components/templates/DetailBlocks';
+import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getDestinationCards } from '@/lib/places';
@@ -116,6 +116,7 @@ export default async function DestinationDetailPage({ params }: Props) {
           </p>
         )}
       </div>
+      <PlaceEsgBlocks fields={(found.entry as any).fields} />
       <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );

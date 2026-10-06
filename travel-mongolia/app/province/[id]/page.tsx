@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React, { cache } from 'react';
 
-import { GuidanceBlock } from '@/components/templates/DetailBlocks';
+import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { client } from '@/lib/contentful';
 import { getHeritagePlaceCards } from '@/lib/places';
@@ -223,6 +223,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
             Аялалд гарахаас өмнө цаг агаарын нөхцөл байдал, зам харгуй болон шатахуун түгээх станцын байршлыг урьдчилан судлахыг зөвлөж байна. Мөн орон нутгийн байгаль хамгаалагчидтай холбогдон тусгай хамгаалалттай газар нутгийн дэглэмтэй танилцаарай.
           </p>
         </section>
+      <PlaceEsgBlocks fields={contentfulEntry?.fields} />
       <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );

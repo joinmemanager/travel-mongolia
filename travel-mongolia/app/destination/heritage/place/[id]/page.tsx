@@ -3,7 +3,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { cache } from 'react';
 import MongoliaLocatorMap from '@/components/MongoliaLocatorMap';
 import WeatherWidget from '@/components/WeatherWidget';
-import { GuidanceBlock } from '@/components/templates/DetailBlocks';
+import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getHeritagePlaceCards, nearestPlaces } from '@/lib/places';
@@ -148,6 +148,7 @@ export default async function HeritagePlaceDetailPage({
       ) : (
         <p className="text-neutral-500 italic">Энэ газрын дэлгэрэнгүй тайлбар удахгүй нэмэгдэнэ.</p>
       )}
+      <PlaceEsgBlocks fields={(found.entry as any).fields} />
       <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );

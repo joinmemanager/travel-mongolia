@@ -305,6 +305,15 @@ export default function ScenicRoutesPage() {
                   <span className="text-neutral-400 block text-[11px]">Замын урт:</span>
                   <span className="font-extrabold text-[#15803d] text-sm">📍 {selectedRoute.distance}</span>
                 </div>
+                {/* Route ESG block (баримт бичгийн 7-р хэсэг): улирал, зам/тээвэр */}
+                <div className="p-3 bg-neutral-50 rounded-xl border border-neutral-100">
+                  <span className="text-neutral-400 block text-[11px]">Улирал:</span>
+                  <span className="font-extrabold text-neutral-900 text-sm">{selectedRoute.season}</span>
+                </div>
+                <div className="p-3 bg-neutral-50 rounded-xl border border-neutral-100">
+                  <span className="text-neutral-400 block text-[11px]">Зам:</span>
+                  <span className="font-extrabold text-neutral-900 text-sm">{selectedRoute.road}</span>
+                </div>
               </div>
 
               <p className="text-xs text-neutral-600 leading-relaxed font-normal">

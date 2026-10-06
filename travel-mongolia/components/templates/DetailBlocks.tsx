@@ -134,3 +134,23 @@ export function GuidanceBlock({
     </InfoBlock>
   );
 }
+
+// Газрын ESG block-ууд (баримт бичгийн 7-р хэсэг, Destination / Place): өв, байгалийн онцлог,
+// нутгийн хүмүүс. Contentful-ын заавал биш талбаруудаас (scripts/contentful/04-esg-fields.ps1).
+// Талбар хоосон бол юу ч харагдахгүй.
+export function PlaceEsgBlocks({ fields }: { fields: any }) {
+  const text = (v: any) => (typeof v === 'string' ? v.trim() : '');
+  const features = text(fields?.heritageFeatures);
+  const people = text(fields?.localPeople);
+  if (!features && !people) return null;
+  return (
+    <>
+      <InfoBlock id="heritage-features" title="Өв, байгалийн онцлог">
+        {features ? <p className="text-base sm:text-lg leading-relaxed whitespace-pre-line">{features}</p> : null}
+      </InfoBlock>
+      <InfoBlock id="local-people" title="Нутгийн хүмүүс">
+        {people ? <p className="text-base sm:text-lg leading-relaxed whitespace-pre-line">{people}</p> : null}
+      </InfoBlock>
+    </>
+  );
+}
