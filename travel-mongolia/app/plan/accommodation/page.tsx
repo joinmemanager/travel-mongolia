@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import GuidePage from '@/components/GuidePage';
 
 
 // БҮХ БАЙРЛАХ ГАЗРУУДЫН ДЭЛГЭРЭНГҮЙ САН
@@ -440,72 +440,19 @@ export default function AccommodationPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
-      {/* Толгой хэсэг */}
-      <header className="border-b border-neutral-200 bg-white pt-16 pb-12 px-6 sm:px-12 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
-              05. АЯЛЛАА ТӨЛӨВЛӨХ
-            </span>
-            <span className="text-neutral-300">•</span>
-            <span className="text-[11px] font-mono text-neutral-500 uppercase">
-              ACCOMMODATION DIRECTORY
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-neutral-900 mb-4">
-            Байрлах газар & Захиалгын лавлах
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-600 max-w-2xl font-normal leading-relaxed">
-            Монголд байрлах 5 үндсэн орчин, тэдгээрийн ялгаа болон албан ёсны сайтаар шууд холбогдож захиалах боломжтой баталгаат зочид буудал, жуулчны баазуудын нэгдсэн сантай танилцаарай.
-          </p>
-        </div>
-      </header>
-
-      {/* Их бие: Sticky sidebar + Content */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 flex flex-col lg:flex-row gap-12 items-start">
-        
-        {/* Зүүн талын Sticky Sidebar */}
-        <aside className="hidden lg:block w-64 shrink-0 sticky top-28 space-y-2 bg-white p-5 rounded-2xl border border-neutral-200/80 shadow-sm">
-          <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-3 px-2">
-            Сэдвийн жагсаалт
-          </span>
-          <nav className="space-y-1">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setActiveNav(item.id)}
-                className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-                  activeNav === item.id
-                    ? 'bg-[#15803d]/10 text-[#15803d] font-bold'
-                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="pt-4 mt-4 border-t border-neutral-100 flex flex-col gap-2">
-            <Link
-              href="/plan/getting-around"
-              className="text-[11px] font-semibold text-neutral-500 hover:text-neutral-900 px-2"
-            >
-              ← Өмнөх: 03. Дотор аялах
-            </Link>
-            <Link
-              href="/plan/services"
-              className="text-[11px] font-bold text-[#15803d] hover:text-emerald-950 flex items-center justify-between px-2"
-            >
-              <span>Дараах: 05. Үйлчилгээ</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </aside>
-
-        {/* Баруун талын дэлгэрэнгүй хэсгүүд */}
-        <div className="flex-1 w-full space-y-16">
+    <GuidePage
+      kicker="05. АЯЛЛАА ТӨЛӨВЛӨХ"
+      kickerEn="ACCOMMODATION DIRECTORY"
+      title="Байрлах газар & Захиалгын лавлах"
+      intro="Монголд байрлах 5 үндсэн орчин, тэдгээрийн ялгаа болон албан ёсны сайтаар шууд холбогдож захиалах боломжтой баталгаат зочид буудал, жуулчны баазуудын нэгдсэн сантай танилцаарай."
+      toc={navItems}
+      activeToc={activeNav}
+      onTocSelect={setActiveNav}
+      related={[
+          { label: 'Өмнөх: 03. Дотор аялах', href: '/plan/getting-around' },
+          { label: 'Дараах: 05. Үйлчилгээ', href: '/plan/services' },
+      ]}
+    >
 
           {/* 01. ЗОЧИД БУУДАЛ */}
           <section id="hotels" className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm">
@@ -687,9 +634,6 @@ export default function AccommodationPage() {
             </div>
           </section>
 
-        </div>
-
-      </div>
-    </main>
+    </GuidePage>
   );
 }

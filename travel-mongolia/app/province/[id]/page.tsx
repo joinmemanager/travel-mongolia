@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import React, { cache } from 'react';
-import Image from 'next/image';
 
+import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { client } from '@/lib/contentful';
+import { getHeritagePlaceCards } from '@/lib/places';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
@@ -124,73 +124,30 @@ export default async function ProvinceDetailPage({ params }: Props) {
     };
   }
 
+  // Энэ аймагт байрлах түүхэн өвийн газрууд (region талбарт аймгийн нэр орсон)
+  const provinceStem = String(province.name).replace(/ аймаг$/, '');
+  const placesHere = (await getHeritagePlaceCards())
+    .filter((p) => p.region && p.region.includes(provinceStem))
+    .slice(0, 3);
+
   return (
-    <main className="min-h-screen bg-white pb-32">
-      {/* 1. HERO ХЭСЭГ: Зургийн яг голд байрлах цэвэрхэн гарчиг */}
-      <section className="relative h-[72vh] min-h-[520px] w-full flex items-center justify-center">
-        <Image
-          src={province.image}
-          alt={province.name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-
-        {/* Зөөлөн харанхуй бүрхүүл */}
-        <div className="absolute inset-0 bg-black/35" />
-
-        {/* Буцах товч */}
-        <div className="absolute top-28 left-6 sm:left-12 lg:left-16 z-20">
-          <Link
-            href="/#map"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md border border-white/10 transition-all text-xs sm:text-sm font-medium cursor-pointer"
-          >
-            <span>←</span>
-            <span>Нүүр хуудас руу буцах</span>
-          </Link>
-        </div>
-
-        {/* Гол гарчиг */}
-        <div className="relative z-10 text-center px-6 max-w-5xl">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
-            {province.name}
-          </h1>
-        </div>
-      </section>
-
-     {/* 2. SUB-NAVIGATION. Үндсэн header гүйлгэхэд нуугддаг (sticky биш) тул top-0:
-         header харагдаж байхад түүний доор, нуугдсаны дараа дэлгэцийн дээд ирмэгт наалдана */}
-      <nav className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200">
-        <div className="max-w-5xl mx-auto px-6 flex items-center justify-center gap-8 sm:gap-14 overflow-x-auto py-5 text-base sm:text-lg font-normal font-sans tracking-tight text-neutral-600 no-scrollbar">
-          <a
-            href="#overview"
-            className="hover:text-black transition-colors whitespace-nowrap font-medium"
-          >
-            Тойм мэдээлэл
-          </a>
-          <a
-            href="#facts"
-            className="hover:text-black transition-colors whitespace-nowrap font-medium"
-          >
-            Үзүүлэлтүүд
-          </a>
-          <a
-            href="#highlights"
-            className="hover:text-black transition-colors whitespace-nowrap font-medium"
-          >
-            Үзэх газрууд
-          </a>
-          <a
-            href="#guide"
-            className="hover:text-black transition-colors whitespace-nowrap font-medium"
-          >
-            Аяллын зөвлөгөө
-          </a>
-        </div>
-      </nav>
-
-      <div className="max-w-4xl mx-auto px-6 sm:px-10">
+    <PlaceTemplate
+      image={{ src: province.image, alt: province.name }}
+      title={province.name}
+      back={{ href: '/#map', label: 'Нүүр хуудас руу буцах' }}
+      nav={[
+        { id: 'overview', label: 'Тойм мэдээлэл' },
+        { id: 'facts', label: 'Үзүүлэлтүүд' },
+        { id: 'highlights', label: 'Үзэх газрууд' },
+        { id: 'guide', label: 'Аяллын зөвлөгөө' },
+      ]}
+      nearby={{ title: 'Ойролцоох газрууд', places: placesHere }}
+      links={[
+        { label: 'Зорих газрууд', href: '/destination/region' },
+        { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
+        { label: 'Газрын зураг', href: '/destination/map' },
+      ]}
+    >
         {/* Хэсэг 1: Ерөнхий танилцуулга */}
         <section id="overview" className="pt-16 scroll-mt-20">
           <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
@@ -261,7 +218,6 @@ export default async function ProvinceDetailPage({ params }: Props) {
             Аялалд гарахаас өмнө цаг агаарын нөхцөл байдал, зам харгуй болон шатахуун түгээх станцын байршлыг урьдчилан судлахыг зөвлөж байна. Мөн орон нутгийн байгаль хамгаалагчидтай холбогдон тусгай хамгаалалттай газар нутгийн дэглэмтэй танилцаарай.
           </p>
         </section>
-      </div>
-    </main>
+    </PlaceTemplate>
   );
 }

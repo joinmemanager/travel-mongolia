@@ -1,5 +1,7 @@
 'use client';
 
+import HubHeader from '@/components/HubHeader';
+
 import Link from 'next/link';
 
 import { Suspense, useState, useEffect } from 'react';
@@ -83,20 +85,11 @@ function SeasonsContent() {
 
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 flex flex-col justify-between pb-8">
-      {/* Дээд хэсэг: Толгой мэдээлэл */}
-      <div className="pt-10 pb-6 px-6 sm:px-12 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200">
-        <div>
-          <span className="text-[11px] font-bold tracking-[0.3em] text-[#15803d] uppercase block mb-1">
-            02. АЯЛАХ СЭДЭЛ
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-neutral-900">
-            Дөрвөн Улирлаар
-          </h1>
-        </div>
-        <p className="text-xs sm:text-sm text-neutral-600 max-w-md font-normal leading-relaxed">
-          Монгол орон улирал бүрт тэс ондоо байгалийн өнгө төрх, соёлын гайхамшгийг өөртөө нуудаг.
-        </p>
-      </div>
+      <HubHeader
+        kicker="02. АЯЛАХ СЭДЭЛ"
+        title="Дөрвөн Улирлаар"
+        intro="Монгол орон улирал бүрт тэс ондоо байгалийн өнгө төрх, соёлын гайхамшгийг өөртөө нуудаг."
+      />
 
       {/* 4 Баганат Interactive Split Showcase */}
       <div className="flex-1 w-full max-w-7xl mx-auto flex flex-col lg:flex-row min-h-[580px] lg:min-h-[640px] p-4 sm:p-6 gap-4">

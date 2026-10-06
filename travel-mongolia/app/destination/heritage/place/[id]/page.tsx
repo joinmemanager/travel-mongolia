@@ -1,11 +1,11 @@
 import { client } from '@/lib/contentful';
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import MongoliaLocatorMap from '@/components/MongoliaLocatorMap';
 import WeatherWidget from '@/components/WeatherWidget';
+import PlaceTemplate from '@/components/templates/PlaceTemplate';
+import { getHeritagePlaceCards, nearestPlaces } from '@/lib/places';
 import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
@@ -107,57 +107,42 @@ export default async function HeritagePlaceDetailPage({
         : undefined,
   };
 
+  const hasCoords = typeof lat === 'number' && typeof lon === 'number';
+  const nearby = hasCoords ? nearestPlaces({ lat, lon }, await getHeritagePlaceCards(), id) : [];
+
   return (
-    <main className="w-full bg-white text-neutral-900 pb-28 font-sans">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <section className="relative w-full h-[40vh] min-h-[300px] flex items-end overflow-hidden">
-        <Image
-          src={imgUrl}
-          alt={f.name || ''}
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.55]"
-        />
-        <div className="relative z-10 px-6 sm:px-10 pb-10 max-w-7xl mx-auto w-full">
-          <Link href="/destination/heritage" className="text-white/80 text-sm font-semibold mb-3 inline-block hover:text-white">
-            ← Бүх түүхэн өв
-          </Link>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            {f.name}
-          </h1>
-          <p className="text-white/90 text-sm sm:text-base font-medium mt-2">{f.region}</p>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-14 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <div className="lg:col-span-2">
-          {f.description ? (
-            renderRichText(f.description)
-          ) : (
-            <p className="text-neutral-500 italic">Энэ газрын дэлгэрэнгүй тайлбар удахгүй нэмэгдэнэ.</p>
-          )}
-        </div>
-
-        <div className="space-y-8">
-          {typeof lat === 'number' && typeof lon === 'number' && (
+    <PlaceTemplate
+      image={{ src: imgUrl, alt: f.name || '' }}
+      title={f.name}
+      subtitle={f.region}
+      back={{ href: '/destination/heritage', label: 'Бүх түүхэн өв' }}
+      jsonLd={jsonLd}
+      nearby={{ title: 'Ойролцоох газрууд', places: nearby }}
+      links={[
+        { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
+        { label: 'Зорих газрууд', href: '/destination/region' },
+        { label: 'Газрын зураг', href: '/destination/map' },
+      ]}
+      aside={
+        hasCoords ? (
+          <>
             <div className="rounded-2xl border border-neutral-200 p-5 bg-neutral-50">
               <h3 className="text-sm font-bold text-neutral-900 mb-3">Байршил</h3>
               <MongoliaLocatorMap lat={lat} lon={lon} />
             </div>
-          )}
-
-          {typeof lat === 'number' && typeof lon === 'number' && (
             <div className="rounded-2xl border border-neutral-200 p-5">
               <h3 className="text-sm font-bold text-neutral-900 mb-3">Цаг агаар</h3>
               <WeatherWidget lat={lat} lon={lon} />
             </div>
-          )}
-        </div>
-      </div>
-    </main>
+          </>
+        ) : undefined
+      }
+    >
+      {f.description ? (
+        renderRichText(f.description)
+      ) : (
+        <p className="text-neutral-500 italic">Энэ газрын дэлгэрэнгүй тайлбар удахгүй нэмэгдэнэ.</p>
+      )}
+    </PlaceTemplate>
   );
 }

@@ -1,10 +1,10 @@
 import { client } from '@/lib/contentful';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
-import HeritagePlaceCard from '@/components/HeritagePlaceCard';
+import ImageCard from '@/components/design/ImageCard';
+import ImageHero from '@/components/templates/ImageHero';
 import { pageMetadata, truncate } from '@/lib/seo';
 
 function getImageUrl(imageField: any): string {
@@ -100,33 +100,34 @@ export default async function HeritageCategoryPage({
 
   return (
     <main className="w-full bg-white text-neutral-900 pb-28 font-sans selection:bg-[#15803d] selection:text-white">
-      <section className="relative w-full h-[40vh] min-h-[300px] flex items-end overflow-hidden">
-        <Image
-          src={heroImg}
-          alt={data.title}
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.45]"
-        />
-        <div className="relative z-10 px-6 sm:px-10 pb-10 max-w-7xl mx-auto w-full">
-          <Link href="/destination/heritage" className="text-white/80 text-sm font-semibold mb-3 inline-block hover:text-white">
-            ← Бүх түүхэн өв
+      <ImageHero
+        image={{ src: heroImg, alt: data.title }}
+        title={data.title}
+        intro={data.count || undefined}
+        topLeft={
+          <Link
+            href="/destination/heritage"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-md border border-white/10 transition-all text-xs sm:text-sm font-medium"
+          >
+            <span aria-hidden="true">←</span>
+            <span>Бүх түүхэн өв</span>
           </Link>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            {data.title}
-          </h1>
-          {data.count && (
-            <p className="text-white/90 text-sm sm:text-base font-medium mt-2">{data.count}</p>
-          )}
-        </div>
-      </section>
+        }
+      />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-14">
         {data.places.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.places.map((place: any) => (
-              <HeritagePlaceCard key={place.id} place={place} />
+              <ImageCard
+                key={place.id}
+                href={`/destination/heritage/place/${place.id}`}
+                image={{ src: place.img, alt: place.name }}
+                eyebrow={place.region}
+                title={place.name}
+                aspect="h-80 sm:h-96"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
             ))}
           </div>
         ) : (

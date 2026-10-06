@@ -8,6 +8,8 @@ import React, { useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
+import ImageHero from '@/components/templates/ImageHero';
+
 import { RouteMapData } from '@/components/RealRouteMap';
 
 const RealRouteMap = dynamic(() => import('@/components/RealRouteMap'), {
@@ -210,27 +212,15 @@ export default function ScenicRoutesPage() {
     <main className="w-full bg-[#f8fafc] text-neutral-900 pb-20 font-sans selection:bg-[#15803d] selection:text-white">
       
      {/* 1. HERO ТОМ ЗУРАГТАЙ ТОЛГОЙ ХЭСЭГ */}
-      <section className="relative w-full h-[45vh] min-h-[350px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2400"
-          alt="Аяллын маршрут, замаар"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.45]"
-        />
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-xs sm:text-sm font-black mb-3 block">
-            06. Scenic Routes & Travel Corridors
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-3">
-            Аяллын маршрут, замаар
-          </h1>
-          <p className="text-white/90 text-base sm:text-lg font-normal max-w-2xl mx-auto">
-            Жинхэнэ хиймэл дагуул, авто замын зураг дээр маршрутаа сонгож, хоорондын зай болон зогсоолуудаа бодитоор төлөвлөөрэй.
-          </p>
-        </div>
-      </section>
+      <ImageHero
+        image={{
+          src: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2400',
+          alt: 'Аяллын маршрут, замаар',
+        }}
+        kicker="06. Scenic Routes & Travel Corridors"
+        title="Аяллын маршрут, замаар"
+        intro="Жинхэнэ хиймэл дагуул, авто замын зураг дээр маршрутаа сонгож, хоорондын зай болон зогсоолуудаа бодитоор төлөвлөөрэй."
+      />
 
       {/* 2. НАВИГАЦИ: СУМАН ТОХИРГООТОЙ, ТАСРАХГҮЙ ЦЭВЭРХЭН ХУВИЛБАР */}
       <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-2xs">

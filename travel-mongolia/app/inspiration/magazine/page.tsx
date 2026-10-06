@@ -1,5 +1,7 @@
 'use client';
 
+import HubHeader from '@/components/HubHeader';
+
 import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
@@ -168,23 +170,12 @@ function MagazineContent() {
   };
 
   return (
-    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32 pt-8">
-      {/* Сэтгүүлийн толгой хэсэг */}
-      <header className="pt-12 pb-8 px-6 sm:px-12 max-w-7xl mx-auto border-b border-neutral-200">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-[#15803d] font-bold block mb-2">
-              Volume 01 • Digital Issue
-            </span>
-            <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-neutral-900 uppercase">
-              Mongolia Magazine
-            </h1>
-          </div>
-          <p className="text-sm text-neutral-600 max-w-md leading-relaxed">
-            Монголын уудам нутгийн түүх, өв соёл болон бодит аяллын тэмдэглэлүүдийн нэгдсэн цахим сэтгүүл.
-          </p>
-        </div>
-      </header>
+    <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 pb-32">
+      <HubHeader
+        kicker="Volume 01 • Digital Issue"
+        title="Mongolia Magazine"
+        intro="Монголын уудам нутгийн түүх, өв соёл болон бодит аяллын тэмдэглэлүүдийн нэгдсэн цахим сэтгүүл."
+      />
 
       {/* Шүүлтүүр товчлуурууд - Дээд талд наалдаж үлдэнэ */}
       <div className="sticky top-0 z-40 bg-[#fcfbf9]/95 backdrop-blur-md border-b border-neutral-200 py-4 shadow-sm">

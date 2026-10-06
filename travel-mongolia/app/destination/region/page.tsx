@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import React from 'react';
+
+import LinkCard from '@/components/design/LinkCard';
 import RegionDirectory, {
   type ExternalSearchItem,
 } from '@/components/RegionDirectory';
@@ -109,27 +110,28 @@ export default async function RegionPage({ searchParams }: Props) {
           <p className="mb-8 text-sm text-gray-500">
             Аймаг, хот бүрийн үзэх газрууд, аялах мэдээлэл
           </p>
-          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {provinces.map((p) => (
-              <li key={p.href}>
-                <Link
-                  href={p.href}
-                  className="group block p-5 h-full bg-white rounded-2xl border border-gray-100 hover:border-emerald-200 hover:shadow-lg transition-all shadow-xs"
-                >
-                  <span className="block text-base font-bold text-gray-900 group-hover:text-[#15803d] transition-colors">
-                    {p.title}
-                  </span>
-                  {p.center && (
-                    <span className="block mt-1 text-xs text-gray-500">
-                      {p.center}
-                    </span>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* Холбоосны карт (components/design/LinkCard) */}
+          <LinkCard
+            bare
+            columns={3}
+            links={provinces.map((p) => ({ label: p.title, href: p.href, desc: p.center }))}
+          />
         </section>
       )}
+
+      <div className="px-4 pb-16 mx-auto max-w-7xl sm:px-6">
+        <LinkCard
+          title="Холбогдох хуудсууд"
+          columns={3}
+          links={[
+            { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
+            { label: 'Байгалийн тогтоц, ландшафт', href: '/destination/landscapes' },
+            { label: 'Тусгай хамгаалалттай газрууд', href: '/destination/protected' },
+            { label: 'Аяллын чиглэлүүд', href: '/destination/routes' },
+            { label: 'Газрын зураг', href: '/destination/map' },
+          ]}
+        />
+      </div>
     </main>
   );
 }

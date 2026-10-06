@@ -1,5 +1,8 @@
 'use client';
 
+import AboutRelated from '@/components/templates/AboutRelated';
+import ImageHero from '@/components/templates/ImageHero';
+
 import { liveHref } from '@/lib/navigation';
 
 import React, { useRef } from 'react';
@@ -300,20 +303,15 @@ export default function NaturePage() {
     <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       
       {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2400" alt="Байгаль, газарзүй, амьтан" className="absolute inset-0 w-full h-full object-cover brightness-[0.55]" />
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
-            08. Nature, Geography & Wildlife
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
-            Байгаль, газарзүй, амьтан
-          </h1>
-          <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
-            Мөнх цаст өндөр уулсаас алтан шаргал говь хүртэлх онгон байгаль, ховор ан амьтад хийгээд эртний үлэг гүрвэлийн өлгий нутаг
-          </p>
-        </div>
-      </section>
+      <ImageHero
+        image={{
+          src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2400',
+          alt: 'Байгаль, газарзүй, амьтан',
+        }}
+        kicker="08. Nature, Geography & Wildlife"
+        title="Байгаль, газарзүй, амьтан"
+        intro="Мөнх цаст өндөр уулсаас алтан шаргал говь хүртэлх онгон байгаль, ховор ан амьтад хийгээд эртний үлэг гүрвэлийн өлгий нутаг"
+      />
 
       {/* 2. НААЛДДАГ НАВИГАЦИ (ДУГААРГҮЙ) */}
       <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
@@ -429,6 +427,7 @@ export default function NaturePage() {
           </section>
         ))}
       </div>
+      <AboutRelated current="/about/nature" />
 
     </main>
   );
