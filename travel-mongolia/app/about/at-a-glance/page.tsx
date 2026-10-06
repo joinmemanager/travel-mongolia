@@ -1,5 +1,8 @@
 'use client';
 
+import AboutRelated from '@/components/templates/AboutRelated';
+import ImageHero from '@/components/templates/ImageHero';
+
 import { liveHref } from '@/lib/navigation';
 
 import React, { useRef } from 'react';
@@ -165,24 +168,15 @@ export default function AtAGlancePage() {
   return (
     <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <img
-  src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2400"
-  alt="Монгол орныг товчхон"
-  className="absolute inset-0 w-full h-full object-cover brightness-[0.55]"
-/>
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
-            01. Mongolia at a Glance
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
-            Монгол орныг товчхон
-          </h1>
-          <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
-            Мөнх хөх тэнгэрийн орон, нүүдэлчдийн өлгий нутгийн тухай үндсэн тоо баримтууд болон ерөнхий мэдээлэл
-          </p>
-        </div>
-      </section>
+      <ImageHero
+        image={{
+          src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2400',
+          alt: 'Монгол орныг товчхон',
+        }}
+        kicker="01. Mongolia at a Glance"
+        title="Монгол орныг товчхон"
+        intro="Мөнх хөх тэнгэрийн орон, нүүдэлчдийн өлгий нутгийн тухай үндсэн тоо баримтууд болон ерөнхий мэдээлэл"
+      />
 
       {/* 2. НААЛДДАГ НАВИГАЦИ */}
       <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
@@ -299,6 +293,7 @@ export default function AtAGlancePage() {
           </section>
         ))}
       </div>
+      <AboutRelated current="/about/at-a-glance" />
     </main>
   );
 }

@@ -1,5 +1,8 @@
 'use client';
 
+import AboutRelated from '@/components/templates/AboutRelated';
+import ImageHero from '@/components/templates/ImageHero';
+
 import { liveHref } from '@/lib/navigation';
 
 import React, { useRef } from 'react';
@@ -165,20 +168,15 @@ export default function ModernMongoliaPage() {
   return (
     <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
       {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400" alt="Өнөөгийн Монгол" className="absolute inset-0 w-full h-full object-cover brightness-[0.55]" />
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
-            09. Mongolia Today
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
-            Өнөөгийн Монгол
-          </h1>
-          <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
-            Орчин үеийн залуусын бүтээлч байдал, шинэлэг урлаг соёл, дижитал хөгжил ба орчин үеийн хотын амьдрал
-          </p>
-        </div>
-      </section>
+      <ImageHero
+        image={{
+          src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400',
+          alt: 'Өнөөгийн Монгол',
+        }}
+        kicker="09. Mongolia Today"
+        title="Өнөөгийн Монгол"
+        intro="Орчин үеийн залуусын бүтээлч байдал, шинэлэг урлаг соёл, дижитал хөгжил ба орчин үеийн хотын амьдрал"
+      />
 
       {/* 2. НААЛДДАГ НАВИГАЦИ */}
       <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
@@ -287,6 +285,7 @@ export default function ModernMongoliaPage() {
           </section>
         ))}
       </div>
+      <AboutRelated current="/about/modern" />
     </main>
   );
 }
