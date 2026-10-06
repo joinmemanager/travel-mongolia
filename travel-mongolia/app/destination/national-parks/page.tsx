@@ -1,46 +1,27 @@
 'use client';
 
 import React from 'react';
+
+import CategoryDirectory from '@/components/templates/CategoryDirectory';
 import Image from 'next/image';
 
 export default function NationalParksPage() {
   return (
-    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-[#15803d] selection:text-white">
-      
-      {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2400"
-          alt="Байгалийн цогцолборт газар"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.58]"
-        />
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
-            National Parks
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
-            Байгалийн цогцолборт газар
-          </h1>
-          <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
-            Байгалийн гоо үзэсгэлэн, эко аялал жуулчлал, амралт зугаалга хосолсон Монголын шилдэг үндэсний паркууд
-          </p>
-        </div>
-      </section>
-
-      {/* 2. НААЛДДАГ НАВИГАЦИ */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex items-center justify-start sm:justify-center gap-3 overflow-x-auto scrollbar-none text-sm font-bold">
-          <a href="#about" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Цогцолборт газрын тухай</a>
-          <a href="#terelj" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Горхи-Тэрэлж</a>
-          <a href="#khuvsgul" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Хөвсгөл нуур</a>
-          <a href="#altai" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Алтай Таван Богд</a>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 space-y-36">
+    <CategoryDirectory
+      hero={{
+        src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2400',
+        alt: 'Байгалийн цогцолборт газар',
+      }}
+      kicker="National Parks"
+      title="Байгалийн цогцолборт газар"
+      intro="Байгалийн гоо үзэсгэлэн, эко аялал жуулчлал, амралт зугаалга хосолсон Монголын шилдэг үндэсний паркууд"
+      nav={[
+        { id: 'about', label: 'Цогцолборт газрын тухай' },
+        { id: 'terelj', label: 'Горхи-Тэрэлж' },
+        { id: 'khuvsgul', label: 'Хөвсгөл нуур' },
+        { id: 'altai', label: 'Алтай Таван Богд' },
+      ]}
+    >
 
         {/* 1. ТОЙМ */}
         <section id="about" className="scroll-mt-28">
@@ -114,7 +95,6 @@ export default function NationalParksPage() {
           </div>
         </section>
 
-      </div>
-    </main>
+    </CategoryDirectory>
   );
 }

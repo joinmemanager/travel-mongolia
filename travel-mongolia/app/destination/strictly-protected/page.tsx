@@ -1,48 +1,29 @@
 'use client';
 
 import React from 'react';
+
+import CategoryDirectory from '@/components/templates/CategoryDirectory';
 import Image from 'next/image';
 
 
 export default function StrictlyProtectedPage() {
   return (
-    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-[#15803d] selection:text-white">
-      
-      {/* 1. HERO ХЭСЭГ */}
-      <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400"
-          alt="Дархан цаазат газар"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.58]"
-        />
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <span className="text-emerald-400 uppercase tracking-[0.3em] text-sm sm:text-base font-black mb-4 block">
-            Special Protected Areas
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
-            Дархан цаазат газар
-          </h1>
-          <p className="text-white/95 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto font-normal leading-relaxed">
-            Унаган төрх, онгон дагшин байдлыг хадгалах хамгийн өндөр зэрэглэлийн хамгаалалттай түүхт бүс нутгууд
-          </p>
-        </div>
-      </section>
-
-      {/* 2. НААЛДДАГ НАВИГАЦИ */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex items-center justify-start sm:justify-center gap-3 overflow-x-auto scrollbar-none text-sm font-bold">
-          <a href="#about" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Дархан цаазын тухай</a>
-          <a href="#bogdkhan" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Богдхан уул</a>
-          <a href="#gobi" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Их говийн ДЦГ</a>
-          <a href="#khokh-serkh" className="px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap">Хөх сэрхийн нуруу</a>
-          <a href="#rules" className="px-5 py-2.5 rounded-full bg-[#15803d] text-white whitespace-nowrap shadow-xs">Мөрдөх журам</a>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 space-y-36">
+    <CategoryDirectory
+      hero={{
+        src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400',
+        alt: 'Дархан цаазат газар',
+      }}
+      kicker="Special Protected Areas"
+      title="Дархан цаазат газар"
+      intro="Унаган төрх, онгон дагшин байдлыг хадгалах хамгийн өндөр зэрэглэлийн хамгаалалттай түүхт бүс нутгууд"
+      nav={[
+        { id: 'about', label: 'Дархан цаазын тухай' },
+        { id: 'bogdkhan', label: 'Богдхан уул' },
+        { id: 'gobi', label: 'Их говийн ДЦГ' },
+        { id: 'khokh-serkh', label: 'Хөх сэрхийн нуруу' },
+        { id: 'rules', label: 'Мөрдөх журам' },
+      ]}
+    >
 
         {/* 1. ДАРХАН ЦААЗЫН ТУХАЙ */}
         <section id="about" className="scroll-mt-28">
@@ -166,7 +147,6 @@ export default function StrictlyProtectedPage() {
           </div>
         </section>
 
-      </div>
-    </main>
+    </CategoryDirectory>
   );
 }
