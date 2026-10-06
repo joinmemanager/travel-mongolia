@@ -10,12 +10,15 @@ export default function ImageHero({
   kicker,
   title,
   intro,
+  topLeft,
   children,
 }: {
   image: { src: string; alt: string };
   kicker?: string;
   title: string;
   intro?: React.ReactNode;
+  // Зургийн зүүн дээд буланд (буцах холбоос г.м.)
+  topLeft?: React.ReactNode;
   // Гарчгийн доор харуулах нэмэлт (шошго, товч г.м.)
   children?: React.ReactNode;
 }) {
@@ -32,6 +35,7 @@ export default function ImageHero({
           className="object-cover brightness-[0.5]"
         />
       )}
+      {topLeft && <div className="absolute top-28 left-6 z-20 sm:left-12 lg:left-16">{topLeft}</div>}
       <div className="relative z-10 px-6 mx-auto max-w-4xl text-center">
         {kicker && (
           <span className="block mb-3 text-xs font-black tracking-[0.3em] text-emerald-400 uppercase sm:text-sm">
