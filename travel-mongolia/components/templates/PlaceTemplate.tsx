@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { ContentContext, type ContentContextValue } from '@/components/Analytics';
 import ImageCard from '@/components/design/ImageCard';
 import LinkCard, { type LinkCardItem } from '@/components/design/LinkCard';
 import type { PlaceCardData } from '@/lib/places';
@@ -21,6 +22,7 @@ export default function PlaceTemplate({
   aside,
   nearby,
   bookings,
+  analytics,
   links,
   children,
 }: {
@@ -38,11 +40,14 @@ export default function PlaceTemplate({
   nearby?: { title: string; places: PlaceCardData[] };
   // "Холбоотой аялал, туршлага, үйлчилгээ" (components/templates/RelatedBookings)
   bookings?: React.ReactNode;
+  // GA4: content_id, content_type, province (components/Analytics.tsx)
+  analytics?: ContentContextValue;
   links: LinkCardItem[];
   children: React.ReactNode;
 }) {
   return (
     <main className="w-full min-h-screen bg-white text-neutral-900 pb-28 font-sans">
+      {analytics && <ContentContext value={analytics} />}
       {jsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       )}

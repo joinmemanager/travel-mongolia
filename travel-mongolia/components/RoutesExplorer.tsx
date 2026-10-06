@@ -22,6 +22,7 @@ const RealRouteMap = dynamic(() => import('@/components/RealRouteMap'), {
 import type { RelatedItem } from '@/lib/related';
 import { ROUTES_LIST, type RouteItem } from '@/lib/routesData';
 
+import { ContentContext } from './Analytics';
 import RelatedBookings from './templates/RelatedBookings';
 
 // /destination/routes-ийн интерактив хэсэг (газрын зураг, маршрутын сонголт).
@@ -43,6 +44,7 @@ export default function RoutesExplorer({
 
   return (
     <main className="w-full bg-[#f8fafc] text-neutral-900 pb-20 font-sans selection:bg-[#15803d] selection:text-white">
+      <ContentContext value={{ content_type: 'route', content_id: selectedRoute.id }} />
       
      {/* 1. HERO ТОМ ЗУРАГТАЙ ТОЛГОЙ ХЭСЭГ */}
       <ImageHero

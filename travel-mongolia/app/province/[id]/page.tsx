@@ -151,6 +151,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
       image={{ src: province.image, alt: province.name }}
       title={province.name}
       back={{ href: '/#map', label: 'Нүүр хуудас руу буцах' }}
+      analytics={{ content_type: 'province', content_id: id, province: province.name }}
       bookings={<RelatedBookings items={related} campaign="province" contentId={id} />}
       nav={[
         { id: 'overview', label: 'Тойм мэдээлэл' },

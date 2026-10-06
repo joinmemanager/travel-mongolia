@@ -26,6 +26,7 @@ export default function StoryTemplate({ story: s, bookings }: { story: StoryEntr
       title={s.title}
       subtitle={[topic?.mn, s.location].filter(Boolean).join(' · ')}
       back={{ href: '/stories', label: 'Түүх & өв' }}
+      analytics={{ content_type: 'story', content_id: s.slug, province: s.location }}
       bookings={<RelatedBookings items={bookings} campaign="story" contentId={s.slug} />}
       links={related.map((r) => ({ label: r.title, href: r.href }))}
       aside={

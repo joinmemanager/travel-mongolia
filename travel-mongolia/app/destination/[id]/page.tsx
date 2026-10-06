@@ -111,6 +111,7 @@ export default async function DestinationDetailPage({ params }: Props) {
       image={{ src: imageUrl, alt: fields.title || 'Destination' }}
       title={fields.title || 'Destination'}
       back={{ href: '/#highlights', label: 'Нүүр хуудас руу буцах' }}
+      analytics={{ content_type: 'destination', content_id: entryKey(destination), province: placeFields.province || '' }}
       bookings={<RelatedBookings items={related} campaign="destination" contentId={entryKey(destination)} />}
       nearby={{ title: 'Бусад газрууд', places: others }}
       links={[

@@ -40,6 +40,7 @@ export default function ProfileTemplate({
           ? { href: category.href, label: category.mn }
           : { href: '/local', label: 'Нутгийн Монгол' }
       }
+      analytics={{ content_type: 'provider', content_id: p.slug, province: p.province }}
       bookings={<RelatedBookings items={related} campaign="provider" contentId={p.slug} />}
       links={[
         { label: 'Нутгийн туршлага', href: '/local/experiences' },

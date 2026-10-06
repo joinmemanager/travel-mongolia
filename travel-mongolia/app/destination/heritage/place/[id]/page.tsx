@@ -133,6 +133,7 @@ export default async function HeritagePlaceDetailPage({
       title={f.name}
       subtitle={f.region}
       back={{ href: '/destination/heritage', label: 'Бүх түүхэн өв' }}
+      analytics={{ content_type: 'heritage', content_id: entryKey(entry), province: placeFields.province || placeFields.region || '' }}
       bookings={<RelatedBookings items={related} campaign="heritage" contentId={entryKey(entry)} />}
       jsonLd={jsonLd}
       nearby={{ title: 'Ойролцоох газрууд', places: nearby }}

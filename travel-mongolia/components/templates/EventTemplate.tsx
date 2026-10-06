@@ -30,6 +30,7 @@ export default function EventTemplate({
       title={e.title}
       subtitle={[eventDateLabel(e), e.province].filter(Boolean).join(' · ')}
       back={back}
+      analytics={{ content_type: 'event', content_id: e.slug, province: e.province }}
       bookings={<RelatedBookings items={related} campaign="event" contentId={e.slug} />}
       nearby={{
         title: 'Бусад баяр наадам',

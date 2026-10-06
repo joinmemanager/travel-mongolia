@@ -29,6 +29,7 @@ export default function ExperienceTemplate({
       title={x.title}
       subtitle={[x.province, x.duration].filter(Boolean).join(' · ')}
       back={{ href: '/local/experiences', label: 'Нутгийн туршлага' }}
+      analytics={{ content_type: 'experience', content_id: x.slug, province: x.province }}
       bookings={<RelatedBookings items={related} campaign="experience" contentId={x.slug} />}
       links={[
         { label: 'Нутгийн туршлага', href: '/local/experiences' },
