@@ -12,6 +12,8 @@ export interface DirectoryPlace {
   name: string;
   region: string;
   img: string;
+  // Газрын дэлгэрэнгүй хуудас (байхгүй бол карт холбоосгүй)
+  href?: string;
 }
 
 export interface DirectoryGroup {
@@ -130,6 +132,7 @@ export function DirectoryGroupSection({
         {group.places.map((place) => (
           <ImageCard
             key={place.name}
+            href={place.href}
             image={{ src: place.img, alt: place.name }}
             eyebrow={place.region}
             title={place.name}
