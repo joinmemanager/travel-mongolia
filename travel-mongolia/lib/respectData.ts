@@ -338,4 +338,4 @@ export const ACCESSIBLE_GUIDE: GuidePageData = {
 };
 
 // /respect/* хуудсуудын толгойн тэмдэглэл. Эзэмшигч текстийг шалгаж дуусмагц '' болгоход хангалттай.
-export const RESPECT_REVIEW_NOTICE = 'Энэ гарын авлагыг шинэчилж байна';
+export const RESPECT_REVIEW_NOTICE = '';

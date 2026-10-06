@@ -172,11 +172,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Хүндэтгэлтэй аялал',
     en: 'Travel with Respect',
     items: [
-      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', status: 'soft' },
-      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'soft' },
-      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'soft' },
+      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', status: 'live' },
+      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'live' },
+      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'live' },
       { mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', status: 'live' },
-      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'soft' },
+      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'live' },
     ],
   },
   {

@@ -30,7 +30,7 @@
 - [x] `/stories`: live (feat/soft-launch).
 - [ ] `/stories/photo-video`: одоо `soft`. Анхны фото/видео нийтлэл орсны дараа эзэмшигчийн шийдвэрээр `live`.
 - [x] Цэсний "Түүхүүд" → `/stories`, "Фото/видео түүх" → `/stories/photo-video` (feat/soft-launch).
-- [ ] `/respect`, `/respect/etiquette`, `/respect/nature`, `/respect/accessible`: одоо `soft`, "Энэ гарын авлагыг шинэчилж байна" тэмдэглэлтэй. Текст шалгагдсаны дараа `lib/respectData.ts`-ийн `RESPECT_REVIEW_NOTICE`-ийг '' болгож, `status: 'live'`.
+- [x] `/respect`, `/respect/etiquette`, `/respect/nature`, `/respect/accessible`: live, "шинэчилж байна" тэмдэглэл хасагдсан (feat/respect-live).
 - [x] `/impact`: `soft` (цэсэнд харагдана, noindex). Өгөгдөлгүй KPI-ийн оронд "Үр дүнгийн тоо мэдээлэл удахгүй нийтлэгдэнэ" блок. Бүрэн нээх үед `live` болгоно.
 - [ ] Live болгосны дараа "Холбоотой аялал, туршлага, үйлчилгээ" хэсэг газрын хуудсуудад автоматаар гарч эхэлнэ. Учир нь `/local` хуудсууд руу заасан картууд нээгдэнэ. Preview дээр шалгах.
 
