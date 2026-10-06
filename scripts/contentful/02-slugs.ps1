@@ -21,6 +21,10 @@ $targets = @(
 
 # Автомат галиглал таарахгүй бол энд гараар заана: entry ID => slug
 $overrides = @{
+  '5z3JM5JvdnFX4cUieV9Mrc' = 'darkhan-uul'            # Дархан-Уул аймаг
+  '3t2W7uicg4pU7wXuhVuE4M' = 'orkhony-khundii'        # Орхоны хөндийн соёлын дурсгал
+  '5HTDX995PID2jrXG8wPHkZ' = 'bugan-chuluun-khushuu'  # Буган чулуун хөшөө, хүрэл зэвсгийн цогцолбор
+  '4Nd4SuwgpInDup4z0QKs4g' = 'burkhan-khaldun'        # Бурхан Халдун уул & хүрээлэн буй нутаг
 }
 
 $slugField = (New-Field -Id slug -Name 'Slug' -Type Symbol -Unique -Regexp $script:SlugPattern `
