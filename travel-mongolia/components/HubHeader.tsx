@@ -13,7 +13,7 @@ export default function HubHeader({
 }: {
   crumbs?: Crumb[];
   kicker: string;
-  kickerEn: string;
+  kickerEn?: string;
   title: string;
   intro: string;
   children?: React.ReactNode;
@@ -26,8 +26,12 @@ export default function HubHeader({
           <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#15803d] uppercase">
             {kicker}
           </span>
-          <span className="text-neutral-300">•</span>
-          <span className="text-[11px] font-mono text-neutral-500 uppercase">{kickerEn}</span>
+          {kickerEn && (
+            <>
+              <span className="text-neutral-300">•</span>
+              <span className="text-[11px] font-mono text-neutral-500 uppercase">{kickerEn}</span>
+            </>
+          )}
         </div>
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-neutral-900 mb-4">
           {title}
