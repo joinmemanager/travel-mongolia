@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { JOINME_BOOKING_URL } from '@/lib/localContent';
+import { type BookingCampaign, bookingHref } from '@/lib/booking';
 import { liveHref } from '@/lib/navigation';
 
 // Profile / Experience / Event / Story загваруудын нийтлэг хэсгүүд (PlaceTemplate дотор).
@@ -45,13 +45,23 @@ export function FactsCard({
   facts,
   bookingUrl,
   bookingLabel = 'Захиалах',
+  campaign,
+  contentId,
+  providerId,
+  isLocalProvider = false,
 }: {
   facts: { label: string; value?: React.ReactNode }[];
   bookingUrl?: string;
   bookingLabel?: string;
+  // utm_campaign, utm_content (lib/booking.ts)
+  campaign: BookingCampaign;
+  contentId: string;
+  // Analytics: booking_click-ийн provider_id, is_local_provider
+  providerId?: string;
+  isLocalProvider?: boolean;
 }) {
   const rows = facts.filter((f) => f.value);
-  const href = bookingUrl || JOINME_BOOKING_URL;
+  const href = bookingHref(bookingUrl, campaign, contentId);
   return (
     <div className="lg:sticky lg:top-28 p-6 rounded-2xl border border-neutral-200 bg-[#fcfbf9] space-y-5">
       {rows.length > 0 && (
@@ -68,6 +78,8 @@ export function FactsCard({
         href={href}
         target="_blank"
         rel="noreferrer"
+        data-ga-event="booking_click"
+        data-ga-params={JSON.stringify({ provider_id: providerId || '', is_local_provider: isLocalProvider, target_id: contentId })}
         className="flex justify-between items-center py-3 px-5 w-full text-sm font-bold text-white bg-[#15803d] hover:bg-emerald-800 rounded-full transition-colors"
       >
         <span>{bookingLabel}</span>

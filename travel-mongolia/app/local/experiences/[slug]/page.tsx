@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 import ExperienceTemplate from '@/components/templates/ExperienceTemplate';
-import { getExperienceBySlug, getExperiences, getProducts } from '@/lib/localContent';
+import { getExperienceBySlug, getProducts, getProviders } from '@/lib/localContent';
+import { getRelatedItems } from '@/lib/related';
 import { entryMeta } from '@/lib/pageMeta';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
@@ -33,12 +34,15 @@ export default async function ExperiencePage({ params }: Props) {
   const x = await getExperienceBySlug(slug);
   if (!x) notFound();
 
-  const [all, products] = await Promise.all([getExperiences(), getProducts()]);
-  return (
-    <ExperienceTemplate
-      experience={x}
-      others={all.filter((o) => o.id !== x.id && (o.province === x.province || o.hostId === x.hostId))}
-      products={products.filter((p) => p.relatedExperience.some((r) => r.id === x.id))}
-    />
+  const [products, providers] = await Promise.all([getProducts(), getProviders()]);
+  const host = providers.find((p) => p.id === x.hostId);
+  // Зохион байгуулагч, холбоотой бүтээгдэхүүн; байхгүй бол ижил аймгийн бусад
+  const related = await getRelatedItems({
+    providerIds: x.hostId ? [x.hostId] : [],
+    productIds: products.filter((p) => p.relatedExperience.some((r) => r.id === x.id)).map((p) => p.id),
+    provinceText: x.province,
+    exclude: [x.id],
+  });
+  return <ExperienceTemplate experience={x} related={related} isLocalProvider={Boolean(host?.localOwned)} />;
   );
 }

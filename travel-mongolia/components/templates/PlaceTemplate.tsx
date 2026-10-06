@@ -20,6 +20,7 @@ export default function PlaceTemplate({
   nav,
   aside,
   nearby,
+  bookings,
   links,
   children,
 }: {
@@ -35,6 +36,8 @@ export default function PlaceTemplate({
   aside?: React.ReactNode;
   // Ойролцоох (эсвэл бусад) газрууд. Хоосон бол хэсэг харагдахгүй
   nearby?: { title: string; places: PlaceCardData[] };
+  // "Холбоотой аялал, туршлага, үйлчилгээ" (components/templates/RelatedBookings)
+  bookings?: React.ReactNode;
   links: LinkCardItem[];
   children: React.ReactNode;
 }) {
@@ -81,6 +84,7 @@ export default function PlaceTemplate({
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-20 space-y-12">
+        {bookings}
         {nearby && nearby.places.length > 0 && (
           <section>
             <h2 className="mb-6 text-2xl sm:text-3xl font-black tracking-tight text-neutral-900">{nearby.title}</h2>

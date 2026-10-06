@@ -4,48 +4,31 @@ import RichText from '@/components/RichText';
 import { IMAGES } from '@/lib/images';
 import {
   choiceBadges,
-  type CommunityExperience,
-  type LocalProduct,
   type LocalProvider,
   PROVIDER_TYPES,
   providerTypeLabel,
 } from '@/lib/localContent';
 
+import type { RelatedItem } from '@/lib/related';
+
 import { BulletList, ChoiceBadges, FactsCard, InfoBlock } from './DetailBlocks';
 import PlaceTemplate from './PlaceTemplate';
+import RelatedBookings from './RelatedBookings';
 
 // "Профайл" загвар (/local/<slug>): баримт бичгийн 7-р хэсгийн Provider block-ууд
 // (хэн бэ, хаана, нутгийн өмчлөл/оролцоо, үйлчилгээ, үнэ/захиалга, лиценз/гэрчилгээ)
 // ба 9-р хэсгийн "Local & Responsible Choice" тэмдэгүүд. Хоосон хэсэг харагдахгүй.
 export default function ProfileTemplate({
   provider: p,
-  experiences,
-  products,
+  related,
 }: {
   provider: LocalProvider;
-  experiences: CommunityExperience[];
-  products: LocalProduct[];
-}) {
+  // Энэ өрхийн туршлага, бүтээгдэхүүн; байхгүй бол ижил аймгийнх (lib/related.ts)
+  related: RelatedItem[];
+})  {
   const typeLabel = providerTypeLabel(p.providerType);
   const category = PROVIDER_TYPES.find((t) => t.id === p.providerType);
   const badges = choiceBadges(p);
-
-  const related = [
-    ...experiences.map((x) => ({
-      id: x.id,
-      href: x.href,
-      title: x.title,
-      region: [x.duration, x.price].filter(Boolean).join(' · '),
-      image: x.photos[0],
-    })),
-    ...products.map((x) => ({
-      id: x.id,
-      href: x.href,
-      title: x.name,
-      region: x.origin,
-      image: x.photos[0],
-    })),
-  ];
 
   return (
     <PlaceTemplate
@@ -57,7 +40,7 @@ export default function ProfileTemplate({
           ? { href: category.href, label: category.mn }
           : { href: '/local', label: 'Нутгийн Монгол' }
       }
-      nearby={{ title: 'Туршлага, бүтээгдэхүүн', places: related }}
+      bookings={<RelatedBookings items={related} campaign="provider" contentId={p.slug} />}
       links={[
         { label: 'Нутгийн туршлага', href: '/local/experiences' },
         { label: 'Нутгийн хөтөч', href: '/local/guides' },
@@ -76,6 +59,10 @@ export default function ProfileTemplate({
             { label: 'Тусгай зөвшөөрөл', value: p.licenseIfRequired },
           ]}
           bookingUrl={p.bookingUrl}
+          campaign="provider"
+          contentId={p.slug}
+          providerId={p.id}
+          isLocalProvider={p.localOwned}
         />
       }
     >

@@ -5,10 +5,12 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import React, { cache } from 'react';
 
 import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import RelatedBookings from '@/components/templates/RelatedBookings';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getDestinationCards } from '@/lib/places';
 import { getGuidanceFor } from '@/lib/localContent';
+import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
@@ -92,6 +94,15 @@ export default async function DestinationDetailPage({ params }: Props) {
   // Ихэнх газар координатгүй тул зайгаар эрэмбэлэхгүй: "Бусад газрууд"
   const others = (await getDestinationCards()).filter((p) => p.id !== destination.sys.id).slice(0, 3);
 
+  // Холбоотой аялал, туршлага, үйлчилгээ: related_* талбар, байхгүй бол ижил аймаг
+  const placeFields: any = found.entry.fields || {};
+  const related = await getRelatedItems({
+    experienceIds: linkIds(placeFields.relatedExperience),
+    providerIds: linkIds(placeFields.relatedProvider),
+    productIds: linkIds(placeFields.relatedProduct),
+    provinceText: placeFields.province,
+  });
+
   // Хэрхэн зөв аялах (visitorGuidance)
   const guidance = await getGuidanceFor(destination.sys.id);
 
@@ -100,6 +111,7 @@ export default async function DestinationDetailPage({ params }: Props) {
       image={{ src: imageUrl, alt: fields.title || 'Destination' }}
       title={fields.title || 'Destination'}
       back={{ href: '/#highlights', label: 'Нүүр хуудас руу буцах' }}
+      bookings={<RelatedBookings items={related} campaign="destination" contentId={entryKey(destination)} />}
       nearby={{ title: 'Бусад газрууд', places: others }}
       links={[
         { label: 'Зорих газрууд', href: '/destination/region' },
