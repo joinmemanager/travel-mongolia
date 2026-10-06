@@ -1,5 +1,7 @@
 'use client';
 
+import { liveHref } from '@/lib/navigation';
+
 import React, { useRef } from 'react';
 
 
@@ -141,6 +143,7 @@ const NOMADIC_SECTIONS: NomadicSection[] = [
   },
   {
     id: 'eco-culture',
+    moreHref: '/respect/nature#tradition',
     title: 'Байгаль хамгаалах уламжлал',
     desc: 'Ус, булаг шанд руу сүү, цус дусаахгүй байх, газар шороог сэндийлэхгүй байх зэрэг нүүдэлчдийн байгальтайгаа зохицсон ариун ёс.',
     imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200',
@@ -279,10 +282,10 @@ export default function NomadicLifePage() {
                   {sec.desc}
                 </p>
 
-                {sec.moreHref && (
+                {liveHref(sec.moreHref) && (
                 <div className="pt-2">
                   <a
-                    href={sec.moreHref}
+                    href={liveHref(sec.moreHref)}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>

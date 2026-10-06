@@ -1,5 +1,7 @@
 'use client';
 
+import { liveHref } from '@/lib/navigation';
+
 import React, { useRef } from 'react';
 
 
@@ -374,10 +376,10 @@ export default function CulturePage() {
                   {sec.desc}
                 </p>
 
-                {sec.moreHref && (
+                {liveHref(sec.moreHref) && (
                 <div>
                   <a
-                    href={sec.moreHref}
+                    href={liveHref(sec.moreHref)}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-900 text-white hover:bg-[#15803d] transition-all font-bold text-sm sm:text-base shadow-sm group/btn"
                   >
                     <span>Дэлгэрэнгүй</span>

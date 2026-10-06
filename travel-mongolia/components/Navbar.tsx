@@ -329,7 +329,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                         english={isEnglish}
                         onClick={closeMenu}
                         className="group block"
-                        comingSoonClassName="inline-block mt-1.5 py-0.5 px-2 text-[10px] font-bold text-amber-800 bg-amber-100 rounded-full"
+                        badgeClassName="inline-block mt-1.5 py-0.5 px-2 text-[10px] font-bold rounded-full"
                       >
                         <span
                           {...labelProps}
@@ -352,7 +352,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                                 english={isEnglish}
                                 onClick={closeMenu}
                                 className="block hover:text-[#15803d] transition-colors"
-                                comingSoonClassName="ml-2 py-0.5 px-1.5 text-[10px] font-bold text-amber-800 bg-amber-100 rounded-full"
+                                badgeClassName="ml-2 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
                               >
                                 <span {...labelProps}>{labelOf(child)}</span>
                               </NavItemLink>

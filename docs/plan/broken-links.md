@@ -93,7 +93,7 @@
 | Дөрвөн улирлын нүүдэл | Дэлгэрэнгүй | `/about/nomadic-life/four-seasons` | **А** → `/things-to-do/nomadic?cat=migration` |
 | Мал маллах ухаан | Дэлгэрэнгүй | `/about/nomadic-life/herding` | **А** → `/things-to-do/nomadic?cat=herding` |
 | Ахуйн багаж, хэрэгсэл | Дэлгэрэнгүй | `/about/nomadic-life/tools` | **В** |
-| Байгаль хамгаалах уламжлал | Дэлгэрэнгүй | `/about/nomadic-life/eco-culture` | **В**. 5б-д `/respect/nature` бэлэн болоход тийш чиглүүлнэ |
+| Байгаль хамгаалах уламжлал | Дэлгэрэнгүй | `/about/nomadic-life/eco-culture` | **В** → 5б-д **А** болсон: `/respect/nature#tradition` |
 | Монгол ардын тоглоом наадам | Дэлгэрэнгүй | `/about/nomadic-life/games` | **В** |
 
 ## 7. Хүмүүс (`/about/people`)

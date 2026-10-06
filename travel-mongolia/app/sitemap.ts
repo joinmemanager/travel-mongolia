@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { client } from '@/lib/contentful';
+import { isUnpublishedPage } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
 import { SITE_URL } from '@/lib/seo';
 
@@ -20,7 +21,8 @@ async function contentfulEntries(contentType: string) {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: 'weekly', priority: 1 },
-    ...Object.keys(PAGE_META).map((path) => ({
+    // Production дээр live биш (draft/planned) хуудсыг sitemap-д оруулахгүй
+    ...Object.keys(PAGE_META).filter((path) => !isUnpublishedPage(path)).map((path) => ({
       url: `${SITE_URL}${path}`,
       changeFrequency: 'monthly' as const,
       priority: 0.7,

@@ -1,5 +1,7 @@
 'use client';
 
+import { liveHref } from '@/lib/navigation';
+
 import Link from 'next/link';
 
 import React, { useState, useRef } from 'react';
@@ -343,9 +345,9 @@ export default function ScenicRoutesPage() {
 
             </div>
 
-            {selectedRoute.moreHref && (
+            {liveHref(selectedRoute.moreHref) && (
             <Link
-              href={selectedRoute.moreHref}
+              href={liveHref(selectedRoute.moreHref)}
               className="w-full py-3.5 px-4 rounded-xl bg-[#15803d] hover:bg-emerald-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm"
             >
               <span>Дэлгэрэнгүй маршрут, бааз & зочид буудал</span>

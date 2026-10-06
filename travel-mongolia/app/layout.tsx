@@ -12,7 +12,7 @@ import {
   FOOTER_LEGAL,
   FOOTER_NAVIGATION,
   MAIN_NAVIGATION,
-  showUnreadyNavItems,
+  isPreviewEnv,
   visibleItems,
   visibleSections,
 } from '@/lib/navigation';
@@ -75,8 +75,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Production дээр бэлэн биш цэсийг нуух, preview дээр "Тун удахгүй"-гээр харуулах
-  const showUnready = showUnreadyNavItems();
+  // Production дээр зөвхөн live цэсийг харуулах. Preview дээр бүгд ("Ноорог", "Тун удахгүй" тэмдэгтэй)
+  const preview = isPreviewEnv();
 
   return (
     <html lang="mn">
@@ -89,11 +89,11 @@ export default function RootLayout({
         />
         <LanguageProvider>
           {/* Дээд талын үндсэн цэс */}
-          <Navbar sections={visibleSections(MAIN_NAVIGATION, showUnready)} />
+          <Navbar sections={visibleSections(MAIN_NAVIGATION, preview)} />
           {children}
           <Footer
-            groups={visibleSections(FOOTER_NAVIGATION, showUnready)}
-            legal={visibleItems(FOOTER_LEGAL, showUnready)}
+            groups={visibleSections(FOOTER_NAVIGATION, preview)}
+            legal={visibleItems(FOOTER_LEGAL, preview)}
           />
         </LanguageProvider>
 

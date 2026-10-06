@@ -11,6 +11,19 @@
 4. **Хоосон хуудас руу цэс холбохгүй.** Шинэ дэд хуудас контенттойгоо бэлэн болсон үед л цэсэнд нэмэгдэнэ.
 5. **Цэс болон footer-ийн бүх холбоос серверийн HTML-д байна** (baseline-ийн 3-р олдвор). Google цэсийг уншиж чаддаг болно.
 6. **Contentful-ын entry-ууд `slug`-тай болно** (`/destination/gobi-desert` гэх мэт). Хуучин ID-тай хаягууд slug руу 301 redirect хийнэ.
+7. **Арга барил: эхлээд бүтэц, дараа нь контент** (2026-10-05). Шинэ хуудсууд `draft` төлөвтэйгөөр merge хийгдэж, контент батлагдсаны дараа `live` болно.
+   - Төлөв (`status`) нь `lib/navigation.ts`-д нэг газар тохируулагдана. Цэс болон хуудасны төлвийг хоёуланг нь тэндээс уншина. Цэсэнд байхгүй хуудсыг `live` гэж үзнэ.
+   - Хуудас өөрөө ямар ч төлөвт 200 буцаадаг тул түүн рүү заасан холбоос эвдрэхгүй.
+   - **draft/planned хуудас руу заасан товч, холбоос production дээр автоматаар нуугдана** (2026-10-05). `lib/navigation.ts`-ийн `liveHref()` / `isPageLive()`-ээр шийдэгдэнэ. Жишээ нь `/about/nomadic-life`-ийн "Байгаль хамгаалах уламжлал" товч `/respect/nature` live болтол production дээр харагдахгүй.
+   - Цэсэнд ороогүй шинэ хуудсын төлвийг `lib/navigation.ts`-ийн `PAGE_STATUS`-д бичнэ (жишээ нь `/stories`).
+
+   **3 төлөв:**
+
+   | Төлөв | Утга | Preview дээр | Production дээр |
+   |---|---|---|---|
+   | `live` | Нийтлэгдсэн | Ердийн холбоос | Цэсэнд харагдана, index хийгдэнэ, sitemap-д орно |
+   | `draft` | Хуудас бий, контент шалгагдаагүй | Цэснээс дарагддаг, цэнхэр **"Ноорог"** тэмдэгтэй | Цэсэнд харагдахгүй, `noindex`, sitemap-д орохгүй |
+   | `planned` | Хуудас хараахан байхгүй | Шар **"Тун удахгүй"** тэмдэгтэй, дарагдахгүй | Цэсэнд харагдахгүй |
 
 ## 2. Шинэ үндсэн цэс (6 хэсэг)
 
@@ -110,8 +123,8 @@
 |---|---|---|
 | 5а | Шинэ цэс + footer (серверийн HTML). 77 "Дэлгэрэнгүй" холбоосыг энд хийхгүй, тусдаа ажлаар засна (5-р хэсэг). 2 redirect нь 5в-д шилжсэн. | 3–5 өдөр |
 | 5б | `/respect` hub (C13) + дэд хуудсууд | 2–3 өдөр |
-| 5в | `/stories` hub (C10) + 2 redirect (`/inspiration/stories`, `/inspiration/magazine` → `/stories`). 5а-д түр шийдэл хийсэн: цэсний "Түүхүүд" нь `/inspiration/stories` руу (дэд холбоос: `/inspiration/hidden`, `/inspiration/top-lists`), "Фото/видео түүх" нь `/inspiration/magazine` руу заадаг. 5в үед `lib/navigation.ts`-д эдгээрийг `/stories` (болон `/stories/photo-video`) руу сольж, redirect хийнэ. | 2–3 өдөр |
-| 5г | `/impact` hub (C14) | 1–2 өдөр |
+| 5в | `/stories` hub (C10) + 2 redirect (`/inspiration/stories`, `/inspiration/magazine` → `/stories`). 5а-д түр шийдэл хийсэн: цэсний "Түүхүүд" нь `/inspiration/stories` руу (дэд холбоос: `/inspiration/hidden`, `/inspiration/top-lists`), "Фото/видео түүх" нь `/inspiration/magazine` руу заадаг. 5в үед `lib/navigation.ts`-д эдгээрийг `/stories` (болон `/stories/photo-video`) руу сольж, redirect хийнэ.<br>**2026-10-05:** `/stories` болон `/stories/photo-video` хуудсууд `draft`-аар бэлэн болсон. Цэсний "Түүхүүд", "Фото/видео түүх" одоогийн `/inspiration/*` хаягууд руугаа `live` хэвээр. **`/stories` live болох өдөр** дараах 3 алхмыг хийнэ: цэсний 2 зүйлийг `/stories`, `/stories/photo-video` руу шилжүүлэх; `PAGE_STATUS`-ийг `live` болгох; `/inspiration/stories`, `/inspiration/magazine` → `/stories` гэсэн 2 redirect нэмэх. | 2–3 өдөр |
+| 5г | `/impact` hub (C14). **2026-10-05:** `/impact/*` дэд хуудсуудын оронд нэг `/impact` хуудас, 5 хэсэгтэйгээр хийсэн. Цэсний 5 зүйл хэсэг бүр рүү anchor-оор заана (`/impact#local-impact`, `#projects`, `#provinces`, `#businesses`, `#donors`). Төлөв: `draft`. | 1–2 өдөр |
 | 6 | Contentful-ын шинэ content type (Local Provider, Community Experience, Story, Visitor Guidance, Local Product) + slug талбар | 1 долоо хоног |
 | 7 | `/local` hub (C11) + профайл + шүүлтүүр | 1–2 долоо хоног |
 | 8 | Template-уудад ESG block + Content-to-Booking (C12) | 1–2 долоо хоног |
@@ -174,7 +187,7 @@
 | 11 | Ургамлын аймаг | `/about/nature#flora` | |
 | 12 | Палеонтологи, үлэг гүрвэл | `/about/nature#paleontology` | |
 | 13 | Ахуйн багаж, хэрэгсэл | `/about/nomadic-life#tools` | |
-| 14 | Байгаль хамгаалах уламжлал | `/about/nomadic-life#eco-culture` | **5б**: `/respect/nature` бэлэн болоход тийш чиглүүлнэ |
+| 14 | Байгаль хамгаалах уламжлал | `/about/nomadic-life#eco-culture` | ✅ **5б-д хийгдсэн**: товч `/respect/nature#tradition` руу заадаг болсон |
 | 15 | Монгол ардын тоглоом наадам | `/about/nomadic-life#games` | |
 | 16 | Монголчууд | `/about/people#mongolians` | |
 | 17 | Угсаатны бүлгүүд | `/about/people#ethnic-groups` | |

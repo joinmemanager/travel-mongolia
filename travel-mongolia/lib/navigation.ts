@@ -1,27 +1,33 @@
 // Сайтын үндсэн цэс болон footer-ийн холбоосууд нэг дор.
 // Нэр, холбоос, бэлэн эсэхийг зөвхөн энд өөрчилнө (docs/plan/ia-plan.md, 5а үе).
 //
-// ready: false бол хуудас хараахан бэлэн биш:
-//   - Preview (VERCEL_ENV !== 'production') дээр "Тун удахгүй" тэмдэгтэй, дарахад юу ч болохгүй.
-//   - Production дээр огт харагдахгүй. Нэг ч бэлэн зүйлгүй хэсэг бүхэлдээ нуугдана.
+// status (docs/plan/ia-plan.md, 1-р хэсгийн 7-р зарчим):
+//   live    - нийтлэгдсэн. Хаа сайгүй харагдана.
+//   draft   - хуудас бий, контент шалгагдаагүй. Preview дээр цэснээс дарагддаг, "Ноорог"
+//             тэмдэгтэй. Production дээр цэсэнд харагдахгүй, noindex, sitemap-д орохгүй.
+//   planned - хуудас хараахан байхгүй. Preview дээр "Тун удахгүй", дарагдахгүй.
+//             Production дээр харагдахгүй.
+// Production дээр нэг ч live зүйлгүй хэсэг бүхэлдээ нуугдана.
+
+export type NavStatus = 'live' | 'draft' | 'planned';
 
 export interface NavItem {
   mn: string;
   en: string;
   href: string;
-  ready: boolean;
+  status: NavStatus;
   // Гадаад сайт: шинэ tab-д нээгдэнэ
   external?: boolean;
   // Dropdown-д зүйлийн доор жижиг холбоосоор харагдах дэд хуудсууд
   children?: NavItem[];
 }
 
-// Бэлэн, сайтын доторх энгийн холбоос (дэд холбоосуудад)
+// Нийтлэгдсэн, сайтын доторх энгийн холбоос (дэд холбоосуудад)
 const page = (mn: string, en: string, href: string): NavItem => ({
   mn,
   en,
   href,
-  ready: true,
+  status: 'live',
 });
 
 export interface NavSection {
@@ -41,7 +47,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
     en: 'Explore Mongolia',
     items: [
       {
-        mn: 'Монголын тухай', en: 'About Mongolia', href: '/about/at-a-glance', ready: true,
+        mn: 'Монголын тухай', en: 'About Mongolia', href: '/about/at-a-glance', status: 'live',
         children: [
           page('Монгол орныг товчхон', 'Mongolia at a Glance', '/about/at-a-glance'),
           page('Монголын түүх', 'History', '/about/history'),
@@ -49,7 +55,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
         ],
       },
       {
-        mn: 'Зорих газрууд', en: 'Destinations', href: '/destination/region', ready: true,
+        mn: 'Зорих газрууд', en: 'Destinations', href: '/destination/region', status: 'live',
         children: [
           page('Бүс нутгууд', 'Regions', '/destination/region'),
           page('Аймгууд', 'Provinces', '/destination/region#provinces'),
@@ -63,7 +69,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
         ],
       },
       {
-        mn: 'Үзэх, хийх зүйлс', en: 'Things to Do', href: '/things-to-do/nature', ready: true,
+        mn: 'Үзэх, хийх зүйлс', en: 'Things to Do', href: '/things-to-do/nature', status: 'live',
         children: [
           page('Байгальд аялах', 'Nature & Outdoors', '/things-to-do/nature'),
           page('Адал явдалт аялал', 'Adventure', '/things-to-do/adventure'),
@@ -77,20 +83,20 @@ export const MAIN_NAVIGATION: NavSection[] = [
       },
       {
         // Түр: /stories бэлэн болох хүртэл (ia-plan.md 5в үед /stories руу сольж redirect хийнэ)
-        mn: 'Түүхүүд', en: 'Stories', href: '/inspiration/stories', ready: true,
+        mn: 'Түүхүүд', en: 'Stories', href: '/inspiration/stories', status: 'live',
         children: [
           page('Нууц үзэсгэлэнт газрууд', 'Hidden Mongolia', '/inspiration/hidden'),
           page('Шилдэг жагсаалтууд', 'Top Lists', '/inspiration/top-lists'),
         ],
       },
       {
-        mn: 'Арга хэмжээ, баяр наадам', en: 'Events', href: '/things-to-do/events', ready: true,
+        mn: 'Арга хэмжээ, баяр наадам', en: 'Events', href: '/things-to-do/events', status: 'live',
         children: [
           page('Баяр наадам, арга хэмжээ', 'Events', '/things-to-do/events'),
           page('Фестивалиуд', 'Festivals', '/things-to-do/festivals'),
         ],
       },
-      { mn: 'Газрын зураг', en: 'Map', href: '/destination/map', ready: true },
+      { mn: 'Газрын зураг', en: 'Map', href: '/destination/map', status: 'live' },
     ],
   },
   {
@@ -98,25 +104,25 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Төлөвлөх & захиалах',
     en: 'Plan & Book',
     items: [
-      { mn: 'Аялал төлөвлөгч', en: 'Trip Planner', href: '/planner', ready: true },
+      { mn: 'Аялал төлөвлөгч', en: 'Trip Planner', href: '/planner', status: 'live' },
       {
-        mn: 'Аяллууд', en: 'Tours', href: '/destination/routes', ready: true,
+        mn: 'Аяллууд', en: 'Tours', href: '/destination/routes', status: 'live',
         children: [
           page('Аяллын чиглэлүүд', 'Routes', '/destination/routes'),
           page('Аяллын маршрутууд', 'Itineraries', '/inspiration/itineraries'),
         ],
       },
-      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', ready: false },
-      { mn: 'Байр', en: 'Accommodation', href: '/plan/accommodation', ready: true },
-      { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', ready: true },
+      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'planned' },
+      { mn: 'Байр', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
+      { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', status: 'live' },
       {
-        mn: 'Тээвэр', en: 'Transport', href: '/plan/getting-around', ready: true,
+        mn: 'Тээвэр', en: 'Transport', href: '/plan/getting-around', status: 'live',
         children: [
           page('Монгол дотор аялах', 'Getting Around', '/plan/getting-around'),
           page('Монголд хэрхэн ирэх вэ', 'Getting to Mongolia', '/plan/getting-to-mongolia'),
         ],
       },
-      { mn: 'Захиалах', en: 'Book now', href: BOOK_NOW_URL, ready: true, external: true },
+      { mn: 'Захиалах', en: 'Book now', href: BOOK_NOW_URL, status: 'live', external: true },
     ],
   },
   {
@@ -125,20 +131,20 @@ export const MAIN_NAVIGATION: NavSection[] = [
     en: 'Stories & Heritage',
     items: [
       {
-        mn: 'Соёл, өв', en: 'Culture & Heritage', href: '/about/culture', ready: true,
+        mn: 'Соёл, өв', en: 'Culture & Heritage', href: '/about/culture', status: 'live',
         children: [
           page('Соёл ба өв', 'Culture & Heritage', '/about/culture'),
           page('Ёс заншил, уламжлал', 'Traditions', '/about/traditions'),
         ],
       },
-      { mn: 'Байгаль', en: 'Nature', href: '/about/nature', ready: true },
-      { mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', ready: true },
-      { mn: 'Хоол', en: 'Food', href: '/about/food', ready: true },
-      { mn: 'Хүмүүс', en: 'People', href: '/about/people', ready: true },
+      { mn: 'Байгаль', en: 'Nature', href: '/about/nature', status: 'live' },
+      { mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', status: 'live' },
+      { mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live' },
+      { mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live' },
       // Түр: /stories бэлэн болох хүртэл (ia-plan.md 5в үед /stories руу сольж redirect хийнэ)
-      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/inspiration/magazine', ready: true },
+      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/inspiration/magazine', status: 'live' },
       {
-        mn: 'Аялахаас өмнө', en: 'Learn Before You Go', href: '/plan/before-you-travel', ready: true,
+        mn: 'Аялахаас өмнө', en: 'Learn Before You Go', href: '/plan/before-you-travel', status: 'live',
         children: [
           page('Аялахаас өмнө мэдэх зүйлс', 'Before You Travel', '/plan/before-you-travel'),
           page('Хэзээ аялах вэ: улирлаар', 'When to Go', '/inspiration/seasons'),
@@ -151,12 +157,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Нутгийн Монгол',
     en: 'Local Mongolia',
     items: [
-      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', ready: false },
-      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', ready: false },
-      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', ready: false },
-      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', ready: false },
-      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', ready: false },
-      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', ready: false },
+      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'planned' },
+      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'planned' },
+      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'planned' },
+      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'planned' },
+      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'planned' },
+      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'planned' },
     ],
   },
   {
@@ -164,11 +170,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Хүндэтгэлтэй аялал',
     en: 'Travel with Respect',
     items: [
-      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', ready: false },
-      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', ready: false },
-      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', ready: false },
-      { mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', ready: true },
-      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', ready: false },
+      { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', status: 'draft' },
+      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'draft' },
+      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'draft' },
+      { mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', status: 'live' },
+      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'draft' },
     ],
   },
   {
@@ -176,11 +182,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Үр өгөөж & түншлэл',
     en: 'Impact & Partners',
     items: [
-      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact', ready: false },
-      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact/projects', ready: false },
-      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact/provinces', ready: false },
-      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact/businesses', ready: false },
-      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact/donors', ready: false },
+      // /impact/* дэд хуудсын оронд нэг хуудасны хэсгүүд рүү anchor-оор заана (ia-plan.md 5г)
+      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact#local-impact', status: 'draft' },
+      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact#projects', status: 'draft' },
+      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'draft' },
+      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'draft' },
+      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'draft' },
     ],
   },
 ];
@@ -192,12 +199,12 @@ export const FOOTER_NAVIGATION: NavSection[] = [
     mn: 'Бүс нутаг',
     en: 'Regions',
     items: [
-      { mn: 'Төв Монгол', en: 'Central Mongolia', href: '/destination/region?region=central', ready: true },
-      { mn: 'Хангайн бүс', en: 'Khangai', href: '/destination/region?region=khangai', ready: true },
-      { mn: 'Хөвсгөл ба Хойд Монгол', en: 'Khuvsgul & the North', href: '/destination/region?region=khuvsgul-north', ready: true },
-      { mn: 'Говийн бүс', en: 'Gobi', href: '/destination/region?region=gobi', ready: true },
-      { mn: 'Алтай ба Баруун Монгол', en: 'Altai & the West', href: '/destination/region?region=altai-west', ready: true },
-      { mn: 'Зүүн Монгол', en: 'Eastern Mongolia', href: '/destination/region?region=eastern', ready: true },
+      { mn: 'Төв Монгол', en: 'Central Mongolia', href: '/destination/region?region=central', status: 'live' },
+      { mn: 'Хангайн бүс', en: 'Khangai', href: '/destination/region?region=khangai', status: 'live' },
+      { mn: 'Хөвсгөл ба Хойд Монгол', en: 'Khuvsgul & the North', href: '/destination/region?region=khuvsgul-north', status: 'live' },
+      { mn: 'Говийн бүс', en: 'Gobi', href: '/destination/region?region=gobi', status: 'live' },
+      { mn: 'Алтай ба Баруун Монгол', en: 'Altai & the West', href: '/destination/region?region=altai-west', status: 'live' },
+      { mn: 'Зүүн Монгол', en: 'Eastern Mongolia', href: '/destination/region?region=eastern', status: 'live' },
     ],
   },
   {
@@ -205,41 +212,89 @@ export const FOOTER_NAVIGATION: NavSection[] = [
     mn: 'Хэрэгцээт мэдээлэл',
     en: 'Useful Information',
     items: [
-      { mn: 'Виз & Зорчих нөхцөл', en: 'Visas & Entry', href: '/plan/before-you-travel#visa', ready: true },
-      { mn: 'Цаг агаар ба улирал', en: 'Weather & Seasons', href: '/inspiration/seasons', ready: true },
-      { mn: 'Тээвэр, машин түрээс', en: 'Transport & Car Rental', href: '/plan/getting-around', ready: true },
-      { mn: 'Аяллын аюулгүй байдал', en: 'Travel Safety', href: '/plan/safety-info', ready: true },
+      { mn: 'Виз & Зорчих нөхцөл', en: 'Visas & Entry', href: '/plan/before-you-travel#visa', status: 'live' },
+      { mn: 'Цаг агаар ба улирал', en: 'Weather & Seasons', href: '/inspiration/seasons', status: 'live' },
+      { mn: 'Тээвэр, машин түрээс', en: 'Transport & Car Rental', href: '/plan/getting-around', status: 'live' },
+      { mn: 'Аяллын аюулгүй байдал', en: 'Travel Safety', href: '/plan/safety-info', status: 'live' },
     ],
   },
 ];
 
 // Footer-ийн доод мөрийн холбоосууд
 export const FOOTER_LEGAL: NavItem[] = [
-  { mn: 'Нууцлалын бодлого', en: 'Privacy Policy', href: '/privacy', ready: false },
-  { mn: 'Үйлчилгээний нөхцөл', en: 'Terms of Service', href: '/terms', ready: false },
-  { mn: 'Холбоо барих', en: 'Contact', href: 'mailto:contact@joinme.mn', ready: true },
+  { mn: 'Нууцлалын бодлого', en: 'Privacy Policy', href: '/privacy', status: 'planned' },
+  { mn: 'Үйлчилгээний нөхцөл', en: 'Terms of Service', href: '/terms', status: 'planned' },
+  { mn: 'Холбоо барих', en: 'Contact', href: 'mailto:contact@joinme.mn', status: 'live' },
 ];
 
-// Production дээр бэлэн биш зүйлсийг хасна. Серверт дуудна (VERCEL_ENV нь client-д байхгүй).
-export function showUnreadyNavItems(): boolean {
-  return process.env.VERCEL_ENV !== 'production';
+// Цэсэнд (одоохондоо) ороогүй хуудсуудын төлөв. Цэсний зүйлтэй адил дүрмээр ажиллана.
+export const PAGE_STATUS: Record<string, NavStatus> = {
+  // Түүх & өв hub (C10). Цэсний "Түүхүүд", "Фото/видео түүх" /stories live болох өдөр
+  // энд шилжиж, /inspiration/stories, /inspiration/magazine-аас redirect хийнэ (ia-plan.md 5в).
+  '/stories': 'draft',
+  '/stories/photo-video': 'draft',
+};
+
+// Preview (эсвэл local) орчин эсэх. SITE_ENV-ийг next.config.js build хийх үед server,
+// client хоёуланд нь өгдөг тул client компонентод ч ажиллана.
+// Preview дээр live бус зүйлс ч харагдана, production дээр зөвхөн live.
+export function isPreviewEnv(): boolean {
+  return (process.env.SITE_ENV || process.env.VERCEL_ENV) !== 'production';
+}
+
+// ---------------------------------------------------------------- хуудасны төлөв
+// Хуудасны төлвийг PAGE_STATUS болон цэсний status-аас уншина (нэг эх сурвалж). live
+// биш хуудас production дээр robots noindex, sitemap-д орохгүй, цэсэнд харагдахгүй, түүн
+// рүү заасан товч, холбоос (liveHref) нуугдана. Хуудас өөрөө 200 буцаана.
+// Аль алинд нь байхгүй хуудсыг live гэж үзнэ.
+
+const pathOf = (href: string) => href.split(/[?#]/)[0];
+
+function allNavItems(): NavItem[] {
+  return [...MAIN_NAVIGATION, ...FOOTER_NAVIGATION]
+    .flatMap((s) => s.items)
+    .concat(FOOTER_LEGAL)
+    .flatMap((i) => [i, ...(i.children || [])]);
+}
+
+export function isPageLive(path: string): boolean {
+  if (PAGE_STATUS[path] && PAGE_STATUS[path] !== 'live') return false;
+  const entries = allNavItems().filter(
+    (i) => i.href.startsWith('/') && pathOf(i.href) === path
+  );
+  return entries.every((i) => i.status === 'live');
+}
+
+// Хуудас доторх товч, холбоосонд: production дээр live биш хуудас руу заавал undefined
+// буцаана (товчийг харуулахгүй). Сайтаас гадуурх холбоос, preview дээр хэвээр.
+export function liveHref(href?: string): string | undefined {
+  if (!href) return undefined;
+  if (!href.startsWith('/') || isPreviewEnv()) return href;
+  return isPageLive(pathOf(href)) ? href : undefined;
+}
+
+// Энэ орчинд (production) хуудсыг хайлтаас нуух ёстой эсэх
+export function isUnpublishedPage(path: string): boolean {
+  return !isPreviewEnv() && !isPageLive(path);
 }
 
 export function visibleSections(
   sections: NavSection[],
-  showUnready: boolean
+  preview: boolean
 ): NavSection[] {
-  if (showUnready) return sections;
+  if (preview) return sections;
   return sections
     .map((s) => ({ ...s, items: visibleItems(s.items, false) }))
     .filter((s) => s.items.length > 0);
 }
 
-export function visibleItems(items: NavItem[], showUnready: boolean): NavItem[] {
-  if (showUnready) return items;
+export function visibleItems(items: NavItem[], preview: boolean): NavItem[] {
+  if (preview) return items;
   return items
-    .filter((i) => i.ready)
+    .filter((i) => i.status === 'live')
     .map((i) =>
-      i.children ? { ...i, children: i.children.filter((c) => c.ready) } : i
+      i.children
+        ? { ...i, children: i.children.filter((c) => c.status === 'live') }
+        : i
     );
 }
