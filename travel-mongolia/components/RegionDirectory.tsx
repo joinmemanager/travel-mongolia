@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
+import ImageHero from '@/components/templates/ImageHero';
 import { SITE_SEARCH_INDEX } from '@/lib/searchIndex';
 import { scoreMatch, tokenizeQuery } from '@/lib/searchText';
 
@@ -505,24 +506,15 @@ export default function RegionDirectory({
   return (
     <div className="pb-20 w-full bg-neutral-50/50">
       {/* 1. HERO ХЭСЭГ ХАЙЛТЫН ТАЛБАРТАЙ */}
-      <section className="flex relative flex-col justify-center items-center w-full h-[50vh] min-h-[400px]">
-        <Image
-          src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2000"
-          alt="Зорих газрууд"
-          fill
-          priority
-          unoptimized
-          className="object-cover brightness-[0.65]"
-        />
-        <div className="relative z-10 px-4 mx-auto w-full max-w-3xl text-center">
-          <h1 className="mb-3 text-4xl font-black tracking-tight text-white drop-shadow-md sm:text-6xl">
-            Зорих газрууд
-          </h1>
-          <p className="mb-8 text-sm font-light text-white/90 sm:text-base">
-            Монголын 21 аймаг, зургаан бүсийн онцлох газруудыг нээгээрэй
-          </p>
-
-          <div ref={searchBoxRef} className="relative mx-auto max-w-xl">
+      <ImageHero
+        image={{
+          src: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2000',
+          alt: 'Зорих газрууд',
+        }}
+        title="Зорих газрууд"
+        intro="Монголын 21 аймаг, зургаан бүсийн онцлох газруудыг нээгээрэй"
+      >
+          <div ref={searchBoxRef} className="relative mx-auto mt-8 max-w-xl text-left">
             <input
               type="search"
               value={searchQuery}
@@ -606,8 +598,7 @@ export default function RegionDirectory({
               />
             </svg>
           </div>
-        </div>
-      </section>
+      </ImageHero>
 
       {/* 2. БҮСИЙН КАРТУУД (ДЭЛГЭЦ ГОЛЛОСОН БҮРЭН БҮТЭЦ) */}
       <div className="bg-white border-b border-gray-200">

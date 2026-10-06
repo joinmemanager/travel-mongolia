@@ -32,9 +32,6 @@ export default function RespectHubPage() {
       related={hub.related}
       bottomBand={<PatternBand />}
     >
-      {/* Аялагчийн амлалт: бараан ногоон самбар */}
-      <DarkPanel id="pledge" title={hub.pledgeTitle} intro={hub.pledgeIntro} items={hub.pledge} />
-
       {/* Дэд хуудсууд: зурагтай картууд */}
       <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
         <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-6">
@@ -55,6 +52,9 @@ export default function RespectHubPage() {
           ))}
         </ul>
       </section>
+
+      {/* Аялагчийн амлалт: бараан ногоон самбар */}
+      <DarkPanel id="pledge" title={hub.pledgeTitle} intro={hub.pledgeIntro} items={hub.pledge} />
     </GuidePage>
   );
 }

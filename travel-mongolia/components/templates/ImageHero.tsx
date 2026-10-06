@@ -23,7 +23,7 @@ export default function ImageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="flex overflow-hidden relative justify-center items-center w-full h-[55vh] min-h-[420px]">
+    <section className="flex relative justify-center items-center w-full h-[55vh] min-h-[420px]">
       {image.src && (
         <Image
           src={image.src}
