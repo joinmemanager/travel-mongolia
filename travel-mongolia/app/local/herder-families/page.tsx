@@ -5,7 +5,7 @@ import { IMAGES } from '@/lib/images';
 import { getProviders } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 
-// Нутгийн Монгол: Малчин өрх (Б хэсэг, draft). "Ангиллын жагсаалт" загвар.
+// Нутгийн Монгол: Малчин өрх (Б хэсэг, soft). "Ангиллын жагсаалт" загвар.
 export const dynamic = 'force-dynamic';
 export const metadata = metaFor('/local/herder-families');
 
@@ -20,6 +20,7 @@ export default async function Page() {
       countLabel="малчин өрх олдлоо"
       spots={providers.map(providerSpot)}
       current="/local/herder-families"
+      inviteKey="herder-family"
     />
   );
 }

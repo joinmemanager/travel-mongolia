@@ -336,3 +336,6 @@ export const ACCESSIBLE_GUIDE: GuidePageData = {
     { label: 'Аюулгүй байдал', href: '/plan/safety-info' },
   ],
 };
+
+// /respect/* хуудсуудын толгойн тэмдэглэл. Эзэмшигч текстийг шалгаж дуусмагц '' болгоход хангалттай.
+export const RESPECT_REVIEW_NOTICE = 'Энэ гарын авлагыг шинэчилж байна';

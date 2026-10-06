@@ -102,7 +102,7 @@ export default function HiddenPage() {
         aspect: item.aspect,
       }))}
       footerLinks={[
-        { label: 'Дараах: 05. Local Stories', href: '/inspiration/stories' },
+        { label: 'Дараах: 05. Local Stories', href: '/stories' },
       ]}
     />
   );

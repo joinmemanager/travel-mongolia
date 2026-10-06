@@ -44,6 +44,8 @@ interface Props<T extends ListingSpot> {
   emptyText?: string;
   // Жагсаалтын доор (холбоосны карт г.м.)
   footer?: React.ReactNode;
+  // Жагсаалтын дээр (хоосон ангиллын "Тун удахгүй" блок г.м.)
+  notice?: React.ReactNode;
 }
 
 // "Ангиллын жагсаалт" загвар (docs/plan/templates.md): /things-to-do/*, /local/* хуудсууд.
@@ -60,6 +62,7 @@ export default function CategoryListing<T extends ListingSpot>({
   cta = 'Дэлгэрэнгүй үзэх',
   emptyText,
   footer,
+  notice,
 }: Props<T>) {
   const searchParams = useSearchParams();
   const catQuery = searchParams.get('cat');
@@ -129,6 +132,7 @@ export default function CategoryListing<T extends ListingSpot>({
 
       {/* Зурагтай картуудын тор */}
       <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-10">
+        {notice && <div className="mb-10">{notice}</div>}
         <div className="flex justify-between items-end mb-6">
           <p className="text-xs text-neutral-500 font-semibold uppercase tracking-wider">
             Нийт {filteredSpots.length} {countLabel}

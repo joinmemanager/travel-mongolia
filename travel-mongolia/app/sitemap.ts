@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 import { client } from '@/lib/contentful';
 import { entryKey } from '@/lib/entries';
-import { isUnpublishedPage } from '@/lib/navigation';
+import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
 import { SITE_URL } from '@/lib/seo';
 
@@ -23,20 +23,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: 'weekly', priority: 1 },
     // Production дээр live биш (draft/planned) хуудсыг sitemap-д оруулахгүй
-    ...Object.keys(PAGE_META).filter((path) => !isUnpublishedPage(path)).map((path) => ({
+    ...Object.keys(PAGE_META).filter((path) => !isUnpublishedPage(path) && !REDIRECTED_PATHS[path]).map((path) => ({
       url: `${SITE_URL}${path}`,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
   ];
 
-  const [places, categories, provinces, recommendations, destinations] =
+  const [places, categories, provinces, recommendations, destinations, stories] =
     await Promise.all([
       contentfulEntries('heritagePlace'),
       contentfulEntries('heritageCategory'),
       contentfulEntries('province'),
       contentfulEntries('recommendation'),
       contentfulEntries('destination'),
+      contentfulEntries('story'),
     ]);
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
@@ -67,6 +68,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: e.sys.updatedAt,
       priority: 0.7,
     })),
+    // Түүх & өв hub-ийн нийтлэлүүд: зөвшөөрөлтэй, "[ЖИШЭЭ]" биш, /stories live үед
+    ...stories
+      .filter((e) => e.fields.consentObtained === true && !String(e.fields.title || '').startsWith('[ЖИШЭЭ]'))
+      .map((e) => `/stories/${entryKey(e)}`)
+      .filter((path) => !isUnpublishedPage(path))
+      .map((path) => ({ url: `${SITE_URL}${path}`, priority: 0.6 })),
   ];
 
   return [...staticPages, ...dynamicPages];

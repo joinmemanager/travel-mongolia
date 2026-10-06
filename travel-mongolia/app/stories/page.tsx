@@ -1,10 +1,12 @@
 import Link from 'next/link';
 
+import ComingSoon from '@/components/design/ComingSoon';
 import ImageCard from '@/components/design/ImageCard';
 import PatternBand from '@/components/design/PatternBand';
 import HubHeader from '@/components/HubHeader';
 import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
+import { SAMPLE_PREFIX } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 import {
   getStories,
@@ -13,8 +15,8 @@ import {
   type StoryCategoryId,
 } from '@/lib/stories';
 
-// "Түүх & өв" hub (ia-plan.md C10, 5в). Төлөв: draft (lib/navigation.ts PAGE_STATUS).
-// НООРОГ: одоохондоо сайтад байгаа хуудсуудыг карт болгосон (lib/stories.ts).
+// "Түүх & өв" hub (ia-plan.md C10, 5в). Төлөв: live (lib/navigation.ts PAGE_STATUS).
+// Сайтад байгаа хуудсуудын карт + Contentful-ын 'story' нийтлэлүүд (lib/stories.ts).
 export const metadata = metaFor('/stories');
 
 const CATEGORY_LABEL = Object.fromEntries(
@@ -55,17 +57,11 @@ function StoryCardView({ story }: { story: StoryCard }) {
   );
 }
 
-function EmptyCard() {
-  return (
-    <div className="flex items-center justify-center p-6 h-full min-h-32 rounded-3xl border border-dashed border-neutral-300 text-sm text-neutral-500">
-      Түүх удахгүй нэмэгдэнэ
-    </div>
-  );
-}
-
 export default async function StoriesHubPage() {
   // Production дээр нийтлэгдээгүй хуудас руу заасан картыг харуулахгүй
   const stories = (await getStories()).filter((s) => liveHref(s.href));
+  // Бүх ангилал харагдана. "[ЖИШЭЭ]"-ээс бусад түүхгүй ангилалд "Тун удахгүй" блок.
+  const categories = STORY_CATEGORIES;
 
   const featured = stories.filter((s) => s.featured);
   const latest = stories
@@ -87,7 +83,7 @@ export default async function StoriesHubPage() {
       >
         {/* Ангиллын товчлол */}
         <nav aria-label="Түүхийн ангилал" className="flex flex-wrap gap-2 mt-8">
-          {STORY_CATEGORIES.map((c) => (
+          {categories.map((c) => (
             <a
               key={c.id}
               href={`#${c.id}`}
@@ -129,8 +125,9 @@ export default async function StoriesHubPage() {
         )}
 
         {/* Ангилал тус бүр */}
-        {STORY_CATEGORIES.map((category) => {
+        {categories.map((category) => {
           const items = stories.filter((s) => s.category === category.id);
+          const isEmpty = !items.some((s) => !s.title.startsWith(SAMPLE_PREFIX));
           return (
             <section key={category.id} id={category.id} className="scroll-mt-8">
               <div className="flex gap-3 items-baseline mb-6">
@@ -139,18 +136,17 @@ export default async function StoriesHubPage() {
                   {category.en}
                 </span>
               </div>
+              {isEmpty && (
+                <div className="mb-6">
+                  <ComingSoon title={`${category.mn}: түүхүүд удахгүй нэмэгдэнэ.`} />
+                </div>
+              )}
               <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {items.length > 0 ? (
-                  items.map((story) => (
-                    <li key={story.id}>
-                      <StoryCardView story={story} />
-                    </li>
-                  ))
-                ) : (
-                  <li>
-                    <EmptyCard />
+                {items.map((story) => (
+                  <li key={story.id}>
+                    <StoryCardView story={story} />
                   </li>
-                )}
+                ))}
                 {category.id === 'photo-video' && liveHref('/stories/photo-video') && (
                   <li>
                     <Link

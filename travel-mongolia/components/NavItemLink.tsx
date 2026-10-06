@@ -1,28 +1,33 @@
 import Link from 'next/link';
 import React from 'react';
 
-import type { NavItem, NavStatus } from '@/lib/navigation';
+import { isPreviewEnv, type NavItem, type NavStatus } from '@/lib/navigation';
 
 // Төлөвийн тэмдгийн өнгө: цэсний цагаан, footer-ийн бараан дэвсгэрт тус тусдаа
 const BADGE_COLORS: Record<'light' | 'dark', Record<Exclude<NavStatus, 'live'>, string>> = {
   light: {
     planned: 'text-amber-800 bg-amber-100',
     draft: 'text-sky-800 bg-sky-100',
+    soft: 'text-emerald-800 bg-emerald-100',
   },
   dark: {
     planned: 'text-amber-200 bg-amber-900/40',
     draft: 'text-sky-200 bg-sky-900/40',
+    soft: 'text-emerald-200 bg-emerald-900/40',
   },
 };
 
 const BADGE_TEXT = {
   planned: { mn: 'Тун удахгүй', en: 'Coming soon' },
   draft: { mn: 'Ноорог', en: 'Draft' },
+  // soft: production дээр тэмдэггүй, preview дээр л "Хэсэгчлэн" гэж харагдана
+  soft: { mn: 'Хэсэгчлэн', en: 'Soft' },
 };
 
 // Цэс, footer-ийн нэг холбоос. Production дээр зөвхөн live зүйлс ирнэ. Preview дээр:
 //   draft   - дарагддаг холбоос + "Ноорог" тэмдэг
 //   planned - холбоосгүй, "Тун удахгүй" тэмдэгтэй, дарахад юу ч болохгүй
+//   soft    - энгийн холбоос (production дээр ч), preview дээр "Хэсэгчлэн" тэмдэгтэй
 export default function NavItemLink({
   item,
   className,
@@ -42,7 +47,7 @@ export default function NavItemLink({
   children: React.ReactNode;
 }) {
   const badge =
-    item.status === 'live' ? null : (
+    item.status === 'live' || (item.status === 'soft' && !isPreviewEnv()) ? null : (
       <span className={`${badgeClassName} ${BADGE_COLORS[tone][item.status]}`}>
         {english ? BADGE_TEXT[item.status].en : BADGE_TEXT[item.status].mn}
       </span>

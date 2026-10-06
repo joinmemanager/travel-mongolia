@@ -2,6 +2,7 @@ import DarkPanel from '@/components/design/DarkPanel';
 import ImageCard from '@/components/design/ImageCard';
 import PatternBand from '@/components/design/PatternBand';
 import GuidePage from '@/components/GuidePage';
+import { RESPECT_REVIEW_NOTICE } from '@/lib/respectData';
 import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
@@ -20,6 +21,7 @@ const SUBPAGE_IMAGES: Record<string, SiteImage> = {
 export default function RespectHubPage() {
   return (
     <GuidePage
+      notice={RESPECT_REVIEW_NOTICE}
       crumbs={[
         { label: 'Нүүр', href: '/' },
         { label: 'Хүндэтгэлтэй аялал', href: '/respect' },

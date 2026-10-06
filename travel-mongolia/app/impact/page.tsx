@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ComingSoon from '@/components/design/ComingSoon';
 import DarkPanel from '@/components/design/DarkPanel';
 import LinkCard from '@/components/design/LinkCard';
 import PatternBand from '@/components/design/PatternBand';
@@ -78,6 +79,12 @@ export default async function ImpactHubPage() {
   const provinces = (await getProvinceLinks()).filter((p) => liveHref(p.href));
   // Impact Dashboard v1: Contentful-аас автоматаар (lib/impact.ts)
   const impact = await computeImpact();
+  // Өгөгдөлтэй (0-ээс их) KPI картууд. Бусдын оронд нэг "Тун удахгүй" блок (preview, production ижил).
+  const metrics = hub.localImpact.metrics.filter((metric) => {
+    const v = impact[metric.key].value;
+    return v !== null && !/^0%?$/.test(v);
+  });
+  const hasPending = metrics.length < hub.localImpact.metrics.length;
 
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
@@ -114,8 +121,9 @@ export default async function ImpactHubPage() {
         <div className="flex-1 w-full space-y-16">
           {/* 01. Орон нутгийн үр өгөөж: Contentful-ын бодит тоо, өгөгдөлгүй бол "Мэдээлэл удахгүй" */}
           <Section id="local-impact" index={1} title={hub.localImpact.title} intro={hub.localImpact.intro}>
+            {metrics.length > 0 && (
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {hub.localImpact.metrics.map((metric) => {
+              {metrics.map((metric) => {
                 const m = impact[metric.key];
                 return (
                   <li
@@ -135,7 +143,13 @@ export default async function ImpactHubPage() {
                 );
               })}
             </ul>
-            <p className="mt-4 text-xs text-neutral-400">{hub.localImpact.sourceNote}</p>
+            )}
+            {metrics.length > 0 && <p className="mt-4 text-xs text-neutral-400">{hub.localImpact.sourceNote}</p>}
+            {hasPending && (
+              <div className={metrics.length > 0 ? 'mt-6' : ''}>
+                <ComingSoon title="Үр дүнгийн тоо мэдээлэл удахгүй нийтлэгдэнэ" />
+              </div>
+            )}
           </Section>
 
           {/* 02. Түншлэлийн төслүүд */}
