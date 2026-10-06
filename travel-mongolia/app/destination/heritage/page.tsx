@@ -31,7 +31,8 @@ async function getHeritageCategories() {
       const places = (f.places || []).map((placeRef: any) => {
         const pf = placeRef?.fields;
         return {
-          id: placeRef?.sys?.id || '',
+          // Хаягт slug (байхгүй бол entry ID)
+          id: pf?.slug || placeRef?.sys?.id || '',
           name: pf?.name || '',
           region: pf?.region || '',
           img: getImageUrl(pf?.image),

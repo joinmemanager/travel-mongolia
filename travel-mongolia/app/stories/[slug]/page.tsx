@@ -1,0 +1,34 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import React from 'react';
+
+import StoryTemplate from '@/components/templates/StoryTemplate';
+import { getStoryBySlug } from '@/lib/localContent';
+import { entryMeta } from '@/lib/pageMeta';
+import { richTextToPlain, truncate } from '@/lib/seo';
+
+// Contentful-ын 'story' төрлийн нийтлэл (/stories-ийн draft төлвийг өвлөнө)
+export const dynamic = 'force-dynamic';
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const s = await getStoryBySlug(slug);
+  if (!s) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+  return entryMeta({
+    title: s.title,
+    description: truncate(richTextToPlain(s.body) || `${s.title}: Монголын түүх.`),
+    path: `/stories/${s.slug}`,
+    image: s.media[0]?.src,
+  });
+}
+
+export default async function StoryPage({ params }: Props) {
+  const { slug } = await params;
+  const s = await getStoryBySlug(slug);
+  if (!s) notFound();
+  return <StoryTemplate story={s} />;
+}

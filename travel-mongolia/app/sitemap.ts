@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { client } from '@/lib/contentful';
+import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
 import { SITE_URL } from '@/lib/seo';
@@ -41,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
   const dynamicPages: MetadataRoute.Sitemap = [
     ...places.map((e) => ({
-      url: `${SITE_URL}/destination/heritage/place/${e.sys.id}`,
+      url: `${SITE_URL}/destination/heritage/place/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,
       priority: 0.6,
     })),
@@ -56,13 +57,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     })),
     ...recommendations.map((e) => ({
-      url: `${SITE_URL}/recommendation/${e.sys.id}`,
+      url: `${SITE_URL}/recommendation/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,
       priority: 0.5,
     })),
-    // Нүүр хуудасны "Онцлох газрууд" картууд /destination/<id> руу холбогддог
+    // Хуучин /destination/<id> хаяг slug хаяг руу redirect хийдэг тул sitemap-д slug хаяг
     ...destinations.map((e) => ({
-      url: `${SITE_URL}/destination/${e.sys.id}`,
+      url: `${SITE_URL}/destination/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,
       priority: 0.7,
     })),

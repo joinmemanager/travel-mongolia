@@ -21,9 +21,32 @@ export interface ListingSpot {
   region: string;
   image: string;
   description: string;
+  // Дэлгэрэнгүй хуудас (байхгүй бол карт холбоосгүй)
+  href?: string;
+  // Ангиллын нэрийн дараах шошгууд (badge функцийн оронд, server хуудаснаас дамжуулахад)
+  badges?: string[];
 }
 
-// "Ангиллын жагсаалт" загвар (docs/plan/templates.md): /things-to-do/* хуудсууд.
+interface Props<T extends ListingSpot> {
+  hero: { src: string; alt: string };
+  kicker: string;
+  title: string;
+  intro: string;
+  categories: ListingCategory[];
+  spots: T[];
+  // "Нийт N ... олдлоо" мөрийн дунд хэсэг
+  countLabel: string;
+  // Картын шошгууд: ангиллын нэрийн дараа харуулах талбарууд (улирал, түвшин г.м.)
+  badge?: (spot: T) => string[];
+  // Картын доод мөр. Дэлгэрэнгүй хуудасгүй бол "Дэлгэрэнгүй үзэх"
+  cta?: string;
+  // Жагсаалт хоосон үед харуулах текст
+  emptyText?: string;
+  // Жагсаалтын доор (холбоосны карт г.м.)
+  footer?: React.ReactNode;
+}
+
+// "Ангиллын жагсаалт" загвар (docs/plan/templates.md): /things-to-do/*, /local/* хуудсууд.
 // Зурагтай толгой → наалддаг ангиллын шүүлтүүр (?cat=) → зурагтай картуудын тор.
 export default function CategoryListing<T extends ListingSpot>({
   hero,
@@ -34,18 +57,10 @@ export default function CategoryListing<T extends ListingSpot>({
   spots,
   countLabel,
   badge,
-}: {
-  hero: { src: string; alt: string };
-  kicker: string;
-  title: string;
-  intro: string;
-  categories: ListingCategory[];
-  spots: T[];
-  // "Нийт N ... олдлоо" мөрийн дунд хэсэг
-  countLabel: string;
-  // Картын шошгууд: ангиллын нэрийн дараа харуулах талбарууд (улирал, түвшин г.м.)
-  badge: (spot: T) => string[];
-}) {
+  cta = 'Дэлгэрэнгүй үзэх',
+  emptyText,
+  footer,
+}: Props<T>) {
   const searchParams = useSearchParams();
   const catQuery = searchParams.get('cat');
   const [activeTab, setActiveTab] = useState('all');
@@ -125,15 +140,20 @@ export default function CategoryListing<T extends ListingSpot>({
             <ImageCard
               key={spot.id}
               image={{ src: spot.image, alt: spot.title }}
-              eyebrow={`${spot.location} • ${spot.region}`}
-              badges={[spot.category, ...badge(spot)]}
+              eyebrow={[spot.location, spot.region].filter(Boolean).join(' • ')}
+              href={spot.href}
+              badges={[spot.category, ...(spot.badges || []), ...(badge ? badge(spot) : [])]}
               title={spot.title}
               desc={spot.description}
-              cta="Дэлгэрэнгүй үзэх"
+              cta={cta}
               aspect="aspect-[4/5]"
             />
           ))}
         </div>
+        {filteredSpots.length === 0 && emptyText && (
+          <p className="py-16 text-sm text-center text-neutral-500">{emptyText}</p>
+        )}
+        {footer && <div className="mt-16">{footer}</div>}
       </div>
     </main>
   );

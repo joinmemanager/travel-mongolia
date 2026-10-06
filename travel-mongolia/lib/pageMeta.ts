@@ -251,6 +251,37 @@ export const PAGE_META = {
     description:
       'Аялал жуулчлалын үр өгөөжийг орон нутагт хүргэх зорилго, түншлэлийн төслүүд, аймаг ба DMO, аяллын бизнес, хандивлагчдад зориулсан мэдээлэл.',
   },
+  // Нутгийн Монгол (Б хэсэг, draft)
+  '/local': {
+    title: 'Нутгийн Монгол: малчин өрх, хөтөч, гар урлаач',
+    description:
+      'Монголын нутгийн хүмүүс, өрхүүдийн санал болгодог туршлага, хөтөч, гар урлал, хоол, бүтээгдэхүүн. Нутгийн өгөөжтэй сонголтоо хийгээрэй.',
+  },
+  '/local/experiences': {
+    title: 'Нутгийн туршлага: малчин айл, гар урлал, хоол',
+    description:
+      'Нутгийн иргэдийн зохион байгуулдаг туршлагууд: малчин айлд өнжих, эсгий хийх, уламжлалт хоол. Хэн зохион байгуулдаг, юу хийх, үнэ.',
+  },
+  '/local/guides': {
+    title: 'Нутгийн хөтөч нар',
+    description: 'Нутгаа сайн мэддэг, нутгийн хөтөч нар. Мэргэшсэн чиглэл, үйлчилгээ, үнэ, захиалга.',
+  },
+  '/local/herder-families': {
+    title: 'Малчин өрхүүд: гэрт хоноглох, нүүдэлчин ахуй',
+    description: 'Зочид хүлээн авдаг малчин өрхүүд. Гэрт хоноглох, мал маллах, цагаан идээ хийх туршлага, үнэ, захиалга.',
+  },
+  '/local/artisans': {
+    title: 'Монголын гар урлаачид',
+    description: 'Эсгий, арьс шир, мод, мөнгөн дарханы урлал. Гар урлаачид, тэдний бүтээл, сургалт, туршлага.',
+  },
+  '/local/food': {
+    title: 'Нутгийн хоол: айл, гуанз, үйлдвэрлэгчид',
+    description: 'Нутгийн хоол, ундаа санал болгодог айл, гуанз, жижиг үйлдвэрлэгчид. Юу амтлах, хаана, хэзээ.',
+  },
+  '/local/products': {
+    title: 'Нутгийн бүтээгдэхүүн: цагаан идээ, гар урлал',
+    description: 'Монголын нутгийн бүтээгдэхүүн: цагаан идээ, эсгий, гар урлал. Хэн хийдэг, хаана, хэзээ олдох, хаанаас авах.',
+  },
 } as const;
 
 export type StaticPath = keyof typeof PAGE_META;
@@ -261,4 +292,11 @@ export function metaFor(path: StaticPath): Metadata {
   return isUnpublishedPage(path)
     ? { ...meta, robots: { index: false, follow: true } }
     : meta;
+}
+
+// Contentful-аас үүсдэг (динамик) хуудасны metadata. Нийтлэгдээгүй хэсэгт (жишээ нь /local/*)
+// байвал production дээр хайлтаас нуугдана.
+export function entryMeta(args: { title: string; description: string; path: string; image?: string }): Metadata {
+  const meta = pageMetadata(args);
+  return isUnpublishedPage(args.path) ? { ...meta, robots: { index: false, follow: true } } : meta;
 }

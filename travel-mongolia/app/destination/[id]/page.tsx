@@ -1,33 +1,23 @@
 export const dynamic = 'force-dynamic';
 
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import React, { cache } from 'react';
 
+import { GuidanceBlock } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
-import { client } from '@/lib/contentful';
+import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getDestinationCards } from '@/lib/places';
+import { getGuidanceFor } from '@/lib/localContent';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// Зөвхөн 'destination' төрлийн entry-г id-аар нь татна.
+// 'destination' төрлийн entry-г slug-аар (хуучин холбоосод ID-аар) татна.
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
-const getDestination = cache(async (id: string) => {
-  try {
-    const res = await client.getEntries({
-      content_type: 'destination',
-      'sys.id': id,
-      limit: 1,
-    });
-    return res.items[0] || null;
-  } catch (err) {
-    console.error('Destination татахад алдаа гарлаа:', err);
-    return null;
-  }
-});
+const getDestination = cache(async (param: string) => getEntryBySlugOrId('destination', param));
 
 function getImageUrl(fields: any): string | undefined {
   const url = (fields.image || fields.coverImage)?.fields?.file?.url;
@@ -37,8 +27,9 @@ function getImageUrl(fields: any): string | undefined {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const destination = await getDestination(id);
-  if (!destination) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+  const found = await getDestination(id);
+  if (!found) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+  const destination = found.entry;
 
   const fields = destination.fields as any;
   return pageMetadata({
@@ -48,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         fields.subtitle ||
         `${fields.title}: Монголд аялах онцлох газар, үзэх зүйлс, аяллын мэдээлэл.`
     ),
-    path: `/destination/${id}`,
+    path: `/destination/${entryKey(destination)}`,
     image: getImageUrl(fields),
   });
 }
@@ -82,10 +73,15 @@ function parseRichText(node: any): any {
 
 export default async function DestinationDetailPage({ params }: Props) {
   const { id } = await params;
-  const destination = await getDestination(id);
+  const found = await getDestination(id);
 
-  if (!destination) {
+  if (!found) {
     notFound();
+  }
+  const destination = found.entry;
+  // Хуучин ID хаягаар орж ирвэл slug хаяг руу байнгын redirect
+  if (found.matchedBy === 'id' && entryKey(destination) !== id) {
+    permanentRedirect(`/destination/${entryKey(destination)}`);
   }
 
   const fields = destination.fields as any;
@@ -94,7 +90,10 @@ export default async function DestinationDetailPage({ params }: Props) {
     'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
 
   // Ихэнх газар координатгүй тул зайгаар эрэмбэлэхгүй: "Бусад газрууд"
-  const others = (await getDestinationCards()).filter((p) => p.id !== id).slice(0, 3);
+  const others = (await getDestinationCards()).filter((p) => p.id !== destination.sys.id).slice(0, 3);
+
+  // Хэрхэн зөв аялах (visitorGuidance)
+  const guidance = await getGuidanceFor(destination.sys.id);
 
   return (
     <PlaceTemplate
@@ -117,6 +116,7 @@ export default async function DestinationDetailPage({ params }: Props) {
           </p>
         )}
       </div>
+      <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );
 }

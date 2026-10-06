@@ -1,22 +1,18 @@
-import { client } from '@/lib/contentful';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { cache } from 'react';
 import MongoliaLocatorMap from '@/components/MongoliaLocatorMap';
 import WeatherWidget from '@/components/WeatherWidget';
+import { GuidanceBlock } from '@/components/templates/DetailBlocks';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
+import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getHeritagePlaceCards, nearestPlaces } from '@/lib/places';
+import { getGuidanceFor } from '@/lib/localContent';
 import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 
-// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна
-const getPlace = cache(async (id: string) => {
-  try {
-    return (await client.getEntry(id)) as any;
-  } catch (err) {
-    console.error('Heritage place fetch error:', err);
-    return null;
-  }
-});
+// 'heritagePlace' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
+// generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
+const getPlace = cache(async (param: string) => getEntryBySlugOrId('heritagePlace', param));
 
 export async function generateMetadata({
   params,
@@ -24,8 +20,9 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const entry = await getPlace(id);
-  if (!entry) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+  const found = await getPlace(id);
+  if (!found) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+  const entry = found.entry as any;
 
   const f = entry.fields;
   const plain = richTextToPlain(f.description);
@@ -34,7 +31,7 @@ export async function generateMetadata({
     description: truncate(
       plain || `${f.name}: Монголын түүх, соёлын дурсгалт газар. Байршил, цаг агаар, аялах мэдээлэл.`
     ),
-    path: `/destination/heritage/place/${id}`,
+    path: `/destination/heritage/place/${entryKey(entry)}`,
     image: getImageUrl(f.image),
   });
 }
@@ -79,10 +76,15 @@ export default async function HeritagePlaceDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const entry = await getPlace(id);
+  const found = await getPlace(id);
 
   // Байхгүй хуудсыг 404 болгосноор Google хоосон хуудсыг index-д оруулахгүй
-  if (!entry) notFound();
+  if (!found) notFound();
+  const entry = found.entry as any;
+  // Хуучин ID хаягаар орж ирвэл slug хаяг руу байнгын redirect
+  if (found.matchedBy === 'id' && entryKey(entry) !== id) {
+    permanentRedirect(`/destination/heritage/place/${entryKey(entry)}`);
+  }
 
   const f = entry.fields;
   const imgUrl = getImageUrl(f.image);
@@ -95,7 +97,7 @@ export default async function HeritagePlaceDetailPage({
     name: f.name,
     description: truncate(richTextToPlain(f.description), 300) || undefined,
     image: imgUrl,
-    url: `${SITE_URL}/destination/heritage/place/${id}`,
+    url: `${SITE_URL}/destination/heritage/place/${entryKey(entry)}`,
     address: {
       '@type': 'PostalAddress',
       addressRegion: f.region || undefined,
@@ -108,7 +110,10 @@ export default async function HeritagePlaceDetailPage({
   };
 
   const hasCoords = typeof lat === 'number' && typeof lon === 'number';
-  const nearby = hasCoords ? nearestPlaces({ lat, lon }, await getHeritagePlaceCards(), id) : [];
+  const nearby = hasCoords ? nearestPlaces({ lat, lon }, await getHeritagePlaceCards(), entry.sys.id) : [];
+
+  // Хэрхэн зөв аялах (visitorGuidance)
+  const guidance = await getGuidanceFor(entry.sys.id);
 
   return (
     <PlaceTemplate
@@ -143,6 +148,7 @@ export default async function HeritagePlaceDetailPage({
       ) : (
         <p className="text-neutral-500 italic">Энэ газрын дэлгэрэнгүй тайлбар удахгүй нэмэгдэнэ.</p>
       )}
+      <GuidanceBlock items={guidance} />
     </PlaceTemplate>
   );
 }

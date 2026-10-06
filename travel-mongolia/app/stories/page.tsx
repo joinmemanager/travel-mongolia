@@ -44,7 +44,10 @@ function StoryCardView({ story }: { story: StoryCard }) {
   return (
     <ImageCard
       href={story.href}
-      image={STORY_IMAGES[story.id]}
+      image={
+        STORY_IMAGES[story.id] ||
+        (story.imageUrl ? { src: story.imageUrl, alt: story.title } : IMAGES.gerStars)
+      }
       eyebrow={CATEGORY_LABEL[story.category]}
       title={story.title}
       desc={story.excerpt}

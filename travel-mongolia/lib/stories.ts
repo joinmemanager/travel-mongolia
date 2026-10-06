@@ -1,3 +1,6 @@
+import { getStoryEntries } from '@/lib/localContent';
+import { richTextToPlain, truncate } from '@/lib/seo';
+
 // "Түүх & өв" hub-ийн (/stories, ia-plan.md C10, 5в) өгөгдөл.
 //
 // НООРОГ: одоохондоо сайтад байгаа хуудсуудыг түүхийн карт болгон холбосон.
@@ -123,7 +126,20 @@ const EXISTING_CONTENT: StoryCard[] = [
   },
 ];
 
-// 6-р үед энд Contentful-ын Story төрлийг татна
+// Одоо байгаа хуудсууд + Contentful-ын 'story' төрлийн нийтлэлүүд (Б хэсэг).
+// Contentful-д нийтлэл байхгүй (эсвэл төрөл үүсээгүй) бол зөвхөн одоо байгаа хуудсууд.
 export async function getStories(): Promise<StoryCard[]> {
-  return EXISTING_CONTENT;
+  const entries = await getStoryEntries();
+  const fromContentful: StoryCard[] = entries
+    .filter((s) => STORY_CATEGORIES.some((c) => c.id === s.topic))
+    .map((s) => ({
+      id: `story-${s.id}`,
+      title: s.title,
+      excerpt: truncate(richTextToPlain(s.body), 120),
+      href: s.href,
+      category: s.topic as StoryCategoryId,
+      imageUrl: s.media[0]?.src,
+      publishedAt: s.updatedDate || undefined,
+    }));
+  return [...EXISTING_CONTENT, ...fromContentful];
 }
