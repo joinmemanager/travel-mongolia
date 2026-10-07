@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 // Нүүр хуудасны дэвсгэр видео (docs/plan/performance.md).
-// Эхлээд зөвхөн poster (эхний кадр, WebP) харагдана. Компьютер дээр видео (WebM, MP4, ~2.5 MB)
+// Эхлээд зөвхөн poster (hero.jpg-ийн шахсан WebP хувилбар, морьтой хүү) харагдана. Компьютер дээр видео (WebM, MP4, ~2.5 MB)
 // ачаалагдаж тоглоно. Жижиг дэлгэц (767px хүртэл) болон "data saver" горимд видео татагдахгүй.
 export default function HeroVideo({ className }: { className: string }) {
   const ref = useRef<HTMLVideoElement>(null);
