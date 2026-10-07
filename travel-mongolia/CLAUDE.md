@@ -41,7 +41,7 @@ The user's machine has no Node/npm/gh on PATH, so local builds and type checks c
 ## Config gotchas
 
 - `next.config.js` is the only Next config (do not add `.mjs`/`.ts` variants, since Next would load `.js` first and silently ignore them). It sets `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds`, so type errors do not fail a deploy. `images.remotePatterns` allows `images.ctfassets.net` and `images.unsplash.com`. Any other remote host used with `next/image` must be added there or use `unoptimized`.
-- `app/layout.tsx` sets `dynamic = 'force-dynamic'`, so all pages render per request.
+- `app/layout.tsx` sets `revalidate = 240` (ISR, Contentful changes show within 5 minutes). Pages that read URL params with `useSearchParams` (things-to-do, inspiration, `/local/*` categories, festivals) set `force-dynamic` in their own layout or page so their content stays in the server HTML. See `docs/plan/performance.md`.
 - Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`, `CONTENTFUL_MANAGEMENT_TOKEN` (`scripts/contentful/*.ps1` only; never commit or print it).
 
 ## Content architecture

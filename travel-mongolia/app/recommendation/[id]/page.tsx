@@ -15,7 +15,8 @@ import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 // Арга хэмжээний дэлгэрэнгүй ("Арга хэмжээ" загвар). Эхлээд 'event' төрлөөс slug-аар,
 // олдохгүй бол хуучин 'recommendation' (наадмууд)-аас slug эсвэл хуучин ID-аар хайна.
-export const dynamic = 'force-dynamic';
+// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
+export const revalidate = 240;
 
 interface Props {
   params: Promise<{ id: string }>;

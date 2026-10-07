@@ -9,7 +9,8 @@ import { getRelatedItems } from '@/lib/related';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
 // Нутгийн үйлчилгээ үзүүлэгчийн профайл (Б хэсэг, /local-ийн draft төлвийг өвлөнө)
-export const dynamic = 'force-dynamic';
+// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
+export const revalidate = 240;
 
 interface Props {
   params: Promise<{ slug: string }>;

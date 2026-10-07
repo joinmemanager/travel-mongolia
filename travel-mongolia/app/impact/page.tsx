@@ -16,7 +16,7 @@ import { getProvinceLinks } from '@/lib/provinces';
 // НООРОГ текст: lib/impactData.ts
 export const metadata = metaFor('/impact');
 // Contentful-д шинэ entry нийтлэгдэхэд Impact-ын тоо цагт нэг шинэчлэгдэнэ
-export const revalidate = 3600;
+export const revalidate = 240;
 
 const SECTIONS = [
   { id: 'local-impact', title: hub.localImpact.title },

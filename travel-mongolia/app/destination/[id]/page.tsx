@@ -1,4 +1,5 @@
-export const dynamic = 'force-dynamic';
+// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
+export const revalidate = 240;
 
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';

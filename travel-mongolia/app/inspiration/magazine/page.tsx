@@ -234,7 +234,7 @@ function MagazineContent() {
                 {/* 1. Lead Story - Том өргөн блок (3 багана эзэлнэ) */}
                 {lead && (
                   <article className="group relative rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-900 md:col-span-2 lg:col-span-3 min-h-[420px] flex flex-col justify-end p-8 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={lead.image}
                       alt={lead.title}
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-75"
@@ -263,7 +263,7 @@ function MagazineContent() {
                 {second && (
                   <article className="group relative rounded-3xl overflow-hidden border border-neutral-200 bg-white md:col-span-1 lg:col-span-1 min-h-[420px] flex flex-col justify-between p-6 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300">
                     <div className="relative h-52 rounded-2xl overflow-hidden mb-4">
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={second.image}
                         alt={second.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -292,7 +292,7 @@ function MagazineContent() {
                 {third && (
                   <article className="group rounded-3xl overflow-hidden border border-neutral-200 bg-white p-6 flex flex-col md:flex-row gap-6 cursor-pointer shadow-sm hover:shadow-xl hover:border-neutral-300 transition-all duration-300 md:col-span-3 lg:col-span-4">
                     <div className="relative md:w-1/3 h-52 md:h-auto rounded-2xl overflow-hidden shrink-0">
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={third.image}
                         alt={third.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

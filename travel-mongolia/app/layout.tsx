@@ -1,4 +1,6 @@
-export const dynamic = 'force-dynamic';
+// Хуудсуудыг 4 минут кэшлэнэ (ISR): Contentful-д нийтэлсэн өөрчлөлт 5 минутын дотор харагдана.
+// URL-ийн ?cat= зэргийг client талд уншдаг хуудсууд өөрсдийн layout-д force-dynamic-тай (docs/plan/performance.md).
+export const revalidate = 240;
 
 import './globals.css';
 

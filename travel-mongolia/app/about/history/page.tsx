@@ -192,7 +192,7 @@ export default function HistoryPage() {
               {/* Баруун тал: Зураг */}
               <div className="lg:col-span-5">
                 <div className="relative w-full h-[360px] sm:h-[480px] rounded-3xl overflow-hidden shadow-lg">
-                  <img src={period.imageUrl} alt={period.title} className="w-full h-full object-cover" />
+                  <img loading="lazy" decoding="async" src={period.imageUrl} alt={period.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
                     <span className="text-xs uppercase font-bold tracking-widest text-emerald-300 block mb-1">
