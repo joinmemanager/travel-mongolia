@@ -3,8 +3,7 @@ import Image from 'next/image';
 
 
 import CultureFestivals from '../components/CultureFestivals';
-import HeroVideo from '../components/HeroVideo';
-import HeroText from '../components/HeroText';
+import HomeScrollHero from '../components/HomeScrollHero';
 import RegionMap from '../components/RegionMap';
 import SeasonRecommendations from '../components/SeasonRecommendations';
 import TopDestinations from '../components/TopDestinations';
@@ -44,18 +43,8 @@ export default async function Home() {
 
   return (
     <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
-      {/* 1. HERO ХЭСЭГ (ВИДЕО ДЭВСГЭР) */}
-      <section className="flex overflow-hidden relative justify-center items-center w-full h-[90vh] text-center">
-        <HeroVideo className="object-cover absolute inset-0 w-full h-full" />
-
-        {/* Дээгүүр нь уусах харанхуй бүрхүүл */}
-        <div className="absolute inset-0 bg-black/40" />
-
-        {/* Текстүүд дээр нь харагдана */}
-        <div className="relative z-10">
-          <HeroText />
-        </div>
-      </section>
+      {/* 1. HERO ХЭСЭГ: гүйлгэхэд өгүүлдэг 6 дүр зураг (эхнийх нь видео, H1) */}
+      <HomeScrollHero />
 
       {/* 2. АЙМГУУДЫН ИНТЕРАКТИВ ЗУРАГ */}
       <RegionMap />

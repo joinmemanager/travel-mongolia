@@ -31,3 +31,21 @@ Alt текстэд зөвхөн нүдээр баталгаажсан зүйли
 | `public/ulaanbaatar.png`, `hovd1.png` болон бусад аймгийн PNG | Хиймэл оюунаар (AI) үүсгэсэн бололтой. Жишээ нь хотын зурган дээр "Ulaanbaatar" гэсэн бичиг, утгагүй самбарууд байна. | Бодит газар мэт харуулахгүй. Бодит гэрэл зургаар солих. |
 | Contentful `13-р зуун цогцолбор` (`songzanlin-monastery-above-tibetan-town-in-shangri…jpg`) | Хятадын Шангри-Ла дахь Төвд хийдийн зураг | Contentful дээр солих |
 | Contentful-ын `ChatGPT_Image_…png` нэртэй 3 зураг | AI-аар үүсгэсэн | Бодит гэрэл зургаар солих |
+
+## Нүүр хуудасны дүр зургууд (`public/home/`, 2026-10-07)
+
+`components/HomeScrollHero.tsx`-ийн 6 дүр зураг. Бүгд WebP. Нийт 1.38 MB, үүнд эхний poster ч орсон. Эхнийхээс бусад нь тухайн дүр зураг ойртоход л ачаалагдана.
+
+| # | Файл | Эх сурвалж | Байршил (Unsplash-ийн тэмдэглэгээ / шалгалт) |
+|---|---|---|---|
+| 1 | `public/hero-poster.webp` (+ `heroo.webm`, `heroo.mp4`) | Сайтын өөрийн `hero.jpg`, видео | Монгол (дээрх хүснэгтийн `herderBoy`) |
+| 2 | `home/altai-eagle.webp` | Unsplash `photo-1742205025290-f8d83fe1bb58` | Монгол (дээрх `eagleHunter`, нүдээр шалгасан) |
+| 3 | `home/gobi-camels.webp` | Unsplash `photo-1571821807771-62cf66ac3f14` | Монгол (дээрх `camels`) |
+| 4 | `home/khuvsgul.webp` | Unsplash [eDcdGQRSVj8](https://unsplash.com/photos/a-body-of-water-with-trees-on-the-side-eDcdGQRSVj8), Sodo Sane, 2022-10-03 | "Khuvsgul Lake, Mongolia" |
+| 5 | `home/ger-summer.webp` | Unsplash `photo-1575415868394-e3b78f3e9b3f` | Монгол (дээрх `gerCamp`) |
+| 6 | `home/ger-winter.webp` | Unsplash [MusNPAkRimQ](https://unsplash.com/photos/a-yurt-covered-in-snow-on-a-snowy-day-MusNPAkRimQ), Ash Hayes, 2022-02-16 | "Mongolia" |
+
+Ашиглаагүй зургууд:
+- `lakeGers` (`photo-1591804860948`): ард нь элсэн манхантай нуур тул Хөвсгөл биш.
+- Contentful-ын "Хөвсгөл нуур" нүүр зураг: нэр нь "winter-river-cutting-through-a-forest-landscape". Байршил нь баталгаагүй stock зураг.
+- `herdSnow`: цастай уул, ногоон бэлчээр, гэргүй тул "өвлийн гэр"-т тохирохгүй.
