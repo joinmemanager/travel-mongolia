@@ -282,6 +282,17 @@ export const PAGE_META = {
     title: 'Нутгийн бүтээгдэхүүн: цагаан идээ, гар урлал',
     description: 'Монголын нутгийн бүтээгдэхүүн: цагаан идээ, эсгий, гар урлал. Хэн хийдэг, хаана, хэзээ олдох, хаанаас авах.',
   },
+  // Хууль эрх зүйн (ноорог, soft)
+  '/privacy': {
+    title: 'Нууцлалын бодлого',
+    description:
+      'Travel Hub Mongolia ямар мэдээлэл цуглуулдаг вэ: Google Analytics-ийн статистик, cookie, хэлний сонголт, гуравдагч талын үйлчилгээ, таны эрх.',
+  },
+  '/terms': {
+    title: 'Үйлчилгээний нөхцөл',
+    description:
+      'travelhubmongolia.com-ыг ашиглах нөхцөл: мэдээллийн үнэн зөв байдал, joinme.mn болон үйлчилгээ үзүүлэгчээр дамжих захиалга, зохиогчийн эрх.',
+  },
 } as const;
 
 export type StaticPath = keyof typeof PAGE_META;

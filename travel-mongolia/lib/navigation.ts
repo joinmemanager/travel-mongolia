@@ -224,8 +224,8 @@ export const FOOTER_NAVIGATION: NavSection[] = [
 
 // Footer-ийн доод мөрийн холбоосууд
 export const FOOTER_LEGAL: NavItem[] = [
-  { mn: 'Нууцлалын бодлого', en: 'Privacy Policy', href: '/privacy', status: 'planned' },
-  { mn: 'Үйлчилгээний нөхцөл', en: 'Terms of Service', href: '/terms', status: 'planned' },
+  { mn: 'Нууцлалын бодлого', en: 'Privacy Policy', href: '/privacy', status: 'soft' },
+  { mn: 'Үйлчилгээний нөхцөл', en: 'Terms of Service', href: '/terms', status: 'soft' },
   { mn: 'Холбоо барих', en: 'Contact', href: 'mailto:contact@joinme.mn', status: 'live' },
 ];
 
