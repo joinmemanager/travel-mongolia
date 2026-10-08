@@ -1,5 +1,13 @@
-import Image from 'next/image';
+'use client';
+
+import Image, { type ImageLoader } from 'next/image';
 import React from 'react';
+
+import { cdnImage, isCdnImage } from '@/lib/imageUrl';
+
+// Unsplash, Contentful зургийг тэдний CDN-ээс дэлгэцийн өргөнд тохируулан (WebP/AVIF) авна.
+// Сайтын өөрийн зураг (/hero.jpg г.м.) Next.js-ийн оновчлолоор дамжина.
+const cdnLoader: ImageLoader = ({ src, width, quality }) => cdnImage(src, width, quality || 65);
 
 // Hero-ийн 3 хувилбарын нэг (docs/plan/templates.md):
 //   1. Нүүр хуудасны hero (app/page.tsx, өөрчлөхгүй)
@@ -30,7 +38,7 @@ export default function ImageHero({
           alt={image.alt}
           fill
           priority
-          unoptimized
+          loader={isCdnImage(image.src) ? cdnLoader : undefined}
           sizes="100vw"
           className="object-cover brightness-[0.5]"
         />

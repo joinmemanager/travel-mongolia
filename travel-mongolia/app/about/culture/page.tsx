@@ -397,7 +397,7 @@ export default function CulturePage() {
 
               {/* Баруун тал */}
               <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[320px] rounded-3xl overflow-hidden shadow-md group">
-                <img src={sec.imageUrl} alt={sec.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img loading="lazy" decoding="async" src={sec.imageUrl} alt={sec.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
             </div>
@@ -410,7 +410,7 @@ export default function CulturePage() {
                   className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
                 >
                   <div className="relative w-full h-48 sm:h-52 overflow-hidden">
-                    <img src={item.thumb} alt={item.title} className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" />
+                    <img loading="lazy" decoding="async" src={item.thumb} alt={item.title} className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" />
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-2">

@@ -12,7 +12,8 @@ import { metaFor } from '@/lib/pageMeta';
 
 // "Нутгийн Монгол" hub (Б хэсэг). Төлөв: soft (lib/navigation.ts PAGE_STATUS).
 // Hub загвар: зурагтай картууд → нэг бараан ногоон самбар → холбоосны карт.
-export const dynamic = 'force-dynamic';
+// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
+export const revalidate = 240;
 export const metadata = metaFor('/local');
 
 // Баримт бичгийн 9-р хэсгийн "Local & Responsible Choice" хүснэгт
