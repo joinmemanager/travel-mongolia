@@ -31,6 +31,9 @@ yarn-error.log*
 # local folder
 /local
 
+# Contentful-ын нөөц (scripts/contentful/00-backup.ps1)
+/backups/
+
 # vercel
 .vercel
 
