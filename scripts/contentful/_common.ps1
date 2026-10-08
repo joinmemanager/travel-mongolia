@@ -7,7 +7,7 @@
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$script:Locale = 'en-US'   # Контентын үндсэн locale (монгол текст энэ locale-д хадгалагддаг)
+$script:Locale = 'mn'   # Контентын үндсэн locale (монгол текст энэ locale-д хадгалагддаг)
 $script:EnvId = 'master'
 
 function Import-ContentfulEnv {
