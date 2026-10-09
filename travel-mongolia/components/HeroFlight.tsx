@@ -20,7 +20,7 @@ import { liveHref } from '../lib/navigation';
 //   Аль горим ажиллаж байгааг console-д "[HeroFlight]" гэж бичнэ.
 // - Утас (767px хүртэл) болон "data saver" горимд илүү шахсан mobile хувилбар (~5.6MB, компьютерт ~14MB).
 // - "Reduce motion": юу ч татагдахгүй, хөдөлгөөнгүй poster, H1 ба товч шууд харагдана (CSS).
-// - Хуудасны цорын ганц H1 энд (эхний бичиг), HTML-д үргэлж байна (SEO).
+// - Хуудасны цорын ганц H1 энд (80–100%-ийн бичиг), HTML-д үргэлж байна, зөвхөн opacity нь өөрчлөгдөнө (SEO).
 // - Эх файлууд (flight-1/2/3.mp4) git-д ороогүй, дахин гаргах: scripts/hero/build-hero-flight.sh.
 
 const SECTION_VH = 400;
@@ -408,12 +408,12 @@ export default function HeroFlight() {
         {/* Бичиг уншигдахуйц байх бүрхүүл */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
 
-        {/* 0–20%: хуудасны цорын ганц H1 ба дэд гарчиг. Ачаалахад шууд харагдана. */}
-        <div ref={(n) => { blockRefs.current[0] = n; }} className={block}>
-          <h1 className="max-w-4xl text-4xl font-black tracking-tight drop-shadow-xl sm:text-7xl">
-            {t.heroTitle}
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg font-light leading-relaxed text-white/95 drop-shadow sm:mt-6 sm:text-2xl">
+        {/* 0–20% */}
+        <div
+          ref={(n) => { blockRefs.current[0] = n; }}
+          className={`${block} motion-reduce:hidden`}
+        >
+          <p className="max-w-4xl text-3xl font-black tracking-tight drop-shadow-xl sm:text-6xl">
             Монголын тал нутаг таныг хүлээж байна
           </p>
         </div>
@@ -427,15 +427,25 @@ export default function HeroFlight() {
           <p className="text-3xl font-black tracking-tight drop-shadow-xl sm:text-6xl">Нүүдэлчдийн нутаг</p>
         </div>
 
-        {/* 80–100%: товч. "Reduce motion" үед H1-ийн доор шууд харагдана, гараар (Tab) ирвэл ч харагдана. */}
+        {/* 80–100%: хуудасны цорын ганц H1, тайлбар ба товч. HTML-д үргэлж байна (SEO).
+            "Reduce motion" үед шууд харагдана, гараар (Tab) товч руу ирвэл ч харагдана. */}
         <div
           ref={(n) => { blockRefs.current[2] = n; }}
-          className={`${block} motion-reduce:!opacity-100 motion-reduce:!transform-none motion-reduce:!pointer-events-auto motion-reduce:justify-end motion-reduce:pb-[18svh] focus-within:!opacity-100`}
+          className={`${block} motion-reduce:!opacity-100 motion-reduce:!transform-none motion-reduce:!pointer-events-auto focus-within:!opacity-100`}
           style={{ opacity: 0, pointerEvents: 'none' }}
         >
+          <div className="px-6 mx-auto max-w-4xl">
+            <span className="block mb-4 text-xs font-bold tracking-[0.3em] text-white/90 uppercase drop-shadow sm:text-sm">
+              {t.heroTag}
+            </span>
+            <h1 className="mb-6 text-4xl font-black tracking-tight drop-shadow-xl sm:text-7xl">{t.heroTitle}</h1>
+            <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-white/95 drop-shadow sm:text-xl">
+              {t.heroDesc}
+            </p>
+          </div>
           <Link
             href={startHref}
-            className="inline-flex gap-2 items-center py-4 px-8 text-base font-bold text-neutral-900 bg-white rounded-full shadow-lg transition-colors hover:bg-[#15803d] hover:text-white sm:text-lg"
+            className="inline-flex gap-2 items-center py-3 px-7 mt-8 text-sm font-bold text-neutral-900 bg-white rounded-full shadow-lg transition-colors hover:bg-[#15803d] hover:text-white sm:text-base"
           >
             Аялалаа эхлүүлэх
             <span aria-hidden="true">→</span>
