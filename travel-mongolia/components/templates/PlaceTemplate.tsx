@@ -68,7 +68,7 @@ export default function PlaceTemplate({
       />
 
       {nav && nav.length > 0 && (
-        <nav className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200">
+        <nav className="sticky top-(--nav-h) z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200">
           <div className="max-w-5xl mx-auto px-6 flex items-center justify-start sm:justify-center gap-8 sm:gap-14 overflow-x-auto py-5 text-base sm:text-lg font-normal tracking-tight text-neutral-600 no-scrollbar">
             {nav.map((item) => (
               <a key={item.id} href={`#${item.id}`} className="hover:text-black transition-colors whitespace-nowrap font-medium">

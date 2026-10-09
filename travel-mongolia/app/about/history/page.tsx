@@ -126,7 +126,7 @@ export default function HistoryPage() {
       />
 
       {/* 2. НААЛДДАГ ҮЕ ШАТНЫ НАВИГАЦИ */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
+      <div className="sticky top-(--nav-h) z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
         <div className="w-full px-4 sm:px-8 py-3 flex items-center justify-start lg:justify-center gap-2 overflow-x-auto scrollbar-none text-xs sm:text-sm font-bold">
           {HISTORY_DATA.map((item, idx) => (
             <a

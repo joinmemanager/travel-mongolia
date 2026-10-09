@@ -492,6 +492,8 @@ export default function HeroFlight() {
     <section
       ref={sectionRef}
       aria-label="Монголын тал нутгаар нисэх нь"
+      // Дээд цэс энэ хэсгийг өнгөртөл тунгалаг, цагаан бичигтэй давхарлагдана (Navbar.tsx)
+      data-nav-overlay=""
       className="relative w-full motion-reduce:!h-svh"
       style={{ height: `${SECTION_VH}vh` }}
     >
@@ -525,14 +527,16 @@ export default function HeroFlight() {
 
         {/* Бичиг уншигдахуйц байх бүрхүүл */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
+        {/* Дээр давхарласан цагаан цэс уншигдахуйц байх нимгэн бараан зурвас */}
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
 
-        {/* Ачаалал 2 секундээс удаан бол харагдана. Навигацийн өндрөөр hero-гийн доод хэсэг эхэндээ
-            дэлгэцээс гадуур байдаг тул доороос 8rem өндөрт байрлана. */}
+        {/* Ачаалал 2 секундээс удаан бол харагдана. Цэс hero дээр давхарладаг тул hero дэлгэцийг
+            бүтэн эзэлнэ, тэмдэг доод хэсэгт байрлана. */}
         <div
           ref={spinnerRef}
           role="status"
           aria-label="Бичлэг ачаалж байна"
-          className="hero-spinner absolute bottom-32 left-1/2 z-10 w-7 h-7 rounded-full border-2 pointer-events-none border-white/25 border-t-white/80 motion-reduce:hidden"
+          className="hero-spinner absolute bottom-16 left-1/2 z-10 w-7 h-7 rounded-full border-2 pointer-events-none border-white/25 border-t-white/80 motion-reduce:hidden"
         />
 
         {/* 0–20% */}
@@ -562,8 +566,8 @@ export default function HeroFlight() {
           style={{ opacity: 0, pointerEvents: 'none' }}
         >
           <div className="px-6 mx-auto max-w-4xl">
-            <span className="block mb-4 text-xs font-bold tracking-[0.3em] text-white/90 uppercase drop-shadow sm:text-sm">
-              {t.heroTag}
+            <span className="block mb-4 text-base font-semibold tracking-wide text-white/90 drop-shadow sm:text-xl">
+              {t.heroSky}
             </span>
             <h1 className="mb-6 text-4xl font-black tracking-tight drop-shadow-xl sm:text-7xl">{t.heroTitle}</h1>
             <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-white/95 drop-shadow sm:text-xl">

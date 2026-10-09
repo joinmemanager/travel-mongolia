@@ -1,9 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import type { NavSection } from '@/lib/navigation';
+import {
+  PLAN_SECTION_ID,
+  liveHref,
+  type NavItem,
+  type NavSection,
+} from '@/lib/navigation';
+import { navText, type NavStringKey } from '@/lib/navStrings';
 
 import NavItemLink from './NavItemLink';
 import { readSiteLang } from './useSiteLang';
@@ -18,18 +25,92 @@ const LANGUAGES = [
   { code: 'ja', label: 'JA', name: '日本語' },
 ];
 
-// Цэсний бүтэц lib/navigation.ts-д байна. Layout нь production/preview-ийн дагуу
-// шүүгээд дамжуулна. Бүх холбоос серверийн HTML-д <a href> хэлбэрээр гарна
-// (хаалттай dropdown нь зөвхөн CSS-ээр нуугдана), ингэснээр Google цэсийг уншина.
+// Цэс hero бичлэг дээр тунгалаг давхарлагддаг хуудсууд. Hero элемент нь data-nav-overlay
+// атрибуттай; түүнийг өнгөрөх хүртэл цэс тунгалаг, дараа нь цагаан болно.
+const OVERLAY_PATHS = ['/'];
+
+const GREEN = 'text-[#15803d]';
+
+// "Бүгдийг үзэх →": дэд цэсний өөрийн хуудас руу. planned зүйлд холбоос өгөхгүй.
+function ViewAllLink({
+  item,
+  label,
+  onClick,
+  className,
+}: {
+  item: NavItem;
+  label: React.ReactNode;
+  onClick: () => void;
+  className: string;
+}) {
+  if (item.status === 'planned') return null;
+  const content = (
+    <>
+      {label}
+      <span aria-hidden="true"> →</span>
+    </>
+  );
+  if (!item.href.startsWith('/')) {
+    return (
+      <a
+        href={item.href}
+        onClick={onClick}
+        className={className}
+        {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
+      >
+        {content}
+      </a>
+    );
+  }
+  return (
+    <Link href={item.href} onClick={onClick} className={className}>
+      {content}
+    </Link>
+  );
+}
+
+function Chevron({ open, className = '' }: { open: boolean; className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={`w-3 h-3 transition-transform duration-200 ${open ? 'rotate-180' : ''} ${className}`}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+    </svg>
+  );
+}
+
+// Цэсний бүтэц lib/navigation.ts-д байна. Layout нь production/preview-ийн дагуу шүүгээд
+// дамжуулна. Бүх холбоос (компьютерийн самбар, утасны цэс) серверийн HTML-д <a href>
+// хэлбэрээр гарна, хаалттай үед зөвхөн CSS-ээр нуугдана, ингэснээр Google цэсийг уншина.
 export default function Navbar({ sections }: { sections: NavSection[] }) {
+  const pathname = usePathname();
   const [selectedLang, setSelectedLang] = useState('mn');
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
+  const [mobileItem, setMobileItem] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const menuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  // Гараар (Enter/Space) нээсэн бол самбарын эхний холбоос руу focus шилжүүлнэ
+  const focusPanelRef = useRef(false);
+
+  const overlayPage = OVERLAY_PATHS.includes(pathname);
+  // Компьютерийн дээд цэс: "Төлөвлөх & захиалах"-аас бусад хэсэг (тэр нь газрын зургийн icon)
+  const desktopSections = sections.filter((s) => s.id !== PLAN_SECTION_ID);
+  const planSection = sections.find((s) => s.id === PLAN_SECTION_ID);
+  const planHref = liveHref(
+    planSection?.items.find((i) => i.status !== 'planned' && i.href.startsWith('/'))?.href
+  );
 
   // Хөтөч ачааллахад өмнө нь сонгогдсон хэлийг cookie-нээс унших
   useEffect(() => {
@@ -61,31 +142,98 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
     window.location.reload();
   };
 
-  // Скролл хийхэд навигацийн арын дэвсгэр сүүдэртэй болох
+  // Hero-г өнгөрсөн эсэх: hero-гийн доод ирмэг цэсний доод ирмэгээс дээш гарвал цэс цагаан болно
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    if (!overlayPage) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const hero = document.querySelector('[data-nav-overlay]');
+      const navBottom = headerRef.current?.offsetHeight ?? 80;
+      setPastHero(!hero || hero.getBoundingClientRect().bottom <= navBottom);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [overlayPage, pathname]);
 
-  // Цэснээс хулгана холдоход бага зэрэг хүлээж байгаад хаах (UX сайжруулалт)
-  const handleMouseEnter = (menu: string) => {
-    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
-    setActiveMenu(menu);
-  };
-
-  const handleMouseLeave = () => {
-    menuTimeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 150);
-  };
-
-  const closeMenu = () => {
-    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+  const closeMenu = useCallback(() => {
     setActiveMenu(null);
     setIsMobileOpen(false);
+  }, []);
+
+  // Хуудас солигдоход бүх цэсийг хаана
+  useEffect(() => {
+    closeMenu();
+  }, [pathname, closeMenu]);
+
+  // Самбар нээгдсэний дараа гараар нээсэн бол эхний холбоос руу focus
+  useEffect(() => {
+    if (!activeMenu || !focusPanelRef.current) return;
+    focusPanelRef.current = false;
+    panelRef.current
+      ?.querySelector<HTMLElement>(`#nav-panel-${activeMenu} a, #nav-panel-${activeMenu} button`)
+      ?.focus();
+  }, [activeMenu]);
+
+  // Esc дарах эсвэл цэсний гадна дарахад хаана. Esc-ийн дараа focus нээсэн товч руугаа буцна.
+  useEffect(() => {
+    if (!activeMenu && !isMobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (activeMenu) triggerRefs.current[activeMenu]?.focus();
+      else burgerRef.current?.focus();
+      closeMenu();
+    };
+    const onPointer = (e: MouseEvent) => {
+      if (headerRef.current?.contains(e.target as Node)) return;
+      closeMenu();
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onPointer);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onPointer);
+    };
+  }, [activeMenu, isMobileOpen, closeMenu]);
+
+  // Утасны бүтэн дэлгэцийн цэс нээлттэй үед ар талын хуудас гүйлгэгдэхгүй
+  useEffect(() => {
+    if (!isMobileOpen) return;
+    const prev = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      document.documentElement.style.overflow = prev;
+    };
+  }, [isMobileOpen]);
+
+  // Tab-аар цэсээс бүр гарвал (focus header-ээс гадна шилжвэл) самбарыг хаана
+  const handleBlur = (e: React.FocusEvent) => {
+    const next = e.relatedTarget as Node | null;
+    if (activeMenu && next && !headerRef.current?.contains(next)) setActiveMenu(null);
+  };
+
+  const toggleSection = (id: string, e: React.MouseEvent) => {
+    if (activeMenu === id) {
+      setActiveMenu(null);
+      return;
+    }
+    // detail === 0: гарын Enter/Space-ээр дарсан
+    focusPanelRef.current = e.detail === 0;
+    setActiveMenu(id);
+  };
+
+  const closePanel = () => {
+    if (activeMenu) triggerRefs.current[activeMenu]?.focus();
+    setActiveMenu(null);
   };
 
   const currentLang =
@@ -94,21 +242,40 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
   // Англи хэл сонгосон үед цэсний англи нэрийг харуулж, Google Translate-ийг түүнд хүргэхгүй
   const isEnglish = selectedLang === 'en';
   const labelOf = (x: { mn: string; en: string }) => (isEnglish ? x.en : x.mn);
+  const text = (key: NavStringKey) => navText(selectedLang, key);
   const labelProps: { translate?: 'no'; className?: string } = isEnglish
     ? { translate: 'no', className: 'notranslate' }
     : {};
+  const label = (x: { mn: string; en: string }, className = '') => (
+    <span
+      {...labelProps}
+      className={`${className} ${labelProps.className || ''}`.trim() || undefined}
+    >
+      {labelOf(x)}
+    </span>
+  );
+  const textLabel = (key: NavStringKey) => <span {...labelProps}>{text(key)}</span>;
+
+  // Hero дээр (самбар, утасны цэс хаалттай үед) тунгалаг дэвсгэр, цагаан бичиг
+  const onHero = overlayPage && !pastHero && !activeMenu && !isMobileOpen;
+  const iconBtn = `flex justify-center items-center w-10 h-10 rounded-full outline-none transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-current ${
+    onHero ? 'text-white hover:bg-white/15' : 'text-gray-800 hover:bg-gray-100'
+  }`;
 
   return (
     <>
       <header
-        className={`relative w-full z-50 transition-all duration-300 ${
-          isScrolled || activeMenu
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100'
-            : 'bg-white border-b border-gray-100'
+        ref={headerRef}
+        onBlur={handleBlur}
+        className={`top-0 z-50 w-full transition-[background-color,box-shadow,border-color] duration-300 ${
+          overlayPage ? 'fixed inset-x-0' : 'sticky'
+        } ${
+          onHero
+            ? 'bg-transparent border-b border-transparent'
+            : 'bg-white border-b border-gray-100 shadow-sm'
         }`}
-        onMouseLeave={handleMouseLeave}
       >
-        <div className="flex gap-4 justify-between items-center px-6 mx-auto max-w-7xl h-20 sm:px-10 min-[1200px]:px-6">
+        <div className="flex gap-4 justify-between items-center px-4 mx-auto max-w-7xl h-(--nav-h) sm:px-10 min-[1200px]:px-6">
           {/* 1. LOGO */}
           <Link
             href="/"
@@ -118,94 +285,95 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             {/* notranslate: Google Translate <font>-оор ороож цэгийг дараагийн мөр рүү унагаахаас сэргийлнэ */}
             <span
               translate="no"
-              className="notranslate whitespace-nowrap text-2xl font-black tracking-tight text-gray-900 sm:text-3xl"
+              className={`notranslate whitespace-nowrap text-2xl font-black tracking-tight transition-colors duration-300 sm:text-3xl ${
+                onHero ? 'text-white' : 'text-gray-900'
+              }`}
             >
-              Mongolia<span className="text-[#15803d]">.</span>
+              Mongolia<span className={onHero ? 'text-white' : GREEN}>.</span>
             </span>
           </Link>
 
-          {/* 2. ҮНДСЭН ЦЭС. 6 хэсэг нэг мөрөнд багтахаар (Rubik фонтоор хэмжиж тооцсон):
-              1200–1239px: 13px, 1240–1279px: 14px, 1280px-ээс дээш: 15px */}
+          {/* 2. ҮНДСЭН ЦЭС. Нэр дээр ДАРАХАД доор бүтэн өргөнтэй самбар нээгдэнэ */}
           <nav
-            aria-label="Үндсэн цэс"
-            className="hidden gap-2.5 items-center h-full min-[1200px]:flex"
+            aria-label={text('mainNav')}
+            className="hidden gap-7 items-center h-full min-[1200px]:flex"
           >
-            {sections.map((section) => {
+            {desktopSections.map((section) => {
               const isActive = activeMenu === section.id;
               return (
-                <div
+                <button
                   key={section.id}
-                  className="flex items-center h-full"
-                  onMouseEnter={() => handleMouseEnter(section.id)}
+                  ref={(el) => {
+                    triggerRefs.current[section.id] = el;
+                  }}
+                  type="button"
+                  aria-expanded={isActive}
+                  aria-controls={`nav-panel-${section.id}`}
+                  onClick={(e) => toggleSection(section.id, e)}
+                  className={`relative flex gap-1.5 items-center h-full whitespace-nowrap text-[15px] font-semibold rounded-md outline-none transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#15803d] after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-t after:bg-[#15803d] after:transition-opacity ${
+                    isActive ? 'after:opacity-100' : 'after:opacity-0'
+                  } ${
+                    onHero
+                      ? 'text-white hover:text-white/80'
+                      : isActive
+                        ? GREEN
+                        : 'text-gray-800 hover:text-black'
+                  }`}
                 >
-                  <button
-                    type="button"
-                    aria-expanded={isActive}
-                    aria-controls={`nav-panel-${section.id}`}
-                    onClick={() => setActiveMenu(isActive ? null : section.id)}
-                    className={`whitespace-nowrap text-[13px] min-[1240px]:text-sm xl:text-[15px] font-semibold transition-colors flex items-center gap-1 py-2 cursor-pointer ${
-                      isActive
-                        ? 'text-[#15803d]'
-                        : 'text-gray-700 hover:text-black'
-                    }`}
-                  >
-                    <span {...labelProps}>{labelOf(section)}</span>
-                    <svg
-                      className={`w-3 h-3 transition-transform duration-200 ${
-                        isActive ? 'rotate-180 text-[#15803d]' : 'text-gray-400'
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                  {label(section)}
+                  <Chevron open={isActive} className={onHero ? 'text-white/80' : isActive ? GREEN : 'text-gray-400'} />
+                </button>
               );
             })}
           </nav>
 
-          {/* 3. БАРУУН ТАЛ: ХАЙЛТ & ОЛОН ХЭЛ СОНГОГЧ */}
-          <div className="flex gap-4 items-center shrink-0">
-            {/* ХАЙХ ТОВЧ. Desktop дээр цэсэнд зай гаргахын тулд зөвхөн icon */}
+          {/* 3. БАРУУН ТАЛ: ХАЙЛТ, ТӨЛӨВЛӨХ & ЗАХИАЛАХ, ХЭЛ, УТАСНЫ ЦЭС */}
+          <div className="flex gap-1 items-center shrink-0 sm:gap-2">
             <button
+              type="button"
               onClick={() => setIsSearchOpen(true)}
-              aria-label="Хайх"
-              className="flex gap-2 items-center py-2 px-3 text-sm font-semibold text-gray-700 hover:text-black hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
+              aria-label={text('search')}
+              title={text('search')}
+              className={iconBtn}
             >
-              <svg
-                className="w-4 h-4 text-[#15803d]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2.5}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span className="hidden sm:inline min-[1200px]:hidden">Хайх</span>
             </button>
 
-            {/* ХЭЛ СОНГОГЧ ТОХИРГОО */}
+            {/* Төлөвлөх & захиалах: дээд цэсний оронд газрын зургийн icon */}
+            {planHref && (
+              <Link
+                href={planHref}
+                onClick={closeMenu}
+                aria-label={text('planBook')}
+                title={text('planBook')}
+                className={iconBtn}
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z" />
+                  <circle cx="12" cy="10" r="2.5" strokeWidth={2} />
+                </svg>
+              </Link>
+            )}
+
+            {/* ХЭЛ СОНГОГЧ */}
             <div className="relative">
               <button
+                type="button"
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex gap-2 items-center py-1.5 px-3 text-xs font-bold text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors cursor-pointer"
+                aria-expanded={isLangOpen}
+                aria-label={text('language')}
+                className={`flex gap-1.5 items-center py-1.5 px-3 text-xs font-bold rounded-full transition-colors cursor-pointer ${
+                  onHero
+                    ? 'text-white bg-white/15 hover:bg-white/25'
+                    : 'text-gray-800 bg-gray-100 hover:bg-gray-200'
+                }`}
               >
-                <span className="font-black text-[#15803d]">
+                <span className={`font-black ${onHero ? 'text-white' : GREEN}`}>
                   {currentLang.label}
                 </span>
-                <span className="min-[1200px]:hidden">{currentLang.name}</span>
-                <span className="text-[10px] text-gray-500">▼</span>
+                <Chevron open={isLangOpen} className={onHero ? 'text-white/80' : 'text-gray-500'} />
               </button>
 
               {isLangOpen && (
@@ -234,132 +402,95 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               )}
             </div>
 
-            {/* Нарийн дэлгэц (< 1200px) дээр үндсэн цэсийг нээх товч */}
+            {/* ☰ Нарийн дэлгэц (< 1200px) дээр бүтэн дэлгэцийн цэс */}
             <button
+              ref={burgerRef}
               type="button"
-              onClick={() => {
-                if (isMobileOpen) closeMenu();
-                setIsMobileOpen(!isMobileOpen);
-              }}
-              aria-label={isMobileOpen ? 'Цэс хаах' : 'Цэс нээх'}
+              onClick={() => (isMobileOpen ? closeMenu() : setIsMobileOpen(true))}
+              aria-label={isMobileOpen ? text('closeMenu') : text('openMenu')}
               aria-expanded={isMobileOpen}
-              className="flex justify-center items-center w-10 h-10 text-gray-800 hover:bg-gray-100 rounded-full transition-colors cursor-pointer min-[1200px]:hidden"
+              aria-controls="nav-mobile"
+              className={`${iconBtn} min-[1200px]:hidden`}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d={
-                    isMobileOpen
-                      ? 'M6 18L18 6M6 6l12 12'
-                      : 'M4 6h16M4 12h16M4 18h16'
-                  }
+                  d={isMobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
                 />
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Нарийн дэлгэцийн үндсэн цэсийн жагсаалт. Сонгосон цэсийн дэлгэрэнгүй нь доорх mega menu-д гарна */}
-        {isMobileOpen && (
-          <nav
-            aria-label="Үндсэн цэс"
-            className="flex overflow-x-auto gap-2 px-6 pb-4 mx-auto max-w-7xl sm:px-10 min-[1200px]:hidden"
-          >
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                type="button"
-                onClick={() =>
-                  setActiveMenu(activeMenu === section.id ? null : section.id)
-                }
-                className={`shrink-0 py-2 px-4 text-sm font-semibold rounded-full border transition-colors cursor-pointer ${
-                  activeMenu === section.id
-                    ? 'text-white bg-[#15803d] border-[#15803d]'
-                    : 'text-gray-700 bg-white border-gray-200 hover:border-gray-400'
-                }`}
-              >
-                <span {...labelProps}>{labelOf(section)}</span>
-              </button>
-            ))}
-          </nav>
-        )}
-
-        {/* 4. ДООШОО ДЭЛГЭГДДЭГ MEGA MENU. Хаалттай үед ч HTML-д байна, зөвхөн CSS-ээр нуугдана */}
+        {/* 4. КОМПЬЮТЕРИЙН САМБАР. Дэд цэс бүр нэг багана, багтахгүй бол дараагийн мөрөнд.
+            Хаалттай үед ч HTML-д байна, зөвхөн CSS-ээр нуугдана (SEO). */}
         <div
-          className={`bg-white border-t border-gray-100 shadow-2xl transition-all duration-200 animate-in fade-in slide-in-from-top-2 ${
+          ref={panelRef}
+          className={`overflow-y-auto absolute inset-x-0 top-full max-h-[calc(100svh-var(--nav-h))] bg-[#f3f3f3] border-t border-gray-200 shadow-xl max-[1199px]:hidden ${
             activeMenu ? '' : 'hidden'
           }`}
-          onMouseEnter={() => {
-            if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
-          }}
-          onMouseLeave={handleMouseLeave}
         >
-          <div className="py-10 px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
-            {sections.map((section) => (
+          <div className="relative py-12 px-6 mx-auto max-w-7xl sm:px-10">
+            <button
+              type="button"
+              onClick={closePanel}
+              aria-label={text('closePanel')}
+              title={text('closePanel')}
+              className="flex absolute top-4 right-4 justify-center items-center w-10 h-10 text-gray-700 hover:text-black hover:bg-black/5 rounded-full transition-colors cursor-pointer"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            {desktopSections.map((section) => (
               <div
                 key={section.id}
                 id={`nav-panel-${section.id}`}
+                role="region"
+                aria-label={labelOf(section)}
                 className={activeMenu === section.id ? '' : 'hidden'}
               >
-                <div className="flex gap-3 items-baseline pb-4 mb-6 border-b border-gray-100">
-                  <span
-                    {...labelProps}
-                    className={`text-sm font-black tracking-wider text-gray-900 uppercase ${labelProps.className || ''}`}
-                  >
-                    {labelOf(section)}
-                  </span>
-                  {!isEnglish && (
-                    <span className="text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
-                      {section.en}
-                    </span>
-                  )}
-                </div>
-                <ul className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+                <ul className="flex flex-wrap gap-x-8 gap-y-12 pr-10">
                   {section.items.map((item) => (
-                    <li key={`${item.href}-${item.mn}`}>
+                    <li
+                      key={`${item.href}-${item.mn}`}
+                      className="flex flex-col flex-1 min-w-[9.5rem] max-w-[18rem]"
+                    >
                       <NavItemLink
                         item={item}
                         english={isEnglish}
                         onClick={closeMenu}
-                        className="group block"
-                        badgeClassName="inline-block mt-1.5 py-0.5 px-2 text-[10px] font-bold rounded-full"
+                        className="block text-[24px] font-bold leading-tight text-gray-900 hover:text-[#15803d] transition-colors xl:text-[26px]"
+                        badgeClassName="inline-block ml-2 py-0.5 px-2 align-middle text-[10px] font-bold rounded-full"
                       >
-                        <span
-                          {...labelProps}
-                          className={`block text-xs font-black tracking-wider text-[#15803d] uppercase group-hover:underline ${labelProps.className || ''}`}
-                        >
-                          {labelOf(item)}
-                        </span>
-                        {!isEnglish && (
-                          <span className="block mt-0.5 text-[10px] font-medium tracking-wider text-neutral-400 uppercase">
-                            {item.en}
-                          </span>
-                        )}
+                        {label(item)}
                       </NavItemLink>
                       {item.children && item.children.length > 0 && (
-                        <ul className="mt-3 space-y-2 text-sm font-normal text-neutral-700">
+                        <ul className="mt-4 space-y-2.5">
                           {item.children.map((child) => (
                             <li key={`${child.href}-${child.mn}`}>
                               <NavItemLink
                                 item={child}
                                 english={isEnglish}
                                 onClick={closeMenu}
-                                className="block hover:text-[#15803d] transition-colors"
-                                badgeClassName="ml-2 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
+                                className="group flex gap-2 items-baseline text-base leading-snug text-gray-600 hover:text-gray-900 transition-colors"
+                                badgeClassName="ml-1 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
                               >
-                                <span {...labelProps}>{labelOf(child)}</span>
+                                <span aria-hidden="true" className={`font-bold ${GREEN}`}>›</span>
+                                {label(child, 'group-hover:underline')}
                               </NavItemLink>
                             </li>
                           ))}
                         </ul>
                       )}
+                      <ViewAllLink
+                        item={item}
+                        label={textLabel('viewAll')}
+                        onClick={closeMenu}
+                        className={`inline-block mt-5 text-base font-bold ${GREEN} hover:underline`}
+                      />
                     </li>
                   ))}
                 </ul>
@@ -367,7 +498,110 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             ))}
           </div>
         </div>
+
+        {/* 5. УТАСНЫ БҮТЭН ДЭЛГЭЦИЙН ЦЭС. Хэсэг, дэд цэс бүр дарахад доош задарна (accordion).
+            "Төлөвлөх & захиалах" энд бүтнээрээ. Хаалттай үед ч HTML-д байна (SEO). */}
+        <nav
+          id="nav-mobile"
+          aria-label={text('mainNav')}
+          className={`overflow-y-auto fixed inset-x-0 bottom-0 top-(--nav-h) bg-white border-t border-gray-100 overscroll-contain min-[1200px]:hidden ${
+            isMobileOpen ? '' : 'hidden'
+          }`}
+        >
+          <ul className="px-4 pt-2 pb-16 mx-auto max-w-3xl sm:px-10">
+            {sections.map((section) => {
+              const sectionOpen = mobileSection === section.id;
+              return (
+                <li key={section.id} className="border-b border-gray-200">
+                  <button
+                    type="button"
+                    aria-expanded={sectionOpen}
+                    aria-controls={`nav-m-${section.id}`}
+                    onClick={() => setMobileSection(sectionOpen ? null : section.id)}
+                    className={`flex justify-between items-center py-4 w-full text-left text-xl font-bold cursor-pointer ${
+                      sectionOpen ? GREEN : 'text-gray-900'
+                    }`}
+                  >
+                    {label(section)}
+                    <Chevron open={sectionOpen} className="w-4 h-4" />
+                  </button>
+                  <ul id={`nav-m-${section.id}`} className={`pb-3 ${sectionOpen ? '' : 'hidden'}`}>
+                    {section.items.map((item) => {
+                      const key = `${section.id}:${item.href}:${item.mn}`;
+                      const hasChildren = !!item.children?.length;
+                      const itemOpen = mobileItem === key;
+                      const id = `nav-m-${section.id}-${section.items.indexOf(item)}`;
+                      return (
+                        <li key={key}>
+                          {hasChildren ? (
+                            <button
+                              type="button"
+                              aria-expanded={itemOpen}
+                              aria-controls={id}
+                              onClick={() => setMobileItem(itemOpen ? null : key)}
+                              className="flex justify-between items-center py-2.5 pl-3 w-full text-left text-[17px] font-semibold text-gray-800 cursor-pointer"
+                            >
+                              {label(item)}
+                              <Chevron open={itemOpen} className="text-gray-400" />
+                            </button>
+                          ) : (
+                            <NavItemLink
+                              item={item}
+                              english={isEnglish}
+                              onClick={closeMenu}
+                              className="block py-2.5 pl-3 text-[17px] font-semibold text-gray-800"
+                              badgeClassName="ml-2 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
+                            >
+                              {label(item)}
+                            </NavItemLink>
+                          )}
+                          {hasChildren && (
+                            <ul
+                              id={id}
+                              className={`py-3 pr-3 pl-6 mb-1 space-y-2 bg-[#f3f3f3] rounded-xl ${itemOpen ? '' : 'hidden'}`}
+                            >
+                              {item.children!.map((child) => (
+                                <li key={`${child.href}-${child.mn}`}>
+                                  <NavItemLink
+                                    item={child}
+                                    english={isEnglish}
+                                    onClick={closeMenu}
+                                    className="flex gap-2 items-baseline py-1 text-base text-gray-600"
+                                    badgeClassName="ml-1 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
+                                  >
+                                    <span aria-hidden="true" className={`font-bold ${GREEN}`}>›</span>
+                                    {label(child)}
+                                  </NavItemLink>
+                                </li>
+                              ))}
+                              <li>
+                                <ViewAllLink
+                                  item={item}
+                                  label={textLabel('viewAll')}
+                                  onClick={closeMenu}
+                                  className={`inline-block pt-1 text-base font-bold ${GREEN}`}
+                                />
+                              </li>
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </header>
+
+      {/* Самбар нээлттэй үед ард талыг бүдэгрүүлнэ, дарахад хаагдана (header-ээс гадна дарсан тул) */}
+      {activeMenu && (
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 z-40 bg-black/25 max-[1199px]:hidden"
+        />
+      )}
 
       {/* 5. ХАЙЛТЫН ЦОНХ (MODAL) - ШҮҮГДДЭГ СИСТЕМТЭЙ */}
       {isSearchOpen && (

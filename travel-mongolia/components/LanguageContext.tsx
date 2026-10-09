@@ -19,6 +19,8 @@ export const DICTIONARY = {
     tourTypes: 'Аяллын төрлүүд',
     planning: 'Төлөвлөгөө',
     search: 'Хайх',
+    // Нүүр хуудасны hero-гийн H1-ийн дээрх мөр (heroTag нь RegionMap-д хэвээр)
+    heroSky: 'Мөнх хөх тэнгэрийн орон',
     heroTag: 'DISCOVER THE LAND OF BLUE SKY',
     heroTitle: 'Монголд тавтай морил',
     heroDesc:
@@ -35,6 +37,7 @@ export const DICTIONARY = {
     tourTypes: 'Tour Types',
     planning: 'Planning',
     search: 'Search',
+    heroSky: 'Land of the Eternal Blue Sky',
     heroTag: 'DISCOVER THE LAND OF BLUE SKY',
     heroTitle: 'Welcome to Mongolia',
     heroDesc:
@@ -51,6 +54,7 @@ export const DICTIONARY = {
     tourTypes: 'Виды туров',
     planning: 'Планирование',
     search: 'Поиск',
+    heroSky: 'Страна Вечного Синего Неба',
     heroTag: 'ОТКРОЙТЕ ДЛЯ СЕБЯ СТРАНУ СИНЕГО НЕБА',
     heroTitle: 'Добро пожаловать в Монголию',
     heroDesc:
@@ -67,6 +71,7 @@ export const DICTIONARY = {
     tourTypes: '旅游类型',
     planning: '行程规划',
     search: '搜索',
+    heroSky: '长生天之国',
     heroTag: '探索蓝天之国',
     heroTitle: '欢迎来到蒙古国',
     heroDesc: '领略游牧民族的故乡、原始未触的自然风光与一望无际的草原。',
@@ -82,6 +87,7 @@ export const DICTIONARY = {
     tourTypes: 'ツアータイプ',
     planning: 'プランニング',
     search: '検索',
+    heroSky: '永遠の青い空の国',
     heroTag: '青い空の国を旅する',
     heroTitle: 'モンゴルへようこそ',
     heroDesc: '遊牧民の故郷、大自然と果てしなく広がる大草原の旅へ。',
@@ -97,6 +103,7 @@ export const DICTIONARY = {
     tourTypes: '투어 종류',
     planning: '여행 계획',
     search: '검색',
+    heroSky: '영원한 푸른 하늘의 나라',
     heroTag: '푸른 하늘의 나라를 만나보세요',
     heroTitle: '몽골에 오신 것을 환영합니다',
     heroDesc:
