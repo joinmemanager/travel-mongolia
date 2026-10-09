@@ -9,11 +9,12 @@ import { liveHref } from '../lib/navigation';
 // Нүүр хуудасны "нислэг" hero. 400vh өндөр хэсэг гүйлгэхэд дэлгэц дүүрэн хэсэг наалдаж (sticky),
 // гүйлгэлтийн 0–100% нь бичлэгийн эхнээс төгсгөл хүртэлх хугацаа болно. Бичлэг өөрөө хэзээ ч
 // тоглохгүй: доош гүйлгэвэл урагшилж, зогсвол зогсож, дээш гүйлгэвэл ухарна.
-// - Бичлэг: public/hero/hero-flight-{720,480}.mp4. Кадр бүр keyframe (all-intra H.264), тиймээс
-//   currentTime-ийг аль ч кадр руу шууд үсрүүлж болно. Эх файлууд (flight-1/2/3.mp4) git-д ороогүй.
+// - Бичлэг: public/hero/hero-flight-{desktop,mobile}.mp4, хоёулаа 720p (эх файл 720p тул томруулаагүй).
+//   6 кадр тутамд keyframe тул currentTime-ийг аль ч кадр руу гацалтгүй үсрүүлнэ (хэмжилт:
+//   docs/hero-quality/README.md). Эх файлууд (flight-1/2/3.mp4) git-д ороогүй.
 // - Эхлээд зөвхөн poster (эхний кадр, WebP) харагдана, энэ нь LCP. Бичлэгийг хуудас бүрэн
 //   ачаалсны дараа бүтнээр нь татаж (blob), бэлэн болмогц poster-ийн оронд гаргана.
-// - Утас (767px хүртэл) болон "data saver" горимд 480p хувилбар.
+// - Утас (767px хүртэл) болон "data saver" горимд илүү шахсан mobile хувилбар (~5.6MB, компьютерт ~14MB).
 // - "Reduce motion": бичлэг татагдахгүй, хөдөлгөөнгүй poster, H1 ба товч шууд харагдана (CSS).
 // - H1 (HeroText) HTML-д үргэлж байна, зөвхөн opacity нь өөрчлөгдөнө (SEO).
 
@@ -93,7 +94,7 @@ export default function HeroFlight() {
       const conn = (navigator as any).connection;
       const small = window.matchMedia('(max-width: 767px)').matches || conn?.saveData === true;
       try {
-        const res = await fetch(small ? '/hero/hero-flight-480.mp4' : '/hero/hero-flight-720.mp4', {
+        const res = await fetch(small ? '/hero/hero-flight-mobile.mp4' : '/hero/hero-flight-desktop.mp4', {
           signal: controller.signal,
         });
         if (!res.ok) return;
@@ -156,9 +157,7 @@ export default function HeroFlight() {
         {/* Poster: эхний кадр, LCP */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/hero/hero-flight-poster-720.webp"
-          srcSet="/hero/hero-flight-poster-480.webp 854w, /hero/hero-flight-poster-720.webp 1280w"
-          sizes="100vw"
+          src="/hero/hero-flight-poster.webp"
           alt=""
           fetchPriority="high"
           decoding="async"
