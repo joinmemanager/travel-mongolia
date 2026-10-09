@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Hero бичлэгийн эх файлууд (зөвхөн шахсан hero-flight-* commit хийнэ)
+/public/hero/flight-*.mp4
