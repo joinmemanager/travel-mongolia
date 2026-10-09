@@ -24,5 +24,10 @@ ENC='-an -c:v libx264 -preset veryslow -g 6 -keyint_min 6 -sc_threshold 0 -bf 2 
 # 3. Poster = эхний кадр (LCP), ≤250KB
 "$FF" -y -v error -i "$TMP/master.mp4" -frames:v 1 -c:v libwebp -quality 90 -compression_level 6 hero-flight-poster.webp
 
+# 4. Нөөц горимын кадрууд (iOS Low Power Mode г.м.): секундэд 12 кадр, 720p WebP, нийт ≤6MB
+rm -rf frames && mkdir frames
+"$FF" -y -v error -i "$TMP/master.mp4" -vf fps=12 -c:v libwebp -quality 42 -compression_level 6 frames/%03d.webp
+
 rm -rf "$TMP"
 ls -la hero-flight-*
+echo "frames: $(ls frames | wc -l) файл, $(du -sh frames | cut -f1)"
