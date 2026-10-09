@@ -12,6 +12,16 @@ const nextConfig = {
       { source: '/inspiration/magazine', destination: '/stories', permanent: true },
     ];
   },
+  // Hero бичлэг, poster, кадрууд: нэрэнд агуулгын hash байгаа тул (scripts/hero/build-hero-flight.sh)
+  // хөтөч 1 жил дахин шалгалгүй кэшлэнэ
+  async headers() {
+    return [
+      {
+        source: '/hero/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+    ];
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
