@@ -98,7 +98,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Арга хэмжээ, баяр наадам', en: 'Events', href: '/things-to-do/events', status: 'live',
         children: [
-          page('Баяр наадам, арга хэмжээ', 'Events', '/things-to-do/events'),
+          page('Уламжлалт баяр наадам', 'Traditional Festivals', '/things-to-do/events'),
           page('Фестивалиуд', 'Festivals', '/things-to-do/festivals'),
         ],
       },

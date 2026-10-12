@@ -147,3 +147,10 @@
 16. Сэтгүүл (`/inspiration/magazine`)
 17. Event жагсаалт (`/things-to-do/festivals`, `ExperienceShowcase`)
 18. Event дэлгэрэнгүй (`/recommendation/[id]`)
+
+## 6. Хэсгийн хуудас (feat/section-layout, 2026-10-12)
+
+Монголыг нээ, Түүх & өв цэсний хэсгүүдийг нэг загварт оруулж байна: дээр нь хэсгийн hero (`ImageHero`),
+доор зүүн талд «Сэдвийн жагсаалт», баруун талд сонгосон дэд сэдвийн агуулга. Компонентууд
+`components/section/` дотор, тохиргоо `lib/sections.ts`-д. Дэлгэрэнгүйг [section-layout.md](section-layout.md)-аас үзнэ.
+Одоогоор зөвхөн «Монголын тухай» (`/about/at-a-glance`, `/about/history`, `/about/modern`) шилжсэн (пилот).

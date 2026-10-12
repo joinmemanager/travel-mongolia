@@ -1,7 +1,6 @@
 'use client';
 
 import AboutRelated from '@/components/templates/AboutRelated';
-import ImageHero from '@/components/templates/ImageHero';
 
 import React from 'react';
 
@@ -112,41 +111,15 @@ const HISTORY_DATA: HistoryPeriod[] = [
 
 export default function HistoryPage() {
   return (
-    <main className="w-full bg-white text-neutral-900 pb-40 font-sans selection:bg-[#15803d] selection:text-white">
+    <div>
       
-      {/* 1. HERO ХЭСЭГ */}
-      <ImageHero
-        image={{
-          src: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=2400',
-          alt: 'Монголын түүх',
-        }}
-        kicker="02. History of Mongolia"
-        title="Монголын түүх"
-        intro="Хүннүгийн анхны эзэнт гүрнээс Их Монгол Улс, дэлхийн хуурай замын хамгийн агуу гүрнээс өнөөгийн ардчилсан Монгол хүртэлх он цагийн аялал"
-      />
-
-      {/* 2. НААЛДДАГ ҮЕ ШАТНЫ НАВИГАЦИ */}
-      <div className="sticky top-(--nav-h) z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
-        <div className="w-full px-4 sm:px-8 py-3 flex items-center justify-start lg:justify-center gap-2 overflow-x-auto scrollbar-none text-xs sm:text-sm font-bold">
-          {HISTORY_DATA.map((item, idx) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className="px-3.5 py-2 rounded-full bg-neutral-100 hover:bg-neutral-900 hover:text-white transition-colors whitespace-nowrap shrink-0"
-            >
-              0{idx + 1}. {item.title}
-            </a>
-          ))}
-        </div>
-      </div>
-
       {/* 3. ТҮҮХИЙН 7 ҮЕ ШАТЫН ТАЙМЛАЙН БҮТЭЦ */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 space-y-36">
+      <div className="space-y-36">
         {HISTORY_DATA.map((period, idx) => (
           <section
             key={period.id}
             id={period.id}
-            className="scroll-mt-28 border-b border-neutral-200 pb-24 last:border-b-0"
+            className="scroll-mt-[calc(var(--nav-h)+5rem)] lg:scroll-mt-[calc(var(--nav-h)+1.5rem)] border-b border-neutral-200 pb-24 last:border-b-0"
           >
             {/* Толгойн үе шат ба дугаар */}
             <div className="flex items-center gap-4 mb-8">
@@ -159,15 +132,15 @@ export default function HistoryPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
               
               {/* Зүүн тал: Тайлбар болон Баримтууд */}
-              <div className="lg:col-span-7">
+              <div className="xl:col-span-7">
                 <span className="inline-block bg-emerald-50 text-[#15803d] text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-4">
                   {period.badge}
                 </span>
 
-                <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight leading-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-tight mb-6">
                   {period.title}
                 </h2>
 
@@ -190,7 +163,7 @@ export default function HistoryPage() {
               </div>
 
               {/* Баруун тал: Зураг */}
-              <div className="lg:col-span-5">
+              <div className="xl:col-span-5">
                 <div className="relative w-full h-[360px] sm:h-[480px] rounded-3xl overflow-hidden shadow-lg">
                   <img loading="lazy" decoding="async" src={period.imageUrl} alt={period.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -224,9 +197,9 @@ export default function HistoryPage() {
           </a>
         </div>
       </div>
-      <AboutRelated current="/about/history" />
+      <AboutRelated current="/about/history" embedded />
 
-    </main>
+    </div>
   );
 }
 

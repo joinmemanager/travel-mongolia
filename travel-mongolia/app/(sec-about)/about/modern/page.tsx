@@ -1,11 +1,10 @@
 'use client';
 
 import AboutRelated from '@/components/templates/AboutRelated';
-import ImageHero from '@/components/templates/ImageHero';
 
 import { liveHref } from '@/lib/navigation';
 
-import React, { useRef } from 'react';
+import React from 'react';
 
 
 interface ModernItem {
@@ -156,81 +155,19 @@ const MODERN_SECTIONS: ModernSection[] = [
 ];
 
 export default function ModernMongoliaPage() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <main className="w-full bg-white text-neutral-900 pb-36 font-sans selection:bg-[#15803d] selection:text-white">
-      {/* 1. HERO ХЭСЭГ */}
-      <ImageHero
-        image={{
-          src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2400',
-          alt: 'Өнөөгийн Монгол',
-        }}
-        kicker="09. Mongolia Today"
-        title="Өнөөгийн Монгол"
-        intro="Орчин үеийн залуусын бүтээлч байдал, шинэлэг урлаг соёл, дижитал хөгжил ба орчин үеийн хотын амьдрал"
-      />
-
-      {/* 2. НААЛДДАГ НАВИГАЦИ */}
-      <div className="sticky top-(--nav-h) z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
-        <div className="relative w-full max-w-7xl mx-auto flex items-center px-2 sm:px-6">
-          <button
-            type="button"
-            onClick={() => handleScroll('left')}
-            aria-label="Previous"
-            className="absolute left-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-emerald-200 shadow-md flex items-center justify-center text-emerald-800 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-
-          <div
-            ref={scrollRef}
-            className="w-full py-3 px-12 flex items-center gap-2.5 overflow-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden text-xs sm:text-sm font-bold"
-          >
-            {MODERN_SECTIONS.map((sec) => (
-              <a
-                key={sec.id}
-                href={`#${sec.id}`}
-                className="px-4 py-2 rounded-full bg-emerald-50/70 border border-emerald-100 text-emerald-950 hover:bg-[#15803d] hover:text-white transition-colors whitespace-nowrap shrink-0"
-              >
-                {sec.title}
-              </a>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={() => handleScroll('right')}
-            aria-label="Next"
-            className="absolute right-2 z-10 w-9 h-9 rounded-full bg-white/95 border border-emerald-200 shadow-md flex items-center justify-center text-emerald-800 hover:bg-[#15803d] hover:text-white transition-all cursor-pointer"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
+    <div>
       {/* 3. ДЭЛГЭРЭНГҮЙ ХЭСГҮҮД */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-16 space-y-28">
+      <div className="space-y-28">
         {MODERN_SECTIONS.map((sec) => (
           <section
             key={sec.id}
             id={sec.id}
-            className="scroll-mt-28 space-y-10"
+            className="scroll-mt-[calc(var(--nav-h)+5rem)] lg:scroll-mt-[calc(var(--nav-h)+1.5rem)] space-y-10"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <div className="lg:col-span-6 space-y-5">
-                <h2 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="xl:col-span-6 space-y-5">
+                <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-tight">
                   {sec.title}
                 </h2>
                 <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
@@ -257,12 +194,12 @@ export default function ModernMongoliaPage() {
                 )}
               </div>
 
-              <div className="lg:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
+              <div className="xl:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
                 <img loading="lazy" decoding="async" src={sec.imageUrl} alt={sec.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {sec.items.map((item, idx) => (
                 <div
                   key={idx}
@@ -285,8 +222,8 @@ export default function ModernMongoliaPage() {
           </section>
         ))}
       </div>
-      <AboutRelated current="/about/modern" />
-    </main>
+      <AboutRelated current="/about/modern" embedded />
+    </div>
   );
 }
 

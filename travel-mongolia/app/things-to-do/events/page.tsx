@@ -11,7 +11,7 @@ export default function EventsPage() {
         alt: 'Events Background',
       }}
       kicker="07. ҮЗЭХ, ХИЙХ ЗҮЙЛС"
-      title="Баяр наадам, арга хэмжээ"
+      title="Уламжлалт баяр наадам"
       intro="Үндэсний их баяр наадам, Алтайн бүргэдийн баяр, Хөвсгөлийн мөсний баяр зэрэг Монголын өвөрмөц уламжлалт наадам, соёлын фестивалиуд."
       categories={EVENTS_CATEGORIES}
       spots={EVENTS_SPOTS}

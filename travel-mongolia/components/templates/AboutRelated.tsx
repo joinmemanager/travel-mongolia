@@ -15,9 +15,10 @@ const ABOUT_PAGES = [
   { label: 'Хүмүүс', href: '/about/people' },
 ];
 
-export default function AboutRelated({ current }: { current: string }) {
+// embedded: хэсгийн хуудасны баруун талд (components/section/SectionLayout) өргөн, зай нь layout-аас
+export default function AboutRelated({ current, embedded }: { current: string; embedded?: boolean }) {
   return (
-    <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-24">
+    <div className={embedded ? 'mt-24' : 'max-w-7xl mx-auto px-6 sm:px-10 mt-24'}>
       <LinkCard
         title="Холбогдох хуудсууд"
         links={ABOUT_PAGES.filter((page) => page.href !== current)}
