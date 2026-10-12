@@ -218,7 +218,7 @@ export default function NomadicLifePage() {
       />
 
       {/* 2. НААЛДДАГ НАВИГАЦИ (ДУГААРГҮЙ, СУМТАЙ ЗӨӨЛӨН ГҮЙДЭГ) */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
+      <div className="sticky top-(--nav-h) z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
         <div className="relative w-full max-w-7xl mx-auto flex items-center px-2 sm:px-6">
           <button
             type="button"

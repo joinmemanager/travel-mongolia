@@ -22,7 +22,8 @@ html {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Сайтын фонт: lib/fonts.ts (--font-site). Serif фонт хэрэглэхгүй. */
+  --font-sans: var(--font-site), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -36,7 +37,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-site), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* 1. Сансрын зураг дээрх газрын нэрсийг 100% цэвэр, тод, хурц харагдуулах */
@@ -124,4 +125,18 @@ html, body {
   opacity: 0;
   transform: translateX(-50%);
   animation: hero-spinner-spin 1s linear infinite, hero-spinner-in 0.5s ease-out 2s forwards;
+}
+
+/* Дээд цэсний өндөр (Navbar). Наалдсан дэд цэсүүд top-(--nav-h)-ээр түүний доор зогсоно,
+   #anchor руу үсрэхэд гарчиг цэсний ард нуугдахгүй. */
+:root {
+  --nav-h: 4rem;
+}
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 5rem;
+  }
+}
+html {
+  scroll-padding-top: var(--nav-h);
 }

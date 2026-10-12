@@ -88,7 +88,7 @@ export default function CategoryListing<T extends ListingSpot>({
       <ImageHero image={hero} kicker={kicker} title={title} intro={intro} />
 
       {/* Ангиллын шүүлтүүр: 2 талдаа сумтай хэвтээ мөр */}
-      <div className="sticky top-0 z-40 bg-white border-b border-neutral-200 shadow-sm">
+      <div className="sticky top-(--nav-h) z-40 bg-white border-b border-neutral-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative flex items-center py-3.5">
           <button
             type="button"

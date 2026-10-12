@@ -55,7 +55,7 @@ export default function CategoryDirectory({
       <ImageHero image={hero} kicker={kicker} title={title} intro={intro} />
 
       {nav && nav.length > 0 && (
-        <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-2xs">
+        <div className="sticky top-(--nav-h) z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-2xs">
           <div className="relative w-full max-w-7xl mx-auto flex items-center px-4">
             <button
               type="button"

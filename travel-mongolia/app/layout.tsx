@@ -6,14 +6,15 @@ import './globals.css';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
-import { Rubik } from 'next/font/google';
 import Script from 'next/script';
 
 import Footer from '@/components/Footer';
+import { siteFont } from '@/lib/fonts';
 import {
   FOOTER_LEGAL,
   FOOTER_NAVIGATION,
   MAIN_NAVIGATION,
+  PLAN_SECTION_ID,
   isPreviewEnv,
   visibleItems,
   visibleSections,
@@ -22,13 +23,6 @@ import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 import { LanguageProvider } from '../components/LanguageContext';
 import Navbar from '../components/Navbar';
-
-const rubik = Rubik({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-rubik',
-  display: 'swap',
-});
 
 const siteDescription =
   'Монголд аялах бүх мэдээлэл нэг дор: үзэх газрууд, нүүдэлчин соёл, баяр наадам, аяллын маршрут, байрлах газар, аяллын зөвлөгөө.';
@@ -81,10 +75,8 @@ export default function RootLayout({
   const preview = isPreviewEnv();
 
   return (
-    <html lang="mn">
-      <body
-        className={`${rubik.className} bg-white text-neutral-900 antialiased`}
-      >
+    <html lang="mn" className={siteFont.variable}>
+      <body className="font-sans bg-white text-neutral-900 antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
@@ -94,7 +86,11 @@ export default function RootLayout({
           <Navbar sections={visibleSections(MAIN_NAVIGATION, preview)} />
           {children}
           <Footer
-            groups={visibleSections(FOOTER_NAVIGATION, preview)}
+            groups={visibleSections(
+              // "Төлөвлөх & захиалах" дээд цэсэнд icon болсон тул footer-т бүтнээрээ
+              [...MAIN_NAVIGATION.filter((s) => s.id === PLAN_SECTION_ID), ...FOOTER_NAVIGATION],
+              preview
+            )}
             legal={visibleItems(FOOTER_LEGAL, preview)}
           />
         </LanguageProvider>

@@ -58,7 +58,7 @@ export default function RoutesExplorer({
       />
 
       {/* 2. НАВИГАЦИ: СУМАН ТОХИРГООТОЙ, ТАСРАХГҮЙ ЦЭВЭРХЭН ХУВИЛБАР */}
-      <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-2xs">
+      <div className="sticky top-(--nav-h) z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-2xs">
         <div className="w-full max-w-7xl mx-auto flex items-center gap-2 px-4 sm:px-8 py-3">
           {/* Зүүн тийш гүйлгэх сум */}
           <button

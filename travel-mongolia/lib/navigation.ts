@@ -39,6 +39,10 @@ export interface NavSection {
   items: NavItem[];
 }
 
+// Энэ хэсэг дээд цэсэнд гарахгүй: хайлтын хажуух газрын зургийн icon түүний эхний хуудас руу
+// очно. Хуудсууд нь утасны цэс, footer-т бүтнээрээ байна.
+export const PLAN_SECTION_ID = 'plan';
+
 const BOOK_NOW_URL =
   'https://joinme.mn?utm_source=travelhubmongolia&utm_medium=referral&utm_campaign=nav';
 

@@ -178,7 +178,7 @@ function MagazineContent() {
       />
 
       {/* Шүүлтүүр товчлуурууд - Дээд талд наалдаж үлдэнэ */}
-      <div className="sticky top-0 z-40 bg-[#fcfbf9]/95 backdrop-blur-md border-b border-neutral-200 py-4 shadow-sm">
+      <div className="sticky top-(--nav-h) z-40 bg-[#fcfbf9]/95 backdrop-blur-md border-b border-neutral-200 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 flex flex-wrap gap-2.5">
           <button
             type="button"

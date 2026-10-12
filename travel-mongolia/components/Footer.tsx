@@ -26,7 +26,7 @@ export default function Footer({
       {/* GA4 контентын хэмжилт (docs/analytics.md). Харагдах зүйлгүй. */}
       <Analytics />
       <div className="px-6 mx-auto max-w-7xl sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 gap-10 pb-12 border-b border-neutral-800 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 pb-12 border-b border-neutral-800 md:grid-cols-2 lg:grid-cols-6">
           {/* 1-р багана: Лого, танилцуулга & Сошиал холбоосууд */}
           <div className="space-y-5 lg:col-span-2">
             <Link href="/" className="inline-block">
@@ -88,7 +88,7 @@ export default function Footer({
             </div>
           </div>
 
-          {/* 2–3-р багана: Бүс нутаг, Хэрэгцээт мэдээлэл */}
+          {/* 2–4-р багана: Төлөвлөх & захиалах, Бүс нутаг, Хэрэгцээт мэдээлэл */}
           {groups.map((group) => (
             <div key={group.id} className="space-y-4">
               <h4 className="text-sm font-bold tracking-wider text-neutral-200 uppercase">

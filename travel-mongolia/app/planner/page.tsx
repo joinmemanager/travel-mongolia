@@ -112,7 +112,7 @@ export default function PlannerPage() {
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900 flex flex-col">
       {/* Дээд статус мөр */}
-      <header className="border-b border-neutral-200 bg-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sticky top-0 z-30 shadow-xs">
+      <header className="border-b border-neutral-200 bg-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sticky top-(--nav-h) z-30 shadow-xs">
         <div className="flex items-center gap-3">
           <Link href="/plan/safety-info" className="text-xs font-bold text-neutral-400 hover:text-neutral-700">
             ← Буцах
