@@ -93,8 +93,8 @@ export default function CategoryListing<T extends ListingSpot>({
     embedded && categories.length > 1
       ? { param: 'cat', options: categories.filter((c) => c.id !== 'all') }
       : null;
-  useRegisterSectionFilters(filterSet);
   const urlFilter = useActiveFilter(filterSet);
+  useRegisterSectionFilters(filterSet && { ...filterSet, active: urlFilter });
   const current = embedded ? urlFilter : activeTab;
 
   const filteredSpots =

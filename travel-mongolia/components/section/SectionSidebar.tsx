@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import type { SectionRow } from '@/lib/sections';
 
-import { useActiveFilter, useSectionFilters, useSelectFilter } from './SectionFilters';
+import { useSectionFilters, useSelectFilter } from './SectionFilters';
 
 interface Anchor {
   id: string;
@@ -42,7 +42,7 @@ export default function SectionSidebar({ rows, contentId }: { rows: SectionRow[]
   const [anchors, setAnchors] = useState<Anchor[]>([]);
   const [activeAnchor, setActiveAnchor] = useState<string>('');
   const filters = useSectionFilters();
-  const activeFilter = useActiveFilter(filters);
+  const activeFilter = filters?.active || 'all';
   const selectFilter = useSelectFilter();
   const isActive = (row: SectionRow) => row.href === pathname;
   // Шүүлтүүр, anchor хоёулаа байвал шүүлтүүрийг нь харуулна (давхардуулахгүй)

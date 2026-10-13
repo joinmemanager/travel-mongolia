@@ -18,6 +18,9 @@ export interface SectionFilterSet {
   param: string;
   // «Бүгд»-ээс бусад ангиллууд
   options: FilterOption[];
+  // Идэвхтэй ангилал ('all' = Бүгд). Хуудас URL-аас уншиж дамжуулна: жагсаалт (layout) useSearchParams
+  // дуудвал статик хуудсуудын prerender эвдэрнэ.
+  active?: string;
 }
 
 const Ctx = createContext<{
@@ -37,7 +40,7 @@ export function useSectionFilters() {
 // Хуудаснаас: ангиллуудаа жагсаалтад бүртгэнэ (хуудаснаас гарахад арилна)
 export function useRegisterSectionFilters(set: SectionFilterSet | null) {
   const { setFilters } = useContext(Ctx);
-  const key = set ? `${set.param}:${set.options.map((o) => `${o.id}=${o.label}`).join('|')}` : '';
+  const key = set ? `${set.param}:${set.active}:${set.options.map((o) => `${o.id}=${o.label}`).join('|')}` : '';
   useEffect(() => {
     setFilters(set);
     return () => setFilters(null);
@@ -46,7 +49,7 @@ export function useRegisterSectionFilters(set: SectionFilterSet | null) {
   }, [key, setFilters]);
 }
 
-// Идэвхтэй ангилал: URL-ийн параметр, мэдэгдэхгүй утга бол 'all'
+// Хуудаснаас: идэвхтэй ангилал = URL-ийн параметр, мэдэгдэхгүй утга бол 'all'
 export function useActiveFilter(set: SectionFilterSet | null): string {
   const searchParams = useSearchParams();
   const value = set ? searchParams.get(set.param) : null;

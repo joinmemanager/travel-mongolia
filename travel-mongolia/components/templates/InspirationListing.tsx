@@ -53,8 +53,8 @@ function InspirationListingContent({ kicker, title, intro, param, filters, items
   // сонголт нь URL-ийн параметр (?cat=, ?style= г.м.). Хуудас доторх товчны мөр байхгүй.
   const filterSet =
     embedded && filters.length > 1 ? { param, options: filters.filter((f) => f.id !== 'all') } : null;
-  useRegisterSectionFilters(filterSet);
   const urlFilter = useActiveFilter(filterSet);
+  useRegisterSectionFilters(filterSet && { ...filterSet, active: urlFilter });
   const current = embedded ? urlFilter : activeFilter;
 
   const filteredItems =
