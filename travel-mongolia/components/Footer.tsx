@@ -30,14 +30,15 @@ export default function Footer({
         <div className="grid grid-cols-1 gap-10 pb-12 border-b border-neutral-800 md:grid-cols-2 lg:grid-cols-6">
           {/* 1-р багана: Лого, танилцуулга & Сошиал холбоосууд */}
           <div className="space-y-5 lg:col-span-2">
-            <Link href="/" className="inline-block">
+            {/* Өнгөт лого хар дэвсгэр дээр уншигдахгүй тул цагаан суурьтай */}
+            <Link href="/" className="inline-block py-2.5 px-4 bg-white rounded-xl">
               <Image
                 src="/brand/logo-color-trim.png"
                 alt="Travel Hub Mongolia"
                 width={976}
                 height={274}
                 sizes="180px"
-                className="w-auto h-12"
+                className="w-auto h-11"
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-neutral-400">
