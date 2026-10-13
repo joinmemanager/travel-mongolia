@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import type { NavItem, NavSection } from '@/lib/navigation';
@@ -30,9 +31,14 @@ export default function Footer({
           {/* 1-р багана: Лого, танилцуулга & Сошиал холбоосууд */}
           <div className="space-y-5 lg:col-span-2">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-black tracking-tighter text-white">
-                mongolia<span className="text-[#15803d]">.</span>
-              </span>
+              <Image
+                src="/brand/logo-color-trim.png"
+                alt="Travel Hub Mongolia"
+                width={976}
+                height={274}
+                sizes="180px"
+                className="w-auto h-12"
+              />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-neutral-400">
               Монгол орны онгон дагшин байгаль, нүүдэлчдийн олон зуун жилийн
