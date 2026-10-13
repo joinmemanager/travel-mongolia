@@ -19,6 +19,8 @@ export interface SectionConfig {
   // MAIN_NAVIGATION дахь зүйлийн href (= хэсгийн үндсэн хаяг)
   baseHref: string;
   hero: SectionHeroConfig;
+  // Жагсаалтын эхний мөрийн нэр (үндсэн хаяг). Байхгүй бол «Тойм»
+  overviewLabel?: string;
 }
 
 export interface SectionRow {
@@ -61,6 +63,8 @@ export const SECTIONS: SectionConfig[] = [
   {
     id: 'events',
     baseHref: '/things-to-do/events',
+    // Эзэмшигчийн шийдвэр (2026-10-12): цэс, жагсаалт, хуудасны гарчигт «Уламжлалт баяр наадам»
+    overviewLabel: 'Уламжлалт баяр наадам',
     hero: {
       image: IMAGES.eagleHunter,
       kicker: 'Монголыг нээ',
@@ -152,12 +156,12 @@ export function sectionTitle(section: SectionConfig): string {
   return navItemOf(section)?.mn || '';
 }
 
-// Жагсаалтын мөрүүд: эхнийх нь үргэлж үндсэн хаяг, нэр нь «Тойм».
+// Жагсаалтын мөрүүд: эхнийх нь үргэлж үндсэн хаяг, нэр нь «Тойм» (эсвэл overviewLabel).
 export function sectionRows(section: SectionConfig): SectionRow[] {
   const item = navItemOf(section);
   const children = (item?.children || []).filter((c) => pathOf(c.href) !== section.baseHref);
   return [
-    { label: 'Тойм', href: section.baseHref, status: item?.status || 'live' },
+    { label: section.overviewLabel || 'Тойм', href: section.baseHref, status: item?.status || 'live' },
     ...children.map((c) => ({ label: c.mn, href: c.href, status: c.status })),
   ];
 }

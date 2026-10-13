@@ -8,6 +8,8 @@ export interface NomadicSpot {
   season: string;
   image: string;
   description: string;
+  // Тусдаа хуудас (байвал карт холбоос болно, docs/section-layout/cards-without-pages.md)
+  href?: string;
 }
 
 export const NOMADIC_CATEGORIES = [
@@ -27,13 +29,14 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
   {
     id: 'orkhon-herder-family',
     title: 'Орхоны хөндийн малчин айлд зочлох',
+    href: '/local/herder-families',
     category: 'Малчин айлд зочлох',
     categoryKey: 'visit-herder',
     location: 'Өвөрхангай аймаг',
     region: 'Хангайн бүс',
     season: '6 - 9 сар',
     image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1707669904577-2ebc6f95a826?auto=format&fit=crop&w=800&q=80',
     description:
       'Жинхэнэ нүүдэлчин айлын өдөр тутмын амьдралтай танилцаж, халуун цай, зочломтгой занг мэдрэх аялал.',
   },
@@ -59,7 +62,7 @@ export const NOMADIC_SPOTS: NomadicSpot[] = [
     region: 'Хангайн бүс',
     season: '7 - 9 сар',
     image:
-      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Хөхүүрийн айраг бүлэх, исгэх уламжлалт технологитой танилцаж, амталгаа хийх өвөрмөц туршлага.',
   },

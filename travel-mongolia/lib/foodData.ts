@@ -31,7 +31,7 @@ export const FOOD_SPOTS: FoodSpot[] = [
     region: 'Төвийн бүс',
     specialty: 'Улайсгасан чулууны жигнүүр',
     image:
-      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Голын улайсгасан чулуугаар төмөр саванд жигнэж болгосон шүүслэг, уламжлалт хүндэтгэлийн зоог.',
   },
@@ -44,7 +44,7 @@ export const FOOD_SPOTS: FoodSpot[] = [
     region: 'Хангайн бүс',
     specialty: 'Өрөм, ааруул, ээзгий',
     image:
-      'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Сарлаг, үхрийн шинэ сүүгээр бэлтгэсэн шар тос, өрөм, ааруулын амталгаа бүхий танин мэдэхүйн хөтөлбөр.',
   },
@@ -57,7 +57,7 @@ export const FOOD_SPOTS: FoodSpot[] = [
     region: 'Хангайн бүс',
     specialty: 'Хөхүүрийн гүүний айраг',
     image:
-      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Монголын хамгийн алдартай Булганы Сайханы айргийг хөхүүрээс нь шууд аягалж, исгэх арга барилтай танилцах.',
   },
@@ -70,7 +70,7 @@ export const FOOD_SPOTS: FoodSpot[] = [
     region: 'Бүх бүс',
     specialty: 'Борцтой хийцтэй цай',
     image:
-      'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Шар тос, арвайн гурил, борцоор сүлсэн эрч хүч сэргээх нүүдэлчдийн өтгөн хийцтэй цайны соёл.',
   },
@@ -83,7 +83,7 @@ export const FOOD_SPOTS: FoodSpot[] = [
     region: 'Төвийн бүс',
     specialty: 'Гар хийцийн бууз, хуушуур',
     image:
-      'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Мах татах, гурил зуурах, олон янзын хээгээр бууз чимхэж сурах гадаад, дотоодын аялагчдад зориулсан сургалт.',
   },

@@ -35,8 +35,12 @@ export default function SectionLayout({
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:flex lg:gap-12 lg:items-start lg:pt-12">
-        <SectionSidebar rows={rows} />
-        <div className="flex-1 min-w-0">
+        <SectionSidebar rows={rows} contentId="section-content" />
+        {/* Доторх anchor-ууд дээд цэс (утсан дээр мөн наалддаг товчнууд)-ны ард орохгүй */}
+        <div
+          id="section-content"
+          className="flex-1 min-w-0 [&_[id]]:scroll-mt-[calc(var(--nav-h)+5rem)] lg:[&_[id]]:scroll-mt-[calc(var(--nav-h)+1.5rem)]"
+        >
           <SectionPageHeader baseHref={section.baseHref} sectionTitle={title} rows={rows} />
           {children}
         </div>

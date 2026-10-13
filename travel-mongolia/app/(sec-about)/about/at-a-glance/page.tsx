@@ -1,15 +1,11 @@
-'use client';
-
+import TopicSections from '@/components/section/TopicSections';
 import AboutRelated from '@/components/templates/AboutRelated';
-
-import { liveHref } from '@/lib/navigation';
-
-import React from 'react';
 
 interface GlanceItem {
   title: string;
   desc: string;
   thumb: string;
+  href?: string;
 }
 
 interface GlanceSection {
@@ -31,12 +27,12 @@ const GLANCE_SECTIONS: GlanceSection[] = [
     tag: 'Ерөнхий мэдээлэл & Хил хязгаар',
     title: 'Монгол Улсын тухай үндсэн мэдээлэл',
     desc: 'Монгол Улс нь Төв Азийн өндөрлөг бүсэд оршдог, хойд талаараа ОХУ, өмнө талаараа БНХАУ-тай хиллэдэг далайд гарцгүй, бүрэн эрхт ардчилсан парламентын засаглалтай улс юм.',
-    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200',
+    imageUrl: '',
     items: [
       {
         title: 'Байршил & Хил хязгаар',
         desc: 'Төв Азийн зүрхэнд оршдог бөгөөд хойд талаараа 3,543 км, өмнө талаараа 4,709 км хиллэдэг.',
-        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+        thumb: '',
       },
       {
         title: 'Төрийн байгуулал',
@@ -57,12 +53,13 @@ const GLANCE_SECTIONS: GlanceSection[] = [
     tag: 'Ард түмэн ба нийгэм',
     title: 'Хүн ам, нийслэл',
     desc: 'Монгол Улсын нийт хүн ам 3.5 сая давсан бөгөөд залуу үеийн эзлэх хувь өндөр, нийслэл Улаанбаатар хотод хүн амын талаас илүү хувь нь төвлөрөн амьдардаг.',
-    imageUrl: 'https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=1200',
+    imageUrl: '',
     items: [
       {
         title: 'Нийслэл Улаанбаатар',
+        href: '/province/ulaanbaatar',
         desc: 'Эдийн засаг, соёл, боловсролын төв бөгөөд 1.6 сая гаруй оршин суугчтай орчин үеийн их хот.',
-        thumb: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=600',
+        thumb: '',
       },
       {
         title: 'Хүн амын нягтрал',
@@ -72,7 +69,7 @@ const GLANCE_SECTIONS: GlanceSection[] = [
       {
         title: 'Залуусын орон',
         desc: 'Хүн амын 60 гаруй хувийг 35 хүртэлх насны залуус эзэлдэг эрч хүчтэй нийгэм.',
-        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+        thumb: '',
       },
     ],
   },
@@ -87,6 +84,7 @@ const GLANCE_SECTIONS: GlanceSection[] = [
     items: [
       {
         title: 'Байгалийн олон янз байдал',
+        href: '/destination/landscapes',
         desc: 'Хөвсгөлийн тайга, Хангайн нуруу, Дорнодын уудам тал, Өмнөд говь хосолсон дөрвөн бүслүүр.',
         thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600',
       },
@@ -98,7 +96,7 @@ const GLANCE_SECTIONS: GlanceSection[] = [
       {
         title: 'Цэнгэг нуур, мөрөн',
         desc: 'Дэлхийн цэнгэг усны 1%-ийг агуулдаг Хөвсгөл далай, Сэлэнгэ, Орхон зэрэг ариун мөрөн голууд.',
-        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+        thumb: 'https://images.unsplash.com/photo-1591804860948-cdb450a32b77?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -113,12 +111,12 @@ const GLANCE_SECTIONS: GlanceSection[] = [
       {
         title: 'Төрийн далбаа & Соёмбо',
         desc: 'Мөнх хөх тэнгэр, гал голомт, ухаарал ба бат бэхийн бэлгэдэл болсон алтан соёмбо үсэг.',
-        thumb: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=600',
+        thumb: '',
       },
       {
         title: 'Төрийн сүлд',
         desc: 'Хийморь бадраах эрдэнэт хүлэг морь, бадамлянхуа цэцэг, эв нэгдлийн бат холбоот сүлд.',
-        thumb: 'https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=600',
+        thumb: '',
       },
       {
         title: 'Үндэсний бахархалт шувуу',
@@ -138,12 +136,13 @@ const GLANCE_SECTIONS: GlanceSection[] = [
       {
         title: '250+ Нартай өдөр',
         desc: 'Дэлхийд "Мөнх хөх тэнгэрийн орон" хэмээн нэрлэгддэг тунгалаг, цэлмэг өдрүүдийн баялаг.',
-        thumb: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=600',
+        thumb: '',
       },
       {
         title: 'Анхны дархан цаазат газар',
+        href: '/destination/strictly-protected',
         desc: 'Богдхан уулыг 1778 онд дархалсан нь дэлхийн анхны албан ёсны байгалийн тусгай хамгаалалттай газар юм.',
-        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+        thumb: '',
       },
       {
         title: 'Үлэг гүрвэлийн өлгий',
@@ -157,81 +156,8 @@ const GLANCE_SECTIONS: GlanceSection[] = [
 export default function AtAGlancePage() {
   return (
     <div>
-      {/* 3. ДЭЛГЭРЭНГҮЙ ХЭСГҮҮД */}
-      <div className="space-y-28">
-        {GLANCE_SECTIONS.map((sec) => (
-          <section
-            key={sec.id}
-            id={sec.id}
-            className="scroll-mt-[calc(var(--nav-h)+5rem)] lg:scroll-mt-[calc(var(--nav-h)+1.5rem)] space-y-10"
-          >
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <div className="xl:col-span-6 space-y-5">
-                <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-tight">
-                  {sec.title}
-                </h2>
-                <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
-                  {sec.desc}
-                </p>
-                {liveHref(sec.moreHref) && (
-                <div className="pt-2">
-                  <a
-  href={liveHref(sec.moreHref)}
-  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#15803d] text-white hover:bg-emerald-800 transition-all font-bold text-sm sm:text-base shadow-sm hover:shadow-md group/btn"
->
-  <span>Дэлгэрэнгүй</span>
-  <svg 
-    className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" 
-    fill="none" 
-    viewBox="0 0 24 24" 
-    stroke="currentColor" 
-    strokeWidth="2.5"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-  </svg>
-</a>
-                </div>
-                )}
-              </div>
-
-              <div className="xl:col-span-6 relative w-full h-64 sm:h-80 lg:h-[340px] rounded-3xl overflow-hidden shadow-md group border border-emerald-100">
-                <img loading="lazy" decoding="async"
-  src={sec.imageUrl}
-  alt={sec.title}
-  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-/>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-              {sec.items.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group/card bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#15803d]/50 transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative w-full h-48 sm:h-52 overflow-hidden">
-                    <img loading="lazy" decoding="async"
-  src={item.thumb}
-  alt={item.title}
-  className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
-/>
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-2">
-                    <h4 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover/card:text-[#15803d] transition-colors leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+      <TopicSections sections={GLANCE_SECTIONS} />
       <AboutRelated current="/about/at-a-glance" embedded />
     </div>
   );
 }
-

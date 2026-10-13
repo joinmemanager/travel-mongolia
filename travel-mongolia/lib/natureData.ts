@@ -8,6 +8,8 @@ export interface NatureSpot {
   season: string;
   image: string;
   description: string;
+  // Тусдаа хуудас (байвал карт холбоос болно, docs/section-layout/cards-without-pages.md)
+  href?: string;
 }
 
 export const NATURE_CATEGORIES = [
@@ -27,13 +29,14 @@ export const NATURE_SPOTS: NatureSpot[] = [
   {
     id: 'khuvsgul-lake',
     title: 'Хөвсгөл нуур',
+    href: '/destination/khuvsgul-nuur',
     category: 'Нуур, гол',
     categoryKey: 'lakes-rivers',
     location: 'Хөвсгөл аймаг',
     region: 'Хангайн бүс',
     season: '6 - 9 сар',
     image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1591804860948-cdb450a32b77?auto=format&fit=crop&w=800&q=80',
     description:
       'Дэлхийн хамгийн эртний бөгөөд цэнгэг уст нууруудын нэг, Монголын хөх сувд.',
   },
@@ -91,6 +94,7 @@ export const NATURE_SPOTS: NatureSpot[] = [
   {
     id: 'terelj-camping',
     title: 'Горхи Тэрэлжийн Кемпинг',
+    href: '/destination/terelj',
     category: 'Кемпинг',
     categoryKey: 'camping',
     location: 'Төв аймаг',

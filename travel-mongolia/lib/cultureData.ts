@@ -33,7 +33,7 @@ export const CULTURE_SPOTS: CultureSpot[] = [
     region: 'Хангайн бүс',
     period: 'XVI зуун (1586 он)',
     image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Эртний нийслэл Хархорум хотын туурин дээр сүндэрлэсэн Монголын анхны буддын шашны хийд.',
   },
@@ -98,7 +98,7 @@ export const CULTURE_SPOTS: CultureSpot[] = [
     region: 'Төвийн бүс',
     period: 'Биет бус соёлын өв',
     image:
-      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Монгол ардын язгуур аялгуу, аялгуут исгэрээ, хөөмэйн тоглолт болон хуур урлалын туршлага.',
   },

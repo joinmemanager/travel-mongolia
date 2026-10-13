@@ -75,7 +75,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
         ],
       },
       {
-        mn: 'Үзэх, хийх зүйлс', en: 'Things to Do', href: '/things-to-do/nature', status: 'live',
+        mn: 'Үзэх, хийх зүйлс', en: 'Things to Do', href: '/things-to-do', status: 'live',
         children: [
           page('Байгальд аялах', 'Nature & Outdoors', '/things-to-do/nature'),
           page('Адал явдалт аялал', 'Adventure', '/things-to-do/adventure'),

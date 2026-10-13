@@ -8,6 +8,8 @@ export interface EventSpot {
   date: string;
   image: string;
   description: string;
+  // Тусдаа хуудас (байвал карт холбоос болно, docs/section-layout/cards-without-pages.md)
+  href?: string;
 }
 
 export const EVENTS_CATEGORIES = [
@@ -25,13 +27,14 @@ export const EVENTS_SPOTS: EventSpot[] = [
   {
     id: 'national-naadam',
     title: 'Үндэсний их баяр наадам',
+    href: '/recommendation/ulsyn-ikh-bayar-naadam',
     category: 'Их баяр наадам',
     categoryKey: 'naadam',
     location: 'Улаанбаатар хот, Төв цэнгэлдэх',
     region: 'Төвийн бүс',
     date: '7 сарын 11 - 13',
     image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1630326867210-bf4b2cdd2019?auto=format&fit=crop&w=800&q=80',
     description:
       'Эрийн гурван наадам болох хүчит бөх, хурдан морь, сурын харвааг багтаасан ЮНЕСКО-ийн соёлын өв их баяр.',
   },

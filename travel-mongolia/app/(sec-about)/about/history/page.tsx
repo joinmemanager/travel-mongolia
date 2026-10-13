@@ -27,7 +27,7 @@ const HISTORY_DATA: HistoryPeriod[] = [
       'Буган хөшөөний соёл (ЮНЕСКО-гийн Дэлхийн өвд бүртгэгдсэн)',
       'Адууг гаршуулан анхлан уналга эдэлгээнд хэрэглэсэн өлгий нутаг',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1200',
+    imageUrl: '',
   },
   {
     id: 'hunnu-empires',
@@ -53,7 +53,7 @@ const HISTORY_DATA: HistoryPeriod[] = [
       'Өртөөний алба: Дэлхийн анхны тив дамнасан хурдан шуудан, харилцааны сүлжээ',
       'Дэлхийн энгээр худалдаа, соёлын сэргэлт өрнөсөн “Монголын их амар амгалан” (Pax Mongolica)',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200',
+    imageUrl: 'https://images.unsplash.com/photo-1708873395735-dcad0140e3a2?auto=format&fit=crop&w=1200&q=80',
   },
   {
     id: 'mongol-empire',
@@ -79,7 +79,7 @@ const HISTORY_DATA: HistoryPeriod[] = [
       'Амарбаясгалант, Эрдэнэ зуу тэргүүтэй Буддын сонгодог архитектурын цогцолборууд байгуулагдав',
       'Үндэсний эрх чөлөөгөө сэргээх далд тэмцэл, эх оронч санаа үргэлжилсээр байв',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200',
+    imageUrl: '',
   },
   {
     id: 'xx-century',
@@ -92,7 +92,7 @@ const HISTORY_DATA: HistoryPeriod[] = [
       '1961 он: НҮБ-ын бүрэн эрхт гишүүн улс болж, олон улсад албан ёсоор хүлээн зөвшөөрөгдөв',
       '1981 он: Монгол хүн (Ж.Гүррагчаа) сансарт ниссэн дэлхийн 10 дахь улс болов',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200',
+    imageUrl: '',
   },
   {
     id: 'modern-mongolia',
@@ -105,7 +105,7 @@ const HISTORY_DATA: HistoryPeriod[] = [
       'Дэлхийн бүх улс орнуудтай найрсаг харилцаатай, “Гуравдагч хөршийн” нээлттэй гадаад бодлого',
       'Эртний нүүдэлчдийн соёлыг орчин үеийн технологи, даяаршилтай хослуулан урагшилж байна',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200',
+    imageUrl: '',
   },
 ];
 
@@ -132,10 +132,10 @@ export default function HistoryPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+            <div className={`grid grid-cols-1 gap-12 items-start ${period.imageUrl ? 'xl:grid-cols-12' : ''}`}>
               
               {/* Зүүн тал: Тайлбар болон Баримтууд */}
-              <div className="xl:col-span-7">
+              <div className={period.imageUrl ? 'xl:col-span-7' : 'max-w-3xl'}>
                 <span className="inline-block bg-emerald-50 text-[#15803d] text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-4">
                   {period.badge}
                 </span>
@@ -162,7 +162,8 @@ export default function HistoryPage() {
                 </div>
               </div>
 
-              {/* Баруун тал: Зураг */}
+              {/* Баруун тал: Зураг (Монголынх нь шалгагдаагүй зургийг хассан бол байхгүй) */}
+              {period.imageUrl && (
               <div className="xl:col-span-5">
                 <div className="relative w-full h-[360px] sm:h-[480px] rounded-3xl overflow-hidden shadow-lg">
                   <img loading="lazy" decoding="async" src={period.imageUrl} alt={period.title} className="w-full h-full object-cover" />
@@ -175,6 +176,7 @@ export default function HistoryPage() {
                   </div>
                 </div>
               </div>
+              )}
 
             </div>
           </section>

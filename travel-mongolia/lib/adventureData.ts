@@ -49,7 +49,7 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     difficulty: 'Дунд',
     season: '6 - 9 сар',
     image:
-      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1591804860948-cdb450a32b77?auto=format&fit=crop&w=800&q=80',
     description:
       'Олон өдрийн морин аяллаар тайгын гүн дэх цаатны урцад очиж, онгон дагшин байгальтай танилцах.',
   },
@@ -77,7 +77,7 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     difficulty: 'Дунд',
     season: '6 - 8 сар',
     image:
-      'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Галт уулын чулуулаг бүхий Улаан цутгалангийн хөндийгөөр урсах түргэн урсгалт усаар сэлэх сорилт.',
   },
@@ -91,7 +91,7 @@ export const ADVENTURE_SPOTS: AdventureSpot[] = [
     difficulty: 'Ахисан',
     season: '5 - 10 сар',
     image:
-      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1537212429608-6b5f5449cdf8?auto=format&fit=crop&w=800&q=80',
     description:
       'Замгүй уудам говь, үлэг гүрвэлийн олдворт улаан цав, хавцлуудаар туулах тусгай тээврийн экспедиц.',
   },

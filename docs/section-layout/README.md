@@ -1,16 +1,53 @@
-# Хэсгийн хуудасны загвар: пилотын дэлгэцийн зураг
+# Хэсгийн хуудасны загвар (SectionLayout)
 
-Пилот: «Монголын тухай» (`/about/at-a-glance` = Тойм, `/about/history`, `/about/modern`). Local dev server дээр
-headless Edge-ээр авсан (2026-10-12). Зүүн доод буланд байгаа «N» тэмдэг нь Next.js-ийн dev индикатор, production дээр гарахгүй.
+Монголыг нээ, Түүх & өв цэсний 11 хэсэг нэг загвартай болсон: дээр нь хэсгийн hero, доор зүүн талд «Сэдвийн
+жагсаалт», баруун талд сонгосон дэд сэдвийн агуулга. Төлөвлөгөө: [docs/plan/section-layout.md](../plan/section-layout.md).
+Branch: `feat/section-layout` (2026-10-13).
+
+## Энэ хавтсанд
+
+| Файл | Агуулга |
+|---|---|
+| [seo-table.md](seo-table.md) | Хэсэг бүрийн үндсэн хаяг, хуудас бүрийн H1, title, canonical, breadcrumb (server HTML-ээс шалгасан) |
+| [cards-without-pages.md](cards-without-pages.md) | Холбоос тавьсан картууд болон тусдаа хуудасгүй картуудын жагсаалт (эзэмшигч шийднэ) |
+| [images.md](images.md) | Монголын бус зургийг сольсон, түр хассан жагсаалт |
+| `desktop-*.webp`, `mobile-*.webp` | Дэлгэцийн зураг (доор) |
+
+## Хэсгүүд
+
+| Цэс | Хэсэг | Үндсэн хаяг | Жагсаалтын мөрүүд | Route group |
+|---|---|---|---|---|
+| Монголыг нээ | Монголын тухай | `/about/at-a-glance` | Тойм, Монголын түүх, Өнөөгийн Монгол | `(sec-about)` |
+| Монголыг нээ | Үзэх, хийх зүйлс | `/things-to-do` (шинэ) | Тойм + 8 дэд сэдэв | `(sec-things)` |
+| Монголыг нээ | Түүхүүд | `/stories` | Тойм, Нууц үзэсгэлэнт газрууд, Шилдэг жагсаалтууд | `(sec-stories)` |
+| Монголыг нээ | Арга хэмжээ, баяр наадам | `/things-to-do/events` | Уламжлалт баяр наадам, Фестивалиуд | `(sec-events)` |
+| Түүх & өв | Соёл, өв | `/about/culture` | Тойм, Ёс заншил, уламжлал | `(sec-culture)` |
+| Түүх & өв | Байгаль | `/about/nature` | Тойм (+ 11 anchor) | `(sec-nature)` |
+| Түүх & өв | Нүүдэлчдийн амьдрал | `/about/nomadic-life` | Тойм (+ 7 anchor) | `(sec-nomadic)` |
+| Түүх & өв | Хоол | `/about/food` | Тойм (+ 8 anchor) | `(sec-food)` |
+| Түүх & өв | Хүмүүс | `/about/people` | Тойм (+ 5 anchor) | `(sec-people)` |
+| Түүх & өв | Фото/видео түүх | `/stories/photo-video` | Тойм (дотоод хэсэггүй) | `(sec-photo)` |
+| Түүх & өв | Аялахаас өмнө | `/plan/before-you-travel` | Тойм, Хэзээ аялах вэ: улирлаар | `(sec-before)` |
+
+Хаяг өөрчлөгдөөгүй, зөвхөн `/things-to-do` нэмэгдсэн. Цэсний «Үзэх, хийх зүйлс» баганын гарчиг, «Бүгдийг үзэх →» одоо түүн рүү заана.
+
+## Дэлгэцийн зураг
+
+Local dev server дээр headless Edge-ээр авсан. Зүүн доод буланд байгаа «N» нь Next.js-ийн dev индикатор, production дээр гарахгүй.
+Хэсэг бүрт (`<нэр>` = about, things, stories, events, culture, nature, nomadic, food, people, photo-video, before):
 
 | Файл | Юуг харуулж байна |
 |---|---|
-| `desktop-about-overview-top.webp` | 1440px: hero (H1 = «Монголын тухай»), «Сэдвийн жагсаалт», Тойм идэвхтэй |
-| `desktop-about-overview-scrolled.webp` | Гүйлгэхэд жагсаалт наалдана |
-| `desktop-about-history-after-click.webp` | Агуулгын дундаас «Монголын түүх» дээр дарсны дараа: хуудас дахин ачаалагдаагүй, агуулгын эхэнд гүйлгэсэн, H1 = «Монголын түүх» |
-| `desktop-about-history-top.webp` | Дэд хуудасны дээд хэсэг: hero гарчиг H1 биш |
-| `desktop-about-modern-scrolled.webp` | «Өнөөгийн Монгол» |
-| `mobile-about-overview-top.webp` | 390px: hero-гийн доорх хэвтээ товчнууд |
-| `mobile-about-overview-scrolled.webp` | Товчнууд дээд цэсний доор наалдана |
-| `mobile-about-history-after-click.webp` | Товчоор шилжсэний дараа |
-| `mobile-about-modern-top.webp` | «Өнөөгийн Монгол» шууд нээхэд |
+| `desktop-<нэр>-top.webp` | 1440px, үндсэн хаяг: hero (H1), «Сэдвийн жагсаалт», агуулгын эхлэл |
+| `desktop-<нэр>-scrolled.webp` | Гүйлгэсэн: наалддаг жагсаалт, идэвхтэй мөрийн доорх anchor-ууд, идэвхтэй anchor ногоон |
+| `desktop-<нэр>-sub.webp` | Жагсаалтаас дэд мөр дээр дарсны дараа (хуудас дахин ачаалагдаагүй, H1 = дэд сэдвийн нэр). Олон хуудастай хэсэгт л |
+| `mobile-<нэр>-top.webp` | 390px: hero-гийн доорх хэвтээ товчнууд (ганц хуудастай хэсэгт хуудасны доторх хэсгүүд) |
+| `mobile-<нэр>-scrolled.webp` | Товчнууд дээд цэсний доор наалдана, идэвхтэй нь тодорно |
+
+## Шалгасан зүйлс (local)
+
+- 26 хуудас бүгд 200, яг нэг H1, canonical нь өөрийн хаяг, нэг BreadcrumbList JSON-LD ([seo-table.md](seo-table.md)).
+- 6 хэсэгт жагсаалтын мөр дээр дарахад хуудас бүтнээр ачаалагдаагүй (`window` дээрх тэмдэг хадгалагдсан), URL, H1 солигдсон.
+- Гүйлгэхэд идэвхтэй anchor зөв тодорсон. Хөтчийн console-д алдаа гараагүй.
+- Карт, товчны шинэ холбоосууд (`/province/ulaanbaatar`, `/destination/khuvsgul-nuur`, `/destination/terelj`, `/local/herder-families` г.м.) бүгд 200.
+- `tsc --noEmit`: шинэ алдаагүй (урьд өмнөх 3 алдаа хэвээр).

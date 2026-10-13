@@ -153,4 +153,4 @@
 Монголыг нээ, Түүх & өв цэсний хэсгүүдийг нэг загварт оруулж байна: дээр нь хэсгийн hero (`ImageHero`),
 доор зүүн талд «Сэдвийн жагсаалт», баруун талд сонгосон дэд сэдвийн агуулга. Компонентууд
 `components/section/` дотор, тохиргоо `lib/sections.ts`-д. Дэлгэрэнгүйг [section-layout.md](section-layout.md)-аас үзнэ.
-Одоогоор зөвхөн «Монголын тухай» (`/about/at-a-glance`, `/about/history`, `/about/modern`) шилжсэн (пилот).
+11 хэсэг бүгд шилжсэн (2026-10-13): [docs/section-layout/README.md](../section-layout/README.md). `/about/*` хуудсууд `components/section/TopicSections`-ээр, жагсаалтууд `CategoryListing` / `InspirationListing` / `GuidePage`-ийн `embedded` горимоор харагдана.
