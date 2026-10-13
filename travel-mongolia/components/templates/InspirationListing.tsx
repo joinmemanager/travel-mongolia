@@ -6,6 +6,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import ImageCard from '@/components/design/ImageCard';
 import LinkCard, { type LinkCardItem } from '@/components/design/LinkCard';
 import HubHeader from '@/components/HubHeader';
+import { useActiveFilter, useRegisterSectionFilters } from '@/components/section/SectionFilters';
 
 export interface InspirationItem {
   id: string;
@@ -48,11 +49,19 @@ function InspirationListingContent({ kicker, title, intro, param, filters, items
     }
   }, [paramValue, filters]);
 
+  // Хэсгийн хуудсанд шүүлтүүр зүүн талын «Сэдвийн жагсаалт»-д (components/section/SectionFilters),
+  // сонголт нь URL-ийн параметр (?cat=, ?style= г.м.). Хуудас доторх товчны мөр байхгүй.
+  const filterSet =
+    embedded && filters.length > 1 ? { param, options: filters.filter((f) => f.id !== 'all') } : null;
+  useRegisterSectionFilters(filterSet);
+  const urlFilter = useActiveFilter(filterSet);
+  const current = embedded ? urlFilter : activeFilter;
+
   const filteredItems =
-    activeFilter === 'all' ? items : items.filter((item) => item.categoryKey === activeFilter);
+    current === 'all' ? items : items.filter((item) => item.categoryKey === current);
 
   const filterButtons = (
-    <div className={embedded ? 'flex flex-wrap gap-2 mb-8' : 'flex flex-wrap gap-2 pt-8'}>
+    <div className="flex flex-wrap gap-2 pt-8">
       {filters.map((filter) => (
         <button
           key={filter.id}
@@ -99,7 +108,6 @@ function InspirationListingContent({ kicker, title, intro, param, filters, items
     return (
       <div>
         {intro && <p className="mb-8 max-w-3xl text-base sm:text-lg text-neutral-600 leading-relaxed">{intro}</p>}
-        {filterButtons}
         {grid}
         <div className="mt-16 space-y-3">{footer}</div>
       </div>

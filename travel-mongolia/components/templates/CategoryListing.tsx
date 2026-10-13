@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 
 import ImageCard from '@/components/design/ImageCard';
+import { useActiveFilter, useRegisterSectionFilters } from '@/components/section/SectionFilters';
 
 import ImageHero from './ImageHero';
 
@@ -86,18 +87,27 @@ export default function CategoryListing<T extends ListingSpot>({
     scrollContainerRef.current?.scrollBy({ left: direction === 'left' ? -260 : 260, behavior: 'smooth' });
   };
 
-  const filteredSpots =
-    activeTab === 'all' ? spots : spots.filter((spot) => spot.categoryKey === activeTab);
+  // Хэсгийн хуудсанд ангиллууд зүүн талын «Сэдвийн жагсаалт»-д (components/section/SectionFilters),
+  // сонголт нь URL-ийн ?cat= (хуучин холбоосууд ажиллана). Хуудас доторх товчны мөр байхгүй.
+  const filterSet =
+    embedded && categories.length > 1
+      ? { param: 'cat', options: categories.filter((c) => c.id !== 'all') }
+      : null;
+  useRegisterSectionFilters(filterSet);
+  const urlFilter = useActiveFilter(filterSet);
+  const current = embedded ? urlFilter : activeTab;
 
+  const filteredSpots =
+    current === 'all' ? spots : spots.filter((spot) => spot.categoryKey === current);
+
+  // Хуудас доторх ангиллын товчнууд (хэсгийн гаднах хуудсууд, жишээ нь /local/*)
   const chips = categories.map((tab) => (
     <button
       key={tab.id}
       type="button"
       onClick={() => setActiveTab(tab.id)}
       aria-pressed={activeTab === tab.id}
-      className={`rounded-full whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-        embedded ? 'px-4 py-2 text-sm font-medium' : 'px-4 py-2 text-xs font-medium'
-      } ${
+      className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 ${
         activeTab === tab.id
           ? 'bg-neutral-900 text-white shadow-sm'
           : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
@@ -145,11 +155,6 @@ export default function CategoryListing<T extends ListingSpot>({
     return (
       <div>
         {intro && <p className="mb-8 max-w-3xl text-base sm:text-lg text-neutral-600 leading-relaxed">{intro}</p>}
-        {categories.length > 1 && (
-          <div role="group" aria-label="Ангилал" className="flex flex-wrap gap-2 mb-8">
-            {chips}
-          </div>
-        )}
         {list}
       </div>
     );

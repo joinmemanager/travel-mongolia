@@ -43,6 +43,7 @@ export default function SectionPageHeader({
   return (
     <div
       ref={ref}
+      id="section-top"
       className="pt-8 lg:pt-0 mb-10 scroll-mt-[calc(var(--nav-h)+4.5rem)] lg:scroll-mt-[calc(var(--nav-h)+1.5rem)]"
     >
       <Breadcrumbs items={crumbs} />

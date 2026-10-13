@@ -51,3 +51,32 @@ Local dev server дээр headless Edge-ээр авсан. Зүүн доод б�
 - Гүйлгэхэд идэвхтэй anchor зөв тодорсон. Хөтчийн console-д алдаа гараагүй.
 - Карт, товчны шинэ холбоосууд (`/province/ulaanbaatar`, `/destination/khuvsgul-nuur`, `/destination/terelj`, `/local/herder-families` г.м.) бүгд 200.
 - `tsc --noEmit`: шинэ алдаагүй (урьд өмнөх 3 алдаа хэвээр).
+
+## Шүүлтүүр «Сэдвийн жагсаалт»-д (2026-10-13)
+
+Хуудас доторх ангиллын товчны мөрийг хасаж, ангиллуудыг зүүн талын жагсаалтад идэвхтэй мөрийн доор (anchor-ууд шиг) гаргасан.
+Дэд мөр дээр дарахад тухайн ангиллын картууд л үлдэж мөр ногоон болно. Эх мөр дээр дарахад «Бүгд» болно. Хуудас дахин ачаалагдахгүй.
+Сонголт нь URL-ийн параметрт (`?cat=`, `?style=`, `?list=`) хадгалагдана: хуучин холбоосууд ажиллана, canonical нь query-гүй хэвээр.
+Утсан дээр наалддаг товчнуудын хоёр дахь мөр болно («Бүгд» + ангиллууд). Хуудсанд anchor ч байвал зөвхөн шүүлтүүрийг харуулна.
+Код: `components/section/SectionFilters.tsx` (хуудас бүртгэж, жагсаалт харуулна), `CategoryListing` ба `InspirationListing`-ийн `embedded` горим.
+
+| Хэсэг | Хуудас | Параметр | Ангилал |
+|---|---|---|---|
+| Үзэх, хийх зүйлс | `/things-to-do/nature` | `cat` | 9 |
+| Үзэх, хийх зүйлс | `/things-to-do/adventure` | `cat` | 9 |
+| Үзэх, хийх зүйлс | `/things-to-do/culture` | `cat` | 9 |
+| Үзэх, хийх зүйлс | `/things-to-do/food` | `cat` | 7 |
+| Үзэх, хийх зүйлс | `/things-to-do/nomadic` | `cat` | 9 |
+| Үзэх, хийх зүйлс | `/things-to-do/wellness` | `cat` | 7 |
+| Үзэх, хийх зүйлс | `/things-to-do/wildlife` | `cat` | 9 |
+| Үзэх, хийх зүйлс | `/inspiration/styles` | `style` | 7 |
+| Түүхүүд | `/inspiration/hidden` | `cat` | 3 |
+| Түүхүүд | `/inspiration/top-lists` | `list` | 3 |
+| Арга хэмжээ, баяр наадам | `/things-to-do/events` | `cat` | 7 |
+| Арга хэмжээ, баяр наадам | `/things-to-do/festivals` | `cat` (аймаг) | 2 (Contentful-аас) |
+
+Шүүлтүүрийн товчны мөргүй тул өөрчлөөгүй: 11 хэсгийн бусад бүх хуудас. `/inspiration/seasons`-ийн 4 улирлын самбар нь
+агуулга өөрөө (шүүлтүүр биш), `/plan/before-you-travel`-ийн виз шалгагч нь сонгох талбар тул хэвээр.
+
+Дэлгэцийн зураг: `desktop-events-filter.webp` (`?cat=tsagaan-sar`), `desktop-things-nature-filters.webp`,
+`mobile-events-filters-top.webp`, `mobile-events-filters-scrolled.webp`.
