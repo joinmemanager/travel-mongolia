@@ -29,11 +29,13 @@ export default function GuidePage({
   children,
   bottomBand,
   notice,
+  embedded,
 }: {
   crumbs?: Crumb[];
-  kicker: string;
-  kickerEn: string;
-  title: string;
+  // embedded үед kicker, kickerEn, title хэрэггүй (hero, H1 нь layout-д)
+  kicker?: string;
+  kickerEn?: string;
+  title?: string;
   intro: string;
   sections?: GuideSection[];
   // Хэсгүүдийг children-ээр өгөх үед зүүн талын жагсаалт (жишээ нь /plan/* хуудсууд)
@@ -48,6 +50,9 @@ export default function GuidePage({
   bottomBand?: React.ReactNode;
   // Толгой хэсэгт харагдах жижиг тэмдэглэл (жишээ нь "Энэ гарын авлагыг шинэчилж байна")
   notice?: string;
+  // Хэсгийн хуудсанд (components/section/SectionLayout): HubHeader, дотоод сэдвийн жагсаалтгүй.
+  // Хэсгүүдийн <section id> нь хэсгийн жагсаалтад anchor болж ордог.
+  embedded?: boolean;
 }) {
   const tocItems: TocItem[] =
     toc ||
@@ -56,9 +61,58 @@ export default function GuidePage({
       label: `${String(i + 1).padStart(2, '0')}. ${sec.title}`,
     }));
 
+  const body = (
+    <>
+      {children}
+
+      {sections.map((sec, i) => (
+        <section
+          key={sec.id}
+          id={sec.id}
+          className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm"
+        >
+          <span className="block mb-2 text-[11px] font-mono font-bold text-[#15803d]">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
+            {sec.title}
+          </h2>
+          {sec.intro && (
+            <p className="mb-5 text-sm text-neutral-600 leading-relaxed">
+              {sec.intro}
+            </p>
+          )}
+          <ul className="space-y-3">
+            {sec.points.map((point) => (
+              <li
+                key={point}
+                className="flex gap-3 text-sm text-neutral-700 leading-relaxed"
+              >
+                <span aria-hidden="true" className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[#15803d]" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+
+      {/* Холбогдох хуудсууд: холбоосны карт (production дээр нийтлэгдээгүйг нууна) */}
+      <LinkCard title="Холбогдох хуудсууд" links={related} />
+    </>
+  );
+
+  if (embedded) {
+    return (
+      <div className="space-y-16">
+        {intro && <p className="max-w-3xl text-base sm:text-lg text-neutral-600 leading-relaxed">{intro}</p>}
+        {body}
+      </div>
+    );
+  }
+
   return (
     <main className={`min-h-screen bg-[#fcfbf9] text-neutral-900 ${bottomBand ? '' : 'pb-32'}`}>
-      <HubHeader crumbs={crumbs} kicker={kicker} kickerEn={kickerEn} title={title} intro={intro}>
+      <HubHeader crumbs={crumbs} kicker={kicker || ''} kickerEn={kickerEn} title={title || ''} intro={intro}>
         {notice && (
           <p className="inline-flex gap-2 items-center py-1.5 px-3 mt-5 text-xs font-semibold rounded-full text-[#15803d] bg-emerald-50 border border-emerald-200">
             <span aria-hidden="true">✎</span>
@@ -93,43 +147,7 @@ export default function GuidePage({
           </aside>
         )}
 
-        <div className="flex-1 w-full space-y-16">
-          {children}
-
-          {sections.map((sec, i) => (
-            <section
-              key={sec.id}
-              id={sec.id}
-              className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-sm"
-            >
-              <span className="block mb-2 text-[11px] font-mono font-bold text-[#15803d]">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-4">
-                {sec.title}
-              </h2>
-              {sec.intro && (
-                <p className="mb-5 text-sm text-neutral-600 leading-relaxed">
-                  {sec.intro}
-                </p>
-              )}
-              <ul className="space-y-3">
-                {sec.points.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-3 text-sm text-neutral-700 leading-relaxed"
-                  >
-                    <span aria-hidden="true" className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[#15803d]" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-
-          {/* Холбогдох хуудсууд: холбоосны карт (production дээр нийтлэгдээгүйг нууна) */}
-          <LinkCard title="Холбогдох хуудсууд" links={related} />
-        </div>
+        <div className="flex-1 w-full space-y-16">{body}</div>
       </div>
       {bottomBand && <div className="mt-32">{bottomBand}</div>}
     </main>

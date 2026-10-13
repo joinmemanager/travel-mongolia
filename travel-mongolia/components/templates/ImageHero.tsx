@@ -20,6 +20,7 @@ export default function ImageHero({
   intro,
   topLeft,
   children,
+  titleAs: TitleTag = 'h1',
 }: {
   image: { src: string; alt: string };
   kicker?: string;
@@ -29,6 +30,8 @@ export default function ImageHero({
   topLeft?: React.ReactNode;
   // Гарчгийн доор харуулах нэмэлт (шошго, товч г.м.)
   children?: React.ReactNode;
+  // Гарчгийн tag: хуудас бүрт нэг H1 байх тул хэсгийн дэд хуудсанд 'p' (components/section/SectionHero.tsx)
+  titleAs?: 'h1' | 'p';
 }) {
   return (
     <section className="flex relative justify-center items-center w-full h-[55vh] min-h-[420px]">
@@ -50,9 +53,9 @@ export default function ImageHero({
             {kicker}
           </span>
         )}
-        <h1 className="mb-4 text-4xl font-black tracking-tight leading-tight text-white drop-shadow-md sm:text-6xl">
+        <TitleTag className="mb-4 text-4xl font-black tracking-tight leading-tight text-white drop-shadow-md sm:text-6xl">
           {title}
-        </h1>
+        </TitleTag>
         {intro && (
           <p className="mx-auto max-w-2xl text-base font-normal leading-relaxed sm:text-lg text-white/90">
             {intro}

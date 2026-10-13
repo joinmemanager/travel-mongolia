@@ -33,7 +33,7 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     region: 'Төвийн бүс',
     bestTime: 'Өглөө эрт, үдэш бүрий',
     image:
-      'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Дэлхийд цор ганц үлдсэн зэрлэг адуу болох Пржевальскийн тахийг байгаль дээр нь харах тусгай бүс.',
   },
@@ -85,7 +85,7 @@ export const WILDLIFE_SPOTS: WildlifeSpot[] = [
     region: 'Хангайн бүс',
     bestTime: '5, 9 сар',
     image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1591804860948-cdb450a32b77?auto=format&fit=crop&w=800&q=80',
     description:
       'Рамсарын конвенцод бүртгэлтэй, 150 гаруй зүйл усны болон нүүдлийн шувуудыг ажиглах таатай орчин.',
   },

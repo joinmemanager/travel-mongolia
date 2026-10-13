@@ -31,7 +31,7 @@ export const WELLNESS_SPOTS: WellnessSpot[] = [
     region: 'Хангайн бүс',
     feature: 'Сүнслэг анир чимээгүй',
     image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Өндөр гэгээн Занабазарын бясалгаж, Соёмбо үсгийг зохиосон өндөр хадан хясаан дээрх сүнслэг дагшин орон.',
   },
@@ -44,7 +44,7 @@ export const WELLNESS_SPOTS: WellnessSpot[] = [
     region: 'Хангайн бүс',
     feature: '+86°C байгалийн эрдэст рашаан',
     image:
-      'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=900&q=80',
+      '',
     description:
       'Ой модон дундах байгалийн халуун рашаанд орж алжаал тайлах, эрүүл мэндээ нөхөн сэргээх спа амралт.',
   },
@@ -70,7 +70,7 @@ export const WELLNESS_SPOTS: WellnessSpot[] = [
     region: 'Төвийн бүс',
     feature: 'Нар мандах үеийн иог',
     image:
-      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1575415868394-e3b78f3e9b3f?auto=format&fit=crop&w=800&q=80',
     description:
       'Өглөөний цэнгэг агаарт уулын бэлд иог хийж, оюун санаагаа цэгцлэн бие бялдраа сэргээх хөтөлбөр.',
   },

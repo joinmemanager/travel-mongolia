@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 
 import ImageCard from '@/components/design/ImageCard';
+import { useActiveFilter, useRegisterSectionFilters } from '@/components/section/SectionFilters';
 
 import ImageHero from './ImageHero';
 
@@ -28,10 +29,11 @@ export interface ListingSpot {
 }
 
 interface Props<T extends ListingSpot> {
-  hero: { src: string; alt: string };
-  kicker: string;
-  title: string;
-  intro: string;
+  // embedded үед (хэсгийн хуудас) hero, kicker, title, intro хэрэггүй: layout-д байна
+  hero?: { src: string; alt: string };
+  kicker?: string;
+  title?: string;
+  intro?: string;
   categories: ListingCategory[];
   spots: T[];
   // "Нийт N ... олдлоо" мөрийн дунд хэсэг
@@ -46,6 +48,8 @@ interface Props<T extends ListingSpot> {
   footer?: React.ReactNode;
   // Жагсаалтын дээр (хоосон ангиллын "Тун удахгүй" блок г.м.)
   notice?: React.ReactNode;
+  // Хэсгийн хуудсанд (components/section/SectionLayout) дотор харуулах горим
+  embedded?: boolean;
 }
 
 // "Ангиллын жагсаалт" загвар (docs/plan/templates.md): /things-to-do/*, /local/* хуудсууд.
@@ -59,11 +63,14 @@ export default function CategoryListing<T extends ListingSpot>({
   spots,
   countLabel,
   badge,
-  cta = 'Дэлгэрэнгүй үзэх',
+  cta: ctaProp,
   emptyText,
   footer,
   notice,
+  embedded,
 }: Props<T>) {
+  // Хэсгийн хуудсанд товч нь «Дэлгэрэнгүй →» (зөвхөн тусдаа хуудастай картад)
+  const cta = ctaProp ?? (embedded ? 'Дэлгэрэнгүй' : 'Дэлгэрэнгүй үзэх');
   const searchParams = useSearchParams();
   const catQuery = searchParams.get('cat');
   const [activeTab, setActiveTab] = useState('all');
@@ -80,12 +87,82 @@ export default function CategoryListing<T extends ListingSpot>({
     scrollContainerRef.current?.scrollBy({ left: direction === 'left' ? -260 : 260, behavior: 'smooth' });
   };
 
+  // Хэсгийн хуудсанд ангиллууд зүүн талын «Сэдвийн жагсаалт»-д (components/section/SectionFilters),
+  // сонголт нь URL-ийн ?cat= (хуучин холбоосууд ажиллана). Хуудас доторх товчны мөр байхгүй.
+  const filterSet =
+    embedded && categories.length > 1
+      ? { param: 'cat', options: categories.filter((c) => c.id !== 'all') }
+      : null;
+  const urlFilter = useActiveFilter(filterSet);
+  useRegisterSectionFilters(filterSet && { ...filterSet, active: urlFilter });
+  const current = embedded ? urlFilter : activeTab;
+
   const filteredSpots =
-    activeTab === 'all' ? spots : spots.filter((spot) => spot.categoryKey === activeTab);
+    current === 'all' ? spots : spots.filter((spot) => spot.categoryKey === current);
+
+  // Хуудас доторх ангиллын товчнууд (хэсгийн гаднах хуудсууд, жишээ нь /local/*)
+  const chips = categories.map((tab) => (
+    <button
+      key={tab.id}
+      type="button"
+      onClick={() => setActiveTab(tab.id)}
+      aria-pressed={activeTab === tab.id}
+      className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+        activeTab === tab.id
+          ? 'bg-neutral-900 text-white shadow-sm'
+          : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+      }`}
+    >
+      {tab.label}
+    </button>
+  ));
+
+  // Зурагтай картуудын тор. Зураггүй (Монголынх нь шалгагдаагүй зургийг хассан) карт бараан дэвсгэртэй.
+  const list = (
+    <>
+      {notice && <div className="mb-10">{notice}</div>}
+      <div className="flex justify-between items-end mb-6">
+        <p className="text-xs text-neutral-500 font-semibold uppercase tracking-wider">
+          Нийт {filteredSpots.length} {countLabel}
+        </p>
+      </div>
+
+      <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${embedded ? 'xl:grid-cols-3' : 'lg:grid-cols-3'}`}>
+        {filteredSpots.map((spot) => (
+          <ImageCard
+            key={spot.id}
+            image={spot.image ? { src: spot.image, alt: spot.title } : undefined}
+            eyebrow={[spot.location, spot.region].filter(Boolean).join(' • ')}
+            href={spot.href}
+            badges={[spot.category, ...(spot.badges || []), ...(badge ? badge(spot) : [])]}
+            title={spot.title}
+            desc={spot.description}
+            cta={cta}
+            ctaButton={embedded}
+            aspect="aspect-[4/5]"
+          />
+        ))}
+      </div>
+      {filteredSpots.length === 0 && emptyText && (
+        <p className="py-16 text-sm text-center text-neutral-500">{emptyText}</p>
+      )}
+      {footer && <div className="mt-16">{footer}</div>}
+    </>
+  );
+
+  // Хэсгийн хуудсанд (components/section/SectionLayout): hero, H1 нь layout-д, шүүлтүүр наалддаггүй
+  if (embedded) {
+    return (
+      <div>
+        {intro && <p className="mb-8 max-w-3xl text-base sm:text-lg text-neutral-600 leading-relaxed">{intro}</p>}
+        {list}
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-[#fafafa] pb-24">
-      <ImageHero image={hero} kicker={kicker} title={title} intro={intro} />
+      {hero && <ImageHero image={hero} kicker={kicker} title={title || ''} intro={intro} />}
 
       {/* Ангиллын шүүлтүүр: 2 талдаа сумтай хэвтээ мөр */}
       <div className="sticky top-(--nav-h) z-40 bg-white border-b border-neutral-200 shadow-sm">
@@ -103,20 +180,7 @@ export default function CategoryListing<T extends ListingSpot>({
             ref={scrollContainerRef}
             className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1 w-full justify-start md:justify-center"
           >
-            {categories.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                  activeTab === tab.id
-                    ? 'bg-neutral-900 text-white shadow-sm'
-                    : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+            {chips}
           </div>
 
           <button
@@ -130,35 +194,7 @@ export default function CategoryListing<T extends ListingSpot>({
         </div>
       </div>
 
-      {/* Зурагтай картуудын тор */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-10">
-        {notice && <div className="mb-10">{notice}</div>}
-        <div className="flex justify-between items-end mb-6">
-          <p className="text-xs text-neutral-500 font-semibold uppercase tracking-wider">
-            Нийт {filteredSpots.length} {countLabel}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredSpots.map((spot) => (
-            <ImageCard
-              key={spot.id}
-              image={{ src: spot.image, alt: spot.title }}
-              eyebrow={[spot.location, spot.region].filter(Boolean).join(' • ')}
-              href={spot.href}
-              badges={[spot.category, ...(spot.badges || []), ...(badge ? badge(spot) : [])]}
-              title={spot.title}
-              desc={spot.description}
-              cta={cta}
-              aspect="aspect-[4/5]"
-            />
-          ))}
-        </div>
-        {filteredSpots.length === 0 && emptyText && (
-          <p className="py-16 text-sm text-center text-neutral-500">{emptyText}</p>
-        )}
-        {footer && <div className="mt-16">{footer}</div>}
-      </div>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-10">{list}</div>
     </main>
   );
 }

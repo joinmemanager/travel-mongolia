@@ -18,6 +18,7 @@ export default function ImageCard({
   badges,
   cta,
   aspect = 'aspect-[4/3]',
+  ctaButton,
   sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px',
 }: {
   href?: string;
@@ -30,6 +31,8 @@ export default function ImageCard({
   // Картын доод мөрийн текст (жишээ нь "Дэлгэрэнгүй үзэх")
   cta?: string;
   aspect?: string;
+  // cta-г тод ногоон товч хэлбэрээр (хэсгийн хуудсууд, docs/plan/section-layout.md)
+  ctaButton?: boolean;
   sizes?: string;
 }) {
   const className = `group block overflow-hidden relative h-full rounded-3xl bg-neutral-900 shadow-sm ${aspect}`;
@@ -68,7 +71,13 @@ export default function ImageCard({
         )}
         <h3 className="mb-1 text-xl font-bold leading-snug text-white">{title}</h3>
         {desc && <p className="text-sm leading-relaxed text-white/85 line-clamp-2">{desc}</p>}
-        {cta && (
+        {/* Холбоосгүй картад товч мэт харагдах бичиг гаргахгүй */}
+        {cta && href && ctaButton && (
+          <span className="inline-flex gap-2 items-center mt-4 py-2 px-4 text-sm font-bold text-white rounded-full bg-[#15803d] shadow-sm transition-colors group-hover:bg-emerald-700">
+            {cta} <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+          </span>
+        )}
+        {cta && href && !ctaButton && (
           <span className="inline-flex gap-1 items-center mt-3 text-xs font-semibold text-white transition-transform group-hover:translate-x-1">
             {cta} <span aria-hidden="true">→</span>
           </span>
