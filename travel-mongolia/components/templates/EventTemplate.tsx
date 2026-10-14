@@ -57,6 +57,7 @@ export default function EventTemplate({
           bookingUrl={e.bookingUrl}
           campaign="event"
           contentId={e.slug}
+          itemName={e.title}
           bookingLabel="Аялал захиалах"
         />
       }

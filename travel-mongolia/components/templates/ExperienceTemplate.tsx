@@ -52,6 +52,7 @@ export default function ExperienceTemplate({
           contentId={x.slug}
           providerId={x.hostId}
           isLocalProvider={isLocalProvider}
+          itemName={x.title}
         />
       }
     >

@@ -42,8 +42,25 @@
 | `click_to_provider` | `/local/<slug>` (профайл) руу холбоос дарахад | `target_id`, `provider_id`, `link_url` + хуудасны 3 параметр |
 | `booking_click` | "Захиалах" / "Аялал захиалах" товч дарахад | **`provider_id`** (Contentful entry ID), **`is_local_provider`** (`localOwned`), `target_id`, `link_url` + хуудасны 3 параметр |
 | `view_respect_guide` | `/respect`, `/respect/*` хуудас нээгдэхэд | хуудасны 3 параметр |
+| `joinme_click` | joinme.mn руу очих аливаа холбоос дарахад (доор) | `link_url`, `page_path`, `content_type`, `item_name` |
 
 Холбоосууд дээрх `data-ga-event`, `data-ga-params` шинжээс уншдаг. Шинэ товчинд event нэмэх бол тэр 2 шинжийг тавихад хангалттай.
+
+### `joinme_click` (2026-10-14)
+
+joinme.mn (эсвэл `*.joinme.mn`) руу очих **аливаа** `<a>` дээр дарахад илгээгдэнэ: дэлгэрэнгүй хуудасны "Захиалах", холбоотой картын "Захиалах", цэс/footer-ийн "Захиалах", контент доторх холбоос г.м. Холбоосны хаягаар (`isJoinmeUrl`, `lib/booking.ts`) танина, тиймээс шинэ товчинд юу ч нэмэх шаардлагагүй.
+
+| Параметр | Утга |
+|---|---|
+| `link_url` | Очих хаяг (UTM-тэй) |
+| `page_path` | Дарсан хуудасны хаяг (`/local/experiences/...`) |
+| `content_type` | Товчны `data-joinme-type` (`experience`, `provider`, `event`, `destination` г.м.). Цэс, footer-ийн холбоос бол `nav`. Бусад үед хуудасны `content_type` |
+| `item_name` | Товчны `data-joinme-name` (аялал, газар, үйлчилгээ үзүүлэгчийн нэр). Цэс, footer-ийн холбоос бол холбоосны текст ("Захиалах"). Бусад үед дэлгэрэнгүй хуудасны гарчиг (h1), эсвэл холбоосны текст |
+
+- `FactsCard` нь `campaign` болон `itemName` prop-оос, `RelatedBookings` нь картын `kind`, `title`-аас эдгээр шинжийг тавина.
+- `booking_click`-аас **тусдаа** event. "Захиалах" товч дарахад хоёулаа нэг нэг удаа илгээгдэнэ (`booking_click` хуучнаараа, параметр нь өөрчлөгдөөгүй).
+- Нэг дарахад нэг л удаа: `document`-ын нэг capture listener (Analytics зөвхөн Footer-т нэг удаа mount хийгдэнэ). Дунд товчоор (шинэ tab) дарахыг `auxclick`-ээр тоолно. Зүүн товч `auxclick` үүсгэдэггүй тул давхардахгүй.
+- GA4: `item_name`, `page_path`, `link_url`-ийг custom dimension-д бүртгэвэл тайланд харагдана (`content_type` аль хэдийн бүртгэлтэй). Хэрэгтэй бол `joinme_click`-ийг key event болгоно.
 
 ## 3. Joinme руу очих холбоосын UTM
 

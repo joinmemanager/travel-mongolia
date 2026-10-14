@@ -49,6 +49,7 @@ export function FactsCard({
   contentId,
   providerId,
   isLocalProvider = false,
+  itemName,
 }: {
   facts: { label: string; value?: React.ReactNode }[];
   bookingUrl?: string;
@@ -59,6 +60,8 @@ export function FactsCard({
   // Analytics: booking_click-ийн provider_id, is_local_provider
   providerId?: string;
   isLocalProvider?: boolean;
+  // Analytics: joinme_click-ийн item_name (аялал, газар, үйлчилгээ үзүүлэгчийн нэр)
+  itemName?: string;
 }) {
   const rows = facts.filter((f) => f.value);
   const href = bookingHref(bookingUrl, campaign, contentId);
@@ -80,6 +83,8 @@ export function FactsCard({
         rel="noreferrer"
         data-ga-event="booking_click"
         data-ga-params={JSON.stringify({ provider_id: providerId || '', is_local_provider: isLocalProvider, target_id: contentId })}
+        data-joinme-type={campaign}
+        data-joinme-name={itemName}
         className="flex justify-between items-center py-3 px-5 w-full text-sm font-bold text-white bg-[#15803d] hover:bg-emerald-800 rounded-full transition-colors"
       >
         <span>{bookingLabel}</span>
