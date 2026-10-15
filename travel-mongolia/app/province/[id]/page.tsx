@@ -4,15 +4,27 @@ import { permanentRedirect } from 'next/navigation';
 import { connection } from 'next/server';
 import React, { cache } from 'react';
 
+import { ContentContext } from '@/components/Analytics';
+import ImageCard from '@/components/design/ImageCard';
+import LinkCard from '@/components/design/LinkCard';
+import AimagMap from '@/components/province/AimagMap';
+import Gallery from '@/components/province/Gallery';
+import ProvinceFactsBand, { type FactItem } from '@/components/province/ProvinceFactsBand';
+import ReadMore from '@/components/province/ReadMore';
+import WeatherCard from '@/components/province/WeatherCard';
 import RichText from '@/components/RichText';
 import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import ImageHero from '@/components/templates/ImageHero';
 import RelatedBookings from '@/components/templates/RelatedBookings';
-import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { getEntryBySlugOrId } from '@/lib/entries';
-import { getHeritagePlaceCards } from '@/lib/places';
+import { IMAGES } from '@/lib/images';
+import { cdnImage } from '@/lib/imageUrl';
 import { getGuidanceFor } from '@/lib/localContent';
-import { isPreviewEnv } from '@/lib/navigation';
+import { isPreviewEnv, liveHref } from '@/lib/navigation';
+import { getHeritagePlaceCards } from '@/lib/places';
+import { POPULATION_YEAR, PROVINCE_FACTS } from '@/lib/provinceFacts';
 import { getRelatedItems, linkIds } from '@/lib/related';
+import { splitRichText } from '@/lib/richTextParts';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { getSoumsOfProvince } from '@/lib/soums';
 
@@ -20,7 +32,8 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000';
+// Аймгийн entry-д зураггүй эсвэл entry байхгүй үеийн hero (Монголд авсан нь шалгагдсан зураг)
+const FALLBACK_IMAGE = IMAGES.whiteHorse.src;
 
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
 // slug-аар (хуучин холбоосод entry ID-аар) хайна. include: 1 нь танилцуулга доторх зургийг задална.
@@ -32,11 +45,81 @@ function imageOf(f: any): string | undefined {
   return url.startsWith('//') ? `https:${url}` : url;
 }
 
+// Hero-д сунгахад бүдгэрэхгүй өргөн. TIC-ээс орсон аймгийн зураг ихэвчлэн ≈250 px-ийн сүлд байдаг:
+// түүнийг hero биш, гарчгийн дээрх тэмдэг болгоно.
+const HERO_MIN_WIDTH = 1000;
+// «Зургийн цомог»-т орох хамгийн бага өргөн (сүлд, icon зэрэг жижиг зургийг оруулахгүй)
+const GALLERY_MIN_WIDTH = 500;
+
+function imageWidth(f: any): number {
+  return (f.image || f.coverImage)?.fields?.file?.details?.image?.width || 0;
+}
+
 // highlights нь Contentful-д нэг мөр текст ("А, Б, В"), хуучин өгөгдөлд массив байж болно
 function highlightList(v: unknown): string[] {
   if (Array.isArray(v)) return v.map(String).filter(Boolean);
   if (typeof v === 'string') return v.split(/[,;\n]/).map((s) => s.trim()).filter(Boolean);
   return [];
+}
+
+const num = (n: number) => n.toLocaleString('en-US');
+const text = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
+
+// Ховд, Улаанбаатарын entry-д загвараас үлдсэн утга (2026-10-15: center «Мэдээлэл», population
+// «100,000», area «төв»). Contentful-д засагдах хүртэл эдгээрийг хоосон гэж үзэж статик утгыг харуулна.
+const PLACEHOLDERS = new Set(['Мэдээлэл', '100,000', 'төв']);
+const cfText = (v: unknown) => {
+  const t = text(v);
+  return t && !PLACEHOLDERS.has(t) ? t : undefined;
+};
+// Тоон үзүүлэлт (талбай, хүн ам) цифргүй бол хүчингүй
+const cfNumber = (v: unknown) => {
+  const t = cfText(v);
+  return t && /\d/.test(t) ? t : undefined;
+};
+
+// Мэдээллийн тууз: Contentful-ийн утга эхэнд, байхгүй бол lib/provinceFacts.ts. Хоосон мөр харагдахгүй.
+function factItems(slug: string, f: any): { items: FactItem[]; usedStatic: boolean } {
+  const s: Partial<(typeof PROVINCE_FACTS)[string]> = PROVINCE_FACTS[slug] || {};
+  let usedStatic = false;
+  const items: FactItem[] = [];
+  // Contentful-ийн текст эсвэл статик утга (аль нь ч байхгүй бол мөр харагдахгүй)
+  const add = (label: string, cf: string | undefined, value: string | undefined, unit?: string) => {
+    if (cf) items.push({ label, value: cf });
+    else if (value) {
+      items.push({ label, value, unit });
+      usedStatic = true;
+    }
+  };
+  add('Талбай', cfNumber(f.area), s.area ? num(s.area) : undefined, 'км²');
+  add(cfNumber(f.population) ? 'Хүн ам' : `Хүн ам (${POPULATION_YEAR})`, cfNumber(f.population), s.population ? num(s.population) : undefined);
+  add('Аймгийн төв', cfText(f.center), s.center);
+  add('Улаанбаатараас', undefined, s.distanceFromUb ? num(s.distanceFromUb) : undefined, 'км');
+  add('Сумын тоо', undefined, s.soums ? String(s.soums) : undefined);
+  add('Дундаж өндөршил', undefined, s.elevation ? num(s.elevation) : undefined, 'м');
+  return { items, usedStatic };
+}
+
+// Хэсгийн гарчиг: зүүн талдаа ногоон зураастай
+function Section({
+  id,
+  title,
+  tint,
+  children,
+}: {
+  id: string;
+  title: string;
+  tint: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className={`scroll-mt-28 rounded-3xl px-6 py-10 sm:px-10 ${tint ? 'bg-[#f1f7f2]' : 'bg-white'}`}>
+      <h2 className="pl-4 mb-6 text-2xl font-black tracking-tight border-l-4 border-[#15803d] text-neutral-900 sm:text-3xl">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -59,7 +142,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/province/${slug}`,
     image: imageOf(f),
   });
-  // seoTitle-д брэнд аль хэдийн орсон тул layout-ын "| Travel Mongolia" загварыг давхар залгахгүй
+  // seoTitle-д брэнд аль хэдийн орсон тул layout-ын "| Travel Hub Mongolia" загварыг давхар залгахгүй
   return f.seoTitle ? { ...meta, title: { absolute: f.seoTitle } } : meta;
 }
 
@@ -76,24 +159,28 @@ export default async function ProvinceDetailPage({ params }: Props) {
   }
 
   const f: any = contentfulEntry?.fields || {};
+  const provinceSlug: string = f.slug || decodeURIComponent(id).toLowerCase();
+  const staticFacts = PROVINCE_FACTS[provinceSlug];
   const name: string = contentfulEntry
     ? f.title || f.name
-    : `${decodeURIComponent(id).replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase())} аймаг`;
+    : staticFacts
+      ? `${staticFacts.name} аймаг`
+      : `${decodeURIComponent(id).replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase())} аймаг`;
   const description =
     f.description2 ||
     f.description ||
     f.description1 ||
     (contentfulEntry ? '' : 'Энэхүү аймгийн дэлгэрэнгүй танилцуулга тун удахгүй нэмэгдэнэ.');
-  const facts = [
-    { label: 'Төв хот', value: f.center },
-    { label: 'Хүн ам', value: f.population },
-    { label: 'Газар нутаг', value: f.area },
-  ].filter((x) => x.value);
+  const { intro, more, images: allImages } = splitRichText(description);
+  const images = allImages.filter((img) => !img.width || img.width >= GALLERY_MIN_WIDTH);
+  const entryImage = imageOf(f);
+  const heroImage = entryImage && imageWidth(f) >= HERO_MIN_WIDTH ? entryImage : FALLBACK_IMAGE;
+  const emblem = entryImage && heroImage !== entryImage ? entryImage : undefined;
+  const { items: facts, usedStatic } = factItems(provinceSlug, f);
   const highlights = highlightList(f.highlights);
-  const provinceSlug: string = f.slug || id;
+  const provinceStem = String(name).replace(/ аймаг$/, '');
 
   // Энэ аймагт байрлах түүхэн өвийн газрууд (region талбарт аймгийн нэр орсон)
-  const provinceStem = String(name).replace(/ аймаг$/, '');
   const placesHere = (await getHeritagePlaceCards())
     .filter((p) => p.region && p.region.includes(provinceStem))
     .slice(0, 3);
@@ -112,133 +199,180 @@ export default async function ProvinceDetailPage({ params }: Props) {
     : [[], []];
   const soumPages = soums.filter((s) => s.ownPage);
   const soumBriefs = soums.filter((s) => !s.ownPage);
+  const plannerHref = liveHref('/planner');
 
-  const nav = [
-    { id: 'overview', label: 'Тойм мэдээлэл' },
-    ...(facts.length ? [{ id: 'facts', label: 'Үзүүлэлтүүд' }] : []),
-    ...(highlights.length ? [{ id: 'highlights', label: 'Үзэх газрууд' }] : []),
-    ...(soums.length ? [{ id: 'soums', label: 'Сумд' }] : []),
-    { id: 'guide', label: 'Аяллын зөвлөгөө' },
-  ];
+  // Хэсгүүд ээлжлэн цагаан / цайвар ногоон дэвсгэртэй
+  let n = 0;
+  const tint = () => n++ % 2 === 1;
 
   return (
-    <PlaceTemplate
-      image={{ src: imageOf(f) || FALLBACK_IMAGE, alt: name }}
-      title={name}
-      back={{ href: '/#map', label: 'Нүүр хуудас руу буцах' }}
-      analytics={{ content_type: 'province', content_id: provinceSlug, province: name }}
-      bookings={<RelatedBookings items={related} campaign="province" contentId={provinceSlug} />}
-      nav={nav}
-      nearby={{ title: 'Ойролцоох газрууд', places: placesHere }}
-      links={[
-        { label: 'Зорих газрууд', href: '/destination/region' },
-        { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
-        { label: 'Газрын зураг', href: '/destination/map' },
-      ]}
-    >
-        {/* Хэсэг 1: Ерөнхий танилцуулга */}
-        <section id="overview" className="pt-16 scroll-mt-20">
-          <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
-            Танилцуулга
-          </h2>
-          <div className="text-neutral-700">
-            <RichText document={description} />
-          </div>
-        </section>
+    <main className="pb-28 w-full min-h-screen font-sans bg-white text-neutral-900">
+      <ContentContext value={{ content_type: 'province', content_id: provinceSlug, province: name }} />
 
-        {/* Хэсэг 2: Тоон үзүүлэлтүүд */}
-        {facts.length > 0 && (
-          <section id="facts" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
-            <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
-              Аймгийн үзүүлэлтүүд
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {facts.map((x) => (
-                <div key={x.label} className="bg-neutral-50 p-6 rounded-2xl border border-neutral-200/60">
-                  <span className="text-xs uppercase tracking-wider text-neutral-400 font-semibold block mb-1">
-                    {x.label}
-                  </span>
-                  <span className="text-xl font-medium text-neutral-900">{x.value}</span>
-                </div>
-              ))}
+      <ImageHero
+        compact
+        image={{ src: heroImage, alt: heroImage === FALLBACK_IMAGE ? IMAGES.whiteHorse.alt : name }}
+        title={name}
+        badge={
+          emblem && (
+            <img
+              src={cdnImage(emblem, 192)}
+              alt={`${provinceStem} аймгийн сүлд`}
+              width={96}
+              height={96}
+              className="object-contain p-1.5 mx-auto mb-4 w-20 h-20 bg-white rounded-2xl shadow-lg sm:w-24 sm:h-24"
+            />
+          )
+        }
+        topLeft={
+          <Link
+            href="/#map"
+            className="inline-flex gap-2 items-center px-4 py-2 text-xs font-medium rounded-full border backdrop-blur-md transition-all bg-black/40 hover:bg-black/60 text-white/90 hover:text-white border-white/10 sm:text-sm"
+          >
+            <span aria-hidden="true">←</span>
+            <span>Нүүр хуудас руу буцах</span>
+          </Link>
+        }
+      />
+
+      <ProvinceFactsBand
+        items={facts}
+        note={
+          usedStatic
+            ? `Эх сурвалж: ҮСХ (${POPULATION_YEAR} оны тооллого), Wikipedia, touristinfocenter.mn; дундаж өндөршил — Copernicus DEM-ээс тооцоолсон.`
+            : undefined
+        }
+      />
+
+      <div className="grid grid-cols-1 gap-8 px-4 mx-auto mt-8 max-w-7xl sm:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12 lg:mt-12">
+        {/* Sidebar: утсан дээр агуулгын дээд хэсэгт, компьютерт баруун талд наалддаг */}
+        <aside className="lg:order-last">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:sticky lg:top-[calc(var(--nav-h)+1.5rem)]">
+            <div className="sm:row-span-2 lg:row-span-1">
+              <AimagMap active={provinceSlug} />
             </div>
-          </section>
-        )}
-
-        {/* Хэсэг 3: Үзэх газрууд */}
-        {highlights.length > 0 && (
-          <section id="highlights" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
-            <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
-              Онцлох газрууд
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {highlights.map((spot, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50 border border-neutral-200/50 hover:border-neutral-300 transition-colors"
-                >
-                  <span className="text-lg">📍</span>
-                  <span className="text-neutral-800 font-medium">{spot}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Хэсэг 4: Сумд. Тусдаа хуудастай нь холбоос, бусад нь товч танилцуулгатай жагсаалт */}
-        {soums.length > 0 && (
-          <section id="soums" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
-            <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">
-              {provinceStem} аймгийн сумд
-            </h2>
-            {soumPages.length > 0 && (
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                {soumPages.map((s) => (
-                  <li key={s.id} id={s.slug} className="scroll-mt-28">
-                    <Link
-                      href={`/province/${provinceSlug}/${s.slug}`}
-                      className="flex items-center justify-between gap-3 p-4 rounded-xl bg-neutral-50 border border-neutral-200/50 hover:border-[#15803d] transition-colors"
-                    >
-                      <span className="text-neutral-900 font-medium">{s.title}</span>
-                      <span className="text-sm font-semibold text-[#15803d]">Дэлгэрэнгүй →</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            {plannerHref && (
+              <Link
+                href={plannerHref}
+                className="flex justify-center items-center px-6 py-4 text-base font-bold text-white rounded-2xl shadow-sm transition-colors bg-[#15803d] hover:bg-[#0b3b20]"
+              >
+                Аялал төлөвлөх →
+              </Link>
             )}
-            {soumBriefs.length > 0 && (
-              <div className="space-y-3">
-                {soumBriefs.map((s) => (
-                  <details
-                    key={s.id}
-                    id={s.slug}
-                    className="group scroll-mt-28 rounded-xl border border-neutral-200/70 bg-white open:bg-neutral-50"
+            {staticFacts?.coords && <WeatherCard slug={provinceSlug} center={cfText(f.center) || staticFacts.center} />}
+          </div>
+        </aside>
+
+        <div className="space-y-6 min-w-0">
+          {/* Танилцуулга: эхний 3 догол мөр, үлдсэн нь «Дэлгэрэнгүй унших» (HTML-д бүтнээрээ) */}
+          <Section id="overview" title="Танилцуулга" tint={tint()}>
+            <div className="max-w-[70ch]">
+              <RichText document={intro} />
+              {more && (
+                <ReadMore>
+                  <RichText document={more} />
+                </ReadMore>
+              )}
+            </div>
+          </Section>
+
+          {images.length > 0 && (
+            <Section id="gallery" title="Зургийн цомог" tint={tint()}>
+              <Gallery images={images} />
+            </Section>
+          )}
+
+          {highlights.length > 0 && (
+            <Section id="highlights" title="Онцлох газрууд" tint={tint()}>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {highlights.map((spot, idx) => (
+                  <div
+                    key={idx}
+                    className="flex gap-3 items-center p-4 bg-white rounded-xl border transition-colors border-neutral-200/50 hover:border-neutral-300"
                   >
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-medium text-neutral-900">
-                      <span>{s.title}</span>
-                      <span aria-hidden="true" className="text-neutral-400 transition-transform group-open:rotate-45">+</span>
-                    </summary>
-                    <div className="px-4 pb-2">
-                      <RichText document={s.body} />
-                    </div>
-                  </details>
+                    <span className="text-lg" aria-hidden="true">📍</span>
+                    <span className="font-medium text-neutral-800">{spot}</span>
+                  </div>
                 ))}
               </div>
-            )}
+            </Section>
+          )}
+
+          {/* Сумд. Тусдаа хуудастай нь холбоос, бусад нь товч танилцуулгатай жагсаалт */}
+          {soums.length > 0 && (
+            <Section id="soums" title={`${provinceStem} аймгийн сумд`} tint={tint()}>
+              {soumPages.length > 0 && (
+                <ul className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-2">
+                  {soumPages.map((s) => (
+                    <li key={s.id} id={s.slug} className="scroll-mt-28">
+                      <Link
+                        href={`/province/${provinceSlug}/${s.slug}`}
+                        className="flex gap-3 justify-between items-center p-4 bg-white rounded-xl border transition-colors border-neutral-200/50 hover:border-[#15803d]"
+                      >
+                        <span className="font-medium text-neutral-900">{s.title}</span>
+                        <span className="text-sm font-semibold text-[#15803d]">Дэлгэрэнгүй →</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {soumBriefs.length > 0 && (
+                <div className="space-y-3">
+                  {soumBriefs.map((s) => (
+                    <details
+                      key={s.id}
+                      id={s.slug}
+                      className="bg-white rounded-xl border group scroll-mt-28 border-neutral-200/70 open:bg-neutral-50"
+                    >
+                      <summary className="flex gap-3 justify-between items-center p-4 font-medium list-none cursor-pointer text-neutral-900">
+                        <span>{s.title}</span>
+                        <span aria-hidden="true" className="transition-transform text-neutral-400 group-open:rotate-45">+</span>
+                      </summary>
+                      <div className="px-4 pb-2 max-w-[70ch]">
+                        <RichText document={s.body} />
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              )}
+            </Section>
+          )}
+
+          <Section id="guide" title="Аялахад анхаарах зүйлс" tint={tint()}>
+            <p className="max-w-[70ch] text-base leading-relaxed text-neutral-700 sm:text-lg">
+              Аялалд гарахаас өмнө цаг агаарын нөхцөл байдал, зам харгуй болон шатахуун түгээх станцын байршлыг урьдчилан судлахыг зөвлөж байна. Мөн орон нутгийн байгаль хамгаалагчидтай холбогдон тусгай хамгаалалттай газар нутгийн дэглэмтэй танилцаарай.
+            </p>
+          </Section>
+
+          <PlaceEsgBlocks fields={contentfulEntry?.fields} />
+          <GuidanceBlock items={guidance} />
+        </div>
+      </div>
+
+      <div className="px-6 mx-auto mt-20 space-y-12 max-w-7xl sm:px-10">
+        <RelatedBookings items={related} campaign="province" contentId={provinceSlug} />
+        {placesHere.length > 0 && (
+          <section>
+            <h2 className="pl-4 mb-6 text-2xl font-black tracking-tight border-l-4 border-[#15803d] text-neutral-900 sm:text-3xl">
+              Ойролцоох газрууд
+            </h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {placesHere.map((place) => (
+                <ImageCard key={place.id} href={place.href} image={place.image} title={place.title} eyebrow={place.region} />
+              ))}
+            </div>
           </section>
         )}
-
-        {/* Хэсэг 5: Аяллын зөвлөмж */}
-        <section id="guide" className="pt-16 scroll-mt-20 border-t border-neutral-100 mt-12">
-          <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-4">
-            Аялахад анхаарах зүйлс
-          </h2>
-          <p className="text-neutral-600 leading-relaxed font-light">
-            Аялалд гарахаас өмнө цаг агаарын нөхцөл байдал, зам харгуй болон шатахуун түгээх станцын байршлыг урьдчилан судлахыг зөвлөж байна. Мөн орон нутгийн байгаль хамгаалагчидтай холбогдон тусгай хамгаалалттай газар нутгийн дэглэмтэй танилцаарай.
-          </p>
-        </section>
-      <PlaceEsgBlocks fields={contentfulEntry?.fields} />
-      <GuidanceBlock items={guidance} />
-    </PlaceTemplate>
+        <LinkCard
+          title="Холбогдох хуудсууд"
+          columns={3}
+          links={[
+            { label: 'Зорих газрууд', href: '/destination/region' },
+            { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
+            { label: 'Газрын зураг', href: '/destination/map' },
+          ]}
+        />
+      </div>
+    </main>
   );
 }

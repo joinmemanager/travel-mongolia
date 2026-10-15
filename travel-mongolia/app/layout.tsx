@@ -31,7 +31,7 @@ const siteDescription =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Travel Mongolia | Монголд аялах аяллын гарын авлага',
+    default: `${SITE_NAME} | Монголд аялах гарын авлага`,
     template: `%s | ${SITE_NAME}`,
   },
   description: siteDescription,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: 'mn_MN',
     type: 'website',
     url: '/',
-    title: 'Travel Mongolia | Монголд аялах аяллын гарын авлага',
+    title: `${SITE_NAME} | Монголд аялах гарын авлага`,
     description: siteDescription,
     images: [{ url: DEFAULT_OG_IMAGE }],
   },
@@ -71,7 +71,7 @@ const websiteJsonLd = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Travel Hub Mongolia',
+  name: SITE_NAME,
   url: 'https://www.travelhubmongolia.com',
   logo: 'https://www.travelhubmongolia.com/brand/logo-color-trim.png',
   sameAs: [

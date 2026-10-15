@@ -21,6 +21,8 @@ export default function ImageHero({
   topLeft,
   children,
   titleAs: TitleTag = 'h1',
+  compact = false,
+  badge,
 }: {
   image: { src: string; alt: string };
   kicker?: string;
@@ -32,9 +34,15 @@ export default function ImageHero({
   children?: React.ReactNode;
   // Гарчгийн tag: хуудас бүрт нэг H1 байх тул хэсгийн дэд хуудсанд 'p' (components/section/SectionHero.tsx)
   titleAs?: 'h1' | 'p';
+  // Намхан толгой (≈48vh): доор нь мэдээллийн тууз байх хуудсанд (аймгийн хуудас)
+  compact?: boolean;
+  // Гарчгийн дээрх жижиг тэмдэг (аймгийн сүлд г.м.)
+  badge?: React.ReactNode;
 }) {
   return (
-    <section className="flex relative justify-center items-center w-full h-[55vh] min-h-[420px]">
+    <section
+      className={`flex relative justify-center items-center w-full ${compact ? 'h-[48vh] min-h-[360px]' : 'h-[55vh] min-h-[420px]'}`}
+    >
       {image.src && (
         <Image
           src={image.src}
@@ -46,8 +54,13 @@ export default function ImageHero({
           className="object-cover brightness-[0.5]"
         />
       )}
-      {topLeft && <div className="absolute top-28 left-6 z-20 sm:left-12 lg:left-16">{topLeft}</div>}
+      {topLeft && (
+        <div className={`absolute z-20 sm:left-12 lg:left-16 ${compact ? 'top-[4.5rem] left-4 sm:top-6' : 'top-28 left-6'}`}>
+          {topLeft}
+        </div>
+      )}
       <div className="relative z-10 px-6 mx-auto max-w-4xl text-center">
+        {badge}
         {kicker && (
           <span className="block mb-3 text-xs font-black tracking-[0.3em] text-emerald-400 uppercase sm:text-sm">
             {kicker}

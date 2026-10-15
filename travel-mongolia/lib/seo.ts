@@ -6,7 +6,7 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travelhubmongolia.com'
 ).replace(/\/$/, '');
 
-export const SITE_NAME = 'Travel Mongolia';
+export const SITE_NAME = 'Travel Hub Mongolia';
 
 export const DEFAULT_OG_IMAGE = '/hero.jpg';
 
@@ -28,6 +28,20 @@ export function richTextToPlain(node: any): string {
   return '';
 }
 
+export const TITLE_MAX = 60;
+const BRAND_SUFFIX = ` | ${SITE_NAME}`;
+
+// Хайлтын үр дүнгийн гарчиг ≤60 тэмдэгт: layout-ын « | Travel Hub Mongolia»-тай багтвал загвараар,
+// багтахгүй бол брэндгүйгээр (absolute); гарчиг өөрөө урт бол сүүлийн «, …» хэсгүүдийг хасна
+// (жишээ нь «Нэр, Аймаг · 2023 он» → «Нэр»), тэгээд ч урт бол үгийн хил дээр тайрна.
+export function fitTitle(title: string): Metadata['title'] {
+  const len = (s: string) => [...s].length;
+  if (len(title) + BRAND_SUFFIX.length <= TITLE_MAX) return title;
+  let t = title;
+  while (len(t) > TITLE_MAX && t.includes(', ')) t = t.slice(0, t.lastIndexOf(', '));
+  return { absolute: len(t) > TITLE_MAX ? truncate(t, TITLE_MAX) : t };
+}
+
 // Хуудас бүрийн metadata: title, description, canonical, OG/Twitter
 export function pageMetadata({
   title,
@@ -42,7 +56,7 @@ export function pageMetadata({
 }): Metadata {
   const images = [{ url: image || DEFAULT_OG_IMAGE }];
   return {
-    title,
+    title: fitTitle(title),
     description,
     alternates: { canonical: path },
     openGraph: {

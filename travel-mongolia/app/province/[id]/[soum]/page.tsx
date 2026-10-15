@@ -5,6 +5,7 @@ import React, { cache } from 'react';
 
 import RichText from '@/components/RichText';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
+import { IMAGES } from '@/lib/images';
 import { isPreviewEnv } from '@/lib/navigation';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { getSoum, getSoumsOfProvince } from '@/lib/soums';
@@ -17,7 +18,8 @@ interface Props {
   params: Promise<{ id: string; soum: string }>;
 }
 
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000';
+// Сумын entry-д зураггүй үеийн hero (Монголд авсан нь шалгагдсан зураг)
+const FALLBACK_IMAGE = IMAGES.whiteHorse.src;
 
 const loadSoum = cache(async (id: string, soum: string) => getSoum(id, soum));
 
