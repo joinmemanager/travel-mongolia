@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { photoSrc } from '@/lib/images';
 import Image from 'next/image';
 
 
@@ -69,13 +70,13 @@ export default async function Home() {
               title: 'Богино видео',
               icon: '📽️',
               image:
-                'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
+                photoSrc('gerStars', 600),
             },
             {
               title: 'Тайлбар видео',
               icon: '✨',
               image:
-                'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600',
+                photoSrc('camels', 600),
             },
             {
               title: 'Подкаст',
@@ -87,7 +88,7 @@ export default async function Home() {
               title: 'Фото түүх',
               icon: '📖',
               image:
-                'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=600',
+                photoSrc('eagleHunter', 600),
             },
             {
               title: 'Инфографик',

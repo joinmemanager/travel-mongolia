@@ -22,9 +22,11 @@ node scripts/maps/build-aimag-map.js <хавтас>/admin1.geojson
 - **Өндрийн өгөгдөл:** Copernicus DEM GLO-90 (90 м). © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA; all rights reserved. Үнэ төлбөргүй ашиглах лицензтэй ([Copernicus DEM license](https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf)).
 - **Open-Meteo:** өгөгдөл CC BY 4.0 ([open-meteo.com/en/license](https://open-meteo.com/en/license)). Нэг удаагийн тооцоо, сайт ажиллах үед дууддаггүй.
 
-## Цаг агаар (`app/api/weather/[slug]/route.ts`)
+## Цаг агаар (`lib/metWeather.ts`, `app/api/weather/[slug]`, `app/api/weather/at/[lat]/[lon]`)
 
-- [Open-Meteo Forecast API](https://open-meteo.com/en/docs), түлхүүргүй, CC BY 4.0. Server талд 1 цаг кэшилнэ (аймаг бүрт цагт ≤1 дуудлага). Open-Meteo-ийн үнэгүй API нь арилжааны бус хэрэглээнд зориулагдсан тул сайт арилжааны чиглэлтэй болбол [API subscription](https://open-meteo.com/en/pricing) шаардлагатай эсэхийг шалгана.
+- [MET Norway Locationforecast 2.0](https://api.met.no/weatherapi/locationforecast/2.0/documentation) (Норвегийн цаг уурын хүрээлэн), түлхүүргүй, арилжааны хэрэглээг зөвшөөрдөг. Өгөгдлийн лиценз: [NLOD 2.0 ба CC BY 4.0](https://api.met.no/doc/License) — карт бүрийн доор «Эх сурвалж: MET Norway» гэж бичсэн.
+- [Үйлчилгээний нөхцөл](https://api.met.no/doc/TermsOfService)-ийн дагуу: User-Agent `TravelHubMongolia/1.0 (+https://www.travelhubmongolia.com; contact@joinme.mn)`, координат ≤4 орон, server талд 1 цаг кэш (аймаг бүрт цагт ≤1 дуудлага; өвийн газрын widget-ийн координатыг 2 орон хүртэл бөөрөнхийлнө). Хөтчөөс шууд дууддаггүй.
+- 2026-10-15 хүртэл Open-Meteo ашигладаг байсан (арилжааны бус хэрэглээний нөхцөлтэй тул сольсон). Дундаж өндөршлийн нэг удаагийн тооцоо (дээрх) Open-Meteo Elevation API-аар хийгдсэн, сайт ажиллах үед дууддаггүй.
 
 ## Аймгийн үзүүлэлт (`lib/provinceFacts.ts`)
 

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { photoSrc } from '@/lib/images';
 import Link from 'next/link';
 import React from 'react';
 
@@ -22,7 +23,7 @@ export default function SeasonRecommendations({ items }: Props) {
     const img = item?.fields?.image || item?.fields?.coverImage;
     const url = img?.fields?.file?.url;
     if (!url)
-      return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
+      return photoSrc('lakeGers', 1200);
     return url.startsWith('//') ? `https:${url}` : url;
   };
 

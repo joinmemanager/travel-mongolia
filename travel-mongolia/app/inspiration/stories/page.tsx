@@ -1,6 +1,7 @@
 'use client';
 
 import InspirationListing from '@/components/templates/InspirationListing';
+import { photoSrc } from '@/lib/images';
 
 interface StoryItem {
   id: string;
@@ -27,7 +28,7 @@ const STORY_ITEMS: StoryItem[] = [
     category: 'Малчин ахуй',
     title: 'Талын салхитай уралдан адуу хураах үүр цайх мөч',
     subtitle: 'Сүхбаатар аймаг • Түмэн адууны нутгийн адуучин залуугийн нэг өдөр',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+    image: photoSrc('whiteHorse', 800),
     tag: 'Малчин • Б.Болд',
     aspect: 'h-[440px]',
   },

@@ -1,17 +1,18 @@
 import { client } from '@/lib/contentful';
 import HeritagePageClient from '@/components/HeritagePageClient';
 import { metaFor } from '@/lib/pageMeta';
+import { photoSrc } from '@/lib/images';
 
 export const metadata = metaFor('/destination/heritage');
 
 function getImageUrl(imageField: any): string {
   if (!imageField)
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000';
+    return photoSrc('gerCamp', 1000);
 
   const url = imageField?.fields?.file?.url || '';
 
   if (!url) {
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000';
+    return photoSrc('gerCamp', 1000);
   }
 
   return url.startsWith('//') ? `https:${url}` : url;

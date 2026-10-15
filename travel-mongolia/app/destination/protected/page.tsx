@@ -1,11 +1,12 @@
 'use client';
 
 import CategoryDirectory, { DirectoryGroupSection } from '@/components/templates/CategoryDirectory';
+import { photoSrc } from '@/lib/images';
 
 interface PlaceCard {
   name: string;
   region: string;
-  img: string;
+  img?: string;
 }
 
 interface CategoryData {
@@ -52,17 +53,16 @@ const CATEGORIES: CategoryData[] = [
       {
         name: 'Хөвсгөл нуур',
         region: 'Хөвсгөл · Далай ээж',
-        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000',
+        img: photoSrc('lakeGers', 1000),
       },
       {
         name: 'Горхи-Тэрэлж',
         region: 'Төв аймаг · Мэлхий хад',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
+        img: photoSrc('gerCamp', 1000),
       },
       {
         name: 'Хустайн нуруу',
         region: 'Төв аймаг · Тахийн өлгий',
-        img: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1000',
       },
     ],
     remainingCount: 34,
@@ -76,7 +76,6 @@ const CATEGORIES: CategoryData[] = [
       {
         name: 'Их нартын чулуу',
         region: 'Дорноговь · Аргалийн нутаг',
-        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000',
       },
       {
         name: 'Батхаан уул',
@@ -86,7 +85,6 @@ const CATEGORIES: CategoryData[] = [
       {
         name: 'Гүн галуут',
         region: 'Төв аймаг · Шувуудын орон',
-        img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000',
       },
     ],
     remainingCount: 33,
@@ -100,12 +98,10 @@ const CATEGORIES: CategoryData[] = [
       {
         name: 'Улаан цутгалан хүрхрээ',
         region: 'Өвөрхангай · Орхоны хөндий',
-        img: 'https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=1000',
       },
       {
         name: 'Хоргын тогоо',
         region: 'Архангай · Тэрхийн цагаан нуур',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
       },
       {
         name: 'Цагаан суварга',

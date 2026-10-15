@@ -17,7 +17,7 @@ import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBloc
 import ImageHero from '@/components/templates/ImageHero';
 import RelatedBookings from '@/components/templates/RelatedBookings';
 import { getEntryBySlugOrId } from '@/lib/entries';
-import { IMAGES } from '@/lib/images';
+import { AI_GENERATED_ASSETS, IMAGES } from '@/lib/images';
 import { cdnImage } from '@/lib/imageUrl';
 import { getGuidanceFor } from '@/lib/localContent';
 import { isPreviewEnv, liveHref } from '@/lib/navigation';
@@ -32,15 +32,18 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
-// Аймгийн entry-д зураггүй эсвэл entry байхгүй үеийн hero (Монголд авсан нь шалгагдсан зураг)
-const FALLBACK_IMAGE = IMAGES.whiteHorse.src;
+// Аймгийн entry-д том зураггүй үеийн hero: lib/provinceFacts.ts-ийн аймаг бүрийн түр зураг, байхгүй бол энэ
+const FALLBACK_IMAGE = IMAGES.whiteHorse;
 
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
 // slug-аар (хуучин холбоосод entry ID-аар) хайна. include: 1 нь танилцуулга доторх зургийг задална.
 const getProvince = cache(async (rawId: string) => getEntryBySlugOrId('province', rawId.toLowerCase().trim(), 1));
 
+// Entry-ийн зураг; AI-аар үүсгэсэн нь (lib/images.ts AI_GENERATED_ASSETS) тооцохгүй
 function imageOf(f: any): string | undefined {
-  const url = (f.image || f.coverImage)?.fields?.file?.url;
+  const asset = f.image || f.coverImage;
+  if (AI_GENERATED_ASSETS[asset?.sys?.id]) return undefined;
+  const url = asset?.fields?.file?.url;
   if (!url) return undefined;
   return url.startsWith('//') ? `https:${url}` : url;
 }
@@ -65,8 +68,9 @@ function highlightList(v: unknown): string[] {
 const num = (n: number) => n.toLocaleString('en-US');
 const text = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
 
-// Ховд, Улаанбаатарын entry-д загвараас үлдсэн утга (2026-10-15: center «Мэдээлэл», population
-// «100,000», area «төв»). Contentful-д засагдах хүртэл эдгээрийг хоосон гэж үзэж статик утгыг харуулна.
+// Ховд, Улаанбаатарын entry-д загвараас үлдсэн утга (center «Мэдээлэл», population «100,000», area «төв»).
+// 2026-10-15-нд Contentful-ийн Draft-аас хоосолсон (scripts/contentful/placeholders.js), гэхдээ нийтлэгдсэн
+// хувилбарт Publish хийх хүртэл үлдэнэ: тэр болтол эдгээрийг хоосон гэж үзэж статик утгыг харуулна.
 const PLACEHOLDERS = new Set(['Мэдээлэл', '100,000', 'төв']);
 const cfText = (v: unknown) => {
   const t = text(v);
@@ -140,7 +144,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           `${name}-д аялах гарын авлага: үзэх газрууд, төв, хүн ам, газар нутгийн мэдээлэл.`
       ),
     path: `/province/${slug}`,
-    image: imageOf(f),
+    image: (imageWidth(f) >= HERO_MIN_WIDTH && imageOf(f)) || (PROVINCE_FACTS[slug]?.hero && IMAGES[PROVINCE_FACTS[slug].hero!].src) || undefined,
   });
   // seoTitle-д брэнд аль хэдийн орсон тул layout-ын "| Travel Hub Mongolia" загварыг давхар залгахгүй
   return f.seoTitle ? { ...meta, title: { absolute: f.seoTitle } } : meta;
@@ -174,8 +178,11 @@ export default async function ProvinceDetailPage({ params }: Props) {
   const { intro, more, images: allImages } = splitRichText(description);
   const images = allImages.filter((img) => !img.width || img.width >= GALLERY_MIN_WIDTH);
   const entryImage = imageOf(f);
-  const heroImage = entryImage && imageWidth(f) >= HERO_MIN_WIDTH ? entryImage : FALLBACK_IMAGE;
-  const emblem = entryImage && heroImage !== entryImage ? entryImage : undefined;
+  const ownHero = entryImage && imageWidth(f) >= HERO_MIN_WIDTH ? entryImage : undefined;
+  const hero = ownHero
+    ? { src: ownHero, alt: name }
+    : (staticFacts?.hero && IMAGES[staticFacts.hero]) || FALLBACK_IMAGE;
+  const emblem = entryImage && !ownHero ? entryImage : undefined;
   const { items: facts, usedStatic } = factItems(provinceSlug, f);
   const highlights = highlightList(f.highlights);
   const provinceStem = String(name).replace(/ аймаг$/, '');
@@ -211,7 +218,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
 
       <ImageHero
         compact
-        image={{ src: heroImage, alt: heroImage === FALLBACK_IMAGE ? IMAGES.whiteHorse.alt : name }}
+        image={hero}
         title={name}
         badge={
           emblem && (

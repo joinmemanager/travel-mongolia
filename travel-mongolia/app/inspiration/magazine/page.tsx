@@ -1,6 +1,7 @@
 'use client';
 
 import HubHeader from '@/components/HubHeader';
+import { photoSrc } from '@/lib/images';
 
 import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -125,7 +126,7 @@ const MAGAZINE_SECTIONS: SectionData[] = [
         title: 'Ааруул, өрөм, айраг: Тал нутгийн супер хүнс',
         readTime: '5 мин унших',
         date: '2026.06.15',
-        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80',
+        image: photoSrc('gerCamp', 900),
         description: 'Байгалийн цэвэр бэлчээрийн шим шингэсэн уламжлалт цагаан идээ хүний биед хэрхэн эерэг нөлөө үзүүлдэг вэ?',
       },
       {

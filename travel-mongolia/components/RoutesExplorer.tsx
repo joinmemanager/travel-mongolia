@@ -21,6 +21,7 @@ const RealRouteMap = dynamic(() => import('@/components/RealRouteMap'), {
 
 import type { RelatedItem } from '@/lib/related';
 import { ROUTES_LIST, type RouteItem } from '@/lib/routesData';
+import { photoSrc } from '@/lib/images';
 
 import { ContentContext } from './Analytics';
 import RelatedBookings from './templates/RelatedBookings';
@@ -49,7 +50,7 @@ export default function RoutesExplorer({
      {/* 1. HERO ТОМ ЗУРАГТАЙ ТОЛГОЙ ХЭСЭГ */}
       <ImageHero
         image={{
-          src: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2400',
+          src: photoSrc('gerCamp', 2400),
           alt: 'Аяллын маршрут, замаар',
         }}
         kicker="06. Scenic Routes & Travel Corridors"

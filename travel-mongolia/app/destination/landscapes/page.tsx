@@ -1,11 +1,12 @@
 'use client';
 
 import CategoryDirectory, { DirectoryGroupSection } from '@/components/templates/CategoryDirectory';
+import { photoSrc } from '@/lib/images';
 
 interface PlaceCard {
   name: string;
   region: string;
-  img: string;
+  img?: string;
 }
 
 interface LandscapeCategory {
@@ -38,7 +39,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Мөнххайрхан уул',
         region: 'Ховд · 4,231 м',
-        img: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1000',
+        img: photoSrc('whiteHorse', 1000),
       },
     ],
     remainingCount: 37,
@@ -52,17 +53,15 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Хөвсгөл нуур',
         region: 'Хөвсгөл · Дэлхийн цэнгэг сувд',
-        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000',
+        img: photoSrc('lakeGers', 1000),
       },
       {
         name: 'Увс нуур',
         region: 'Увс · Төв Азийн давст их далай',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
       },
       {
         name: 'Тэрхийн цагаан нуур',
         region: 'Архангай · Галт уулын нуур',
-        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000',
       },
     ],
     remainingCount: 27,
@@ -76,7 +75,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Орхон гол',
         region: 'Архангай, Өвөрхангай · 1,124 км',
-        img: 'https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=1000',
       },
       {
         name: 'Сэлэнгэ мөрөн',
@@ -86,7 +84,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Хэрлэн гол',
         region: 'Хэнтий, Дорнод · 1,254 км',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
       },
     ],
     remainingCount: 22,
@@ -100,7 +97,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Баянзаг (Улаан хэрэм)',
         region: 'Өмнөговь · Үлэг гүрвэлийн өлгий',
-        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000',
+        img: photoSrc('redCliffs', 1000),
       },
       {
         name: 'Нэмэгтийн хөндий',
@@ -110,7 +107,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Хэрмэн цав',
         region: 'Өмнөговь · Байгалийн сүрлэг цайз хавцал',
-        img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000',
       },
     ],
     remainingCount: 17,
@@ -129,12 +125,11 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Элсэн тасархай',
         region: 'Булган, Төв · Их монгол элс',
-        img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000',
+        img: photoSrc('camels', 1000),
       },
       {
         name: 'Бөөрөг дэлийн элс',
         region: 'Увс · Дэлхийн хамгийн урт манхан',
-        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000',
       },
     ],
     remainingCount: 12,
@@ -153,7 +148,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Чулуутын голын хавцал',
         region: 'Архангай · 50 м өндөр базальт хана',
-        img: 'https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=1000',
       },
       {
         name: 'Дүнгэнээгийн хавцал',
@@ -182,7 +176,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Батхааны хушин ой',
         region: 'Төв аймаг · Хангай, талын зааг',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
       },
     ],
     remainingCount: 15,
@@ -196,7 +189,7 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Мэнэнгийн тал',
         region: 'Дорнод · Дэлхийн хамгийн том тал хээр',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
+        img: photoSrc('herderBoy', 1000),
       },
       {
         name: 'Шаргын говийн тал',
@@ -206,7 +199,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Дарьгангын тэгш өндөрлөг',
         region: 'Сүхбаатар · Галт уулын тогоот тал',
-        img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000',
       },
     ],
     remainingCount: 13,
@@ -220,7 +212,6 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Потанины мөсөн гол',
         region: 'Баян-Өлгий · 19 км урт Монголын хамгийн том мөсөн гол',
-        img: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1000',
       },
       {
         name: 'Александрын мөсөн гол',
@@ -244,12 +235,10 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Шаргалжуутын халуун рашаан',
         region: 'Баянхонгор · 108 булагтай эмчилгээний төв',
-        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000',
       },
       {
         name: 'Цэнхэрийн халуун рашаан',
         region: 'Архангай · 86°C байгалийн халуун ундарга',
-        img: 'https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=1000',
       },
       {
         name: 'Хужиртын рашаан',
@@ -268,17 +257,14 @@ const LANDSCAPE_CATEGORIES: LandscapeCategory[] = [
       {
         name: 'Цагаан суварга',
         region: 'Дундговь · Эртний тэнгисийн аварга шавар цайз',
-        img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000',
       },
       {
         name: 'Даян дээрхийн агуй',
         region: 'Хөвсгөл · Карстын шохойн чулуун том агуй',
-        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000',
       },
       {
         name: 'Хоргын галт уулын тогоо',
         region: 'Архангай · Унтарсан сүрлэг тогоо, лаавын агуйнууд',
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000',
       },
     ],
     remainingCount: 22,
@@ -289,7 +275,7 @@ export default function NaturalLandscapesPage() {
   return (
     <CategoryDirectory
       hero={{
-        src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2400',
+        src: photoSrc('whiteHorse', 2400),
         alt: 'Байгалийн тогтоц, ландшафт',
       }}
       kicker="04. Natural Landscapes"

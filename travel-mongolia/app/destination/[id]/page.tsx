@@ -13,6 +13,7 @@ import { getDestinationCards } from '@/lib/places';
 import { getGuidanceFor } from '@/lib/localContent';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
+import { photoSrc } from '@/lib/images';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -90,7 +91,7 @@ export default async function DestinationDetailPage({ params }: Props) {
   const fields = destination.fields as any;
   const imageUrl =
     getImageUrl(fields) ||
-    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
+    photoSrc('whiteHorse', 1600);
 
   // Ихэнх газар координатгүй тул зайгаар эрэмбэлэхгүй: "Бусад газрууд"
   const others = (await getDestinationCards()).filter((p) => p.id !== destination.sys.id).slice(0, 3);

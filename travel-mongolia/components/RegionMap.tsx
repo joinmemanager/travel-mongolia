@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { photoSrc } from '@/lib/images';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -144,7 +145,7 @@ const PROVINCES: ProvinceData[] = [
       ko: '홉스골 호수와 타이가 숲, 순록 유목민의 삶.',
     },
     images: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
+      photoSrc('lakeGers', 800),
     ],
     svgPoint: { x: 415, y: 115 },
   },
@@ -353,7 +354,7 @@ const PROVINCES: ProvinceData[] = [
       ko: '샤르갈주트 천연 온천과 이흐 복드 산.',
     },
     images: [
-      'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop',
+      photoSrc('camels', 800),
     ],
     svgPoint: { x: 385, y: 295 },
   },
@@ -399,7 +400,7 @@ const PROVINCES: ProvinceData[] = [
       ko: '홍고린 엘스 사구, 바얀작, 욜린 암 협곡.',
     },
     images: [
-      'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop',
+      photoSrc('redCliffs', 800),
     ],
     svgPoint: { x: 495, y: 375 },
   },
@@ -470,7 +471,7 @@ const PROVINCES: ProvinceData[] = [
       ko: '칭기즈칸 탄생지 델룬 볼독과 부르한 할둔 산.',
     },
     images: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
+      photoSrc('herderBoy', 800),
     ],
     svgPoint: { x: 695, y: 185 },
   },

@@ -1,4 +1,5 @@
 import type { RouteMapData } from '@/components/RealRouteMap';
+import { photoSrc } from '@/lib/images';
 
 // Аяллын маршрутуудын өгөгдөл (/destination/routes). Server хуудас (ойролцоох нутгийн
 // үйлчилгээ тооцоолох) ба client газрын зураг (components/RoutesExplorer) хоёулаа ашиглана.
@@ -55,7 +56,7 @@ export const ROUTES_LIST: RouteItem[] = [
     road: 'Засмал голлосон',
     season: '6–9 сар',
     desc: 'Их Монгол Улсын нийслэл Хархорум, Эрдэнэ зуу хийд, базальт хадан хавцлаар буух Улаан цутгалан хүрхрээ болон Цэнхэрийн халуун рашааны зам.',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200',
+    image: photoSrc('gerCamp', 1200),
     stops: [
       { name: 'Улаанбаатар', coord: [47.9188, 106.9176], highlight: 'Нийслэл хотоос эхэлнэ' },
       { name: 'Элсэн тасархай', coord: [47.3828, 103.6558], highlight: 'Хангай, говь хосолсон элсэн манхан' },
@@ -82,7 +83,7 @@ export const ROUTES_LIST: RouteItem[] = [
     road: 'Бүрэн засмал зам',
     season: '6–9 сар',
     desc: 'Хангайн үзэсгэлэнт ойн бүсээр аялж Амарбаясгалант хийд, Уран тогоо галт уул болон дэлхийн цэвэр цэнгэг Хөвсгөл нуурыг зорих их зам.',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200',
+    image: photoSrc('whiteHorse', 1200),
     stops: [
       { name: 'Улаанбаатар', coord: [47.9188, 106.9176], highlight: 'Гараа' },
       { name: 'Амарбаясгалант хийд', coord: [49.4794, 105.0847], highlight: 'XVII зууны Буддын архитектурын өв' },
@@ -136,7 +137,7 @@ export const ROUTES_LIST: RouteItem[] = [
     road: 'Тал хээр, засмал',
     season: '6–9 сар',
     desc: 'Чингис хааны өлгий нутаг Дэлүүн болдог, Бурхан Халдун хайрхан, дэлхийн хамгийн том Мэнэнгийн уудам тал болон Буйр нуурыг холбосон зам.',
-    image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1200',
+    image: photoSrc('chinggisStatue', 1200),
     stops: [
       { name: 'Улаанбаатар', coord: [47.9188, 106.9176], highlight: 'Гараа' },
       { name: 'Цонжин болдог', coord: [47.8114, 107.5317], highlight: '40 м өндөр Чингисийн морьт хөшөө' },
