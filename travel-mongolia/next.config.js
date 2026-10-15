@@ -10,6 +10,16 @@ const nextConfig = {
     return [
       { source: '/inspiration/stories', destination: '/stories', permanent: true },
       { source: '/inspiration/magazine', destination: '/stories', permanent: true },
+      // Нүүрний газрын зургийн (RegionMap) хуучин аймгийн хаягууд → Contentful-ийн slug (tic-migration.md)
+      ...[
+        ['bayan-olgii', 'bayan-ulgii'],
+        ['govi-altai', 'gov-altai'],
+        ['hovsgol', 'khuvsgul'],
+        ['dundgovi', 'dundgov'],
+        ['omnogovi', 'umnugov'],
+        ['dornogovi', 'dornogov'],
+        ['govisumber', 'govsumber'],
+      ].map(([from, to]) => ({ source: `/province/${from}`, destination: `/province/${to}`, permanent: true })),
     ];
   },
   // Hero бичлэг, poster, кадрууд: нэрэнд агуулгын hash байгаа тул (scripts/hero/build-hero-flight.sh)

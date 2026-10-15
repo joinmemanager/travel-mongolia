@@ -17,7 +17,7 @@ interface ProvinceData {
 const PROVINCES: ProvinceData[] = [
   // 1. БАРУУН БҮС
   {
-    id: 'bayan-olgii',
+    id: 'bayan-ulgii',
     name: {
       mn: 'Баян-Өлгий аймаг',
       en: 'Bayan-Ulgii',
@@ -101,7 +101,7 @@ const PROVINCES: ProvinceData[] = [
     svgPoint: { x: 305, y: 185 },
   },
   {
-    id: 'govi-altai',
+    id: 'gov-altai',
     name: {
       mn: 'Говь-Алтай аймаг',
       en: 'Govi-Altai',
@@ -126,7 +126,7 @@ const PROVINCES: ProvinceData[] = [
 
   // 2. ХАНГАЙ БА ХОЙД БҮС
   {
-    id: 'hovsgol',
+    id: 'khuvsgul',
     name: {
       mn: 'Хөвсгөл аймаг',
       en: 'Khuvsgul',
@@ -358,7 +358,7 @@ const PROVINCES: ProvinceData[] = [
     svgPoint: { x: 385, y: 295 },
   },
   {
-    id: 'dundgovi',
+    id: 'dundgov',
     name: {
       mn: 'Дундговь аймаг',
       en: 'Dundgovi',
@@ -381,7 +381,7 @@ const PROVINCES: ProvinceData[] = [
     svgPoint: { x: 575, y: 285 },
   },
   {
-    id: 'omnogovi',
+    id: 'umnugov',
     name: {
       mn: 'Өмнөговь аймаг',
       en: 'Umnugovi',
@@ -404,7 +404,7 @@ const PROVINCES: ProvinceData[] = [
     svgPoint: { x: 495, y: 375 },
   },
   {
-    id: 'dornogovi',
+    id: 'dornogov',
     name: {
       mn: 'Дорноговь аймаг',
       en: 'Dornogovi',
@@ -427,7 +427,7 @@ const PROVINCES: ProvinceData[] = [
     svgPoint: { x: 675, y: 325 },
   },
   {
-    id: 'govisumber',
+    id: 'govsumber',
     name: {
       mn: 'Говьсүмбэр аймаг',
       en: 'Govisumber',

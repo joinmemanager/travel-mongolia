@@ -9,8 +9,8 @@ import { getRelatedItems } from '@/lib/related';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
 // Нутгийн үйлчилгээ үзүүлэгчийн профайл (Б хэсэг, /local-ийн draft төлвийг өвлөнө)
-// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
-export const revalidate = 240;
+// Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
+export const revalidate = 86400;
 
 interface Props {
   params: Promise<{ slug: string }>;

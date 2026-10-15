@@ -6,7 +6,7 @@ import { ROUTES_LIST } from '@/lib/routesData';
 
 // Аяллын маршрутууд. Интерактив хэсэг нь components/RoutesExplorer (client).
 // Маршрут бүрийн зогсоолуудаас 50 км дотор байрлах нутгийн туршлага, үйлчилгээг энд тооцоолно.
-export const revalidate = 240;
+export const revalidate = 86400;
 
 export default async function ScenicRoutesPage() {
   const entries = await Promise.all(

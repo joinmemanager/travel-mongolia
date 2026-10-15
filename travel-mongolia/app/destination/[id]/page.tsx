@@ -1,5 +1,5 @@
-// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
-export const revalidate = 240;
+// Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
+export const revalidate = 86400;
 
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';

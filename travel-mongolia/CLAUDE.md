@@ -42,8 +42,8 @@ The user's machine has no Node/npm/gh on PATH, so local builds and type checks c
 ## Config gotchas
 
 - `next.config.js` is the only Next config (do not add `.mjs`/`.ts` variants, since Next would load `.js` first and silently ignore them). It sets `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds`, so type errors do not fail a deploy. `images.remotePatterns` allows `images.ctfassets.net` and `images.unsplash.com`. Any other remote host used with `next/image` must be added there or use `unoptimized`.
-- `app/layout.tsx` sets `revalidate = 240` (ISR, Contentful changes show within 5 minutes). Pages that read URL params with `useSearchParams` (things-to-do, inspiration, `/local/*` categories, festivals) set `force-dynamic` in their own layout or page so their content stays in the server HTML. See `docs/plan/performance.md`.
-- Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`, `CONTENTFUL_MANAGEMENT_TOKEN` (`scripts/contentful/*.ps1` only; never commit or print it).
+- `app/layout.tsx` and the Contentful pages set `revalidate = 86400` (ISR once a day, to stay under Contentful's 100K API calls/month). Contentful Publish/Unpublish triggers a webhook to `app/api/revalidate/route.ts` (header `x-revalidate-secret`), which revalidates that entry's pages right away; when adding a content type or route, add it to `targetsFor` there. Pages that read URL params with `useSearchParams` (things-to-do, inspiration, `/local/*` categories, festivals) set `force-dynamic` in their own layout or page so their content stays in the server HTML. See `docs/plan/performance.md`.
+- Env vars (`.env.local`): `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (Delivery API, server-only), `GEMINI_API_KEY`, `CONTENTFUL_MANAGEMENT_TOKEN` (`scripts/contentful/*.ps1`, `scripts/tic/*.js` only; never commit or print it), `CONTENTFUL_REVALIDATE_SECRET` (webhook secret, also in Vercel Production + Preview), `CONTENTFUL_PREVIEW_ACCESS_TOKEN` (Vercel Preview + local only: in preview envs `lib/contentful.ts` then uses the Preview API, so Draft entries show on preview deploys; never set it for Production).
 
 ## Content architecture
 
@@ -56,6 +56,7 @@ Most pages are **static**. Their content is hardcoded in page files, components,
 | `cultureHeritage` | Home Naadam/festival section (`CultureFestivals`) |
 | `heritageCategory` → linked `heritagePlace` entries (`places` field) | `/destination/heritage`, `/destination/heritage/[category]`, `/destination/heritage/place/[id]` |
 | `province` (matched by `slug`) | `/province/[id]` |
+| `soum` (linked to a `province`; TIC migration) | `ownPage: true` → `/province/[id]/[soum]`, others listed in the province page's «Сумд» section (`#<slug>`) |
 | `heritagePlace`, `province` | Search suggestions on `/destination/region` |
 
 Rules for Contentful code:

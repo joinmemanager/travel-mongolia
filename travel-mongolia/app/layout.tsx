@@ -1,6 +1,7 @@
-// Хуудсуудыг 4 минут кэшлэнэ (ISR): Contentful-д нийтэлсэн өөрчлөлт 5 минутын дотор харагдана.
+// Хуудсуудыг өдөрт нэг дахин үүсгэнэ (ISR, Contentful-ын сарын API хязгаарыг хэмнэнэ).
+// Contentful-д Publish/Unpublish хийхэд webhook → /api/revalidate тухайн хуудсыг шууд шинэчилнэ.
 // URL-ийн ?cat= зэргийг client талд уншдаг хуудсууд өөрсдийн layout-д force-dynamic-тай (docs/plan/performance.md).
-export const revalidate = 240;
+export const revalidate = 86400;
 
 import './globals.css';
 
