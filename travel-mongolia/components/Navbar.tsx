@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -280,17 +281,27 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
           <Link
             href="/"
             onClick={closeMenu}
-            className="group flex gap-1 items-center shrink-0"
+            className="relative block shrink-0 h-9 aspect-[976/274] sm:h-11"
           >
-            {/* notranslate: Google Translate <font>-оор ороож цэгийг дараагийн мөр рүү унагаахаас сэргийлнэ */}
-            <span
-              translate="no"
-              className={`notranslate whitespace-nowrap text-2xl font-black tracking-tight transition-colors duration-300 sm:text-3xl ${
-                onHero ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              Mongolia<span className={onHero ? 'text-white' : GREEN}>.</span>
-            </span>
+            {/* Хоёр хувилбар давхар, opacity-оор зөөлөн солигдоно (цэсний өнгөтэй адил 300ms) */}
+            <Image
+              src="/brand/logo-white-trim.png"
+              alt={onHero ? 'Travel Hub Mongolia' : ''}
+              fill
+              priority
+              sizes="160px"
+              aria-hidden={!onHero}
+              className={`object-contain transition-opacity duration-300 ${onHero ? 'opacity-100' : 'opacity-0'}`}
+            />
+            <Image
+              src="/brand/logo-color-trim.png"
+              alt={onHero ? '' : 'Travel Hub Mongolia'}
+              fill
+              priority
+              sizes="160px"
+              aria-hidden={onHero}
+              className={`object-contain transition-opacity duration-300 ${onHero ? 'opacity-0' : 'opacity-100'}`}
+            />
           </Link>
 
           {/* 2. ҮНДСЭН ЦЭС. Нэр дээр ДАРАХАД доор бүтэн өргөнтэй самбар нээгдэнэ */}

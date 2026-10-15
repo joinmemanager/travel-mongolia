@@ -66,6 +66,20 @@ const websiteJsonLd = {
   description: siteDescription,
 };
 
+// Байгууллагын мэдээлэл (Google-ийн лого, сошиал холбоос). sameAs нь Footer-ийн сошиал холбоосуудтай ижил.
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Travel Hub Mongolia',
+  url: 'https://www.travelhubmongolia.com',
+  logo: 'https://www.travelhubmongolia.com/brand/logo-color-trim.png',
+  sameAs: [
+    'https://www.facebook.com/profile.php?id=61592368934535',
+    'https://www.instagram.com/travelhubmongolia/',
+    'https://www.youtube.com/@travelhubmongolia7049',
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -80,6 +94,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <LanguageProvider>
           {/* Дээд талын үндсэн цэс */}

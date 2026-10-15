@@ -68,6 +68,8 @@ export default function RelatedBookings({
                     is_local_provider: item.isLocalProvider,
                     target_id: item.slug,
                   })}
+                  data-joinme-type={item.kind}
+                  data-joinme-name={item.title}
                 >
                   <span>Захиалах</span>
                   <span aria-hidden="true">↗</span>

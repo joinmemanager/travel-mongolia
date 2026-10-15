@@ -64,6 +64,7 @@ export default function ProfileTemplate({
           contentId={p.slug}
           providerId={p.id}
           isLocalProvider={p.localOwned}
+          itemName={p.name}
         />
       }
     >
