@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import ImageHero from '@/components/templates/ImageHero';
-import { IMAGES } from '@/lib/images';
+import { IMAGES, photoSrc } from '@/lib/images';
 import { SITE_SEARCH_INDEX } from '@/lib/searchIndex';
 import { scoreMatch, tokenizeQuery } from '@/lib/searchText';
 
@@ -31,7 +31,8 @@ interface DestinationItem {
   description: string;
   duration: string;
   bestMonths: string;
-  imageUrl: string;
+  // Шалгагдсан Монгол зураггүй бол бараан дэвсгэртэй (docs/plan/images.md)
+  imageUrl?: string;
 }
 
 const REGION_CAROUSEL = [
@@ -40,14 +41,12 @@ const REGION_CAROUSEL = [
     title: 'Бүгд',
     count: 128,
     imageUrl:
-      'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=600',
+      photoSrc('herderBoy', 600),
   },
   {
     id: 'ulaanbaatar',
     title: 'Улаанбаатар',
     count: 34,
-    imageUrl:
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600',
   },
   {
     id: 'central',
@@ -89,7 +88,7 @@ const REGION_CAROUSEL = [
     title: 'Хойд Монгол',
     count: 44,
     imageUrl:
-      'https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=600',
+      photoSrc('lakeGers', 600),
   },
 ];
 
@@ -107,7 +106,7 @@ const DESTINATIONS: DestinationItem[] = [
     duration: '4-6 өдөр',
     bestMonths: '6-9 сар',
     imageUrl:
-      'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800',
+      photoSrc('lakeGers', 800),
   },
   {
     id: 'gorkhi-terelj',
@@ -122,7 +121,7 @@ const DESTINATIONS: DestinationItem[] = [
     duration: '1-2 өдөр',
     bestMonths: '5-9 сар',
     imageUrl:
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800',
+      photoSrc('gerCamp', 800),
   },
   {
     id: 'bayanzag',
@@ -165,8 +164,6 @@ const DESTINATIONS: DestinationItem[] = [
     description: 'Монголын хамгийн эртний сүм хийд, Хархорумын өвийн төв.',
     duration: '1 өдөр',
     bestMonths: '5-10 сар',
-    imageUrl:
-      'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=800',
   },
   {
     id: 'orkhon-waterfall',
@@ -253,7 +250,7 @@ const DESTINATIONS: DestinationItem[] = [
     duration: '2-3 өдөр',
     bestMonths: '6-8 сар',
     imageUrl:
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800',
+      photoSrc('lakeGers', 800),
   },
   {
     id: 'khalkh-gol',
@@ -613,13 +610,17 @@ export default function RegionDirectory({
                   }`}
                 >
                   <div className="aspect-[16/11] overflow-hidden relative mb-2 w-full rounded-xl shadow-xs">
-                    <Image
-                      src={reg.imageUrl}
-                      alt={reg.title}
-                      fill
-                      unoptimized
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                    {'imageUrl' in reg && reg.imageUrl ? (
+                      <Image
+                        src={reg.imageUrl}
+                        alt={reg.title}
+                        fill
+                        unoptimized
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-emerald-900" aria-hidden="true" />
+                    )}
                     <div className="absolute inset-0 bg-black/15" />
                   </div>
                   <span className="block text-xs font-bold leading-tight text-gray-900 truncate sm:text-[13px]">
@@ -800,13 +801,17 @@ export default function RegionDirectory({
                   className="group flex overflow-hidden flex-col bg-white rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 shadow-xs"
                 >
                   <div className="overflow-hidden relative w-full h-48">
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.title}
-                      fill
-                      unoptimized
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {item.imageUrl ? (
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title}
+                        fill
+                        unoptimized
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-neutral-800" aria-hidden="true" />
+                    )}
                     <span className="absolute top-3 left-3 py-1 px-3 text-[11px] font-bold text-gray-800 bg-white/90 rounded-full backdrop-blur-xs">
                       {item.tag}
                     </span>

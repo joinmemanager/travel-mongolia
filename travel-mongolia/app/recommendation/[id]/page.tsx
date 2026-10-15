@@ -15,8 +15,8 @@ import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 
 // Арга хэмжээний дэлгэрэнгүй ("Арга хэмжээ" загвар). Эхлээд 'event' төрлөөс slug-аар,
 // олдохгүй бол хуучин 'recommendation' (наадмууд)-аас slug эсвэл хуучин ID-аар хайна.
-// Кэш (ISR) 4 минут: Contentful-ын өөрчлөлт 5 минутын дотор харагдана
-export const revalidate = 240;
+// Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
+export const revalidate = 86400;
 
 interface Props {
   params: Promise<{ id: string }>;

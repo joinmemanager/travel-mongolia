@@ -11,6 +11,7 @@ import { getHeritagePlaceCards, nearestPlaces } from '@/lib/places';
 import { getGuidanceFor } from '@/lib/localContent';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+import { photoSrc } from '@/lib/images';
 
 // 'heritagePlace' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
@@ -40,10 +41,10 @@ export async function generateMetadata({
 
 function getImageUrl(imageField: any): string {
   if (!imageField)
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
+    return photoSrc('gerCamp', 1600);
   const url = imageField?.fields?.file?.url || '';
   if (!url) {
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600';
+    return photoSrc('gerCamp', 1600);
   }
   return url.startsWith('//') ? `https:${url}` : url;
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import InspirationListing from '@/components/templates/InspirationListing';
+import { photoSrc } from '@/lib/images';
 
 interface ItineraryItem {
   id: string;
@@ -87,7 +88,7 @@ const ITINERARY_ITEMS: ItineraryItem[] = [
     days: '6 Өдөр',
     title: 'Нүүдэлчдийн хоол & Цагаан идээний замнал',
     subtitle: 'Айраг исгэх, өрөм хайлах, уламжлалт малчин айлуудаар зочлох тусгай аялал',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+    image: photoSrc('herdSnow', 800),
     route: 'Булган ➔ Өвөрхангай сумдаар',
     aspect: 'h-[330px]',
   },

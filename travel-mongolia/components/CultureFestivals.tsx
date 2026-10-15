@@ -2,11 +2,12 @@ import Image from 'next/image';
 import React from 'react';
 
 import { client } from '@/lib/contentful';
+import { photoSrc } from '@/lib/images';
 
 // Зургийн URL-ийг Contentful-ийн ямар ч бүтцээс алдаагүй гаргаж авах туслах функц
 function getImageUrl(imageField: any): string {
   if (!imageField)
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
+    return photoSrc('herderBoy', 1200);
 
   // Хэрэв зураг нь массив (олон зураг) байвал хамгийн эхнийхийг авна
   const target = Array.isArray(imageField) ? imageField[0] : imageField;
@@ -18,7 +19,7 @@ function getImageUrl(imageField: any): string {
   }
 
   if (!url) {
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200';
+    return photoSrc('herderBoy', 1200);
   }
 
   return url.startsWith('//') ? `https:${url}` : url;

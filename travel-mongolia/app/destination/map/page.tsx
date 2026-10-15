@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import { PlaceItem } from '@/components/InteractiveExplorerMap';
+import { photoSrc } from '@/lib/images';
 
 const InteractiveExplorerMap = dynamic(() => import('@/components/InteractiveExplorerMap'), {
   ssr: false,
@@ -39,7 +40,7 @@ const ALL_PLACES: PlaceItem[] = [
     aimag: 'Өмнөговь',
     coord: [44.1200, 103.6500],
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800',
+    image: photoSrc('camels', 800),
     description: 'Эко стандартын монгол гэртэй, говийн цэлгэр байгалийг харах бааз.',
   },
   {
@@ -50,7 +51,7 @@ const ALL_PLACES: PlaceItem[] = [
     aimag: 'Хөвсгөл',
     coord: [50.4358, 100.1558],
     rating: 5.0,
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800',
+    image: photoSrc('lakeGers', 800),
     description: 'Дэлхийн хамгийн цэнгэг нууруудын нэг, усан онгоц ба морин аялал.',
   },
   {
@@ -72,7 +73,6 @@ const ALL_PLACES: PlaceItem[] = [
     aimag: 'Өвөрхангай',
     coord: [47.1983, 102.8467],
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1545648816-43e993510e42?q=80&w=800',
     description: '1586 онд суурийг нь тавьсан Монголын хамгийн эртний Буддын хийд.',
   },
   {
@@ -116,7 +116,6 @@ const ALL_PLACES: PlaceItem[] = [
     aimag: 'Өвөрхангай',
     coord: [46.7872, 101.9706],
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=800',
     description: 'Орхон голын хадан хавцлаар 20 метрийн өндрөөс буух их хүрхрээ.',
   },
   {
@@ -127,7 +126,7 @@ const ALL_PLACES: PlaceItem[] = [
     aimag: 'Төв',
     coord: [47.8114, 107.5317],
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800',
+    image: photoSrc('chinggisStatue', 800),
     description: '40 метр өндөр Чингис хааны морьт хөшөө бүхий түүхэн цогцолбор.',
   },
   {
@@ -138,7 +137,6 @@ const ALL_PLACES: PlaceItem[] = [
     aimag: 'Архангай',
     coord: [47.6083, 101.2858],
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800',
     description: 'Тамга, бичээс бүхий 20 метр өндөр байгалийн боржин цохио.',
   },
   {
@@ -383,13 +381,18 @@ export default function InteractiveMapExplorerPage() {
                   }`}
                 >
                   <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                    <Image
-                      src={place.image}
-                      alt={place.name}
-                      fill
-                      unoptimized
-                      className="object-cover"
-                    />
+                    {/* Шалгагдсан Монгол зураггүй газар саарал дэвсгэртэй (docs/plan/images.md) */}
+                    {place.image ? (
+                      <Image
+                        src={place.image}
+                        alt={place.name}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-neutral-200" aria-hidden="true" />
+                    )}
                   </div>
 
                   <div className="flex-1 min-w-0 flex flex-col justify-between">

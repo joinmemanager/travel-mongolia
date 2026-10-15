@@ -3,13 +3,14 @@
 import React from 'react';
 
 import CategoryDirectory from '@/components/templates/CategoryDirectory';
+import { photoSrc } from '@/lib/images';
 import Image from 'next/image';
 
 export default function NationalParksPage() {
   return (
     <CategoryDirectory
       hero={{
-        src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2400',
+        src: photoSrc('whiteHorse', 2400),
         alt: 'Байгалийн цогцолборт газар',
       }}
       kicker="National Parks"
@@ -65,7 +66,7 @@ export default function NationalParksPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="border border-neutral-200 rounded-3xl overflow-hidden bg-white shadow-xs">
               <div className="relative h-64">
-                <Image src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800" alt="Тэрэлж" fill unoptimized className="object-cover" />
+                <Image src={photoSrc('gerCamp', 800)} alt="Тэрэлж" fill unoptimized className="object-cover" />
               </div>
               <div className="p-8 space-y-3">
                 <h4 className="text-2xl font-bold text-neutral-900">Горхи-Тэрэлж БЦГ</h4>
@@ -75,7 +76,7 @@ export default function NationalParksPage() {
 
             <div id="khuvsgul" className="border border-neutral-200 rounded-3xl overflow-hidden bg-white shadow-xs scroll-mt-28">
               <div className="relative h-64">
-                <Image src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800" alt="Хөвсгөл нуур" fill unoptimized className="object-cover" />
+                <Image src={photoSrc('lakeGers', 800)} alt="Хөвсгөл нуур" fill unoptimized className="object-cover" />
               </div>
               <div className="p-8 space-y-3">
                 <h4 className="text-2xl font-bold text-neutral-900">Хөвсгөл нуурын БЦГ</h4>

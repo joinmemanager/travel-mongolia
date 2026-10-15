@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { photoSrc } from '@/lib/images';
 import Link from 'next/link';
 import React, { useRef } from 'react';
 
@@ -71,7 +72,7 @@ export default function TopDestinations({ items }: Props) {
               ? imageField.fields.file.url.startsWith('//')
                 ? `https:${imageField.fields.file.url}`
                 : imageField.fields.file.url
-              : 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop';
+              : photoSrc('whiteHorse', 800);
 
             const title = item.fields?.title || 'Destination';
 

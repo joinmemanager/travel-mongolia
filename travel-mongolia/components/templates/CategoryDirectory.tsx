@@ -11,7 +11,7 @@ import ImageHero from './ImageHero';
 export interface DirectoryPlace {
   name: string;
   region: string;
-  img: string;
+  img?: string;
   // Газрын дэлгэрэнгүй хуудас (байхгүй бол карт холбоосгүй)
   href?: string;
 }
@@ -133,7 +133,7 @@ export function DirectoryGroupSection({
           <ImageCard
             key={place.name}
             href={place.href}
-            image={{ src: place.img, alt: place.name }}
+            image={place.img ? { src: place.img, alt: place.name } : undefined}
             eyebrow={place.region}
             title={place.name}
             aspect="h-80 sm:h-96"

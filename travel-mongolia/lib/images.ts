@@ -53,3 +53,24 @@ export const IMAGES = {
 } satisfies Record<string, SiteImage>;
 
 export type ImageKey = keyof typeof IMAGES;
+
+// Contentful-ийн асуудалтай asset-ууд (docs/plan/images.md «Сайтад байгаа, асуудалтай зургууд»).
+// Монголын бус зургийг lib/contentful.ts бүх хариунаас хасна: тухайн entry зураггүй харагдана.
+export const NON_MONGOLIAN_ASSETS: Record<string, string> = {
+  '59VlPhvyHRGOKuI6RIW5oz': 'Хятадын Шангри-Ла дахь Төвд хийд (13-р зуун цогцолбор, наадмын entry-үүд)',
+};
+
+// Хиймэл оюунаар үүсгэсэн зургууд: бодит газар мэт харуулахгүй. Аймгийн hero-д ашиглахгүй
+// (lib/provinceFacts.ts-ийн шалгагдсан зургийг харуулна). Бусад газарт бодит зургаар солих хүртэл үлдэнэ.
+export const AI_GENERATED_ASSETS: Record<string, string> = {
+  c1kNqs1F0kZsJ2GwI75dL: 'hovd1.png',
+  '2DfCKQeyEDZFLyeDch34Ub': 'ChatGPT Image Sep 3, 2026, 03_00_13 PM.png',
+  '1aRanjwjSe3WPQxHJkAqQN': 'ChatGPT Image Sep 3, 2026, 03_00_13 PM.png',
+  '6obUtjtdKxPBMU4vzrPu2a': 'ChatGPT Image Sep 3, 2026, 02_48_29 PM.png',
+};
+
+// Шалгагдсан зургийн хаяг хүссэн өргөнтэйгөөр (Unsplash-ийн w параметр). Сайтын өөрийн зураг хэвээр.
+export function photoSrc(key: ImageKey, width = 2000): string {
+  const src: string = IMAGES[key].src;
+  return src.startsWith('/') ? src : src.replace(/([?&])w=\d+/, `$1w=${width}`);
+}

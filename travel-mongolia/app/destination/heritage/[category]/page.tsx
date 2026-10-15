@@ -6,15 +6,16 @@ import { cache } from 'react';
 import ImageCard from '@/components/design/ImageCard';
 import ImageHero from '@/components/templates/ImageHero';
 import { pageMetadata, truncate } from '@/lib/seo';
+import { photoSrc } from '@/lib/images';
 
 function getImageUrl(imageField: any): string {
   if (!imageField)
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000';
+    return photoSrc('gerCamp', 1000);
 
   const url = imageField?.fields?.file?.url || '';
 
   if (!url) {
-    return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000';
+    return photoSrc('gerCamp', 1000);
   }
 
   return url.startsWith('//') ? `https:${url}` : url;

@@ -15,8 +15,8 @@ import { getProvinceLinks } from '@/lib/provinces';
 // /impact/* дэд хуудсын оронд нэг хуудас, 5 хэсэг. Цэс хэсэг бүр рүү anchor-оор заана.
 // НООРОГ текст: lib/impactData.ts
 export const metadata = metaFor('/impact');
-// Contentful-д шинэ entry нийтлэгдэхэд Impact-ын тоо цагт нэг шинэчлэгдэнэ
-export const revalidate = 240;
+// Contentful-д шинэ entry нийтлэгдэхэд Impact-ын тоо webhook-оор (эсвэл өдөрт нэг) шинэчлэгдэнэ
+export const revalidate = 86400;
 
 const SECTIONS = [
   { id: 'local-impact', title: hub.localImpact.title },

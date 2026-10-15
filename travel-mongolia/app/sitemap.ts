@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const [places, categories, provinces, recommendations, destinations, stories] =
+  const [places, categories, provinces, recommendations, destinations, stories, soums] =
     await Promise.all([
       contentfulEntries('heritagePlace'),
       contentfulEntries('heritageCategory'),
@@ -38,6 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       contentfulEntries('recommendation'),
       contentfulEntries('destination'),
       contentfulEntries('story'),
+      contentfulEntries('soum'),
     ]);
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
@@ -57,6 +58,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: e.sys.updatedAt,
       priority: 0.7,
     })),
+    // Тусдаа хуудастай сумд (бусад нь аймгийн хуудсанд жагсаалтаар)
+    ...soums
+      .filter((e) => e.fields.ownPage === true && e.fields.province?.fields?.slug)
+      .map((e) => ({
+        url: `${SITE_URL}/province/${e.fields.province.fields.slug}/${e.fields.slug}`,
+        lastModified: e.sys.updatedAt,
+        priority: 0.5,
+      })),
     ...recommendations.map((e) => ({
       url: `${SITE_URL}/recommendation/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,

@@ -2,59 +2,28 @@
 
 import { useEffect, useState } from 'react';
 
+import { symbolToEmoji, symbolToText, WEATHER_SOURCE, type WeatherNow } from '@/lib/weather';
+
 interface Props {
   lat: number;
   lon: number;
 }
 
-interface WeatherData {
-  temperature: number;
-  weathercode: number;
-}
-
-function weatherCodeToText(code: number): string {
-  if (code === 0) return 'Цэлмэг';
-  if (code <= 3) return 'Багавтар үүлтэй';
-  if (code <= 48) return 'Манантай';
-  if (code <= 67) return 'Бороотой';
-  if (code <= 77) return 'Цастай';
-  if (code <= 82) return 'Аадар бороотой';
-  if (code <= 99) return 'Аянга цахилгаантай';
-  return 'Тодорхойгүй';
-}
-
-function weatherCodeToEmoji(code: number): string {
-  if (code === 0) return '☀️';
-  if (code <= 3) return '⛅';
-  if (code <= 48) return '🌫️';
-  if (code <= 67) return '🌧️';
-  if (code <= 77) return '❄️';
-  if (code <= 82) return '🌦️';
-  if (code <= 99) return '⛈️';
-  return '🌡️';
-}
-
+// Газрын одоогийн цаг агаар: /api/weather/at/<lat>/<lon> (MET Norway, server талд 1 цаг кэш).
+// Координатыг 2 орон хүртэл бөөрөнхийлж кэшийн хаягийг цөөн байлгана (≈1 км нарийвчлал).
 export default function WeatherWidget({ lat, lon }: Props) {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [weather, setWeather] = useState<WeatherNow | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
 
-    fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
-    )
-      .then((res) => res.json())
+    fetch(`/api/weather/at/${lat.toFixed(2)}/${lon.toFixed(2)}`)
+      .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (cancelled) return;
-        if (data?.current_weather) {
-          setWeather({
-            temperature: data.current_weather.temperature,
-            weathercode: data.current_weather.weathercode,
-          });
-        } else {
-          setError(true);
-        }
+        if (data?.ok) setWeather(data);
+        else setError(true);
       })
       .catch(() => {
         if (!cancelled) setError(true);
@@ -76,16 +45,24 @@ export default function WeatherWidget({ lat, lon }: Props) {
   }
 
   return (
-    <div className="flex items-center gap-3">
-      <span className="text-3xl">{weatherCodeToEmoji(weather.weathercode)}</span>
-      <div>
-        <div className="text-2xl font-black text-neutral-900">
-          {Math.round(weather.temperature)}°C
-        </div>
-        <div className="text-xs text-neutral-500 font-medium">
-          {weatherCodeToText(weather.weathercode)}
+    <div>
+      <div className="flex items-center gap-3">
+        <span className="text-3xl">{symbolToEmoji(weather.symbol)}</span>
+        <div>
+          <div className="text-2xl font-black text-neutral-900">
+            {Math.round(weather.temperature)}°C
+          </div>
+          <div className="text-xs text-neutral-500 font-medium">
+            {symbolToText(weather.symbol)}
+          </div>
         </div>
       </div>
+      <p className="mt-2 text-[11px] text-neutral-400">
+        Эх сурвалж:{' '}
+        <a href={WEATHER_SOURCE.href} target="_blank" rel="noreferrer" className="underline hover:text-neutral-600">
+          {WEATHER_SOURCE.label}
+        </a>
+      </p>
     </div>
   );
 }

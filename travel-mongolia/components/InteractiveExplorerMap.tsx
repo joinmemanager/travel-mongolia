@@ -13,7 +13,7 @@ export interface PlaceItem {
   aimag: string;
   coord: [number, number];
   rating: number;
-  image: string;
+  image?: string;
   description: string;
   // "Дэлгэрэнгүй үзэх" товч хаашаа заах. Газар бүрийн хуудас одоогоор байхгүй тул
   // хоосон, товч нуугдана (docs/plan/broken-links.md)

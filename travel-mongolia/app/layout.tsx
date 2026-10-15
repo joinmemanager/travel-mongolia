@@ -1,6 +1,7 @@
-// Хуудсуудыг 4 минут кэшлэнэ (ISR): Contentful-д нийтэлсэн өөрчлөлт 5 минутын дотор харагдана.
+// Хуудсуудыг өдөрт нэг дахин үүсгэнэ (ISR, Contentful-ын сарын API хязгаарыг хэмнэнэ).
+// Contentful-д Publish/Unpublish хийхэд webhook → /api/revalidate тухайн хуудсыг шууд шинэчилнэ.
 // URL-ийн ?cat= зэргийг client талд уншдаг хуудсууд өөрсдийн layout-д force-dynamic-тай (docs/plan/performance.md).
-export const revalidate = 240;
+export const revalidate = 86400;
 
 import './globals.css';
 
@@ -30,7 +31,7 @@ const siteDescription =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Travel Mongolia | Монголд аялах аяллын гарын авлага',
+    default: `${SITE_NAME} | Монголд аялах гарын авлага`,
     template: `%s | ${SITE_NAME}`,
   },
   description: siteDescription,
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     locale: 'mn_MN',
     type: 'website',
     url: '/',
-    title: 'Travel Mongolia | Монголд аялах аяллын гарын авлага',
+    title: `${SITE_NAME} | Монголд аялах гарын авлага`,
     description: siteDescription,
     images: [{ url: DEFAULT_OG_IMAGE }],
   },
@@ -70,7 +71,7 @@ const websiteJsonLd = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Travel Hub Mongolia',
+  name: SITE_NAME,
   url: 'https://www.travelhubmongolia.com',
   logo: 'https://www.travelhubmongolia.com/brand/logo-color-trim.png',
   sameAs: [
