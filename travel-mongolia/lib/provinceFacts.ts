@@ -57,3 +57,30 @@ export const PROVINCE_FACTS: Record<string, ProvinceFacts> = {
   zavkhan: { name: 'Завхан', hero: 'whiteHorse', center: 'Улиастай', area: 82456, population: 72823, distanceFromUb: 984, soums: 24, elevation: 1960, coords: [47.742, 96.844] },
   ulaanbaatar: { name: 'Улаанбаатар', hero: 'chinggisStatue', area: 4704, population: 1539810, elevation: 1540, coords: [47.918, 106.917] },
 };
+
+// Аймгийн нэрийн өөр латин бичлэгүүд → сайтын slug. /province/<өөр бичлэг> хаягаар (жишээ нь Google,
+// гадаад сайтын холбоос) орж ирвэл 308-аар зөв хаяг руу шилжүүлнэ (app/province/[id]/page.tsx).
+const ALIASES: Record<string, string[]> = {
+  arkhangai: ['arkhangay', 'arhangai', 'arkhangai-aimag'],
+  'bayan-ulgii': ['bayan-olgii', 'bayan-ulgiy', 'bayanulgii', 'bayan-olgiy', 'bayan-ölgii'],
+  bayankhongor: ['bayanhongor', 'bayan-khongor'],
+  'darkhan-uul': ['darkhan', 'darkhanuul', 'darhan-uul'],
+  dornogov: ['dornogovi', 'dornogobi', 'dornogovi-aimag', 'east-gobi'],
+  dundgov: ['dundgovi', 'dundgobi', 'middle-gobi'],
+  'gov-altai': ['govi-altai', 'gobi-altai', 'govialtai', 'gov-altay', 'govi-altay'],
+  govsumber: ['govisumber', 'gobisumber', 'govi-sumber', 'gov-sumber'],
+  khentii: ['hentii', 'khentiy', 'khentei'],
+  khovd: ['hovd', 'khovd-aimag'],
+  khuvsgul: ['khovsgol', 'hovsgol', 'huvsgul', 'khuvsgul-aimag'],
+  orkhon: ['erdenet', 'orhon'],
+  umnugov: ['umnugovi', 'omnogovi', 'umnugobi', 'omnogobi', 'south-gobi'],
+  uvurkhangai: ['ovorkhangai', 'uvurhangai', 'ovorhangai'],
+  sukhbaatar: ['suhbaatar', 'sükhbaatar'],
+  tuv: ['tov', 'töv', 'tuv-aimag'],
+  zavkhan: ['zavhan', 'dzavkhan'],
+  ulaanbaatar: ['ub', 'ulan-bator', 'ulaan-baatar'],
+};
+
+export const PROVINCE_ALIASES: Record<string, string> = Object.fromEntries(
+  Object.entries(ALIASES).flatMap(([slug, names]) => names.map((n) => [n, slug]))
+);

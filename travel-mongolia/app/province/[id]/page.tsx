@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { permanentRedirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { connection } from 'next/server';
 import React, { cache } from 'react';
 
@@ -24,7 +24,7 @@ import { cdnImage } from '@/lib/imageUrl';
 import { getGuidanceFor } from '@/lib/localContent';
 import { isPreviewEnv, liveHref } from '@/lib/navigation';
 import { getHeritagePlaceCards } from '@/lib/places';
-import { POPULATION_YEAR, PROVINCE_FACTS } from '@/lib/provinceFacts';
+import { POPULATION_YEAR, PROVINCE_ALIASES, PROVINCE_FACTS } from '@/lib/provinceFacts';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { splitRichText } from '@/lib/richTextParts';
 import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
@@ -131,8 +131,20 @@ function Section({
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const found = await getProvince(id);
-  // Contentful-д байхгүй аймгийн түр хуудсыг хайлтад оруулахгүй
-  if (!found) return { title: 'Аймгийн мэдээлэл', robots: { index: false } };
+  if (!found) {
+    // Өөр бичлэг (umnugovi г.м.) redirect, мэдэгдэхгүй slug 404 болно (хуудсыг үз). Contentful
+    // түр алдаа өгсөн ч мэдэгдэх аймаг өөрийн canonical-тай, index хэвээр (layout-ын «/» canonical-ийг
+    // өвлөвөл Google нүүр хуудасны давхардал гэж үздэг).
+    const slug = decodeURIComponent(id).toLowerCase().trim();
+    const s = PROVINCE_FACTS[slug];
+    if (!s) return { title: 'Аймгийн мэдээлэл', alternates: { canonical: null } };
+    return pageMetadata({
+      title: `${s.name}${slug === 'ulaanbaatar' ? '' : ' аймаг'}: үзэх газрууд, аялах мэдээлэл`,
+      description: `${s.name} аймагт аялах гарын авлага: үзэх газрууд, төв, хүн ам, газар нутгийн мэдээлэл.`,
+      path: `/province/${slug}`,
+      image: s.hero ? IMAGES[s.hero].src : undefined,
+    });
+  }
 
   const f = found.entry.fields as any;
   const name = f.title || f.name;
@@ -167,8 +179,14 @@ export default async function ProvinceDetailPage({ params }: Props) {
   }
 
   const f: any = contentfulEntry?.fields || {};
-  const provinceSlug: string = f.slug || decodeURIComponent(id).toLowerCase();
+  const provinceSlug: string = f.slug || decodeURIComponent(id).toLowerCase().trim();
   const staticFacts = PROVINCE_FACTS[provinceSlug];
+  if (!contentfulEntry) {
+    // /province/umnugovi → /province/umnugov г.м. Мэдэгдэхгүй slug нь 200 + noindex биш, 404.
+    const alias = PROVINCE_ALIASES[provinceSlug];
+    if (alias) permanentRedirect(`/province/${alias}`);
+    if (!staticFacts) notFound();
+  }
   const name: string = contentfulEntry
     ? f.title || f.name
     : staticFacts

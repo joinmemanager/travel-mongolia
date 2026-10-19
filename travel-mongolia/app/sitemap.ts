@@ -6,8 +6,10 @@ import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
 import { isThinContent, SITE_URL } from '@/lib/seo';
 
-// Contentful-д шинэ контент нэмэгдэхэд sitemap цаг тутам шинэчлэгдэнэ
-export const revalidate = 3600;
+// Хүсэлт бүрт Contentful-ээс шинээр үүсгэнэ. revalidate = 3600 (ISR) үед production-ийн sitemap
+// шинэчлэгдэлгүй 10-15-аас өмнөх өгөгдлөөр үлдэж, шинэ аймаг, сумд ороогүй байв (2026-10-19).
+// Google sitemap-ийг өдөрт цөөн удаа татдаг тул CDA-ийн дуудлага бага.
+export const dynamic = 'force-dynamic';
 
 async function contentfulEntries(contentType: string) {
   try {
