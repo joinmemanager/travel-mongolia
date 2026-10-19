@@ -56,7 +56,7 @@ export default async function SoumPage({ params }: Props) {
 
   return (
     <PlaceTemplate
-      image={{ src: s.image || FALLBACK_IMAGE, alt: s.title }}
+      image={{ src: s.image || FALLBACK_IMAGE, alt: s.title, credit: s.image ? s.imageCredit : undefined }}
       title={s.title}
       subtitle={s.provinceTitle}
       back={{ href: `/province/${s.provinceSlug}#soums`, label: `${s.provinceTitle} руу буцах` }}

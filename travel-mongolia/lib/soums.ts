@@ -1,4 +1,5 @@
 import { client } from '@/lib/contentful';
+import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 
 // Аймгийн сумд (soum төрөл, TIC-ээс шилжүүлсэн). ownPage=true бол /province/<аймаг>/<сум>
 // тусдаа хуудастай, бусад нь аймгийн хуудсанд товч жагсаалтаар харагдана.
@@ -9,6 +10,7 @@ export interface Soum {
   ownPage: boolean;
   body: any;
   image?: string;
+  imageCredit?: ImageCredit;
   seoTitle?: string;
   seoDescription?: string;
   provinceId: string;
@@ -32,6 +34,7 @@ function toSoum(e: any): Soum {
     ownPage: f.ownPage === true,
     body: f.body,
     image: imageUrl(f.image),
+    imageCredit: creditOf(f.image),
     seoTitle: f.seoTitle,
     seoDescription: f.seoDescription,
     provinceId: String(f.province?.sys?.id || ''),

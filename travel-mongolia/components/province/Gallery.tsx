@@ -2,6 +2,8 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 
+import ImageCreditLine from '@/components/ImageCreditLine';
+import type { ImageCredit } from '@/lib/imageCredit';
 import { cdnImage } from '@/lib/imageUrl';
 
 export interface GalleryImage {
@@ -9,6 +11,7 @@ export interface GalleryImage {
   alt: string;
   width?: number;
   height?: number;
+  credit?: ImageCredit;
 }
 
 // «Зургийн цомог»: жижиг зургийн сүлжээ, дарахад томруулж харуулна (lightbox: ←/→, Esc).
@@ -56,6 +59,7 @@ export default function Gallery({ images }: { images: GalleryImage[] }) {
                 className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
               />
             </button>
+            <ImageCreditLine credit={img.credit} className="mt-1.5 text-xs leading-snug text-neutral-500 line-clamp-2" />
           </li>
         ))}
       </ul>
@@ -68,12 +72,18 @@ export default function Gallery({ images }: { images: GalleryImage[] }) {
           className="flex fixed inset-0 z-[100] justify-center items-center p-4 bg-black/90"
           onClick={close}
         >
-          <img
-            src={cdnImage(current.src, 1600, 80)}
-            alt={current.alt}
-            className="max-w-full max-h-[85vh] rounded-lg object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <figure className="flex flex-col items-center max-w-full" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={cdnImage(current.src, 1600, 80)}
+              alt={current.alt}
+              className="max-w-full max-h-[80vh] rounded-lg object-contain"
+            />
+            {current.credit && (
+              <figcaption>
+                <ImageCreditLine credit={current.credit} className="mt-2 text-xs text-white/70" />
+              </figcaption>
+            )}
+          </figure>
           <button
             type="button"
             onClick={close}

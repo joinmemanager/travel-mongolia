@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ImageCreditLine from '@/components/ImageCreditLine';
+import { parseCredit } from '@/lib/imageCredit';
 import { cdnImage } from '@/lib/imageUrl';
 import { SITE_URL } from '@/lib/seo';
 
@@ -75,6 +77,7 @@ function renderNode(node: any, key: number): React.ReactNode {
       if (!url || !String(f.file.contentType || 'image/').startsWith('image/')) return null;
       const src = url.startsWith('//') ? `https:${url}` : url;
       const dims = f.file.details?.image;
+      const credit = parseCredit(f.description);
       return (
         <figure key={key} className="my-8">
           <img
@@ -85,6 +88,11 @@ function renderNode(node: any, key: number): React.ReactNode {
             loading="lazy"
             className="w-full h-auto rounded-2xl bg-neutral-100"
           />
+          {credit && (
+            <figcaption>
+              <ImageCreditLine credit={credit} />
+            </figcaption>
+          )}
         </figure>
       );
     }

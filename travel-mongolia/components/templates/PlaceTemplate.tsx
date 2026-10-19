@@ -4,6 +4,7 @@ import React from 'react';
 import { ContentContext, type ContentContextValue } from '@/components/Analytics';
 import ImageCard from '@/components/design/ImageCard';
 import LinkCard, { type LinkCardItem } from '@/components/design/LinkCard';
+import type { ImageCredit } from '@/lib/imageCredit';
 import type { PlaceCardData } from '@/lib/places';
 
 import ImageHero from './ImageHero';
@@ -26,7 +27,7 @@ export default function PlaceTemplate({
   links,
   children,
 }: {
-  image: { src: string; alt: string };
+  image: { src: string; alt: string; credit?: ImageCredit };
   title: string;
   subtitle?: string;
   back: { href: string; label: string };

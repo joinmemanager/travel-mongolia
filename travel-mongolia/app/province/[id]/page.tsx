@@ -9,6 +9,7 @@ import ImageCard from '@/components/design/ImageCard';
 import LinkCard from '@/components/design/LinkCard';
 import AimagMap from '@/components/province/AimagMap';
 import Gallery from '@/components/province/Gallery';
+import OpenDetailsOnHash from '@/components/province/OpenDetailsOnHash';
 import ProvinceFactsBand, { type FactItem } from '@/components/province/ProvinceFactsBand';
 import ReadMore from '@/components/province/ReadMore';
 import WeatherCard from '@/components/province/WeatherCard';
@@ -17,6 +18,7 @@ import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBloc
 import ImageHero from '@/components/templates/ImageHero';
 import RelatedBookings from '@/components/templates/RelatedBookings';
 import { getEntryBySlugOrId } from '@/lib/entries';
+import { creditOf } from '@/lib/imageCredit';
 import { AI_GENERATED_ASSETS, IMAGES } from '@/lib/images';
 import { cdnImage } from '@/lib/imageUrl';
 import { getGuidanceFor } from '@/lib/localContent';
@@ -198,7 +200,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
   const entryImage = imageOf(f);
   const ownHero = entryImage && imageWidth(f) >= HERO_MIN_WIDTH ? entryImage : undefined;
   const hero = ownHero
-    ? { src: ownHero, alt: name }
+    ? { src: ownHero, alt: name, credit: creditOf(f.image || f.coverImage) }
     : (staticFacts?.hero && IMAGES[staticFacts.hero]) || FALLBACK_IMAGE;
   const emblem = entryImage && !ownHero ? entryImage : undefined;
   const { items: facts, usedStatic } = factItems(provinceSlug, f);
@@ -343,6 +345,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
               )}
               {soumBriefs.length > 0 && (
                 <div className="space-y-3">
+                  <OpenDetailsOnHash />
                   {soumBriefs.map((s) => (
                     <details
                       key={s.id}

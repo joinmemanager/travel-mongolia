@@ -4,7 +4,7 @@ import { client } from '@/lib/contentful';
 import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
-import { SITE_URL } from '@/lib/seo';
+import { isThinContent, SITE_URL } from '@/lib/seo';
 
 // Хүсэлт бүрт Contentful-ээс шинээр үүсгэнэ. revalidate = 3600 (ISR) үед production-ийн sitemap
 // шинэчлэгдэлгүй 10-15-аас өмнөх өгөгдлөөр үлдэж, шинэ аймаг, сумд ороогүй байв (2026-10-19).
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const [places, categories, provinces, recommendations, destinations, stories, soums] =
+  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles] =
     await Promise.all([
       contentfulEntries('heritagePlace'),
       contentfulEntries('heritageCategory'),
@@ -41,11 +41,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       contentfulEntries('destination'),
       contentfulEntries('story'),
       contentfulEntries('soum'),
+      contentfulEntries('historyArticle'),
     ]);
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
   const dynamicPages: MetadataRoute.Sitemap = [
-    ...places.map((e) => ({
+    // Агуулга нимгэн (noindex) өвийн газрыг оруулахгүй (lib/seo.ts isThinContent)
+    ...places.filter((e) => !isThinContent(e.fields.description)).map((e) => ({
       url: `${SITE_URL}/destination/heritage/place/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,
       priority: 0.6,
@@ -68,6 +70,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: e.sys.updatedAt,
         priority: 0.5,
       })),
+    // «Монголын түүх»-ийн нийтлэлүүд
+    ...historyArticles.map((e) => ({
+      url: `${SITE_URL}/about/history/${entryKey(e)}`,
+      lastModified: e.sys.updatedAt,
+      priority: 0.6,
+    })),
     ...recommendations.map((e) => ({
       url: `${SITE_URL}/recommendation/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,

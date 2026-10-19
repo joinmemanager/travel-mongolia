@@ -28,6 +28,19 @@ export function richTextToPlain(node: any): string {
   return '';
 }
 
+// Агуулга нимгэн (placeholder цэвэрлэсний дараа бараг хоосон) хуудсыг хайлтад оруулахгүй.
+// Текст нь THIN_CONTENT_WORDS-оос цөөн үгтэй бол robots noindex; агуулга нэмэгдмэгц автоматаар index-д орно.
+export const THIN_CONTENT_WORDS = 80;
+export const NOINDEX: Metadata['robots'] = { index: false, follow: true };
+
+export function wordCount(text: string): number {
+  return text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+}
+
+export function isThinContent(...docs: any[]): boolean {
+  return wordCount(docs.map(richTextToPlain).join(' ')) < THIN_CONTENT_WORDS;
+}
+
 export const TITLE_MAX = 60;
 const BRAND_SUFFIX = ` | ${SITE_NAME}`;
 

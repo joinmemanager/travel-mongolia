@@ -57,7 +57,10 @@ Most pages are **static**. Their content is hardcoded in page files, components,
 | `heritageCategory` → linked `heritagePlace` entries (`places` field) | `/destination/heritage`, `/destination/heritage/[category]`, `/destination/heritage/place/[id]` |
 | `province` (matched by `slug`) | `/province/[id]` |
 | `soum` (linked to a `province`; TIC migration) | `ownPage: true` → `/province/[id]/[soum]`, others listed in the province page's «Сумд» section (`#<slug>`) |
+| `historyArticle` (TIC cate14; `period` = section id on the history page) | Listed under each period of `/about/history` (plus a «Сэдэвчилсэн түүх» `#themes` section), own page `/about/history/[slug]` inside the `(sec-about)` section layout (`lib/history.ts`) |
 | `heritagePlace`, `province` | Search suggestions on `/destination/region` |
+
+Image credits: an asset whose description has a line `Зураг: <author / source, license>` (optionally ` | <URL>`) shows it as a small caption under the image (`lib/imageCredit.ts`: `RichText` figures, province `Gallery`, `ImageHero`). `scripts/tic/credits.js` fills it for TIC assets (Wikimedia author and license from the Commons API). Heritage places whose description is under 80 words get `noindex` and are left out of the sitemap (`isThinContent` in `lib/seo.ts`); province pages are always indexable. Unknown `/province/<slug>` returns 404, alternate spellings (`PROVINCE_ALIASES` in `lib/provinceFacts.ts`, e.g. `umnugovi`) 308 to the real slug. The sitemap is `force-dynamic` (its ISR copy went stale in production). Pages nested below a section row (e.g. `/about/history/<slug>`) keep that row active (`activeRow` in `lib/sections.ts`) and render their own breadcrumbs and H1.
 
 Rules for Contentful code:
 - Always query with `content_type`. Never fetch all entries and filter by content-type-id substrings. That approach once leaked `heritagePlace` entries into the festival section, because `cultureHeritage` and `heritagePlace` share the substring "heritage".
