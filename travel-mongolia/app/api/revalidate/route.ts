@@ -56,6 +56,8 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         { path: '/destination/heritage' },
         { path: '/destination/region' },
       ];
+    case 'historyArticle':
+      return [one(`/about/history/${key}`, '/about/history/[slug]'), { path: '/about/history' }];
     case 'story':
       return [one(`/stories/${key}`, '/stories/[slug]'), { path: '/stories' }];
     case 'localProvider':

@@ -165,3 +165,14 @@ export function sectionRows(section: SectionConfig): SectionRow[] {
     ...children.map((c) => ({ label: c.mn, href: c.href, status: c.status })),
   ];
 }
+
+// Идэвхтэй мөр: хаяг нь яг таарсан, үгүй бол хамгийн урт эцэг мөр (жишээ нь /about/history/khunnu →
+// «Монголын түүх»). Ийм дэд хуудас (нийтлэл) замчлал, H1-ээ өөрөө гаргана.
+export function activeRow(rows: SectionRow[], pathname: string): { row?: SectionRow; nested: boolean } {
+  const exact = rows.find((r) => r.href === pathname);
+  if (exact) return { row: exact, nested: false };
+  const parent = rows
+    .filter((r) => pathname.startsWith(`${r.href}/`))
+    .sort((a, b) => b.href.length - a.href.length)[0];
+  return { row: parent, nested: !!parent };
+}

@@ -27,7 +27,7 @@ import { getHeritagePlaceCards } from '@/lib/places';
 import { POPULATION_YEAR, PROVINCE_ALIASES, PROVINCE_FACTS } from '@/lib/provinceFacts';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { splitRichText } from '@/lib/richTextParts';
-import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
+import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { getSoumsOfProvince } from '@/lib/soums';
 
 interface Props {
@@ -160,10 +160,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/province/${slug}`,
     image: (imageWidth(f) >= HERO_MIN_WIDTH && imageOf(f)) || (PROVINCE_FACTS[slug]?.hero && IMAGES[PROVINCE_FACTS[slug].hero!].src) || undefined,
   });
-  // Танилцуулга нь бараг хоосон бол (жишээ нь Улаанбаатар) хайлтад оруулахгүй
-  const robots = isThinContent(f.description2 || f.description || f.description1) ? { robots: NOINDEX } : {};
   // seoTitle-д брэнд аль хэдийн орсон тул layout-ын "| Travel Hub Mongolia" загварыг давхар залгахгүй
-  return f.seoTitle ? { ...meta, ...robots, title: { absolute: f.seoTitle } } : { ...meta, ...robots };
+  return f.seoTitle ? { ...meta, title: { absolute: f.seoTitle } } : meta;
 }
 
 export default async function ProvinceDetailPage({ params }: Props) {

@@ -1,8 +1,36 @@
-'use client';
+import Link from 'next/link';
+import { connection } from 'next/server';
+import React from 'react';
 
 import AboutRelated from '@/components/templates/AboutRelated';
+import { getHistoryArticles, HISTORY_PERIODS, type HistoryArticle } from '@/lib/history';
+import { isPreviewEnv } from '@/lib/navigation';
+import { metaFor } from '@/lib/pageMeta';
 
-import React from 'react';
+export const metadata = metaFor('/about/history');
+
+// Үе бүрийн дэлгэрэнгүй нийтлэлүүд (historyArticle → /about/history/<slug>). Нийтлэлгүй үед харагдахгүй.
+function ArticleList({ articles, title = 'Дэлгэрэнгүй нийтлэлүүд' }: { articles?: HistoryArticle[]; title?: string }) {
+  if (!articles?.length) return null;
+  return (
+    <div className="mt-8">
+      <h3 className="mb-4 text-xs font-black tracking-widest uppercase sm:text-sm text-neutral-400">{title}</h3>
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {articles.map((a) => (
+          <li key={a.id}>
+            <Link
+              href={`/about/history/${a.slug}`}
+              className="flex gap-3 justify-between items-center p-4 h-full bg-white rounded-xl border transition-colors border-neutral-200 hover:border-[#15803d]"
+            >
+              <span className="font-semibold leading-snug text-neutral-900">{a.title}</span>
+              <span aria-hidden="true" className="text-[#15803d] font-bold">→</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 
 interface HistoryPeriod {
@@ -109,7 +137,14 @@ const HISTORY_DATA: HistoryPeriod[] = [
   },
 ];
 
-export default function HistoryPage() {
+export default async function HistoryPage() {
+  // Preview дээр Draft нийтлэлүүдийг тухай бүр шинээр харуулна (production-д статик, ISR хэвээр)
+  if (isPreviewEnv()) await connection();
+  const articles = await getHistoryArticles();
+  const byPeriod: Record<string, HistoryArticle[]> = {};
+  for (const a of articles) (byPeriod[a.period] ||= []).push(a);
+  const themes = HISTORY_PERIODS.find((p) => p.id === 'themes')!;
+
   return (
     <div>
       
@@ -160,6 +195,8 @@ export default function HistoryPage() {
                     </div>
                   ))}
                 </div>
+
+                <ArticleList articles={byPeriod[period.id]} />
               </div>
 
               {/* Баруун тал: Зураг (Монголынх нь шалгагдаагүй зургийг хассан бол байхгүй) */}
@@ -181,6 +218,27 @@ export default function HistoryPage() {
             </div>
           </section>
         ))}
+
+        {/* Цаг үеэр хуваагдахгүй сэдвүүд (хил, мөнгөн тэмдэгт, торгоны зам г.м.) */}
+        {byPeriod.themes?.length ? (
+          <section
+            id={themes.id}
+            className="scroll-mt-[calc(var(--nav-h)+5rem)] lg:scroll-mt-[calc(var(--nav-h)+1.5rem)] border-b border-neutral-200 pb-24 last:border-b-0"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <span className="text-4xl sm:text-6xl font-black text-[#15803d]">0{HISTORY_DATA.length + 1}</span>
+              <div className="h-[1px] bg-neutral-200 flex-1" />
+              <span className="text-sm sm:text-base font-black uppercase tracking-widest text-neutral-400">Бүх үе</span>
+            </div>
+            <div className="max-w-3xl">
+              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-tight mb-6">{themes.title}</h2>
+              <p className="text-base sm:text-lg text-neutral-700 font-normal leading-relaxed">
+                Тусгаар тогтнол, хил, засаг захиргаа, мөнгөн тэмдэгт, торго ба цайны зам зэрэг олон зууныг дамнасан сэдвүүд.
+              </p>
+              <ArticleList articles={byPeriod.themes} title="Нийтлэлүүд" />
+            </div>
+          </section>
+        ) : null}
 
         {/* 4. ДАРААГИЙН ХУУДАС РУУ ШИЛЖИХ БАННЕР */}
         <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-14 flex flex-col sm:flex-row items-center justify-between gap-8">

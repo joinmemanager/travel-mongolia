@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef } from 'react';
 
 import Breadcrumbs, { type Crumb } from '@/components/Breadcrumbs';
-import type { SectionRow } from '@/lib/sections';
+import { activeRow, type SectionRow } from '@/lib/sections';
 
 // Баруун талын агуулгын эхлэл: замчлал (+ BreadcrumbList JSON-LD) ба дэд хуудасны H1.
 // Үндсэн хаяг дээр H1 нь hero-гийн гарчиг тул энд H1 гарахгүй.
@@ -21,7 +21,8 @@ export default function SectionPageHeader({
   const ref = useRef<HTMLDivElement>(null);
   const firstRender = useRef(true);
   const isBase = pathname === baseHref;
-  const current = rows.find((r) => r.href === pathname);
+  // Нийтлэлийн хуудас (/about/history/<slug>): эцэг мөр идэвхтэй, замчлал, H1-ийг хуудас өөрөө гаргана
+  const { row: current, nested } = activeRow(rows, pathname);
 
   const crumbs: Crumb[] = [
     { label: 'Нүүр', href: '/' },
@@ -46,8 +47,9 @@ export default function SectionPageHeader({
       id="section-top"
       className="pt-8 lg:pt-0 mb-10 scroll-mt-[calc(var(--nav-h)+4.5rem)] lg:scroll-mt-[calc(var(--nav-h)+1.5rem)]"
     >
-      <Breadcrumbs items={crumbs} />
-      {!isBase && current && (
+      {/* Нийтлэлийн хуудас замчлалаа (гарчигтайгаа) өөрөө гаргана */}
+      {!nested && <Breadcrumbs items={crumbs} />}
+      {!isBase && current && !nested && (
         <h1 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
           {current.label}
         </h1>

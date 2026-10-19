@@ -1,0 +1,82 @@
+// TIC нийтлэлийн зургийг татаж Contentful asset (Draft) болгоно. import-batch01/02 хуваалцана.
+// Зургийг гуравдагч сайтаас шууд холбохгүй: татаж оруулна. Asset ID нь эх хаягаас тогтмол
+// (tic-img-<sha1>) тул дахин ажиллуулахад давхардахгүй.
+const crypto = require('crypto');
+const { cma, SPACE, LOCALE } = require('./_cma');
+
+const TIC = 'https://www.touristinfocenter.mn';
+const sha = (s) => crypto.createHash('sha1').update(s).digest('hex').slice(0, 16);
+
+function sniff(buf) {
+  if (buf[0] === 0xff && buf[1] === 0xd8) return ['image/jpeg', 'jpg'];
+  if (buf.slice(0, 4).toString('hex') === '89504e47') return ['image/png', 'png'];
+  if (buf.slice(0, 3).toString() === 'GIF') return ['image/gif', 'gif'];
+  if (buf.slice(0, 4).toString() === 'RIFF' && buf.slice(8, 12).toString() === 'WEBP') return ['image/webp', 'webp'];
+  return null;
+}
+
+function imageOrigin(src) {
+  if (src.startsWith('data:')) return 'base64';
+  if (/^[a-z]:\\/i.test(src) || src.startsWith('file:')) return 'broken';
+  if (/^https?:\/\//i.test(src) && !/touristinfocenter\.mn/i.test(src)) return 'third-party';
+  return 'tic';
+}
+
+function imageUrl(src) {
+  if (/^https?:\/\//i.test(src)) return src;
+  if (src.startsWith('//')) return 'https:' + src;
+  // TIC-ийн зам кирилл, зайтай байж болно
+  return TIC + encodeURI(src.startsWith('/') ? src : '/' + src);
+}
+
+async function download(src) {
+  if (src.startsWith('data:')) {
+    const m = /^data:([^;,]+)?(;base64)?,(.*)$/s.exec(src);
+    if (!m) throw new Error('data URI буруу');
+    return m[2] ? Buffer.from(m[3], 'base64') : Buffer.from(decodeURIComponent(m[3]));
+  }
+  const get = (url) =>
+    fetch(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (TravelHubMongolia content migration; contact@joinme.mn)' },
+      redirect: 'follow',
+    });
+  let res = await get(imageUrl(src));
+  // Wikimedia-ийн thumb (эхээсээ том хэмжээ) 400 буцаавал эх файлыг авна
+  const thumb = /^(https:\/\/upload\.wikimedia\.org\/wikipedia\/[^/]+)\/thumb\/(.+)\/[^/]+$/.exec(src);
+  if (!res.ok && thumb) res = await get(`${thumb[1]}/${thumb[2]}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return Buffer.from(await res.arrayBuffer());
+}
+
+// Зургийг Contentful-д Draft asset болгон оруулна. description: эхний мөр нь «Зураг: …» credit
+// (сайт зургийн доор харуулна, travel-mongolia/lib/imageCredit.ts), дараа нь эх сурвалжийн тэмдэглэл.
+async function ensureAsset(src, title, sourceNote, credit) {
+  const id = `tic-img-${sha(src)}`;
+  const existing = await cma('GET', `/assets/${id}`);
+  if (existing && existing.fields?.file?.[LOCALE]?.url) return id;
+  const buf = await download(src);
+  const type = sniff(buf);
+  if (!type) throw new Error('зургийн формат танигдсангүй');
+  const upload = await cma('POST', `https://upload.contentful.com/spaces/${SPACE}/uploads`, { raw: buf });
+  const body = {
+    fields: {
+      title: { [LOCALE]: title.slice(0, 250) },
+      description: { [LOCALE]: credit ? `${credit}\n${sourceNote}` : sourceNote },
+      file: {
+        [LOCALE]: { contentType: type[0], fileName: `${id}.${type[1]}`, uploadFrom: { sys: { type: 'Link', linkType: 'Upload', id: upload.sys.id } } },
+      },
+    },
+  };
+  const asset = existing
+    ? await cma('PUT', `/assets/${id}`, { version: existing.sys.version, body })
+    : await cma('PUT', `/assets/${id}`, { body });
+  await cma('PUT', `/assets/${id}/files/${LOCALE}/process`, { version: asset.sys.version });
+  for (let i = 0; i < 30; i++) {
+    await new Promise((r) => setTimeout(r, 1000));
+    const a = await cma('GET', `/assets/${id}`);
+    if (a.fields?.file?.[LOCALE]?.url) return id;
+  }
+  throw new Error('asset процесс дуусаагүй');
+}
+
+module.exports = { TIC, sha, sniff, imageOrigin, imageUrl, download, ensureAsset };

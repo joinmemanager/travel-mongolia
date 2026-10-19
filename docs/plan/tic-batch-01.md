@@ -68,3 +68,9 @@ TIC дотор давхардсан 3 сумаас (Цэнхэр, Чулуут, 
 - c13_87: HTTP 403 — https://scontent.fuln6-1.fna.fbcdn.net/v/t1.18169-9/12191592_506388536199134_367652002391745927_n.jpg
 - c13_89: HTTP 403 — https://scontent.fuln6-1.fna.fbcdn.net/v/t1.6435-9/195753720_4088636757840654_8635446725072456056_n.jpg
 - c13_106: HTTP 403 — https://scontent.fuln6-1.fna.fbcdn.net/v/t1.6435-9/117959123_318195566267177_5041082924212290752_n.jpg
+
+## 2026-10-19: нийтлэл, credit
+
+- Архангайн 13 богино сум (жагсаалтаар харагддаг) болон тэдгээрийн зургийг нийтэлсэн (`scripts/tic/publish-batch01.js` одоо аймгийн бүх сумыг нийтэлдэг). Production `/province/arkhangai`-ийн «Сумд»-д 19 сум, 19 анкер бий; `/province/arkhangai/<богино сум>` 308-аар `#<сум>` руу. Анкераар ороход тухайн сумын хаалттай хэсэг нээгдэнэ (`OpenDetailsOnHash`).
+- TIC-ийн 31 asset-ийн description-д «Зураг: …» credit мөр нэмсэн (`scripts/tic/credits.js`). Wikimedia: Төвшрүүлэх — Torbenbrinker, CC BY-SA 3.0; Тариат — Yaan, CC BY-SA 3.0; Хайрхан, Өлзийт, Батцэнгэл — MongolWiki, CC0 (Commons-ийн файлын хуудас руу холбоостой). Эдгээр 5 сумын needsReplacement зөвхөн зургийн шалтгаантай байсан тул false болгосон.
+- Placeholder цэвэрлэгээг нийтэлсэн (`scripts/contentful/publish-cleanup.js`): Улаанбаатарын center/population/area («Мэдээлэл», «100,000», «төв»), буруу highlights («Алтай Таван Богд, Потанины мөсөн гол»), 3 өвийн газрын «бла бла» тайлбар, «Тэрэлж» asset-ийн «бла бла бла» description.

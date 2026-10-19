@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 
-import type { SectionRow } from '@/lib/sections';
+import { activeRow, type SectionRow } from '@/lib/sections';
 
 import { useSectionFilters, useSelectFilter } from './SectionFilters';
 
@@ -44,7 +44,8 @@ export default function SectionSidebar({ rows, contentId }: { rows: SectionRow[]
   const filters = useSectionFilters();
   const activeFilter = filters?.active || 'all';
   const selectFilter = useSelectFilter();
-  const isActive = (row: SectionRow) => row.href === pathname;
+  const active = activeRow(rows, pathname).row;
+  const isActive = (row: SectionRow) => row === active;
   // Шүүлтүүр, anchor хоёулаа байвал шүүлтүүрийг нь харуулна (давхардуулахгүй)
   const showAnchors = !filters && anchors.length > 0;
   // Ганц хуудастай хэсэгт утасны товчнууд нь хуудасны доторх хэсгүүд
