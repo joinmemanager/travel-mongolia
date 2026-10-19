@@ -56,7 +56,7 @@ Most pages are **static**. Their content is hardcoded in page files, components,
 | `cultureHeritage` | Home Naadam/festival section (`CultureFestivals`) |
 | `heritageCategory` → linked `heritagePlace` entries (`places` field) | `/destination/heritage`, `/destination/heritage/[category]`, `/destination/heritage/place/[id]` |
 | `province` (matched by `slug`) | `/province/[id]` |
-| `soum` (linked to a `province`; TIC migration) | `ownPage: true` → `/province/[id]/[soum]`, others listed in the province page's «Сумд» section (`#<slug>`) |
+| `soum` (linked to a `province`; TIC migration; Ulaanbaatar's districts are `soum` entries of the `ulaanbaatar` province, headed «дүүргүүд») | `ownPage: true` → `/province/[id]/[soum]`, others listed in the province page's «Сумд» section (`#<slug>`) |
 | `historyArticle` (TIC cate14; `period` = section id on the history page) | Listed under each period of `/about/history` (plus a «Сэдэвчилсэн түүх» `#themes` section), own page `/about/history/[slug]` inside the `(sec-about)` section layout (`lib/history.ts`) |
 | `heritagePlace`, `province` | Search suggestions on `/destination/region` |
 

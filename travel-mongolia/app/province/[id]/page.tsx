@@ -206,6 +206,9 @@ export default async function ProvinceDetailPage({ params }: Props) {
   const { items: facts, usedStatic } = factItems(provinceSlug, f);
   const highlights = highlightList(f.highlights);
   const provinceStem = String(name).replace(/ аймаг$/, '');
+  // Улаанбаатар аймаг биш: «Сумд» хэсэг нь дүүргүүд
+  const isCapital = provinceSlug === 'ulaanbaatar';
+  const ofUnit = isCapital ? 'хотын' : 'аймгийн';
 
   // Энэ аймагт байрлах түүхэн өвийн газрууд (region талбарт аймгийн нэр орсон)
   const placesHere = (await getHeritagePlaceCards())
@@ -244,7 +247,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
           emblem && (
             <img
               src={cdnImage(emblem, 192)}
-              alt={`${provinceStem} аймгийн сүлд`}
+              alt={`${provinceStem} ${ofUnit} сүлд`}
               width={96}
               height={96}
               className="object-contain p-1.5 mx-auto mb-4 w-20 h-20 bg-white rounded-2xl shadow-lg sm:w-24 sm:h-24"
@@ -327,7 +330,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
 
           {/* Сумд. Тусдаа хуудастай нь холбоос, бусад нь товч танилцуулгатай жагсаалт */}
           {soums.length > 0 && (
-            <Section id="soums" title={`${provinceStem} аймгийн сумд`} tint={tint()}>
+            <Section id="soums" title={`${provinceStem} ${ofUnit} ${isCapital ? 'дүүргүүд' : 'сумд'}`} tint={tint()}>
               {soumPages.length > 0 && (
                 <ul className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-2">
                   {soumPages.map((s) => (
