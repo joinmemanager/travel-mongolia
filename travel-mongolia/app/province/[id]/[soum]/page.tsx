@@ -6,6 +6,7 @@ import React, { cache } from 'react';
 import RichText from '@/components/RichText';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { IMAGES } from '@/lib/images';
+import { PROVINCE_ALIASES } from '@/lib/provinceFacts';
 import { isPreviewEnv } from '@/lib/navigation';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { getSoum, getSoumsOfProvince } from '@/lib/soums';
@@ -26,7 +27,8 @@ const loadSoum = cache(async (id: string, soum: string) => getSoum(id, soum));
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id, soum } = await params;
   const s = await loadSoum(id, soum);
-  if (!s || !s.ownPage) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
+  // Олдохгүй (404) эсвэл аймгийн хуудас руу redirect хийдэг сум: layout-ын «/» canonical-ийг өвлүүлэхгүй
+  if (!s || !s.ownPage) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false }, alternates: { canonical: null } };
   const meta = pageMetadata({
     title: s.seoTitle || `${s.title}, ${s.provinceTitle}`,
     description: s.seoDescription || truncate(richTextToPlain(s.body)),
@@ -41,7 +43,12 @@ export default async function SoumPage({ params }: Props) {
 
   const { id, soum } = await params;
   const s = await loadSoum(id, soum);
-  if (!s) notFound();
+  if (!s) {
+    // /province/umnugovi/<сум> → /province/umnugov/<сум>
+    const alias = PROVINCE_ALIASES[decodeURIComponent(id).toLowerCase()];
+    if (alias) permanentRedirect(`/province/${alias}/${soum}`);
+    notFound();
+  }
   if (!s.ownPage) permanentRedirect(`/province/${s.provinceSlug}#${s.slug}`);
 
   // Нэг аймгийн тусдаа хуудастай бусад сумд
