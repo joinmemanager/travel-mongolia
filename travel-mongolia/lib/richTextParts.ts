@@ -3,11 +3,14 @@
 //  - intro: эхний N догол мөр (тэдгээрийн өмнөх гарчиг, жагсаалтыг оруулаад)
 //  - more: үлдсэн хэсэг («Дэлгэрэнгүй унших»-аар нээгдэнэ, HTML-д бүтнээрээ байна)
 
+import { type ImageCredit, parseCredit } from '@/lib/imageCredit';
+
 export interface RichImage {
   src: string;
   alt: string;
   width?: number;
   height?: number;
+  credit?: ImageCredit;
 }
 
 const doc = (content: any[]) => ({ nodeType: 'document', data: {}, content });
@@ -17,7 +20,7 @@ function assetImage(node: any): RichImage | null {
   const url: string | undefined = f?.file?.url;
   if (!url || !String(f.file.contentType || 'image/').startsWith('image/')) return null;
   const dims = f.file.details?.image;
-  return { src: url.startsWith('//') ? `https:${url}` : url, alt: f.title || '', width: dims?.width, height: dims?.height };
+  return { src: url.startsWith('//') ? `https:${url}` : url, alt: f.title || '', width: dims?.width, height: dims?.height, credit: parseCredit(f.description) };
 }
 
 export function splitRichText(document: any, introParagraphs = 3): { intro: any; more: any | null; images: RichImage[] } {

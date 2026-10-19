@@ -1,5 +1,6 @@
-// TIC 1-р багцыг Contentful-д нийтэлнэ: 21 аймаг (province) + Архангайн тусдаа хуудастай сумд
-// (soum, ownPage=true) болон тэдгээрийн холбогдсон asset-ууд (image, rich text доторх зураг).
+// TIC 1-р багцыг Contentful-д нийтэлнэ: 21 аймаг (province) + эдгээр аймгийн бүх сум (тусдаа хуудастай
+// болон аймгийн хуудсанд жагсаалтаар харагддаг богино сумд) ба тэдгээрийн холбогдсон asset-ууд
+// (image, rich text доторх зураг). Description нь өөрчлөгдсөн (credit нэмсэн) asset-ыг дахин нийтэлнэ.
 //   node scripts/tic/publish-batch01.js --dry   # юу нийтлэгдэхийг жагсаана
 //   node scripts/tic/publish-batch01.js         # нийтэлнэ (asset → аймаг → сум дарааллаар)
 // Entry бүрийн Publish нь webhook-оор /api/revalidate-ийг дуудна.
@@ -33,7 +34,7 @@ async function publish(kind, item) {
   if (provinces.length !== 21) throw new Error(`21 аймаг байх ёстой, ${provinces.length} олдлоо`);
   const provinceIds = new Set(provinces.map((p) => p.sys.id));
   const soums = (await cma('GET', '/entries?content_type=soum&limit=200')).items.filter(
-    (s) => fv(s, 'ownPage') === true && provinceIds.has(fv(s, 'province')?.sys?.id)
+    (s) => provinceIds.has(fv(s, 'province')?.sys?.id)
   );
   const assets = new Set();
   for (const e of [...provinces, ...soums]) for (const id of assetIds(e.fields)) assets.add(id);

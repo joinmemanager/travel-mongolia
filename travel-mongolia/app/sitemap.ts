@@ -4,7 +4,7 @@ import { client } from '@/lib/contentful';
 import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
-import { SITE_URL } from '@/lib/seo';
+import { isThinContent, SITE_URL } from '@/lib/seo';
 
 // Contentful-д шинэ контент нэмэгдэхэд sitemap цаг тутам шинэчлэгдэнэ
 export const revalidate = 3600;
@@ -43,7 +43,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
   const dynamicPages: MetadataRoute.Sitemap = [
-    ...places.map((e) => ({
+    // Агуулга нимгэн (noindex) газар, аймгийг оруулахгүй (lib/seo.ts isThinContent)
+    ...places.filter((e) => !isThinContent(e.fields.description)).map((e) => ({
       url: `${SITE_URL}/destination/heritage/place/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,
       priority: 0.6,
@@ -53,7 +54,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: e.sys.updatedAt,
       priority: 0.6,
     })),
-    ...provinces.map((e) => ({
+    ...provinces
+      .filter((e) => !isThinContent(e.fields.description2 || e.fields.description || e.fields.description1))
+      .map((e) => ({
       url: `${SITE_URL}/province/${e.fields.slug || e.sys.id}`,
       lastModified: e.sys.updatedAt,
       priority: 0.7,

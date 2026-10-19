@@ -3,6 +3,8 @@
 import Image, { type ImageLoader } from 'next/image';
 import React from 'react';
 
+import ImageCreditLine from '@/components/ImageCreditLine';
+import type { ImageCredit } from '@/lib/imageCredit';
 import { cdnImage, isCdnImage } from '@/lib/imageUrl';
 
 // Unsplash, Contentful зургийг тэдний CDN-ээс дэлгэцийн өргөнд тохируулан (WebP/AVIF) авна.
@@ -24,7 +26,8 @@ export default function ImageHero({
   compact = false,
   badge,
 }: {
-  image: { src: string; alt: string };
+  // credit: Contentful asset-ийн зохиогч (lib/imageCredit.ts), зургийн баруун доод буланд
+  image: { src: string; alt: string; credit?: ImageCredit };
   kicker?: string;
   title: string;
   intro?: React.ReactNode;
@@ -76,6 +79,12 @@ export default function ImageHero({
         )}
         {children}
       </div>
+      {image.credit && (
+        <ImageCreditLine
+          credit={image.credit}
+          className="absolute right-3 bottom-2 z-20 max-w-[80%] text-right text-[11px] leading-tight text-white/70 drop-shadow"
+        />
+      )}
     </section>
   );
 }

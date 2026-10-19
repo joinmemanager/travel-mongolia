@@ -10,7 +10,8 @@ import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
 import { getHeritagePlaceCards, nearestPlaces } from '@/lib/places';
 import { getGuidanceFor } from '@/lib/localContent';
 import { getRelatedItems, linkIds } from '@/lib/related';
-import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+import { creditOf } from '@/lib/imageCredit';
 import { photoSrc } from '@/lib/images';
 
 // 'heritagePlace' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
@@ -29,7 +30,7 @@ export async function generateMetadata({
 
   const f = entry.fields;
   const plain = richTextToPlain(f.description);
-  return pageMetadata({
+  const meta = pageMetadata({
     title: f.region ? `${f.name}, ${f.region}` : f.name,
     description: truncate(
       plain || `${f.name}: Монголын түүх, соёлын дурсгалт газар. Байршил, цаг агаар, аялах мэдээлэл.`
@@ -37,6 +38,8 @@ export async function generateMetadata({
     path: `/destination/heritage/place/${entryKey(entry)}`,
     image: getImageUrl(f.image),
   });
+  // Тайлбаргүй (placeholder цэвэрлэсэн) газрыг агуулга нэмэгдэх хүртэл хайлтад оруулахгүй
+  return isThinContent(f.description) ? { ...meta, robots: NOINDEX } : meta;
 }
 
 function getImageUrl(imageField: any): string {
@@ -130,7 +133,7 @@ export default async function HeritagePlaceDetailPage({
 
   return (
     <PlaceTemplate
-      image={{ src: imgUrl, alt: f.name || '' }}
+      image={{ src: imgUrl, alt: f.name || '', credit: creditOf(f.image) }}
       title={f.name}
       subtitle={f.region}
       back={{ href: '/destination/heritage', label: 'Бүх түүхэн өв' }}
