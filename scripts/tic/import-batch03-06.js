@@ -33,7 +33,9 @@ if (!CACHE || ![3, 5, 6].includes(TOPIC)) { console.error('кэш хавтас, 
 
 const SITE = 'https://www.travelhubmongolia.com';
 const REDIRECT_FILE = { 3: 'batch-03-protected.csv', 5: 'batch-05-nature.csv', 6: 'batch-06-culture.csv' }[TOPIC];
-const REPORT_JSON = path.join(CACHE, '..', `batch03-06-topic${TOPIC}-result.json`);
+// --only=k1,k2: зөвхөн эдгээр entry-г дахин бичнэ (жишээ нь зураг татаж чадаагүй), тайланг тусад нь
+const ONLY = (process.argv.find((a) => a.startsWith('--only=')) || '').split('=')[1]?.split(',');
+const REPORT_JSON = path.join(CACHE, '..', `batch03-06-topic${TOPIC}${ONLY ? '-only' : ''}-result.json`);
 const L = (v) => ({ [LOCALE]: v });
 const link = (type, id) => ({ sys: { type: 'Link', linkType: type, id } });
 const ticKey = (url) => {
@@ -300,9 +302,10 @@ async function mergeExisting(it, content, firstAsset, provinceIds) {
   const ex = B.EXISTING[it.key];
   const cur = await cma('GET', `/entries/${ex.id}`);
   const doc = cur.fields.description?.[LOCALE];
-  const MARK = `Touristinfocenter.mn: ${it.title}`;
+  // Гарчиг нь TIC-ийн нэр; өмнөх импортын «Touristinfocenter.mn: …» гарчгийг ч танина
+  const MARK = it.title;
   let kept = (doc?.content || []).filter((b) => !/Одоогоор өгөх дэлгэрэнгүй мэдээлэл алга/.test(inlineText(b)));
-  const at = kept.findIndex((b) => b.nodeType === 'heading-2' && inlineText(b) === MARK);
+  const at = kept.findIndex((b) => b.nodeType === 'heading-2' && (inlineText(b) === MARK || inlineText(b).startsWith('Touristinfocenter.mn: ')));
   if (at >= 0) kept = kept.slice(0, at); // өмнөх импортыг сольж бичнэ
   while (kept.length && !inlineText(kept[kept.length - 1]).trim() && kept[kept.length - 1].nodeType === 'paragraph') kept.pop();
   const heading = { nodeType: 'heading-2', data: {}, content: [{ nodeType: 'text', value: MARK, marks: [], data: {} }] };
@@ -341,6 +344,8 @@ async function mergeExisting(it, content, firstAsset, provinceIds) {
   const result = { topic: TOPIC, entries: [], merged: [], imageErrors };
   const cityMonumentIds = [];
 
+  // SEO талбарууд дарааллаар (давхардлаас сэргийлэх usedDesc тогтвортой), дараа нь Contentful-д 4 зэрэг
+  const todo = [];
   for (const it of mine) {
     if (it.mergedInto) continue;
     if (it.skipped) { result.skipped = [...(result.skipped || []), { key: it.key, title: it.title, redirect: it.newPath }]; console.log(`алгасав ${it.key} «${it.title}» → ${it.newPath}`); continue; }
@@ -351,6 +356,19 @@ async function mergeExisting(it, content, firstAsset, provinceIds) {
       { name: it.title, stem: it.title.split(/[ ,.-]/)[0], fallback: `${label} — Travel Hub Mongolia.` },
       usedDesc
     );
+    if (!ONLY || ONLY.includes(it.key)) todo.push(it);
+  }
+  const CONCURRENCY = DRY ? 1 : 4;
+  let next = 0;
+  await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
+    while (next < todo.length) await handle(todo[next++]);
+  }));
+  // Зэрэгцээ ажилласан тул TIC-ийн дараалал руу буцаана
+  const order = new Map(mine.map((it, i) => [it.key, i]));
+  result.entries.sort((a, b) => order.get(a.key) - order.get(b.key));
+  cityMonumentIds.sort((a, b) => order.get(a.replace(/^tic-/, '').replace('-', '_')) - order.get(b.replace(/^tic-/, '').replace('-', '_')));
+
+  async function handle(it) {
     const { content, firstAsset } = await resolveImages(it, it.title, imageErrors);
     const doc = { nodeType: 'document', data: {}, content };
     const common = {

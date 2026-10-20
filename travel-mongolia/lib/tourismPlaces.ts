@@ -91,6 +91,12 @@ function toPlace(e: any): PlaceDetail {
 
 const byTitle = (a: PlaceSummary, b: PlaceSummary) => a.title.localeCompare(b.title, 'mn');
 
+// select-д тухайн төрөлд байхгүй талбар орвол CDA UnknownField алдаа буцаадаг
+const MERGED_FIELDS = {
+  destination: ['sys.id', 'fields.title', 'fields.slug', 'fields.provinceRef', 'fields.coverImage', 'fields.seoDescription', 'fields.protectedCategory'],
+  heritagePlace: ['sys.id', 'fields.name', 'fields.slug', 'fields.provinceRef', 'fields.image', 'fields.seoDescription', 'fields.protectedCategory'],
+};
+
 // Нэгтгэсэн entry (destination/heritagePlace) → жагсаалтын мөр
 function mergedToSummary(e: any, type: 'destination' | 'heritagePlace', category: PlaceSummary['category']): PlaceSummary {
   const f = e.fields || {};
@@ -146,7 +152,7 @@ export async function getPlacesByCategory(categories: PlaceCategory[]): Promise<
               const res = await client.getEntries({
                 content_type: type,
                 'fields.protectedCategory[in]': protectedOnes.join(','),
-                select: ['sys.id', 'fields.title', 'fields.name', 'fields.slug', 'fields.provinceRef', 'fields.image', 'fields.coverImage', 'fields.seoDescription', 'fields.protectedCategory'],
+                select: MERGED_FIELDS[type],
                 limit: 100,
                 include: 1,
               } as any);
@@ -202,7 +208,7 @@ export async function getPlacesOfProvince(provinceId: string): Promise<PlaceSumm
             const res = await client.getEntries({
               content_type: type,
               'fields.provinceRef.sys.id': provinceId,
-              select: ['sys.id', 'fields.title', 'fields.name', 'fields.slug', 'fields.provinceRef', 'fields.image', 'fields.coverImage', 'fields.seoDescription', 'fields.protectedCategory'],
+              select: MERGED_FIELDS[type],
               limit: 500,
               include: 1,
             } as any);

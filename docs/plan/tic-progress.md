@@ -1,13 +1,18 @@
 # TIC шилжүүлэлт: 3, 5, 6-р сэдвийн явц
 
-> Branch: `feat/tic-batch03-06` (main-аас, 2026-10-20). Тасарвал энэ файлын «Дараагийн алхам»-аас үргэлжлүүлнэ.
+> Branch: `feat/tic-batch03-06` (main-аас, 2026-10-20). Тасарвал «Дараагийн алхам»-аас үргэлжлүүлнэ.
 > Скрипт: `scripts/tic/*-batch03-06.js`. HTML кэш: `backups/tic-cache/batch03-06/` (gitignored, дахин татахгүй).
+> Импортын тайлан (JSON): `backups/tic-cache/batch03-06-topic<N>-result.json`. Бүх entry, asset **Draft**.
 
 ## 0. Бэлтгэл
 
 - [x] Branch үүсгэсэн. main дээр untracked publish скрипт байгаагүй (`publish-batch01b.js`, `verify-batch01b.js` нь `91840e1`-д аль хэдийн commit хийгдсэн).
 - [x] `.claude/settings.local.json` (commit хийхгүй, `.gitignore`-д нэмсэн): зөвшөөрөл, хориг.
-- [x] Inventory-ийн тоо:
+- [x] HTML татах (`fetch-batch03-06.js`, 1,007 хуудас, алдаа 0)
+- [x] Contentful нөөц: `backups/contentful-2026-10-20-pre-batch03-06/` (427 entry, 258 asset)
+- [x] Schema (`schema-batch03-06.js`): шинэ `place`, `species` төрөл (15 → 17); `heritagePlace`, `destination`-д `provinceRef`, `protectedCategory`, `sourceUrl`, `needsReplacement`
+
+Inventory-ийн тоо:
 
 | Ангилал | Нэр | Нийт | ХУУЛАХ | ШАЛГАХ | АЛГАСАХ |
 |---|---|--:|--:|--:|--:|
@@ -23,31 +28,34 @@
 | cate17 | Музей, театр, соёлын төв (TypeID 1–3) | 62 | 49 | 13 | 0 |
 | **Нийт** | | **1,007** | **531** | **476** | **0** |
 
-- [x] HTML татах (`fetch-batch03-06.js`, 1,007 хуудас, алдаа 0)
-- [x] Contentful нөөц: `backups/contentful-2026-10-20-pre-batch03-06/` (427 entry, 258 asset)
-- [x] Schema (`schema-batch03-06.js`): шинэ `place`, `species` төрөл; `heritagePlace`, `destination`-д `provinceRef`, `protectedCategory`, `sourceUrl`, `needsReplacement`
+ШАЛГАХ мөрүүдийг (богино, TIC доторх давхардал) бас оруулсан: богино нь 80 үгээс доош бол `noindex`, sitemap-д ороогүй; давхардлыг нэгтгэсэн.
 
-## Шийдвэрүүд
+## 1. 3-р сэдэв: Тусгай хамгаалалттай газрууд — дууссан
 
-- Шинэ Contentful төрөл: `place` (тусгай хамгаалалттай газар, музей/театр/соёлын төв, рашаан сувилал), `species` (ан амьтан, шувуу, ургамал). 15 → 17 төрөл.
-- Хотын дурсгалт газар (cate9) → одоо байгаа `heritagePlace` төрөл + шинэ `heritageCategory` «Хотын дурсгалт газрууд» (`/destination/heritage/city-monuments`).
-- Давхардал (шинээр үүсгэхгүй, одоогийн entry-д TIC текстийг нэмнэ): Горхи-Тэрэлж → destination `terelj`, Хөвсгөл нуур → destination `khuvsgul-nuur`, Бурхан Халдун → heritagePlace `burkhan-khaldun`, Орхоны хөндий → heritagePlace `orkhony-khundii`, Сүхбаатарын талбай → destination `sukhbaataryn-talbai`.
+- 80 entry: 76 шинэ `place` (ДЦГ 16, БНГ 19, БЦГ 19, БДГ 22) + 4 одоогийн entry-д нэгтгэсэн; TIC доторх 2 давхардал нэгтгэгдсэн. Redirect: `docs/redirects/batch-03-protected.csv` 81 мөр.
+- Нэгтгэл: Горхи-Тэрэлж → destination `terelj`, Хөвсгөл нуурын ай сав → destination `khuvsgul-nuur`, Бурхан Халдун → heritagePlace `burkhan-khaldun`, Орхоны хөндий → heritagePlace `orkhony-khundii` (TIC текст description-ий төгсгөлд TIC нэртэй гарчгийн доор; entry нь өөрчлөгдсөн Draft, production хуучнаараа). TIC доторх: Богд хан уул (cate9) → Богдхан уул (cate2), Улаан тайгын ДЦГ (2 нийтлэл) → нэг.
+- TIC-ийн cate4/зочид буудлын ID давхцал: cate4-ийн 22 мөрийг cate4.aspx жагсаалтаас авсан; импорт татсан хуудасны гарчиг inventory-тэй таарч байгааг шалгадаг (22/22 таарсан, буудал орж ирээгүй). Давхцсан 15 ID-ийн `cate4_more` хаяг цогцолборт газар руу redirect хийнэ.
+- Хуудас: `/destination/protected/<slug>`, 5 жагсаалтын хуудсанд «Бүх газар» (`#all-places`), аймгийн хуудсанд `#protected-areas`, газрын хуудаснаас аймаг руу «Харьяалах аймаг» холбоос.
+- Зураг 1 алдаа (Ноён уул, gereg.mn 404).
 
-## 1. 3-р сэдэв: Тусгай хамгаалалттай газрууд
+## 2. 5-р сэдэв: Байгаль — дууссан
 
-- [x] Импорт (`import-batch03-06.js --topic=3`): 80 entry (74 шинэ `place` + 4 нэгтгэл + Богдхан уул/Улаан тайгын давхардал), redirect 81 мөр, зураг 1 алдаа (gereg.mn 404, Ноён уул)
-- [x] Хуудас: `/destination/protected/<slug>` (PlaceTemplate), 5 жагсаалтын хуудсанд «Бүх газар» (`ProtectedPlacesSection`), аймгийн хуудсанд `#protected-areas`, нэгтгэсэн destination/heritagePlace хуудсанд ангилал/аймгийн хайрцаг
-- TIC-ийн cate4/зочид буудлын ID давхцал: cate4-ийн 22 мөрийг cate4.aspx жагсаалтаас авсан; импорт татсан хуудасны гарчиг inventory-тэй таарч байгааг шалгадаг (22/22 таарсан, буудал орж ирээгүй). Давхцсан 15 ID-ийн `cate4_more` хаяг цогцолборт газар руу redirect.
+- 686 `species` entry: хөхтөн 57, сээр нуруугүй 33, загас 19, хоёр нутагтан/мөлхөгч 19 (бүгд хуудастай), шувуу 467 (51 нь ≥150 үг → хуудастай, 416 каталогийн мөр), ургамал 91 (72 нь ≥80 үг → хуудастай, 19 мөр). Redirect: `batch-05-nature.csv` 689 мөр.
+- TIC давхардал (ижил латин нэр): Хүдэр → Баданга хүдэр, Цөөвөр чоно → Шарнад цөөвөр, Ирвэс → Цоохор ирвэс.
+- Хуудас: `/about/nature/wildlife`, `/birds` (хайлт, үсэг, «дэлгэрэнгүй нийтлэлтэй» шүүлтүүр, мөр бүр `#slug`), `/plants` + `[slug]`. Цэс: «Байгаль»-д 3 дэд мөр (draft).
+- Импорт эхэндээ гуравдагч сайтын зураг дээр гацсан → `_assets.js` татахад 30 сек timeout; зэрэгцээ 4 урсгал; TIC сервер тасалсан 55 entry-ийн зургийг `--only=`-оор дахин оруулсан (алдаа 0).
 
-## 2. 5-р сэдэв: Байгаль
+## 3. 6-р сэдэв: Музей, рашаан, хотын дурсгалт газар — дууссан
 
-- [x] Хуудас: `/about/nature/wildlife`, `/birds` (каталог, хайлт, үсгийн шүүлтүүр, `#slug`), `/plants` + `[slug]` нийтлэлүүд; цэсэнд «Байгаль»-ийн 3 дэд мөр (draft)
-- [ ] Импорт (`--topic=5`): ажиллаж байна
-
-## 3. 6-р сэдэв: Музей, рашаан, хотын дурсгалт газар
-
-- [ ] import, хуудас
+- 226 entry: рашаан сувилал 28, музей 31, театр/чуулга 14, соёлын төв/номын сан 14 (`place`), хотын дурсгалт газар 138 `heritagePlace` + `heritageCategory` «Хотын дурсгалт газрууд» (`/destination/heritage/city-monuments`), Сүхбаатарын талбай → destination-д нэгтгэсэн. Redirect: `batch-06-culture.csv` 237 мөр.
+- Музей, театрыг «Түүх, соёлын аялал»-д биш, шинэ «Музей, театр» (`/things-to-do/museums`, draft) дэд хуудсанд: тэр хуудас туршлагын картууд (`?cat=` шүүлтүүр), 59 байгууллага түүнийг дарна; байгууллага нь байршил, аймагтай газар.
+- Рашаан → `/things-to-do/wellness#sanatorium` + `/things-to-do/wellness/<slug>` (жагсаалт `wellness/(list)` route group-д).
+- TIC давхардал: Соёлын төв өргөө, Спортын төв ордон, Төв цэнгэлдэх, Улсын цирк, Бөхийн өргөө, Хүүхдийн ордон, Үндэсний номын сан (cate9 ↔ cate17), Монгол туургатан (2), Ялалт музей (Халх гол - Ялалт музей).
+- Алгассан: c8_47 «Шинэ нэмэлт газрууд» — хувийн байгууллагуудын утас, хаягийн жагсаалт, нийтлэл биш → `/things-to-do/wellness#sanatorium` руу redirect.
+- Тэмдэглэл: c9_24 «Их тэнгэрийн амны зураг» cate1-ийн c1_174-тэй давхардана; cate1-ийг шилжүүлэхэд энэ entry-д нэгтгэнэ.
 
 ## Дараагийн алхам
 
-HTML татаж дуусахыг хүлээх → `_batch03-06.js` (ангилал, аймаг, давхардлын хүснэгт).
+- [x] Local `next build`, push, preview URL
+- [ ] Эзэмшигч preview-д шалгаж, цэсний draft мөрүүдийг live болгох; entry-үүдийг publish (`publish-batch03-06.js` хараахан бичээгүй)
+- [ ] `needsReplacement=true` entry-үүдийн эрх тодруулах (3-р сэдэв 11, 5-р 159, 6-р 26)

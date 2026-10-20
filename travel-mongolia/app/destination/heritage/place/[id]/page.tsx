@@ -35,7 +35,7 @@ export async function generateMetadata({
   const plain = richTextToPlain(f.description);
   const meta = pageMetadata({
     title: f.region ? `${f.name}, ${f.region}` : f.name,
-    description: truncate(
+    description: f.seoDescription || truncate(
       plain || `${f.name}: Монголын түүх, соёлын дурсгалт газар. Байршил, цаг агаар, аялах мэдээлэл.`
     ),
     path: `/destination/heritage/place/${entryKey(entry)}`,
