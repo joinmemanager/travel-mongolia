@@ -67,6 +67,11 @@ export default async function SoumPage({ params }: Props) {
       back={{ href: `/province/${s.provinceSlug}#soums`, label: `${s.provinceTitle} руу буцах` }}
       analytics={{ content_type: 'soum', content_id: `${s.provinceSlug}/${s.slug}`, province: s.provinceTitle }}
       nav={[{ id: 'overview', label: 'Танилцуулга' }]}
+      breadcrumbs={[
+        { label: 'Нүүр', href: '/' },
+        { label: s.provinceTitle, href: `/province/${s.provinceSlug}` },
+        { label: s.title, href: `/province/${s.provinceSlug}/${s.slug}` },
+      ]}
       links={[
         { label: s.provinceTitle, href: `/province/${s.provinceSlug}` },
         ...siblings.map((x) => ({ label: x.title, href: `/province/${s.provinceSlug}/${x.slug}` })),

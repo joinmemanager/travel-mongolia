@@ -46,13 +46,13 @@ const LISTING = [
   ['/cate21.aspx', '/plan/accommodation', 'Зочид буудал'],
   ['/cate22.aspx', '/plan/accommodation', 'Жуулчны бааз'],
   ['/cate25.aspx', '/local/guides', 'Аяллын хөтчийн лавлах'],
-  ['/cate27.aspx', 'https://joinme.mn/', 'Гайхамшигт дэлхий (гадаад)'],
-  ['/cate28.aspx', 'https://joinme.mn/', 'Улс орнууд (гадаад)'],
+  ['/cate27.aspx', '/', 'Гайхамшигт дэлхий (гадаад)'],
+  ['/cate28.aspx', '/', 'Улс орнууд (гадаад)'],
   ['/News.aspx', '/stories', 'Мэдээ мэдээлэл'],
-  ['/Tours.aspx', 'https://joinme.mn/', 'Аяллууд (joinme.mn, гадаад аялал)'],
+  ['/Tours.aspx', '/', 'Аяллууд (joinme.mn, гадаад аялал)'],
 ];
 // Алгассан нийтлэлийн (cate25, 27, 28) хаяг → ангиллын хуудас
-const SKIPPED_CATE = { 25: ['/local/guides', 'хувийн мэдээлэл (хөтчийн утас, имэйл, нас)'], 27: ['https://joinme.mn/', 'гадаад сэдэв'], 28: ['https://joinme.mn/', 'гадаад сэдэв'] };
+const SKIPPED_CATE = { 25: ['/local/guides', 'хувийн мэдээлэл (хөтчийн утас, имэйл, нас)'], 27: ['/', 'гадаад сэдэв'], 28: ['/', 'гадаад сэдэв'] };
 // Нээгдээгүй (soft/draft) хэсэг (lib/navigation.ts)
 const UNPUBLISHED = [/^\/local(\/|$|#)/, /^\/stories\/news(\/|$)/];
 const abs = (p) => (p.startsWith('http') ? p : SITE + p);
@@ -65,6 +65,11 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
     const [n, why] = SKIPPED_CATE[r['ангилал']];
     b09.push([TIC + r['хуучин_url'], abs(n), r['гарчиг'], `Алгассан нийтлэл (${why})`, '']);
   }
+  // Шийдээгүй (❓) ангиллын нийтлэлд 404 гаргахгүйн тулд ангиллын хуудас руу түр redirect (агуулга шилжээгүй тул ❓ хэвээр)
+  const PENDING = { 14: '/about/history', 15: '/about/culture', 16: '/about/traditions' };
+  const done = new Set();
+  for (const f of fs.readdirSync(DIR).filter((x) => /^batch-0[1-8].*.csv$/.test(x))) for (const r of parseCsv(fs.readFileSync(path.join(DIR, f), 'utf8'))) done.add(key(r.old_url));
+  for (const r of inv.filter((x) => PENDING[x['ангилал']] && !done.has(key(x['хуучин_url'])))) b09.push([TIC + r['хуучин_url'], abs(PENDING[r['ангилал']]), r['гарчиг'], 'Түр redirect — агуулга шилжээгүй (❓)', '']);
   writeCsv(path.join(DIR, 'batch-09-listing-pages.csv'), ['old_url', 'new_url', 'title', 'ангилал', 'аймаг'], b09);
 
   // Бүх CSV
@@ -79,7 +84,7 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
       const k = key(r.old_url);
       if (map.has(k)) checks.dupOld.push(`${r.old_url} (${map.get(k).file} ↔ ${f})`);
       else map.set(k, { ...r, file: f });
-      if (!(r.new_url.startsWith(SITE) || r.new_url === 'https://joinme.mn/')) checks.badNew.push(`${f}: ${r.new_url}`);
+      if (!(r.new_url.startsWith(SITE) || r.new_url === '/')) checks.badNew.push(`${f}: ${r.new_url}`);
       const p = r.new_url.replace(SITE, '');
       if (UNPUBLISHED.some((re) => re.test(p))) checks.unpublished[f]++;
     }
@@ -95,7 +100,7 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
   for (const r of inv) {
     const m = map.get(key(r['хуучин_url']));
     const base = { key: r.key, title: r['гарчиг'], old: r['хуучин_url'], cate: r['ангилал'] };
-    if (!m) { cls.unknown.push({ ...base, why: unknownReason(r) }); continue; }
+    if (!m || /Түр redirect/.test(m['ангилал'] || '')) { cls.unknown.push({ ...base, why: unknownReason(r) }); continue; }
     if (SKIPPED_CATE[r['ангилал']]) { cls.skip.push({ ...base, why: SKIPPED_CATE[r['ангилал']][1], to: m.new_url }); continue; }
     const a = m['ангилал'] || '';
     if (/алгассан/i.test(a)) { cls.skip.push({ ...base, why: (/\(([^)]*)\)/.exec(a) || [])[1] || 'алгассан', to: m.new_url }); continue; }
@@ -159,7 +164,7 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
     ...files.map((f) => `| ${f} | ${checks.rows[f]} | ${checks.unpublished[f]} |`),
     '',
     `- Нэг old_url давхардсан: **${checks.dupOld.length}**${checks.dupOld.length ? '\n' + checks.dupOld.slice(0, 30).map((x) => `  - ${x}`).join('\n') : ''}`,
-    `- new_url \`${SITE}\`-оор эхлээгүй: **${checks.badNew.filter((x) => !x.includes('joinme.mn')).length}** (joinme.mn руу заасан гадаад аялал/сэдвийн ${checks.badNew.length} мөрөөс бусад)`,
+    `- new_url \`${SITE}\`-оор эхлээгүй: **${checks.badNew.length}** `,
     '- «Нээгдээгүй хэсэг» = `/local/*` (Нутгийн Монгол, soft), `/stories/news/*` (мэдээний архив, draft).',
     '',
     `## ❓ шийдээгүй (${cls.unknown.length})`,

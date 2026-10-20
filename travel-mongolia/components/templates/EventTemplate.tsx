@@ -31,6 +31,11 @@ export default function EventTemplate({
       subtitle={[eventDateLabel(e), e.province].filter(Boolean).join(' · ')}
       back={back}
       analytics={{ content_type: 'event', content_id: e.slug, province: e.province }}
+      breadcrumbs={[
+        { label: 'Нүүр', href: '/' },
+        { label: 'Фестивалиуд', href: '/things-to-do/festivals' },
+        { label: e.title, href: e.href },
+      ]}
       bookings={<RelatedBookings items={related} campaign="event" contentId={e.slug} />}
       nearby={{
         title: 'Бусад баяр наадам',

@@ -66,15 +66,26 @@ function caseTitle(raw) {
   });
 }
 
-const MONGOLIA_RE = new RegExp(`монгол|улаанбаатар|нийслэл|аймаг|сумын|${AIMAG_STEMS.join('|')}`, 'i');
+// Inventory-д ХУУЛАХ/ШАЛГАХ гэсэн ч гадаад эсвэл дэлхийн ерөнхий шинжлэх ухааны сэдэвтэй (гараар шалгасан, 2026-10-20)
+const FOREIGN = Object.fromEntries(
+  ('n_4394 n_2291 n_1161 n_1157 n_1043 n_1092 n_1069 n_324 n_912 n_1270 n_1141 n_1272 n_1045 n_1166 n_1159 n_1122 ' +
+    'n_1021 n_1016 n_1055 n_1047 n_1048 n_556 n_893 n_1078 n_1154 n_266 n_1318').split(' ').map((k) => [k, true])
+);
+const MONGOLIA_RE = new RegExp(`монгол|mongol|улаанбаатар|нийслэл|аймаг|сумын|чингис|хүннү|богд|гандан|чойжин|${AIMAG_STEMS.join('|')}`, 'i');
 const isRussian = (t) => (t.match(/[ыэъщ]/g) || []).length < 2 && (t.match(/[а-я]/gi) || []).length > 200 && !/[өү]/i.test(t);
 
 (async () => {
   const rows = loadInventory().filter((r) => r['ангилал'] === 'news' && r['шийдвэр'] !== 'АЛГАСАХ');
   const usedSlugs = new Set();
+  const storedSlug = new Map();
   for (let skip = 0; ; skip += 1000) {
     const r = await cma('GET', `/entries?content_type=story&limit=1000&skip=${skip}&select=sys.id,fields.slug`);
-    for (const e of r.items) if (!e.sys.id.startsWith('tic-n-') && fv(e, 'slug')) usedSlugs.add(fv(e, 'slug'));
+    // Өмнөх ажиллуулалтаар бичигдсэн tic-n-* entry-ийн slug-ийг хэвээр (дахин ажиллуулахад хаяг өөрчлөгдөхгүй)
+    for (const e of r.items) {
+      if (!fv(e, 'slug')) continue;
+      usedSlugs.add(fv(e, 'slug'));
+      if (e.sys.id.startsWith('tic-n-')) storedSlug.set(e.sys.id, fv(e, 'slug'));
+    }
     if (skip + 1000 >= r.total) break;
   }
   usedSlugs.add('news'); // /stories/news-тэй давхцахгүй
@@ -95,7 +106,7 @@ const isRussian = (t) => (t.match(/[ыэъщ]/g) || []).length < 2 && (t.match(/
     const it = { row: r, key: r.key, art, blocks: bs, text, words, promoRemoved: blocks.length - bs.length, oldUrl: TIC + r['хуучин_url'] };
     if (!words) { skipped.push({ key: r.key, title: r['гарчиг'], reason: 'хоосон нийтлэл' }); continue; }
     if (/орос хэл/.test(r['шалтгаан']) || isRussian(text)) { skipped.push({ key: r.key, title: r['гарчиг'], reason: 'орос хэл дээрх нийтлэл' }); continue; }
-    if (/холбоо тодорхойгүй/.test(r['шалтгаан']) && !MONGOLIA_RE.test(`${art.title} ${text}`)) {
+    if ((/холбоо тодорхойгүй/.test(r['шалтгаан']) && !MONGOLIA_RE.test(`${art.title} ${text}`)) || FOREIGN[r.key]) {
       skipped.push({ key: r.key, title: r['гарчиг'], reason: 'гадаад / Монголтой холбоогүй сэдэв' });
       continue;
     }
@@ -109,24 +120,40 @@ const isRussian = (t) => (t.match(/[ыэъщ]/g) || []).length < 2 && (t.match(/
     if (!groups.has(k)) groups.set(k, []);
     groups.get(k).push(it);
   }
+  // Ижил гарчигтай ч үгийн тоо ±10%-иас их зөрвөл өөр мэдээ. «Товчхон», «Тоон мэдээ» зэрэг рубрикийг нэгтгэхгүй.
+  const RUBRIC = new Set(['ТОВЧХОН', 'ТООНМЭДЭЭ']);
   const primaries = [];
-  for (const g of groups.values()) {
+  for (const [k, g] of groups.entries()) {
     g.sort((a, b) => b.words - a.words || (a.row['шийдвэр'] === 'ХУУЛАХ' ? -1 : 1));
-    const [main, ...dups] = g;
-    main.dups = dups;
-    dups.forEach((d) => (d.mergedInto = main.key));
-    primaries.push(main);
+    const clusters = [];
+    for (const it of g) {
+      const c = !RUBRIC.has(k) && clusters.find((c) => Math.abs(c[0].words - it.words) <= 0.1 * c[0].words);
+      if (c) c.push(it); else clusters.push([it]);
+    }
+    for (const [main, ...dups] of clusters) {
+      main.dups = dups;
+      dups.forEach((d) => (d.mergedInto = main.key));
+      main.rubric = clusters.length > 1;
+      primaries.push(main);
+    }
   }
 
   for (const it of primaries) {
     it.title = caseTitle(it.art.title);
-    let slug = B.slugify(it.title) || it.key.replace('_', '-');
-    const base = slug;
-    for (let n = 2; usedSlugs.has(slug); n++) slug = `${base}-${n}`;
-    usedSlugs.add(slug);
-    it.slug = slug;
-    it.newPath = `${BASE}/${slug}`;
+    // Ижил гарчигтай өөр мэдээ: гарчигт огноог нэмж ялгана
+    if (it.rubric && it.row['огноо']) it.title = `${it.title.replace(/[.\s]+$/, '')} (${it.row['огноо'].slice(0, 10).replace(/\//g, '.')})`;
     it.id = `tic-${it.key.replace('_', '-')}`;
+    if (storedSlug.has(it.id)) it.slug = storedSlug.get(it.id);
+  }
+  for (const it of primaries) {
+    if (!it.slug) {
+      let slug = B.slugify(it.title) || it.key.replace('_', '-');
+      const base = slug;
+      for (let n = 2; usedSlugs.has(slug); n++) slug = `${base}-${n}`;
+      usedSlugs.add(slug);
+      it.slug = slug;
+    }
+    it.newPath = `${BASE}/${it.slug}`;
     const d = /^(\d{4})\/(\d{2})\/(\d{2})/.exec(it.row['огноо']);
     it.publishedDate = d ? `${d[1]}-${d[2]}-${d[3]}` : undefined;
   }
@@ -161,7 +188,7 @@ const isRussian = (t) => (t.match(/[ыэъщ]/g) || []).length < 2 && (t.match(/
     if (!it.flags.length && srcLines.length) it.flags.push('эх сурвалж заасан');
     for (const im of it.images) if (im.origin === 'third-party') it.flags.push(`зураг: ${(() => { try { return new URL(imageUrl(im.src)).hostname; } catch { return 'гуравдагч'; } })()}`);
     it.needsReplacement = it.flags.length > 0;
-    it.source = [`touristinfocenter.mn мэдээ: ${it.oldUrl}`, ...srcLines.map((s) => s.trim()), it.row['зохиогч_эх_сурвалж'] && `Зохиогч/эх сурвалж (TIC): ${it.row['зохиогч_эх_сурвалж']}`].filter(Boolean).join('\n');
+    it.source = [`touristinfocenter.mn мэдээ: ${it.oldUrl}`, ...it.dups.map((d) => `Давхардал (TIC): ${d.oldUrl}`), ...srcLines.map((s) => s.trim()), it.row['зохиогч_эх_сурвалж'] && `Зохиогч/эх сурвалж (TIC): ${it.row['зохиогч_эх_сурвалж']}`].filter(Boolean).join('\n');
   }
 
   const plannedImages = NO_IMAGES ? 0 : primaries.reduce((s, it) => s + it.images.filter((i) => i.origin !== 'broken').length, 0);
@@ -204,7 +231,7 @@ const isRussian = (t) => (t.match(/[ыэъщ]/g) || []).length < 2 && (t.match(/
     const fields = {
       title: L(it.title.slice(0, 250)), slug: L(it.slug), topic: L('news'), body: L({ nodeType: 'document', data: {}, content }),
       source: L(it.source), language: L('mn'), consentObtained: L(false), seoTitle: L(it.seoTitle), seoDescription: L(it.seoDescription),
-      sourceUrl: L([it, ...it.dups].map((x) => x.oldUrl).join(' ')), needsReplacement: L(it.needsReplacement),
+      sourceUrl: L((it.dups.length ? `${it.oldUrl} (+${it.dups.length} давхардал, source талбарт)` : it.oldUrl).slice(0, 255)), needsReplacement: L(it.needsReplacement),
     };
     if (assets.length) fields.media = L(assets.map((a) => link('Asset', a)));
     if (it.publishedDate) fields.publishedDate = L(it.publishedDate);
