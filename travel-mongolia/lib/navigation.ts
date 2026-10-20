@@ -80,8 +80,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Байгальд аялах', 'Nature & Outdoors', '/things-to-do/nature'),
           page('Адал явдалт аялал', 'Adventure', '/things-to-do/adventure'),
           page('Түүх, соёлын аялал', 'Culture & History', '/things-to-do/culture'),
-          // TIC cate17 (2026-10-20): эзэмшигч шалгаж live болгоно
-          { mn: 'Музей, театр', en: 'Museums & Theatres', href: '/things-to-do/museums', status: 'draft' },
+          // TIC cate17 (2026-10-20, эзэмшигч баталсан)
+          page('Музей, театр', 'Museums & Theatres', '/things-to-do/museums'),
           page('Хоол, ундааны туршлага', 'Food & Drink', '/things-to-do/food'),
           page('Нүүдэлчин ахуйг мэдрэх', 'Nomadic Experiences', '/things-to-do/nomadic'),
           page('Амралт, рашаан сувилал', 'Wellness', '/things-to-do/wellness'),
@@ -147,11 +147,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
       },
       {
         mn: 'Байгаль', en: 'Nature', href: '/about/nature', status: 'live',
-        // TIC cate10–12 (2026-10-20): эзэмшигч шалгаж live болгоно
+        // TIC cate10–12 (2026-10-20, эзэмшигч баталсан)
         children: [
-          { mn: 'Ан амьтан', en: 'Wildlife', href: '/about/nature/wildlife', status: 'draft' },
-          { mn: 'Шувууд', en: 'Birds', href: '/about/nature/birds', status: 'draft' },
-          { mn: 'Ургамал', en: 'Plants', href: '/about/nature/plants', status: 'draft' },
+          page('Ан амьтан', 'Wildlife', '/about/nature/wildlife'),
+          page('Шувууд', 'Birds', '/about/nature/birds'),
+          page('Ургамал', 'Plants', '/about/nature/plants'),
         ],
       },
       { mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', status: 'live' },
@@ -251,11 +251,6 @@ export const PAGE_STATUS: Record<string, NavStatus> = {
   '/stories/photo-video': 'soft',
   // Нутгийн Монгол hub: soft. /local/<slug> профайлууд энэ төлвийг өвлөнө.
   '/local': 'soft',
-  // TIC-ийн шинэ дэд хуудсууд: доорх /<slug> нийтлэлүүд энэ төлвийг өвлөнө (цэсний төлөвтэй ижил)
-  '/about/nature/wildlife': 'draft',
-  '/about/nature/birds': 'draft',
-  '/about/nature/plants': 'draft',
-  '/things-to-do/museums': 'draft',
 };
 
 // Өөр хаяг руу байнгын redirect хийдэг хаягууд (next.config.js). Sitemap-д оруулахгүй.

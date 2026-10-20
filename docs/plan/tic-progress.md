@@ -57,5 +57,7 @@ Inventory-ийн тоо:
 ## Дараагийн алхам
 
 - [x] Local `next build`, push, preview URL
-- [ ] Эзэмшигч preview-д шалгаж, цэсний draft мөрүүдийг live болгох; entry-үүдийг publish (`publish-batch03-06.js` хараахан бичээгүй)
+- [x] Эзэмшигч preview-г баталсан (2026-10-20): цэсний 4 мөр live, `publish-batch03-06.js`-ээр бүгдийг нийтэлсэн, main руу merge
+- [x] Бурхан Халдуны AI зургийг (ChatGPT_Image) TIC-ийн бодит гэрэл зургаар сольсон
+- [x] IndexNow: `public/<key>.txt`, `/api/revalidate` → IndexNow, `scripts/seo/indexnow-submit.js`
 - [ ] `needsReplacement=true` entry-үүдийн эрх тодруулах (3-р сэдэв 11, 5-р 159, 6-р 26)

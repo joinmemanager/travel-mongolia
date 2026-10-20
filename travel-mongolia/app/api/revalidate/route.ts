@@ -1,5 +1,8 @@
 import { timingSafeEqual } from 'crypto';
 import { revalidatePath } from 'next/cache';
+import { after } from 'next/server';
+
+import { entryUrls, submitIndexNow } from '@/lib/indexNow';
 
 // Contentful webhook (Entry.publish / Entry.unpublish) → тухайн entry-ийн хуудсыг шууд шинэчилнэ.
 // Хуудсууд өдөрт нэг л дахин үүсдэг (revalidate = 86400) тул Contentful-ын өөрчлөлт энэ замаар л
@@ -128,5 +131,9 @@ export async function POST(req: Request) {
     }
   }
 
-  return Response.json({ ok: true, contentType, id: sys.id, revalidated: done });
+  // IndexNow: production дээр entry-ийн хуудсыг хайлтын системд мэдэгдэнэ (хариуг хүлээлгэхгүй)
+  const urls = process.env.VERCEL_ENV === 'production' ? entryUrls(contentType, payload?.fields, key) : [];
+  if (urls.length) after(() => submitIndexNow(urls).then((status) => console.log('IndexNow', status, urls.join(' '))));
+
+  return Response.json({ ok: true, contentType, id: sys.id, revalidated: done, indexNow: urls });
 }
