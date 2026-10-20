@@ -29,7 +29,11 @@ export function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lo
 // Contentful-ын түүхэн өвийн бүх газар (координаттай)
 export async function getHeritagePlaceCards(): Promise<PlaceCardData[]> {
   try {
-    const res = await client.getEntries({ content_type: 'heritagePlace', limit: 200 });
+    const res = await client.getEntries({
+      content_type: 'heritagePlace',
+      select: ['sys.id', 'fields.name', 'fields.slug', 'fields.region', 'fields.image', 'fields.coordinates'],
+      limit: 500,
+    } as any);
     return res.items.map((item: any) => {
       const f = item.fields || {};
       const src = assetUrl(f.image);

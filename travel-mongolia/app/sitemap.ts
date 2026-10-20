@@ -5,6 +5,10 @@ import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { PAGE_META } from '@/lib/pageMeta';
 import { isThinContent, SITE_URL } from '@/lib/seo';
+import { SPECIES_SECTION } from '@/lib/species';
+import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
+
+const placeBase = (c: PlaceCategory) => CATEGORY_INFO[c]?.base || '/destination/protected';
 
 // Хүсэлт бүрт Contentful-ээс шинээр үүсгэнэ. revalidate = 3600 (ISR) үед production-ийн sitemap
 // шинэчлэгдэлгүй 10-15-аас өмнөх өгөгдлөөр үлдэж, шинэ аймаг, сумд ороогүй байв (2026-10-19).
@@ -32,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles] =
+  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles, tourismPlaces, species] =
     await Promise.all([
       contentfulEntries('heritagePlace'),
       contentfulEntries('heritageCategory'),
@@ -42,6 +46,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       contentfulEntries('story'),
       contentfulEntries('soum'),
       contentfulEntries('historyArticle'),
+      contentfulEntries('place'),
+      contentfulEntries('species'),
     ]);
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
@@ -76,6 +82,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: e.sys.updatedAt,
       priority: 0.6,
     })),
+    // TIC-ийн газрууд (тусгай хамгаалалттай, музей/театр, рашаан), амьтан/ургамал (тусдаа хуудастай нь).
+    // Богино (80 үгээс доош, noindex) болон production дээр нийтлэгдээгүй хэсгийн хуудсыг оруулахгүй.
+    ...tourismPlaces
+      .filter((e) => !isThinContent(e.fields.body))
+      .map((e) => ({ path: `${placeBase(e.fields.category)}/${entryKey(e)}`, e }))
+      .concat(
+        species
+          .filter((e) => e.fields.ownPage === true && !isThinContent(e.fields.body))
+          .map((e) => ({ path: `/about/nature/${SPECIES_SECTION[e.fields.group] || 'wildlife'}/${entryKey(e)}`, e }))
+      )
+      .filter(({ path }) => !isUnpublishedPage(path))
+      .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.5 })),
     ...recommendations.map((e) => ({
       url: `${SITE_URL}/recommendation/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,

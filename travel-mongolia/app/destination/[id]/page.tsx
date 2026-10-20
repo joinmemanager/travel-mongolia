@@ -6,6 +6,8 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import React, { cache } from 'react';
 
 import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import PlaceFacts from '@/components/places/PlaceFacts';
+import RichText from '@/components/RichText';
 import RelatedBookings from '@/components/templates/RelatedBookings';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
@@ -14,6 +16,7 @@ import { getGuidanceFor } from '@/lib/localContent';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { photoSrc } from '@/lib/images';
+import { mergedPlaceFacts } from '@/lib/tourismPlaces';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -38,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const fields = destination.fields as any;
   return pageMetadata({
     title: fields.title,
-    description: truncate(
+    description: fields.seoDescription || truncate(
       richTextToPlain(fields.description) ||
         fields.subtitle ||
         `${fields.title}: Монголд аялах онцлох газар, үзэх зүйлс, аяллын мэдээлэл.`
@@ -46,33 +49,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/destination/${entryKey(destination)}`,
     image: getImageUrl(fields),
   });
-}
-
-function parseRichText(node: any): any {
-  if (!node) return null;
-  if (typeof node === 'string') return node;
-
-  if (node.nodeType === 'text') {
-    return node.value;
-  }
-
-  if (node.nodeType === 'paragraph') {
-    return (
-      <p className="mb-4 text-base sm:text-lg leading-relaxed text-neutral-800">
-        {node.content?.map((child: any, idx: number) => (
-          <React.Fragment key={idx}>{parseRichText(child)}</React.Fragment>
-        ))}
-      </p>
-    );
-  }
-
-  if (node.content && Array.isArray(node.content)) {
-    return node.content.map((child: any, idx: number) => (
-      <div key={idx}>{parseRichText(child)}</div>
-    ));
-  }
-
-  return null;
 }
 
 export default async function DestinationDetailPage({ params }: Props) {
@@ -107,6 +83,8 @@ export default async function DestinationDetailPage({ params }: Props) {
 
   // Хэрхэн зөв аялах (visitorGuidance)
   const guidance = await getGuidanceFor(destination.sys.id);
+  // TIC-ээс нэгтгэсэн тусгай хамгаалалттай газар: ангилал, аймгийн холбоос
+  const facts = mergedPlaceFacts(destination, 'destination');
 
   return (
     <PlaceTemplate
@@ -116,6 +94,7 @@ export default async function DestinationDetailPage({ params }: Props) {
       analytics={{ content_type: 'destination', content_id: entryKey(destination), province: placeFields.province || '' }}
       bookings={<RelatedBookings items={related} campaign="destination" contentId={entryKey(destination)} />}
       nearby={{ title: 'Бусад газрууд', places: others }}
+      aside={facts ? <PlaceFacts place={facts} /> : undefined}
       links={[
         { label: 'Зорих газрууд', href: '/destination/region' },
         { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
@@ -124,7 +103,7 @@ export default async function DestinationDetailPage({ params }: Props) {
     >
       <div className="text-neutral-800">
         {fields.description ? (
-          parseRichText(fields.description)
+          <RichText document={fields.description} />
         ) : (
           <p className="text-base sm:text-lg text-neutral-500 italic">
             Тун удахгүй дэлгэрэнгүй мэдээлэл нэмэгдэнэ...

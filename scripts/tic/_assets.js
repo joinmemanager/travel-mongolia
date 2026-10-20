@@ -39,6 +39,8 @@ async function download(src) {
     fetch(url, {
       headers: { 'User-Agent': 'Mozilla/5.0 (TravelHubMongolia content migration; contact@joinme.mn)' },
       redirect: 'follow',
+      // Гуравдагч сайт хариу өгөхгүй гацахаас сэргийлнэ
+      signal: AbortSignal.timeout(30000),
     });
   let res = await get(imageUrl(src));
   // Wikimedia-ийн thumb (эхээсээ том хэмжээ) 400 буцаавал эх файлыг авна
@@ -87,7 +89,7 @@ async function commonsCredit(fileUrl) {
   if (!m) return null;
   const name = decodeURIComponent(m[1]);
   const api = `https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata|url&titles=${encodeURIComponent('File:' + name)}`;
-  const res = await fetch(api, { headers: { 'User-Agent': 'TravelHubMongolia/1.0 (contact@joinme.mn)' } });
+  const res = await fetch(api, { headers: { 'User-Agent': 'TravelHubMongolia/1.0 (contact@joinme.mn)' }, signal: AbortSignal.timeout(30000) });
   const page = Object.values((await res.json()).query.pages)[0];
   const info = page.imageinfo?.[0];
   if (!info) return null;
