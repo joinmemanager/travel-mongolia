@@ -5,6 +5,7 @@
 //   node scripts/tic/fetch-batch01b.js <кэш>          # TIC HTML-ийг татна
 //   node scripts/tic/import-batch01b.js <кэш> --dry   # Contentful-д бичихгүй, зөвхөн тайлан
 //   node scripts/tic/import-batch01b.js <кэш>         # импорт + docs/redirects/batch-01b-soums.csv
+//   node scripts/tic/import-batch01b.js <кэш> --only=c13_227   # нэг entry-г дахин үүсгэнэ
 // soum төрөл, province-ийн талбарууд 1-р багцад үүссэн (schema-batch01.js).
 //
 // Дүрэм (1-р багцтай ижил):
@@ -30,6 +31,8 @@ const { TIC, imageOrigin, imageUrl, ensureAsset, commonsCredit, hostCredit } = r
 
 const CACHE = process.argv[2];
 const DRY = process.argv.includes('--dry');
+// --only=c13_227,…: зөвхөн эдгээр TIC нийтлэлийн entry-г дахин бичнэ (redirect CSV, тайланг хөндөхгүй)
+const ONLY = (process.argv.find((a) => a.startsWith('--only=')) || '').slice(7).split(',').filter(Boolean);
 if (!CACHE) { console.error('кэш хавтас өгнө үү'); process.exit(1); }
 
 const SITE = 'https://www.travelhubmongolia.com';
@@ -183,7 +186,7 @@ async function upsert(id, fields) {
   const imageErrors = [];
   const result = { soums: [], imageErrors };
 
-  for (const it of items) {
+  for (const it of items.filter((x) => !ONLY.length || ONLY.includes(x.row.key))) {
     const provinceId = provinceIdBySlug[it.provinceSlug];
     if (!provinceId) throw new Error(`${it.name}: аймгийн entry олдсонгүй (${it.provinceSlug})`);
     const isUb = it.provinceSlug === 'ulaanbaatar';
@@ -225,6 +228,7 @@ async function upsert(id, fields) {
   // Redirect хүснэгт: хуучин TIC хаяг бүр нэг мөр
   const redirects = [];
   for (const x of result.soums) for (const old of x.oldUrls) redirects.push([old, SITE + x.newPath, x.name, x.aimag]);
+  if (ONLY.length) return;
   if (!DRY) writeCsv(path.join(ROOT, 'docs', 'redirects', 'batch-01b-soums.csv'), ['old_url', 'new_url', 'title', 'аймаг'], redirects);
   result.redirectRows = redirects.length;
   fs.writeFileSync(REPORT_JSON, JSON.stringify(result, null, 2), 'utf8');
