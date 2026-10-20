@@ -17,7 +17,10 @@ export default function PlaceList({
 }) {
   if (places.length === 0) return null;
   const label = (p: PlaceSummary) => {
-    const cat = p.category === 'city-monument' ? 'Хотын дурсгалт газар' : CATEGORY_INFO[p.category]?.label;
+    const cat =
+      p.category === 'city-monument' ? 'Хотын дурсгалт газар'
+      : p.category === 'heritage-site' ? 'Түүх, соёлын дурсгалт газар'
+      : CATEGORY_INFO[p.category]?.label;
     const prov = p.provinceTitle;
     if (eyebrow === 'category') return cat;
     if (eyebrow === 'both') return [cat, prov].filter(Boolean).join(' · ');

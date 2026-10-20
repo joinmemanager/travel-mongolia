@@ -242,6 +242,8 @@ export default async function ProvinceDetailPage({ params }: Props) {
   // TIC-ээс шилжүүлсэн газрууд (lib/tourismPlaces.ts): тусгай хамгаалалттай, хотын дурсгалт, музей/театр, рашаан
   const placeGroups = [
     { id: 'protected-areas', title: `${provinceStem} ${ofUnit} тусгай хамгаалалттай газрууд`, items: placesOfProvince.filter((p) => (PROTECTED_CATEGORIES as string[]).includes(p.category)) },
+    { id: 'landscapes', title: `${provinceStem} ${ofUnit} байгалийн үзэсгэлэнт газрууд`, items: placesOfProvince.filter((p) => p.category === 'landscape') },
+    { id: 'heritage-sites', title: `${provinceStem} ${ofUnit} түүх, соёлын дурсгалт газрууд`, items: placesOfProvince.filter((p) => p.category === 'heritage-site') },
     { id: 'city-monuments', title: `${provinceStem} ${ofUnit} хотын дурсгалт газрууд`, items: placesOfProvince.filter((p) => p.category === 'city-monument') },
     { id: 'museums', title: 'Музей, театр, соёлын төв', items: placesOfProvince.filter((p) => (CULTURE_CATEGORIES as string[]).includes(p.category)) },
     { id: 'sanatoriums', title: 'Рашаан сувилал', items: placesOfProvince.filter((p) => p.category === 'sanatorium') },

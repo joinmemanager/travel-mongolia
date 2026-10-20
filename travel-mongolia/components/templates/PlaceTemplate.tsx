@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { ContentContext, type ContentContextValue } from '@/components/Analytics';
+import Breadcrumbs, { type Crumb } from '@/components/Breadcrumbs';
 import ImageCard from '@/components/design/ImageCard';
 import LinkCard, { type LinkCardItem } from '@/components/design/LinkCard';
 import type { ImageCredit } from '@/lib/imageCredit';
@@ -25,6 +26,7 @@ export default function PlaceTemplate({
   bookings,
   analytics,
   links,
+  breadcrumbs,
   children,
 }: {
   image: { src: string; alt: string; credit?: ImageCredit };
@@ -44,6 +46,8 @@ export default function PlaceTemplate({
   // GA4: content_id, content_type, province (components/Analytics.tsx)
   analytics?: ContentContextValue;
   links: LinkCardItem[];
+  // Замчлал + BreadcrumbList JSON-LD (агуулгын дээд талд)
+  breadcrumbs?: Crumb[];
   children: React.ReactNode;
 }) {
   return (
@@ -85,7 +89,10 @@ export default function PlaceTemplate({
           aside ? 'max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-12' : 'max-w-4xl'
         }`}
       >
-        <div className={aside ? 'lg:col-span-2' : ''}>{children}</div>
+        <div className={aside ? 'lg:col-span-2' : ''}>
+          {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
+          {children}
+        </div>
         {aside && <div className="space-y-8">{aside}</div>}
       </div>
 

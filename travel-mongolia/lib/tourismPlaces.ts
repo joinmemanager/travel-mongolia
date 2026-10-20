@@ -15,7 +15,8 @@ export type PlaceCategory =
   | 'museum'
   | 'theatre'
   | 'culture-center'
-  | 'sanatorium';
+  | 'sanatorium'
+  | 'landscape';
 
 export const PROTECTED_CATEGORIES: PlaceCategory[] = ['strictly-protected', 'national-park', 'nature-reserve', 'natural-monument'];
 export const CULTURE_CATEGORIES: PlaceCategory[] = ['museum', 'theatre', 'culture-center'];
@@ -29,6 +30,8 @@ export const CATEGORY_INFO: Record<PlaceCategory, { label: string; plural: strin
   theatre: { label: 'Театр, урлагийн чуулга', plural: 'Театр, урлагийн чуулгууд', href: '/things-to-do/museums', base: '/things-to-do/museums' },
   'culture-center': { label: 'Соёлын төв, номын сан', plural: 'Соёлын төв, номын сангууд', href: '/things-to-do/museums', base: '/things-to-do/museums' },
   sanatorium: { label: 'Рашаан сувилал', plural: 'Рашаан сувиллууд', href: '/things-to-do/wellness', base: '/things-to-do/wellness' },
+  // TIC cate1-ийн байгалийн газар (уул, нуур, гол, хад, агуй…)
+  landscape: { label: 'Байгалийн үзэсгэлэнт газар', plural: 'Байгалийн үзэсгэлэнт газрууд', href: '/destination/landscapes', base: '/destination/landscapes' },
 };
 
 // Аймгийн хуудасны хэсгийн anchor (app/province/[id]/page.tsx placeGroups)
@@ -36,6 +39,8 @@ export function provinceAnchor(category: PlaceSummary['category']): string {
   if ((PROTECTED_CATEGORIES as string[]).includes(category)) return 'protected-areas';
   if (category === 'city-monument') return 'city-monuments';
   if (category === 'sanatorium') return 'sanatoriums';
+  if (category === 'landscape') return 'landscapes';
+  if (category === 'heritage-site') return 'heritage-sites';
   return 'museums';
 }
 
@@ -44,7 +49,7 @@ export interface PlaceSummary {
   title: string;
   slug: string;
   href: string;
-  category: PlaceCategory | 'city-monument';
+  category: PlaceCategory | 'city-monument' | 'heritage-site';
   provinceId?: string;
   provinceSlug?: string;
   provinceTitle?: string;
@@ -115,6 +120,13 @@ function mergedToSummary(e: any, type: 'destination' | 'heritagePlace', category
     image: imageOf(f.image || f.coverImage, title),
     excerpt: f.seoDescription,
   };
+}
+
+// Нэгтгэсэн/heritagePlace entry-ийн ангилал: тусгай хамгаалалттай, эсвэл TIC cate1-ийн түүх, соёлын дурсгалт
+// газар (entry id `tic-c1-*`, 4-р багц), бусад нь хотын дурсгалт газар (cate9, `tic-c9-*`)
+function mergedCategory(e: any): PlaceSummary['category'] {
+  if (e.fields?.protectedCategory) return e.fields.protectedCategory;
+  return String(e.sys?.id || '').startsWith('tic-c1-') ? 'heritage-site' : 'city-monument';
 }
 
 async function safe<T>(label: string, fn: () => Promise<T>, fallback: T): Promise<T> {
@@ -212,9 +224,7 @@ export async function getPlacesOfProvince(provinceId: string): Promise<PlaceSumm
               limit: 500,
               include: 1,
             } as any);
-            return res.items.map((e: any) =>
-              mergedToSummary(e, type, e.fields.protectedCategory || 'city-monument')
-            );
+            return res.items.map((e: any) => mergedToSummary(e, type, mergedCategory(e)));
           },
           [] as PlaceSummary[]
         )
@@ -229,5 +239,5 @@ export async function getPlacesOfProvince(provinceId: string): Promise<PlaceSumm
 export function mergedPlaceFacts(entry: any, type: 'destination' | 'heritagePlace'): PlaceSummary | null {
   const f = entry?.fields || {};
   if (!f.provinceRef && !f.protectedCategory) return null;
-  return mergedToSummary(entry, type, f.protectedCategory || 'city-monument');
+  return mergedToSummary(entry, type, mergedCategory(entry));
 }

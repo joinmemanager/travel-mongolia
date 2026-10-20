@@ -68,6 +68,8 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         one(`/destination/protected/${key}`, '/destination/protected/[slug]'),
         one(`/things-to-do/museums/${key}`, '/things-to-do/museums/[slug]'),
         one(`/things-to-do/wellness/${key}`, '/things-to-do/wellness/[slug]'),
+        one(`/destination/landscapes/${key}`, '/destination/landscapes/[slug]'),
+        { path: '/destination/landscapes' },
         { path: '/destination/protected' },
         { path: '/destination/strictly-protected' },
         { path: '/destination/national-parks' },

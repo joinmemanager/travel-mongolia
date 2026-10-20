@@ -122,6 +122,11 @@ export default async function HeritagePlaceDetailPage({
       bookings={<RelatedBookings items={related} campaign="heritage" contentId={entryKey(entry)} />}
       jsonLd={jsonLd}
       nearby={{ title: 'Ойролцоох газрууд', places: nearby }}
+      breadcrumbs={[
+        { label: 'Нүүр', href: '/' },
+        { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
+        { label: f.name || '', href: `/destination/heritage/place/${entryKey(entry)}` },
+      ]}
       links={[
         { label: 'Түүхэн өв, дурсгалт газрууд', href: '/destination/heritage' },
         { label: 'Зорих газрууд', href: '/destination/region' },

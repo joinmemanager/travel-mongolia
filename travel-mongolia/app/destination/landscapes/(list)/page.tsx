@@ -1,5 +1,5 @@
-'use client';
-
+// Server component: доод хэсэгт TIC cate1-ийн байгалийн газрын жагсаалт (Contentful `place` landscape, ProtectedPlacesSection).
+import ProtectedPlacesSection from '@/components/places/ProtectedPlacesSection';
 import CategoryDirectory, { DirectoryGroupSection } from '@/components/templates/CategoryDirectory';
 import { photoSrc } from '@/lib/images';
 
@@ -281,7 +281,7 @@ export default function NaturalLandscapesPage() {
       kicker="04. Natural Landscapes"
       title="Байгалийн тогтоц, ландшафтаар"
       intro="Монгол орны мөнх цаст уулс, говь хээр, цэнгэг нуурууд болон геологийн хосгүй 11 үндсэн тогтоц"
-      nav={LANDSCAPE_CATEGORIES.map((sec) => ({ id: sec.id, label: sec.title }))}
+      nav={[...LANDSCAPE_CATEGORIES.map((sec) => ({ id: sec.id, label: sec.title })), { id: 'all-places', label: 'Бүх газар' }]}
     >
       {LANDSCAPE_CATEGORIES.map((sec) => (
         <DirectoryGroupSection
@@ -292,6 +292,7 @@ export default function NaturalLandscapesPage() {
           moreDesc="Интерактив газрын зураг, байршил & дэлгэрэнгүй"
         />
       ))}
+      <ProtectedPlacesSection categories={['landscape']} />
     </CategoryDirectory>
   );
 }
