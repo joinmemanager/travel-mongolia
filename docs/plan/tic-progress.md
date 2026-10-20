@@ -61,3 +61,11 @@ Inventory-ийн тоо:
 - [x] Бурхан Халдуны AI зургийг (ChatGPT_Image) TIC-ийн бодит гэрэл зургаар сольсон
 - [x] IndexNow: `public/<key>.txt`, `/api/revalidate` → IndexNow, `scripts/seo/indexnow-submit.js`
 - [ ] `needsReplacement=true` entry-үүдийн эрх тодруулах (3-р сэдэв 11, 5-р 159, 6-р 26)
+
+## Production шалгалт (2026-10-20, `verify-batch03-06.js`)
+
+- Нийтэлсэн: place 163, species 686, heritagePlace 140 (138 + Бурхан Халдун, Орхоны хөндий), destination 3, heritageCategory 1, asset 890. Алдаа 0.
+- Санамсаргүй 30 хуудас (сэдэв бүрээс 10): бүгд 200, `index, follow`, өөрийн canonical, sitemap-д бий.
+- Redirect хүснэгт 1,007 мөр → 560 өвөрмөц шинэ хаяг, бүгд 200.
+- Sitemap 831 URL; TIC-ийн 394 хуудасны lastmod нь Contentful `sys.updatedAt`-тай бүгд таарсан.
+- IndexNow: sitemap-ийн 831 URL илгээсэн (HTTP 200); webhook нь entry бүрийн хаягийг илгээдэг (Contentful webhook call-ийн хариунд `indexNow` талбар).
