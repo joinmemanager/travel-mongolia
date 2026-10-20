@@ -53,7 +53,7 @@ function unwrapAdLinks(node) {
 const norm = (s) => s.toUpperCase().replace(/[^А-ЯЁӨҮA-Z0-9]/g, '');
 
 // Гарчиг: өгүүлбэрийн бичлэг; аймаг, Монгол, Улаанбаатар, Чингис зэрэг оноосон нэр, латин үг том үсгээр
-const AIMAG_STEMS = B.AIMAGS.map(([n]) => n.toLocaleLowerCase('mn').split('-')[0].replace(/ь$/, '')).filter((s) => !['төв', 'дархан', 'баян', 'говь'].includes(s));
+const AIMAG_STEMS = B.AIMAGS.map(([n]) => n.toLocaleLowerCase('mn').split('-')[0].replace(/ь$/, '')).filter((s) => !['төв', 'дархан', 'баян', 'говь', 'гов'].includes(s));
 function caseTitle(raw) {
   const lower = raw.replace(/\s+/g, ' ').trim().toLocaleLowerCase('mn');
   let first = true;

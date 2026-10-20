@@ -46,7 +46,9 @@ const AMENITY = {
   Shower: 'Шүршүүр', HotWater: 'Халуун ус', Bar: 'Баар', Horse: 'Морин аялал', HorseRiding: 'Морин аялал', Massage: 'Массаж',
   Pool: 'Усан сан', Fitness: 'Фитнес', Billiards: 'Биллиард', TableTennis: 'Ширээний теннис', Football: 'Хөл бөмбөг',
   Camel: 'Тэмээн аялал', Fishing: 'Загас агнуур', Bicycle: 'Унадаг дугуй', Souvenir: 'Бэлэг дурсгал', Bath: 'Ванн',
-  Spa: 'Спа', Disco: 'Диско', Transfer: 'Тээвэр', Golf: 'Гольф', Ski: 'Цана',
+  Spa: 'Спа', Disco: 'Диско', Transfer: 'Тээвэр', Golf: 'Гольф', Ski: 'Цана', AdditionalHeater: 'Нэмэлт халаагуур',
+  AdditionalBed: 'Нэмэлт ор', RoomDiningService: 'Өрөөнд хоол үйлчилгээ', Bike: 'Унадаг дугуй', YakRiding: 'Сарлагаар аялах',
+  Shopping: 'Дэлгүүр', Pingpong: 'Ширээний теннис', AnimalObserving: 'Амьтан ажиглах',
 };
 const UNITS = [
   ['GerNormal', 'Энгийн гэр'], ['GerTsomtsog', 'Цомцог гэр'], ['GerLux', 'Люкс гэр'], ['HouseNormal', 'Энгийн байшин'],
@@ -74,7 +76,7 @@ function unwrapAdLinks(node) {
 const norm = (s) => s.toUpperCase().replace(/[^А-ЯЁӨҮA-Z0-9]/g, '');
 
 // Гарчиг: кирилл хэсэг өгүүлбэрийн бичлэг (эхний үг, «(»/« - »-ийн дараах үг, аймгийн нэр том), латин үг бүр том үсгээр
-const AIMAG_STEMS = B.AIMAGS.map(([n]) => n.toLocaleLowerCase('mn').split('-')[0].replace(/ь$/, '')).filter((s) => !['төв', 'дархан', 'баян', 'говь'].includes(s));
+const AIMAG_STEMS = B.AIMAGS.map(([n]) => n.toLocaleLowerCase('mn').split('-')[0].replace(/ь$/, '')).filter((s) => !['төв', 'дархан', 'баян', 'говь', 'гов'].includes(s));
 function caseName(raw) {
   const lower = raw.replace(/\s+/g, ' ').trim().toLocaleLowerCase('mn');
   let first = true;
@@ -159,7 +161,8 @@ function structured(html) {
     if (norm(art.title) !== norm(r['гарчиг'])) throw new Error(`${r.key}: гарчиг таарсангүй «${art.title}» ≠ «${r['гарчиг']}»`);
     const cate = Number(r['ангилал']);
     const type = cate === 20 ? 'event' : 'localProvider';
-    const title = caseName(art.title.replace(/\s*-\s*/g, ' - '));
+    // « - » (зайтай) зураасыг жигдэлнэ; «Баян-Өлгий» зэрэг зайгүйг хэвээр
+    const title = caseName(art.title.replace(/\s+-\s*|\s*-\s+/g, ' - '));
     let slug = B.slugify(title);
     const base = slug;
     for (let n = 2; used[type].has(slug); n++) slug = `${base}-${n}`;
@@ -206,7 +209,11 @@ function structured(html) {
     it.st = it.type === 'localProvider' ? structured(it.html) : { services: [] };
     it.aimag = aimagOf(`${it.st.location || ''} ${it.text}`, it.art.title, it.row['аймаг']);
     if (it.type === 'event') {
-      it.date = eventDate(it.text);
+      // Бүтэн огноо (он-сар-өдөр) эсвэл inventory-ийн «өнгөрсөн огноо (YYYY)» тэмдэглэл. Зөвхөн он дурдсан нь
+      // түүхийн он байж болох тул (жишээ нь Наадам 1922) огноо гэж тооцохгүй.
+      const d = eventDate(it.text);
+      const invYear = /өнгөрсөн огноо \((\d{4})\)/.exec(it.row['шалтгаан']);
+      it.date = d?.start ? d : invYear ? { text: `${invYear[1]} он (TIC-ийн бичвэрт)`, year: Number(invYear[1]) } : null;
       it.outdated = !!it.date && (it.date.start ? it.date.start < TODAY : it.date.year < 2026);
     }
     it.verify = [];
@@ -230,6 +237,7 @@ function structured(html) {
       : `${label}${place ? `, ${place}` : ''}: байршил, байр, үйлчилгээ (TIC-ээс авсан, шалгах).`;
     const textForDesc = it.text.trim() || [it.st.location, it.st.services.join(', ')].filter(Boolean).join('. ');
     it.seoDescription = seoDescription(textForDesc || it.title, { name: it.title, stem: it.title.split(/[ ,.-]/)[0], fallback }, usedDesc);
+    if (it.seoDescription.length < 120) it.seoDescription = `${it.seoDescription.replace(/[.…]?$/, '.')} Travel Hub Mongolia.`.slice(0, 155);
   }
 
   const imageErrors = [];

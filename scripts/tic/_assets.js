@@ -26,7 +26,10 @@ function imageUrl(src) {
   if (/^https?:\/\//i.test(src)) return src;
   if (src.startsWith('//')) return 'https:' + src;
   // TIC-ийн зам кирилл, зайтай байж болно
-  return TIC + encodeURI(src.startsWith('/') ? src : '/' + src);
+  // Аль хэдийн %XX-ээр кодлогдсон замыг давхар кодлохгүй (%20 → %2520 болж 400 буцаадаг)
+  let p = src.startsWith('/') ? src : '/' + src;
+  try { p = decodeURI(p); } catch { /* буруу %-тэй бол хэвээр */ }
+  return TIC + encodeURI(p);
 }
 
 async function download(src) {
