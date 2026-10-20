@@ -477,3 +477,8 @@
 ## Татаж чадаагүй зураг (105)
 
 Нийтлэлээс хассан (гуравдагч сайтаас шууд холбохгүй дүрмээр), entry нь needsReplacement=true. Эх сайтаар: Facebook CDN 49, Google proxy (lh3.googleusercontent.com) 22, yp.mn 8, dundgovi.gov.mn 5, i.ytimg.com 4, sector.gov.mn 3, facebook.com (зураг биш хуудас) 2, shilendans.gov.mn 2, бусад 10. Дэлгэрэнгүй жагсаалт: `import-batch01b.js`-ийн лог.
+
+## 2026-10-20: нийтлэл
+
+- 316 сум, дүүрэг болон 174 asset-ийг нийтэлсэн (`scripts/tic/publish-batch01b.js`). Нийтлэхийн өмнө Хөвсгөлийн Эрдэнэбулган сум (`tic-c13-227`) Contentful-ээс устсан байсан (Архангайн Эрдэнэбулгантай нэр давхцдаг тул алдаагаар устгагдсан бололтой), `import-batch01b.js --only=c13_227`-оор дахин үүсгэв.
+- Production шалгалт (`scripts/tic/verify-batch01b.js`): 20 аймаг + Улаанбаатарын хуудсанд бүх сум (анкертай), 189 тусдаа хуудас 200 / index, follow / өөрийн canonical / sitemap-д, redirect хүснэгтийн 323 new_url 200 (анкер нь HTML-д). Асуудал 0.
