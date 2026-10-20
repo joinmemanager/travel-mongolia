@@ -6,36 +6,10 @@
 //   node scripts/tic/credits.js --dry   # өөрчлөхгүй, зөвхөн жагсаана
 //   node scripts/tic/credits.js         # Draft-аар хадгална (нийтлэгдсэн asset-ийг дараа publish хийнэ)
 const { cma, LOCALE } = require('./_cma');
+const { commonsCredit, hostCredit } = require('./_assets');
 
 const DRY = process.argv.includes('--dry');
 const CREDIT_RE = /^(Зураг|Фото|Credit)\s*:/i;
-
-async function commonsCredit(fileUrl) {
-  // .../commons/a/ab/<нэр> эсвэл .../commons/thumb/a/ab/<нэр>/1200px-<нэр>
-  const m = /upload\.wikimedia\.org\/wikipedia\/commons\/(?:thumb\/)?[0-9a-f]\/[0-9a-f]{2}\/([^/]+)/.exec(fileUrl);
-  if (!m) return null;
-  const name = decodeURIComponent(m[1]);
-  const api = `https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata|url&titles=${encodeURIComponent('File:' + name)}`;
-  const res = await fetch(api, { headers: { 'User-Agent': 'TravelHubMongolia/1.0 (contact@joinme.mn)' } });
-  const page = Object.values((await res.json()).query.pages)[0];
-  const info = page.imageinfo?.[0];
-  if (!info) return null;
-  const meta = info.extmetadata || {};
-  const pick = (k) => (meta[k]?.value || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-  const author = pick('Attribution') || pick('Artist') || 'тодорхойгүй';
-  const license = pick('LicenseShortName');
-  return `Зураг: ${author} / Wikimedia Commons${license ? `, ${license}` : ''} | ${info.descriptionurl}`;
-}
-
-function hostCredit(src) {
-  if (/touristinfocenter\.mn/i.test(src) || /^base64/.test(src)) return 'Зураг: touristinfocenter.mn';
-  try {
-    const host = new URL(src).hostname.replace(/^www\./, '');
-    return `Зураг: ${/twimg\.com$/.test(host) ? 'X (Twitter)' : host}`;
-  } catch {
-    return null;
-  }
-}
 
 (async () => {
   const assets = [];
