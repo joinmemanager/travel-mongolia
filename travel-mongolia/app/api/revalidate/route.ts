@@ -1,5 +1,8 @@
 import { timingSafeEqual } from 'crypto';
 import { revalidatePath } from 'next/cache';
+import { after } from 'next/server';
+
+import { entryUrls, submitIndexNow } from '@/lib/indexNow';
 
 // Contentful webhook (Entry.publish / Entry.unpublish) → тухайн entry-ийн хуудсыг шууд шинэчилнэ.
 // Хуудсууд өдөрт нэг л дахин үүсдэг (revalidate = 86400) тул Contentful-ын өөрчлөлт энэ замаар л
@@ -41,7 +44,7 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
       // Сумын хуудас болон аймгийн хуудасны жагсаалт: аймгийн slug-ийг webhook мэдэхгүй тул бүх аймаг, сумын хуудсыг
       return [{ path: '/province/[id]', type: 'layout' }];
     case 'destination':
-      return [one(`/destination/${key}`, '/destination/[id]'), { path: '/' }];
+      return [one(`/destination/${key}`, '/destination/[id]'), { path: '/' }, { path: '/province/[id]', type: 'page' }];
     case 'recommendation':
     case 'event':
       return [one(`/recommendation/${key}`, '/recommendation/[id]'), { path: '/' }];
@@ -55,9 +58,35 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         { path: '/destination/heritage/[category]', type: 'page' },
         { path: '/destination/heritage' },
         { path: '/destination/region' },
+        { path: '/province/[id]', type: 'page' },
       ];
     case 'historyArticle':
       return [one(`/about/history/${key}`, '/about/history/[slug]'), { path: '/about/history' }];
+    case 'place':
+      // TIC: тусгай хамгаалалттай газар, музей/театр, рашаан. Ангиллыг webhook мэдэхгүй тул гурван route-ийг
+      return [
+        one(`/destination/protected/${key}`, '/destination/protected/[slug]'),
+        one(`/things-to-do/museums/${key}`, '/things-to-do/museums/[slug]'),
+        one(`/things-to-do/wellness/${key}`, '/things-to-do/wellness/[slug]'),
+        { path: '/destination/protected' },
+        { path: '/destination/strictly-protected' },
+        { path: '/destination/national-parks' },
+        { path: '/destination/nature-reserves' },
+        { path: '/destination/natural-monuments' },
+        { path: '/things-to-do/museums' },
+        { path: '/things-to-do/wellness' },
+        { path: '/province/[id]', type: 'page' },
+      ];
+    case 'species':
+      // TIC: ан амьтан, шувуу, ургамал (/about/nature/<бүлэг>/<slug>, каталог #slug)
+      return [
+        one(`/about/nature/wildlife/${key}`, '/about/nature/wildlife/[slug]'),
+        one(`/about/nature/birds/${key}`, '/about/nature/birds/[slug]'),
+        one(`/about/nature/plants/${key}`, '/about/nature/plants/[slug]'),
+        { path: '/about/nature/wildlife' },
+        { path: '/about/nature/birds' },
+        { path: '/about/nature/plants' },
+      ];
     case 'story':
       return [one(`/stories/${key}`, '/stories/[slug]'), { path: '/stories' }];
     case 'localProvider':
@@ -102,5 +131,9 @@ export async function POST(req: Request) {
     }
   }
 
-  return Response.json({ ok: true, contentType, id: sys.id, revalidated: done });
+  // IndexNow: production дээр entry-ийн хуудсыг хайлтын системд мэдэгдэнэ (хариуг хүлээлгэхгүй)
+  const urls = process.env.VERCEL_ENV === 'production' ? entryUrls(contentType, payload?.fields, key) : [];
+  if (urls.length) after(() => submitIndexNow(urls).then((status) => console.log('IndexNow', status, urls.join(' '))));
+
+  return Response.json({ ok: true, contentType, id: sys.id, revalidated: done, indexNow: urls });
 }

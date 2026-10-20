@@ -1,8 +1,11 @@
-'use client';
+// Server component: доод хэсэгт TIC-ээс шилжүүлсэн газрын жагсаалт (Contentful `place`, ProtectedPlacesSection).
+// Contentful-д Publish хийхэд /api/revalidate шинэчилнэ.
+export const revalidate = 86400;
 
 import React from 'react';
 
 import CategoryDirectory from '@/components/templates/CategoryDirectory';
+import ProtectedPlacesSection from '@/components/places/ProtectedPlacesSection';
 import Image from 'next/image';
 
 export default function NatureReservesPage() {
@@ -56,6 +59,7 @@ export default function NatureReservesPage() {
             </p>
           </div>
         </div>
+        <ProtectedPlacesSection categories={['nature-reserve']} />
     </CategoryDirectory>
   );
 }

@@ -1,6 +1,9 @@
-'use client';
+// Server component: доод хэсэгт TIC-ээс шилжүүлсэн газрын жагсаалт (Contentful `place`, ProtectedPlacesSection).
+// Contentful-д Publish хийхэд /api/revalidate шинэчилнэ.
+export const revalidate = 86400;
 
 import CategoryDirectory, { DirectoryGroupSection } from '@/components/templates/CategoryDirectory';
+import ProtectedPlacesSection from '@/components/places/ProtectedPlacesSection';
 import { photoSrc } from '@/lib/images';
 
 interface PlaceCard {
@@ -123,7 +126,7 @@ export default function ProtectedAreasPage() {
       kicker="03. Protected Areas"
       title="Тусгай хамгаалалттай газраар"
       intro="Монгол орны онгон дагшин 4 үндсэн ангиллын тусгай хамгаалалттай нутгууд"
-      nav={CATEGORIES.map((sec) => ({ id: sec.id, label: sec.title }))}
+      nav={[...CATEGORIES.map((sec) => ({ id: sec.id, label: sec.title })), { id: 'all-places', label: 'Бүх газар' }]}
     >
       {CATEGORIES.map((sec) => (
         <DirectoryGroupSection
@@ -134,6 +137,7 @@ export default function ProtectedAreasPage() {
           moreDesc="Интерактив газрын зураг, байршил & дэлгэрэнгүй мэдээлэл"
         />
       ))}
+        <ProtectedPlacesSection categories={['strictly-protected', 'national-park', 'nature-reserve', 'natural-monument']} />
     </CategoryDirectory>
   );
 }

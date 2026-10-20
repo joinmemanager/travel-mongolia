@@ -3,7 +3,8 @@
 import CategoryListing from '@/components/templates/CategoryListing';
 import { WELLNESS_CATEGORIES, WELLNESS_SPOTS } from '@/lib/wellnessData';
 
-export default function WellnessPage() {
+// Кодын картууд (lib/wellnessData.ts), ?cat= шүүлтүүртэй. page.tsx (server) доор нь рашаан сувиллын жагсаалт нэмнэ.
+export default function WellnessListing() {
   return (
     <CategoryListing
       embedded

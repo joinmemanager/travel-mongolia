@@ -29,6 +29,8 @@ import { getRelatedItems, linkIds } from '@/lib/related';
 import { splitRichText } from '@/lib/richTextParts';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { getSoumsOfProvince } from '@/lib/soums';
+import PlaceList from '@/components/places/PlaceList';
+import { CULTURE_CATEGORIES, getPlacesOfProvince, PROTECTED_CATEGORIES, type PlaceSummary } from '@/lib/tourismPlaces';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -224,9 +226,20 @@ export default async function ProvinceDetailPage({ params }: Props) {
   });
 
   // Хэрхэн зөв аялах (visitorGuidance), сумд
-  const [guidance, soums] = contentfulEntry
-    ? await Promise.all([getGuidanceFor(contentfulEntry.sys.id), getSoumsOfProvince(contentfulEntry.sys.id)])
-    : [[], []];
+  const [guidance, soums, placesOfProvince] = contentfulEntry
+    ? await Promise.all([
+        getGuidanceFor(contentfulEntry.sys.id),
+        getSoumsOfProvince(contentfulEntry.sys.id),
+        getPlacesOfProvince(contentfulEntry.sys.id),
+      ])
+    : [[], [], [] as PlaceSummary[]];
+  // TIC-ээс шилжүүлсэн газрууд (lib/tourismPlaces.ts): тусгай хамгаалалттай, хотын дурсгалт, музей/театр, рашаан
+  const placeGroups = [
+    { id: 'protected-areas', title: `${provinceStem} ${ofUnit} тусгай хамгаалалттай газрууд`, items: placesOfProvince.filter((p) => (PROTECTED_CATEGORIES as string[]).includes(p.category)) },
+    { id: 'city-monuments', title: `${provinceStem} ${ofUnit} хотын дурсгалт газрууд`, items: placesOfProvince.filter((p) => p.category === 'city-monument') },
+    { id: 'museums', title: 'Музей, театр, соёлын төв', items: placesOfProvince.filter((p) => (CULTURE_CATEGORIES as string[]).includes(p.category)) },
+    { id: 'sanatoriums', title: 'Рашаан сувилал', items: placesOfProvince.filter((p) => p.category === 'sanatorium') },
+  ].filter((g) => g.items.length > 0);
   const soumPages = soums.filter((s) => s.ownPage);
   const soumBriefs = soums.filter((s) => !s.ownPage);
   const plannerHref = liveHref('/planner');
@@ -368,6 +381,12 @@ export default async function ProvinceDetailPage({ params }: Props) {
               )}
             </Section>
           )}
+
+          {placeGroups.map((g) => (
+            <Section key={g.id} id={g.id} title={g.title} tint={tint()}>
+              <PlaceList places={g.items} eyebrow="category" columns={2} />
+            </Section>
+          ))}
 
           <Section id="guide" title="Аялахад анхаарах зүйлс" tint={tint()}>
             <p className="max-w-[70ch] text-base leading-relaxed text-neutral-700 sm:text-lg">

@@ -80,6 +80,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Байгальд аялах', 'Nature & Outdoors', '/things-to-do/nature'),
           page('Адал явдалт аялал', 'Adventure', '/things-to-do/adventure'),
           page('Түүх, соёлын аялал', 'Culture & History', '/things-to-do/culture'),
+          // TIC cate17 (2026-10-20, эзэмшигч баталсан)
+          page('Музей, театр', 'Museums & Theatres', '/things-to-do/museums'),
           page('Хоол, ундааны туршлага', 'Food & Drink', '/things-to-do/food'),
           page('Нүүдэлчин ахуйг мэдрэх', 'Nomadic Experiences', '/things-to-do/nomadic'),
           page('Амралт, рашаан сувилал', 'Wellness', '/things-to-do/wellness'),
@@ -143,7 +145,15 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Ёс заншил, уламжлал', 'Traditions', '/about/traditions'),
         ],
       },
-      { mn: 'Байгаль', en: 'Nature', href: '/about/nature', status: 'live' },
+      {
+        mn: 'Байгаль', en: 'Nature', href: '/about/nature', status: 'live',
+        // TIC cate10–12 (2026-10-20, эзэмшигч баталсан)
+        children: [
+          page('Ан амьтан', 'Wildlife', '/about/nature/wildlife'),
+          page('Шувууд', 'Birds', '/about/nature/birds'),
+          page('Ургамал', 'Plants', '/about/nature/plants'),
+        ],
+      },
       { mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', status: 'live' },
       { mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live' },
       { mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live' },

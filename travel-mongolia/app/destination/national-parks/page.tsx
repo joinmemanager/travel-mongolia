@@ -1,8 +1,11 @@
-'use client';
+// Server component: доод хэсэгт TIC-ээс шилжүүлсэн газрын жагсаалт (Contentful `place`, ProtectedPlacesSection).
+// Contentful-д Publish хийхэд /api/revalidate шинэчилнэ.
+export const revalidate = 86400;
 
 import React from 'react';
 
 import CategoryDirectory from '@/components/templates/CategoryDirectory';
+import ProtectedPlacesSection from '@/components/places/ProtectedPlacesSection';
 import { photoSrc } from '@/lib/images';
 import Image from 'next/image';
 
@@ -21,6 +24,7 @@ export default function NationalParksPage() {
         { id: 'terelj', label: 'Горхи-Тэрэлж' },
         { id: 'khuvsgul', label: 'Хөвсгөл нуур' },
         { id: 'altai', label: 'Алтай Таван Богд' },
+        { id: 'all-places', label: 'Бүх газар' },
       ]}
     >
 
@@ -96,6 +100,7 @@ export default function NationalParksPage() {
           </div>
         </section>
 
+        <ProtectedPlacesSection categories={['national-park']} />
     </CategoryDirectory>
   );
 }

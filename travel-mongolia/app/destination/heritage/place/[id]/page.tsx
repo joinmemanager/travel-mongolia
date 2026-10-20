@@ -4,6 +4,8 @@ import { cache } from 'react';
 import MongoliaLocatorMap from '@/components/MongoliaLocatorMap';
 import WeatherWidget from '@/components/WeatherWidget';
 import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import PlaceFacts from '@/components/places/PlaceFacts';
+import RichText from '@/components/RichText';
 import RelatedBookings from '@/components/templates/RelatedBookings';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
 import { entryKey, getEntryBySlugOrId } from '@/lib/entries';
@@ -13,6 +15,7 @@ import { getRelatedItems, linkIds } from '@/lib/related';
 import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 import { creditOf } from '@/lib/imageCredit';
 import { photoSrc } from '@/lib/images';
+import { mergedPlaceFacts } from '@/lib/tourismPlaces';
 
 // 'heritagePlace' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
@@ -32,7 +35,7 @@ export async function generateMetadata({
   const plain = richTextToPlain(f.description);
   const meta = pageMetadata({
     title: f.region ? `${f.name}, ${f.region}` : f.name,
-    description: truncate(
+    description: f.seoDescription || truncate(
       plain || `${f.name}: Монголын түүх, соёлын дурсгалт газар. Байршил, цаг агаар, аялах мэдээлэл.`
     ),
     path: `/destination/heritage/place/${entryKey(entry)}`,
@@ -50,30 +53,6 @@ function getImageUrl(imageField: any): string {
     return photoSrc('gerCamp', 1600);
   }
   return url.startsWith('//') ? `https:${url}` : url;
-}
-
-function renderRichText(node: any): any {
-  if (!node) return null;
-  if (typeof node === 'string') return node;
-  if (node.nodeType === 'text') return node.value;
-
-  if (node.nodeType === 'paragraph') {
-    return (
-      <p className="mb-4 text-base leading-relaxed text-neutral-700">
-        {node.content?.map((child: any, idx: number) => (
-          <span key={idx}>{renderRichText(child)}</span>
-        ))}
-      </p>
-    );
-  }
-
-  if (Array.isArray(node.content)) {
-    return node.content.map((child: any, idx: number) => (
-      <span key={idx}>{renderRichText(child)}</span>
-    ));
-  }
-
-  return null;
 }
 
 export default async function HeritagePlaceDetailPage({
@@ -130,6 +109,8 @@ export default async function HeritagePlaceDetailPage({
 
   // Хэрхэн зөв аялах (visitorGuidance)
   const guidance = await getGuidanceFor(entry.sys.id);
+  // Аймаг (provinceRef), тусгай хамгаалалтын ангилал (TIC-ээс нэгтгэсэн, хотын дурсгалт газар)
+  const facts = mergedPlaceFacts(entry, 'heritagePlace');
 
   return (
     <PlaceTemplate
@@ -147,22 +128,29 @@ export default async function HeritagePlaceDetailPage({
         { label: 'Газрын зураг', href: '/destination/map' },
       ]}
       aside={
-        hasCoords ? (
+        hasCoords || facts ? (
           <>
-            <div className="rounded-2xl border border-neutral-200 p-5 bg-neutral-50">
-              <h3 className="text-sm font-bold text-neutral-900 mb-3">Байршил</h3>
-              <MongoliaLocatorMap lat={lat} lon={lon} />
-            </div>
-            <div className="rounded-2xl border border-neutral-200 p-5">
-              <h3 className="text-sm font-bold text-neutral-900 mb-3">Цаг агаар</h3>
-              <WeatherWidget lat={lat} lon={lon} />
-            </div>
+            {facts && <PlaceFacts place={facts} />}
+            {hasCoords && (
+              <>
+                <div className="rounded-2xl border border-neutral-200 p-5 bg-neutral-50">
+                  <h3 className="text-sm font-bold text-neutral-900 mb-3">Байршил</h3>
+                  <MongoliaLocatorMap lat={lat} lon={lon} />
+                </div>
+                <div className="rounded-2xl border border-neutral-200 p-5">
+                  <h3 className="text-sm font-bold text-neutral-900 mb-3">Цаг агаар</h3>
+                  <WeatherWidget lat={lat} lon={lon} />
+                </div>
+              </>
+            )}
           </>
         ) : undefined
       }
     >
       {f.description ? (
-        renderRichText(f.description)
+        <div className="text-neutral-700">
+          <RichText document={f.description} />
+        </div>
       ) : (
         <p className="text-neutral-500 italic">Энэ газрын дэлгэрэнгүй тайлбар удахгүй нэмэгдэнэ.</p>
       )}
