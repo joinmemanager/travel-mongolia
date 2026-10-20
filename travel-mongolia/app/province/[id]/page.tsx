@@ -204,7 +204,13 @@ export default async function ProvinceDetailPage({ params }: Props) {
   const hero = ownHero
     ? { src: ownHero, alt: name, credit: creditOf(f.image || f.coverImage) }
     : (staticFacts?.hero && IMAGES[staticFacts.hero]) || FALLBACK_IMAGE;
-  const emblem = entryImage && !ownHero ? entryImage : undefined;
+  // Сүлд: тусдаа `emblem` талбар (hero-д гэрэл зураг тавьсан аймаг), эсвэл hero болохооргүй жижиг entry зураг
+  const emblemUrl = f.emblem?.fields?.file?.url;
+  const emblem = emblemUrl
+    ? (emblemUrl.startsWith('//') ? `https:${emblemUrl}` : emblemUrl)
+    : entryImage && !ownHero
+      ? entryImage
+      : undefined;
   const { items: facts, usedStatic } = factItems(provinceSlug, f);
   const highlights = highlightList(f.highlights);
   const provinceStem = String(name).replace(/ аймаг$/, '');
