@@ -13,6 +13,10 @@ export interface Soum {
   imageCredit?: ImageCredit;
   seoTitle?: string;
   seoDescription?: string;
+  // Тоо баримт (Contentful-д бөглөсөн бол): сумын төв, хүн ам, газар нутаг
+  center?: string;
+  population?: string;
+  area?: string;
   provinceId: string;
   provinceSlug: string;
   provinceTitle: string;
@@ -37,6 +41,9 @@ function toSoum(e: any): Soum {
     imageCredit: creditOf(f.image),
     seoTitle: f.seoTitle,
     seoDescription: f.seoDescription,
+    center: f.center || undefined,
+    population: f.population || undefined,
+    area: f.area || undefined,
     provinceId: String(f.province?.sys?.id || ''),
     provinceSlug: String(p.slug || f.province?.sys?.id || ''),
     provinceTitle: String(p.title || ''),

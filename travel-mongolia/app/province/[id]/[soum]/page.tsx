@@ -53,6 +53,11 @@ export default async function SoumPage({ params }: Props) {
 
   // Нэг аймгийн тусдаа хуудастай бусад сумд
   const siblings = (await getSoumsOfProvince(s.provinceId)).filter((x) => x.ownPage && x.slug !== s.slug);
+  const facts = [
+    { label: 'Сумын төв', value: s.center },
+    { label: 'Хүн ам', value: s.population },
+    { label: 'Газар нутаг', value: s.area },
+  ].filter((x) => x.value);
 
   return (
     <PlaceTemplate
@@ -70,6 +75,16 @@ export default async function SoumPage({ params }: Props) {
     >
       <section id="overview" className="pt-16 scroll-mt-20">
         <h2 className="text-2xl sm:text-3xl font-medium text-neutral-900 mb-6">Танилцуулга</h2>
+        {facts.length > 0 && (
+          <dl className="grid grid-cols-1 gap-3 mb-8 sm:grid-cols-3">
+            {facts.map((x) => (
+              <div key={x.label} className="p-4 bg-white rounded-xl border border-neutral-200/70">
+                <dt className="text-sm text-neutral-500">{x.label}</dt>
+                <dd className="mt-1 font-medium text-neutral-900">{x.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
         <div className="text-neutral-700">
           <RichText document={s.body} />
         </div>
