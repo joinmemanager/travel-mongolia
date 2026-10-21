@@ -69,6 +69,7 @@ export default async function SoumPage({ params }: Props) {
       nav={[{ id: 'overview', label: 'Танилцуулга' }]}
       breadcrumbs={[
         { label: 'Нүүр', href: '/' },
+        { label: 'Аймгууд', href: '/destination/region#provinces' },
         { label: s.provinceTitle, href: `/province/${s.provinceSlug}` },
         { label: s.title, href: `/province/${s.provinceSlug}/${s.slug}` },
       ]}

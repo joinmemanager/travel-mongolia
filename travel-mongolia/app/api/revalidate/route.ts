@@ -97,8 +97,26 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         one(`/stories/news/${key}`, '/stories/news/[slug]'),
         { path: '/stories/news' },
       ];
+    case 'cultureArticle':
+      // section-ийг webhook-ийн payload-аас уншина (Unpublish-д байхгүй → дөрвөн route-ийг бүгдийг)
+      return [
+        one(`/about/culture/ethnic-groups/${key}`, '/about/culture/ethnic-groups/[slug]'),
+        one(`/about/culture/religion/${key}`, '/about/culture/religion/[slug]'),
+        one(`/about/traditions/${key}`, '/about/traditions/[slug]'),
+        one(`/about/history/people/${key}`, '/about/history/people/[slug]'),
+        { path: '/about/culture/ethnic-groups' },
+        { path: '/about/culture/religion' },
+        { path: '/about/traditions' },
+        { path: '/about/history/people' },
+      ];
     case 'localProvider':
-      return [one(`/local/${key}`, '/local/[slug]'), { path: '/local' }];
+      // TIC-ийн буудал, бааз (providerType = accommodation) нь /plan/accommodation/<slug>
+      return [
+        one(`/local/${key}`, '/local/[slug]'),
+        { path: '/local' },
+        one(`/plan/accommodation/${key}`, '/plan/accommodation/[slug]'),
+        { path: '/plan/accommodation' },
+      ];
     case 'communityExperience':
       return [one(`/local/experiences/${key}`, '/local/experiences/[slug]'), { path: '/local' }];
     case 'localProduct':

@@ -1,5 +1,14 @@
+import { connection } from 'next/server';
+
+import CultureCards from '@/components/culture/CultureCards';
 import TopicSections from '@/components/section/TopicSections';
 import AboutRelated from '@/components/templates/AboutRelated';
+import { getCultureArticles } from '@/lib/cultureArticles';
+import { isPreviewEnv } from '@/lib/navigation';
+import { metaFor } from '@/lib/pageMeta';
+
+export const revalidate = 86400;
+export const metadata = metaFor('/about/traditions');
 
 interface TraditionItem {
   title: string;
@@ -253,10 +262,21 @@ const TRADITION_SECTIONS: TraditionSection[] = [
   },
 ];
 
-export default function TraditionsPage() {
+export default async function TraditionsPage() {
+  if (isPreviewEnv()) await connection();
+  // TIC cate16 зан заншлын нийтлэлүүд (cultureArticle, 10-р багц): /about/traditions/<slug>
+  const articles = await getCultureArticles('traditions');
   return (
     <div>
       <TopicSections sections={TRADITION_SECTIONS} />
+      {articles.length > 0 && (
+        <section id="articles" data-toc="Зан заншлын нийтлэлүүд" className="mt-16">
+          <h2 className="mb-6 text-2xl font-black tracking-tight sm:text-3xl text-neutral-900">
+            Зан заншлын нийтлэлүүд <span className="text-neutral-400">({articles.length})</span>
+          </h2>
+          <CultureCards items={articles} />
+        </section>
+      )}
       <AboutRelated current="/about/traditions" embedded />
     </div>
   );

@@ -55,10 +55,7 @@ const LISTING = [
 // Доорх жагсаалтууд TIC дээрээ үлдэнэ (docs/redirects/not-redirected.csv). Агуулга нь шилжмэгц эндээс хасна.
 const LISTING_HELD = {
   '/': 'TIC-ийн нүүр (TIC ажилласаар)', '/Home.aspx': 'TIC-ийн нүүр (TIC ажилласаар)',
-  '/cate14.aspx': 'cate14: угсаатан, түүхэн хүмүүс шилжээгүй', '/cate14.aspx?TypeID=1': 'cate14: угсаатан шилжээгүй',
-  '/cate14.aspx?TypeID=3': 'cate14: түүхэн хүмүүс шилжээгүй',
-  '/cate15.aspx': 'cate15: шашин шүтлэг шилжээгүй', '/cate16.aspx': 'cate16: зан заншил шилжээгүй',
-  '/cate21.aspx': 'буудлын хуудас нийтлэгдээгүй', '/cate22.aspx': 'баазын хуудас нийтлэгдээгүй',
+  // cate14/15/16 (10-р багц), cate21/22 (/plan/accommodation) нь feat/tic-batch-10-д шилжсэн тул эндээс хассан
   '/cate25.aspx': 'хөтчийн лавлах хуулаагүй', '/cate27.aspx': 'гадаад (хуулаагүй)', '/cate28.aspx': 'гадаад (хуулаагүй)',
   '/News.aspx': 'мэдээний ихэнх нь хуулаагүй', '/Tours.aspx': 'гадаад аялал (хуулаагүй)',
 };
@@ -76,7 +73,10 @@ const NR_HEAD = ['old_url', 'title', 'шалтгаан', 'эх файл'];
   const b09 = LISTING.filter(([o]) => !LISTING_HELD[o]).map(([o, n, t]) => [TIC + o, abs(n), t, 'Жагсаалт / ангиллын хуудас', '']);
   writeCsv(path.join(DIR, 'batch-09-listing-pages.csv'), ['old_url', 'new_url', 'title', 'ангилал', 'аймаг'], b09);
   // Redirect хийхгүй (TIC-д үлдэх) мөрүүд: үлдсэн жагсаалт + cate25/27/28 нийтлэл (clean-redirects.js-ийн мэдээтэй нэг файлд)
-  const nr = fs.existsSync(NOT_REDIRECTED) ? parseCsv(fs.readFileSync(NOT_REDIRECTED, 'utf8')) : [];
+  // Агуулга нь шилжиж redirect хүснэгтэд орсон мөрийг not-redirected-ээс хасна
+  const redirected = new Set(b09.map((r) => key(r[0])));
+  for (const f of fs.readdirSync(DIR).filter((x) => /^batch-.*\.csv$/.test(x))) for (const r of parseCsv(fs.readFileSync(path.join(DIR, f), 'utf8'))) redirected.add(key(r.old_url));
+  const nr = (fs.existsSync(NOT_REDIRECTED) ? parseCsv(fs.readFileSync(NOT_REDIRECTED, 'utf8')) : []).filter((r) => !redirected.has(key(r.old_url)));
   const nrSeen = new Set(nr.map((r) => key(r.old_url)));
   const nrAdd = [
     ...LISTING.filter(([o]) => LISTING_HELD[o]).map(([o, , t]) => ({ old_url: TIC + o, title: t, 'шалтгаан': `Жагсаалтын хуудас — ${LISTING_HELD[o]}`, 'эх файл': 'batch-09-listing-pages.csv' })),

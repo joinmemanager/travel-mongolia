@@ -1,5 +1,8 @@
 import TopicSections from '@/components/section/TopicSections';
 import AboutRelated from '@/components/templates/AboutRelated';
+import { metaFor } from '@/lib/pageMeta';
+
+export const metadata = metaFor('/about/culture');
 
 interface CultureItem {
   title: string;

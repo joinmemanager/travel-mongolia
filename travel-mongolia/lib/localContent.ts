@@ -1,5 +1,6 @@
 import { cache } from 'react';
 
+import { ACCOMMODATION_BASE, isTicAccommodation } from '@/lib/accommodation';
 import { client } from '@/lib/contentful';
 import type { SiteImage } from '@/lib/images';
 import { isPreviewEnv } from '@/lib/navigation';
@@ -43,6 +44,8 @@ export interface LocalProvider {
   id: string;
   slug: string;
   href: string;
+  // TIC-ийн буудал, бааз: /plan/accommodation/<slug> руу шилжсэн (/local-д жагсахгүй, хуучин хаяг 308)
+  movedTo?: string;
   name: string;
   providerType: ProviderType;
   province: string;
@@ -160,7 +163,7 @@ function linkedRef(e: any): LinkedRef | undefined {
   const title = str(f.title) || str(f.name);
   if (!title || !isVisible(title)) return undefined;
   const href =
-    type === 'localProvider' ? `/local/${slug}`
+    type === 'localProvider' ? (isTicAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : `/local/${slug}`)
     : type === 'communityExperience' ? `/local/experiences/${slug}`
     : type === 'localProduct' ? '/local/products'
     : type === 'destination' ? `/destination/${slug}`
@@ -189,10 +192,12 @@ function toProvider(e: any): LocalProvider {
   const name = str(f.name);
   const slug = entrySlug(e);
   const loc = f.location;
+  const movedTo = isTicAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : undefined;
   return {
     id: e.sys.id,
     slug,
-    href: `/local/${slug}`,
+    href: movedTo || `/local/${slug}`,
+    movedTo,
     name,
     providerType: f.providerType,
     province: str(f.province),
@@ -330,7 +335,7 @@ function toStory(e: any): StoryEntry {
 export const getProviders = cache(async (): Promise<LocalProvider[]> =>
   (await entriesOf('localProvider', { order: 'fields.name' }))
     .map(toProvider)
-    .filter((p) => p.name && isVisible(p.name))
+    .filter((p) => p.name && isVisible(p.name) && !p.movedTo)
 );
 
 export const getExperiences = cache(async (): Promise<CommunityExperience[]> =>

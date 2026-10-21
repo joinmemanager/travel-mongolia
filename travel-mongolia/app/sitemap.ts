@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 
 import { client } from '@/lib/contentful';
+import { ACCOMMODATION_BASE, isTicAccommodation } from '@/lib/accommodation';
+import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
 import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { NEWS_BASE } from '@/lib/news';
@@ -43,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles, tourismPlaces, species, events] =
+  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles, tourismPlaces, species, events, cultureArticles, providers] =
     await Promise.all([
       contentfulEntries('heritagePlace'),
       contentfulEntries('heritageCategory'),
@@ -56,6 +58,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       contentfulEntries('place'),
       contentfulEntries('species'),
       contentfulEntries('event'),
+      contentfulEntries('cultureArticle'),
+      contentfulEntries('localProvider', { 'fields.providerType': 'accommodation' }),
     ]);
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
@@ -120,6 +124,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((e) => `/stories/${entryKey(e)}`)
       .filter((path) => !isUnpublishedPage(path))
       .map((path) => ({ url: `${SITE_URL}${path}`, priority: 0.6 })),
+    // TIC 10-р багц: угсаатан, түүхэн хүмүүс, шашин, зан заншил (хэсэг нь live үед, богиныг оруулахгүй)
+    ...cultureArticles
+      .filter((e) => CULTURE_SECTIONS[e.fields.section as CultureSection] && !isThinContent(e.fields.body))
+      .map((e) => ({ path: `${CULTURE_SECTIONS[e.fields.section as CultureSection].base}/${entryKey(e)}`, e }))
+      .filter(({ path }) => !isUnpublishedPage(path))
+      .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.5 })),
+    // TIC-ийн зочид буудал, жуулчны бааз (/plan/accommodation/<slug>)
+    ...providers
+      .filter((e) => isTicAccommodation(e.fields) && !isThinContent(e.fields.story))
+      .map((e) => ({ path: `${ACCOMMODATION_BASE}/${entryKey(e)}`, e }))
+      .filter(({ path }) => !isUnpublishedPage(path))
+      .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.4 })),
     // TIC-ийн мэдээний архив: богино (noindex) мэдээг оруулахгүй, /stories/news live үед
     ...stories
       .filter((e) => e.fields.topic === 'news' && !isThinContent(e.fields.body))

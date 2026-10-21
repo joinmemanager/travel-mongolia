@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import React from 'react';
 
 import ProfileTemplate from '@/components/templates/ProfileTemplate';
@@ -34,6 +34,8 @@ export default async function ProviderPage({ params }: Props) {
   const { slug } = await params;
   const p = await getProviderBySlug(slug);
   if (!p) notFound();
+  // TIC-ийн буудал, бааз /plan/accommodation руу шилжсэн
+  if (p.movedTo) permanentRedirect(p.movedTo);
 
   const [experiences, products] = await Promise.all([getExperiences(), getProducts()]);
   // Энэ өрхийн туршлага, бүтээгдэхүүн; байхгүй бол ижил аймгийн бусад

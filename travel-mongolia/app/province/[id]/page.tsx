@@ -15,6 +15,7 @@ import ReadMore from '@/components/province/ReadMore';
 import WeatherCard from '@/components/province/WeatherCard';
 import RichText from '@/components/RichText';
 import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ImageHero from '@/components/templates/ImageHero';
 import RelatedBookings from '@/components/templates/RelatedBookings';
 import { getEntryBySlugOrId } from '@/lib/entries';
@@ -292,6 +293,17 @@ export default async function ProvinceDetailPage({ params }: Props) {
           </Link>
         }
       />
+
+      {/* Замчлал + BreadcrumbList (JSON-LD): Нүүр › Аймгууд › <Аймаг> */}
+      <div className="px-4 pt-4 mx-auto max-w-7xl sm:px-8">
+        <Breadcrumbs
+          items={[
+            { label: 'Нүүр', href: '/' },
+            { label: 'Аймгууд', href: '/destination/region#provinces' },
+            { label: name, href: `/province/${provinceSlug}` },
+          ]}
+        />
+      </div>
 
       <ProvinceFactsBand
         items={facts}

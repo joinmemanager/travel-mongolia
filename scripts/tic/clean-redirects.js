@@ -52,4 +52,21 @@ const removed = {};
   removed['batch-07-events-camps-hotels.csv'] = drop.length;
 }
 
+// Б2 (feat/tic-batch-10): буудал, баазын хуудас /plan/accommodation/<slug> бэлэн болсон тул pending/-ийн мөрүүдийг
+// шинэ хаягаар batch-07 руу буцаана (slug нь /local/<slug>-тэй ижил). `--accommodation` үед л.
+if (process.argv.includes('--accommodation')) {
+  const pf = path.join(DIR, 'pending', 'batch-07-hotels-camps.csv');
+  const f = path.join(DIR, 'batch-07-events-camps-hotels.csv');
+  const pend = read(pf);
+  const rows = read(f);
+  const seen = new Set(rows.map((r) => r.old_url.toLowerCase()));
+  const back = pend
+    .filter((r) => !seen.has(r.old_url.toLowerCase()))
+    .map((r) => ({ ...r, new_url: r.new_url.replace('/local/', '/plan/accommodation/'), 'ангилал': r['ангилал'].replace(/ \(хэсэг нээгдээгүй: \/local\)/, '').replace(/; хэсэг нээгдээгүй: \/local\)/, ')') }));
+  writeCsv(f, HEAD, [...rows, ...back].map(toRow));
+  if (pend.length) fs.unlinkSync(pf);
+  if (fs.existsSync(path.join(DIR, 'pending')) && !fs.readdirSync(path.join(DIR, 'pending')).length) fs.rmdirSync(path.join(DIR, 'pending'));
+  console.log('буудал, бааз batch-07 руу буцав', back.length);
+}
+
 console.log('хассан мөр', removed);

@@ -1,3 +1,4 @@
+import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
 import { SITE_URL } from '@/lib/seo';
 import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
 import { SPECIES_SECTION } from '@/lib/species';
@@ -36,6 +37,15 @@ export function entryUrls(contentType: string, fields: Record<string, any> | und
     case 'recommendation':
     case 'event':
       paths.push(`/recommendation/${key}`);
+      break;
+    case 'cultureArticle': {
+      const s = CULTURE_SECTIONS[f('section') as CultureSection];
+      if (s) paths.push(`${s.base}/${key}`);
+      break;
+    }
+    case 'localProvider':
+      // Зөвхөн TIC-ийн буудал, бааз (/plan/accommodation); бусад нь /local (soft)
+      if (f('providerType') === 'accommodation' && /touristinfocenter/.test(String(f('sourceUrl') || ''))) paths.push(`/plan/accommodation/${key}`);
       break;
     case 'story':
       // Зөвхөн TIC-ийн мэдээний архив (иргэдийн түүх зөвшөөрлөөс хамаарна)

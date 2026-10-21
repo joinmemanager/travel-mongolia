@@ -54,12 +54,6 @@ export const IMAGES = {
 
 export type ImageKey = keyof typeof IMAGES;
 
-// Contentful-ийн асуудалтай asset-ууд (docs/plan/images.md «Сайтад байгаа, асуудалтай зургууд»).
-// Монголын бус зургийг lib/contentful.ts бүх хариунаас хасна: тухайн entry зураггүй харагдана.
-export const NON_MONGOLIAN_ASSETS: Record<string, string> = {
-  '59VlPhvyHRGOKuI6RIW5oz': 'Хятадын Шангри-Ла дахь Төвд хийд (13-р зуун цогцолбор, наадмын entry-үүд)',
-};
-
 // Хиймэл оюунаар үүсгэсэн зургууд: бодит газар мэт харуулахгүй. Аймгийн hero-д ашиглахгүй
 // (lib/provinceFacts.ts-ийн шалгагдсан зургийг харуулна). Бусад газарт бодит зургаар солих хүртэл үлдэнэ.
 export const AI_GENERATED_ASSETS: Record<string, string> = {

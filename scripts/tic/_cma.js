@@ -28,7 +28,7 @@ let calls = 0;
 // CMA хүсэлт. GET 404 → null. 429 → дахин оролдоно. Алдааны мэдээнд token орохгүй.
 async function cma(method, p, { body, version, contentType, raw, spaceLevel } = {}) {
   const headers = { Authorization: `Bearer ${TOKEN}` };
-  if (version) headers['X-Contentful-Version'] = String(version);
+  if (version !== undefined && version !== null) headers['X-Contentful-Version'] = String(version);
   if (contentType) headers['X-Contentful-Content-Type'] = contentType;
   let payload;
   if (raw) {
