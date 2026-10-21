@@ -23,4 +23,4 @@
 - [x] Б3 Аймгийн хуудсанд Breadcrumbs (Нүүр › Аймгууд › Аймаг) + BreadcrumbList; сумын хуудсанд «Аймгууд» шат нэмсэн
 - [x] Б4 eslint.config.mjs (next core-web-vitals + typescript): 199 асуудал (185 алдаа, 14 анхааруулга) — засаагүй
 - [x] Б5 next build OK, tsc зөвхөн өмнөх 2 алдаа; local verify-batch10.js 14 хуудас OK. Мөн NON_MONGOLIAN_ASSETS шүүлтүүрийг хассан
-- [ ] Тайлан
+- [x] Тайлан: today-report.md
