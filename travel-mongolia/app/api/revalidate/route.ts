@@ -1,12 +1,15 @@
 import { timingSafeEqual } from 'crypto';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { after } from 'next/server';
 
+import { CONTENTFUL_TAG } from '@/lib/contentful';
 import { entryUrls, submitIndexNow } from '@/lib/indexNow';
 
 // Contentful webhook (Entry.publish / Entry.unpublish) → тухайн entry-ийн хуудсыг шууд шинэчилнэ.
-// Хуудсууд өдөрт нэг л дахин үүсдэг (revalidate = 86400) тул Contentful-ын өөрчлөлт энэ замаар л
-// даруй харагдана. Webhook-ийг scripts/tic/setup-revalidate.js тохируулсан:
+// Хуудсууд 7 хоногт нэг л дахин үүсдэг (revalidate = 604800), Contentful-ын хариу Data Cache-д 7 хоног
+// хадгалагддаг (lib/contentful.ts) тул Contentful-ын өөрчлөлт энэ замаар л даруй харагдана.
+// Холбогдсон entry (зураг, сум, ангилал) олон query-д ордог тул Data Cache-ийг бүхэлд нь (`contentful` tag)
+// хүчингүй болгоно: хуудас бүр дахин үүсэх үедээ л Contentful руу хүсэлт явуулна. Webhook-ийг scripts/tic/setup-revalidate.js тохируулсан:
 //   POST https://www.travelhubmongolia.com/api/revalidate
 //   header x-revalidate-secret: CONTENTFUL_REVALIDATE_SECRET
 // revalidatePath нь хуудсыг зөвхөн "хуучирсан" гэж тэмдэглэнэ, дараагийн зочлолтоор шинээр үүснэ
@@ -144,6 +147,7 @@ export async function POST(req: Request) {
   const slug = fieldValue(payload?.fields, 'slug');
   const key = typeof slug === 'string' && slug.trim() ? slug.trim() : sys.type === 'Entry' && sys.id ? sys.id : null;
 
+  revalidateTag(CONTENTFUL_TAG, { expire: 0 });
   const targets = targetsFor(contentType, key);
   const done: string[] = [];
   if (!targets) {

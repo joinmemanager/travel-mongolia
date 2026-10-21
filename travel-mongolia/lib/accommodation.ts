@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 
 // Tourist Info Center-ээс шилжүүлсэн зочид буудал (cate21), жуулчны бааз (cate22): Contentful `localProvider`,
@@ -75,6 +75,7 @@ export const getAccommodations = cache(async (): Promise<Accommodation[]> => {
     }
     return out;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Буудал, баазыг татахад алдаа гарлаа:', err);
     return [];
   }
@@ -91,6 +92,7 @@ export const getAccommodation = cache(async (slug: string): Promise<Accommodatio
     const e: any = res.items[0];
     return e && isTicAccommodation(e.fields) ? toAccommodation(e, true) : null;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Буудал, бааз татахад алдаа гарлаа:', err);
     return null;
   }

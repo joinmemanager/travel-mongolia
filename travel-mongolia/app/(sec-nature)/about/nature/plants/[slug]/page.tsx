@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import SpeciesArticle, { speciesMetadata } from '@/components/species/SpeciesArticle';
 
 // Ургамлын нийтлэл (80-аас дээш үг; бусад нь /about/nature/plants жагсаалтын мөр). TIC cate12.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

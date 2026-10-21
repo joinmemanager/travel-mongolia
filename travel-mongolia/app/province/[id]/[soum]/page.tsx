@@ -13,7 +13,7 @@ import { getSoum, getSoumsOfProvince } from '@/lib/soums';
 
 // Сумын дэлгэрэнгүй (/province/<аймаг>/<сум>). Зөвхөн ownPage=true (150-аас дээш үгтэй) сумд
 // тусдаа хуудастай; бусдыг нь аймгийн хуудасны "Сумд" хэсэг рүү (#<сум>) шилжүүлнэ.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ id: string; soum: string }>;

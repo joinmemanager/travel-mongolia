@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import CultureArticlePage, { cultureMetadata } from '@/components/culture/CultureArticlePage';
 
 // Түүхэн хүний нийтлэл (cultureArticle, section = people).
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

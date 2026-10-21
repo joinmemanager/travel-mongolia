@@ -7,7 +7,7 @@ import { getNewsList, NEWS_BASE, newsDate } from '@/lib/news';
 import { metaFor } from '@/lib/pageMeta';
 
 // TIC-ийн мэдээний архив (8-р багц). Төлөв: draft (lib/navigation.ts PAGE_STATUS), эзэмшигч шийднэ.
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/stories/news');
 
 export default async function NewsArchivePage() {

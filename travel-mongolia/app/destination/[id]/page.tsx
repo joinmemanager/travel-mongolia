@@ -1,5 +1,5 @@
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';

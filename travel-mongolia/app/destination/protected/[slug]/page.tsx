@@ -13,7 +13,7 @@ import { CATEGORY_INFO, getPlace, getPlacesByCategory, PROTECTED_CATEGORIES } fr
 
 // Тусгай хамгаалалттай газрын дэлгэрэнгүй (/destination/protected/<slug>, Contentful `place`, TIC cate2–5).
 // Ангиллын жагсаалт: /destination/strictly-protected, /national-parks, /nature-reserves, /natural-monuments.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

@@ -8,7 +8,7 @@ import { getSpeciesList, WILDLIFE_GROUPS } from '@/lib/species';
 
 // «Түүх & өв → Байгаль → Ан амьтан»: TIC cate10 (TypeID 1–4: хөхтөн, сээр нуруугүй, загас, хоёр нутагтан/мөлхөгч).
 // Бүлэг бүр section[id] тул «Сэдвийн жагсаалт» тэдгээрийг дэд мөрөөр харуулна.
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/about/nature/wildlife');
 
 export default async function WildlifePage() {

@@ -4,7 +4,7 @@ import LinkCard from '@/components/design/LinkCard';
 import RegionDirectory, {
   type ExternalSearchItem,
 } from '@/components/RegionDirectory';
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { metaFor } from '@/lib/pageMeta';
 
 export const metadata = metaFor('/destination/region');
@@ -81,6 +81,7 @@ async function getContentfulData(): Promise<{
       provinces: provinceLinks,
     };
   } catch (err) {
+    rethrowOutage(err);
     console.error('Хайлтын Contentful өгөгдөл татахад алдаа гарлаа:', err);
     return { searchItems: [], provinces: [] };
   }

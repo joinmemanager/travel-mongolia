@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import SpeciesArticle, { speciesMetadata } from '@/components/species/SpeciesArticle';
 
 // Шувууны урт нийтлэл (150-аас дээш үг; бусад нь /about/nature/birds каталогийн мөр). TIC cate11.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

@@ -13,7 +13,7 @@ import { metaFor } from '@/lib/pageMeta';
 // "Нутгийн Монгол" hub (Б хэсэг). Төлөв: soft (lib/navigation.ts PAGE_STATUS).
 // Hub загвар: зурагтай картууд → нэг бараан ногоон самбар → холбоосны карт.
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/local');
 
 // Баримт бичгийн 9-р хэсгийн "Local & Responsible Choice" хүснэгт

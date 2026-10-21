@@ -8,7 +8,7 @@ import { getSpeciesList } from '@/lib/species';
 
 // «Монголын шувууд» каталог (TIC cate11, 467 нийтлэл). Ихэнх нь богино (нэр, латин нэр, нэг зураг) тул
 // тусдаа хуудасгүй мөр (#slug), 150-аас дээш үгтэй нь /about/nature/birds/<slug> нийтлэлтэй.
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/about/nature/birds');
 
 export default async function BirdsPage() {

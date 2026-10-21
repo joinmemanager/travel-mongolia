@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 
 // TIC 10-р багц (Contentful `cultureArticle`): угсаатан, түүхэн хүмүүс (cate14), шашин (cate15), зан заншил (cate16).
@@ -59,6 +59,7 @@ export async function getCultureArticles(section: CultureSection): Promise<Cultu
     } as any);
     return res.items.map((e) => toArticle(e, false)).sort(byOrder);
   } catch (err) {
+    rethrowOutage(err);
     console.error('Соёлын нийтлэлүүдийг татахад алдаа гарлаа:', err);
     return [];
   }
@@ -75,6 +76,7 @@ export async function getCultureArticle(section: CultureSection, slug: string): 
     } as any);
     return res.items[0] ? toArticle(res.items[0], true) : null;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Соёлын нийтлэл татахад алдаа гарлаа:', err);
     return null;
   }

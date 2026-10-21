@@ -9,7 +9,7 @@ import { metaFor } from '@/lib/pageMeta';
 
 // «Аяллаа төлөвлөх → Байр»: гарын авлага + Tourist Info Center-ээс шилжүүлсэн буудал, баазын лавлах (7-р багц).
 // Metadata энд: layout нь /plan/accommodation/<slug>-ыг ч ороодог.
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/plan/accommodation');
 
 export default async function AccommodationPage() {

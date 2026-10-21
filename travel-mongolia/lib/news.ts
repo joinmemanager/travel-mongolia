@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 
 // TIC-ийн мэдээний архив (Contentful `story`, topic = «news», 8-р багц). Иргэдийн зөвшөөрөлтэй түүх
@@ -56,6 +56,7 @@ export async function getNewsList(): Promise<NewsArticle[]> {
     }
     return out;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Мэдээ татахад алдаа гарлаа:', err);
     return [];
   }
@@ -72,6 +73,7 @@ export async function getNews(slug: string): Promise<NewsArticle | null> {
     } as any);
     return res.items[0] ? toNews(res.items[0], true) : null;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Мэдээ татахад алдаа гарлаа:', err);
     return null;
   }

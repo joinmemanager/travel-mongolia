@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import SpeciesArticle, { speciesMetadata } from '@/components/species/SpeciesArticle';
 
 // Ан амьтны нийтлэл (Contentful `species`, TIC cate10)
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

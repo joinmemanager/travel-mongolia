@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 
 // «Монголын түүх»-ийн нийтлэлүүд (historyArticle, TIC cate14-ээс шилжүүлсэн). /about/history хуудасны
@@ -56,6 +56,7 @@ export async function getHistoryArticles(): Promise<HistoryArticle[]> {
     } as any);
     return res.items.map((e) => toArticle(e, false)).sort(byOrder);
   } catch (err) {
+    rethrowOutage(err);
     console.error('Түүхийн нийтлэлүүдийг татахад алдаа гарлаа:', err);
     return [];
   }
@@ -71,6 +72,7 @@ export async function getHistoryArticle(slug: string): Promise<HistoryArticle | 
     } as any);
     return res.items[0] ? toArticle(res.items[0], true) : null;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Түүхийн нийтлэл татахад алдаа гарлаа:', err);
     return null;
   }

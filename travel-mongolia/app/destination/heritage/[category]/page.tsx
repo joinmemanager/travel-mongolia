@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -62,6 +62,7 @@ const getHeritageCategory = cache(async (category: string) => {
         }),
     };
   } catch (err) {
+    rethrowOutage(err);
     console.error('Heritage category fetch error:', err);
     return null;
   }

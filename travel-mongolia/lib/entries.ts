@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 
 // Contentful entry-г хаягийн хэсгээр (slug эсвэл хуучин entry ID) олно.
 // Эхлээд slug-аар, олдохгүй бол ID-аар хайна. ID-аар олдсон, slug-тай entry-г
@@ -17,7 +17,8 @@ export async function getEntryBySlugOrId(
       include,
     } as any);
     if (res.items[0]) return { entry: res.items[0], matchedBy: 'slug' };
-  } catch {
+  } catch (err) {
+    rethrowOutage(err);
     // Төрөлд slug талбар хараахан нэмэгдээгүй бол ID-аар хайна
   }
   try {
@@ -29,6 +30,7 @@ export async function getEntryBySlugOrId(
     } as any);
     if (res.items[0]) return { entry: res.items[0], matchedBy: 'id' };
   } catch (err) {
+    rethrowOutage(err);
     console.error(`${contentType} татахад алдаа гарлаа:`, err);
   }
   return null;

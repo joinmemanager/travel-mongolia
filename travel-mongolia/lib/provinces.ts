@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 
 export interface ProvinceLink {
   title: string;
@@ -22,6 +22,7 @@ export async function getProvinceLinks(): Promise<ProvinceLink[]> {
       .filter((p) => p.title)
       .sort((a, b) => a.title.localeCompare(b.title, 'mn'));
   } catch (err) {
+    rethrowOutage(err);
     console.error('Аймгийн жагсаалт татахад алдаа гарлаа:', err);
     return [];
   }

@@ -7,7 +7,7 @@ import { getCultureArticles } from '@/lib/cultureArticles';
 import { isPreviewEnv } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/about/traditions');
 
 interface TraditionItem {

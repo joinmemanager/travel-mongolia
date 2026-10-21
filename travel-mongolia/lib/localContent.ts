@@ -1,7 +1,7 @@
 import { cache } from 'react';
 
 import { ACCOMMODATION_BASE, isTicAccommodation } from '@/lib/accommodation';
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import type { SiteImage } from '@/lib/images';
 import { isPreviewEnv } from '@/lib/navigation';
 import { assetUrl } from '@/lib/places';
@@ -180,7 +180,8 @@ async function entriesOf(contentType: string, query: Record<string, any> = {}): 
   try {
     const res = await client.getEntries({ content_type: contentType, limit: 500, include: 2, ...query } as any);
     return res.items as any[];
-  } catch {
+  } catch (err) {
+    rethrowOutage(err);
     // Төрөл Contentful-д хараахан үүсээгүй (scripts/contentful/01-content-types.ps1)
     return [];
   }

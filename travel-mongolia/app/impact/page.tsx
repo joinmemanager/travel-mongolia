@@ -16,7 +16,7 @@ import { getProvinceLinks } from '@/lib/provinces';
 // НООРОГ текст: lib/impactData.ts
 export const metadata = metaFor('/impact');
 // Contentful-д шинэ entry нийтлэгдэхэд Impact-ын тоо webhook-оор (эсвэл өдөрт нэг) шинэчлэгдэнэ
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 const SECTIONS = [
   { id: 'local-impact', title: hub.localImpact.title },

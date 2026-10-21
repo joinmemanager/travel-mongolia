@@ -8,7 +8,7 @@ import HeroFlight from '../components/HeroFlight';
 import RegionMap from '../components/RegionMap';
 import SeasonRecommendations from '../components/SeasonRecommendations';
 import TopDestinations from '../components/TopDestinations';
-import { client as baseClient } from '../lib/contentful';
+import { client as baseClient, rethrowOutage } from '../lib/contentful';
 const client = baseClient as any;
 
 async function getDestinations() {
@@ -19,6 +19,7 @@ async function getDestinations() {
     });
     return entries.items || [];
   } catch (err) {
+    rethrowOutage(err);
     console.error('Destinations татахад алдаа гарлаа:', err);
     return [];
   }
@@ -33,6 +34,7 @@ async function getRecommendations() {
     });
     return entries.items || [];
   } catch (err) {
+    rethrowOutage(err);
     console.error('Recommendations татахад алдаа гарлаа:', err);
     return [];
   }

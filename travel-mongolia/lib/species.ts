@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 import { assetUrl } from '@/lib/places';
 
@@ -96,6 +96,7 @@ export async function getSpeciesList(groups: SpeciesGroup[]): Promise<Species[]>
     } as any);
     return res.items.map((e) => toSpecies(e, false)).sort(byTitle);
   } catch (err) {
+    rethrowOutage(err);
     console.error('Амьтан, ургамлын жагсаалт татахад алдаа гарлаа:', err);
     return [];
   }
@@ -113,6 +114,7 @@ export async function getSpecies(slug: string, section: 'wildlife' | 'birds' | '
     const s = res.items[0] ? toSpecies(res.items[0], true) : null;
     return s && s.ownPage && SPECIES_SECTION[s.group] === section ? s : null;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Амьтан, ургамал татахад алдаа гарлаа:', err);
     return null;
   }

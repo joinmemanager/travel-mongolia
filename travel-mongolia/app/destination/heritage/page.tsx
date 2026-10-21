@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import HeritagePageClient from '@/components/HeritagePageClient';
 import { metaFor } from '@/lib/pageMeta';
 import { photoSrc } from '@/lib/images';
@@ -49,6 +49,7 @@ async function getHeritageCategories() {
       };
     });
   } catch (err) {
+    rethrowOutage(err);
     console.error('Heritage categories fetch error:', err);
     return [];
   }

@@ -13,7 +13,7 @@ import { CATEGORY_INFO, getPlace, getPlacesByCategory } from '@/lib/tourismPlace
 
 // Байгалийн үзэсгэлэнт газрын дэлгэрэнгүй (/destination/landscapes/<slug>, Contentful `place` landscape, TIC cate1).
 // Жагсаалт: /destination/landscapes#all-places, аймгийн хуудасны #landscapes.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

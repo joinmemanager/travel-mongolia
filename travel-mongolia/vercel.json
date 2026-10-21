@@ -1,1 +1,1 @@
-{"buildCommand": "next build", "framework": "nextjs"}
+{"buildCommand": "next build", "framework": "nextjs", "ignoreCommand": "bash scripts/vercel-ignore-build.sh"}

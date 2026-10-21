@@ -13,7 +13,7 @@ import { entryMeta } from '@/lib/pageMeta';
 import { isThinContent, NOINDEX, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 
 // Tourist Info Center-ээс шилжүүлсэн зочид буудал, жуулчны баазын хуудас (localProvider, 7-р багц).
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

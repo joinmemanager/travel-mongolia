@@ -8,7 +8,7 @@ import { metaFor } from '@/lib/pageMeta';
 import { getSpeciesList } from '@/lib/species';
 
 // «Түүх & өв → Байгаль → Ургамал» (TIC cate12): 80-аас дээш үгтэй нь нийтлэлтэй, бусад нь жагсаалтын мөр (#slug).
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/about/nature/plants');
 
 export default async function PlantsPage() {

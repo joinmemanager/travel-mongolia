@@ -2,7 +2,7 @@ import CultureListPage from '@/components/culture/CultureListPage';
 import { metaFor } from '@/lib/pageMeta';
 
 // «Соёл, өв → Угсаатнууд» (TIC cate14 TypeID 1, 10-р багц).
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/about/culture/ethnic-groups');
 
 export default function Page() {

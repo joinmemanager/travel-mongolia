@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import CultureArticlePage, { cultureMetadata } from '@/components/culture/CultureArticlePage';
 
 // Зан заншлын нийтлэл (cultureArticle, section = traditions). Жагсаалт нь /about/traditions#articles.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

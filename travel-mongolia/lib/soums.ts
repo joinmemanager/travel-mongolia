@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 
 // Аймгийн сумд (soum төрөл, TIC-ээс шилжүүлсэн). ownPage=true бол /province/<аймаг>/<сум>
@@ -62,6 +62,7 @@ export async function getSoumsOfProvince(provinceId: string): Promise<Soum[]> {
     } as any);
     return res.items.map(toSoum).sort((a, b) => a.title.localeCompare(b.title, 'mn'));
   } catch (err) {
+    rethrowOutage(err);
     console.error('Сумдын жагсаалт татахад алдаа гарлаа:', err);
     return [];
   }
@@ -79,6 +80,7 @@ export async function getSoum(provinceSlug: string, soumSlug: string): Promise<S
     const found = res.items.map(toSoum).find((s) => s.provinceSlug === decodeURIComponent(provinceSlug));
     return found || null;
   } catch (err) {
+    rethrowOutage(err);
     console.error('Сум татахад алдаа гарлаа:', err);
     return null;
   }

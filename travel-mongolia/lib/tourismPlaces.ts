@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
 import { assetUrl } from '@/lib/places';
 
@@ -133,6 +133,7 @@ async function safe<T>(label: string, fn: () => Promise<T>, fallback: T): Promis
   try {
     return await fn();
   } catch (err) {
+    rethrowOutage(err);
     console.error(`${label} татахад алдаа гарлаа:`, err);
     return fallback;
   }

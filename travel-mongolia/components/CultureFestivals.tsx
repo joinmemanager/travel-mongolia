@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { photoSrc } from '@/lib/images';
 
 // Зургийн URL-ийг Contentful-ийн ямар ч бүтцээс алдаагүй гаргаж авах туслах функц
@@ -66,6 +66,7 @@ async function getFestivals() {
       return orderA - orderB;
     });
   } catch (err) {
+    rethrowOutage(err);
     console.error('Festivals data fetch error:', err);
     return [];
   }

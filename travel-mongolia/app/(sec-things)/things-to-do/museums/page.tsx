@@ -9,7 +9,7 @@ import { CATEGORY_INFO, CULTURE_CATEGORIES, getPlacesByCategory } from '@/lib/to
 // «Үзэх, хийх зүйлс → Музей, театр» (TIC cate17: музей, театр/урлагийн чуулга, соёлын төв/номын сан).
 // «Түүх, соёлын аялал» (/things-to-do/culture) нь туршлагын картууд тул байгууллагын жагсаалтыг тусад нь.
 // Ангилал бүр section[id] тул «Сэдвийн жагсаалт» дэд мөрөөр харуулна.
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const metadata = metaFor('/things-to-do/museums');
 
 export default async function MuseumsPage() {

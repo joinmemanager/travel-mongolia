@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import type { SiteImage } from '@/lib/images';
 
 export interface PlaceCardData {
@@ -48,6 +48,7 @@ export async function getHeritagePlaceCards(): Promise<PlaceCardData[]> {
       };
     }).filter((p) => p.title);
   } catch (err) {
+    rethrowOutage(err);
     console.error('Түүхэн өвийн жагсаалт татахад алдаа гарлаа:', err);
     return [];
   }
@@ -69,6 +70,7 @@ export async function getDestinationCards(): Promise<PlaceCardData[]> {
       };
     }).filter((p) => p.title);
   } catch (err) {
+    rethrowOutage(err);
     console.error('Газрын жагсаалт татахад алдаа гарлаа:', err);
     return [];
   }

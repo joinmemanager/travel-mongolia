@@ -12,7 +12,7 @@ import { entryMeta } from '@/lib/pageMeta';
 import { isThinContent, NOINDEX, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 
 // TIC-ийн мэдээний архивын нийтлэл (story, topic «news»). «Түүхүүд» хэсэг (sec-stories) дотор: H1, замчлал энд.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 interface Props {
   params: Promise<{ slug: string }>;

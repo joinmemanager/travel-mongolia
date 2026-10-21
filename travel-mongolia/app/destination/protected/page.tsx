@@ -1,6 +1,6 @@
 // Server component: доод хэсэгт TIC-ээс шилжүүлсэн газрын жагсаалт (Contentful `place`, ProtectedPlacesSection).
 // Contentful-д Publish хийхэд /api/revalidate шинэчилнэ.
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 import CategoryDirectory, { DirectoryGroupSection } from '@/components/templates/CategoryDirectory';
 import ProtectedPlacesSection from '@/components/places/ProtectedPlacesSection';

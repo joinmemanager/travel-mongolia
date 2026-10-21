@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { ACCOMMODATION_BASE, isTicAccommodation } from '@/lib/accommodation';
 import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
 import { entryKey } from '@/lib/entries';
@@ -13,10 +13,11 @@ import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
 
 const placeBase = (c: PlaceCategory) => CATEGORY_INFO[c]?.base || '/destination/protected';
 
-// Хүсэлт бүрт Contentful-ээс шинээр үүсгэнэ. revalidate = 3600 (ISR) үед production-ийн sitemap
-// шинэчлэгдэлгүй 10-15-аас өмнөх өгөгдлөөр үлдэж, шинэ аймаг, сумд ороогүй байв (2026-10-19).
-// Google sitemap-ийг өдөрт цөөн удаа татдаг тул CDA-ийн дуудлага бага.
-export const dynamic = 'force-dynamic';
+// Өдөрт нэг удаа үүсгэнэ (ISR). Өмнө нь force-dynamic байсан (revalidate = 3600 үед 10-15-аас өмнөх
+// өгөгдлөөр үлдэж байсан, 2026-10-19). Одоо нийтлэх бүрт webhook /sitemap.xml-ийг revalidatePath хийж,
+// Contentful-ын Data Cache-ийг (lib/contentful.ts) хүчингүй болгодог тул шинэ хуудас даруй орно.
+// force-dynamic үед bot бүрийн дуудлага ~20 CDA хүсэлт зарцуулж байв (2026-10-21, API хязгаар хэтэрсэн).
+export const revalidate = 86400;
 
 // Хуудаслан татна: TIC-ийн мэдээ (body-тэй 600+) нэг хариунд багтахгүй (Contentful-ийн хариуны хэмжээний хязгаар)
 async function contentfulEntries(contentType: string, query: Record<string, unknown> = {}) {
@@ -29,6 +30,7 @@ async function contentfulEntries(contentType: string, query: Record<string, unkn
     }
     return items;
   } catch (err) {
+    rethrowOutage(err);
     console.error(`Sitemap: ${contentType} татахад алдаа гарлаа`, err);
     return [];
   }

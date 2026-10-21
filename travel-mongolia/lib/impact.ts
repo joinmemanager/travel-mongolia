@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, rethrowOutage } from '@/lib/contentful';
 import { SAMPLE_PREFIX } from '@/lib/localContent';
 import { provincesIn } from '@/lib/provinceNames';
 
@@ -27,7 +27,8 @@ async function allEntries(contentType: string): Promise<any[]> {
   try {
     const res = await client.getEntries({ content_type: contentType, limit: 1000, include: 0 } as any);
     return res.items as any[];
-  } catch {
+  } catch (err) {
+    rethrowOutage(err);
     return [];
   }
 }
