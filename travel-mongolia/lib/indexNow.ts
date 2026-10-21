@@ -34,7 +34,12 @@ export function entryUrls(contentType: string, fields: Record<string, any> | und
       paths.push(`/about/history/${key}`);
       break;
     case 'recommendation':
+    case 'event':
       paths.push(`/recommendation/${key}`);
+      break;
+    case 'story':
+      // Зөвхөн TIC-ийн мэдээний архив (иргэдийн түүх зөвшөөрлөөс хамаарна)
+      if (f('topic') === 'news') paths.push(`/stories/news/${key}`);
       break;
     case 'place': {
       const info = CATEGORY_INFO[f('category') as PlaceCategory];

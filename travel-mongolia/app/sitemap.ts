@@ -3,6 +3,7 @@ import type { MetadataRoute } from 'next';
 import { client } from '@/lib/contentful';
 import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
+import { NEWS_BASE } from '@/lib/news';
 import { PAGE_META } from '@/lib/pageMeta';
 import { isThinContent, SITE_URL } from '@/lib/seo';
 import { SPECIES_SECTION } from '@/lib/species';
@@ -15,10 +16,16 @@ const placeBase = (c: PlaceCategory) => CATEGORY_INFO[c]?.base || '/destination/
 // Google sitemap-ийг өдөрт цөөн удаа татдаг тул CDA-ийн дуудлага бага.
 export const dynamic = 'force-dynamic';
 
-async function contentfulEntries(contentType: string) {
+// Хуудаслан татна: TIC-ийн мэдээ (body-тэй 600+) нэг хариунд багтахгүй (Contentful-ийн хариуны хэмжээний хязгаар)
+async function contentfulEntries(contentType: string, query: Record<string, unknown> = {}) {
   try {
-    const res = await client.getEntries({ content_type: contentType, limit: 1000 });
-    return res.items as any[];
+    const items: any[] = [];
+    for (let skip = 0; ; skip += 250) {
+      const res = await client.getEntries({ content_type: contentType, limit: 250, skip, ...query } as any);
+      items.push(...res.items);
+      if (skip + 250 >= res.total) break;
+    }
+    return items;
   } catch (err) {
     console.error(`Sitemap: ${contentType} татахад алдаа гарлаа`, err);
     return [];
@@ -36,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles, tourismPlaces, species] =
+  const [places, categories, provinces, recommendations, destinations, stories, soums, historyArticles, tourismPlaces, species, events] =
     await Promise.all([
       contentfulEntries('heritagePlace'),
       contentfulEntries('heritageCategory'),
@@ -48,6 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       contentfulEntries('historyArticle'),
       contentfulEntries('place'),
       contentfulEntries('species'),
+      contentfulEntries('event'),
     ]);
 
   // Сайтын холбоосуудтай ижил хаягийг ашиглана (slug байвал slug, үгүй бол id)
@@ -94,7 +102,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       )
       .filter(({ path }) => !isUnpublishedPage(path))
       .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.5 })),
-    ...recommendations.map((e) => ({
+    // TIC-ийн арга хэмжээ (event) мөн /recommendation/<slug> хаягтай
+    ...[...recommendations, ...events].map((e) => ({
       url: `${SITE_URL}/recommendation/${entryKey(e)}`,
       lastModified: e.sys.updatedAt,
       priority: 0.5,
@@ -111,6 +120,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((e) => `/stories/${entryKey(e)}`)
       .filter((path) => !isUnpublishedPage(path))
       .map((path) => ({ url: `${SITE_URL}${path}`, priority: 0.6 })),
+    // TIC-ийн мэдээний архив: богино (noindex) мэдээг оруулахгүй, /stories/news live үед
+    ...stories
+      .filter((e) => e.fields.topic === 'news' && !isThinContent(e.fields.body))
+      .map((e) => ({ path: `${NEWS_BASE}/${entryKey(e)}`, e }))
+      .filter(({ path }) => !isUnpublishedPage(path))
+      .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.4 })),
   ];
 
   return [...staticPages, ...dynamicPages];

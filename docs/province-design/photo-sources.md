@@ -32,22 +32,27 @@
 | govsumber.jpg | 1024×561 | 1000–1599px: hero-д бага зэрэг бүдгэрнэ |
 | gov-altai.jpg | 8199×687 | Панорама (12:1), өндөр нь 687px. 3:1-ээр голоос нь тайрч тавьсан; ≥1600px өндөр/өргөнтэй энгийн харьцаатай зураг хэрэгтэй |
 
-## Жижиг тул тавиагүй (<1000px, одоогийн зураг хэвээр)
+## Сайжруулах — 960px (2026-10-21-нд тавьсан)
 
-| Файл | Хэмжээ | Хаана тавих байсан | Одоо |
+Эзэмшигчийн шийдвэрээр (2026-10-21) 960px өргөнтэй зургийг ч тавьсан. Шахалт өмнөхтэй ижил (ffmpeg `-q:v 4`, EXIF хассан, өргөн хэвээр 960).
+Скрипт: `scripts/tic/import-aimag-photos-960.js`. Asset id = `aimag-photo-<файл>`, **Draft (А3-д нийтэлнэ)**.
+Аймгийн хуучин зураг (TIC сүлд) `emblem` талбарт шилжсэн. `emblem`-тэй аймагт 900px+ зураг hero болно (`heroSized`, app/province/[id]/page.tsx).
+**Бүгд сайжруулах — 960px:** ≥1600px өргөнтэй зургаар солих хэрэгтэй (hero дээр бүдэг харагдана).
+
+| Файл | Хэмжээ | Тавьсан | Тэмдэглэл |
 |---|--:|---|---|
-| dornogov.jpg | 960×720 | /province/dornogov | TIC сүлд + шалгагдсан түр hero |
-| khentii.jpg | 960×638 | /province/khentii | мөн адил |
-| khovd.jpg (khovd.JPG) | 960×576 | /province/khovd | AI зургийг салгаж TIC сүлд |
-| khuvsgul.jpg | 960×621 | /province/khuvsgul | TIC сүлд |
-| orkhon.jpg | 960×222 | /province/orkhon | TIC сүлд |
-| selenge.jpg | 960×720 | /province/selenge | TIC сүлд |
-| sukhbaatar.jpg | 960×636 | /province/sukhbaatar | TIC сүлд |
-| uvs.jpg | 960×640 | /province/uvs | TIC сүлд |
-| zavkhan.jpg | 960×487 | /province/zavkhan | TIC сүлд |
-| terelj.jpg | 960×540 | /destination/terelj | AI зургийг салгаж TIC-ийн зураг |
-| orkhon-valley.jpg | 960×720 | /destination/heritage/place/orkhony-khundii | AI зургийг салгаж TIC-ийн зураг |
-| darkhan.jpg | 960×720 | Дархан хот (тусдаа entry алга) → darkhan-uul | тавиагүй |
-| naadam.jpg | 960×640 | Наадмын entry-үүд | тавиагүй (AI зургийг TIC зургаар солив, overnight-report.md) |
+| dornogov.jpg | 960×720 | /province/dornogov (hero) | сайжруулах — 960px |
+| khentii.jpg | 960×638 | /province/khentii (hero) | сайжруулах — 960px |
+| khovd.jpg (khovd.JPG) | 960×576 | /province/khovd (hero) | сайжруулах — 960px |
+| khuvsgul.jpg | 960×621 | /province/khuvsgul (hero) | сайжруулах — 960px |
+| orkhon.jpg | 960×222 | /province/orkhon (hero) | сайжруулах — 960px; панорама (4.3:1), өндөр 222px — хамгийн бүдэг |
+| selenge.jpg | 960×720 | /province/selenge (hero) | сайжруулах — 960px |
+| sukhbaatar.jpg | 960×636 | /province/sukhbaatar (hero) | сайжруулах — 960px |
+| uvs.jpg | 960×640 | /province/uvs (hero) | сайжруулах — 960px |
+| zavkhan.jpg | 960×487 | /province/zavkhan (hero) | сайжруулах — 960px |
+| terelj.jpg | 960×540 | /destination/terelj (coverImage, TIC зургийн оронд) | сайжруулах — 960px |
+| orkhon-valley.jpg | 960×720 | /destination/heritage/place/orkhony-khundii (TIC зургийн оронд) | сайжруулах — 960px |
+| naadam.jpg | 960×640 | cultureHeritage «Үндэсний Их Баяр Наадам», recommendation «Аймгийн наадам» (Шангри-Ла зургийг салгасны оронд) | сайжруулах — 960px |
+| darkhan.jpg | 960×720 | **тавиагүй** — Дархан хотын тусдаа entry алга, Дархан-Уул аймагт 6000px зураг бий | — |
 
 Нэр таараагүй файл: алга (22 аймгийн файл бүгд slug-тай таарсан). `burkhan-khaldun.jpg` байхгүй — алгассан.

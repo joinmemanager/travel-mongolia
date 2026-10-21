@@ -62,6 +62,13 @@ function imageWidth(f: any): number {
   return (f.image || f.coverImage)?.fields?.file?.details?.image?.width || 0;
 }
 
+// Entry-ийн зураг hero болох уу. `emblem` талбартай аймагт image нь эзэмшигчийн өгсөн гэрэл зураг (сүлд биш)
+// тул 960px-ийнхийг ч hero болгоно (docs/province-design/photo-sources.md «Сайжруулах — 960px»).
+const PHOTO_HERO_MIN_WIDTH = 900;
+function heroSized(f: any): boolean {
+  return imageWidth(f) >= (f.emblem ? PHOTO_HERO_MIN_WIDTH : HERO_MIN_WIDTH);
+}
+
 // highlights нь Contentful-д нэг мөр текст ("А, Б, В"), хуучин өгөгдөлд массив байж болно
 function highlightList(v: unknown): string[] {
   if (Array.isArray(v)) return v.map(String).filter(Boolean);
@@ -160,7 +167,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           `${name}-д аялах гарын авлага: үзэх газрууд, төв, хүн ам, газар нутгийн мэдээлэл.`
       ),
     path: `/province/${slug}`,
-    image: (imageWidth(f) >= HERO_MIN_WIDTH && imageOf(f)) || (PROVINCE_FACTS[slug]?.hero && IMAGES[PROVINCE_FACTS[slug].hero!].src) || undefined,
+    image: (heroSized(f) && imageOf(f)) || (PROVINCE_FACTS[slug]?.hero && IMAGES[PROVINCE_FACTS[slug].hero!].src) || undefined,
   });
   // seoTitle-д брэнд аль хэдийн орсон тул layout-ын "| Travel Hub Mongolia" загварыг давхар залгахгүй
   return f.seoTitle ? { ...meta, title: { absolute: f.seoTitle } } : meta;
@@ -200,7 +207,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
   const { intro, more, images: allImages } = splitRichText(description);
   const images = allImages.filter((img) => !img.width || img.width >= GALLERY_MIN_WIDTH);
   const entryImage = imageOf(f);
-  const ownHero = entryImage && imageWidth(f) >= HERO_MIN_WIDTH ? entryImage : undefined;
+  const ownHero = entryImage && heroSized(f) ? entryImage : undefined;
   const hero = ownHero
     ? { src: ownHero, alt: name, credit: creditOf(f.image || f.coverImage) }
     : (staticFacts?.hero && IMAGES[staticFacts.hero]) || FALLBACK_IMAGE;

@@ -51,29 +51,44 @@ const LISTING = [
   ['/News.aspx', '/stories', 'Мэдээ мэдээлэл'],
   ['/Tours.aspx', '/', 'Аяллууд (joinme.mn, гадаад аялал)'],
 ];
-// Алгассан нийтлэлийн (cate25, 27, 28) хаяг → ангиллын хуудас
-const SKIPPED_CATE = { 25: ['/local/guides', 'хувийн мэдээлэл (хөтчийн утас, имэйл, нас)'], 27: ['/', 'гадаад сэдэв'], 28: ['/', 'гадаад сэдэв'] };
+// 2026-10-21: TIC сайт ажилласаар байгаа тул зөвхөн агуулга нь бүрэн шилжсэн ангиллын жагсаалтыг redirect хийнэ.
+// Доорх жагсаалтууд TIC дээрээ үлдэнэ (docs/redirects/not-redirected.csv). Агуулга нь шилжмэгц эндээс хасна.
+const LISTING_HELD = {
+  '/': 'TIC-ийн нүүр (TIC ажилласаар)', '/Home.aspx': 'TIC-ийн нүүр (TIC ажилласаар)',
+  '/cate14.aspx': 'cate14: угсаатан, түүхэн хүмүүс шилжээгүй', '/cate14.aspx?TypeID=1': 'cate14: угсаатан шилжээгүй',
+  '/cate14.aspx?TypeID=3': 'cate14: түүхэн хүмүүс шилжээгүй',
+  '/cate15.aspx': 'cate15: шашин шүтлэг шилжээгүй', '/cate16.aspx': 'cate16: зан заншил шилжээгүй',
+  '/cate21.aspx': 'буудлын хуудас нийтлэгдээгүй', '/cate22.aspx': 'баазын хуудас нийтлэгдээгүй',
+  '/cate25.aspx': 'хөтчийн лавлах хуулаагүй', '/cate27.aspx': 'гадаад (хуулаагүй)', '/cate28.aspx': 'гадаад (хуулаагүй)',
+  '/News.aspx': 'мэдээний ихэнх нь хуулаагүй', '/Tours.aspx': 'гадаад аялал (хуулаагүй)',
+};
+// Алгассан нийтлэлийн (cate25, 27, 28) шалтгаан — redirect хийхгүй
+const SKIPPED_CATE = { 25: ['', 'хувийн мэдээлэл (хөтчийн утас, имэйл, нас)'], 27: ['', 'гадаад сэдэв'], 28: ['', 'гадаад сэдэв'] };
 // Нээгдээгүй (soft/draft) хэсэг (lib/navigation.ts)
-const UNPUBLISHED = [/^\/local(\/|$|#)/, /^\/stories\/news(\/|$)/];
+const UNPUBLISHED = [/^\/local(\/|$|#)/];
 const abs = (p) => (p.startsWith('http') ? p : SITE + p);
+const NOT_REDIRECTED = path.join(DIR, 'not-redirected.csv');
+const NR_HEAD = ['old_url', 'title', 'шалтгаан', 'эх файл'];
 
 (async () => {
   const inv = loadInventory();
-  // batch-09: жагсаалтын хуудас + алгассан нийтлэл (cate25/27/28)
-  const b09 = LISTING.map(([o, n, t]) => [TIC + o, abs(n), t, 'Жагсаалт / ангиллын хуудас', '']);
-  for (const r of inv.filter((x) => SKIPPED_CATE[x['ангилал']])) {
-    const [n, why] = SKIPPED_CATE[r['ангилал']];
-    b09.push([TIC + r['хуучин_url'], abs(n), r['гарчиг'], `Алгассан нийтлэл (${why})`, '']);
-  }
-  // Шийдээгүй (❓) ангиллын нийтлэлд 404 гаргахгүйн тулд ангиллын хуудас руу түр redirect (агуулга шилжээгүй тул ❓ хэвээр)
-  const PENDING = { 14: '/about/history', 15: '/about/culture', 16: '/about/traditions' };
-  const done = new Set();
-  for (const f of fs.readdirSync(DIR).filter((x) => /^batch-0[1-8].*.csv$/.test(x))) for (const r of parseCsv(fs.readFileSync(path.join(DIR, f), 'utf8'))) done.add(key(r.old_url));
-  for (const r of inv.filter((x) => PENDING[x['ангилал']] && !done.has(key(x['хуучин_url'])))) b09.push([TIC + r['хуучин_url'], abs(PENDING[r['ангилал']]), r['гарчиг'], 'Түр redirect — агуулга шилжээгүй (❓)', '']);
+  // batch-09: зөвхөн агуулга нь бүрэн шилжсэн ангиллын жагсаалтын хуудас
+  const b09 = LISTING.filter(([o]) => !LISTING_HELD[o]).map(([o, n, t]) => [TIC + o, abs(n), t, 'Жагсаалт / ангиллын хуудас', '']);
   writeCsv(path.join(DIR, 'batch-09-listing-pages.csv'), ['old_url', 'new_url', 'title', 'ангилал', 'аймаг'], b09);
+  // Redirect хийхгүй (TIC-д үлдэх) мөрүүд: үлдсэн жагсаалт + cate25/27/28 нийтлэл (clean-redirects.js-ийн мэдээтэй нэг файлд)
+  const nr = fs.existsSync(NOT_REDIRECTED) ? parseCsv(fs.readFileSync(NOT_REDIRECTED, 'utf8')) : [];
+  const nrSeen = new Set(nr.map((r) => key(r.old_url)));
+  const nrAdd = [
+    ...LISTING.filter(([o]) => LISTING_HELD[o]).map(([o, , t]) => ({ old_url: TIC + o, title: t, 'шалтгаан': `Жагсаалтын хуудас — ${LISTING_HELD[o]}`, 'эх файл': 'batch-09-listing-pages.csv' })),
+    ...inv.filter((x) => SKIPPED_CATE[x['ангилал']]).map((r) => ({ old_url: TIC + r['хуучин_url'], title: r['гарчиг'], 'шалтгаан': `Алгассан нийтлэл (${SKIPPED_CATE[r['ангилал']][1]})`, 'эх файл': 'batch-09-listing-pages.csv' })),
+  ].filter((r) => !nrSeen.has(key(r.old_url)));
+  const nrAll = [...nr, ...nrAdd];
+  writeCsv(NOT_REDIRECTED, NR_HEAD, nrAll.map((r) => NR_HEAD.map((h) => r[h] ?? '')));
 
-  // Бүх CSV
+  // Бүх CSV (+ pending/: хуулсан ч хуудас нь нийтлэгдээгүй, redirect дараа нэмэгдэнэ)
   const files = fs.readdirSync(DIR).filter((f) => /^batch-.*\.csv$/.test(f)).sort();
+  const pendingDir = path.join(DIR, 'pending');
+  const pendingFiles = fs.existsSync(pendingDir) ? fs.readdirSync(pendingDir).filter((f) => f.endsWith('.csv')).sort() : [];
   const map = new Map();
   const checks = { dupOld: [], badNew: [], unpublished: {}, rows: {} };
   for (const f of files) {
@@ -88,6 +103,23 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
       const p = r.new_url.replace(SITE, '');
       if (UNPUBLISHED.some((re) => re.test(p))) checks.unpublished[f]++;
     }
+  }
+
+  // pending (хуулсан, хуудас нь нийтлэгдээгүй) ба not-redirected (TIC-д үлдэнэ) нь ангилалд л орно
+  const pendingRows = {};
+  for (const f of pendingFiles) {
+    const rows = parseCsv(fs.readFileSync(path.join(pendingDir, f), 'utf8'));
+    pendingRows[f] = rows.length;
+    for (const r of rows) {
+      const k = key(r.old_url);
+      if (map.has(k)) checks.dupOld.push(`${r.old_url} (${map.get(k).file} ↔ pending/${f})`);
+      else map.set(k, { ...r, file: `pending/${f}` });
+    }
+  }
+  for (const r of nrAll) {
+    const k = key(r.old_url);
+    if (map.has(k)) checks.dupOld.push(`${r.old_url} (${map.get(k).file} ↔ not-redirected.csv)`);
+    else map.set(k, { old_url: r.old_url, new_url: '', title: r.title, 'ангилал': r['шалтгаан'], file: 'not-redirected.csv' });
   }
 
   // Ангилал
@@ -131,14 +163,14 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
     '# TIC бүрэн хамрах шалгалт',
     '',
     `> ${new Date().toISOString().slice(0, 10)}. \`node scripts/tic/coverage.js\`. Эх: [tic-inventory.csv](tic-inventory.csv) (${inv.length} нийтлэл) + docs/redirects/batch-*.csv.`,
-    '> Contentful-д бүх шинэ entry Draft — «✅ шилжсэн» нь хаяг, entry бэлэн гэсэн үг (нийтлэгдээгүй).',
+    '> «✅ шилжсэн» = Travel Hub-д хуулсан (шинэ хаягтай). 2026-10-21-ээс зөвхөн хуулсан хуудсыг redirect хийнэ; ⛔ алгассан хуудас TIC дээрээ үлдэнэ ([not-redirected.csv](../redirects/not-redirected.csv)).',
     '',
     '## Тоо',
     '',
     '| Ангилал | Тоо |',
     '|---|--:|',
     `| ✅ шилжсэн (шинэ хаягтай) | ${cls.ok.length} |`,
-    `| ↪️ зөвхөн redirect (TIC-ийн жагсаалт, ангиллын хуудас; inventory-д ороогүй) | ${LISTING.length} |`,
+    `| ↪️ зөвхөн redirect (агуулга нь бүрэн шилжсэн ангиллын жагсаалт; inventory-д ороогүй) | ${b09.length} |`,
     `| ⛔ алгассан | ${cls.skip.length} |`,
     `| ❓ шийдээгүй | ${cls.unknown.length} |`,
     `| **Inventory нийт** (✅ + ⛔ + ❓) | **${cls.ok.length + cls.skip.length + cls.unknown.length}** / ${inv.length} |`,
@@ -149,7 +181,7 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
     '|---|--:|',
     ...Object.entries(reasons).sort((a, b) => b[1] - a[1]).map(([k, v]) => `| ${k} | ${v} |`),
     '',
-    'Алгассан мөр бүр redirect-тэй (ангиллын хуудас, «Түүхүүд» эсвэл нэгтгэсэн хуудас руу), 404 болохгүй.',
+    'Алгассан хуудас redirect хийгдэхгүй — TIC сайт дээрээ үлдэнэ (TIC ажилласаар). Давхардал нь нэгтгэсэн хуудас руу redirect-тэй.',
     '',
     '### Ангиллаар (✅ / ⛔ / ❓)',
     '',
@@ -162,10 +194,12 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
     '| Файл | Мөр | Нээгдээгүй хэсэг рүү |',
     '|---|--:|--:|',
     ...files.map((f) => `| ${f} | ${checks.rows[f]} | ${checks.unpublished[f]} |`),
+    ...pendingFiles.map((f) => `| pending/${f} (хуудас нийтлэгдээгүй, redirect хийгдээгүй) | ${pendingRows[f]} | — |`),
+    `| not-redirected.csv (TIC-д үлдэнэ, redirect хийхгүй) | ${nrAll.length} | — |`,
     '',
     `- Нэг old_url давхардсан: **${checks.dupOld.length}**${checks.dupOld.length ? '\n' + checks.dupOld.slice(0, 30).map((x) => `  - ${x}`).join('\n') : ''}`,
     `- new_url \`${SITE}\`-оор эхлээгүй: **${checks.badNew.length}** `,
-    '- «Нээгдээгүй хэсэг» = `/local/*` (Нутгийн Монгол, soft), `/stories/news/*` (мэдээний архив, draft).',
+    '- «Нээгдээгүй хэсэг» = `/local/*` (Нутгийн Монгол, soft).',
     '',
     `## ❓ шийдээгүй (${cls.unknown.length})`,
     '',
@@ -179,8 +213,8 @@ const abs = (p) => (p.startsWith('http') ? p : SITE + p);
     ]),
   ];
   fs.writeFileSync(path.join(ROOT, 'docs', 'plan', 'tic-coverage.md'), md.join('\n'), 'utf8');
-  console.log(`✅ ${cls.ok.length}  ↪️ ${LISTING.length}  ⛔ ${cls.skip.length}  ❓ ${cls.unknown.length}  (inventory ${inv.length})`);
+  console.log(`✅ ${cls.ok.length}  ↪️ ${b09.length}  ⛔ ${cls.skip.length}  ❓ ${cls.unknown.length}  (inventory ${inv.length})`);
   console.log('⛔', reasons);
   console.log('❓', Object.fromEntries(Object.entries(unkGroups).map(([k, v]) => [k, v.length])));
-  console.log('CSV:', checks.rows, 'dupOld', checks.dupOld.length, 'badNew', checks.badNew.length, 'unpublished', checks.unpublished);
+  console.log('CSV:', checks.rows, 'pending', pendingRows, 'not-redirected', nrAll.length, 'dupOld', checks.dupOld.length, 'badNew', checks.badNew.length, 'unpublished', checks.unpublished);
 })().catch((e) => { console.error(e); process.exit(1); });

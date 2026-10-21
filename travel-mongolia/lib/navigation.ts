@@ -249,8 +249,8 @@ export const PAGE_STATUS: Record<string, NavStatus> = {
   '/stories': 'live',
   // Анхны фото/видео нийтлэл орох хүртэл soft (live болгохыг эзэмшигч шийднэ)
   '/stories/photo-video': 'soft',
-  // TIC-ийн мэдээний архив (8-р багц, 2026-10-20): эзэмшигч шалгаж live болгоно. /stories/news/<slug> өвлөнө.
-  '/stories/news': 'draft',
+  // TIC-ийн мэдээний архив (8-р багц): эзэмшигч 2026-10-21-нд live болгосон. /stories/news/<slug> өвлөнө.
+  '/stories/news': 'live',
   // Нутгийн Монгол hub: soft. /local/<slug> профайлууд энэ төлвийг өвлөнө.
   '/local': 'soft',
 };

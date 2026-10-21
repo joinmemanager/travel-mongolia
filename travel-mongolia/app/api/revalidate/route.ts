@@ -90,7 +90,13 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         { path: '/about/nature/plants' },
       ];
     case 'story':
-      return [one(`/stories/${key}`, '/stories/[slug]'), { path: '/stories' }];
+      // Түүх & өв hub-ийн нийтлэл эсвэл TIC-ийн мэдээ (topic = news, /stories/news/<slug>)
+      return [
+        one(`/stories/${key}`, '/stories/[slug]'),
+        { path: '/stories' },
+        one(`/stories/news/${key}`, '/stories/news/[slug]'),
+        { path: '/stories/news' },
+      ];
     case 'localProvider':
       return [one(`/local/${key}`, '/local/[slug]'), { path: '/local' }];
     case 'communityExperience':

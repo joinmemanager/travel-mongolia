@@ -1,14 +1,14 @@
 # TIC бүрэн хамрах шалгалт
 
-> 2026-10-20. `node scripts/tic/coverage.js`. Эх: [tic-inventory.csv](tic-inventory.csv) (4893 нийтлэл) + docs/redirects/batch-*.csv.
-> Contentful-д бүх шинэ entry Draft — «✅ шилжсэн» нь хаяг, entry бэлэн гэсэн үг (нийтлэгдээгүй).
+> 2026-10-21. `node scripts/tic/coverage.js`. Эх: [tic-inventory.csv](tic-inventory.csv) (4893 нийтлэл) + docs/redirects/batch-*.csv.
+> «✅ шилжсэн» = Travel Hub-д хуулсан (шинэ хаягтай). 2026-10-21-ээс зөвхөн хуулсан хуудсыг redirect хийнэ; ⛔ алгассан хуудас TIC дээрээ үлдэнэ ([not-redirected.csv](../redirects/not-redirected.csv)).
 
 ## Тоо
 
 | Ангилал | Тоо |
 |---|--:|
 | ✅ шилжсэн (шинэ хаягтай) | 2859 |
-| ↪️ зөвхөн redirect (TIC-ийн жагсаалт, ангиллын хуудас; inventory-д ороогүй) | 35 |
+| ↪️ зөвхөн redirect (агуулга нь бүрэн шилжсэн ангиллын жагсаалт; inventory-д ороогүй) | 21 |
 | ⛔ алгассан | 1730 |
 | ❓ шийдээгүй | 304 |
 | **Inventory нийт** (✅ + ⛔ + ❓) | **4893** / 4893 |
@@ -28,7 +28,7 @@
 | нийтлэл биш (байгууллагуудын утас, хаягийн жагсаалт) | 1 |
 | орос хэл дээрх нийтлэл | 1 |
 
-Алгассан мөр бүр redirect-тэй (ангиллын хуудас, «Түүхүүд» эсвэл нэгтгэсэн хуудас руу), 404 болохгүй.
+Алгассан хуудас redirect хийгдэхгүй — TIC сайт дээрээ үлдэнэ (TIC ажилласаар). Давхардал нь нэгтгэсэн хуудас руу redirect-тэй.
 
 ### Ангиллаар (✅ / ⛔ / ❓)
 
@@ -68,13 +68,15 @@
 | batch-04-places.csv | 453 | 0 |
 | batch-05-nature.csv | 689 | 0 |
 | batch-06-culture.csv | 237 | 0 |
-| batch-07-events-camps-hotels.csv | 495 | 461 |
-| batch-08-news.csv | 2290 | 642 |
-| batch-09-listing-pages.csv | 368 | 22 |
+| batch-07-events-camps-hotels.csv | 34 | 0 |
+| batch-08-news.csv | 642 | 0 |
+| batch-09-listing-pages.csv | 21 | 0 |
+| pending/batch-07-hotels-camps.csv (хуудас нийтлэгдээгүй, redirect хийгдээгүй) | 461 | — |
+| not-redirected.csv (TIC-д үлдэнэ, redirect хийхгүй) | 1691 | — |
 
 - Нэг old_url давхардсан: **0**
 - new_url `https://www.travelhubmongolia.com`-оор эхлээгүй: **0** 
-- «Нээгдээгүй хэсэг» = `/local/*` (Нутгийн Монгол, soft), `/stories/news/*` (мэдээний архив, draft).
+- «Нээгдээгүй хэсэг» = `/local/*` (Нутгийн Монгол, soft).
 
 ## ❓ шийдээгүй (304)
 
