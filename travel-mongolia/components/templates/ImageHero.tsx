@@ -42,9 +42,11 @@ export default function ImageHero({
   // Гарчгийн дээрх жижиг тэмдэг (аймгийн сүлд г.м.)
   badge?: React.ReactNode;
 }) {
+  // compact: тогтмол өндөр биш, доод өндөр + padding. Сүлд + 2 мөр гарчиг өндрөөс хэтрэхэд агуулга дээшээ
+  // халиж, сүлдний дээд хэсэг наалдсан цэсний доор орж тасардаг байв (2026-10-22). pt нь буцах товчийг давна.
   return (
     <section
-      className={`flex relative justify-center items-center w-full ${compact ? 'h-[48vh] min-h-[360px]' : 'h-[55vh] min-h-[420px]'}`}
+      className={`flex relative justify-center items-center w-full ${compact ? 'min-h-[max(48vh,360px)] pt-28 pb-12 sm:pt-20' : 'h-[55vh] min-h-[420px]'}`}
     >
       {image.src && (
         <Image

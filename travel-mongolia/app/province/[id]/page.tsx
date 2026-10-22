@@ -294,17 +294,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
         }
       />
 
-      {/* Замчлал + BreadcrumbList (JSON-LD): Нүүр › Аймгууд › <Аймаг> */}
-      <div className="px-4 pt-4 mx-auto max-w-7xl sm:px-8">
-        <Breadcrumbs
-          items={[
-            { label: 'Нүүр', href: '/' },
-            { label: 'Аймгууд', href: '/destination/region#provinces' },
-            { label: name, href: `/province/${provinceSlug}` },
-          ]}
-        />
-      </div>
-
+      {/* Hero ногоон туузтай шууд залгана (хооронд цагаан зурвасгүй) */}
       <ProvinceFactsBand
         items={facts}
         note={
@@ -314,7 +304,18 @@ export default async function ProvinceDetailPage({ params }: Props) {
         }
       />
 
-      <div className="grid grid-cols-1 gap-8 px-4 mx-auto mt-8 max-w-7xl sm:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12 lg:mt-12">
+      {/* Замчлал + BreadcrumbList (JSON-LD): Нүүр › Аймгууд › <Аймаг>. Туузны доор, агуулгын эхэнд */}
+      <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-8">
+        <Breadcrumbs
+          items={[
+            { label: 'Нүүр', href: '/' },
+            { label: 'Аймгууд', href: '/destination/region#provinces' },
+            { label: name, href: `/province/${provinceSlug}` },
+          ]}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 px-4 mx-auto mt-4 max-w-7xl sm:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12 lg:mt-6">
         {/* Sidebar: утсан дээр агуулгын дээд хэсэгт, компьютерт баруун талд наалддаг */}
         <aside className="lg:order-last">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:sticky lg:top-[calc(var(--nav-h)+1.5rem)]">
