@@ -66,58 +66,88 @@ export default async function Home() {
           </h2>
         </div>
 
+        {/* Гадаад холбоос (YouTube, Facebook, joinme.mn). GA4: content_format_click (components/Analytics.tsx),
+            joinme.mn холбоосонд joinme_click нь Analytics-ийн ерөнхий логикоор тусдаа илгээгдэнэ. */}
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {[
             {
               title: 'Богино видео',
               icon: '📽️',
-              image:
-                photoSrc('gerStars', 600),
+              image: photoSrc('gerStars', 600),
+              href: 'https://www.youtube.com/@joinmemn/shorts',
+              platform: 'YouTube',
+              action: 'YouTube-д үзэх',
             },
             {
               title: 'Тайлбар видео',
               icon: '✨',
-              image:
-                photoSrc('camels', 600),
+              image: photoSrc('camels', 600),
+              href: 'https://www.youtube.com/watch?v=pyu49PiEzgE',
+              platform: 'YouTube',
+              action: 'YouTube-д үзэх',
             },
             {
               title: 'Подкаст',
               icon: '🎧',
-              image:
-                'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600',
+              // Монголынх эсэх нь шалгагдаагүй stock зураг (docs/section-layout/images.md)
+              image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600',
+              href: 'https://www.youtube.com/watch?v=HMIBP0sZpd4',
+              platform: 'YouTube',
+              action: 'YouTube-д сонсох',
             },
             {
               title: 'Фото түүх',
               icon: '📖',
-              image:
-                photoSrc('eagleHunter', 600),
+              image: photoSrc('eagleHunter', 600),
+              href: 'https://joinme.mn/media/1294',
+              platform: 'Joinme',
+              action: 'Joinme-д үзэх',
             },
             {
               title: 'Инфографик',
               icon: '📊',
-              image:
-                'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600',
+              // Монголынх эсэх нь шалгагдаагүй stock зураг (docs/section-layout/images.md)
+              image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600',
+              href: 'https://www.facebook.com/photo.php?fbid=2916077865308828&set=pb.100064842455264.-2207520000&type=3',
+              platform: 'Facebook',
+              action: 'Facebook-т үзэх',
             },
             {
               title: 'Мэдлэгийн карт',
               icon: '✏️',
-              image:
-                'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600',
+              // Монголынх эсэх нь шалгагдаагүй stock зураг (docs/section-layout/images.md)
+              image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600',
+              href: 'https://www.facebook.com/reel/3592870177548945',
+              platform: 'Facebook',
+              action: 'Facebook-т үзэх',
             },
-          ].map((media, idx) => (
-            <Link
-              key={idx}
-              href="/things-to-do/nature"
-              className="group flex overflow-hidden relative flex-col justify-end p-4 h-64 rounded-2xl hover:shadow-lg transition-all duration-300 shadow-xs"
+          ].map((media) => (
+            <a
+              key={media.title}
+              href={media.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${media.title} — ${media.action} (шинэ цонхонд нээгдэнэ)`}
+              data-ga-event="content_format_click"
+              data-ga-params={JSON.stringify({ item_name: media.title, platform: media.platform })}
+              data-joinme-type="content_format"
+              data-joinme-name={media.title}
+              className="group flex overflow-hidden relative flex-col justify-end p-4 h-64 rounded-2xl shadow-xs transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 focus-visible:shadow-lg focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2"
             >
               <Image
                 src={media.image}
-                alt={media.title}
+                alt=""
                 fill
                 unoptimized
-                className="object-cover brightness-[0.70] transition-transform duration-500 group-hover:scale-108"
+                className="object-cover brightness-[0.70] transition-transform duration-500 group-hover:scale-108 group-focus-visible:scale-108"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <span className="flex absolute top-3 right-3 z-10 gap-1 items-center py-0.5 px-2 text-[10px] font-semibold text-white bg-black/40 rounded-full backdrop-blur-md">
+                {media.platform}
+                <svg aria-hidden="true" viewBox="0 0 12 12" className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M4.5 2H2v8h8V7.5M7 2h3v3M10 2 5.5 6.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
               <div className="relative z-10">
                 <div className="flex justify-center items-center mb-2 w-8 h-8 text-xs text-white bg-white/20 rounded-full backdrop-blur-md">
                   {media.icon}
@@ -126,18 +156,27 @@ export default async function Home() {
                   {media.title}
                 </h4>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
 
-        <div className="flex gap-3 justify-center items-center mt-6 text-xs text-neutral-500">
+        {/* Татаж авах, хуваалцах: хараахан ажиллахгүй */}
+        <div className="flex flex-wrap gap-3 justify-center items-center mt-6 text-xs text-neutral-500">
           <span>Контентоо аваарай:</span>
-          <button className="flex gap-1.5 items-center py-1.5 px-4 font-medium text-neutral-700 hover:bg-neutral-50 rounded-full border border-neutral-200 transition-colors cursor-pointer">
-            📥 Татаж авах
-          </button>
-          <button className="flex gap-1.5 items-center py-1.5 px-4 font-medium text-neutral-700 hover:bg-neutral-50 rounded-full border border-neutral-200 transition-colors cursor-pointer">
-            ✈️ Хуваалцах
-          </button>
+          {['📥 Татаж авах', '✈️ Хуваалцах'].map((label) => (
+            <button
+              key={label}
+              type="button"
+              disabled
+              aria-disabled="true"
+              className="flex gap-1.5 items-center py-1.5 px-4 font-medium text-neutral-400 bg-neutral-50 rounded-full border border-neutral-200 cursor-not-allowed"
+            >
+              <span className="opacity-60">{label}</span>
+              <span className="py-0.5 px-1.5 text-[10px] font-semibold text-neutral-500 bg-neutral-200 rounded-full">
+                Удахгүй
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 

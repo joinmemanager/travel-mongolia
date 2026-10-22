@@ -42,6 +42,7 @@
 | `click_to_provider` | `/local/<slug>` (профайл) руу холбоос дарахад | `target_id`, `provider_id`, `link_url` + хуудасны 3 параметр |
 | `booking_click` | "Захиалах" / "Аялал захиалах" товч дарахад | **`provider_id`** (Contentful entry ID), **`is_local_provider`** (`localOwned`), `target_id`, `link_url` + хуудасны 3 параметр |
 | `view_respect_guide` | `/respect`, `/respect/*` хуудас нээгдэхэд | хуудасны 3 параметр |
+| `content_format_click` | Нүүр хуудасны «Олон хэлбэрт контент» карт дарахад (2026-10-22) | `item_name` (картын нэр), `platform` (`YouTube`, `Facebook`, `Joinme`), `link_url` + хуудасны 3 параметр. «Фото түүх» (joinme.mn) дээр `joinme_click` нь `content_type = content_format`-оор тусдаа илгээгдэнэ |
 | `joinme_click` | joinme.mn руу очих аливаа холбоос дарахад (доор) | `link_url`, `page_path`, `content_type`, `item_name` |
 
 Холбоосууд дээрх `data-ga-event`, `data-ga-params` шинжээс уншдаг. Шинэ товчинд event нэмэх бол тэр 2 шинжийг тавихад хангалттай.
