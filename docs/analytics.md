@@ -42,7 +42,9 @@
 | `click_to_provider` | `/local/<slug>` (профайл) руу холбоос дарахад | `target_id`, `provider_id`, `link_url` + хуудасны 3 параметр |
 | `booking_click` | "Захиалах" / "Аялал захиалах" товч дарахад | **`provider_id`** (Contentful entry ID), **`is_local_provider`** (`localOwned`), `target_id`, `link_url` + хуудасны 3 параметр |
 | `view_respect_guide` | `/respect`, `/respect/*` хуудас нээгдэхэд | хуудасны 3 параметр |
-| `content_format_click` | Нүүр хуудасны «Олон хэлбэрт контент» карт дарахад (2026-10-22) | `item_name` (картын нэр), `platform` (`YouTube`, `Facebook`, `Joinme`), `link_url` + хуудасны 3 параметр. «Фото түүх» (joinme.mn) дээр `joinme_click` нь `content_type = content_format`-оор тусдаа илгээгдэнэ |
+| `shorts_play` | Богино бичлэгийн (YouTube Shorts) карт дарахад: нүүр хуудасны сэдвийн мөрүүд, `/stories/shorts/<сэдэв>` (2026-10-27). Бичлэг сайт дотор modal-д тоглоно, modal доторх өмнөх/дараах сум event илгээхгүй | `video_id` (YouTube ID), `video_title`, `category` (сэдвийн slug: `traditions`, `historical-figures`, `buddhism`, `heritage`, `nature`, `legends`, `monasteries`) + хуудасны 3 параметр |
+| `shorts_view_all` | Нүүр хуудасны мөрийн «Бүгдийг үзэх» карт дарахад (2026-10-27) | `category` (сэдвийн slug), `link_url` + хуудасны 3 параметр |
+| ~~`content_format_click`~~ | 2026-10-22 – 10-27: нүүр хуудасны «Олон хэлбэрт контент»-ын 6 карт. Тэр хэсгийг Shorts-ийн мөрүүдээр сольсон тул **илгээгдэхээ больсон** (GA4-д хуучин өгөгдөл үлдэнэ) | `item_name`, `platform`, `link_url` |
 | `joinme_click` | joinme.mn руу очих аливаа холбоос дарахад (доор) | `link_url`, `page_path`, `content_type`, `item_name` |
 
 Холбоосууд дээрх `data-ga-event`, `data-ga-params` шинжээс уншдаг. Шинэ товчинд event нэмэх бол тэр 2 шинжийг тавихад хангалттай.
@@ -80,6 +82,7 @@ utm_content=<slug>                тухайн хуудасны slug (маршр
 
 1. **Admin → Custom definitions → Create custom dimension** (Event scope):
    - `content_id`, `content_type`, `province`, `provider_id`, `is_local_provider`, `target_id`.
+   - Богино бичлэгт: `video_id`, `video_title`, `category`.
    Бүртгэхгүй бол утгууд цуглах боловч тайланд харагдахгүй.
 2. **Admin → Events → Mark as key event**: `booking_click`.
 3. Шалгах: **Admin → DebugView** дээр preview хаягаа нээж товч дарахад event-үүд харагдана (Chrome-ийн "Google Analytics Debugger" өргөтгөл эсвэл `?debug_mode=1`).

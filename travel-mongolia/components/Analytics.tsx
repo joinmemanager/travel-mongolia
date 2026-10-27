@@ -11,7 +11,7 @@ import { isJoinmeUrl } from '@/lib/booking';
 // 1. Хуудас бүр: dataLayer-т { content_id, content_type, province } (event: content_context),
 //    gtag('set', ...) (дараагийн event-үүдэд хавсарна), gtag('event', 'content_view', ...).
 //    Дэлгэрэнгүй хуудсууд <ContentContext>-оор утгаа өгнө, бусад нь хаягаас тооцоологдоно.
-// 2. Event-ууд: click_to_experience, click_to_provider, booking_click, view_respect_guide, content_format_click.
+// 2. Event-ууд: click_to_experience, click_to_provider, booking_click, view_respect_guide, shorts_play, shorts_view_all.
 // 3. joinme_click: joinme.mn руу очих аливаа холбоос. Дээрх event-ээс тусдаа, нэг дарахад нэг удаа.
 
 export interface ContentContextValue {
