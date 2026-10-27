@@ -43,7 +43,8 @@
 | `booking_click` | "Захиалах" / "Аялал захиалах" товч дарахад | **`provider_id`** (Contentful entry ID), **`is_local_provider`** (`localOwned`), `target_id`, `link_url` + хуудасны 3 параметр |
 | `view_respect_guide` | `/respect`, `/respect/*` хуудас нээгдэхэд | хуудасны 3 параметр |
 | `shorts_play` | Богино бичлэгийн (YouTube Shorts) карт дарахад: нүүр хуудасны сэдвийн мөрүүд, `/stories/shorts/<сэдэв>` (2026-10-27). Бичлэг сайт дотор modal-д тоглоно, modal доторх өмнөх/дараах сум event илгээхгүй | `video_id` (YouTube ID), `video_title`, `category` (сэдвийн slug: `traditions`, `historical-figures`, `buddhism`, `heritage`, `nature`, `legends`, `monasteries`) + хуудасны 3 параметр |
-| `shorts_view_all` | Нүүр хуудасны мөрийн «Бүгдийг үзэх» карт дарахад (2026-10-27) | `category` (сэдвийн slug), `link_url` + хуудасны 3 параметр |
+| `shorts_view_all` | Нүүр хуудасны идэвхтэй сэдвийн «Бүгдийг үзэх» карт дарахад (2026-10-27) | `category` (сэдвийн slug), `link_url` + хуудасны 3 параметр |
+| `shorts_tab_select` | Нүүр хуудасны «Монголыг богино бичлэгээр» хэсэгт сэдвийн таб солиход: хулганаар дарах эсвэл ← → / Home / End товч (2026-10-27). Аль хэдийн идэвхтэй табыг дахин дарахад илгээгдэхгүй | `category` (шинээр сонгосон сэдвийн slug) + хуудасны 3 параметр |
 | ~~`content_format_click`~~ | 2026-10-22 – 10-27: нүүр хуудасны «Олон хэлбэрт контент»-ын 6 карт. Тэр хэсгийг Shorts-ийн мөрүүдээр сольсон тул **илгээгдэхээ больсон** (GA4-д хуучин өгөгдөл үлдэнэ) | `item_name`, `platform`, `link_url` |
 | `joinme_click` | joinme.mn руу очих аливаа холбоос дарахад (доор) | `link_url`, `page_path`, `content_type`, `item_name` |
 

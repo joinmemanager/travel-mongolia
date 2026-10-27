@@ -10,6 +10,8 @@ export interface Short {
 
 export interface ShortsCategory {
   slug: string;
+  // Нүүр хуудасны табын богино нэр
+  tab: string;
   title: string;
   // Ирээдүйд: YouTube playlist ID (одоохондоо хоосон)
   playlistId?: string;
@@ -22,25 +24,26 @@ export const SHORTS_BASE = '/stories/shorts';
 // хооронд түр давхардсан. true болгоход noindex арилж, sitemap-д орно (app/sitemap.ts).
 export const SHORTS_INDEXABLE = false;
 
-// Нүүр хуудасны мөрөнд харагдах бичлэгийн тоо (дараа нь «Бүгдийг үзэх» карт)
-export const SHORTS_PER_ROW = 4;
+// Нүүр хуудасны идэвхтэй табд харагдах бичлэгийн тоо (дараа нь «Бүгдийг үзэх» карт)
+export const SHORTS_PER_ROW = 5;
 
 // Сэдэв бүрийн үндсэн бичлэг (мөрийн 1-р байранд)
 const PRIMARY: (Omit<ShortsCategory, 'videos'> & { primary: Short })[] = [
-  { slug: 'traditions', title: 'Монголын уламжлалт ёс заншил', primary: { id: 'oV5YadlXGtg', title: 'Хүүхдэд нэр өгөх ёсон' } },
-  { slug: 'historical-figures', title: 'Монголын түүхэн эрхмүүд', primary: { id: '0ggvLuv1kaQ', title: 'Өгий нуур' } },
-  { slug: 'buddhism', title: 'Монголын бурхны шашин', primary: { id: 'IojZuuEYEnQ', title: 'Майдар бурхан' } },
-  { slug: 'heritage', title: 'Монголын түүхийн өв соёл', primary: { id: 'PWuh730EyfU', title: 'Цонжинболдог - Чингис хааны морьт хөшөө' } },
-  { slug: 'nature', title: 'Монголын байгалийн өв соёл', primary: { id: '4GG-iRIGOsc', title: 'Тамчийн хавцал' } },
-  { slug: 'legends', title: 'Монголын домог, аман түүх', primary: { id: 'jjQDD2s4a88', title: 'Шар нохойн там' } },
-  { slug: 'monasteries', title: 'Монголын сүм хийдүүд', primary: { id: 'h1dhzBGfFqU', title: 'Хамрын хийд' } },
+  { slug: 'traditions', tab: 'Уламжлалт ёс заншил', title: 'Монголын уламжлалт ёс заншил', primary: { id: 'oV5YadlXGtg', title: 'Хүүхдэд нэр өгөх ёсон' } },
+  { slug: 'historical-figures', tab: 'Түүхэн эрхмүүд', title: 'Монголын түүхэн эрхмүүд', primary: { id: '0ggvLuv1kaQ', title: 'Өгий нуур' } },
+  { slug: 'buddhism', tab: 'Бурхны шашин', title: 'Монголын бурхны шашин', primary: { id: 'IojZuuEYEnQ', title: 'Майдар бурхан' } },
+  { slug: 'heritage', tab: 'Түүхийн өв соёл', title: 'Монголын түүхийн өв соёл', primary: { id: 'PWuh730EyfU', title: 'Цонжинболдог - Чингис хааны морьт хөшөө' } },
+  { slug: 'nature', tab: 'Байгалийн өв соёл', title: 'Монголын байгалийн өв соёл', primary: { id: '4GG-iRIGOsc', title: 'Тамчийн хавцал' } },
+  { slug: 'legends', tab: 'Домог, аман түүх', title: 'Монголын домог, аман түүх', primary: { id: 'jjQDD2s4a88', title: 'Шар нохойн там' } },
+  { slug: 'monasteries', tab: 'Сүм хийдүүд', title: 'Монголын сүм хийдүүд', primary: { id: 'h1dhzBGfFqU', title: 'Хамрын хийд' } },
 ];
 
 // ТҮР ДҮҮРГЭЛТ: сэдэв бүр өөрийн үндсэн бичлэг + бусад 6 сэдвийн үндсэн бичлэгтэй (нийт 7).
 // Мөр бүрт дараалал өөр боловч тогтмол (i-р сэдэвт i+1, i+2, … дугаартай сэдвүүд), build бүрт
 // өөрчлөгдөхгүй. Сэдэв бүрийн жинхэнэ бичлэгүүд (playlist) орж ирэхэд энэ дүүргэлтийг устгана.
-export const SHORTS_CATEGORIES: ShortsCategory[] = PRIMARY.map(({ slug, title }, i) => ({
+export const SHORTS_CATEGORIES: ShortsCategory[] = PRIMARY.map(({ slug, tab, title }, i) => ({
   slug,
+  tab,
   title,
   videos: PRIMARY.map((_, k) => PRIMARY[(i + k) % PRIMARY.length].primary),
 }));

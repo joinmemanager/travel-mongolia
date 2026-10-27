@@ -7,9 +7,9 @@ import HeroFlight from '../components/HeroFlight';
 import RegionMap from '../components/RegionMap';
 import SeasonRecommendations from '../components/SeasonRecommendations';
 import TopDestinations from '../components/TopDestinations';
-import { ShortsRow } from '../components/shorts/Shorts';
+import { ShortsTabs } from '../components/shorts/Shorts';
 import { client as baseClient, rethrowOutage } from '../lib/contentful';
-import { SHORTS_CATEGORIES } from '../lib/shorts';
+import { SHORTS_BASE, SHORTS_CATEGORIES } from '../lib/shorts';
 const client = baseClient as any;
 
 async function getDestinations() {
@@ -56,14 +56,20 @@ export default async function Home() {
       {/* 3. ОНЦЛОХ ГАЗРУУДЫН СЛАЙДЕР */}
       <TopDestinations items={destinations} />
 
-      {/* 4. БОГИНО БИЧЛЭГ: сэдэв бүрт YouTube Shorts-ийн мөр (lib/shorts.ts, components/shorts/) */}
-      <section aria-label="Богино бичлэгүүд" className="py-16 px-6 mx-auto space-y-12 max-w-7xl sm:px-10">
-        {SHORTS_CATEGORIES.map((cat) => (
-          <div key={cat.slug}>
-            <h2 className="mb-6 text-2xl font-black tracking-tight text-neutral-900 sm:text-4xl">{cat.title}</h2>
-            <ShortsRow category={cat} />
-          </div>
-        ))}
+      {/* 4. БОГИНО БИЧЛЭГ: сэдвийн табууд + нэг мөр YouTube Shorts (lib/shorts.ts, components/shorts/) */}
+      <section aria-labelledby="shorts-heading" className="py-10 px-6 mx-auto max-w-7xl sm:px-10">
+        <div className="flex gap-4 justify-between items-end mb-4">
+          <h2 id="shorts-heading" className="text-xl font-black tracking-tight text-neutral-900 sm:text-3xl">
+            Монголыг богино бичлэгээр
+          </h2>
+          <Link
+            href={SHORTS_BASE}
+            className="flex shrink-0 gap-1 items-center text-xs font-bold text-neutral-900 hover:text-[#15803d]"
+          >
+            Бүх бичлэг →
+          </Link>
+        </div>
+        <ShortsTabs categories={SHORTS_CATEGORIES} />
       </section>
 
       {/* 5. УЛИРЛЫН ЗӨВЛӨМЖ ХЭСЭГ */}

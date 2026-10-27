@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { type KeyboardEvent as ReactKeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import {
@@ -17,7 +17,7 @@ import {
 
 // YouTube Shorts-ийн босоо картууд + сайт дотор тоглуулах modal (lib/shorts.ts).
 // iframe нь modal нээгдэх хүртэл ачаалагдахгүй, хаахад устгагдана (бичлэг зогсоно).
-// GA4: картын shorts_play, «Бүгдийг үзэх»-ийн shorts_view_all (data-ga-event, components/Analytics.tsx).
+// GA4: картын shorts_play, «Бүгдийг үзэх»-ийн shorts_view_all, нүүр хуудасны табын shorts_tab_select (data-ga-event, components/Analytics.tsx).
 
 // Нүүр зураг: oardefault (босоо) байхгүй бол hqdefault. Байхгүй үед YouTube 404-тэй хамт 120×90
 // саарал зураг буцаадаг (onError ажиллахгүй) тул ачаалсны дараа хэмжээг нь шалгана. Зураг
@@ -48,7 +48,18 @@ function ShortThumb({ id }: { id: string }) {
   );
 }
 
-function ShortCard({ video, category, onPlay }: { video: Short; category: string; onPlay: () => void }) {
+function ShortCard({
+  video,
+  category,
+  onPlay,
+  compact,
+}: {
+  video: Short;
+  category: string;
+  onPlay: () => void;
+  // Нүүр хуудасны табын жижиг карт: жижиг ▶, гарчиг 2 мөр
+  compact?: boolean;
+}) {
   return (
     <button
       type="button"
@@ -63,14 +74,17 @@ function ShortCard({ video, category, onPlay }: { video: Short; category: string
       <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t to-transparent from-black/80 via-black/10" />
       <span
         aria-hidden="true"
-        className="flex absolute top-1/2 left-1/2 justify-center items-center w-12 h-12 text-white rounded-full backdrop-blur-sm transition-colors -translate-x-1/2 -translate-y-1/2 bg-black/45 group-hover:bg-[#15803d] group-focus-visible:bg-[#15803d]"
+        className={`flex absolute top-1/2 left-1/2 justify-center items-center text-white rounded-full backdrop-blur-sm transition-colors -translate-x-1/2 -translate-y-1/2 bg-black/45 group-hover:bg-[#15803d] group-focus-visible:bg-[#15803d] ${compact ? 'w-9 h-9' : 'w-12 h-12'}`}
       >
-        <svg viewBox="0 0 24 24" className="ml-0.5 w-5 h-5" fill="currentColor">
+        <svg viewBox="0 0 24 24" className={compact ? 'ml-0.5 w-4 h-4' : 'ml-0.5 w-5 h-5'} fill="currentColor">
           <path d="M8 5.5v13l11-6.5z" />
         </svg>
       </span>
-      <span className="absolute right-0 bottom-0 left-0 p-3 text-xs font-bold leading-snug text-white sm:text-sm line-clamp-3">
-        {video.title}
+      {/* line-clamp дотоод span-д: padding-тэй элемент дээр тасласан мөр padding-ийн зайд цухуйдаг */}
+      <span
+        className={`absolute right-0 bottom-0 left-0 font-bold leading-snug text-white ${compact ? 'p-2.5 text-xs' : 'p-3 text-xs sm:text-sm'}`}
+      >
+        <span className={compact ? 'line-clamp-2' : 'line-clamp-3'}>{video.title}</span>
       </span>
     </button>
   );
@@ -83,18 +97,16 @@ function ViewAllCard({ category, remaining }: { category: ShortsCategory; remain
       href={shortsHref(category.slug)}
       data-ga-event="shorts_view_all"
       data-ga-params={JSON.stringify({ category: category.slug })}
-      className="group flex flex-col justify-center items-center p-4 text-center rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer aspect-[9/16] bg-emerald-50/70 border-emerald-300 shadow-xs hover:border-[#15803d] hover:bg-emerald-100/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2"
+      className="group flex flex-col justify-center items-center p-3 text-center rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer aspect-[9/16] bg-emerald-50/70 border-emerald-300 shadow-xs hover:border-[#15803d] hover:bg-emerald-100/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2"
     >
-      <span className="flex justify-center items-center mb-4 w-12 h-12 text-white rounded-full shadow-md transition-all sm:w-14 sm:h-14 bg-[#15803d] group-hover:scale-110 group-hover:bg-emerald-800">
-        <svg aria-hidden="true" className="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+      <span className="flex justify-center items-center mb-3 w-10 h-10 text-white rounded-full shadow-md transition-all bg-[#15803d] group-hover:scale-110 group-hover:bg-emerald-800">
+        <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>
       </span>
-      {remaining > 0 && (
-        <span className="text-base font-black tracking-wider text-[#15803d] sm:text-lg">+{remaining} бичлэг</span>
-      )}
-      <span className="mt-1 text-sm font-extrabold text-neutral-900 sm:text-base">Бүгдийг үзэх</span>
-      <span className="mt-2 text-[11px] font-medium leading-snug text-neutral-500 sm:text-xs">
+      {remaining > 0 && <span className="text-base font-black tracking-wider text-[#15803d]">+{remaining} бичлэг</span>}
+      <span className="mt-0.5 text-sm font-extrabold text-neutral-900">Бүгдийг үзэх</span>
+      <span className="mt-1.5 text-[10px] font-medium leading-snug text-neutral-500 line-clamp-3">
         {category.title}-ийн бүх богино бичлэг
       </span>
     </Link>
@@ -243,24 +255,100 @@ function usePlayer() {
   return { index, setIndex, close };
 }
 
-// Нүүр хуудасны нэг мөр: эхний 4 бичлэг + «Бүгдийг үзэх». Утсан дээр хажуу тийш гүйлгэгдэнэ.
-export function ShortsRow({ category }: { category: ShortsCategory }) {
+// Нүүр хуудасны хэсэг: сэдвийн табууд + идэвхтэй сэдвийн нэг мөр (эхний 5 бичлэг + «Бүгдийг үзэх»).
+// Бүх сэдвийн самбар HTML-д байна (идэвхгүй нь hidden): гарчиг, «Бүгдийг үзэх» холбоос хайлтад
+// харагдана, нуугдсан самбарын нүүр зураг (lazy) табыг нээх хүртэл татагдахгүй.
+// GA4: таб солиход shorts_tab_select (зөвхөн идэвхгүй таб дээр data-ga-event, сумаар солиход .click()).
+export function ShortsTabs({ categories }: { categories: ShortsCategory[] }) {
+  const [active, setActive] = useState(0);
   const { index, setIndex, close } = usePlayer();
-  const shown = category.videos.slice(0, SHORTS_PER_ROW);
-  const cell = 'w-[42%] shrink-0 snap-start md:w-auto';
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const category = categories[active];
+  const cell = 'w-[40%] shrink-0 snap-start md:w-auto';
+
+  const select = (i: number) => {
+    setIndex(null);
+    setActive(i);
+  };
+
+  // ← → / Home / End: дараагийн таб руу focus + сонгоно
+  const onKeyDown = (e: ReactKeyboardEvent) => {
+    const n = categories.length;
+    const to =
+      e.key === 'ArrowRight' ? (active + 1) % n
+      : e.key === 'ArrowLeft' ? (active - 1 + n) % n
+      : e.key === 'Home' ? 0
+      : e.key === 'End' ? n - 1
+      : -1;
+    if (to < 0) return;
+    e.preventDefault();
+    const tab = tabsRef.current?.querySelectorAll<HTMLButtonElement>('[role=tab]')[to];
+    tab?.focus();
+    tab?.click();
+    tab?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  };
 
   return (
     <>
-      <div className="flex overflow-x-auto gap-3 px-6 pt-1 pb-3 -mx-6 snap-x snap-mandatory scroll-px-6 sm:gap-4 sm:px-10 sm:-mx-10 sm:scroll-px-10 md:grid md:grid-cols-5 md:overflow-visible md:px-0 md:mx-0 md:pb-1">
-        {shown.map((v, i) => (
-          <div key={v.id} className={cell}>
-            <ShortCard video={v} category={category.slug} onPlay={() => setIndex(i)} />
-          </div>
-        ))}
-        <div className={cell}>
-          <ViewAllCard category={category} remaining={category.videos.length - shown.length} />
-        </div>
+      <div
+        ref={tabsRef}
+        role="tablist"
+        aria-label="Богино бичлэгийн сэдэв"
+        onKeyDown={onKeyDown}
+        className="flex overflow-x-auto gap-2 px-6 py-1 mb-4 -mx-6 snap-x no-scrollbar scroll-px-6 sm:px-10 sm:-mx-10 sm:scroll-px-10 lg:flex-wrap lg:overflow-visible lg:px-0 lg:mx-0"
+      >
+        {categories.map((cat, i) => {
+          const selected = i === active;
+          return (
+            <button
+              key={cat.slug}
+              type="button"
+              role="tab"
+              id={`shorts-tab-${cat.slug}`}
+              aria-selected={selected}
+              aria-controls={`shorts-panel-${cat.slug}`}
+              tabIndex={selected ? 0 : -1}
+              onClick={() => select(i)}
+              data-ga-event={selected ? undefined : 'shorts_tab_select'}
+              data-ga-params={selected ? undefined : JSON.stringify({ category: cat.slug })}
+              className={`shrink-0 snap-start py-1.5 px-4 text-[13px] font-semibold whitespace-nowrap rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2 ${
+                selected
+                  ? 'text-white bg-[#15803d] border-[#15803d]'
+                  : 'bg-white text-neutral-600 border-neutral-200 hover:border-[#15803d] hover:text-[#15803d]'
+              }`}
+            >
+              {cat.tab}
+            </button>
+          );
+        })}
       </div>
+
+      {categories.map((cat, i) => {
+        const shown = cat.videos.slice(0, SHORTS_PER_ROW);
+        return (
+          <div
+            key={cat.slug}
+            role="tabpanel"
+            id={`shorts-panel-${cat.slug}`}
+            aria-labelledby={`shorts-tab-${cat.slug}`}
+            hidden={i !== active}
+            className="shorts-fade"
+          >
+            <div className="flex overflow-x-auto gap-3 px-6 pt-1 pb-2 -mx-6 snap-x snap-mandatory no-scrollbar scroll-px-6 sm:px-10 sm:-mx-10 sm:scroll-px-10 md:grid md:grid-cols-[repeat(6,minmax(0,168px))] md:justify-between md:overflow-visible md:px-0 md:mx-0">
+              {shown.map((v, j) => (
+                <div key={v.id} className={cell}>
+                  <ShortCard video={v} category={cat.slug} onPlay={() => setIndex(j)} compact />
+                </div>
+              ))}
+              <div className={cell}>
+                <ViewAllCard category={cat} remaining={cat.videos.length - shown.length} />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Өмнөх/дараах сум идэвхтэй сэдвийн бүх бичлэг дотор */}
       {index !== null && <ShortsModal videos={category.videos} index={index} onIndex={setIndex} onClose={close} />}
     </>
   );
