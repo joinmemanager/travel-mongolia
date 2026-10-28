@@ -10,6 +10,9 @@ const nextConfig = {
     return [
       { source: '/inspiration/stories', destination: '/stories', permanent: true },
       { source: '/inspiration/magazine', destination: '/stories', permanent: true },
+      // Богино бичлэгийн хуучин хуудсууд → «Фото/видео түүх» хэсэг (lib/shorts.ts SHORTS_BASE)
+      { source: '/stories/shorts', destination: '/stories/photo-video', permanent: true },
+      { source: '/stories/shorts/:slug', destination: '/stories/photo-video/:slug', permanent: true },
       // Нүүрний газрын зургийн (RegionMap) хуучин аймгийн хаягууд → Contentful-ийн slug (tic-migration.md)
       ...[
         ['bayan-olgii', 'bayan-ulgii'],

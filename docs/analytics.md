@@ -42,8 +42,9 @@
 | `click_to_provider` | `/local/<slug>` (профайл) руу холбоос дарахад | `target_id`, `provider_id`, `link_url` + хуудасны 3 параметр |
 | `booking_click` | "Захиалах" / "Аялал захиалах" товч дарахад | **`provider_id`** (Contentful entry ID), **`is_local_provider`** (`localOwned`), `target_id`, `link_url` + хуудасны 3 параметр |
 | `view_respect_guide` | `/respect`, `/respect/*` хуудас нээгдэхэд | хуудасны 3 параметр |
-| `shorts_play` | Богино бичлэгийн (YouTube Shorts) карт дарахад: нүүр хуудасны сэдвийн мөрүүд, `/stories/shorts/<сэдэв>` (2026-10-27). Бичлэг сайт дотор modal-д тоглоно, modal доторх өмнөх/дараах сум event илгээхгүй | `video_id` (YouTube ID), `video_title`, `category` (сэдвийн slug: `traditions`, `historical-figures`, `buddhism`, `heritage`, `nature`, `legends`, `monasteries`) + хуудасны 3 параметр |
-| `shorts_view_all` | Нүүр хуудасны идэвхтэй сэдвийн «Бүгдийг үзэх» карт дарахад (2026-10-27) | `category` (сэдвийн slug), `link_url` + хуудасны 3 параметр |
+| `shorts_play` | Богино бичлэгийн (YouTube Shorts) карт дарахад: нүүр хуудасны сэдвийн мөрүүд (2026-10-27), «Фото/видео түүх» хэсгийн `/stories/photo-video` ба `/stories/photo-video/<сэдэв>` (2026-10-28-аас; өмнө нь `/stories/shorts/<сэдэв>`, одоо 308). Бичлэг сайт дотор modal-д тоглоно, modal доторх өмнөх/дараах сум event илгээхгүй | `video_id` (YouTube ID), `video_title`, `category` (сэдвийн slug: `traditions`, `historical-figures`, `buddhism`, `heritage`, `nature`, `legends`, `monasteries`; хэсгийн «Бүгд» дээр `all`), **`source`** (`home` = нүүр хуудас, `section_page` = «Фото/видео түүх» хэсэг; 2026-10-28-аас) + хуудасны 3 параметр |
+| `shorts_view_all` | Нүүр хуудасны идэвхтэй сэдвийн «Бүгдийг үзэх» карт дарахад (2026-10-27). 2026-10-28-аас `/stories/photo-video/<сэдэв>` руу очно | `category` (сэдвийн slug), `link_url` + хуудасны 3 параметр |
+| `shorts_category_select` | «Фото/видео түүх» хэсгийн «Сэдвийн жагсаалт»-аас (компьютерт зүүн талын жагсаалт, утсанд хэвтээ товчнууд) сэдэв сонгоход (2026-10-28). Идэвхтэй сэдвийг дахин дарахад илгээгдэхгүй. Цэсний дэд холбоосоор орвол тусгай event байхгүй: бусад цэсний холбоосын адил шинэ хуудасны `content_view` л илгээгдэнэ | `category` (сэдвийн slug, «Бүгд» бол `all`), `source` (`section_page`), `link_url` + хуудасны 3 параметр |
 | `shorts_tab_select` | Нүүр хуудасны «Монголыг богино бичлэгээр» хэсэгт сэдвийн таб солиход: хулганаар дарах эсвэл ← → / Home / End товч (2026-10-27). Аль хэдийн идэвхтэй табыг дахин дарахад илгээгдэхгүй | `category` (шинээр сонгосон сэдвийн slug) + хуудасны 3 параметр |
 | ~~`content_format_click`~~ | 2026-10-22 – 10-27: нүүр хуудасны «Олон хэлбэрт контент»-ын 6 карт. Тэр хэсгийг Shorts-ийн мөрүүдээр сольсон тул **илгээгдэхээ больсон** (GA4-д хуучин өгөгдөл үлдэнэ) | `item_name`, `platform`, `link_url` |
 | `joinme_click` | joinme.mn руу очих аливаа холбоос дарахад (доор) | `link_url`, `page_path`, `content_type`, `item_name` |
@@ -83,7 +84,7 @@ utm_content=<slug>                тухайн хуудасны slug (маршр
 
 1. **Admin → Custom definitions → Create custom dimension** (Event scope):
    - `content_id`, `content_type`, `province`, `provider_id`, `is_local_provider`, `target_id`.
-   - Богино бичлэгт: `video_id`, `video_title`, `category`.
+   - Богино бичлэгт: `video_id`, `video_title`, `category`, `source`.
    Бүртгэхгүй бол утгууд цуглах боловч тайланд харагдахгүй.
 2. **Admin → Events → Mark as key event**: `booking_click`.
 3. Шалгах: **Admin → DebugView** дээр preview хаягаа нээж товч дарахад event-үүд харагдана (Chrome-ийн "Google Analytics Debugger" өргөтгөл эсвэл `?debug_mode=1`).

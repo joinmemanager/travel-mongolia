@@ -110,6 +110,10 @@ export default function SectionSidebar({ rows, contentId }: { rows: SectionRow[]
     }
   };
 
+  // Мөр сонгох GA4 event (SectionConfig.rowEvent): аль хэдийн идэвхтэй мөрийг дахин дарахад илгээхгүй
+  const gaAttrs = (row: SectionRow) =>
+    row.ga && !isActive(row) ? { 'data-ga-event': row.ga.event, 'data-ga-params': row.ga.params } : {};
+
   const chipClass = (active: boolean) =>
     `px-4 py-2.5 rounded-full text-[15px] leading-none whitespace-nowrap shrink-0 transition-colors cursor-pointer ${
       active
@@ -146,6 +150,7 @@ export default function SectionSidebar({ rows, contentId }: { rows: SectionRow[]
                   onClick={onRowClick(row)}
                   aria-current={isActive(row) ? 'page' : undefined}
                   data-active={isActive(row)}
+                  {...gaAttrs(row)}
                   className={chipClass(isActive(row))}
                 >
                   {row.label}
@@ -193,6 +198,7 @@ export default function SectionSidebar({ rows, contentId }: { rows: SectionRow[]
                   scroll={false}
                   onClick={onRowClick(row)}
                   aria-current={isActive(row) ? 'page' : undefined}
+                  {...gaAttrs(row)}
                   className={`block px-3 py-2.5 rounded-xl text-[17px] leading-snug transition-all ${
                     isActive(row)
                       ? 'bg-[#15803d]/10 text-[#15803d] font-semibold'

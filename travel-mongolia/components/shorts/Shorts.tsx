@@ -17,7 +17,8 @@ import {
 
 // YouTube Shorts-ийн босоо картууд + сайт дотор тоглуулах modal (lib/shorts.ts).
 // iframe нь modal нээгдэх хүртэл ачаалагдахгүй, хаахад устгагдана (бичлэг зогсоно).
-// GA4: картын shorts_play, «Бүгдийг үзэх»-ийн shorts_view_all, нүүр хуудасны табын shorts_tab_select (data-ga-event, components/Analytics.tsx).
+// GA4: картын shorts_play (source: home / section_page), «Бүгдийг үзэх»-ийн shorts_view_all, нүүр хуудасны
+// табын shorts_tab_select (data-ga-event, components/Analytics.tsx). Хэсгийн жагсаалтын shorts_category_select: lib/sections.ts.
 
 // Нүүр зураг: oardefault (босоо) байхгүй бол hqdefault. Байхгүй үед YouTube 404-тэй хамт 120×90
 // саарал зураг буцаадаг (onError ажиллахгүй) тул ачаалсны дараа хэмжээг нь шалгана. Зураг
@@ -51,11 +52,14 @@ function ShortThumb({ id }: { id: string }) {
 function ShortCard({
   video,
   category,
+  source,
   onPlay,
   compact,
 }: {
   video: Short;
   category: string;
+  // GA4-ийн source: 'home' (нүүр хуудас) эсвэл 'section_page' («Фото/видео түүх» хэсэг)
+  source: 'home' | 'section_page';
   onPlay: () => void;
   // Нүүр хуудасны табын жижиг карт: жижиг ▶, гарчиг 2 мөр
   compact?: boolean;
@@ -67,7 +71,7 @@ function ShortCard({
       aria-label={`${video.title} — бичлэг тоглуулах`}
       aria-haspopup="dialog"
       data-ga-event="shorts_play"
-      data-ga-params={JSON.stringify({ video_id: video.id, video_title: video.title, category })}
+      data-ga-params={JSON.stringify({ video_id: video.id, video_title: video.title, category, source })}
       className="group overflow-hidden relative w-full text-left rounded-2xl shadow-xs transition-all duration-300 aspect-[9/16] bg-neutral-900 hover:shadow-lg hover:scale-[1.03] focus-visible:shadow-lg focus-visible:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2"
     >
       <ShortThumb id={video.id} />
@@ -337,7 +341,7 @@ export function ShortsTabs({ categories }: { categories: ShortsCategory[] }) {
             <div className="flex overflow-x-auto gap-3 px-6 pt-1 pb-2 -mx-6 snap-x snap-mandatory no-scrollbar scroll-px-6 sm:px-10 sm:-mx-10 sm:scroll-px-10 md:grid md:grid-cols-[repeat(6,minmax(0,168px))] md:justify-between md:overflow-visible md:px-0 md:mx-0">
               {shown.map((v, j) => (
                 <div key={v.id} className={cell}>
-                  <ShortCard video={v} category={cat.slug} onPlay={() => setIndex(j)} compact />
+                  <ShortCard video={v} category={cat.slug} source="home" onPlay={() => setIndex(j)} compact />
                 </div>
               ))}
               <div className={cell}>
@@ -354,19 +358,20 @@ export function ShortsTabs({ categories }: { categories: ShortsCategory[] }) {
   );
 }
 
-// «Бүгдийг үзэх» хуудасны тор: сэдвийн бүх бичлэг
-export function ShortsGrid({ category }: { category: ShortsCategory }) {
+// «Фото/видео түүх» хэсгийн тор: сэдвийн (эсвэл «Бүгд»-ийн) бүх бичлэг. Сум эдгээр бичлэг дотор.
+// category: сэдвийн slug, «Бүгд» дээр 'all' (GA4 shorts_play)
+export function ShortsGrid({ videos, category }: { videos: Short[]; category: string }) {
   const { index, setIndex, close } = usePlayer();
   return (
     <>
-      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5">
-        {category.videos.map((v, i) => (
+      <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {videos.map((v, i) => (
           <li key={v.id}>
-            <ShortCard video={v} category={category.slug} onPlay={() => setIndex(i)} />
+            <ShortCard video={v} category={category} source="section_page" onPlay={() => setIndex(i)} />
           </li>
         ))}
       </ul>
-      {index !== null && <ShortsModal videos={category.videos} index={index} onIndex={setIndex} onClose={close} />}
+      {index !== null && <ShortsModal videos={videos} index={index} onIndex={setIndex} onClose={close} />}
     </>
   );
 }

@@ -11,10 +11,12 @@ import { activeRow, type SectionRow } from '@/lib/sections';
 export default function SectionPageHeader({
   baseHref,
   sectionTitle,
+  parentCrumb,
   rows,
 }: {
   baseHref: string;
   sectionTitle: string;
+  parentCrumb?: Crumb;
   rows: SectionRow[];
 }) {
   const pathname = usePathname();
@@ -26,6 +28,7 @@ export default function SectionPageHeader({
 
   const crumbs: Crumb[] = [
     { label: 'Нүүр', href: '/' },
+    ...(parentCrumb ? [parentCrumb] : []),
     { label: sectionTitle, href: baseHref },
     ...(!isBase && current ? [{ label: current.label, href: current.href }] : []),
   ];

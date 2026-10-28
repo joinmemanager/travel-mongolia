@@ -31,7 +31,7 @@ export default function SectionLayout({
         baseHref={section.baseHref}
         image={section.hero.image}
         kicker={section.hero.kicker}
-        title={title}
+        title={section.heroTitle || title}
         intro={section.hero.intro}
       />
 
@@ -44,7 +44,12 @@ export default function SectionLayout({
           id="section-content"
           className="flex-1 min-w-0 [&_[id]]:scroll-mt-[calc(var(--nav-h)+7rem)] lg:[&_[id]]:scroll-mt-[calc(var(--nav-h)+1.5rem)]"
         >
-          <SectionPageHeader baseHref={section.baseHref} sectionTitle={title} rows={rows} />
+          <SectionPageHeader
+            baseHref={section.baseHref}
+            sectionTitle={title}
+            parentCrumb={section.parentCrumb}
+            rows={rows}
+          />
           {children}
         </div>
       </div>

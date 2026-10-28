@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import Breadcrumbs from '@/components/Breadcrumbs';
 import { ShortsGrid } from '@/components/shorts/Shorts';
 import { pageMetadata } from '@/lib/seo';
-import { getShortsCategory, SHORTS_BASE, SHORTS_CATEGORIES, SHORTS_ROBOTS, shortsHref } from '@/lib/shorts';
+import { getShortsCategory, SHORTS_CATEGORIES, SHORTS_ROBOTS, shortsHref } from '@/lib/shorts';
 
-// Нэг сэдвийн бүх богино бичлэг (нүүр хуудасны «Бүгдийг үзэх»). Contentful ашиглахгүй.
+// Нэг сэдвийн бүх богино бичлэг. Contentful ашиглахгүй. H1 (сэдвийн нэр), замчлалыг
+// SectionPageHeader гаргана (жагсаалтын мөр = lib/navigation.ts-ийн children).
 interface Props {
   params: Promise<{ category: string }>;
 }
@@ -36,16 +36,8 @@ export default async function ShortsCategoryPage({ params }: Props) {
 
   return (
     <div>
-      <Breadcrumbs
-        items={[
-          { label: 'Нүүр', href: '/' },
-          { label: 'Богино бичлэг', href: SHORTS_BASE },
-          { label: cat.title, href: shortsHref(cat.slug) },
-        ]}
-      />
-      <h1 className="mb-4 text-3xl font-black tracking-tight leading-tight sm:text-5xl text-neutral-900">{cat.title}</h1>
-      <p className="mb-8 text-neutral-600">{cat.videos.length} богино бичлэг</p>
-      <ShortsGrid category={cat} />
+      <p className="-mt-7 mb-6 text-sm text-neutral-500">{cat.videos.length} бичлэг</p>
+      <ShortsGrid videos={cat.videos} category={cat.slug} />
     </div>
   );
 }

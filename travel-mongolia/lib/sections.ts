@@ -21,12 +21,21 @@ export interface SectionConfig {
   hero: SectionHeroConfig;
   // Жагсаалтын эхний мөрийн нэр (үндсэн хаяг). Байхгүй бол «Тойм»
   overviewLabel?: string;
+  // Hero-гийн гарчиг цэсний нэрээс өөр бол (breadcrumb-д цэсний нэр хэвээр)
+  heroTitle?: string;
+  // Замчлалд «Нүүр»-ийн дараа, хэсгийн өмнө орох эцэг хуудас
+  parentCrumb?: { label: string; href: string };
+  // Жагсаалтаас мөр сонгоход илгээх GA4 event (components/Analytics.tsx). Параметр нь
+  // { [param]: мөрийн хаягийн сүүлийн хэсэг, эхний мөрөнд 'all', source }
+  rowEvent?: { name: string; param: string; source: string };
 }
 
 export interface SectionRow {
   label: string;
   href: string;
   status: NavItem['status'];
+  // rowEvent-ээс: data-ga-event, data-ga-params
+  ga?: { event: string; params: string };
 }
 
 // Hero зургууд docs/plan/images.md-ийн Монголынх нь шалгагдсан зургуудаас.
@@ -118,12 +127,18 @@ export const SECTIONS: SectionConfig[] = [
     },
   },
   {
+    // Богино бичлэгийн сэдвүүд (lib/shorts.ts): мөрүүд нь цэсний children (lib/navigation.ts)
     id: 'photo-video',
     baseHref: '/stories/photo-video',
+    overviewLabel: 'Бүгд',
+    heroTitle: 'Монгол орныг богино бичлэгээр',
+    // ia-plan.md C10: /stories нь «Түүх & өв» hub
+    parentCrumb: { label: 'Түүх & өв', href: '/stories' },
+    rowEvent: { name: 'shorts_category_select', param: 'category', source: 'section_page' },
     hero: {
-      image: IMAGES.gerStars, // түр: фото/видео хэсэгт тохирох зураг хэрэгтэй
+      image: IMAGES.eagleHunter,
       kicker: 'Түүх & өв',
-      intro: 'Монголын тухай гэрэл зураг, видео түүхүүд.',
+      intro: 'Монголын уламжлал, түүх, шашин, байгалийн өв соёлыг богино бичлэгээр сонирхоорой.',
     },
   },
   {
@@ -160,9 +175,24 @@ export function sectionTitle(section: SectionConfig): string {
 export function sectionRows(section: SectionConfig): SectionRow[] {
   const item = navItemOf(section);
   const children = (item?.children || []).filter((c) => pathOf(c.href) !== section.baseHref);
+  const ga = (value: string) =>
+    section.rowEvent && {
+      event: section.rowEvent.name,
+      params: JSON.stringify({ [section.rowEvent.param]: value, source: section.rowEvent.source }),
+    };
   return [
-    { label: section.overviewLabel || 'Тойм', href: section.baseHref, status: item?.status || 'live' },
-    ...children.map((c) => ({ label: c.mn, href: c.href, status: c.status })),
+    {
+      label: section.overviewLabel || 'Тойм',
+      href: section.baseHref,
+      status: item?.status || 'live',
+      ga: ga('all'),
+    },
+    ...children.map((c) => ({
+      label: c.sectionLabel || c.mn,
+      href: c.href,
+      status: c.status,
+      ga: ga(pathOf(c.href).split('/').pop() || ''),
+    })),
   ];
 }
 

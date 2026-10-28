@@ -8,7 +8,7 @@ import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { NEWS_BASE } from '@/lib/news';
 import { PAGE_META } from '@/lib/pageMeta';
 import { isThinContent, SITE_URL } from '@/lib/seo';
-import { SHORTS_BASE, SHORTS_CATEGORIES, SHORTS_INDEXABLE, shortsHref } from '@/lib/shorts';
+import { SHORTS_CATEGORIES, SHORTS_INDEXABLE, shortsHref } from '@/lib/shorts';
 import { SPECIES_SECTION } from '@/lib/species';
 import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
 
@@ -46,8 +46,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
-    // Богино бичлэгийн хуудсууд: SHORTS_INDEXABLE (lib/shorts.ts) true үед л
-    ...(SHORTS_INDEXABLE ? [SHORTS_BASE, ...SHORTS_CATEGORIES.map((c) => shortsHref(c.slug))] : []).map((path) => ({
+    // Богино бичлэгийн сэдвүүд: SHORTS_INDEXABLE (lib/shorts.ts) true үед л. Үндсэн хуудас
+    // (/stories/photo-video) нь PAGE_META-д, төлөв нь мөн SHORTS_INDEXABLE-аар (lib/navigation.ts).
+    ...(SHORTS_INDEXABLE ? SHORTS_CATEGORIES.map((c) => shortsHref(c.slug)) : []).map((path) => ({
       url: `${SITE_URL}${path}`,
       changeFrequency: 'monthly' as const,
       priority: 0.5,

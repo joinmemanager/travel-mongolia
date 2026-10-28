@@ -11,6 +11,8 @@
 //             noindex, sitemap-д орохгүй (Google-д хараахан бүртгүүлэхгүй).
 // Production дээр нэг ч live зүйлгүй хэсэг бүхэлдээ нуугдана.
 
+import { SHORTS_BASE, SHORTS_CATEGORIES, SHORTS_INDEXABLE, shortsHref } from './shorts';
+
 export type NavStatus = 'live' | 'soft' | 'draft' | 'planned';
 
 export interface NavItem {
@@ -22,6 +24,8 @@ export interface NavItem {
   external?: boolean;
   // Dropdown-д зүйлийн доор жижиг холбоосоор харагдах дэд хуудсууд
   children?: NavItem[];
+  // Хэсгийн «Сэдвийн жагсаалт»-д (lib/sections.ts) цэснийхээс өөр, бүтэн нэрээр харагдах бол
+  sectionLabel?: string;
 }
 
 // Нийтлэгдсэн, сайтын доторх энгийн холбоос (дэд холбоосуудад)
@@ -44,6 +48,9 @@ export interface NavSection {
 // Энэ хэсэг дээд цэсэнд гарахгүй: хайлтын хажуух газрын зургийн icon түүний эхний хуудас руу
 // очно. Хуудсууд нь утасны цэс, footer-т бүтнээрээ байна.
 export const PLAN_SECTION_ID = 'plan';
+
+// «Фото/видео түүх» (богино бичлэг): SHORTS_INDEXABLE (lib/shorts.ts) true болтол soft (noindex, sitemap-гүй)
+const SHORTS_STATUS: NavStatus = SHORTS_INDEXABLE ? 'live' : 'soft';
 
 const BOOK_NOW_URL =
   'https://joinme.mn?utm_source=travelhubmongolia&utm_medium=referral&utm_campaign=nav';
@@ -164,8 +171,17 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', status: 'live' },
       { mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live' },
       { mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live' },
-      // Түр: /stories бэлэн болох хүртэл (ia-plan.md 5в үед /stories руу сольж redirect хийнэ)
-      { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: '/stories/photo-video', status: 'soft' },
+      {
+        // Богино бичлэгийн сэдвүүд (lib/shorts.ts): цэсэнд богино нэр, хэсгийн жагсаалтад бүтэн нэр
+        mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: SHORTS_BASE, status: SHORTS_STATUS,
+        children: SHORTS_CATEGORIES.map((c) => ({
+          mn: c.tab,
+          en: c.en,
+          href: shortsHref(c.slug),
+          status: SHORTS_STATUS,
+          sectionLabel: c.title,
+        })),
+      },
       {
         mn: 'Аялахаас өмнө', en: 'Learn Before You Go', href: '/plan/before-you-travel', status: 'live',
         children: [
@@ -254,8 +270,8 @@ export const FOOTER_LEGAL: NavItem[] = [
 export const PAGE_STATUS: Record<string, NavStatus> = {
   // Түүх & өв hub (C10): live. /stories/<slug> нийтлэлүүд энэ төлвийг өвлөнө.
   '/stories': 'live',
-  // Анхны фото/видео нийтлэл орох хүртэл soft (live болгохыг эзэмшигч шийднэ)
-  '/stories/photo-video': 'soft',
+  // Богино бичлэгийн хэсэг: SHORTS_INDEXABLE-аар (lib/shorts.ts). /stories/photo-video/<slug> өвлөнө.
+  [SHORTS_BASE]: SHORTS_STATUS,
   // TIC-ийн мэдээний архив (8-р багц): эзэмшигч 2026-10-21-нд live болгосон. /stories/news/<slug> өвлөнө.
   '/stories/news': 'live',
   // Нутгийн Монгол hub: soft. /local/<slug> профайлууд энэ төлвийг өвлөнө.
@@ -266,6 +282,8 @@ export const PAGE_STATUS: Record<string, NavStatus> = {
 export const REDIRECTED_PATHS: Record<string, string> = {
   '/inspiration/stories': '/stories',
   '/inspiration/magazine': '/stories',
+  // Богино бичлэгийн хуучин хаяг (/stories/shorts/<slug> → /stories/photo-video/<slug>)
+  '/stories/shorts': SHORTS_BASE,
 };
 
 // Preview (эсвэл local) орчин эсэх. SITE_ENV-ийг next.config.js build хийх үед server,
