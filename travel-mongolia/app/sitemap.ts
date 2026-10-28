@@ -8,7 +8,8 @@ import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { NEWS_BASE } from '@/lib/news';
 import { PAGE_META } from '@/lib/pageMeta';
 import { isThinContent, SITE_URL } from '@/lib/seo';
-import { SHORTS_CATEGORIES, SHORTS_INDEXABLE, shortsHref } from '@/lib/shorts';
+import { allShorts, isAllIndexable, isTopicIndexable, lastAdded, SHORTS_BASE, shortsHref } from '@/lib/shorts';
+import { getShortsTopics } from '@/lib/shortsData';
 import { SPECIES_SECTION } from '@/lib/species';
 import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
 
@@ -38,20 +39,31 @@ async function contentfulEntries(contentType: string, query: Record<string, unkn
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const shortsTopics = await getShortsTopics();
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: 'weekly', priority: 1 },
-    // Production дээр live биш (draft/planned) хуудсыг sitemap-д оруулахгүй
-    ...Object.keys(PAGE_META).filter((path) => !isUnpublishedPage(path) && !REDIRECTED_PATHS[path]).map((path) => ({
+    // Production дээр live биш (draft/planned) хуудсыг sitemap-д оруулахгүй. Богино бичлэгийн хэсгийг доор.
+    ...Object.keys(PAGE_META)
+      .filter((path) => !isUnpublishedPage(path) && !REDIRECTED_PATHS[path] && path !== SHORTS_BASE)
+      .map((path) => ({
+        url: `${SITE_URL}${path}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      })),
+    // Богино бичлэг (lib/shorts.ts): «Бүгд» нийт 10+, сэдэв өөрийн 5+ бичлэгтэй бол. lastmod = playlist-д
+    // хамгийн сүүлд нэмэгдсэн бичлэгийн огноо.
+    ...[
+      ...(isAllIndexable(shortsTopics)
+        ? [{ path: SHORTS_BASE, lastModified: lastAdded(allShorts(shortsTopics)), priority: 0.6 }]
+        : []),
+      ...shortsTopics
+        .filter(isTopicIndexable)
+        .map((t) => ({ path: shortsHref(t.slug), lastModified: lastAdded(t.videos), priority: 0.5 })),
+    ].map(({ path, lastModified, priority }) => ({
       url: `${SITE_URL}${path}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
-    // Богино бичлэгийн сэдвүүд: SHORTS_INDEXABLE (lib/shorts.ts) true үед л. Үндсэн хуудас
-    // (/stories/photo-video) нь PAGE_META-д, төлөв нь мөн SHORTS_INDEXABLE-аар (lib/navigation.ts).
-    ...(SHORTS_INDEXABLE ? SHORTS_CATEGORIES.map((c) => shortsHref(c.slug)) : []).map((path) => ({
-      url: `${SITE_URL}${path}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
+      ...(lastModified && { lastModified }),
+      changeFrequency: 'weekly' as const,
+      priority,
     })),
   ];
 

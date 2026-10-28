@@ -4,6 +4,8 @@ import { after } from 'next/server';
 
 import { CONTENTFUL_TAG } from '@/lib/contentful';
 import { entryUrls, submitIndexNow } from '@/lib/indexNow';
+import { SHORTS_BASE, SHORTS_TAG } from '@/lib/shorts';
+import { checkShortsApi } from '@/lib/shortsData';
 
 // Contentful webhook (Entry.publish / Entry.unpublish) → тухайн entry-ийн хуудсыг шууд шинэчилнэ.
 // Хуудсууд 7 хоногт нэг л дахин үүсдэг (revalidate = 604800), Contentful-ын хариу Data Cache-д 7 хоног
@@ -133,6 +135,22 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
 export async function POST(req: Request) {
   if (!validSecret(req.headers.get('x-revalidate-secret'))) {
     return Response.json({ ok: false, error: 'unauthorized' }, { status: 401 });
+  }
+
+  // Богино бичлэгийг гараар шинэчлэх (docs/shorts.md): POST /api/revalidate?tag=shorts, ижил secret header.
+  // YouTube API ажиллахгүй үед кэшийг хөндөхгүй (сайн кэш устаж fallback гарахаас сэргийлнэ).
+  if (new URL(req.url).searchParams.get('tag') === SHORTS_TAG) {
+    const apiError = await checkShortsApi();
+    if (apiError) {
+      console.error(`Shorts revalidate: YouTube API алдаа (${apiError}), кэш хэвээр`);
+      return Response.json({ ok: false, tag: SHORTS_TAG, error: apiError }, { status: 503 });
+    }
+    revalidateTag(SHORTS_TAG, { expire: 0 });
+    const paths = ['/', SHORTS_BASE, '/sitemap.xml'];
+    revalidatePath('/');
+    revalidatePath(SHORTS_BASE, 'layout');
+    revalidatePath('/sitemap.xml');
+    return Response.json({ ok: true, tag: SHORTS_TAG, revalidated: paths });
   }
 
   let payload: any;

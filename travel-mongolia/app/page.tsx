@@ -9,8 +9,13 @@ import SeasonRecommendations from '../components/SeasonRecommendations';
 import TopDestinations from '../components/TopDestinations';
 import { ShortsTabs } from '../components/shorts/Shorts';
 import { client as baseClient, rethrowOutage } from '../lib/contentful';
-import { SHORTS_BASE, SHORTS_CATEGORIES } from '../lib/shorts';
+import { SHORTS_BASE } from '../lib/shorts';
+import { getShortsTopics } from '../lib/shortsData';
 const client = baseClient as any;
+
+// Цаг тутам дахин үүснэ: Shorts-ийн fetch кэш (24 цаг) шинэчлэгдсэний дараа шинэ бичлэг удалгүй гарна.
+// Contentful-ын хариу 7 хоногийн Data Cache-аас (lib/contentful.ts) тул CDA хүсэлт нэмэгдэхгүй.
+export const revalidate = 3600;
 
 async function getDestinations() {
   try {
@@ -44,6 +49,8 @@ async function getRecommendations() {
 export default async function Home() {
   const destinations = await getDestinations();
   const recommendations = await getRecommendations();
+  // Бичлэггүй сэдвийн таб харагдахгүй
+  const shorts = (await getShortsTopics()).filter((t) => t.videos.length > 0);
 
   return (
     <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
@@ -56,21 +63,23 @@ export default async function Home() {
       {/* 3. ОНЦЛОХ ГАЗРУУДЫН СЛАЙДЕР */}
       <TopDestinations items={destinations} />
 
-      {/* 4. БОГИНО БИЧЛЭГ: сэдвийн табууд + нэг мөр YouTube Shorts (lib/shorts.ts, components/shorts/) */}
-      <section aria-labelledby="shorts-heading" className="py-10 px-6 mx-auto max-w-7xl sm:px-10">
-        <div className="flex gap-4 justify-between items-end mb-4">
-          <h2 id="shorts-heading" className="text-xl font-black tracking-tight text-neutral-900 sm:text-3xl">
-            Монголыг богино бичлэгээр
-          </h2>
-          <Link
-            href={SHORTS_BASE}
-            className="flex shrink-0 gap-1 items-center text-xs font-bold text-neutral-900 hover:text-[#15803d]"
-          >
-            Бүх бичлэг →
-          </Link>
-        </div>
-        <ShortsTabs categories={SHORTS_CATEGORIES} />
-      </section>
+      {/* 4. БОГИНО БИЧЛЭГ: сэдвийн табууд + нэг мөр YouTube Shorts (lib/shortsData.ts, components/shorts/) */}
+      {shorts.length > 0 && (
+        <section aria-labelledby="shorts-heading" className="py-10 px-6 mx-auto max-w-7xl sm:px-10">
+          <div className="flex gap-4 justify-between items-end mb-4">
+            <h2 id="shorts-heading" className="text-xl font-black tracking-tight text-neutral-900 sm:text-3xl">
+              Монголыг богино бичлэгээр
+            </h2>
+            <Link
+              href={SHORTS_BASE}
+              className="flex shrink-0 gap-1 items-center text-xs font-bold text-neutral-900 hover:text-[#15803d]"
+            >
+              Бүх бичлэг →
+            </Link>
+          </div>
+          <ShortsTabs categories={shorts} />
+        </section>
+      )}
 
       {/* 5. УЛИРЛЫН ЗӨВЛӨМЖ ХЭСЭГ */}
       <SeasonRecommendations items={recommendations} />

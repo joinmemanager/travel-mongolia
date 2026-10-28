@@ -11,7 +11,7 @@
 //             noindex, sitemap-д орохгүй (Google-д хараахан бүртгүүлэхгүй).
 // Production дээр нэг ч live зүйлгүй хэсэг бүхэлдээ нуугдана.
 
-import { SHORTS_BASE, SHORTS_CATEGORIES, SHORTS_INDEXABLE, shortsHref } from './shorts';
+import { SHORTS_BASE, SHORTS_CATEGORIES, shortsHref } from './shorts';
 
 export type NavStatus = 'live' | 'soft' | 'draft' | 'planned';
 
@@ -49,8 +49,9 @@ export interface NavSection {
 // очно. Хуудсууд нь утасны цэс, footer-т бүтнээрээ байна.
 export const PLAN_SECTION_ID = 'plan';
 
-// «Фото/видео түүх» (богино бичлэг): SHORTS_INDEXABLE (lib/shorts.ts) true болтол soft (noindex, sitemap-гүй)
-const SHORTS_STATUS: NavStatus = SHORTS_INDEXABLE ? 'live' : 'soft';
+// «Фото/видео түүх» (богино бичлэг): цэсэнд үргэлж. Index/noindex, sitemap-ийг бичлэгийн тоогоор хуудас
+// өөрөө шийднэ (lib/shorts.ts isTopicIndexable / isAllIndexable, app/sitemap.ts)
+const SHORTS_STATUS: NavStatus = 'live';
 
 const BOOK_NOW_URL =
   'https://joinme.mn?utm_source=travelhubmongolia&utm_medium=referral&utm_campaign=nav';
@@ -270,7 +271,7 @@ export const FOOTER_LEGAL: NavItem[] = [
 export const PAGE_STATUS: Record<string, NavStatus> = {
   // Түүх & өв hub (C10): live. /stories/<slug> нийтлэлүүд энэ төлвийг өвлөнө.
   '/stories': 'live',
-  // Богино бичлэгийн хэсэг: SHORTS_INDEXABLE-аар (lib/shorts.ts). /stories/photo-video/<slug> өвлөнө.
+  // Богино бичлэгийн хэсэг: live (index-ийг хуудас бичлэгийн тоогоор шийднэ). /stories/photo-video/<slug> өвлөнө.
   [SHORTS_BASE]: SHORTS_STATUS,
   // TIC-ийн мэдээний архив (8-р багц): эзэмшигч 2026-10-21-нд live болгосон. /stories/news/<slug> өвлөнө.
   '/stories/news': 'live',

@@ -1,24 +1,36 @@
 import type { Metadata } from 'next';
 
-import { ShortsGrid } from '@/components/shorts/Shorts';
+import { ShortsComingSoon, ShortsGrid } from '@/components/shorts/Shorts';
 import { metaFor } from '@/lib/pageMeta';
-import { SHORTS_ALL, SHORTS_ROBOTS } from '@/lib/shorts';
+import { allShorts, isAllIndexable, SHORTS_NOINDEX, shortsJsonLd } from '@/lib/shorts';
+import { getShortsTopics } from '@/lib/shortsData';
 
-// «Фото/видео түүх» хэсгийн «Бүгд»: сэдэв бүрийн эхний богино бичлэг. Contentful ашиглахгүй (lib/shorts.ts).
-// Hero, «Сэдвийн жагсаалт», замчлал нь (sec-photo)/layout.tsx-д. Хайлтад бүртгэх эсэхийг SHORTS_INDEXABLE шийднэ.
-export const metadata: Metadata = {
-  ...metaFor('/stories/photo-video'),
-  ...(SHORTS_ROBOTS && { robots: SHORTS_ROBOTS }),
-};
+// «Фото/видео түүх» хэсгийн «Бүгд»: бичлэгтэй сэдвүүдийн бүх богино бичлэг (YouTube playlist, lib/shortsData.ts).
+// Contentful ашиглахгүй. Hero, «Сэдвийн жагсаалт», замчлал нь (sec-photo)/layout.tsx-д.
+// Нийт 10+ бичлэгтэй бол хайлтад бүртгэнэ (isAllIndexable, app/sitemap.ts), үгүй бол noindex.
 
-export default function PhotoVideoStoriesPage() {
+// Цаг тутам дахин үүснэ (бичлэгүүд fetch кэшээс, app/page.tsx-ийн тайлбар)
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const topics = await getShortsTopics();
+  return { ...metaFor('/stories/photo-video'), ...(!isAllIndexable(topics) && { robots: SHORTS_NOINDEX }) };
+}
+
+export default async function PhotoVideoStoriesPage() {
+  const topics = await getShortsTopics();
+  const videos = allShorts(topics);
+
   return (
     <div>
+      {isAllIndexable(topics) && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: shortsJsonLd(videos) }} />
+      )}
       <div className="flex flex-wrap gap-x-3 gap-y-1 items-baseline mb-5">
         <h2 className="text-xl font-black tracking-tight sm:text-2xl text-neutral-900">Бүх сэдэв</h2>
-        <p className="text-sm text-neutral-500">{SHORTS_ALL.length} бичлэг</p>
+        {videos.length > 0 && <p className="text-sm text-neutral-500">{videos.length} бичлэг</p>}
       </div>
-      <ShortsGrid videos={SHORTS_ALL} category="all" />
+      {videos.length > 0 ? <ShortsGrid videos={videos} category="all" /> : <ShortsComingSoon />}
     </div>
   );
 }

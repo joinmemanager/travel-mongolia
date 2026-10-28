@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 import {
   SHORTS_PER_ROW,
   type Short,
-  type ShortsCategory,
+  type ShortsTopic,
   shortsHref,
   shortThumb,
   shortThumbFallback,
@@ -15,7 +15,7 @@ import {
   youtubeShortUrl,
 } from '@/lib/shorts';
 
-// YouTube Shorts-ийн босоо картууд + сайт дотор тоглуулах modal (lib/shorts.ts).
+// YouTube Shorts-ийн босоо картууд + сайт дотор тоглуулах modal (lib/shorts.ts, өгөгдөл lib/shortsData.ts).
 // iframe нь modal нээгдэх хүртэл ачаалагдахгүй, хаахад устгагдана (бичлэг зогсоно).
 // GA4: картын shorts_play (source: home / section_page), «Бүгдийг үзэх»-ийн shorts_view_all, нүүр хуудасны
 // табын shorts_tab_select (data-ga-event, components/Analytics.tsx). Хэсгийн жагсаалтын shorts_category_select: lib/sections.ts.
@@ -95,7 +95,7 @@ function ShortCard({
 }
 
 // «Бүгдийг үзэх» карт: уулын жагсаалтын «+N тогтоц / Бүх лавлах сан» (DirectoryGroupSection)-ийн загвар
-function ViewAllCard({ category, remaining }: { category: ShortsCategory; remaining: number }) {
+function ViewAllCard({ category, remaining }: { category: ShortsTopic; remaining: number }) {
   return (
     <Link
       href={shortsHref(category.slug)}
@@ -259,11 +259,12 @@ function usePlayer() {
   return { index, setIndex, close };
 }
 
-// Нүүр хуудасны хэсэг: сэдвийн табууд + идэвхтэй сэдвийн нэг мөр (эхний 5 бичлэг + «Бүгдийг үзэх»).
+// Нүүр хуудасны хэсэг: сэдвийн табууд + идэвхтэй сэдвийн нэг мөр (эхний 5 бичлэг, 6+ бол «Бүгдийг үзэх»).
+// categories-д зөвхөн бичлэгтэй сэдвүүд ирнэ (app/page.tsx), эхнийх нь анхдагч таб.
 // Бүх сэдвийн самбар HTML-д байна (идэвхгүй нь hidden): гарчиг, «Бүгдийг үзэх» холбоос хайлтад
 // харагдана, нуугдсан самбарын нүүр зураг (lazy) табыг нээх хүртэл татагдахгүй.
 // GA4: таб солиход shorts_tab_select (зөвхөн идэвхгүй таб дээр data-ga-event, сумаар солиход .click()).
-export function ShortsTabs({ categories }: { categories: ShortsCategory[] }) {
+export function ShortsTabs({ categories }: { categories: ShortsTopic[] }) {
   const [active, setActive] = useState(0);
   const { index, setIndex, close } = usePlayer();
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -344,9 +345,11 @@ export function ShortsTabs({ categories }: { categories: ShortsCategory[] }) {
                   <ShortCard video={v} category={cat.slug} source="home" onPlay={() => setIndex(j)} compact />
                 </div>
               ))}
-              <div className={cell}>
-                <ViewAllCard category={cat} remaining={cat.videos.length - shown.length} />
-              </div>
+              {cat.videos.length > shown.length && (
+                <div className={cell}>
+                  <ViewAllCard category={cat} remaining={cat.videos.length - shown.length} />
+                </div>
+              )}
             </div>
           </div>
         );
@@ -355,6 +358,16 @@ export function ShortsTabs({ categories }: { categories: ShortsCategory[] }) {
       {/* Өмнөх/дараах сум идэвхтэй сэдвийн бүх бичлэг дотор */}
       {index !== null && <ShortsModal videos={category.videos} index={index} onIndex={setIndex} onClose={close} />}
     </>
+  );
+}
+
+// Бичлэггүй (playlist хоосон) сэдвийн хуудас
+export function ShortsComingSoon() {
+  return (
+    <div className="py-12 px-6 text-center rounded-2xl border border-dashed bg-neutral-50 border-neutral-200">
+      <p className="text-base font-bold text-neutral-800">Удахгүй нэмэгдэнэ</p>
+      <p className="mt-1 text-sm text-neutral-500">Энэ сэдвийн богино бичлэгүүд бэлтгэгдэж байна.</p>
+    </div>
   );
 }
 
