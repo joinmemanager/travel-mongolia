@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { ShortsComingSoon, ShortsGrid } from '@/components/shorts/Shorts';
+import { ShortsListing } from '@/components/shorts/Shorts';
 import { pageMetadata } from '@/lib/seo';
 import { isTopicIndexable, SHORTS_CATEGORIES, SHORTS_NOINDEX, shortsHref, shortsJsonLd } from '@/lib/shorts';
 import { getShortsTopic } from '@/lib/shortsData';
 
 // Нэг сэдвийн бүх богино бичлэг (YouTube playlist, lib/shortsData.ts). Contentful ашиглахгүй. H1 (сэдвийн нэр),
 // замчлалыг SectionPageHeader гаргана (жагсаалтын мөр = lib/navigation.ts-ийн children).
-// 5+ бичлэгтэй бол хайлтад бүртгэнэ (isTopicIndexable, app/sitemap.ts), үгүй бол noindex.
+// Сервер монгол хувилбарыг render хийнэ, өөр хэл сонгосон бол ShortsListing тухайн хэлнийхээр солино.
+// 5+ монгол бичлэгтэй бол хайлтад бүртгэнэ (isTopicIndexable, app/sitemap.ts), үгүй бол noindex.
 interface Props {
   params: Promise<{ category: string }>;
 }
@@ -46,14 +47,7 @@ export default async function ShortsCategoryPage({ params }: Props) {
       {isTopicIndexable(cat) && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: shortsJsonLd(cat.videos) }} />
       )}
-      {cat.videos.length > 0 ? (
-        <>
-          <p className="-mt-7 mb-6 text-sm text-neutral-500">{cat.videos.length} бичлэг</p>
-          <ShortsGrid videos={cat.videos} category={cat.slug} />
-        </>
-      ) : (
-        <ShortsComingSoon />
-      )}
+      <ShortsListing videos={cat.videos} category={cat.slug} />
     </div>
   );
 }

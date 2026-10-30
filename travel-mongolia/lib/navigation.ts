@@ -12,6 +12,7 @@
 // Production дээр нэг ч live зүйлгүй хэсэг бүхэлдээ нуугдана.
 
 import { SHORTS_BASE, SHORTS_CATEGORIES, shortsHref } from './shorts';
+import { shortsName } from './shortsI18n';
 
 export type NavStatus = 'live' | 'soft' | 'draft' | 'planned';
 
@@ -177,7 +178,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
         mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: SHORTS_BASE, status: SHORTS_STATUS,
         children: SHORTS_CATEGORIES.map((c) => ({
           mn: c.tab,
-          en: c.en,
+          en: shortsName(c, 'en').tab,
           href: shortsHref(c.slug),
           status: SHORTS_STATUS,
           sectionLabel: c.title,

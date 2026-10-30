@@ -1,23 +1,91 @@
 import { cache } from 'react';
 
 import {
+  langChain,
   parsePlaylistItems,
   playableIds,
+  playlistIdFrom,
   type Short,
   SHORTS_CATEGORIES,
   SHORTS_TAG,
   SHORTS_TTL,
   type ShortsCategory,
+  type ShortsLang,
   type ShortsTopic,
 } from './shorts';
 
-// Сэдэв бүрийн бичлэгийг YouTube Data API v3-аас серверт татна (docs/shorts.md). Зөвхөн server
-// component, route-оос импортолно (client компонент lib/shorts.ts-ийг л).
+// Сэдэв бүрийн бичлэгийг хэл бүрийн playlist-аас YouTube Data API v3-аар серверт татна (docs/shorts.md).
+// Зөвхөн server component, route-оос импортолно (client компонент lib/shorts.ts-ийг л).
 // - YOUTUBE_API_KEY: Vercel Production + Preview-д Secret. Зөвхөн энд, header-ээр (URL, log-д гарахгүй).
-// - Хүсэлт бүр Next.js-ийн fetch кэшид (Data Cache) 24 цаг, tag `shorts`. Fetch кэш зөвхөн 200 хариуг
-//   хадгалдаг: хугацаа нь дууссаны дараах шинэчлэлт алдаа (квот, сүлжээ) өгвөл өмнөх сайн хариу үлдэнэ.
-// - Кэш байхгүй үед алдаа гарвал тухайн сэдэв lib/shorts.ts-ийн fallback бичлэгээ харуулна.
-// Квот: playlistItems.list, videos.list тус бүр 1 unit / хуудас (50 бичлэг).
+// - Хүсэлт бүр (хэл, playlist бүр тусдаа URL) Next.js-ийн fetch кэшид (Data Cache) 24 цаг, tag `shorts`.
+//   Fetch кэш зөвхөн 200 хариуг хадгалдаг: хугацаа нь дууссаны дараах шинэчлэлт алдаа (квот, сүлжээ)
+//   өгвөл өмнөх сайн хариу үлдэнэ.
+// - Хэлний сонголт: тухайн хэлний playlist → англи → монгол (langChain). Хоосон ID, бичлэггүй, алдаатай
+//   playlist-ийг алгасна. Монгол playlist кэшгүй алдаа өгвөл lib/shorts.ts-ийн fallback бичлэг гарна.
+// Квот: playlistItems.list, videos.list тус бүр 1 unit / хуудас (50 бичлэг). Хоосон ID-д хүсэлт явахгүй.
+
+// Хэл бүрийн 7 сэдвийн playlist. Утга нь ID («PL…») эсвэл YouTube-ийн холбоос
+// (https://www.youtube.com/playlist?list=PL…) байж болно, ID-г playlistIdFrom салгана.
+// '' = тухайн хэлний playlist байхгүй (англи, тэгээд монгол playlist-ийн бичлэг гарна).
+// Шинэ хэлний playlist нэмэх заавар: docs/shorts.md.
+export const SHORTS_PLAYLISTS: Record<ShortsLang, Record<string, string>> = {
+  mn: {
+    traditions: 'PLIMfWmpU8Ivs',
+    'historical-figures': 'PLF1xGAd_uK44',
+    buddhism: 'PLAt3jou1DKhM',
+    heritage: 'PLd_YRUvE5-xk',
+    nature: 'PLNqTP1hahZQA',
+    legends: 'PLQQAdddZOPKI',
+    monasteries: 'PLHl9G7wHh6tQ',
+  },
+  en: {
+    traditions: '',
+    'historical-figures': '',
+    buddhism: '',
+    heritage: '',
+    nature: '',
+    legends: '',
+    monasteries: '',
+  },
+  'zh-CN': {
+    traditions: '',
+    'historical-figures': '',
+    buddhism: '',
+    heritage: '',
+    nature: '',
+    legends: '',
+    monasteries: '',
+  },
+  ru: {
+    traditions: '',
+    'historical-figures': '',
+    buddhism: '',
+    heritage: '',
+    nature: '',
+    legends: '',
+    monasteries: '',
+  },
+  ko: {
+    traditions: '',
+    'historical-figures': '',
+    buddhism: '',
+    heritage: '',
+    nature: '',
+    legends: '',
+    monasteries: '',
+  },
+  ja: {
+    traditions: '',
+    'historical-figures': '',
+    buddhism: '',
+    heritage: '',
+    nature: '',
+    legends: '',
+    monasteries: '',
+  },
+};
+
+export const playlistFor = (lang: ShortsLang, slug: string) => playlistIdFrom(SHORTS_PLAYLISTS[lang]?.[slug]);
 
 const API = 'https://www.googleapis.com/youtube/v3';
 // nextPageToken-ий хамгаалалт (50 × 20 = 1000 бичлэг)
@@ -63,28 +131,47 @@ async function fetchPlaylist(playlistId: string): Promise<Short[]> {
   return videos.filter((v) => playable.has(v.id));
 }
 
-const withFallback = (c: ShortsCategory): ShortsTopic => ({ ...c, videos: c.fallback ? [c.fallback] : [] });
+const withFallback = (c: ShortsCategory): ShortsTopic => ({
+  ...c,
+  videos: c.fallback ? [{ ...c.fallback, lang: 'mn' }] : [],
+});
 
-// Нэг render-т (хуудас + generateMetadata + sitemap) нэг удаа
-export const getShortsTopics = cache(async (): Promise<ShortsTopic[]> => {
+// Нэг render-т playlist бүрийг нэг л удаа (хэлний хэд хэдэн сонголт ижил playlist руу унаж болно).
+// Алдаатай бол null.
+const playlist = cache(async (id: string): Promise<Short[] | null> => {
+  try {
+    return await fetchPlaylist(id);
+  } catch (err) {
+    console.error(`Shorts: ${id} playlist татаж чадсангүй (${(err as Error)?.message})`);
+    return null;
+  }
+});
+
+async function topicFor(c: ShortsCategory, lang: ShortsLang): Promise<ShortsTopic> {
+  let mnFailed = false;
+  for (const l of langChain(lang)) {
+    const id = playlistFor(l, c.slug);
+    if (!id) continue;
+    const videos = await playlist(id);
+    if (videos === null && l === 'mn') mnFailed = true;
+    if (videos?.length) return { ...c, videos: videos.map((v) => ({ ...v, lang: l })) };
+  }
+  return mnFailed ? withFallback(c) : { ...c, videos: [] };
+}
+
+// Нэг render-т (хуудас + generateMetadata + sitemap) хэл бүрээр нэг удаа
+const topicsFor = cache(async (lang: ShortsLang): Promise<ShortsTopic[]> => {
   if (!process.env.YOUTUBE_API_KEY) {
     console.warn('Shorts: YOUTUBE_API_KEY алга, статик fallback бичлэг харуулна');
     return SHORTS_CATEGORIES.map(withFallback);
   }
-  return Promise.all(
-    SHORTS_CATEGORIES.map(async (c) => {
-      try {
-        return { ...c, videos: await fetchPlaylist(c.playlistId) };
-      } catch (err) {
-        console.error(`Shorts: ${c.slug} playlist татаж чадсангүй (${(err as Error)?.message}), fallback харуулна`);
-        return withFallback(c);
-      }
-    })
-  );
+  return Promise.all(SHORTS_CATEGORIES.map((c) => topicFor(c, lang)));
 });
 
-export async function getShortsTopic(slug: string): Promise<ShortsTopic | undefined> {
-  return (await getShortsTopics()).find((t) => t.slug === slug);
+export const getShortsTopics = (lang: ShortsLang = 'mn') => topicsFor(lang);
+
+export async function getShortsTopic(slug: string, lang: ShortsLang = 'mn'): Promise<ShortsTopic | undefined> {
+  return (await topicsFor(lang)).find((t) => t.slug === slug);
 }
 
 // /api/revalidate?tag=shorts: кэшийг устгахаас өмнө API ажиллаж байгааг кэшгүйгээр шалгана (1 unit).
@@ -93,7 +180,7 @@ export async function checkShortsApi(): Promise<string | null> {
   try {
     await youtube(
       'playlistItems',
-      { part: 'id', playlistId: SHORTS_CATEGORIES[0].playlistId, maxResults: '1' },
+      { part: 'id', playlistId: playlistFor('mn', SHORTS_CATEGORIES[0].slug), maxResults: '1' },
       { cache: 'no-store' }
     );
     return null;

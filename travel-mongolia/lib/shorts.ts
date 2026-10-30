@@ -1,8 +1,17 @@
 // Нүүр хуудасны YouTube Shorts мөрүүд (components/shorts/) болон «Фото/видео түүх» хэсгийн хуудсууд
 // (/stories/photo-video, /stories/photo-video/<slug>; хуучин /stories/shorts/* 308, next.config.js).
 // Цэсний дэд холбоосууд, хэсгийн жагсаалтын мөрүүд SHORTS_CATEGORIES-оос үүснэ (lib/navigation.ts).
-// Сэдэв бүрийн бичлэгүүдийг YouTube playlist-аас серверт татна (lib/shortsData.ts, docs/shorts.md).
-// Энэ файлыг client компонент ч импортолдог тул API түлхүүр, fetch энд байхгүй.
+// Сэдэв бүрийн бичлэгүүдийг хэл бүрийн YouTube playlist-аас серверт татна (lib/shortsData.ts, docs/shorts.md).
+// Энэ файлыг client компонент ч импортолдог тул API түлхүүр, fetch, playlist ID энд байхгүй.
+// Сэдвийн нэр, UI бичвэрийн орчуулга: lib/shortsI18n.ts.
+
+// Сайтын хэлүүд: components/Navbar.tsx-ийн LANGUAGES, googtrans cookie-ийн код (components/useSiteLang.ts)
+export const SHORTS_LANGS = ['mn', 'en', 'zh-CN', 'ru', 'ko', 'ja'] as const;
+export type ShortsLang = (typeof SHORTS_LANGS)[number];
+export const isShortsLang = (v: string | undefined): v is ShortsLang => (SHORTS_LANGS as readonly string[]).includes(v || '');
+
+// Бичлэг сонгох дараалал: тухайн хэлний playlist → англи → монгол (хоосон, бичлэггүй, алдаатай бол дараагийнх)
+export const langChain = (lang: ShortsLang): ShortsLang[] => [...new Set<ShortsLang>([lang, 'en', 'mn'])];
 
 export interface Short {
   // YouTube-ийн бичлэгийн ID (youtube.com/shorts/<id>)
@@ -12,18 +21,16 @@ export interface Short {
   uploadDate?: string;
   // Playlist-д нэмэгдсэн огноо (snippet.publishedAt, sitemap-ийн lastmod)
   addedAt?: string;
+  // Бичлэг аль хэлний playlist-аас ирсэн (VideoObject inLanguage, индексийн тоо). Байхгүй бол 'mn'.
+  lang?: ShortsLang;
 }
 
 export interface ShortsCategory {
   slug: string;
-  // Нүүр хуудасны табын богино нэр
+  // Нүүр хуудасны табын богино нэр (монгол; бусад хэл lib/shortsI18n.ts)
   tab: string;
-  // Англи цэсний нэр
-  en: string;
   title: string;
-  // YouTube playlist ID (Travel Hub Mongolia суваг)
-  playlistId: string;
-  // API ажиллахгүй, кэш байхгүй үед харуулах үндсэн бичлэг (өөрийн playlist-аас). Түүхэн эрхмүүдийн
+  // API ажиллахгүй, кэш байхгүй үед харуулах үндсэн бичлэг (монгол playlist-аас). Түүхэн эрхмүүдийн
   // playlist хоосон тул байхгүй (өмнөх «Өгий нуур» нь байгалийн сэдвийнх).
   fallback?: Short;
 }
@@ -46,15 +53,25 @@ export const SHORTS_PER_ROW = 5;
 export const SHORTS_TOPIC_INDEX_MIN = 5;
 export const SHORTS_ALL_INDEX_MIN = 10;
 
+// Сэдэв бүрийн playlist ID хэлээр: lib/shortsData.ts-ийн SHORTS_PLAYLISTS
 export const SHORTS_CATEGORIES: ShortsCategory[] = [
-  { slug: 'traditions', tab: 'Уламжлалт ёс заншил', en: 'Traditions', title: 'Монголын уламжлалт ёс заншил', playlistId: 'PLIMfWmpU8Ivs', fallback: { id: 'oV5YadlXGtg', title: 'Хүүхдэд нэр өгөх ёсон' } },
-  { slug: 'historical-figures', tab: 'Түүхэн эрхмүүд', en: 'Historical Figures', title: 'Монголын түүхэн эрхмүүд', playlistId: 'PLF1xGAd_uK44' },
-  { slug: 'buddhism', tab: 'Бурхны шашин', en: 'Buddhism', title: 'Монголын бурхны шашин', playlistId: 'PLAt3jou1DKhM', fallback: { id: 'IojZuuEYEnQ', title: 'Майдар бурхан' } },
-  { slug: 'heritage', tab: 'Түүхийн өв соёл', en: 'Historical Heritage', title: 'Монголын түүхийн өв соёл', playlistId: 'PLd_YRUvE5-xk', fallback: { id: 'PWuh730EyfU', title: 'Цонжинболдог - Чингис хааны морьт хөшөө' } },
-  { slug: 'nature', tab: 'Байгалийн өв соёл', en: 'Natural Heritage', title: 'Монголын байгалийн өв соёл', playlistId: 'PLNqTP1hahZQA', fallback: { id: '4GG-iRIGOsc', title: 'Тамчийн хавцал' } },
-  { slug: 'legends', tab: 'Домог, аман түүх', en: 'Legends & Oral History', title: 'Монголын домог, аман түүх', playlistId: 'PLQQAdddZOPKI', fallback: { id: 'jjQDD2s4a88', title: 'Шар нохойн там' } },
-  { slug: 'monasteries', tab: 'Сүм хийдүүд', en: 'Monasteries', title: 'Монголын сүм хийдүүд', playlistId: 'PLHl9G7wHh6tQ', fallback: { id: 'h1dhzBGfFqU', title: 'Хамрын хийд' } },
+  { slug: 'traditions', tab: 'Уламжлалт ёс заншил', title: 'Монголын уламжлалт ёс заншил', fallback: { id: 'oV5YadlXGtg', title: 'Хүүхдэд нэр өгөх ёсон' } },
+  { slug: 'historical-figures', tab: 'Түүхэн эрхмүүд', title: 'Монголын түүхэн эрхмүүд' },
+  { slug: 'buddhism', tab: 'Бурхны шашин', title: 'Монголын бурхны шашин', fallback: { id: 'IojZuuEYEnQ', title: 'Майдар бурхан' } },
+  { slug: 'heritage', tab: 'Түүхийн өв соёл', title: 'Монголын түүхийн өв соёл', fallback: { id: 'PWuh730EyfU', title: 'Цонжинболдог - Чингис хааны морьт хөшөө' } },
+  { slug: 'nature', tab: 'Байгалийн өв соёл', title: 'Монголын байгалийн өв соёл', fallback: { id: '4GG-iRIGOsc', title: 'Тамчийн хавцал' } },
+  { slug: 'legends', tab: 'Домог, аман түүх', title: 'Монголын домог, аман түүх', fallback: { id: 'jjQDD2s4a88', title: 'Шар нохойн там' } },
+  { slug: 'monasteries', tab: 'Сүм хийдүүд', title: 'Монголын сүм хийдүүд', fallback: { id: 'h1dhzBGfFqU', title: 'Хамрын хийд' } },
 ];
+
+// Playlist-ийн утгаас ID: «PL…» ID-г шууд, YouTube-ийн холбоосоос (…?list=<ID>&…) list параметрийг.
+// Хоосон эсвэл танигдахгүй утга бол '' (тухайн хэлний playlist байхгүй гэж үзнэ).
+export function playlistIdFrom(value: string | undefined): string {
+  const v = (value || '').trim();
+  const fromUrl = v.match(/[?&]list=([\w-]+)/);
+  if (fromUrl) return fromUrl[1];
+  return /^[\w-]+$/.test(v) ? v : '';
+}
 
 export function getShortsCategory(slug: string): ShortsCategory | undefined {
   return SHORTS_CATEGORIES.find((c) => c.slug === slug);
@@ -110,8 +127,13 @@ export function lastAdded(videos: Short[]): string | undefined {
   return videos.map((v) => v.addedAt).filter((d): d is string => !!d).sort().at(-1);
 }
 
-export const isTopicIndexable = (t: ShortsTopic) => t.videos.length >= SHORTS_TOPIC_INDEX_MIN;
-export const isAllIndexable = (topics: ShortsTopic[]) => allShorts(topics).length >= SHORTS_ALL_INDEX_MIN;
+// Хуудасны хэлний (lang) өөрийн бичлэг л индексийн тоонд орно: өөр хэлний playlist-аас fallback-аар
+// ирсэн бичлэг тоологдохгүй. Одоо сервер зөвхөн монгол хуудас render хийдэг тул lang = 'mn'.
+const ownLang = (videos: Short[], lang: ShortsLang) => videos.filter((v) => (v.lang || 'mn') === lang);
+export const isTopicIndexable = (t: ShortsTopic, lang: ShortsLang = 'mn') =>
+  ownLang(t.videos, lang).length >= SHORTS_TOPIC_INDEX_MIN;
+export const isAllIndexable = (topics: ShortsTopic[], lang: ShortsLang = 'mn') =>
+  ownLang(allShorts(topics), lang).length >= SHORTS_ALL_INDEX_MIN;
 export const SHORTS_NOINDEX = { index: false, follow: true };
 
 export const shortsHref = (slug: string) => `${SHORTS_BASE}/${slug}`;
@@ -122,12 +144,12 @@ export const youtubeEmbedUrl = (id: string) =>
 export const shortThumb = (id: string) => `https://i.ytimg.com/vi/${id}/oardefault.jpg`;
 export const shortThumbFallback = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
-// Index хийгдэх хуудасны VideoObject JSON-LD (uploadDate-гүй, өөрөөр хэлбэл fallback бичлэгийг оруулахгүй).
-// <script>-д шууд тавих мөр: гарчиг дахь «<»-г escape хийнэ (</script> болохгүй).
-export function shortsJsonLd(videos: Short[]): string {
+// Index хийгдэх хуудасны VideoObject JSON-LD: зөвхөн хуудасны хэлний бичлэг, uploadDate-тэй (статик
+// fallback бичлэгийг оруулахгүй). <script>-д шууд тавих мөр: гарчиг дахь «<»-г escape хийнэ.
+export function shortsJsonLd(videos: Short[], lang: ShortsLang = 'mn'): string {
   return JSON.stringify({
     '@context': 'https://schema.org',
-    '@graph': videos
+    '@graph': ownLang(videos, lang)
       .filter((v) => v.uploadDate)
       .map((v) => ({
         '@type': 'VideoObject',
@@ -135,6 +157,7 @@ export function shortsJsonLd(videos: Short[]): string {
         thumbnailUrl: shortThumbFallback(v.id),
         uploadDate: v.uploadDate,
         embedUrl: `https://www.youtube.com/embed/${v.id}`,
+        inLanguage: v.lang || 'mn',
       })),
   }).replace(/</g, '\\u003c');
 }

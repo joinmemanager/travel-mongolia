@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ? [{ path: SHORTS_BASE, lastModified: lastAdded(allShorts(shortsTopics)), priority: 0.6 }]
         : []),
       ...shortsTopics
-        .filter(isTopicIndexable)
+        .filter((t) => isTopicIndexable(t))
         .map((t) => ({ path: shortsHref(t.slug), lastModified: lastAdded(t.videos), priority: 0.5 })),
     ].map(({ path, lastModified, priority }) => ({
       url: `${SITE_URL}${path}`,

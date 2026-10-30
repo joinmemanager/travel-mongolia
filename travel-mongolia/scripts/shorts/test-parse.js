@@ -67,11 +67,77 @@ const ld = shorts.shortsJsonLd([{ id: 'aaa', title: 'A </script>', uploadDate: '
 assert.ok(!ld.includes('</script>'), '</script> escape');
 const graph = JSON.parse(ld)['@graph'];
 assert.strictEqual(graph.length, 1);
-assert.deepStrictEqual(Object.keys(graph[0]).sort(), ['@type', 'embedUrl', 'name', 'thumbnailUrl', 'uploadDate']);
+assert.deepStrictEqual(Object.keys(graph[0]).sort(), ['@type', 'embedUrl', 'inLanguage', 'name', 'thumbnailUrl', 'uploadDate']);
+assert.strictEqual(graph[0].inLanguage, 'mn', 'lang-гүй бичлэг монгол');
 
-// Статик fallback: 7 playlist, хоосон playlist-тай сэдэвт fallback-гүй
+// Хэл: JSON-LD-д зөвхөн хуудасны хэлний бичлэг, inLanguage нь бичлэгийн хэл
+const enLd = JSON.parse(shorts.shortsJsonLd([
+  { id: 'e1', title: 'E', uploadDate: '2026-09-01T00:00:00Z', lang: 'en' },
+  { id: 'm1', title: 'M', uploadDate: '2026-09-01T00:00:00Z', lang: 'mn' },
+], 'en'))['@graph'];
+assert.deepStrictEqual(enLd.map((v) => [v.name, v.inLanguage]), [['E', 'en']]);
+
+// Индекс: fallback (өөр хэлний) бичлэг хуудасны хэлний тоонд орохгүй
+const langTopic = (n, lang) => ({ slug: 'x', videos: Array.from({ length: n }, (_, i) => ({ id: `${lang}${i}`, title: 't', lang })) });
+assert.strictEqual(shorts.isTopicIndexable(langTopic(5, 'mn'), 'mn'), true);
+assert.strictEqual(shorts.isTopicIndexable(langTopic(5, 'mn'), 'en'), false, 'en хуудсанд монгол fallback');
+assert.strictEqual(shorts.isTopicIndexable(langTopic(5, 'en'), 'en'), true);
+assert.strictEqual(shorts.isAllIndexable([langTopic(5, 'ru'), { slug: 'y', videos: langTopic(5, 'en').videos.map((v) => ({ ...v, id: `y${v.id}` })) }], 'ru'), false, '«Бүгд»: ru 5 + en 5 → ru 5 < 10');
+
+// Сонголтын дараалал: тухайн хэл → англи → монгол
+assert.deepStrictEqual(shorts.langChain('ru'), ['ru', 'en', 'mn']);
+assert.deepStrictEqual(shorts.langChain('en'), ['en', 'mn']);
+assert.deepStrictEqual(shorts.langChain('mn'), ['mn', 'en']);
+assert.deepStrictEqual([...shorts.SHORTS_LANGS], ['mn', 'en', 'zh-CN', 'ru', 'ko', 'ja']);
+assert.ok(shorts.isShortsLang('zh-CN') && !shorts.isShortsLang('zh') && !shorts.isShortsLang(undefined));
+
+// Playlist ID: шууд ID, холбоосоос list=, хоосон/буруу утга
+const ID = 'PLIMfWmpU8Ivs_a-B';
+assert.strictEqual(shorts.playlistIdFrom(ID), ID);
+assert.strictEqual(shorts.playlistIdFrom(`  ${ID} `), ID);
+assert.strictEqual(shorts.playlistIdFrom(`https://www.youtube.com/playlist?list=${ID}`), ID);
+assert.strictEqual(shorts.playlistIdFrom(`https://www.youtube.com/watch?v=abc123&list=${ID}&index=2`), ID);
+assert.strictEqual(shorts.playlistIdFrom(`https://youtube.com/playlist?list=${ID}&si=xyz`), ID);
+assert.strictEqual(shorts.playlistIdFrom(''), '');
+assert.strictEqual(shorts.playlistIdFrom(undefined), '');
+assert.strictEqual(shorts.playlistIdFrom('https://www.youtube.com/@travelhubmongolia'), '', 'list-гүй холбоос');
+
+// Статик fallback: 7 сэдэв, хоосон playlist-тай сэдэвт fallback-гүй
 assert.strictEqual(shorts.SHORTS_CATEGORIES.length, 7);
-assert.ok(shorts.SHORTS_CATEGORIES.every((c) => c.playlistId));
 assert.strictEqual(shorts.SHORTS_CATEGORIES.filter((c) => c.fallback).length, 6, 'түүхэн эрхмүүдээс бусад нь fallback-тай');
 
-console.log('OK: shorts задлалт, шүүлтүүр, индексийн дүрэм, JSON-LD бүгд зөв');
+// lib/shortsData.ts-ийн SHORTS_PLAYLISTS: 6 хэл бүрд 7 сэдэв бүгд бий, монголынх бүгд бөглөгдсөн
+const dataSrc = fs.readFileSync(path.join(__dirname, '../../lib/shortsData.ts'), 'utf8');
+const block = dataSrc.slice(dataSrc.indexOf('SHORTS_PLAYLISTS'), dataSrc.indexOf('export const playlistFor'));
+const langBlocks = block.split(/\n  (?='?[\w-]+'?: \{)/).slice(1);
+assert.strictEqual(langBlocks.length, 6, '6 хэл');
+for (const lb of langBlocks) {
+  const name = lb.match(/^'?([\w-]+)'?/)[1];
+  for (const c of shorts.SHORTS_CATEGORIES) {
+    const m = lb.match(new RegExp(`\\n\\s+'?${c.slug}'?: '([^']*)'`));
+    assert.ok(m, `${name}: ${c.slug} мөр байхгүй`);
+    if (name === 'mn') assert.ok(shorts.playlistIdFrom(m[1]), `mn: ${c.slug} playlist хоосон`);
+    else assert.ok(m[1] === '' || shorts.playlistIdFrom(m[1]), `${name}: ${c.slug} утга танигдсангүй`);
+  }
+}
+
+// Сэдвийн нэр, UI бичвэр: 6 хэл бүрд (lib/shortsI18n.ts)
+const i18nSrc = fs.readFileSync(path.join(__dirname, '../../lib/shortsI18n.ts'), 'utf8');
+const i18nMod = { exports: {} };
+new Function('module', 'exports', 'require', ts.transpileModule(i18nSrc, {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+}).outputText)(i18nMod, i18nMod.exports, require);
+const { shortsName, shortsText } = i18nMod.exports;
+for (const lang of shorts.SHORTS_LANGS) {
+  const s = shortsText(lang);
+  assert.ok(s && s.viewAll && s.count(3) && s.play('x').includes('x'), `${lang}: UI бичвэр`);
+  for (const c of shorts.SHORTS_CATEGORIES) {
+    const n = shortsName(c, lang);
+    assert.ok(n.tab && n.title, `${lang}: ${c.slug} нэр`);
+    if (lang !== 'mn') assert.notStrictEqual(n.tab, c.tab, `${lang}: ${c.slug} орчуулаагүй`);
+  }
+}
+assert.strictEqual(shortsName(shorts.SHORTS_CATEGORIES[0], 'mn').tab, 'Уламжлалт ёс заншил');
+assert.strictEqual(shortsName(shorts.SHORTS_CATEGORIES[0], 'en').tab, 'Traditions');
+
+console.log('OK: shorts задлалт, шүүлтүүр, хэл, playlist ID, индексийн дүрэм, JSON-LD бүгд зөв');

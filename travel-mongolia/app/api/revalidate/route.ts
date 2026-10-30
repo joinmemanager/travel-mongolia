@@ -4,7 +4,7 @@ import { after } from 'next/server';
 
 import { CONTENTFUL_TAG } from '@/lib/contentful';
 import { entryUrls, submitIndexNow } from '@/lib/indexNow';
-import { SHORTS_BASE, SHORTS_TAG } from '@/lib/shorts';
+import { SHORTS_BASE, SHORTS_LANGS, SHORTS_TAG } from '@/lib/shorts';
 import { checkShortsApi } from '@/lib/shortsData';
 
 // Contentful webhook (Entry.publish / Entry.unpublish) → тухайн entry-ийн хуудсыг шууд шинэчилнэ.
@@ -146,10 +146,13 @@ export async function POST(req: Request) {
       return Response.json({ ok: false, tag: SHORTS_TAG, error: apiError }, { status: 503 });
     }
     revalidateTag(SHORTS_TAG, { expire: 0 });
-    const paths = ['/', SHORTS_BASE, '/sitemap.xml'];
+    // Бусад хэлний JSON (app/api/shorts/[lang])
+    const langPaths = SHORTS_LANGS.filter((l) => l !== 'mn').map((l) => `/api/shorts/${l}`);
+    const paths = ['/', SHORTS_BASE, '/sitemap.xml', ...langPaths];
     revalidatePath('/');
     revalidatePath(SHORTS_BASE, 'layout');
     revalidatePath('/sitemap.xml');
+    langPaths.forEach((p) => revalidatePath(p));
     return Response.json({ ok: true, tag: SHORTS_TAG, revalidated: paths });
   }
 
