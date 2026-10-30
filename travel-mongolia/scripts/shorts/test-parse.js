@@ -101,6 +101,11 @@ assert.strictEqual(shorts.playlistIdFrom(`https://youtube.com/playlist?list=${ID
 assert.strictEqual(shorts.playlistIdFrom(''), '');
 assert.strictEqual(shorts.playlistIdFrom(undefined), '');
 assert.strictEqual(shorts.playlistIdFrom('https://www.youtube.com/@travelhubmongolia'), '', 'list-гүй холбоос');
+// YouTube-ийн шинэ богино хэлбэр (PL + 11 тэмдэгт, «-», «_»-тай) болон хуучин урт (PL + 32) хоёулаа
+for (const id of ['PLf5oM-3fIIA8', 'PLK99Vp_4tke8', 'PLN-ZAwnOtUVk', 'PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf']) {
+  assert.strictEqual(shorts.playlistIdFrom(id), id, `ID ${id}`);
+  assert.strictEqual(shorts.playlistIdFrom(`https://www.youtube.com/playlist?list=${id}`), id, `холбоос ${id}`);
+}
 
 // Статик fallback: 7 сэдэв, хоосон playlist-тай сэдэвт fallback-гүй
 assert.strictEqual(shorts.SHORTS_CATEGORIES.length, 7);
@@ -111,6 +116,7 @@ const dataSrc = fs.readFileSync(path.join(__dirname, '../../lib/shortsData.ts'),
 const block = dataSrc.slice(dataSrc.indexOf('SHORTS_PLAYLISTS'), dataSrc.indexOf('export const playlistFor'));
 const langBlocks = block.split(/\n  (?='?[\w-]+'?: \{)/).slice(1);
 assert.strictEqual(langBlocks.length, 6, '6 хэл');
+const seenIds = new Map();
 for (const lb of langBlocks) {
   const name = lb.match(/^'?([\w-]+)'?/)[1];
   for (const c of shorts.SHORTS_CATEGORIES) {
@@ -118,6 +124,12 @@ for (const lb of langBlocks) {
     assert.ok(m, `${name}: ${c.slug} мөр байхгүй`);
     if (name === 'mn') assert.ok(shorts.playlistIdFrom(m[1]), `mn: ${c.slug} playlist хоосон`);
     else assert.ok(m[1] === '' || shorts.playlistIdFrom(m[1]), `${name}: ${c.slug} утга танигдсангүй`);
+    // Нэг playlist хоёр газар орсон бол хуулахдаа алдсан байх магадлалтай
+    const id = shorts.playlistIdFrom(m[1]);
+    if (id) {
+      assert.ok(!seenIds.has(id), `${name}: ${c.slug} playlist ${id} давхардсан (${seenIds.get(id)})`);
+      seenIds.set(id, `${name}/${c.slug}`);
+    }
   }
 }
 
