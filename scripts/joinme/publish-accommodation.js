@@ -1,6 +1,7 @@
 // joinme-ийн байрыг нийтэлнэ (эзэмшигчийн заавар, 2026-11-02): анхны 155 draft + нэгтгэсэн 53 TIC entry.
 //   node scripts/joinme/publish-accommodation.js        # зөвхөн тоолж, шалгана, юу ч өөрчлөхгүй
 //   node scripts/joinme/publish-accommodation.js --go   # нийтэлнэ
+//   node scripts/joinme/publish-accommodation.js --later [--go]   # хожим нэмсэн 9 байр
 // Малчин өрх, тэмээ/морь, гар урлал, хоолыг нийтлэхгүй (/local хэсэгтэй хамт нээнэ). Хожим нэмсэн 10 байр draft-аар үлдэнэ.
 // Webhook асаалттай эсвэл TIC entry-д joinme-ээс гадуур өөрчлөлт олдвол зогсоно. Unpublish, устгах код алга.
 const fs = require('fs');
@@ -41,6 +42,20 @@ const same = (a, b) => JSON.stringify(canon(a)) === JSON.stringify(canon(b));
   const heldBack = lodging.filter((e) => later.has(nameOf.get(e.sys.id)));
   const tic = items.filter((e) => !e.sys.id.startsWith('joinme-'));
   const others = items.filter((e) => e.sys.id.startsWith('joinme-') && v(e, 'providerType') !== 'accommodation');
+
+  // --later: хожим нэмсэн байрууд (webhook асаалттай, ердийн нийтлэлт). «Тосон Краван мини хаус» шалгагдтал draft.
+  if (process.argv.includes('--later')) {
+    const list = heldBack.filter((e) => nameOf.get(e.sys.id) !== 'Тосон Краван мини хаус');
+    console.log('нийтлэх', list.length, list.map((e) => `${v(e, 'name')} [${e.sys.publishedVersion ? 'published' : 'draft'}]`));
+    if (list.length !== 9) throw new Error(`тоо зөрүүтэй: ${list.length}/9`);
+    if (!GO) { console.log('[шалгалт] юу ч нийтлээгүй', `CMA ${callCount()}`); return; }
+    for (const e of list) {
+      if (e.sys.publishedVersion) continue;
+      await cma('PUT', `/entries/${e.sys.id}/published`, { version: e.sys.version });
+    }
+    console.log('нийтлэв', list.length, `CMA ${callCount()}`);
+    return;
+  }
 
   // TIC entry: одоогийн draft ба нийтлэгдсэн хувилбарын ялгааг шалгана
   const pub = new Map();
