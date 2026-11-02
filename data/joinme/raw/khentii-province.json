@@ -1,0 +1,3226 @@
+{
+ "id": 1225,
+ "title": "Хэнтий аймаг",
+ "meta_title": "Хэнтий Аймаг",
+ "meta_description": "",
+ "meta_keywords": "Хэнтий Аймаг, хэнтий, хэнтий аялал, ",
+ "visible": true,
+ "created_at": "2020-12-08T10:51:38.000Z",
+ "updated_at": "2024-02-23T03:24:35.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "HTMLBox",
+   "id": "b507147a-faf1-4afb-a17e-35f256a62837",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42119/original/Khentii-Header.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "paddingTop": "",
+    "marginTop": "-40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "68c3ff21-8072-4d2b-95f6-f3291b356a09",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250550/original/Khentii_mobile.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "paddingTop": "",
+    "marginTop": "-40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dc9d8ca0-49da-43d0-96e2-af648d4f4eac",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/41578/original/Khentii-About.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "120px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b324157f-0200-47ab-9da7-3e6fa2173bd8",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42176/original/Khentii-Wonders.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dabb787a-beb5-4d04-8656-d3a2ba3bfbf6",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42121/original/Khentii-Destination-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41584,
+     "file_name": "Khentii-Destination-1.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=71"
+    },
+    {
+     "id": 42122,
+     "file_name": "Khentii-Destination-2.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=145"
+    },
+    {
+     "id": 41586,
+     "file_name": "Khentii-Destination-3.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=40"
+    },
+    {
+     "id": 41587,
+     "file_name": "Khentii-Destination-4.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=37"
+    },
+    {
+     "id": 41588,
+     "file_name": "Khentii-Destination-5.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=527"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:590",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "456d23d4-674d-4ed8-a66f-1fb55f9939e0",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250559,
+     "file_name": "1_(1).png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=71"
+    },
+    {
+     "id": 250560,
+     "file_name": "1_(2).png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=145"
+    },
+    {
+     "id": 250561,
+     "file_name": "1_(3).png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=40"
+    },
+    {
+     "id": 250562,
+     "file_name": "1_(4).png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=37"
+    },
+    {
+     "id": 250563,
+     "file_name": "1_(5).png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=527"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:590",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "e5b3e1cf-7e32-45c7-8bd4-6567f31ea4f5",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dd4930da-87d6-4a52-ac9d-9a1518223b3c",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42192/original/Khentii-Photos-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d32bb142-448e-4522-8ccd-55baef65d736",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250564/original/M.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "FeaturedSwiper",
+   "items": [
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41607,
+      "file_name": "Khentii-Photos_(2).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41606,
+      "file_name": "Khentii-Photos_(1).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41608,
+      "file_name": "Khentii-Photos_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41609,
+      "file_name": "Khentii-Photos_(4).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41610,
+      "file_name": "Khentii-Photos_(5).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41611,
+      "file_name": "Khentii-Photos_(6).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41613,
+      "file_name": "Khentii-Photos_(8).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41614,
+      "file_name": "Khentii-Photos_(9).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41615,
+      "file_name": "Khentii-Photos_(10).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41616,
+      "file_name": "Khentii-Photos_(11).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41617,
+      "file_name": "Khentii-Photos_(12).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41618,
+      "file_name": "Khentii-Photos_(13).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41619,
+      "file_name": "Khentii-Photos_(14).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41620,
+      "file_name": "Khentii-Photos_(15).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41621,
+      "file_name": "Khentii-Photos_(16).jpg"
+     }
+    }
+   ],
+   "id": "f96983c4-2a6c-4101-879d-b7aa64c7157b",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "FeaturedSwiper",
+   "items": [
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41607,
+      "file_name": "Khentii-Photos_(2).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41606,
+      "file_name": "Khentii-Photos_(1).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41608,
+      "file_name": "Khentii-Photos_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41609,
+      "file_name": "Khentii-Photos_(4).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41610,
+      "file_name": "Khentii-Photos_(5).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41611,
+      "file_name": "Khentii-Photos_(6).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41613,
+      "file_name": "Khentii-Photos_(8).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41614,
+      "file_name": "Khentii-Photos_(9).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41615,
+      "file_name": "Khentii-Photos_(10).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41616,
+      "file_name": "Khentii-Photos_(11).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41617,
+      "file_name": "Khentii-Photos_(12).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41618,
+      "file_name": "Khentii-Photos_(13).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41619,
+      "file_name": "Khentii-Photos_(14).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41620,
+      "file_name": "Khentii-Photos_(15).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 41621,
+      "file_name": "Khentii-Photos_(16).jpg"
+     }
+    }
+   ],
+   "id": "e5b72902-a17d-4560-9e98-77cd83d6e167",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px",
+    "backgroundColor": "#FFF"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "217f3245-2fbe-4242-be09-f8451076ea77",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42126/original/Khentii-Museum-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "41ed0251-74d7-4af1-8d65-4401bc608c12",
+   "content": "<p><a href=\"../../media/714\"><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250566/original/m_(2).png\" alt=\"\" width=\"100%\" /></a></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": ""
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-60px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 42127,
+     "file_name": "Khentii-Museum-1.jpg",
+     "link": "/media/714"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "5218fda9-3b4f-4bc8-93dd-f226fc758510",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "807fc1f0-5f58-465a-a5d6-1fd1eaa084ca",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/41580/original/Khentii-News-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9a87537c-f0ad-4423-8c69-f344c003c20e",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250567/original/medee.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41581,
+     "file_name": "Khentii-News-1.jpg",
+     "link": "/media/660"
+    },
+    {
+     "id": 41582,
+     "file_name": "Khentii-News-2.jpg",
+     "link": "/media/337"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:590",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "9d4b2e8f-6235-4f74-97fb-1519e23e1ac2",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250568,
+     "file_name": "m_(1).png",
+     "link": "/media/660"
+    },
+    {
+     "id": 250569,
+     "file_name": "m_(3).png",
+     "link": "/media/337"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:590",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "8afbed68-0cb7-4774-a1d7-a788cb83e5f7",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "39509751-6ba7-4d4a-a4e0-65e11f6522b9",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42135/original/Khentii-Event-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "5ae2d71e-84f7-44ac-9560-aadf35100fd6",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250570/original/event.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 42152,
+     "file_name": "Khentii-Event-2.jpg",
+     "link": "/products/414_jm-taliintumenaduu-001"
+    },
+    {
+     "id": 42151,
+     "file_name": "Khentii-Event-1.jpg",
+     "link": "/products/414_jm-togoruuniibayar-001"
+    },
+    {
+     "id": 42153,
+     "file_name": "Khentii-Event-3.jpg",
+     "link": "/products/414_jm-altarganannaadam-001"
+    },
+    {
+     "id": 42154,
+     "file_name": "Khentii-Event-4.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "326:326",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "4",
+   "id": "b8459cbe-5c97-4776-ab80-e99eb146a5a5",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 42151,
+     "file_name": "Khentii-Event-1.jpg",
+     "link": "/products/414_jm-togoruuniibayar-001"
+    },
+    {
+     "id": 42152,
+     "file_name": "Khentii-Event-2.jpg",
+     "link": "/products/414_jm-taliintumenaduu-001"
+    },
+    {
+     "id": 42153,
+     "file_name": "Khentii-Event-3.jpg",
+     "link": "/products/414_jm-altarganannaadam-001"
+    },
+    {
+     "id": 42154,
+     "file_name": "Khentii-Event-4.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "326:326",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "8c3443a1-96f4-402d-8c6d-b875fd7e9153",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "40px",
+    "backgroundColor": "#fff"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px",
+    "marginLeft": "40px",
+    "marginRight": "40px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "7f1cffe3-ece6-48fa-93bf-31080d68443c",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/41589/original/Khentii-Historical-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "5bd26944-f912-4861-aef3-d372087a99f1",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250572/original/text.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41591,
+     "file_name": "Monument_2.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=1"
+    },
+    {
+     "id": 41592,
+     "file_name": "Monument_3.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=554"
+    },
+    {
+     "id": 41593,
+     "file_name": "Monument_4.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=4"
+    },
+    {
+     "id": 41594,
+     "file_name": "Monument_5.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=527"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "cbd3958c-bb75-40bd-89a3-eeaf8ffaf4a2",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41591,
+     "file_name": "Monument_2.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=1"
+    },
+    {
+     "id": 41592,
+     "file_name": "Monument_3.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=554"
+    },
+    {
+     "id": 41593,
+     "file_name": "Monument_4.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=4"
+    },
+    {
+     "id": 41594,
+     "file_name": "Monument_5.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=527"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "7ff72bec-9d5b-4f93-a562-8a2d4aa94a4c",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41595,
+     "file_name": "Monument_6.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=6"
+    },
+    {
+     "id": 41596,
+     "file_name": "Monument_7.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=347"
+    },
+    {
+     "id": 41597,
+     "file_name": "Monument_8.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=71"
+    },
+    {
+     "id": 41599,
+     "file_name": "Monument_10.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=531"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "1500a778-8862-4a0a-b7c7-b688caaf62d2",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "10px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41595,
+     "file_name": "Monument_6.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=6"
+    },
+    {
+     "id": 41596,
+     "file_name": "Monument_7.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=347"
+    },
+    {
+     "id": 41597,
+     "file_name": "Monument_8.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=71"
+    },
+    {
+     "id": 41599,
+     "file_name": "Monument_10.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=531"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "6dbcfe89-eb61-478b-bc16-880d32a02aad",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "10px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "0a383e43-6f6c-4f2f-9dae-df7319318d4a",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/41601/original/Khentii-Monuments-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b6cbfdcf-2012-4375-9702-c252c2584f52",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250573/original/text.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41600,
+     "file_name": "Monument_11.jpg",
+     "link": "http://www.touristinfocenter.mn/cate4_more.aspx?ItemID=8"
+    },
+    {
+     "id": 41598,
+     "file_name": "Monument_9.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=581"
+    },
+    {
+     "id": 41590,
+     "file_name": "Monument_1.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=131"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "3dd4428b-05cb-4d9e-a6ae-e723b4eea100",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": ""
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41600,
+     "file_name": "Monument_11.jpg",
+     "link": "http://www.touristinfocenter.mn/cate4_more.aspx?ItemID=8"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "ee7e0196-c371-4450-97fe-196fb7eb29c6",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "",
+   "style": {
+    "marginTop": ""
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41598,
+     "file_name": "Monument_9.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=581"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "4b352280-c0e6-4735-b50d-3ba5b0301dbd",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "",
+   "style": {
+    "marginTop": ""
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 41590,
+     "file_name": "Monument_1.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=131"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "888:314",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "99b891ba-078d-4b5e-a128-fb40f9f361bc",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "",
+   "style": {
+    "marginTop": ""
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "62540f34-e61f-46d6-b77f-93fae5040cb0",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/42193/original/Khentii-Testimonial.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d4103df5-5f50-48bb-9be8-89e2bd6a2579",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250574/original/setgegdel.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "f2388823-fe42-42bc-ace9-32582b604dd7",
+   "content": "<h1 style=\"text-align: center;\"><strong>Жуулчны бааз</strong></h1>",
+   "style": {
+    "marginBottom": "40px",
+    "marginTop": "-80px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "200f23a5-cc77-408c-a698-513692794a87",
+   "content": "<h4 style=\"text-align: center;\"><strong>Жуулчны бааз</strong></h4>",
+   "style": {
+    "marginBottom": "40px",
+    "marginTop": "-80px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онон-Ёл Жуулчны бааз",
+         "address": "Onon Yol tourist camp",
+         "location": "Чингис хотоос  – 200 км",
+         "phone": "91888751 93155103",
+         "image": {
+          "id": 173453,
+          "file_name": "Onon_Yol.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7d05ff70-1a34-49ab-806a-4ce4040fa7c2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өглөгч Валл Эко Лоож",
+         "address": "Uglugch Wall Eco Lodge",
+         "location": "Чингис хотоос -130 км, Сумын төвөөс – 60 км",
+         "phone": "98807879 99807879",
+         "image": {
+          "id": 173454,
+          "file_name": "Uglugch_wall_eco_lodge.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "65914e2e-73f9-44d3-92af-0b413ca39eb8"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингисийн Өлгий Жуулчны Бааз",
+         "address": "Чингисийн өлгий жуулчны бааз - Chinggis homeland tourist camp",
+         "location": "Чингис хотоос – 186 км, Сумын төвөөс  – 15 км",
+         "phone": "98106300, 99033462",
+         "image": {
+          "id": 173471,
+          "file_name": "Chingisiin_Ulgii.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8b116361-ceb6-4686-bbdc-9454decdeadc"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өндөрхаан Жуулчны Бааз",
+         "address": "Өндөрхаан Жуулчны Бааз",
+         "location": "Хэрлэн Сумын төвөөс баруун хойш 6 км",
+         "phone": "98929005",
+         "image": {
+          "id": 173673,
+          "file_name": "Ondorkhaan.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d0f8c8ef-a21a-4dd0-ac77-ace2ee7ea584"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянгол Жуулчны Бааз ",
+         "address": "Bayangol tourist camp",
+         "location": "Өмнөдэлгэр Сумын төвөөс  баруун хойш 50 км, Хөх нуураас зүүн тийш 40 км",
+         "phone": "98453536, 98033555,  98125293",
+         "image": {
+          "id": 173669,
+          "file_name": "Bayangol_tourism_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "0032be62-c61f-4df7-a00d-be89d3a42db2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хүннү Хөдөө Арал",
+         "address": "Хүннү хөдөө арал жуулчны бааз",
+         "location": "Дэлгэрхаан Сумын төвөөс 5 км  Аварга Тосон нуурын эрэг",
+         "phone": "99704334, 88005770",
+         "image": {
+          "id": 173664,
+          "file_name": "hunnu_khodoo_aral.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3a11c3b5-31a0-4dcf-b383-801c57932d50"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алтаргана Жуулчны Бааз",
+         "location": "Дадал Сумын төвөөс  – 2 км  Зүүн нуурын эрэг",
+         "address": "Altargana Tourist camp ",
+         "phone": "90900221\t",
+         "image": {
+          "id": 173656,
+          "file_name": "Altargana_tourism_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "bce1cd9a-9879-4b01-8cfe-6dbfbdb42334"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алтан Ураг Жуулчны Бааз",
+         "address": "Биндэр сум \"Алтан Ураг\" жуулчны бааз",
+         "location": "Биндэр сумаас – 4  км  Хурх голын хойно",
+         "phone": "90090425, 98202099",
+         "image": {
+          "id": 173635,
+          "file_name": "Altan_Urag_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "fe20d6a6-a18a-453e-9f28-8dcced3760dd"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянхүрээ Жуулчны Бааз",
+         "address": "Bayan-Khuree Tourist Camp ",
+         "location": "Баянхутаг сум, Чингис хотоос – 6 км",
+         "phone": "98730101, 99663402",
+         "image": {
+          "id": 173625,
+          "file_name": "Bayankhuree.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "a13b498d-3256-441e-9038-9b287d073c93"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дадал Жуулчны Бааз",
+         "location": "Дадал Сумын төвөөс – 1.5 км",
+         "phone": "99116816",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "45172336-6c4c-4c6b-abd8-c33c16ad8f7d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сэнгүүр Амралтын Газар",
+         "location": "Цэнхэрмандал Сумын төвөөс  – 45 км  Хөх нуурын эрэг дээр",
+         "phone": "99171675, 99112825",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "18b261fc-00e2-4227-b726-81ac6369afda"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хар Зүрхний Хөх Нуур Жуулчны Бааз",
+         "location": "Цэнхэрмандал, Сумын төвөөс  – 45 км",
+         "phone": "99171675, 99112825",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4618ea65-b23a-4ddc-b071-dceea6f8648e"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Зуун Сарнай Жуулчны Бааз",
+         "location": "Баян-Овоо Сумын төвөөс – 5 км",
+         "phone": "98666257, 99886257",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "b0ab1ff2-5271-4c54-a535-facbd2eb457f"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дөрвөн Баян Долоон Түмэн Жуулчны Бааз",
+         "location": "Баян-Овоо Сум, Гүрэм нуурын эрэг",
+         "phone": "93152297, 98188877",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2cc8c7a0-5f27-4361-8fb5-f666b4348287"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дуурилаг Нарс Жуулчны бааз ",
+         "address": "Duurlig nars tourist camp ",
+         "location": "Баян-Адарга сумын төвөөс 2-км",
+         "phone": "98994941, 94777955, 98224941",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "0b17a387-5cb4-4eb4-a1ed-69889aa8cf5a"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тайван Рэнж Жуулчны Бааз",
+         "address": "Dashmaa24@yahoo.com",
+         "location": "Чингис хотоос  – 190 км, Сумын төвөөс – 28 км",
+         "phone": "99036010\t",
+         "image": {
+          "id": 173461,
+          "file_name": "Taiwan_renge.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c501bcc1-12ca-4957-91b2-7cb3b7eac97c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Талын Өргөө Эко Бааз",
+         "location": "УБ хотоос – 365км, Сумын төвөөс – 45 км",
+         "phone": "99098467",
+         "image": {
+          "id": 173465,
+          "file_name": "talin_urguu.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2cf2fd39-2f1d-48bf-a5fb-47f5e723e1bf"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бишрэлт Жуулчны Бааз",
+         "phone": "99133636, 97133636",
+         "location": "Цэнхэрмандал Сумаас 45 км, Согоот баг  Хар зүрхний Хөх нуурын баруун урд эрэг дээр",
+         "address": "Бишрэлт жуулчны бааз",
+         "image": {
+          "id": 173681,
+          "file_name": "Bishrelt_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "5b521be5-07d5-4a0c-afee-6294e04dc612"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хэнтий Эко Жуулчны Бааз",
+         "address": "Khentii Eco Camp",
+         "location": "Мөрөн Сумын төвөөс зүүн хойш – 6 км  Гамал уулын өвөрт",
+         "phone": "98080445",
+         "image": {
+          "id": 173666,
+          "file_name": "Khenti_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "b904b808-93c8-48e2-818b-47b3a4a9f3ff"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онон-Хурх Өргөө Жуулчны бааз",
+         "address": "info@chinggistoonot.mn",
+         "location": "Биндэр Сумын төвөөс – 7 км  Онон-Хурх голын урд",
+         "phone": "99086398, 99012899,  94102899",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "972d5087-4f6d-41ef-9d4c-2fd40cb89ad1"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянбулаг Жуулчны Бааз",
+         "address": "Baynbulag camp Mongolia",
+         "location": "Дадал Сумын төвөөс  – 1 км  Гурван нуур, 1-р баг",
+         "phone": "98009890, 99184323",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2084cbfa-3685-4294-8dab-b8034cece98d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингисийн Дэлүүн Нуур Амралтын Газар ",
+         "address": "Чингисийн Дэлүүн Нуур Амралтын Газар ",
+         "location": "Дадал Сумаас – 2.5 км",
+         "phone": "99119261\t",
+         "image": {
+          "id": 173652,
+          "file_name": "Delvvn.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9a99e254-954e-499b-8fb0-99235af09b4f"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингисийн Гурван Нуур Жуулчны Бааз",
+         "address": "Чингисийн гурван нуур",
+         "location": "Дадал Сумын төвөөс – 3 км",
+         "phone": "99117578, 77117578",
+         "image": {
+          "id": 173647,
+          "file_name": "Chingisin_gurvan_nuur1.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f1efcbf5-d07b-4eab-96da-43c6bc07c7ec"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онон Балж Жуулчны Бааз",
+         "address": "ОНОН БАЛЖ Жуулчин БААЗ",
+         "phone": "99184422",
+         "location": "Дадал Сумын төвөөс -1.2 км",
+         "image": {
+          "id": 173661,
+          "file_name": "Onon_balj.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "cc6e0bc4-21d0-4cbe-ba9c-685e00f8d742"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Мандал Жуулчны Бааз",
+         "location": "Цэнхэрмандал Сумын төвөөс  – 45 км  Хөх нуурын эрэг дээр",
+         "phone": "99171675, 99112825",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4a7eb224-293e-4b4d-b1d2-f73aae33868d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тамгат Жуулчны Бааз",
+         "location": "Цэнхэрмандал Сумаас 45 км, Согоот баг  Хар зүрхний Хөх нуурын баруун урд эрэг дээр",
+         "phone": "93014633",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f3b662db-fd83-425b-8b68-458f5e0f9ed0"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ирээдүй Жуулчны Бааз",
+         "location": "Баян-Овоо Сумын төвөөс – 7 км",
+         "phone": "98239900, 93202828",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6ce956e7-6dc9-431a-94b5-6b6342e3c090"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дэлгэр Боржигон Амралтын Газар",
+         "location": "Баян-Овоо Сумын төвөөс – 3.5 км",
+         "phone": "98910377",
+         "address": "Дэлгэр Боржигон Амралтын Газар",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "dadb5de5-5a20-476b-9ab4-a8366e4555a5"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян Гүрэм Жуулчны Бааз",
+         "location": "Баян-Овоо Сумын төвөөс – 5 км  Гүрэм нуурын баруун эрэг",
+         "phone": "99900166, 99900144",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "1c50f6d2-1bfb-40dc-ae81-3a539f090c69"
+      }
+     ]
+    }
+   ],
+   "id": "e2809fb3-40ab-4d1d-be67-a23556c73e98",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онон-Ёл Жуулчны бааз",
+         "address": "Onon Yol tourist camp",
+         "location": "Чингис хотоос  – 200 км",
+         "phone": "91888751 93155103",
+         "image": {
+          "id": 173453,
+          "file_name": "Onon_Yol.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7d05ff70-1a34-49ab-806a-4ce4040fa7c2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өглөгч Валл Эко Лоож",
+         "address": "Uglugch Wall Eco Lodge",
+         "location": "Чингис хотоос -130 км, Сумын төвөөс – 60 км",
+         "phone": "98807879 99807879",
+         "image": {
+          "id": 173454,
+          "file_name": "Uglugch_wall_eco_lodge.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "65914e2e-73f9-44d3-92af-0b413ca39eb8"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингисийн Өлгий Жуулчны Бааз",
+         "address": "Чингисийн өлгий жуулчны бааз - Chinggis homeland tourist camp",
+         "location": "Чингис хотоос – 186 км, Сумын төвөөс  – 15 км",
+         "phone": "98106300, 99033462",
+         "image": {
+          "id": 173471,
+          "file_name": "Chingisiin_Ulgii.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8b116361-ceb6-4686-bbdc-9454decdeadc"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өндөрхаан Жуулчны Бааз",
+         "address": "Өндөрхаан Жуулчны Бааз",
+         "location": "Хэрлэн Сумын төвөөс баруун хойш 6 км",
+         "phone": "98929005",
+         "image": {
+          "id": 173673,
+          "file_name": "Ondorkhaan.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d0f8c8ef-a21a-4dd0-ac77-ace2ee7ea584"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянгол Жуулчны Бааз ",
+         "address": "Bayangol tourist camp",
+         "location": "Өмнөдэлгэр Сумын төвөөс  баруун хойш 50 км, Хөх нуураас зүүн тийш 40 км",
+         "phone": "98453536, 98033555,  98125293",
+         "image": {
+          "id": 173669,
+          "file_name": "Bayangol_tourism_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "0032be62-c61f-4df7-a00d-be89d3a42db2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хүннү Хөдөө Арал",
+         "address": "Хүннү хөдөө арал жуулчны бааз",
+         "location": "Дэлгэрхаан Сумын төвөөс 5 км  Аварга Тосон нуурын эрэг",
+         "phone": "99704334, 88005770",
+         "image": {
+          "id": 173664,
+          "file_name": "hunnu_khodoo_aral.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3a11c3b5-31a0-4dcf-b383-801c57932d50"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алтаргана Жуулчны Бааз",
+         "location": "Дадал Сумын төвөөс  – 2 км  Зүүн нуурын эрэг",
+         "address": "Altargana Tourist camp ",
+         "phone": "90900221\t",
+         "image": {
+          "id": 173656,
+          "file_name": "Altargana_tourism_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "bce1cd9a-9879-4b01-8cfe-6dbfbdb42334"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алтан Ураг Жуулчны Бааз",
+         "address": "Биндэр сум \"Алтан Ураг\" жуулчны бааз",
+         "location": "Биндэр сумаас – 4  км  Хурх голын хойно",
+         "phone": "90090425, 98202099",
+         "image": {
+          "id": 173635,
+          "file_name": "Altan_Urag_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "fe20d6a6-a18a-453e-9f28-8dcced3760dd"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянхүрээ Жуулчны Бааз",
+         "address": "Bayan-Khuree Tourist Camp ",
+         "location": "Баянхутаг сум, Чингис хотоос – 6 км",
+         "phone": "98730101, 99663402",
+         "image": {
+          "id": 173625,
+          "file_name": "Bayankhuree.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "a13b498d-3256-441e-9038-9b287d073c93"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дадал Жуулчны Бааз",
+         "location": "Дадал Сумын төвөөс – 1.5 км",
+         "phone": "99116816",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "45172336-6c4c-4c6b-abd8-c33c16ad8f7d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сэнгүүр Амралтын Газар",
+         "location": "Цэнхэрмандал Сумын төвөөс  – 45 км  Хөх нуурын эрэг дээр",
+         "phone": "99171675, 99112825",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "18b261fc-00e2-4227-b726-81ac6369afda"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хар Зүрхний Хөх Нуур Жуулчны Бааз",
+         "location": "Цэнхэрмандал, Сумын төвөөс  – 45 км",
+         "phone": "99171675, 99112825",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4618ea65-b23a-4ddc-b071-dceea6f8648e"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Зуун Сарнай Жуулчны Бааз",
+         "location": "Баян-Овоо Сумын төвөөс – 5 км",
+         "phone": "98666257, 99886257",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "b0ab1ff2-5271-4c54-a535-facbd2eb457f"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дөрвөн Баян Долоон Түмэн Жуулчны Бааз",
+         "location": "Баян-Овоо Сум, Гүрэм нуурын эрэг",
+         "phone": "93152297, 98188877",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2cc8c7a0-5f27-4361-8fb5-f666b4348287"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дуурилаг Нарс Жуулчны бааз ",
+         "address": "Duurlig nars tourist camp ",
+         "location": "Баян-Адарга сумын төвөөс 2-км",
+         "phone": "98994941, 94777955, 98224941",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "0b17a387-5cb4-4eb4-a1ed-69889aa8cf5a"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тайван Рэнж Жуулчны Бааз",
+         "address": "Dashmaa24@yahoo.com",
+         "location": "Чингис хотоос  – 190 км, Сумын төвөөс – 28 км",
+         "phone": "99036010\t",
+         "image": {
+          "id": 173461,
+          "file_name": "Taiwan_renge.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c501bcc1-12ca-4957-91b2-7cb3b7eac97c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Талын Өргөө Эко Бааз",
+         "location": "УБ хотоос – 365км, Сумын төвөөс – 45 км",
+         "phone": "99098467",
+         "image": {
+          "id": 173465,
+          "file_name": "talin_urguu.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2cf2fd39-2f1d-48bf-a5fb-47f5e723e1bf"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бишрэлт Жуулчны Бааз",
+         "phone": "99133636, 97133636",
+         "location": "Цэнхэрмандал Сумаас 45 км, Согоот баг  Хар зүрхний Хөх нуурын баруун урд эрэг дээр",
+         "address": "Бишрэлт жуулчны бааз",
+         "image": {
+          "id": 173681,
+          "file_name": "Bishrelt_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "5b521be5-07d5-4a0c-afee-6294e04dc612"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хэнтий Эко Жуулчны Бааз",
+         "address": "Khentii Eco Camp",
+         "location": "Мөрөн Сумын төвөөс зүүн хойш – 6 км  Гамал уулын өвөрт",
+         "phone": "98080445",
+         "image": {
+          "id": 173666,
+          "file_name": "Khenti_camp.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "b904b808-93c8-48e2-818b-47b3a4a9f3ff"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онон-Хурх Өргөө Жуулчны бааз",
+         "address": "info@chinggistoonot.mn",
+         "location": "Биндэр Сумын төвөөс – 7 км  Онон-Хурх голын урд",
+         "phone": "99086398, 99012899,  94102899",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "972d5087-4f6d-41ef-9d4c-2fd40cb89ad1"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянбулаг Жуулчны Бааз",
+         "address": "Baynbulag camp Mongolia",
+         "location": "Дадал Сумын төвөөс  – 1 км  Гурван нуур, 1-р баг",
+         "phone": "98009890, 99184323",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2084cbfa-3685-4294-8dab-b8034cece98d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингисийн Дэлүүн Нуур Амралтын Газар ",
+         "address": "Чингисийн Дэлүүн Нуур Амралтын Газар ",
+         "location": "Дадал Сумаас – 2.5 км",
+         "phone": "99119261\t",
+         "image": {
+          "id": 173652,
+          "file_name": "Delvvn.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9a99e254-954e-499b-8fb0-99235af09b4f"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингисийн Гурван Нуур Жуулчны Бааз",
+         "address": "Чингисийн гурван нуур",
+         "location": "Дадал Сумын төвөөс – 3 км",
+         "phone": "99117578, 77117578",
+         "image": {
+          "id": 173647,
+          "file_name": "Chingisin_gurvan_nuur1.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f1efcbf5-d07b-4eab-96da-43c6bc07c7ec"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онон Балж Жуулчны Бааз",
+         "address": "ОНОН БАЛЖ Жуулчин БААЗ",
+         "phone": "99184422",
+         "location": "Дадал Сумын төвөөс -1.2 км",
+         "image": {
+          "id": 173661,
+          "file_name": "Onon_balj.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "cc6e0bc4-21d0-4cbe-ba9c-685e00f8d742"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Мандал Жуулчны Бааз",
+         "location": "Цэнхэрмандал Сумын төвөөс  – 45 км  Хөх нуурын эрэг дээр",
+         "phone": "99171675, 99112825",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4a7eb224-293e-4b4d-b1d2-f73aae33868d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тамгат Жуулчны Бааз",
+         "location": "Цэнхэрмандал Сумаас 45 км, Согоот баг  Хар зүрхний Хөх нуурын баруун урд эрэг дээр",
+         "phone": "93014633",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f3b662db-fd83-425b-8b68-458f5e0f9ed0"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ирээдүй Жуулчны Бааз",
+         "location": "Баян-Овоо Сумын төвөөс – 7 км",
+         "phone": "98239900, 93202828",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6ce956e7-6dc9-431a-94b5-6b6342e3c090"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дэлгэр Боржигон Амралтын Газар",
+         "location": "Баян-Овоо Сумын төвөөс – 3.5 км",
+         "phone": "98910377",
+         "address": "Дэлгэр Боржигон Амралтын Газар",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "dadb5de5-5a20-476b-9ab4-a8366e4555a5"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян Гүрэм Жуулчны Бааз",
+         "location": "Баян-Овоо Сумын төвөөс – 5 км  Гүрэм нуурын баруун эрэг",
+         "phone": "99900166, 99900144",
+         "image": {
+          "id": 174079,
+          "file_name": "yurt_vector.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "1c50f6d2-1bfb-40dc-ae81-3a539f090c69"
+      }
+     ]
+    }
+   ],
+   "id": "848408cf-8ce1-4c8f-918d-1421491745f9",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "569f5f02-7e23-4375-bbef-241cafbfc0b7",
+   "content": "<h1 style=\"text-align: center;\"><strong>Зочид буудал&nbsp;</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "66bf04bc-7018-412f-96ef-c7f311e05c69",
+   "content": "<h4 style=\"text-align: center;\"><strong>Зочид буудал&nbsp;</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ханбүргэд Зочид Буудал",
+         "address": "Khanburged Hotel",
+         "location": "Хэнтий, Өндөрхаан ",
+         "phone": "99009980",
+         "image": {
+          "id": 173682,
+          "file_name": "Khanburged_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "669667a7-1106-4771-a0cd-87d9c90908e3"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Элит Зочид Буудал",
+         "location": "Хэнтий аймаг Өндөрхаан ",
+         "phone": "93060696",
+         "image": {
+          "id": 247218,
+          "file_name": "Untitled_design_(41).png"
+         },
+         "address": "Хэнтий аймаг \"Элит Мандал\""
+        }
+       ],
+       "type": "small",
+       "id": "deba5b06-bc8e-4ba4-b20d-40f006c72f5c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "КH-ийн Зочид Буудал",
+         "address": "KH hotel and restaurant",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "phone": "99562222",
+         "image": {
+          "id": 173699,
+          "file_name": "KH_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3c2abdcf-769f-4dff-b100-c8c129d3b0d2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нэгдэлчин Эн Би Жи Зочид буудал ",
+         "address": "",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "phone": "99093701",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c84054b6-1698-4751-937e-138a7f84b939"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бадрах Хаан Зочид Буудал",
+         "phone": "98117056",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "74838913-ef59-429b-9156-186deb3fd394"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": " Эзэнт Гүрэн Зочид Буудал",
+         "phone": "998206778, 70563678",
+         "location": "Хэнтий аймаг Чингис хот",
+         "address": "Эзэнт Гүрэн",
+         "image": {
+          "id": 173693,
+          "file_name": "Ezent_guren_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "dda90ec8-b59f-4538-a7f4-634ad599f120"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хөвчийн Жонон Зочид Буудал",
+         "address": "Хөвчийн Жонон",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "phone": "99562222",
+         "image": {
+          "id": 247219,
+          "file_name": "Untitled_design_(42).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "031dd919-b8f3-480c-a01b-1bb3349a853c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хангарьд Зочид буудал",
+         "address": "Хангарьд зочид буудал /Чингис хот/",
+         "location": "Хэнтий аймаг Өндархангай ",
+         "phone": "99015688",
+         "image": {
+          "id": 173705,
+          "file_name": "Khangarid_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4ad6b9a4-7b41-489a-b37c-af0ba3b1f090"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нямодо Зочид Буудал",
+         "phone": "99080348",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         },
+         "address": "Нямодо Зочид Буудал"
+        }
+       ],
+       "type": "small",
+       "id": "f03e0b4f-8723-4bde-ae9c-07100150447c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эрдэнэ Зочид Буудал",
+         "phone": "96601059",
+         "location": "Хэнтий аймаг Өндөрхаан ",
+         "address": "Эрдэнэ Зочид Буудал",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c43da267-5bf2-423a-8aff-9c0d47af6aa3"
+      }
+     ]
+    }
+   ],
+   "id": "4e98f502-d284-4ada-921b-f7db0bd1b8ce",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ханбүргэд Зочид Буудал",
+         "address": "Khanburged Hotel",
+         "location": "Хэнтий, Өндөрхаан ",
+         "phone": "99009980",
+         "image": {
+          "id": 173682,
+          "file_name": "Khanburged_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "669667a7-1106-4771-a0cd-87d9c90908e3"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Элит Зочид Буудал",
+         "location": "Хэнтий аймаг Өндөрхаан ",
+         "phone": "93060696",
+         "image": {
+          "id": 247218,
+          "file_name": "Untitled_design_(41).png"
+         },
+         "address": "Хэнтий аймаг \"Элит Мандал\""
+        }
+       ],
+       "type": "small",
+       "id": "deba5b06-bc8e-4ba4-b20d-40f006c72f5c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "КH-ийн Зочид Буудал",
+         "address": "KH hotel and restaurant",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "phone": "99562222",
+         "image": {
+          "id": 173699,
+          "file_name": "KH_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3c2abdcf-769f-4dff-b100-c8c129d3b0d2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нэгдэлчин Эн Би Жи Зочид буудал ",
+         "address": "",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "phone": "99093701",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c84054b6-1698-4751-937e-138a7f84b939"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бадрах Хаан Зочид Буудал",
+         "phone": "98117056",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "74838913-ef59-429b-9156-186deb3fd394"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": " Эзэнт Гүрэн Зочид Буудал",
+         "phone": "998206778, 70563678",
+         "location": "Хэнтий аймаг Чингис хот",
+         "address": "Эзэнт Гүрэн",
+         "image": {
+          "id": 173693,
+          "file_name": "Ezent_guren_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "dda90ec8-b59f-4538-a7f4-634ad599f120"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хөвчийн Жонон Зочид Буудал",
+         "address": "Хөвчийн Жонон",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "phone": "99562222",
+         "image": {
+          "id": 247219,
+          "file_name": "Untitled_design_(42).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "031dd919-b8f3-480c-a01b-1bb3349a853c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хангарьд Зочид буудал",
+         "address": "Хангарьд зочид буудал /Чингис хот/",
+         "location": "Хэнтий аймаг Өндархангай ",
+         "phone": "99015688",
+         "image": {
+          "id": 173705,
+          "file_name": "Khangarid_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4ad6b9a4-7b41-489a-b37c-af0ba3b1f090"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нямодо Зочид Буудал",
+         "phone": "99080348",
+         "location": "Хэнтий аймаг Өндөрхаан",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         },
+         "address": "Нямодо Зочид Буудал"
+        }
+       ],
+       "type": "small",
+       "id": "f03e0b4f-8723-4bde-ae9c-07100150447c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эрдэнэ Зочид Буудал",
+         "phone": "96601059",
+         "location": "Хэнтий аймаг Өндөрхаан ",
+         "address": "Эрдэнэ Зочид Буудал",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c43da267-5bf2-423a-8aff-9c0d47af6aa3"
+      }
+     ]
+    }
+   ],
+   "id": "dd338795-5138-4c19-ae32-8092a6704d84",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b3245ece-f6d2-4b24-a9fa-e4e39344c1d3",
+   "content": "<h1 style=\"text-align: center;\"><strong>Ресторан&nbsp;</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9d99a007-5789-418b-b813-01b29bfb7897",
+   "content": "<h4 style=\"text-align: center;\"><strong>Ресторан&nbsp;</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингис Ресторан ",
+         "location": "Хэнтий Чингис хот",
+         "phone": "70562333",
+         "address": "Chinggis Hotel",
+         "image": {
+          "id": 173549,
+          "file_name": "Chinggis_restaurant_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "56da125d-96b7-4456-a471-aa08a1c3485a"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хан Бүргэд Ресторан ",
+         "location": "Хэнтий Чингис хот",
+         "phone": "70562788, 98242788",
+         "address": "Khanburged hotel ",
+         "image": {
+          "id": 173551,
+          "file_name": "Khanburged_Hotel_restaurant_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "da445bf9-2265-437c-8327-ca3a8e0eebad"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "KH Hotel and Restaurant",
+         "location": "Хэнтий Чингис хот",
+         "phone": "77777191",
+         "address": "KH hotel and restaurant",
+         "image": {
+          "id": 173699,
+          "file_name": "KH_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d38e45c0-91eb-4283-84a2-158e5e636172"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эзэнт Гүрэн  Ресторан ",
+         "location": "Баатруудын гудамж, Чингис хот, Хэнтий",
+         "phone": " 99724477, 7056 3678",
+         "address": "info@ezentguren.mn",
+         "image": {
+          "id": 172711,
+          "file_name": "ezent_guren.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d1d4847e-1bdd-4880-b0be-90256c3b58a7"
+      }
+     ]
+    }
+   ],
+   "id": "3d57c20b-d2a8-43eb-9e66-76a11a3a2beb",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингис Ресторан ",
+         "location": "Хэнтий Чингис хот",
+         "phone": "70562333",
+         "address": "Chinggis Hotel",
+         "image": {
+          "id": 173549,
+          "file_name": "Chinggis_restaurant_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "56da125d-96b7-4456-a471-aa08a1c3485a"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хан Бүргэд Ресторан ",
+         "location": "Хэнтий Чингис хот",
+         "phone": "70562788, 98242788",
+         "address": "Khanburged hotel ",
+         "image": {
+          "id": 173551,
+          "file_name": "Khanburged_Hotel_restaurant_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "da445bf9-2265-437c-8327-ca3a8e0eebad"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "KH Hotel and Restaurant",
+         "location": "Хэнтий Чингис хот",
+         "phone": "77777191",
+         "address": "KH hotel and restaurant",
+         "image": {
+          "id": 173699,
+          "file_name": "KH_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d38e45c0-91eb-4283-84a2-158e5e636172"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эзэнт Гүрэн  Ресторан ",
+         "location": "Баатруудын гудамж, Чингис хот, Хэнтий",
+         "phone": " 99724477, 7056 3678",
+         "address": "info@ezentguren.mn",
+         "image": {
+          "id": 172711,
+          "file_name": "ezent_guren.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d1d4847e-1bdd-4880-b0be-90256c3b58a7"
+      }
+     ]
+    }
+   ],
+   "id": "e3fe54be-88ae-4f10-bc21-8dfda4275d8f",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "38d5fffc-8e30-4458-aad7-2a7824470f2d",
+   "content": "<h1 style=\"text-align: center;\"><strong>Кофе шоп</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "5cd7b73d-2a46-4787-940c-cae09c1c03a4",
+   "content": "<h4 style=\"text-align: center;\"><strong>Кофе шоп</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "10",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Элит Кофе Шоп",
+         "address": "Elit Mandal Elit Mandal",
+         "location": "Хэнтий, Өндөрхаан ",
+         "phone": "93060696",
+         "image": {
+          "id": 247218,
+          "file_name": "Untitled_design_(41).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "5457a7f4-25a3-4e74-a40a-09b3f2d2079f"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": []
+    }
+   ],
+   "id": "b5aefb76-3fa8-41a5-89e9-60d2e5df10f8",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "0c37d230-67cb-4ff9-b572-7ec61b3a10f9",
+   "content": "<h1 style=\"text-align: center;\"><strong>Морин аяллын үйлчилгээ</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "6a7b46de-08d6-4fa8-93fd-24743007795c",
+   "content": "<h4 style=\"text-align: center;\"><strong>Морин аяллын үйлчилгээ</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ]
+        }
+       ],
+       "type": "small",
+       "id": "6c0bd505-42b4-4ca8-be52-922f66ec30e5"
+      }
+     ]
+    },
+    {
+     "type": "6"
+    }
+   ],
+   "id": "9fd58d58-47ca-49e4-b1ac-a13d85573efc",
+   "column": "2"
+  }
+ ]
+}

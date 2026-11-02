@@ -1,0 +1,310 @@
+{
+ "id": 1239,
+ "title": "Аймгууд",
+ "meta_title": "Аймгууд",
+ "meta_description": null,
+ "meta_keywords": null,
+ "visible": true,
+ "created_at": "2020-12-10T06:23:35.000Z",
+ "updated_at": "2024-04-06T10:28:39.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "Banner",
+   "text_position": "center",
+   "id": "98694fe9-fb80-4985-9f6f-3e09027e67b5",
+   "banner": {
+    "id": 250454,
+    "file_name": "njg.png"
+   },
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "mobileBanner": {
+    "id": 250453,
+    "file_name": "njg.png"
+   },
+   "style": {
+    "marginTop": "-60px"
+   },
+   "link": "/ubtourismboard"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "522358ef-5a9a-450b-be9f-b2fffe0d578d",
+   "content": "<h1 style=\"text-align: center;\"><span style=\"color: #003366;\"><strong>ЭХ ОРНОО ТОЛЬДОХ 21 ГАЙХАМШИГ</strong></span></h1>",
+   "container": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b3370172-1135-46ef-a4cf-b14521c4963b",
+   "content": "<h5 style=\"text-align: center;\"><span style=\"color: #003366;\"><strong>ЭХ ОРНОО ТОЛЬДОХ 21 ГАЙХАМШИГ</strong></span></h5>",
+   "container": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "40px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ba07a830-818e-47d9-aeaa-9bcbedaf909b",
+   "content": "<h1 style=\"text-align: center;\"><span style=\"color: #003366;\"><strong>АЙМГУУД</strong></span></h1>",
+   "container": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true,
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "8adc3cf6-0fe8-4256-834b-a6f553dd2d59",
+   "content": "<h5 style=\"text-align: center;\"><span style=\"color: #003366;\"><strong>АЙМГУУД</strong></span></h5>",
+   "container": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "30px",
+    "marginBottom": "30px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "title": "ХЭНТИЙ АЙМАГ",
+     "img": {
+      "id": 42201,
+      "file_name": "Khentii.jpg"
+     },
+     "link": "/khentii-province",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "ДУНДГОВЬ АЙМАГ",
+     "img": {
+      "id": 60000,
+      "file_name": "Dundgovi.jpg"
+     },
+     "link": "/Dundgovi-Province",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "СҮХБААТАР АЙМАГ",
+     "link": "/Sukhbaatar-Province",
+     "img": {
+      "id": 47016,
+      "file_name": "Sukhbaatar.jpg"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "ЗАВХАН АЙМАГ",
+     "link": "/zavkhan",
+     "img": {
+      "id": 183227,
+      "file_name": "270966298_3106617889657955_7618150734119526800_n.jpg"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    }
+   ],
+   "type": "default",
+   "display": "grid",
+   "id": "58f9f090-5ee5-41c8-99f6-d7b3c4f83cf8",
+   "backgroundColor": "#fbfbfb",
+   "style": {
+    "marginBottom": "",
+    "marginTop": "40px"
+   },
+   "boxShadow": "100%",
+   "borderRadius": "8px",
+   "arrow": "invisible",
+   "link_label": "",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "title": "ХЭНТИЙ АЙМАГ",
+     "img": {
+      "id": 42201,
+      "file_name": "Khentii.jpg"
+     },
+     "link": "/khentii-province",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "ДУНДГОВЬ АЙМАГ",
+     "img": {
+      "id": 60000,
+      "file_name": "Dundgovi.jpg"
+     },
+     "link": "/Dundgovi-Province",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    }
+   ],
+   "type": "default",
+   "display": "swiper",
+   "id": "b39d184f-fc46-4f98-a44e-508a5f3e3916",
+   "backgroundColor": "#fbfbfb",
+   "style": {
+    "marginBottom": "",
+    "marginTop": "40px"
+   },
+   "boxShadow": "100%",
+   "borderRadius": "8px",
+   "arrow": "invisible",
+   "link_label": "",
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "title": "СҮХБААТАР АЙМАГ",
+     "link": "/Sukhbaatar-Province",
+     "img": {
+      "id": 47016,
+      "file_name": "Sukhbaatar.jpg"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "ЗАВХАН АЙМАГ",
+     "link": "/zavkhan",
+     "img": {
+      "id": 183227,
+      "file_name": "270966298_3106617889657955_7618150734119526800_n.jpg"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    }
+   ],
+   "type": "default",
+   "display": "swiper",
+   "id": "1ab06df2-3174-4ff8-a533-22d984a7196a",
+   "backgroundColor": "#fbfbfb",
+   "style": {
+    "marginBottom": "",
+    "marginTop": "40px"
+   },
+   "boxShadow": "100%",
+   "borderRadius": "8px",
+   "arrow": "invisible",
+   "link_label": "",
+   "hideDesktop": true
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "title": "УВС АЙМАГ",
+     "img": {
+      "id": 177991,
+      "file_name": "Khentii.png"
+     },
+     "link": "/uvs-province",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "ӨМНӨГОВЬ АЙМАГ",
+     "img": {
+      "id": 42205,
+      "file_name": "Umnugobi.jpg"
+     },
+     "link": "/umnugovi",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "ХӨВСГӨЛ АЙМАГ",
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️",
+     "link": "/khuvsgul",
+     "img": {
+      "id": 259045,
+      "file_name": "download.jpg"
+     }
+    }
+   ],
+   "type": "default",
+   "display": "grid",
+   "id": "e310e726-ab5f-4803-a579-a9c6c5bdff4a",
+   "backgroundColor": "#fbfbfb",
+   "style": {
+    "marginBottom": "",
+    "marginTop": ""
+   },
+   "boxShadow": "100%",
+   "borderRadius": "8px",
+   "arrow": "invisible",
+   "link_label": ""
+  },
+  {
+   "component": "ArticleBlock",
+   "query": "ids",
+   "type": "list",
+   "id": "3080d000-4e5f-47cb-883a-dfc05cbdf9f4",
+   "ids": "578,576,546,544,540,524,522,519,458,482,481,456,452,449,389,186",
+   "style": {
+    "backgroundColor": "#ffffff",
+    "marginTop": "30px"
+   },
+   "hideMobile": true,
+   "hideInApp": true,
+   "hideDesktop": true
+  },
+  {
+   "component": "ArticleBlock",
+   "query": "ids",
+   "type": "grid",
+   "id": "8b71a316-085a-4b7f-8604-0e4d5e8269b8",
+   "ids": "578,576,546,544,540,524,522,519,458,482,481,456,452,449,389,186",
+   "style": {
+    "backgroundColor": "#ffffff",
+    "marginTop": "30px"
+   },
+   "hideDesktop": true,
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "MediaBlock",
+   "style": {
+    "backgroundColor": "",
+    "paddingBottom": "30px"
+   },
+   "id": "6ca94a7d-22c3-4010-a239-8ec0bceea701",
+   "sku": "1069,853,818,797,714,571,515,1299,1182",
+   "type": "grid",
+   "hideMobile": true,
+   "hideInApp": true
+  }
+ ]
+}

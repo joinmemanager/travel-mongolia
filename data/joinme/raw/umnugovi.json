@@ -1,0 +1,4319 @@
+{
+ "id": 652,
+ "title": "Өмнөговь",
+ "meta_title": "Өмнөговиор хамтдаа аялцгаая",
+ "meta_description": "Бүх аяллыг нэг дороос",
+ "meta_keywords": "joinme.mn, joinme, lizing, leasing,лизингь зээл, аялал, shoppy, аялал, эх орны аялал, хөвсгөл, dubai, дубай, thailand, тайланд, vietnam, hanoi, halong, nhatrang, ханой, халонг, натранг, шууд нислэгтэй аялал, india, tajmahal, agra, энэтхэг, алтан гурвалжин",
+ "visible": true,
+ "created_at": "2020-03-13T16:44:39.000Z",
+ "updated_at": "2024-02-26T11:24:06.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "HTMLBox",
+   "id": "9fcedfa8-6929-4350-aa85-ccbe6dcef958",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250909/original/Untitled-2.png\" alt=\"\" width=\"100%\" /></p>",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "-60px"
+   },
+   "container": {
+    "type": "none"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9bd4cfcb-b7ff-4a04-9f00-f86602f00e8a",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250930/original/umnugovi.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "style": {
+    "marginTop": "-60px"
+   },
+   "container": {
+    "type": "none"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "a11afab7-b57f-4ebe-b42b-ba79234c4b8b",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250911/original/Umnugovi_TopSection.png\" alt=\"\" width=\"100%\" /></p>",
+   "hideMobile": true,
+   "hideInApp": true,
+   "container": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 18370,
+     "file_name": "Bayanzag_Swiper.png"
+    },
+    {
+     "id": 18371,
+     "file_name": "DemchogiinHiid_Swiper.png"
+    },
+    {
+     "id": 18372,
+     "file_name": "HermenTsav_Swiper.png"
+    },
+    {
+     "id": 18374,
+     "file_name": "YolinAm_Swiper.png"
+    },
+    {
+     "id": 18373,
+     "file_name": "KhongoriinEls_Swiper.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "1",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "342ab1f4-09b4-4b9f-8eeb-af0238c1892b",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "-20px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250933,
+     "file_name": "govi1.png"
+    },
+    {
+     "id": 250935,
+     "file_name": "govi1.png"
+    },
+    {
+     "id": 250936,
+     "file_name": "govi1.png"
+    },
+    {
+     "id": 250937,
+     "file_name": "govi1.png"
+    },
+    {
+     "id": 250938,
+     "file_name": "govi1.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "cube",
+   "infinite": "1",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "46644abe-e6e9-4800-94d4-c1f30a093241",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "-20px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "Banner",
+   "text_position": "bottom",
+   "id": "d2483dac-514e-4242-bed0-cfb8e80a6c53",
+   "banner": {
+    "id": 16271,
+    "file_name": "Aylluud_Title_Component.png",
+    "ratio": 0.10304347826086957
+   },
+   "hideMobile": true,
+   "hideDesktop": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 18392,
+     "file_name": "Component_1.png",
+     "link": "/products/414_jm-gobi-001"
+    },
+    {
+     "id": 18393,
+     "file_name": "Component_2.png",
+     "link": "/products/414_jm-camel-002"
+    },
+    {
+     "id": 18394,
+     "file_name": "Component_3.png",
+     "link": "/products/414_jm-camel-001"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "856:1030",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "4b916347-d1ed-483a-bc6a-91cb23f37ad8",
+   "style": {
+    "paddingTop": "20px",
+    "paddingBottom": "60px"
+   },
+   "mobileStyle": {
+    "paddingTop": "20px",
+    "paddingBottom": "60px"
+   },
+   "hideMobile": true,
+   "hideDesktop": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "e9ebd482-72d3-4c07-9eba-fbfde372ba21",
+   "content": "<h1 style=\"text-align: center;\"><strong>Амралтын газар</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "fc1be782-e93c-42aa-bfef-057c7f83ae01",
+   "content": "<h4 style=\"text-align: center;\"><strong>Амралтын газар</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "40px"
+   }
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говийн Өргөө Жуулчны Бааз",
+         "address": "Говийн Өргөө жуулчны бааз/ Goviin Urguu camp",
+         "location": "Өмнөговь аймаг, Оюутын дэнж, Ёлын-Аманд, Даланзадгадаас 35км зайд",
+         "phone": "88102588 ",
+         "image": {
+          "id": 174066,
+          "file_name": "198750530_292241705966108_1262697683608294141_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Дисковери Тур",
+         "address": "Gobi Discovery Tour",
+         "location": "Өмнөговь аймгийн төв Даланзадгад хотоос 40 км-ийн зайд",
+         "phone": "91917299 ",
+         "image": {
+          "id": 174067,
+          "file_name": "11823151_942726295765893_6837667552923444347_o.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дүнгэнээ Жуулчны Бааз",
+         "address": "Dungenee tourist camp",
+         "location": "Ханхонгор сум, Даланзадгад хотоос 23 км",
+         "phone": "99003171, 88082375 ",
+         "image": {
+          "id": 174068,
+          "file_name": "283358286_1643762196016507_2084874655374567465_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ханбогд Жуулчны Бааз",
+         "location": " \"Говь Гурван Сайхан\" Үндэсний Парк, Өмнө Говь",
+         "phone": "9570 7177 ",
+         "address": "Khanbogd tourist camp",
+         "image": {
+          "id": 174069,
+          "file_name": "313023317_544358181029100_3887865531965253991_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говийн Баянбүрд Жуулчны Бааз",
+         "address": "Goviin Bayanburd - Gobi Oasis Camp",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "phone": "95953012 ",
+         "image": {
+          "id": 174070,
+          "file_name": "295021787_5707682202576459_1972744188876212121_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Mongolian Gobi Tourist Camp",
+         "address": "Mongolian Gobi tourist camp",
+         "phone": "88066522, 99111765",
+         "location": "Өмнөговь аймаг, Булган сум, Баян заг",
+         "image": {
+          "id": 174209,
+          "file_name": "41942278_1963550780612302_5718861843544408064_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Anar Tourist Camp",
+         "address": "Gobi Anar Tourist Camp",
+         "phone": "99112402, 99053187",
+         "location": "Өмнөговь аймаг, Даланзадгад хотоос 190км",
+         "image": {
+          "id": 174211,
+          "file_name": "311915016_135552729243424_8197080390666075583_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сайжрах Говь Жуулчны Бааз",
+         "address": "Сайжрах ГОВЬ Жуулчны БААЗ",
+         "phone": "99118311, 99539080",
+         "location": "Өмнөговь аймаг, Даланзадгад хот ёлын ам",
+         "image": {
+          "id": 174214,
+          "file_name": "10470869_716955845117947_4686658305486949496_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гүюг Хаан Жуулчны Бааз",
+         "address": "Гүюг Хаан Жуулчны Бааз",
+         "phone": "99055955, 88058559",
+         "location": "Tulgaa_monkhoo@yahoo.com",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Динозавар Жуулчны Бааз",
+         "address": "Говь Динозавар Жуулчны Бааз",
+         "phone": "77337966, 91197979",
+         "location": "Өмнөговь, Алгуйн улаан цавийн дэргэд",
+         "image": {
+          "id": 174220,
+          "file_name": "45219136_758100227864612_173666689081147392_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нүдэн Булаг Амралт",
+         "address": "Нүдэн Булаг Амралт",
+         "phone": "88309986, 99609143",
+         "location": "Өмнөговь аймаг, Хонгорын булаг",
+         "image": {
+          "id": 174223,
+          "file_name": "344316614_764354455170761_3739954169187558936_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "fb609741-c2b0-4edd-b3b6-43f9c0633c4d"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Түвшин Наран Жуулчны Бааз",
+         "location": "Өмнөговь аймаг, Даланзадгад хот, 3-р баг, 15 давхарын 15 тоот",
+         "phone": "99077786 ",
+         "address": "Tuvshin Naran tourist camp",
+         "image": {
+          "id": 174071,
+          "file_name": "18486182_752222581622648_2933918309793095042_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянзаг Жуулчны Бааз",
+         "location": "Даланзадгадаас хойш 100км-т Баянзагийн загтай хоолойн хажууд Гүн-усд байрлана.",
+         "phone": "89548099",
+         "address": "Bayanzag Tourist Camp",
+         "image": {
+          "id": 174072,
+          "file_name": "55516288_264029331167199_2371004586581295104_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Жуулчин Говь Жуулчны бааз",
+         "location": "Даланзадгад хотоос баруун хойш 35 км",
+         "phone": "88113389 ",
+         "address": "Жуулчин Говь Жуулчны бааз",
+         "image": {
+          "id": 174073,
+          "file_name": "4872deca0d81d6434721e95c8ef8dd4e.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Nomad Lodge Camp",
+         "address": "Gobi Nomad Lodge",
+         "phone": "86242585 ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум, Булагтай баг",
+         "image": {
+          "id": 174074,
+          "file_name": "305362691_420472716818492_6841016529559089375_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Mirage Lodge",
+         "address": "Gobi Mirage Lodge",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "phone": "8808 0837",
+         "image": {
+          "id": 174204,
+          "file_name": "308719034_521442516655662_2867317436419646910_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Three Camel Lodge",
+         "address": "Three Camel Lodge",
+         "phone": "99154867, 88114510",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "image": {
+          "id": 174210,
+          "file_name": "340450778_240828048352681_4276928226335447140_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Dream Gobi Lodge",
+         "address": "Dream Gobi Lodge",
+         "phone": "9902 2507, 98905074",
+         "location": "Өмнөговь аймаг, Булган сум,  Хонгор толгой",
+         "image": {
+          "id": 174215,
+          "file_name": "197602892_309395034063307_6074923002765896884_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гранд Говь Ресорт",
+         "address": "Гранд Говь Ресорт",
+         "phone": "99050190, 99052162",
+         "location": "Өмнөговь, Говь гурван сайхан уулын бэлд",
+         "image": {
+          "id": 174219,
+          "file_name": "329008942_749331476755176_5684352719981860604_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ундрах Говь Жуулчны Бааз",
+         "address": "Ундрах Говь Жуулчны Бааз",
+         "phone": "88485979, 94095979",
+         "location": "Өмнөговь аймаг, Булган сум, Дал баг",
+         "image": {
+          "id": 174224,
+          "file_name": "335405042_938651474084139_6865625821989905020_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Tour",
+         "address": "Gobitour Tourist Camp",
+         "phone": "99091285, 89669488",
+         "image": {
+          "id": 174228,
+          "file_name": "122533613_3329043487208332_519743501530150938_n.jpg"
+         },
+         "location": "Өмнөговь аймаг, Даланзадгад хот"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Жуулчин Говь",
+         "address": "JuulchinGobi",
+         "phone": "86100608, 88113389",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "image": {
+          "id": 174229,
+          "file_name": "95130790_3666378803437334_8031405469891297280_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3a942286-eaf9-4484-b25c-ccc0fa69a0b0"
+      }
+     ]
+    }
+   ],
+   "id": "a53cdf79-4321-4092-aaa4-c5cdb3b8b5b4",
+   "column": "2",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говийн Өргөө Жуулчны Бааз",
+         "address": "Говийн Өргөө жуулчны бааз/ Goviin Urguu camp",
+         "location": "Өмнөговь аймаг, Оюутын дэнж, Ёлын-Аманд, Даланзадгадаас 35км зайд",
+         "phone": "88102588 ",
+         "image": {
+          "id": 174066,
+          "file_name": "198750530_292241705966108_1262697683608294141_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Дисковери Тур",
+         "address": "Gobi Discovery Tour",
+         "location": "Өмнөговь аймгийн төв Даланзадгад хотоос 40 км-ийн зайд",
+         "phone": "91917299 ",
+         "image": {
+          "id": 174067,
+          "file_name": "11823151_942726295765893_6837667552923444347_o.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дүнгэнээ Жуулчны Бааз",
+         "address": "Dungenee tourist camp",
+         "location": "Ханхонгор сум, Даланзадгад хотоос 23 км",
+         "phone": "99003171, 88082375 ",
+         "image": {
+          "id": 174068,
+          "file_name": "283358286_1643762196016507_2084874655374567465_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ханбогд Жуулчны Бааз",
+         "location": " \"Говь Гурван Сайхан\" Үндэсний Парк, Өмнө Говь",
+         "phone": "9570 7177 ",
+         "address": "Khanbogd tourist camp",
+         "image": {
+          "id": 174069,
+          "file_name": "313023317_544358181029100_3887865531965253991_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говийн Баянбүрд Жуулчны Бааз",
+         "address": "Goviin Bayanburd - Gobi Oasis Camp",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "phone": "95953012 ",
+         "image": {
+          "id": 174070,
+          "file_name": "295021787_5707682202576459_1972744188876212121_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Mongolian Gobi Tourist Camp",
+         "address": "Mongolian Gobi tourist camp",
+         "phone": "88066522, 99111765",
+         "location": "Өмнөговь аймаг, Булган сум, Баян заг",
+         "image": {
+          "id": 174209,
+          "file_name": "41942278_1963550780612302_5718861843544408064_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Anar Tourist Camp",
+         "address": "Gobi Anar Tourist Camp",
+         "phone": "99112402, 99053187",
+         "location": "Өмнөговь аймаг, Даланзадгад хотоос 190км",
+         "image": {
+          "id": 174211,
+          "file_name": "311915016_135552729243424_8197080390666075583_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сайжрах Говь Жуулчны Бааз",
+         "address": "Сайжрах ГОВЬ Жуулчны БААЗ",
+         "phone": "99118311, 99539080",
+         "location": "Өмнөговь аймаг, Даланзадгад хот ёлын ам",
+         "image": {
+          "id": 174214,
+          "file_name": "10470869_716955845117947_4686658305486949496_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гүюг Хаан Жуулчны Бааз",
+         "address": "Гүюг Хаан Жуулчны Бааз",
+         "phone": "99055955, 88058559",
+         "location": "Tulgaa_monkhoo@yahoo.com",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Динозавар Жуулчны Бааз",
+         "address": "Говь Динозавар Жуулчны Бааз",
+         "phone": "77337966, 91197979",
+         "location": "Өмнөговь, Алгуйн улаан цавийн дэргэд",
+         "image": {
+          "id": 174220,
+          "file_name": "45219136_758100227864612_173666689081147392_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нүдэн Булаг Амралт",
+         "address": "Нүдэн Булаг Амралт",
+         "phone": "88309986, 99609143",
+         "location": "Өмнөговь аймаг, Хонгорын булаг",
+         "image": {
+          "id": 174223,
+          "file_name": "344316614_764354455170761_3739954169187558936_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "fb609741-c2b0-4edd-b3b6-43f9c0633c4d"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Түвшин Наран Жуулчны Бааз",
+         "location": "Өмнөговь аймаг, Даланзадгад хот, 3-р баг, 15 давхарын 15 тоот",
+         "phone": "99077786 ",
+         "address": "Tuvshin Naran tourist camp",
+         "image": {
+          "id": 174071,
+          "file_name": "18486182_752222581622648_2933918309793095042_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянзаг Жуулчны Бааз",
+         "location": "Даланзадгадаас хойш 100км-т Баянзагийн загтай хоолойн хажууд Гүн-усд байрлана.",
+         "phone": "89548099",
+         "address": "Bayanzag Tourist Camp",
+         "image": {
+          "id": 174072,
+          "file_name": "55516288_264029331167199_2371004586581295104_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Жуулчин Говь Жуулчны бааз",
+         "location": "Даланзадгад хотоос баруун хойш 35 км",
+         "phone": "88113389 ",
+         "address": "Жуулчин Говь Жуулчны бааз",
+         "image": {
+          "id": 174073,
+          "file_name": "4872deca0d81d6434721e95c8ef8dd4e.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Nomad Lodge Camp",
+         "address": "Gobi Nomad Lodge",
+         "phone": "86242585 ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум, Булагтай баг",
+         "image": {
+          "id": 174074,
+          "file_name": "305362691_420472716818492_6841016529559089375_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Mirage Lodge",
+         "address": "Gobi Mirage Lodge",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "phone": "8808 0837",
+         "image": {
+          "id": 174204,
+          "file_name": "308719034_521442516655662_2867317436419646910_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Three Camel Lodge",
+         "address": "Three Camel Lodge",
+         "phone": "99154867, 88114510",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "image": {
+          "id": 174210,
+          "file_name": "340450778_240828048352681_4276928226335447140_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Dream Gobi Lodge",
+         "address": "Dream Gobi Lodge",
+         "phone": "9902 2507, 98905074",
+         "location": "Өмнөговь аймаг, Булган сум,  Хонгор толгой",
+         "image": {
+          "id": 174215,
+          "file_name": "197602892_309395034063307_6074923002765896884_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гранд Говь Ресорт",
+         "address": "Гранд Говь Ресорт",
+         "phone": "99050190, 99052162",
+         "location": "Өмнөговь, Говь гурван сайхан уулын бэлд",
+         "image": {
+          "id": 174219,
+          "file_name": "329008942_749331476755176_5684352719981860604_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ундрах Говь Жуулчны Бааз",
+         "address": "Ундрах Говь Жуулчны Бааз",
+         "phone": "88485979, 94095979",
+         "location": "Өмнөговь аймаг, Булган сум, Дал баг",
+         "image": {
+          "id": 174224,
+          "file_name": "335405042_938651474084139_6865625821989905020_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Tour",
+         "address": "Gobitour Tourist Camp",
+         "phone": "99091285, 89669488",
+         "image": {
+          "id": 174228,
+          "file_name": "122533613_3329043487208332_519743501530150938_n.jpg"
+         },
+         "location": "Өмнөговь аймаг, Даланзадгад хот"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Жуулчин Говь",
+         "address": "JuulchinGobi",
+         "phone": "86100608, 88113389",
+         "location": "Өмнөговь аймаг, Даланзадгад хот",
+         "image": {
+          "id": 174229,
+          "file_name": "95130790_3666378803437334_8031405469891297280_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3a942286-eaf9-4484-b25c-ccc0fa69a0b0"
+      }
+     ]
+    }
+   ],
+   "id": "017b7dae-0c76-4b94-89ec-4fa6cc35b32e",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "2ed7082d-622d-43c9-b5ce-bb8ef5c3792a",
+   "content": "<h1 style=\"text-align: center;\"><strong>Буудал</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b3bd78f4-cabf-4202-b86d-6b5c01bd12d4",
+   "content": "<h4 style=\"text-align: center;\"><strong>Буудал</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "H9 Hotel Nine Tsogttsetsii",
+         "address": "Hotel-Nine Tsogttsetsii",
+         "location": "Өмнөговь аймаг, Цогт-Цэций сум,  Цагаан овоо баг",
+         "phone": "8805 4033 ",
+         "image": {
+          "id": 174083,
+          "file_name": "300980409_495378785929316_4513727853585383971_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дэлгэрэх Зочид Буудал",
+         "location": "Даланзадгад хот, 11р цэцэрлэгийн зүүн талд",
+         "phone": "70532222, 99053000",
+         "address": "Delgerekh hotel",
+         "image": {
+          "id": 174137,
+          "file_name": "95916175_102108231506552_3561384012805046272_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Sands Hotel",
+         "address": "Өмнөговь-GobiSands Hotel",
+         "phone": "7053 0024",
+         "location": "Өмнөгөвь, Даланзадгад",
+         "image": {
+          "id": 174152,
+          "file_name": "301950059_494681795993370_363842893696896245_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Royal Hotel",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "phone": "99170164, 95958555",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         },
+         "address": "Royal Hotel"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өргөө Зочид Буудал",
+         "address": "Өргөө Зочид Буудал",
+         "location": "Даланзадгад, Онцгой байдлын хойд талд 8р баг",
+         "phone": "91102110, 99194234",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дугант Зочид Буудал",
+         "location": "Өмнөговь аймаг, Цогтцэций сум",
+         "phone": "88081863",
+         "address": "Дугант Зочид Буудал",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "phone": "89699206",
+         "name": "Эрхэс Зочид Буудал",
+         "address": "Эрхэс Зочид Буудал",
+         "image": {
+          "id": 174167,
+          "file_name": "59440431_101734024382260_6936459087408267264_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өнөр Бүл Зочид Буудал",
+         "phone": "88018895",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг ",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         },
+         "address": "Өнөр Бүл Зочид Буудал"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэгээн Говь Зочид Буудал",
+         "address": "Гэгээн Говь Зочид Буудал",
+         "location": "Гандрис худалдааны төвийн баруун талд ",
+         "phone": "99088646",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян Говь Зочид Буудал",
+         "location": "Өмнөговь аймаг, Даланзадгад сум 3р баг",
+         "phone": "89995655, 99089280",
+         "address": "Баян Говь Зочид Буудал",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хур Мотел",
+         "address": "Хур Мотел",
+         "location": "Өмнөговь аймаг, Даланзадгад ",
+         "phone": "94105544, 89200088",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "eb1affe4-48fa-4762-aa91-73579ee42167"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хан Уул Зочид буудал",
+         "location": "Даланзадгад хот, 1-р сургуулийн зүүн талд",
+         "phone": "70534999 ",
+         "image": {
+          "id": 174085,
+          "file_name": "274346437_105237882098053_3773749634063202802_n.jpg"
+         },
+         "address": "Khan-Uul Hotel/ Хан-Уул зочид буудал"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Hotel",
+         "address": "Gobi hotel",
+         "location": "Даланзадгад хот Хийдийн 7-301",
+         "phone": "89259988",
+         "image": {
+          "id": 174140,
+          "file_name": "326128619_851317546138887_3987316299256040613_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хаан Болор Зочид Буудал",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "address": "Хаан Болор",
+         "phone": "91116411, 89555283",
+         "image": {
+          "id": 174155,
+          "file_name": "15252522_100379960457007_1512315853591527854_o.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Саруул Зочид Буудал",
+         "address": "Саруул Зочид Буудал",
+         "phone": "99998929, 89118929",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         },
+         "location": "Өмнөговь аймаг, Ханбогд сум Дөрөлж"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өгөөмөр Зочид Буудал",
+         "address": "Өгөөмөр Зочид Буудал",
+         "phone": "99090458, 89635335",
+         "location": "Өмнөговь, Ханбогд сум их булаг",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Зочид Буудал",
+         "address": "Говь Зочид Буудал",
+         "phone": "88724000, 80111145",
+         "location": "Өмнөговь, Ханбогд сум бага булаг",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Даймонд Зочид Буудал",
+         "address": "Diamond Hotel Dalanzadgad",
+         "phone": "70530909",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "image": {
+          "id": 174171,
+          "file_name": "279250775_112170088140180_4518287817318897625_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онги Зочид Буудал",
+         "address": "Онги Зочид Буудал",
+         "location": "Өмнөговь аймаг, Даланзадгад 8р баг",
+         "phone": "99059229",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Sun Shine Hotel",
+         "phone": "88541505",
+         "location": "Өмнөговь, Даланзадгад 2р баг, Хан уулын 1-17 тоот",
+         "address": "Sun Shine Hotel",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нутгийн Удирдлагын Ордон Зочид Буудал",
+         "address": "Нутгийн Удирдлагын Ордон Зочид Буудал",
+         "location": "Өмнөговь, Даланзадгад 3р баг",
+         "phone": "99998921",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хур Зочид Буудал",
+         "address": "Хур Зочид Буудал",
+         "phone": "88110134",
+         "location": "Өмнөговь аймаг, Даланзадгад",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "454ab5d3-39cc-437d-8264-5f0f3699092e"
+      }
+     ]
+    }
+   ],
+   "id": "83eaa4af-af42-473d-a1e4-e446a9aaf250",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "H9 Hotel Nine Tsogttsetsii",
+         "address": "Hotel-Nine Tsogttsetsii",
+         "location": "Өмнөговь аймаг, Цогт-Цэций сум,  Цагаан овоо баг",
+         "phone": "8805 4033 ",
+         "image": {
+          "id": 174083,
+          "file_name": "300980409_495378785929316_4513727853585383971_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дэлгэрэх Зочид Буудал",
+         "location": "Даланзадгад хот, 11р цэцэрлэгийн зүүн талд",
+         "phone": "70532222, 99053000",
+         "address": "Delgerekh hotel",
+         "image": {
+          "id": 174137,
+          "file_name": "95916175_102108231506552_3561384012805046272_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Sands Hotel",
+         "address": "Өмнөговь-GobiSands Hotel",
+         "phone": "7053 0024",
+         "location": "Өмнөгөвь, Даланзадгад",
+         "image": {
+          "id": 174152,
+          "file_name": "301950059_494681795993370_363842893696896245_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Royal Hotel",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "phone": "99170164, 95958555",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         },
+         "address": "Royal Hotel"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өргөө Зочид Буудал",
+         "address": "Өргөө Зочид Буудал",
+         "location": "Даланзадгад, Онцгой байдлын хойд талд 8р баг",
+         "phone": "91102110, 99194234",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дугант Зочид Буудал",
+         "location": "Өмнөговь аймаг, Цогтцэций сум",
+         "phone": "88081863",
+         "address": "Дугант Зочид Буудал",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "phone": "89699206",
+         "name": "Эрхэс Зочид Буудал",
+         "address": "Эрхэс Зочид Буудал",
+         "image": {
+          "id": 174167,
+          "file_name": "59440431_101734024382260_6936459087408267264_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өнөр Бүл Зочид Буудал",
+         "phone": "88018895",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг ",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         },
+         "address": "Өнөр Бүл Зочид Буудал"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэгээн Говь Зочид Буудал",
+         "address": "Гэгээн Говь Зочид Буудал",
+         "location": "Гандрис худалдааны төвийн баруун талд ",
+         "phone": "99088646",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян Говь Зочид Буудал",
+         "location": "Өмнөговь аймаг, Даланзадгад сум 3р баг",
+         "phone": "89995655, 99089280",
+         "address": "Баян Говь Зочид Буудал",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хур Мотел",
+         "address": "Хур Мотел",
+         "location": "Өмнөговь аймаг, Даланзадгад ",
+         "phone": "94105544, 89200088",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "eb1affe4-48fa-4762-aa91-73579ee42167"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хан Уул Зочид буудал",
+         "location": "Даланзадгад хот, 1-р сургуулийн зүүн талд",
+         "phone": "70534999 ",
+         "image": {
+          "id": 174085,
+          "file_name": "274346437_105237882098053_3773749634063202802_n.jpg"
+         },
+         "address": "Khan-Uul Hotel/ Хан-Уул зочид буудал"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Hotel",
+         "address": "Gobi hotel",
+         "location": "Даланзадгад хот Хийдийн 7-301",
+         "phone": "89259988",
+         "image": {
+          "id": 174140,
+          "file_name": "326128619_851317546138887_3987316299256040613_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хаан Болор Зочид Буудал",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "address": "Хаан Болор",
+         "phone": "91116411, 89555283",
+         "image": {
+          "id": 174155,
+          "file_name": "15252522_100379960457007_1512315853591527854_o.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Саруул Зочид Буудал",
+         "address": "Саруул Зочид Буудал",
+         "phone": "99998929, 89118929",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         },
+         "location": "Өмнөговь аймаг, Ханбогд сум Дөрөлж"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өгөөмөр Зочид Буудал",
+         "address": "Өгөөмөр Зочид Буудал",
+         "phone": "99090458, 89635335",
+         "location": "Өмнөговь, Ханбогд сум их булаг",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Зочид Буудал",
+         "address": "Говь Зочид Буудал",
+         "phone": "88724000, 80111145",
+         "location": "Өмнөговь, Ханбогд сум бага булаг",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Даймонд Зочид Буудал",
+         "address": "Diamond Hotel Dalanzadgad",
+         "phone": "70530909",
+         "location": "Өмнөговь аймаг, Даланзадгад 3р баг",
+         "image": {
+          "id": 174171,
+          "file_name": "279250775_112170088140180_4518287817318897625_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онги Зочид Буудал",
+         "address": "Онги Зочид Буудал",
+         "location": "Өмнөговь аймаг, Даланзадгад 8р баг",
+         "phone": "99059229",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Sun Shine Hotel",
+         "phone": "88541505",
+         "location": "Өмнөговь, Даланзадгад 2р баг, Хан уулын 1-17 тоот",
+         "address": "Sun Shine Hotel",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нутгийн Удирдлагын Ордон Зочид Буудал",
+         "address": "Нутгийн Удирдлагын Ордон Зочид Буудал",
+         "location": "Өмнөговь, Даланзадгад 3р баг",
+         "phone": "99998921",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хур Зочид Буудал",
+         "address": "Хур Зочид Буудал",
+         "phone": "88110134",
+         "location": "Өмнөговь аймаг, Даланзадгад",
+         "image": {
+          "id": 174161,
+          "file_name": "buudal.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "454ab5d3-39cc-437d-8264-5f0f3699092e"
+      }
+     ]
+    }
+   ],
+   "id": "df7573b7-8886-4e97-8948-5a3593526cf7",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "135cfdf4-8b25-4375-b2d3-ec590307638d",
+   "content": "<h1 style=\"text-align: center;\"><strong>Ресторан</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "c55ad4ab-8dc8-49de-9d74-d09b43d4f11c",
+   "content": "<h4 style=\"text-align: center;\"><strong>Ресторан</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хишиг Зоог ",
+         "address": "Өмнөговь Хишиг Зоог Ресторан",
+         "location": "Өмнөговь аймаг, Голомт банкны 6 давхар ",
+         "phone": "88407060",
+         "image": {
+          "id": 174094,
+          "file_name": "gh.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хаан Болор Ресторан",
+         "address": "Хаан Болор",
+         "location": "Өмнөговь аймаг Даланзадгад ЭМТөвийн хойно",
+         "phone": "88021031, 91116411",
+         "image": {
+          "id": 174095,
+          "file_name": "cfb.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "70b77ed3-f4df-4e4d-b107-9babb5e9741e"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Yuna Korean Restaurant",
+         "location": "Өмнөговь аймаг, Аянчин төвийн эсрэг талд",
+         "phone": "77274444",
+         "address": "Yuna Korean Restaurant Dalanzadgad",
+         "image": {
+          "id": 174092,
+          "file_name": "Yuna_restaurant_(1).jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Erkhes Hotel & Restaurant",
+         "address": "Эрхэс төв",
+         "location": "Өмнөговь аймаг Хаан банкны хажууд ",
+         "phone": "89699206",
+         "image": {
+          "id": 174093,
+          "file_name": "Erkhes_hotel___restuarant_DALANZADGAD_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d21febe4-5261-4c1f-aed4-abec348f9d5b"
+      }
+     ]
+    }
+   ],
+   "id": "e2d63f7f-b02a-4ac1-bbb5-48b28f577d9a",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хишиг Зоог ",
+         "address": "Өмнөговь Хишиг Зоог Ресторан",
+         "location": "Өмнөговь аймаг, Голомт банкны 6 давхар ",
+         "phone": "88407060",
+         "image": {
+          "id": 174094,
+          "file_name": "gh.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хаан Болор Ресторан",
+         "address": "Хаан Болор",
+         "location": "Өмнөговь аймаг Даланзадгад ЭМТөвийн хойно",
+         "phone": "88021031, 91116411",
+         "image": {
+          "id": 174095,
+          "file_name": "cfb.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "70b77ed3-f4df-4e4d-b107-9babb5e9741e"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Yuna Korean Restaurant",
+         "location": "Өмнөговь аймаг, Даланзадгад Баяндалайгийн зам Аянчин төвийн эсрэг талд",
+         "phone": "77274444",
+         "address": "Yuna Korean Restaurant Dalanzadgad",
+         "image": {
+          "id": 174092,
+          "file_name": "Yuna_restaurant_(1).jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Erkhes Hotel & Restaurant",
+         "address": "Эрхэс төв",
+         "location": "Өмнөговь аймаг Хаан банкны хажууд ",
+         "phone": "89699206",
+         "image": {
+          "id": 174093,
+          "file_name": "Erkhes_hotel___restuarant_DALANZADGAD_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d21febe4-5261-4c1f-aed4-abec348f9d5b"
+      }
+     ]
+    }
+   ],
+   "id": "f3a488cb-2ce1-4de6-bb32-19d3e90f57db",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "3c495d0c-3474-413c-a049-a3f5602f907a",
+   "content": "<h1 style=\"text-align: center;\"><strong>Кофе шоп&nbsp;</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "2ede9e4c-ab71-4ba5-a27b-ba825e4a209a",
+   "content": "<h4 style=\"text-align: center;\"><strong>Кофе шоп&nbsp;</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Street 27 Coffee Shop ",
+         "phone": "89918991",
+         "address": "27-р гудамж",
+         "location": "Өмнөговь аймаг, хаан банкны баруун хаалганд ",
+         "image": {
+          "id": 174305,
+          "file_name": "317355631_839081404040869_5727597856696715448_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Teme Tomo Coffee Shop ",
+         "phone": "89226389",
+         "address": "TEME TOMO coffee shop",
+         "location": "Өмнөговь аймаг, Даланзадгад ",
+         "image": {
+          "id": 247224,
+          "file_name": "Untitled_design_(48).png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Coffee Shop",
+         "address": "Coffee shop",
+         "phone": "90110230",
+         "location": "Нэг цэгийн үйлчилгээний 1 давхарт ",
+         "image": {
+          "id": 174324,
+          "file_name": "150929101049-black-coffee-stock.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Sands Coffee shop ",
+         "address": "Өмнөговь-GobiSands",
+         "location": "Нутгийн удирдлагын ордны зүүн талд ",
+         "phone": "80028828 ",
+         "image": {
+          "id": 174325,
+          "file_name": "301950059_494681795993370_363842893696896245_n_(1).jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "OnOn Coffee Shop",
+         "address": "OnOn cafe",
+         "location": "Өмнөговь аймаг, 6р баг, GB Town 2f",
+         "phone": "99128124",
+         "image": {
+          "id": 247225,
+          "file_name": "Untitled_design_(47).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "ba10575b-599e-4b47-9242-27922b0c1554"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Angel in coffee wine house ",
+         "phone": "88066522",
+         "location": "3р орон сууц үйлчилгээний төв 2f",
+         "address": "Angel in Us coffee&wine house",
+         "image": {
+          "id": 174326,
+          "file_name": "277763324_354583203352165_8549373663038598861_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Caffe Grand Coffee Shop",
+         "phone": "99035599",
+         "address": "Caffe grand coffee shop",
+         "location": "Марал супермаркетийн зүүн талд ",
+         "image": {
+          "id": 174349,
+          "file_name": "150929101049-black-coffee-stock_(1).jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нуна Coffee Shop",
+         "address": "Нуна coffee shop",
+         "location": "Өмнөговь аймаг, 6р баг, Хайрхан дэлгүүрийн урд ",
+         "phone": "88250757 ",
+         "image": {
+          "id": 174350,
+          "file_name": "white-cup-with-black-coffee.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Наран Coffee Shop ",
+         "location": "Өмнөговь аймаг, 6р баг Наран супер маркет дотор ",
+         "phone": "89117833 ",
+         "address": "Наран coffee shop ",
+         "image": {
+          "id": 174354,
+          "file_name": "columbuscoffee-.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "fbace3b6-55f4-4ae3-abcf-28ce731160ca"
+      }
+     ]
+    }
+   ],
+   "id": "71778167-263d-4527-a490-bfd571626d5a",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Street 27 Coffee Shop ",
+         "phone": "89918991",
+         "address": "27-р гудамж",
+         "location": "Өмнөговь аймаг, хаан банкны баруун хаалганд ",
+         "image": {
+          "id": 174305,
+          "file_name": "317355631_839081404040869_5727597856696715448_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Teme Tomo Coffee Shop ",
+         "phone": "89226389",
+         "address": "TEME TOMO coffee shop",
+         "location": "Өмнөговь аймаг, Даланзадгад ",
+         "image": {
+          "id": 247224,
+          "file_name": "Untitled_design_(48).png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Coffee Shop",
+         "address": "Coffee shop",
+         "phone": "90110230",
+         "location": "Нэг цэгийн үйлчилгээний 1 давхарт ",
+         "image": {
+          "id": 174324,
+          "file_name": "150929101049-black-coffee-stock.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Sands Coffee shop ",
+         "address": "Өмнөговь-GobiSands",
+         "location": "Нутгийн удирдлагын ордны зүүн талд ",
+         "phone": "80028828 ",
+         "image": {
+          "id": 174325,
+          "file_name": "301950059_494681795993370_363842893696896245_n_(1).jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "OnOn Coffee Shop",
+         "address": "OnOn cafe",
+         "location": "Өмнөговь аймаг, 6р баг, GB Town 2f",
+         "phone": "99128124",
+         "image": {
+          "id": 247225,
+          "file_name": "Untitled_design_(47).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "ba10575b-599e-4b47-9242-27922b0c1554"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Angel in coffee wine house ",
+         "phone": "88066522",
+         "location": "Дахин төлөвлөлтийн 3р орон сууц үйлчилгээний төв 2f",
+         "address": "Angel in Us coffee&wine house",
+         "image": {
+          "id": 174326,
+          "file_name": "277763324_354583203352165_8549373663038598861_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Caffe Grand Coffee Shop",
+         "phone": "99035599",
+         "address": "Caffe grand coffee shop",
+         "location": "Марал супермаркетийн зүүн талд ",
+         "image": {
+          "id": 174349,
+          "file_name": "150929101049-black-coffee-stock_(1).jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нуна Coffee Shop",
+         "address": "Нуна coffee shop",
+         "location": "Өмнөговь аймаг, 6р баг, Хайрхан дэлгүүрийн урд ",
+         "phone": "88250757 ",
+         "image": {
+          "id": 174350,
+          "file_name": "white-cup-with-black-coffee.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Наран Coffee Shop ",
+         "location": "Өмнөговь аймаг, 6р баг Наран супер маркет дотор ",
+         "phone": "89117833 ",
+         "address": "Наран coffee shop ",
+         "image": {
+          "id": 174354,
+          "file_name": "columbuscoffee-.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "fbace3b6-55f4-4ae3-abcf-28ce731160ca"
+      }
+     ]
+    }
+   ],
+   "id": "00eaf667-4472-44f5-8492-b9e819b87cf7",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "df041388-07d4-47cc-ad70-fcf846890ce3",
+   "content": "<h1 style=\"text-align: center;\"><strong>Морин аяллын үйлчилгээ</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ad652a51-0abb-4124-998a-355091756393",
+   "content": "<h4 style=\"text-align: center;\"><strong>Морин аяллын үйлчилгээ</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Р. Баянчулуун",
+         "phone": "96734443, 98242737",
+         "location": "Өмнөговь аймаг, Хашаатын энгэрын бууц",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Г. Төмөрмөнх",
+         "phone": "91509001",
+         "location": "Өмнөговь аймаг, Энгэр Улаан",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Э. Сугир",
+         "phone": "88279957",
+         "location": "Өмнөговь аймаг, Мухар эрэг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "О. Баттулга",
+         "phone": "88839851",
+         "location": "Өмнөговь аймаг, Ханбогд сум Халив",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "Бундхорол",
+         "name": "Морь",
+         "location": "Өмнөговь аймаг, Хавцгайт баг",
+         "phone": "98711392",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "О. Алтансүх",
+         "phone": "91210098",
+         "location": "Өмнөговь аймаг, Баяндалай баг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         },
+         "address": "Баяржаргал",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "phone": "98630049"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Буянхүү",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "phone": "98567456",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Бүддорж",
+         "phone": "86966188",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Бямбасүрэн",
+         "phone": "97011756",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "phone": "86868891",
+         "address": "Ганбаатар",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Ганболд",
+         "phone": "98168284",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Жадамба",
+         "phone": "88307072",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Х. Тогтох",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "99335905",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "Х. Эрдэнэсан",
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "83000056",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Ж. Бямбадорж",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "95160661",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "О. Мөнх-Очир",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "96486669",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Г. Жамъяан",
+         "phone": "98220990",
+         "location": "Өмнөговь аймаг, Дал сум",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Б. Эрдэнэчулуун",
+         "location": "Өмнөговь аймаг, молцог элс",
+         "phone": "98568074",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал",
+         "address": "Сарангаваа ",
+         "location": "Өмнөговь аймаг, Цогт-Овоо сум",
+         "phone": "89171470",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Энхбаяр ",
+         "location": "Өмнөговь аймаг, замын шанд баг ",
+         "phone": "98774826 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Бортээг баг ",
+         "name": "Гар урлал ",
+         "address": "Бадамжаргал ",
+         "phone": "88968470",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Хэнмэдэхэв ",
+         "location": "Өмнөговь аймаг Цогт-Овоо сум ",
+         "phone": "98631339 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9fc00ae6-c862-4cc0-87d9-96d8be58f207"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Эрдэнэбаяр",
+         "location": "Өмнөговь аймаг, Хавцгайт баг",
+         "phone": "98211963",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Н. Батням",
+         "location": "Өмнөговь аймаг, Даланзадгад 1р баг",
+         "phone": "89691216",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Н. Бурмаа",
+         "location": "Өмнөговь аймаг, Мандах баг",
+         "phone": "80545512",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Н. Батчулуун",
+         "phone": "86776919",
+         "location": "Өмнөговь аймаг,  Даланзадгад 1р баг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "О. Нанжид",
+         "name": "Морь",
+         "phone": "93304000",
+         "location": "Өмнөговь аймаг, Баяндалай баг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Б. Баатарxүү",
+         "location": "Өмнөговь аймаг, Жаргалант баг",
+         "phone": "89556511",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Зоригоо",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "phone": "98812777",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Нямдаваа",
+         "phone": "97049018",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Нямсүрэн",
+         "phone": "98985391",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Өлзийбат",
+         "phone": "97011697",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "А. Туяа",
+         "phone": "98335526",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Д. Түвдэндорж",
+         "phone": "88980901, 98916768",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Д. Энхтуяа",
+         "phone": "97011741",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Ш. Баасанхүү",
+         "phone": "97011690",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, 2р наран",
+         "phone": "91538888",
+         "address": "Н. Хатанбаатар",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "phone": "98321127",
+         "location": "Өмнөговь аймаг, Модон овоо",
+         "address": "М. Ганганжав",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Н. Амарсайхан",
+         "location": "Өмнөговь аймаг, Модон овоо",
+         "phone": "98621000",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Ц. Цоггэрэл",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "96892059",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Т. Буянхүү",
+         "location": "Өмнөговь аймаг, Молцог элс",
+         "phone": "89662468",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар Урлал ",
+         "address": "Алтанзаяа  ",
+         "location": "Өмнөговь аймаг Цогт-овоо сум ",
+         "phone": "88538681",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Хүүхэндүү ",
+         "location": "Өмнөговь аймаг, Замын шанд баг ",
+         "phone": "98218721",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Сүрэн ",
+         "location": "Өмнөговь аймаг, Хүрмэн сум ",
+         "phone": "89851186 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "location": "Өмнөговь аймаг, Цогт цэций сум ",
+         "address": "Болормаа ",
+         "phone": "99012662 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "67f29593-6fec-4506-b690-f85f42863e54"
+      }
+     ]
+    }
+   ],
+   "id": "fa812209-7f31-4f55-a93a-b43641fe9709",
+   "column": "2",
+   "hideMobile": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Р. Баянчулуун",
+         "phone": "96734443, 98242737",
+         "location": "Өмнөговь аймаг, Хашаатын энгэрын бууц",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Г. Төмөрмөнх",
+         "phone": "91509001",
+         "location": "Өмнөговь аймаг, Энгэр Улаан",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Э. Сугир",
+         "phone": "88279957",
+         "location": "Өмнөговь аймаг, Мухар эрэг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "О. Баттулга",
+         "phone": "88839851",
+         "location": "Өмнөговь аймаг, Ханбогд сум Халив",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "Бундхорол",
+         "name": "Морь",
+         "location": "Өмнөговь аймаг, Хавцгайт баг",
+         "phone": "98711392",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "О. Алтансүх",
+         "phone": "91210098",
+         "location": "Өмнөговь аймаг, Баяндалай баг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         },
+         "address": "Баяржаргал",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "phone": "98630049"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Буянхүү",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "phone": "98567456",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Бүддорж",
+         "phone": "86966188",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Бямбасүрэн",
+         "phone": "97011756",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "phone": "86868891",
+         "address": "Ганбаатар",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Ганболд",
+         "phone": "98168284",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй. Хонгорын гол",
+         "address": "Жадамба",
+         "phone": "88307072",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Х. Тогтох",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "99335905",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "Х. Эрдэнэсан",
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "83000056",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Ж. Бямбадорж",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "95160661",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "О. Мөнх-Очир",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "96486669",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Г. Жамъяан",
+         "phone": "98220990",
+         "location": "Өмнөговь аймаг, Дал сум",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Б. Эрдэнэчулуун",
+         "location": "Өмнөговь аймаг, молцог элс",
+         "phone": "98568074",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал",
+         "address": "Сарангаваа ",
+         "location": "Өмнөговь аймаг, Цогт-Овоо сум",
+         "phone": "89171470",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Энхбаяр ",
+         "location": "Өмнөговь аймаг, замын шанд баг ",
+         "phone": "98774826 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Бортээг баг ",
+         "name": "Гар урлал ",
+         "address": "Бадамжаргал ",
+         "phone": "88968470",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Хэнмэдэхэв ",
+         "location": "Өмнөговь аймаг Цогт-Овоо сум ",
+         "phone": "98631339 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9fc00ae6-c862-4cc0-87d9-96d8be58f207"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Эрдэнэбаяр",
+         "location": "Өмнөговь аймаг, Хавцгайт баг",
+         "phone": "98211963",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Н. Батням",
+         "location": "Өмнөговь аймаг, Даланзадгад 1р баг",
+         "phone": "89691216",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Н. Бурмаа",
+         "location": "Өмнөговь аймаг, Мандах баг",
+         "phone": "80545512",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Н. Батчулуун",
+         "phone": "86776919",
+         "location": "Өмнөговь аймаг,  Даланзадгад 1р баг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "О. Нанжид",
+         "name": "Морь",
+         "phone": "93304000",
+         "location": "Өмнөговь аймаг, Баяндалай баг",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Морь",
+         "address": "Б. Баатарxүү",
+         "location": "Өмнөговь аймаг, Жаргалант баг",
+         "phone": "89556511",
+         "image": {
+          "id": 174249,
+          "file_name": "346167395_623295129405443_5932640352965848169_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Зоригоо",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "phone": "98812777",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Нямдаваа",
+         "phone": "97049018",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Нямсүрэн",
+         "phone": "98985391",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Өлзийбат",
+         "phone": "97011697",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "А. Туяа",
+         "phone": "98335526",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Д. Түвдэндорж",
+         "phone": "88980901, 98916768",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Д. Энхтуяа",
+         "phone": "97011741",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, Сэврэй, Хонгорын гол",
+         "address": "Ш. Баасанхүү",
+         "phone": "97011690",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "location": "Өмнөговь аймаг, 2р наран",
+         "phone": "91538888",
+         "address": "Н. Хатанбаатар",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "phone": "98321127",
+         "location": "Өмнөговь аймаг, Модон овоо",
+         "address": "М. Ганганжав",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Н. Амарсайхан",
+         "location": "Өмнөговь аймаг, Модон овоо",
+         "phone": "98621000",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Ц. Цоггэрэл",
+         "location": "Өмнөговь аймаг, Ханбогд сум",
+         "phone": "96892059",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмээ",
+         "address": "Т. Буянхүү",
+         "location": "Өмнөговь аймаг, Молцог элс",
+         "phone": "89662468",
+         "image": {
+          "id": 174247,
+          "file_name": "346101242_977945956696733_2077357733362117176_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар Урлал ",
+         "address": "Алтанзаяа  ",
+         "location": "Өмнөговь аймаг Цогт-овоо сум ",
+         "phone": "88538681",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Хүүхэндүү ",
+         "location": "Өмнөговь аймаг, Замын шанд баг ",
+         "phone": "98218721",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Сүрэн ",
+         "location": "Өмнөговь аймаг, Хүрмэн сум ",
+         "phone": "89851186 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "location": "Өмнөговь аймаг, Цогт цэций сум ",
+         "address": "Болормаа ",
+         "phone": "99012662 ",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "67f29593-6fec-4506-b690-f85f42863e54"
+      }
+     ]
+    }
+   ],
+   "id": "71398d2c-6dd7-4648-b842-7258bb8963a3",
+   "column": "2",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ad73f971-abb7-40a1-9d53-dbf4452aaa21",
+   "content": "<h1 style=\"text-align: center;\"><strong>Гэр / Guest house</strong></h1>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "f461dba1-ca5e-4eb5-8156-0b91433b5b0a",
+   "content": "<h4 style=\"text-align: center;\"><strong>Гэр / Guest house</strong></h4>",
+   "style": {
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "98630049",
+         "address": "Б. Баяржаргал ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "Н. Буянхүү ",
+         "phone": "98567456",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "Ц. Бүддорж ",
+         "phone": "86966188",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "97011756",
+         "address": "Бямбасүрэн ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "86868891",
+         "address": "Б. Ганбаатар ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "name": "Гэр ",
+         "address": "Ганболд ",
+         "phone": "98168184",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "name": "Гэр ",
+         "address": "Ёндон ",
+         "phone": "97011702",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "Д. Зоригоо ",
+         "phone": "98812777",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "В. Нямдаваа ",
+         "phone": "97049018",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "98824280",
+         "address": "Нямсүрэн ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Хангонгор сумын Мандах баг ",
+         "phone": "96539999",
+         "address": "Н. Эрдэнэбилэг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Даланзадгад 8р баг ",
+         "phone": "89985351, 89530729",
+         "address": "Г. Гансүх ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "address": "Н. Очирсүрэн ",
+         "phone": "89238877 ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "phone": "99280729 ",
+         "location": "Өмнөговь аймаг, Баяндалай сумын Баян баг ",
+         "address": "Н. Түмэнбаяр ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Ж. Оюунсүрэн ",
+         "phone": "88535919",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум ",
+         "phone": "99005837",
+         "address": "П. Энхбат ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "phone": "88535557",
+         "address": "Н. Боль ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "address": "Ц. Хунцэцэг ",
+         "phone": "91235035",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d76aa5bd-13ed-44d2-a394-1ea399d8f880"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "phone": "97011697",
+         "address": "Д. Өлзийбат ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "name": "Гэр ",
+         "phone": "98335526",
+         "address": "А. Туяа ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "name": "Гэр ",
+         "address": "Д. Түвдэндорж ",
+         "phone": "88970901, 98916768",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "phone": "88010790",
+         "address": "Ш. Баасанхүү ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "phone": "88533333",
+         "address": "Нинжийн говь ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, 8р баг нанзад 3-3 ",
+         "phone": "99532222",
+         "address": "Чандмань ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймгийн төвөөс 60 км ",
+         "address": "Ганхуяг ",
+         "phone": "88986369",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Баатаржав ",
+         "location": "Өмнөговь аймаг, Оюут 3-9",
+         "phone": "88307470, 88532469 ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Гэр хаус ",
+         "location": "Өмнөговь аймаг, Баяндалай Баян баг ",
+         "phone": "88335379",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Болортуяа ",
+         "location": "Өмнөговь аймаг, Ханхонгор сумын Мандах баг ",
+         "phone": "88113582 ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "name": "Гэр ",
+         "address": "Наранбаваа ",
+         "phone": "89532770",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Ц. Поль ",
+         "phone": "98982829",
+         "location": "Өмнөговь аймаг, Булган сумын төв ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Ц. Ганбат ",
+         "phone": "88606948",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "phone": "98619021",
+         "address": "Г. Өнөр ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Н. Гэлэграш ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "phone": "98630923",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "address": "Н. Мөнх-Эрдэнэ ",
+         "phone": "98220218",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "phone": "99143722",
+         "address": "Г. Дарамбазар ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Санжаасүрэн ",
+         "phone": "88019945 ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4581e979-fa49-4615-9ecd-f838e27a27b3"
+      }
+     ]
+    }
+   ],
+   "id": "04441d69-32eb-4f70-902e-3ce30203dd09",
+   "column": "2",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "98630049",
+         "address": "Б. Баяржаргал ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "Н. Буянхүү ",
+         "phone": "98567456",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "Ц. Бүддорж ",
+         "phone": "86966188",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "97011756",
+         "address": "Бямбасүрэн ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "86868891",
+         "address": "Б. Ганбаатар ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "name": "Гэр ",
+         "address": "Ганболд ",
+         "phone": "98168184",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "name": "Гэр ",
+         "address": "Ёндон ",
+         "phone": "97011702",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "Д. Зоригоо ",
+         "phone": "98812777",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "address": "В. Нямдаваа ",
+         "phone": "97049018",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй хонгорын гол ",
+         "phone": "98824280",
+         "address": "Нямсүрэн ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Хангонгор сумын Мандах баг ",
+         "phone": "96539999",
+         "address": "Н. Эрдэнэбилэг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Даланзадгад 8р баг ",
+         "phone": "89985351, 89530729",
+         "address": "Г. Гансүх ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "address": "Н. Очирсүрэн ",
+         "phone": "89238877 ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "phone": "99280729 ",
+         "location": "Өмнөговь аймаг, Баяндалай сумын Баян баг ",
+         "address": "Н. Түмэнбаяр ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Ж. Оюунсүрэн ",
+         "phone": "88535919",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум ",
+         "phone": "99005837",
+         "address": "П. Энхбат ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "phone": "88535557",
+         "address": "Н. Боль ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "address": "Ц. Хунцэцэг ",
+         "phone": "91235035",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d76aa5bd-13ed-44d2-a394-1ea399d8f880"
+      }
+     ]
+    },
+    {
+     "type": "11",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "phone": "97011697",
+         "address": "Д. Өлзийбат ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "name": "Гэр ",
+         "phone": "98335526",
+         "address": "А. Туяа ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "name": "Гэр ",
+         "address": "Д. Түвдэндорж ",
+         "phone": "88970901, 98916768",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "phone": "88010790",
+         "address": "Ш. Баасанхүү ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Сэврэй Хонгорын гол ",
+         "phone": "88533333",
+         "address": "Нинжийн говь ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, 8р баг нанзад 3-3 ",
+         "phone": "99532222",
+         "address": "Чандмань ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймгийн төвөөс 60 км ",
+         "address": "Ганхуяг ",
+         "phone": "88986369",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Баатаржав ",
+         "location": "Өмнөговь аймаг, Оюут 3-9",
+         "phone": "88307470, 88532469 ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Гэр хаус ",
+         "location": "Өмнөговь аймаг, Баяндалай Баян баг ",
+         "phone": "88335379",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Болортуяа ",
+         "location": "Өмнөговь аймаг, Ханхонгор сумын Мандах баг ",
+         "phone": "88113582 ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Өмнөговь аймаг, Ханхонгор сум Мандах баг ",
+         "name": "Гэр ",
+         "address": "Наранбаваа ",
+         "phone": "89532770",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Ц. Поль ",
+         "phone": "98982829",
+         "location": "Өмнөговь аймаг, Булган сумын төв ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Ц. Ганбат ",
+         "phone": "88606948",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "phone": "98619021",
+         "address": "Г. Өнөр ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Н. Гэлэграш ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "phone": "98630923",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "address": "Н. Мөнх-Эрдэнэ ",
+         "phone": "98220218",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "phone": "99143722",
+         "address": "Г. Дарамбазар ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр ",
+         "address": "Санжаасүрэн ",
+         "phone": "88019945 ",
+         "location": "Өмнөговь аймаг, Булган сумын Дал баг ",
+         "image": {
+          "id": 174417,
+          "file_name": "istockphoto-1191089720-612x612-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4581e979-fa49-4615-9ecd-f838e27a27b3"
+      }
+     ]
+    }
+   ],
+   "id": "9d6c5af4-77c4-4323-afe9-f7f491917d7d",
+   "column": "2",
+   "hideDesktop": true
+  }
+ ]
+}

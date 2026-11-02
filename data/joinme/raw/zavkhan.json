@@ -1,0 +1,4681 @@
+{
+ "id": 5674,
+ "title": "Zavkhan",
+ "meta_title": null,
+ "meta_description": null,
+ "meta_keywords": null,
+ "visible": true,
+ "created_at": "2023-07-06T04:22:01.000Z",
+ "updated_at": "2024-07-09T09:57:03.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "HTMLBox",
+   "id": "fd9ab888-afa0-4a08-9e40-81e3023334e1",
+   "hideMobile": true,
+   "hideInApp": true,
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/276900/original/test.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   }
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "link": "http://www.touristinfocenter.mn/cate2_more.aspx?ItemID=56#slider",
+     "title": "Отгонтэнгэр хайрхан",
+     "img": {
+      "id": 276903,
+      "file_name": "Untitled-1.png"
+     }
+    },
+    {
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=162",
+     "title": "Улаагчны хар нуур",
+     "img": {
+      "id": 276904,
+      "file_name": "Untitled-1.png"
+     }
+    },
+    {
+     "title": "Хомын тал",
+     "link": "https://joinme.mn/takhi-eco-baaz",
+     "img": {
+      "id": 276905,
+      "file_name": "Untitled-1.png"
+     }
+    }
+   ],
+   "type": "default",
+   "display": "grid",
+   "id": "0b52234b-7b13-4f4f-8a63-266830942924",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "link": "http://www.touristinfocenter.mn/cate4_more.aspx?ItemID=11",
+     "title": "Тарвагатайн нуруу",
+     "img": {
+      "id": 276906,
+      "file_name": "Untitled-1.png"
+     }
+    },
+    {
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=16",
+     "title": "Бүст нуур",
+     "img": {
+      "id": 276907,
+      "file_name": "Untitled-1.png"
+     }
+    }
+   ],
+   "type": "default",
+   "display": "grid",
+   "id": "24c2e99d-fc81-422f-9416-bf6fc1ed5c5b",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "1bd418de-3964-41b2-b045-fdc7671ee1de",
+   "hideMobile": true,
+   "hideInApp": true,
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/276908/original/test.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "cccccfcc-0bd4-496a-b576-58fc1a43bf2d",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/276909/original/testm.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "hideDesktop": true,
+   "container": {
+    "type": "none"
+   }
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "link": "http://www.touristinfocenter.mn/cate4_more.aspx?ItemID=11",
+     "title": "Тарвагатайн нуруу",
+     "img": {
+      "id": 276915,
+      "file_name": "Untitled-1.png"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=16",
+     "title": "Бүст нуур",
+     "img": {
+      "id": 276916,
+      "file_name": "Untitled-1.png"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    }
+   ],
+   "type": "default",
+   "display": "grid",
+   "id": "20a0cf20-ec4b-4e10-9659-5a706f8441d8",
+   "hideDesktop": true
+  },
+  {
+   "component": "CategoryBlock",
+   "items": [
+    {
+     "link": "http://www.touristinfocenter.mn/cate2_more.aspx?ItemID=56#slider",
+     "title": "Отгонтэнгэр хайрхан",
+     "img": {
+      "id": 276911,
+      "file_name": "Untitled-1.png"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=162",
+     "title": "Улаагчны хар нуур",
+     "img": {
+      "id": 276913,
+      "file_name": "Untitled-1.png"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    },
+    {
+     "title": "Хомын тал",
+     "link": "https://joinme.mn/takhi-eco-baaz",
+     "img": {
+      "id": 276914,
+      "file_name": "Untitled-1.png"
+     },
+     "subtitle": "ДЭЛГЭРЭНГҮЙ ➡️"
+    }
+   ],
+   "type": "default",
+   "display": "grid",
+   "id": "58985da2-4d13-4ec1-9808-a635faa93ed6",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b80b1f26-1a3f-4e37-ae2a-b90f6358f50e",
+   "content": "<p><a href=\"../../takhi-eco-baaz\"><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/276910/original/testm.png\" alt=\"\" width=\"100%\" /></a></p>",
+   "hideDesktop": true,
+   "container": {
+    "type": "none"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184782,
+     "file_name": "2.png",
+     "link": "http://www.touristinfocenter.mn/cate2_more.aspx?ItemID=56#slider"
+    },
+    {
+     "id": 184785,
+     "file_name": "4.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=162"
+    },
+    {
+     "id": 184783,
+     "file_name": "3.png",
+     "link": "http://www.touristinfocenter.mn/cate8_more.aspx?ItemID=6"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "ef88eb35-4e27-4a54-b158-325984419092",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184782,
+     "file_name": "2.png",
+     "link": "http://www.touristinfocenter.mn/cate2_more.aspx?ItemID=56#slider"
+    },
+    {
+     "id": 184785,
+     "file_name": "4.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=162"
+    },
+    {
+     "id": 184783,
+     "file_name": "3.png",
+     "link": "http://www.touristinfocenter.mn/cate8_more.aspx?ItemID=6"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "9ddd0568-da3d-430f-bdf8-a912db5f0e74",
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   },
+   "autoplay": "3000"
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184787,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=20"
+    },
+    {
+     "id": 184793,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=21"
+    },
+    {
+     "id": 184790,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=22"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "59378377-d418-4254-b86b-edd954d478c7",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184787,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=20"
+    },
+    {
+     "id": 184790,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=22"
+    },
+    {
+     "id": 184793,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=21"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "eba49946-955d-4005-b94b-fd6bbe642b79",
+   "style": {
+    "marginTop": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px"
+   },
+   "hideDesktop": true,
+   "autoplay": "3000"
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184794,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=19"
+    },
+    {
+     "id": 184795,
+     "file_name": "Monument_3.png",
+     "link": "https://joinme.mn/takhi-eco-baaz"
+    },
+    {
+     "id": 184796,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=230"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "99c5c7d4-fe17-485a-8c94-a28f11b3895c",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184794,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=19"
+    },
+    {
+     "id": 184795,
+     "file_name": "Monument_3.png",
+     "link": "https://joinme.mn/takhi-eco-baaz"
+    },
+    {
+     "id": 184796,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=230"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "7601177e-ac90-4cb1-879b-7a69a652f836",
+   "style": {
+    "marginTop": "20px"
+   },
+   "autoplay": "3000",
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184797,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=16"
+    },
+    {
+     "id": 184798,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=15"
+    },
+    {
+     "id": 184780,
+     "file_name": "1.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=17"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "fe4acc34-6ed5-4be4-bbb9-50dd9e226ad1",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184797,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=16"
+    },
+    {
+     "id": 184798,
+     "file_name": "Monument_3.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=15"
+    },
+    {
+     "id": 184780,
+     "file_name": "1.png",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=17"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "a0e8598e-1dd9-4f46-8c3d-a98643357bf6",
+   "style": {
+    "marginTop": "20px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d03691f6-b044-4394-a2da-9df4233d7346",
+   "hideMobile": true,
+   "hideInApp": true,
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/184830/original/test.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "2bbf7518-6190-4923-aac9-6a5772007e47",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/184933/original/1.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184832,
+     "file_name": "b1.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=275"
+    },
+    {
+     "id": 184834,
+     "file_name": "b2.png"
+    },
+    {
+     "id": 184835,
+     "file_name": "b3.png",
+     "link": "http://touristinfocenter.mn/cate1_more.aspx?ItemID=353"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "76328366-80d1-4aee-8872-06df474fd778",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "-30px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184832,
+     "file_name": "b1.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=275"
+    },
+    {
+     "id": 184834,
+     "file_name": "b2.png"
+    },
+    {
+     "id": 184835,
+     "file_name": "b3.png",
+     "link": "http://touristinfocenter.mn/cate1_more.aspx?ItemID=353"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "52e54106-819b-43db-9e47-1cb8a812e1fd",
+   "style": {
+    "marginTop": "20px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-30px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184847,
+     "file_name": "b.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=413"
+    },
+    {
+     "id": 184851,
+     "file_name": "b.png"
+    },
+    {
+     "id": 184853,
+     "file_name": "b.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "50562598-f0ad-40de-b0e5-78fcdd96a1ff",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184847,
+     "file_name": "b.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=413"
+    },
+    {
+     "id": 184851,
+     "file_name": "b.png"
+    },
+    {
+     "id": 184853,
+     "file_name": "b.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "b8848504-15b9-4870-99f5-628cdd46b1e0",
+   "style": {
+    "marginTop": "20px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184855,
+     "file_name": "b.png",
+     "link": "http://www.touristinfocenter.mn/news_more.aspx?CateID=0&NewsID=1607"
+    },
+    {
+     "id": 184857,
+     "file_name": "b.png"
+    },
+    {
+     "id": 184862,
+     "file_name": "b.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "6865981c-7530-4933-8ee6-dcc83807a661",
+   "hideMobile": true,
+   "hideInApp": true,
+   "style": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 184855,
+     "file_name": "b.png",
+     "link": "http://www.touristinfocenter.mn/news_more.aspx?CateID=0&NewsID=1607"
+    },
+    {
+     "id": 184857,
+     "file_name": "b.png"
+    },
+    {
+     "id": 184862,
+     "file_name": "b.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "c3eb48a5-80a2-4680-b1f4-88a9febefb78",
+   "style": {
+    "marginTop": "20px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "99eac841-a0b7-403c-941d-f59d19175a49",
+   "content": "<h2 style=\"text-align: center;\"><strong>Улиастай сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "06b46f57-66f9-426d-927e-6d2c941d7a32",
+   "content": "<h4 style=\"text-align: center;\"><strong>Улиастай сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Шунхалай-Улиастай ШТС ",
+         "location": "Завхан аймаг Улиастай сум Өлзийт баг ",
+         "address": "http://www.shunkhlai.mn",
+         "phone": "91899047 91994392",
+         "image": {
+          "id": 183103,
+          "file_name": "340848677_742053887634044_4207075255527566515_n.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Магнай Трейд-Улиастай ШТС-109",
+         "phone": "97130404 78001010 ",
+         "address": "http://www.Magnai Trade.mn",
+         "location": "Завхан аймаг Улиастай сум Жаргалант",
+         "image": {
+          "id": 183104,
+          "file_name": "327318089_1197754500946827_6566659293644573666_n.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төвийн ШТС-1",
+         "location": "Улиастай сум,Жаргалант баг, Цэргийн ангийн хойшоо Нефтийн хажууд",
+         "address": "Petrovis.mn ",
+         "phone": "88192067",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төвийн ШТС-2",
+         "phone": "88401167",
+         "address": "Petrovis.mn ",
+         "location": "Улиастай сум,Жинст баг Ногоочдын хэсэг",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төвийн ШТС-3",
+         "phone": "88192067",
+         "address": "",
+         "location": "Улиастай сум, Нэгдсэн эмнэлгийн урд",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ундарга-ШТС-1 ",
+         "phone": "99819010",
+         "location": "Завхан аймаг Улиастай сум Чигэстэй баг ",
+         "image": {
+          "id": 183109,
+          "file_name": "p1cg3t6dhbvjghkt1k8c11bof4o1.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дашваанжил газ АХЦС-30",
+         "phone": "98356699",
+         "address": "",
+         "location": "Завхан аймаг  Жаргалант баг ",
+         "image": {
+          "id": 183108,
+          "file_name": "341459195_764862115296696_5004654565232351537_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нахиа салбар",
+         "location": "Улиастай сумын төв ",
+         "phone": "99788176",
+         "address": "",
+         "image": {
+          "id": 183110,
+          "file_name": "335427340_523038779955578_8215624490417159229_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төв ",
+         "name": "Монос - Улиастай ХХК",
+         "address": "",
+         "phone": "99241985",
+         "image": {
+          "id": 183111,
+          "file_name": "312171215_211170427933223_3242789719630298011_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Биндэргарав өрхийн эрүүл мэндийн төв ",
+         "location": "Улиастай сум Богдын гол",
+         "phone": "94677686",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай Жинст баг",
+         "name": "Аймгийн Нэгдсэн эмнэлэг",
+         "phone": "7046103",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай Жинст ",
+         "name": "Уламжлалт анагаах ухааны төв",
+         "phone": "99051478",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d00439d6-0b14-46b2-aa18-a0f04580f8d2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Отгонтэнгэр сувилал",
+         "address": "otgontenger0909@gmail.com",
+         "location": "Улиастай хотын төвд",
+         "phone": "99071938",
+         "image": {
+          "id": 187788,
+          "file_name": "14.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алтан зочид буудал",
+         "location": "Улиастай сумын төвд",
+         "phone": "96114060",
+         "image": {
+          "id": 183118,
+          "file_name": "altan.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төвд",
+         "name": "Өргөө зочид буудал",
+         "phone": "70462833, 99469933",
+         "image": {
+          "id": 183232,
+          "file_name": "orgo.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төвд",
+         "name": "Улиастай зочид буудал",
+         "phone": "99115685",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Уран байгаль зочид буудал",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         },
+         "phone": "96460003",
+         "location": "Улиастай "
+        }
+       ],
+       "type": "small",
+       "id": "aa6de12b-134b-4117-9058-fa14c21e7db1"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Загасан нүд",
+         "address": "Ресторан лоунж",
+         "phone": "99463000",
+         "location": "Улиастай сумын төв ",
+         "image": {
+          "id": 187794,
+          "file_name": "zagasan_nvd1.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төв ",
+         "name": "Edelweiss",
+         "address": " Ресторан, бэйкери, кофе шоп",
+         "phone": "70463737, 99040641",
+         "image": {
+          "id": 183120,
+          "file_name": "Screen_Shot_2023-07-07_at_01.22.19.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төв ",
+         "name": "Spark",
+         "address": "Lounge and karaoke",
+         "phone": "99464233",
+         "image": {
+          "id": 183323,
+          "file_name": "Screen_Shot_2023-07-07_at_22.32.25.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d038ec2a-1a60-45cb-85f6-ae75dfbecef4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэс Петролиум-Улиастай ",
+         "phone": "80502099",
+         "address": "tescard.mn",
+         "location": "Улиастай Жинст баг",
+         "image": {
+          "id": 183105,
+          "file_name": "22688325_355042044920639_8756155727654466746_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Магнай Трейд-Улиастай ШТС-019",
+         "phone": "97130404 78001010",
+         "address": "http://www.Magnai Trade.mn",
+         "location": "Завхан аймаг Улиастай сум Жинст ",
+         "image": {
+          "id": 183104,
+          "file_name": "327318089_1197754500946827_6566659293644573666_n.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төвийн ШТС-4",
+         "phone": "88401167",
+         "address": "Petrovis.mn ",
+         "location": "Улиастай Богдын гол баг Баруун бүсийн худалдааны төвийн хажууд",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төвийн ШТС-5",
+         "phone": "94117797",
+         "address": "Petrovis.mn ",
+         "location": "Улиастай Алтангийн хэсэг таван чих",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хөрс ШТС",
+         "phone": "80023239",
+         "location": "Завхан аймаг Улиастай сум Жинст баг ",
+         "image": {
+          "id": 183107,
+          "file_name": "327295474_521332473431196_6849758732042114749_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ундарга-ШТС-2 ",
+         "phone": "99819010",
+         "location": "Завхан аймаг Улиастай  сум Богдын гол баг ",
+         "image": {
+          "id": 183109,
+          "file_name": "p1cg3t6dhbvjghkt1k8c11bof4o1.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9ed37730-76ff-41cd-b51a-33e89ca6bf74"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Завхан эм хангамж ХХК",
+         "location": "Улиастай сумын төв ",
+         "phone": "89184118",
+         "image": {
+          "id": 183112,
+          "file_name": "19453094_1920622418209181_2701493940819318807_o.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Азифарм",
+         "location": "Улиастай сумын төв ",
+         "phone": "99001121",
+         "image": {
+          "id": 187677,
+          "file_name": "azo.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай Жинст баг",
+         "name": "Зоонозын өвчин судлалын төв",
+         "phone": "99040668",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дөрвөн оноо өрхийн эрүүл мэндийн төв",
+         "location": "Улиастай сум Жаргалант баг",
+         "phone": "99143063",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эрүүл мэндийн газар",
+         "phone": "70462280",
+         "location": "Улиастай сум Жинст баг",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "42525079-49d6-4806-87df-2b880275bf26"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ахмадын сувилал",
+         "location": "Улиастай хотын төвд",
+         "phone": "99460032",
+         "image": {
+          "id": 183361,
+          "file_name": "hos.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Загасан нүд",
+         "location": "Улиастай сумын төвд",
+         "image": {
+          "id": 187794,
+          "file_name": "zagasan_nvd1.jpg"
+         },
+         "phone": "99463000",
+         "address": "zagasannud2018@gmail.com"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төвд",
+         "phone": "99463000",
+         "name": "Даян зочид буудал",
+         "address": "",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төвд",
+         "name": "Завхан зочид буудал",
+         "phone": "70463046, 95463146",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хүннү зочид буудал",
+         "location": "Улиастай сумын төвд",
+         "phone": "99022567",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "ad5e243b-8e9e-4932-8993-63bb199d2843"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Удвал бэйкери ",
+         "address": "",
+         "phone": "99990542",
+         "location": "Улиастай сумын төв ",
+         "image": {
+          "id": 183120,
+          "file_name": "Screen_Shot_2023-07-07_at_01.22.19.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төв ",
+         "name": "Кристал ",
+         "address": "Ресторан лоунж",
+         "phone": "96686161",
+         "image": {
+          "id": 183120,
+          "file_name": "Screen_Shot_2023-07-07_at_01.22.19.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Улиастай сумын төв ",
+         "name": "Yum Yum",
+         "address": "Солонгос түргэн хоолны газар ",
+         "phone": "85055500",
+         "image": {
+          "id": 183120,
+          "file_name": "Screen_Shot_2023-07-07_at_01.22.19.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2375883a-b1e1-42ff-8e60-d5c1eaa9148b"
+      }
+     ]
+    }
+   ],
+   "id": "de683aea-cb1b-4efe-9d12-c951739eab7f",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "053da422-e6c5-46d3-85f8-912f6fb50ee1",
+   "content": "<h2 style=\"text-align: center;\"><strong>Алдархаан сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "5f851bcb-8a90-44c5-abf6-007672006f28",
+   "content": "<h4 style=\"text-align: center;\"><strong>Алдархаан сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алдархаан ШТС",
+         "phone": "99037873",
+         "location": "Алдархаан сум, Мандаат баг   ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их Монгол жуулчны бааз",
+         "location": "УБ хотоос 996 км Улиастай сумаас 12км",
+         "phone": "94928686",
+         "image": {
+          "id": 187681,
+          "file_name": "12.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Оргих жуулчны бааз",
+         "location": "УБ хотоос 992км, Улиастайгаас 8км",
+         "phone": "99084199",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Мөстийн ам жуулчны бааз",
+         "location": "УБ-с 989 км Улиастай-с 5км",
+         "phone": "99767685",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "\"Даян-Очир\" Хүүхдийн зуслан ",
+         "location": " 1029 км, Улаанбаатраас Улиастайгаас 45км, ",
+         "phone": "86051172, 99051172",
+         "image": {
+          "id": 183326,
+          "file_name": "dayn.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ногоон тохой жуулчны бааз",
+         "location": "УБ-с  995 км Улиастайгаас 11км ",
+         "phone": "90110044, 99063933",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Улаан хаалга -Рашаан амралт",
+         "location": "УБ хотоос 990км, Улиастайгаас 50км",
+         "phone": "99990660",
+         "image": {
+          "id": 183337,
+          "file_name": "ulaaan.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тунамал бүрд",
+         "location": "Алдархаан сумын төв ",
+         "phone": "86064660",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Завхан аймаг,  Алдархаан сум",
+         "name": "Алдархаан сумын эрүүл мэндийн төв",
+         "phone": "99917505",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэргэл жуулчны бааз",
+         "location": "УБ хотоос 989, Улиастайгаас 5 км",
+         "phone": "99041619",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цагаан уул жуулчны бааз",
+         "location": "УБ-с 986км аймгаас 2 км ",
+         "phone": "99466665",
+         "image": {
+          "id": 183327,
+          "file_name": "tsagaan.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хатан Өргөө жуулчны бааз",
+         "location": "УБ-с 1004 км, Улиастайгаас 20км, Алдархаанаас 5 км ",
+         "phone": "88808297",
+         "image": {
+          "id": 183328,
+          "file_name": "khatan.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Отгонтэнгэрийн Рашаан амралт",
+         "location": "УБ хотоос 1078 км, Улиастайгаас 78км",
+         "phone": "99071938",
+         "image": {
+          "id": 187788,
+          "file_name": "14.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8391d1a4-2c08-4fb3-a07f-c84a669f7daf"
+      }
+     ]
+    }
+   ],
+   "id": "d62db830-7da7-46fb-9ee9-e0a01526881b",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ce4036bd-8806-4b92-a975-858c173247a5",
+   "content": "<h2 style=\"text-align: center;\"><strong>Их-Уул сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "609b2180-1a8e-4099-92c2-28af786b6cc8",
+   "content": "<h4 style=\"text-align: center;\"><strong>Их-Уул сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их-уул ШТС ",
+         "phone": "90779153 90084525",
+         "location": "Завхан аймаг Их-уул сум Жавхлантын 5-н 1тоот",
+         "image": {
+          "id": 183103,
+          "file_name": "340848677_742053887634044_4207075255527566515_n.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Уулсын уран итгэлт ХХК",
+         "location": "Их-уул сумын төв  ",
+         "phone": "88033433",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төгөлдөр Аз ХХК",
+         "location": "Их-уул сумын төв  ",
+         "phone": "80707026",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их-Уул сумын эрүүл мэндийн төв",
+         "location": "Их-Уул сум",
+         "phone": "99919179",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "66ef098b-1b67-4070-bc1c-2210c4a4e9d9"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дунд цэцүүх рашаан амралт ",
+         "location": " УБ-с 730км",
+         "phone": "88946946",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "ОД буудал",
+         "phone": "94116476",
+         "location": "Их уул сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Их уул сум",
+         "name": "Алтан уул буудал",
+         "phone": "98992166",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Их уул сум",
+         "name": "Энгүүр дэлгэрэх буудал",
+         "phone": "99007629",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6e89dcbb-b452-453a-be75-0682bd168bfb"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Магнай Трейд-Их-уул ШТС ",
+         "phone": "97125689 78001010",
+         "location": "Завхан аймаг Их-Уул сум Баян-Ухаа  1-р баг",
+         "image": {
+          "id": 183104,
+          "file_name": "327318089_1197754500946827_6566659293644573666_n.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их-Уул ШТС",
+         "phone": "98050546",
+         "location": "Их ууд сум, Баян-Ухаа баг",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9ed37730-76ff-41cd-b51a-33e89ca6bf74"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гурван эрдэнэ ",
+         "location": "Их-уул сумын төв  ",
+         "phone": "95096777",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7b438991-9c4b-406c-8eb5-d7bc9c896a38"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Зартын рашаан амралт",
+         "location": "Их уул сум-с 65 км, УБ-с 780 км",
+         "phone": "99758090",
+         "image": {
+          "id": 183339,
+          "file_name": "zart.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ундрах амралтын газар",
+         "phone": "88245109",
+         "location": "Их уул сум",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Их уул сум",
+         "name": "ЗДТГ",
+         "phone": "98803272",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Их уул сум",
+         "name": "Чандмань эрдэнэ буудал",
+         "phone": "99550324",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хөшөг мод амралтын газар",
+         "location": "Их уул сум",
+         "phone": "98872003",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "e017d123-a833-42fe-bf42-741efe5cabdb"
+      }
+     ]
+    }
+   ],
+   "id": "68ddbda5-2189-4104-8913-9db6255cf8de",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "a411866d-1b9b-4fc4-8a9d-feca9f2f35f9",
+   "content": "<h2 style=\"text-align: center;\"><strong>Нөмрөг сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "5c9dd2c5-0aca-4d91-aae4-0b57e6ba050f",
+   "content": "<h4 style=\"text-align: center;\"><strong>Нөмрөг сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нөмрөг ШТС ",
+         "phone": "91060402 91890038",
+         "location": "Завхан аймаг Нөмрөг сум Хөдрөг баг ",
+         "address": "http://www.shunkhlai.mn",
+         "image": {
+          "id": 183103,
+          "file_name": "340848677_742053887634044_4207075255527566515_n.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нөмрөг гурван тулгат ХХК",
+         "location": "Нөмрөг сумын төв",
+         "phone": "98112598",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "ed9bf4bb-83e5-4ba3-85f5-57d26049be93"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянзүрх-Рашаан амралт",
+         "image": {
+          "id": 183338,
+          "file_name": "baynzu.jpeg"
+         },
+         "location": "УБ-с 950км",
+         "phone": "99732617"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Таван нүдэн буудал",
+         "location": "Нөмрөг сум",
+         "phone": "98222335",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хан хөхий буудал",
+         "location": "Нөмрөг сум",
+         "phone": "92128465",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Нөмрөг сум",
+         "name": "Хантайшир буудал",
+         "phone": "98666180, 98030915",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Нөмрөг сум",
+         "name": "Бугат буудал",
+         "phone": "98113745",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Уран жинст буудал",
+         "location": "Нөмрөг сум",
+         "phone": "98000188",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "23402483-e2c2-4588-8deb-4994987e07e6"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нөмрөг ШТС",
+         "phone": "93226702",
+         "location": "Нөмрөг сумын төвийн баруун хэсэгт ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9ed37730-76ff-41cd-b51a-33e89ca6bf74"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нөмрөг сумын эрүүл мэндийн төв",
+         "location": "Нөмрөг сум",
+         "phone": "99174829",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f8a99ae7-d23c-4513-9fe2-26502242c402"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "“Оргих” зочид буудал",
+         "phone": "99685945",
+         "location": "Нөмрөг сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Нөмрөг сум",
+         "name": "Арвин зочид буудал",
+         "phone": "98210792",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Нөмрөг сум",
+         "name": "Оргил Зоогийн газар буудал",
+         "phone": "98906551",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Нөмрөг сум",
+         "name": "Баян-Дүнгээ буудал",
+         "phone": "85277512, 97197922",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Нөмрөг сум",
+         "name": "“Зоос бор” буудал",
+         "phone": "98481046 ",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c3a75312-fc05-4f72-868d-4d92827df8c3"
+      }
+     ]
+    }
+   ],
+   "id": "a4a3798d-cd2c-47a5-ae07-936ef29530a3",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d41c3cd2-63fc-40ae-8e2e-658e01f0e550",
+   "content": "<h2 style=\"text-align: center;\"><strong>Сонгино сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d8be276c-adf1-47de-8f94-1fa681af04fb",
+   "content": "<h4 style=\"text-align: center;\"><strong>Сонгино сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сонгино ШТС ",
+         "phone": "91995979 91899002",
+         "location": "Завхан аймаг Сонгино сум Хайрхан баг 6-1тоот",
+         "image": {
+          "id": 183103,
+          "file_name": "340848677_742053887634044_4207075255527566515_n.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сонгино ШТС",
+         "phone": "92065417",
+         "location": "Бор-Өндөр баг сумын төвийн зүүн урд ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сонгино гэрэлт шүтээн ХХК",
+         "location": "Сонгино сумын төв",
+         "phone": "93032941",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Магнай Трейд-Сонгино ШТС ",
+         "phone": "93223802 78001010",
+         "location": "Завхан аймаг Сонгино сум Бор-өндөр ",
+         "image": {
+          "id": 183104,
+          "file_name": "327318089_1197754500946827_6566659293644573666_n.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэс Петролиум-Сонгино ",
+         "phone": "80904218",
+         "location": "Сонгино Бор Өндөр баг",
+         "image": {
+          "id": 183105,
+          "file_name": "22688325_355042044920639_8756155727654466746_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8391d1a4-2c08-4fb3-a07f-c84a669f7daf"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сонгино сумын эрүүл мэндийн төв",
+         "phone": "98184483",
+         "location": "Сонгино сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9ed37730-76ff-41cd-b51a-33e89ca6bf74"
+      }
+     ]
+    }
+   ],
+   "id": "4455f68b-5e9a-40a6-85f3-d7371c489283",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "e9302c4e-e8a4-499e-8350-1ae01cbb826c",
+   "content": "<h2 style=\"text-align: center;\"><strong>Тосонцэнгэл сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "561e8c7e-9f0e-4e09-b048-389d596f7a4b",
+   "content": "<h4 style=\"text-align: center;\"><strong>Тосонцэнгэл сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тосонцэнгэл ШТС ",
+         "phone": "91898150 91994397",
+         "location": "Завхан аймаг Тосонцэнгэл сум Улаан толгой ",
+         "image": {
+          "id": 183103,
+          "file_name": "340848677_742053887634044_4207075255527566515_n.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэс Петролиум-Тосонцэнгэл ",
+         "phone": "80502065",
+         "location": "Тосонцэнгэл Улаантолгой баг",
+         "image": {
+          "id": 183105,
+          "file_name": "22688325_355042044920639_8756155727654466746_n.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дашваанжил газ АХЦС-36",
+         "phone": "93221196",
+         "location": " Тосонцэнгэл- Лам толгой баг ",
+         "image": {
+          "id": 183108,
+          "file_name": "341459195_764862115296696_5004654565232351537_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хожуулын гол жуулчны бааз",
+         "location": "Тосонцэнгэл сум-с 6 км",
+         "phone": "99899951",
+         "image": {
+          "id": 183332,
+          "file_name": "hojuul.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сайхан Төгөл жуулчны бааз",
+         "location": "УБ хотоос 820км, Тосонцэнгэл 8 км. ",
+         "phone": "99094770, 99254525",
+         "image": {
+          "id": 183333,
+          "file_name": "saihan.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хожуулын рашаан ",
+         "location": "Тосонцэнгэл сум ",
+         "phone": "99894598",
+         "image": {
+          "id": 183340,
+          "file_name": "hoo.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "River 800",
+         "location": "УБ хот 800км, Тосонцэнгэл сум ",
+         "phone": "80923800",
+         "image": {
+          "id": 183342,
+          "file_name": "river.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тосон-Краван ",
+         "location": "УБ хотоос 800км, Тосонцэнгэл сумын төв дээр ",
+         "phone": "99990932, 99995932",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9e97b80-64a7-4af0-82cc-6e90237d8aaa"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тосонцэнгэл ШТС-1",
+         "phone": "90909971",
+         "location": "Хайрхан баг, сумын төвийн баруун хойд хэсэгт ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тосонцэнгэл ШТС-2",
+         "phone": "90909971",
+         "location": "Тосонцэнгэл-Улаантолгой баг",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тосонцэнгэл сумын нэгдсэн эмнэлэг",
+         "phone": "70468103",
+         "location": "Тосонцэнгэл сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Мөнхийн алба өрхийн эрүүл мэндийн төв",
+         "phone": "88986691",
+         "location": "Тосонцэнгэл сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8391d1a4-2c08-4fb3-a07f-c84a669f7daf"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бар Үр жуулчны бааз",
+         "location": "УБ хотоос 820км, Тосонцэнгэл 17км",
+         "phone": " 88077319, 88181420",
+         "image": {
+          "id": 183334,
+          "file_name": "bar.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тосон Краван мини хаус",
+         "location": "Тосонцэнгэл төв",
+         "phone": "99990932",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян улаан хоолойн рашаан ",
+         "location": "Тосонцэнгэл сум ",
+         "phone": "80345115",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9ed37730-76ff-41cd-b51a-33e89ca6bf74"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Sky line зрчид буудал",
+         "location": "УБ хотоос 800км, Тосонцэнгэл сумын төв дээр ",
+         "phone": "99254155",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bcb0d13-8f6c-4889-b5d0-a94cd88ac44d"
+      }
+     ]
+    }
+   ],
+   "id": "e808073c-7714-4628-99dc-8c99a3542262",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dc7f847d-93d0-4dcb-995e-5365d100aeda",
+   "content": "<h2 style=\"text-align: center;\"><strong>Түдэвтэй сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "0cd0f611-1d60-4947-8265-b3f251a3b574",
+   "content": "<h4 style=\"text-align: center;\"><strong>Түдэвтэй сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэлмэн сумын эрүүл мэндийн төв",
+         "phone": "99269007",
+         "location": "Тэлмэн сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Магнай Трейд-Түдэвтэй ШТС",
+         "phone": "98028744 ",
+         "location": " Түдэвтэй сум ",
+         "image": {
+          "id": 183104,
+          "file_name": "327318089_1197754500946827_6566659293644573666_n.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Түдэвтэй ЗДТГ",
+         "location": "Түдэвтэй сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Буурал ойгон",
+         "phone": "93141413",
+         "location": "Түдэвтэй сум",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Түдэвтэй шидэт үрэл ХХК",
+         "location": "Түдэвтэй сумын төв ",
+         "phone": "97056842",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8391d1a4-2c08-4fb3-a07f-c84a669f7daf"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ойгон нуур буудал",
+         "phone": "98996392",
+         "location": "Түдэвтэй сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Идэр Отгон буудал",
+         "phone": "93303939",
+         "location": "Түдэвтэй  сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9ed37730-76ff-41cd-b51a-33e89ca6bf74"
+      }
+     ]
+    }
+   ],
+   "id": "4e5a56ea-5830-4587-9de5-cf4981d50cb5",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "3df1d33a-e71b-48ec-ac72-3793b49d8deb",
+   "content": "<h2 style=\"text-align: center;\"><strong>Тэлмэн сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "205b11e7-970e-45ab-b706-42fe24e21cee",
+   "content": "<h4 style=\"text-align: center;\"><strong>Тэлмэн сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэс Петролиум-Тэлмэн  ",
+         "phone": "80502086",
+         "location": "Тэлмэн Өвөгдий баг",
+         "image": {
+          "id": 183105,
+          "file_name": "22688325_355042044920639_8756155727654466746_n.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэлмэн саран ХХК",
+         "location": "Тэлмэн сумын төв ",
+         "phone": "93032891",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэлмэн нуур ",
+         "location": "УБ хотоос 830 км, Улиастайгаас 150км, ",
+         "phone": "98236923, 93428899, 88900205, 88786070",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бүст нуур ",
+         "location": "УБ хотоос 890км, Тэлмэн сумаас 80 км, Нөмрөг сумаас 70 км ",
+         "phone": "98236923, 93428899, 88900205, 88786070",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "“Ногоон Алт” буудал",
+         "phone": "98710018",
+         "location": "Тэлмэн",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f9a5e11d-9004-43f2-9b9e-57594d0dafe7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Петровис-Тэлмэн ШТС",
+         "phone": "99039944",
+         "location": "Өвөгдий баг төв зам дагуу",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Тэлмэн сум",
+         "name": "Тэлмэн сумын эрүүл мэндийн төв",
+         "phone": "99269007",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэлмэн Андууд ",
+         "location": "Улаанбаатар хотоос 870км, Тэлмэн сумаас 20км, Тосонцэнгэл сумаас 60км",
+         "phone": "88229990",
+         "image": {
+          "id": 183331,
+          "file_name": "telmen.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "“Тэлмэн Өртөө” буудал",
+         "phone": "98030100",
+         "location": "Тэлмэн",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8391d1a4-2c08-4fb3-a07f-c84a669f7daf"
+      }
+     ]
+    }
+   ],
+   "id": "a7f88a6e-ab50-48f2-a226-bec5a1f805cf",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9c095b49-9496-46d2-991b-c0b4590ef5e5",
+   "content": "<h2 style=\"text-align: center;\"><strong>Баянхайрхан сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "61577121-d024-437a-a349-566066955040",
+   "content": "<h4 style=\"text-align: center;\"><strong>Баянхайрхан сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянхайрхан ШТС",
+         "phone": "98169906",
+         "location": "Баянхайрхан, Наран баг ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "ЗДТГ",
+         "phone": "98990820",
+         "location": "Баянхайрхан сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         },
+         "name": "зочид буудал ",
+         "phone": "92118417",
+         "location": "Баянхайрхан сум"
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянхайрхан жигст ХХК",
+         "location": "Баянхайрхан сумын төв ",
+         "phone": "98123773",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Баянхайрхан сум",
+         "name": "Баянхайрхан сумын эрүүл мэндийн төв",
+         "phone": "91229955",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "a3dacdaa-d3e1-4661-815c-d5380fd42f74",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d0b5e458-451f-4fdf-aeb8-94155ef8a9a5",
+   "content": "<h2 style=\"text-align: center;\"><strong>Баянтэс сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "eb872ff9-208e-4038-ab93-5bd5eeec86f0",
+   "content": "<h4 style=\"text-align: center;\"><strong>Баянтэс сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян-Алтайн сөд ХХК",
+         "location": "Баянтэс сумын төв ",
+         "phone": "98040800",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гостиница буудал",
+         "phone": "98885955",
+         "location": "Баянтэс сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         },
+         "name": "Хайрхан буудал",
+         "phone": "98809070",
+         "location": "Баянтэс сум"
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянтэс сумын эрүүл мэндийн төв",
+         "location": "Баянтэс сум",
+         "phone": "85657171",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "ЗДТГ",
+         "phone": "98131451",
+         "location": "Баянтэс сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянтэс ШТС",
+         "phone": "98623529",
+         "location": "Бужир баг сумын төвийн зүүн урд хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "713a6efd-e9dd-438f-87ca-ed2ccc214139",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "82ee1305-c56a-4665-8a9b-ef2049627e64",
+   "content": "<h2 style=\"text-align: center;\"><strong>Тэс сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "f16c8bde-d7d4-43f9-ba32-0faa07b9734a",
+   "content": "<h4 style=\"text-align: center;\"><strong>Тэс сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "\"Сүмт минж ХХК\" эмийн сан",
+         "location": "Тэс сумын төв ",
+         "phone": "96765684",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "“Ундарга” буудал",
+         "phone": "89956791",
+         "location": "Тэс сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Тэс сум",
+         "name": "Дэн буудал",
+         "phone": "90803830",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Тэс сум",
+         "name": "Гэр буудал",
+         "phone": "90390307",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэс сумын эрүүл мэндийн төв",
+         "location": "Тэс сум",
+         "phone": "99940976",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төв зочид буудал",
+         "phone": "95355905",
+         "location": "Тэс сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Зэндмэнь зочид буудал",
+         "location": "Тэс сум",
+         "phone": "94006222",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэс ШТС",
+         "phone": "91611557",
+         "location": "Зүр баг, сумын төвийн зүүн урд хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "b48dddb9-95e3-4655-adcc-dafe064a8f50",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "f6d00608-bbed-45de-8c1b-48a6810fd58e",
+   "content": "<h2 style=\"text-align: center;\"><strong>Цэцэн-Уул сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "11e49205-62fb-4a3d-97f5-f63c19b51a98",
+   "content": "<h4 style=\"text-align: center;\"><strong>Цэцэн-Уул сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цэцэн-Баян далай ХХК",
+         "location": "Цэцэн-уул сумын төв ",
+         "phone": "91866974",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цэцэн-Уул ШТС",
+         "phone": "80311392",
+         "location": "Батсуурь баг сумын төвийн баруун хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Цэцэн-Уул сум",
+         "name": "Цэцэн-Уул сумын эрүүл мэндийн төв",
+         "phone": "91110388",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "0970240f-b6e4-4892-a4e9-bd890e316b58",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "50bf2179-ca5d-4db3-b164-bec2c7ba8a2f",
+   "content": "<h2 style=\"text-align: center;\"><strong>Ургамал сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "6e92fe0f-39d9-40af-bcde-13f7dc3359ce",
+   "content": "<h4 style=\"text-align: center;\"><strong>Ургамал сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Ургамал сум",
+         "name": "Ургамал сумын эрүүл мэндийн төв",
+         "phone": "86967088",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ургамал ЗДТГ",
+         "location": "Ургамал сум",
+         "phone": "99012949",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ургамал ШТС",
+         "phone": "86352636",
+         "location": "Хүнгүй баг, сумын төвийн зүүн хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "8df6e720-b02a-4149-80b2-77f69c543f62",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "08c8810c-a48f-4207-b41d-a20889bcc5d0",
+   "content": "<h2 style=\"text-align: center;\"><strong>Дөрвөлжин сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "174f75a6-545f-4df5-8ebb-fb945c7e710f",
+   "content": "<h4 style=\"text-align: center;\"><strong>Дөрвөлжин сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чацарганат үрэл ХХК",
+         "location": "Дөрвөлжин сумын төв  ",
+         "phone": "88200323",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дөрвөлжин ШТС",
+         "phone": "89712006",
+         "location": "Буга баг, сумын төвийн зүүн хэсэгт ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дөрвөлжин сумын эрүүл мэндийн төв",
+         "location": "Дөрвөлжин сум",
+         "phone": "95159683",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тахь жуулчны бааз",
+         "location": "Улаанбаатар хотоос 1400км, Улиастайгаас 400км, ",
+         "phone": "88112031, 80021003",
+         "image": {
+          "id": 183335,
+          "file_name": "ho.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "95073a8e-fec6-4342-b8b6-5a2c2c6fc1f0",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "6037f11c-2c98-4515-953b-5895edc4d1ce",
+   "content": "<h2 style=\"text-align: center;\"><strong>Завханмандал сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9dae02eb-2069-4c4d-9f0d-b2e138988464",
+   "content": "<h4 style=\"text-align: center;\"><strong>Завханмандал сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бүрхээр хайрхан ХХК",
+         "location": "Завханмандал сумын төв  ",
+         "phone": "88250029",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Завханмандал ШТС",
+         "phone": "99037873",
+         "location": "Нуга баг, сумын төвийн урд хэсэгт ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Завханмандал сумын эрүүл мэндийн төв",
+         "phone": "99808682",
+         "location": "Завханмандал сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "292cfbc4-8d52-44d3-bf05-01efca35631a",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "38ac2484-b268-4680-93ab-2b61304c53bf",
+   "content": "<h2 style=\"text-align: center;\"><strong>Отгон сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "3ff5732a-1467-4ab0-9de5-254f753ca211",
+   "content": "<h4 style=\"text-align: center;\"><strong>Отгон сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Очирваань хайрханы Вансэмбэрүү ",
+         "location": "Отгон сумын төв ",
+         "phone": "95230363",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бадар Хундага ресорт /Отгон Буянт Хангай /",
+         "location": "Улаанбаатраас 1005 км/баянхонгороор ирвэл 1157км/",
+         "phone": "88068958",
+         "image": {
+          "id": 183329,
+          "file_name": "bayan.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ховоо жуулчны бааз",
+         "location": "Улаанбаатраас 960км/баянхонгороор ирвэл /, аймгийн төвөөс 128, Баянхонгороос 320км ",
+         "phone": "89112134",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "СҮМБЭР ХАЙРХАН ",
+         "phone": "98460190",
+         "location": "Отгон сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Отгон сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         },
+         "name": "Соёмбо дэлгэрэх буудал",
+         "phone": "95145754"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Отгон сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         },
+         "name": "Хишигт буудал",
+         "phone": "95468855"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Отгон ШТС",
+         "phone": "99518151",
+         "location": "Хужирт баг, сумын төвийн баруун хэсэгт ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Отгон  сум",
+         "name": "Отгон  сумын эрүүл мэндийн төв",
+         "phone": "99577866",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Нандинхайрхан жуулчны бааз",
+         "location": "УБхотоос /Баянхонгороор ирвэл / 960км,  Улиастайгаас 128км,",
+         "phone": "99413841",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Замбага жуулчны бааз",
+         "location": "Улаанбаатар хотоос 900км, Улиастайгаас 100км, Тэлмэнээс 20км",
+         "phone": "98112119, 83162119, 99162119",
+         "image": {
+          "id": 183330,
+          "file_name": "zambaga.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Буянт зочид буудал",
+         "phone": "95466633",
+         "location": "Отгон сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Отгон сум",
+         "name": "Жаргалант буудал",
+         "phone": "98333906",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Отгон сум",
+         "name": "Тэгш дүүрэн буудал",
+         "phone": "80795005",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "476ac657-de88-4997-b4d2-5bfb6c5b67c0",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "1f44707e-9d3c-44f0-a676-fee8228fbb6c",
+   "content": "<h2 style=\"text-align: center;\"><strong>Шилүүстэй сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "341d93da-5fd9-4fc5-a3e4-5a4ea6c0b4dc",
+   "content": "<h4 style=\"text-align: center;\"><strong>Шилүүстэй сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их мянганы тан ХХК",
+         "location": "Шилүүстэй сумын төв ",
+         "phone": "88606994",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Саруул зам буудал",
+         "phone": "88408515",
+         "location": "Шилүүстэй сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "location": "Шилүүстэй сум",
+         "name": "Шилүүстэй сумын эрүүл мэндийн төв",
+         "phone": "88031802",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Шилүүстэй ШТС",
+         "phone": "80701087",
+         "location": "Чандмань баг,сумын төвийн урд хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "f65b185e-2f9e-439d-8ca5-07eeb9268bcc",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "414e3221-8e77-4420-8efb-898c5bda9a72",
+   "content": "<h2 style=\"text-align: center;\"><strong>Эрдэнэхайрхан сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "e42f00d0-48c7-49e7-b530-2ebf44b2f239",
+   "content": "<h4 style=\"text-align: center;\"><strong>Эрдэнэхайрхан сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эмийн эргэлтийн сан ",
+         "location": "Эрдэнэхайрхан сумын төв ",
+         "phone": "88468005",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их тэнгэрийн хүрээ жуулчны бааз",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         },
+         "location": "УБ хотоос 1100км, Улиастайгаас 110, Эрдэнэхайрханаас 100км",
+         "phone": "99083807"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Улаагчны хишиг жуулчны бааз",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         },
+         "location": "Улаанбаатраас 1030км, Эрдэнэхайрхан сумаас 90км, Яруу сумаас 50км ",
+         "phone": "99107179, 80649999"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эрдэнэхайрхан ШТС",
+         "phone": "88462828",
+         "location": "Алтан баг, сумын төвийн бауун хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сумын эрүүл мэндийн төв",
+         "location": "Эрдэнэхайрхан сум",
+         "phone": "99658878",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "\"Хар нуур\" жуулчны бааз",
+         "location": "УБ хотоос 1100км, Улиастайгаас 115, Эрдэнэхайрханаас 90км",
+         "phone": "99147409, 99970712",
+         "image": {
+          "id": 183336,
+          "file_name": "by.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Алтан буудал",
+         "phone": "88463318",
+         "location": "Эрдэнэхайрхан сум",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "a1750236-395c-4c3b-9ac2-a58cb610700f",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "1dc663c7-e743-4c10-97dd-3690728a1a8b",
+   "content": "<h2 style=\"text-align: center;\"><strong>Яруу сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d903677f-27c7-4133-b8fd-3e70cbe7482a",
+   "content": "<h4 style=\"text-align: center;\"><strong>Яруу сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эмийн эргэлтийн сан ",
+         "location": "Яруу сумын төв ",
+         "phone": "88914092",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Яруу ШТС",
+         "phone": "95381244",
+         "location": "Чандмань баг, сумын төвийн зүүн урд хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Яруу сумын эрүүл мэндийн төв",
+         "phone": "91612127,",
+         "location": "Яруу сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "720de808-e4d8-4c96-9a3a-91630b24e0ec",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "66fde748-6069-4466-af29-f78fcba9de4a",
+   "content": "<h2 style=\"text-align: center;\"><strong>Идэр сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "c6ce2588-7ba0-4725-b3c8-f0c6ba1f6844",
+   "content": "<h4 style=\"text-align: center;\"><strong>Идэр сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Арвин агь ундрах ХХК",
+         "location": "Идэр сумын төв ",
+         "phone": "99718083",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Идэр ШТС",
+         "location": "99635899Цэцэрлэг баг, сумын төвийн баруун хэсэгт ",
+         "phone": "99635899",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Идэр сумын эрүүл мэндийн төв",
+         "phone": "89192249",
+         "location": "Идэр сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "1fdeaaee-b5d4-45b3-904a-43239f348529",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "f5d5eeff-f728-4ee2-be26-ee1cdf6ae450",
+   "content": "<h2 style=\"text-align: center;\"><strong>Цагаанхайрхан сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "3d1c3dce-e631-4ec5-8744-135f1c06e209",
+   "content": "<h4 style=\"text-align: center;\"><strong>Цагаанхайрхан сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Үнхэлцэг хайрхан ХХК",
+         "location": "Цагаанхайрхан сумын төв ",
+         "phone": "98182124",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цагаанхайрхан ШТС",
+         "phone": "99469009",
+         "location": "Агьт баг, сумын төвийн зүүн хойт хэсэгт ",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цагаанхайрхан сумын эрүүл мэндийн төв",
+         "location": "Цагаанхайрхан сум",
+         "phone": "99066436",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "ddc7a082-3e18-402f-92b4-e0523c545b09",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "88f8089a-d1b2-4fd5-b4bf-58fbc0f2bf93",
+   "content": "<h2 style=\"text-align: center;\"><strong>Цагаанчулуут сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "e6c521d8-322a-40af-9094-bf67ccc63080",
+   "content": "<h4 style=\"text-align: center;\"><strong>Цагаанчулуут сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Энх тун цагаанчулуут ХХК",
+         "location": "Цагаанчулуут сумын төв ",
+         "phone": "98019811",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цагаанчулуут ШТС",
+         "phone": "99469009",
+         "location": "Алдархаан сум, Мандаат баг сумын төвийн зүүн хойд хэсэгт",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цагаанчулуут сумын эрүүл мэндийн төв",
+         "phone": "90217191",
+         "location": "Цагаанчулуут сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "cecebcae-25cd-4eaf-9649-e0ab4ea48860",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d81e6f69-2bbc-4cc3-8985-9ec43a65ec79",
+   "content": "<h2 style=\"text-align: center;\"><strong>Асгат сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "88331a18-5509-4bbd-bffe-23f6ebf3b916",
+   "content": "<h4 style=\"text-align: center;\"><strong>Асгат сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Асгат сумын эрүүл мэндийн төв",
+         "phone": "95878713",
+         "location": "Асгат сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Асгат ШТС",
+         "phone": "86996724",
+         "location": "Суварга баг, сумын төвийн зүүн талд",
+         "image": {
+          "id": 187673,
+          "file_name": "petrovis.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "bd64918d-4a0b-41c3-a1e3-30df7ce1fca7",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "076c49ac-49b5-4112-a73e-8a57985c511b",
+   "content": "<h2 style=\"text-align: center;\"><strong>Сантмаргаз сум</strong></h2>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9bcad632-eba0-4698-84dd-4117a9c93f6b",
+   "content": "<h4 style=\"text-align: center;\"><strong>Сантмаргаз сум</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "20px"
+   },
+   "mobileStyle": {
+    "marginTop": "20px",
+    "marginBottom": "20px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сантмаргаз сумын эрүүл мэндийн төв",
+         "phone": "89538558",
+         "location": "Сантмаргаз сум",
+         "image": {
+          "id": 183114,
+          "file_name": "istockphoto-905791476-612x612.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баян нуур жуулчны бааз",
+         "image": {
+          "id": 183336,
+          "file_name": "by.jpeg"
+         },
+         "phone": "92051818, 98858551, 92040505",
+         "location": "Улаанбаатраас 1150, Сантмаргаз сумаас 28км"
+        }
+       ],
+       "type": "small",
+       "id": "7a9d0254-1e9f-446e-8a16-28bb130bafd4"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Маргазхан ХХК",
+         "location": "Сантмаргаз сумын төв ",
+         "phone": "98150858",
+         "image": {
+          "id": 183346,
+          "file_name": "Screen_Shot_2023-07-08_at_08.23.15.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bbb86fb-0d10-4659-b2ef-4e330741cffe"
+      }
+     ]
+    }
+   ],
+   "id": "a0bb8ccf-0d9c-4099-8397-d57b99aec9a5",
+   "column": "2"
+  }
+ ]
+}

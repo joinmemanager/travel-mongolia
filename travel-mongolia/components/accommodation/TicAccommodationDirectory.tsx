@@ -42,7 +42,7 @@ export default function TicAccommodationDirectory({
         <button type="button" className={chip(kind === '')} onClick={() => setKind('')}>
           Бүгд
         </button>
-        {(Object.keys(kindLabel) as AccommodationKind[]).map((k) => (
+        {(Object.keys(kindLabel) as AccommodationKind[]).filter((k) => items.some((x) => x.kind === k)).map((k) => (
           <button key={k} type="button" className={chip(kind === k)} onClick={() => setKind(k)}>
             {kindLabel[k]} ({items.filter((x) => x.kind === k).length})
           </button>

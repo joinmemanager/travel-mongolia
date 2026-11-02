@@ -1,0 +1,1058 @@
+{
+ "id": 5442,
+ "title": "Uvs-province",
+ "meta_title": null,
+ "meta_description": null,
+ "meta_keywords": null,
+ "visible": true,
+ "created_at": "2023-05-25T08:06:13.000Z",
+ "updated_at": "2024-02-23T11:16:05.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "HTMLBox",
+   "id": "5ce62a10-f96f-4989-94f6-d26e399e12c2",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/176547/original/test1.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "63855058-73ac-40ed-8a3e-e7a6c7c8db45",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250733/original/uvs.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 176263,
+     "file_name": "1.png"
+    },
+    {
+     "id": 176262,
+     "file_name": "2.png"
+    },
+    {
+     "id": 176264,
+     "file_name": "3.png"
+    },
+    {
+     "id": 176265,
+     "file_name": "4.png"
+    },
+    {
+     "id": 176266,
+     "file_name": "5.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "d5081eb1-ca1d-4421-a1e5-c19fb157c0b3",
+   "autoplay": "2000",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250725,
+     "file_name": "1_(3).png"
+    },
+    {
+     "id": 250726,
+     "file_name": "1_(5).png"
+    },
+    {
+     "id": 250727,
+     "file_name": "1_(1).png"
+    },
+    {
+     "id": 250728,
+     "file_name": "1_(2).png"
+    },
+    {
+     "id": 250729,
+     "file_name": "1_(4).png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "9af290f6-849c-4384-905e-5db1ddd646df",
+   "autoplay": "3500",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "3e4699a9-e19d-45fd-bc79-d945ce9c6cbf",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/178011/original/test1.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "086fa8ac-9f91-4384-8f46-cb5bcd4fb839",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250734/original/uvs.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 178007,
+     "file_name": "Monument_2.png"
+    },
+    {
+     "id": 178001,
+     "file_name": "d2.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=406"
+    },
+    {
+     "id": 178012,
+     "file_name": "d4.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=169"
+    },
+    {
+     "id": 178002,
+     "file_name": "d3.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "48079e95-047b-40d1-9a26-b04ebc4c4926",
+   "autoplay": "2000",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 178007,
+     "file_name": "Monument_2.png"
+    },
+    {
+     "id": 178001,
+     "file_name": "d2.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=406"
+    },
+    {
+     "id": 178012,
+     "file_name": "d4.png",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=169"
+    },
+    {
+     "id": 178002,
+     "file_name": "d3.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "5c1b5c5c-14fa-4f2e-87b9-eac44f854777",
+   "autoplay": "3500",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "e221d4a0-197d-480f-85a4-d711ee1ed849",
+   "content": "<h2 style=\"text-align: center;\">Жуулчны бааз</h2>",
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b14a23c0-d80a-4030-aaed-85fc570698bb",
+   "content": "<h4 style=\"text-align: center;\">Жуулчны бааз</h4>",
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "40px"
+   }
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Оршин тогтнохуй жуулчны бааз",
+         "phone": "99136772",
+         "location": "Увс аймаг Түргэн сум Хиргэнэ",
+         "address": "contact@ottour.mn",
+         "image": {
+          "id": 187950,
+          "file_name": "Orshin_togtnohui_baaz.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Увс нуур жуулчны бааз",
+         "phone": "99992952, 95952952",
+         "address": "Uvsnuur.camp@yahoo.com",
+         "image": {
+          "id": 187953,
+          "file_name": "uvs.jpeg"
+         },
+         "location": "Увс аймаг Сагил сум Үүрэг нуурын урд тал"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хэцүү хад жуулчны бааз",
+         "phone": "99067339, 98827339, 99908586",
+         "image": {
+          "id": 187958,
+          "file_name": "ks.jpeg"
+         },
+         "address": "Skh.ketsuukhad@gmail.com",
+         "location": "Увс аймаг Завхан сум Хяргас нуур "
+        }
+       ],
+       "type": "small",
+       "id": "c9426f50-84ef-4726-9809-0a7bc7213ea7"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хяргас Хөх Бух жуулчны бааз",
+         "phone": "99081869, 99991869, 95560168",
+         "location": "Увс аймаг Малчин сум, Хяргас нуур ",
+         "address": "khyargas_ecotour_mongolia@gmail.com",
+         "image": {
+          "id": 187964,
+          "file_name": "khyargas.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тарлаг тур жуулчны бааз",
+         "phone": "86339919, 98150609",
+         "location": "Увс аймаг, Баруун баруун туруун сум, Хар цагаан усны эх",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их нуур амралтын газар",
+         "phone": "99255256",
+         "location": "Увс аймаг Улаангом сум Хархираа ам",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хар тэрмис амралтын газар",
+         "phone": "99456796, 95910118, 95793419",
+         "location": "Увс аймаг Малчин сум Хар тэрмис,",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хархираа хүүхдийн зуслан",
+         "address": "zuslan.kharkhiraa@gmail.com",
+         "phone": "99452021",
+         "location": "Увс аймаг улаангом сум Хархираа уул",
+         "image": {
+          "id": 187972,
+          "file_name": "saihan.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7ac5f6b6-800a-4be2-95dc-dca80121f0d8"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Мандах наран гэр буудал",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         },
+         "phone": "91689000",
+         "location": "Увс аймаг аймаг Сагил сум Үүрэг нуур"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ундрал мөнх хайрхан",
+         "phone": "99454306, 91822777, 95164956",
+         "location": "Увс аймаг Тарилан сум, Бага Улиас",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Үүргийн долгио жуулчны бааз",
+         "phone": "90871188, 89727219, 90871189",
+         "location": "Ув аймаг Сагил сум Үүрэг нуурын зүүн хойд тал Бижийн булаг",
+         "image": {
+          "id": 187976,
+          "file_name": "uureg.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "a2b640ed-6bcc-40b8-8c70-2d6d394aeaa7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сүлдэт цахиур жуулчны бааз",
+         "phone": "85191171",
+         "location": "Увс аймаг Сагил сум Үүрэг нуурын урд тал",
+         "address": "suldetcamp@gmail.com",
+         "image": {
+          "id": 187960,
+          "file_name": "Suldet_tsakhiur_camp.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тээл парк жуулчны бааз",
+         "phone": "91010785",
+         "location": "Увс аймаг, Тариалан сум Тээлийн гол",
+         "image": {
+          "id": 187962,
+          "file_name": "Teel_park.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Baruun beach camp",
+         "phone": "99001903, 8945911, 98851903",
+         "location": "Увс аймаг, Завхан сум Хяргас нуур Хэцүү хад",
+         "address": "tsogankhbayar@gmail.com",
+         "image": {
+          "id": 187963,
+          "file_name": "ba.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "177bd40b-5f3f-421a-9496-9721fdfafe0e"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хяргас нуур жуулчны бааз",
+         "phone": "99113907, 99086843",
+         "location": "Увс аймаг Хяргас сум Хяргас нуурын хойд тал",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өгөөмөр хяргас нуур жуулчны бааз",
+         "phone": "99452777",
+         "location": "Увс аймаг Хяргас нуур",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сайхан хархираа амралтын газар",
+         "phone": "99452021, 99978765",
+         "location": "Увс аймаг Улаангим сум Хархираа уул ",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Могой гол амралтын газар",
+         "phone": "99993990, 99960664",
+         "location": "Увс аймаг Малшин сум Хяргас нуур ",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цүнхэг амралтын газар",
+         "phone": "99455828",
+         "location": "Увс аймаг түргэн сум Цүнхэгийн ам",
+         "image": {
+          "id": 187973,
+          "file_name": "tsunheg.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f3b0563e-d0e3-460b-80bc-d23f5f7557aa"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэр толгой гэр буудал",
+         "phone": "89565111",
+         "location": "Увс аймаг, Ховд сум, Гоожуурын хүрхрээ",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Жаргалант амралт",
+         "phone": "80646368, 95626358",
+         "location": "Увс аймаг Наранбулаг сум Хяргас нуур ",
+         "image": {
+          "id": 183325,
+          "file_name": "Screen_Shot_2023-07-07_at_23.13.28.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "719b0c9c-eef5-440a-b02e-3fd8ea27854c"
+      }
+     ]
+    }
+   ],
+   "id": "14387fd2-0321-4415-8cf1-05e05e9087d2",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9b75ecf4-2f75-4347-b47f-3cb997cbe469",
+   "content": "<h2 style=\"text-align: center;\">Зочид буудал</h2>",
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "c228860d-ae3d-43b0-8dbc-d25d6b1025ff",
+   "content": "<h4 style=\"text-align: center;\">Зочид буудал</h4>",
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баялаг од зочид буудал",
+         "image": {
+          "id": 187978,
+          "file_name": "Baylag_od_zochid_buudal.jpg"
+         },
+         "phone": "70452445, 99086890, 99050399",
+         "location": "Улаангом "
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Таван од",
+         "image": {
+          "id": 187979,
+          "file_name": "tawan.jpeg"
+         },
+         "phone": "99452021, 99978765",
+         "location": "Улаангом 10-р баг "
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэнгэр зочид буудал",
+         "phone": "99452229",
+         "location": "Улаангом 3-р баг ",
+         "image": {
+          "id": 187983,
+          "file_name": "tenger.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сарнай ",
+         "phone": "99452111, 95455361",
+         "location": "Улаангом",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c9426f50-84ef-4726-9809-0a7bc7213ea7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ачит нуур ",
+         "phone": "99459032, 99454865, 99452200, 70452200",
+         "location": "Улаангом хот",
+         "image": {
+          "id": 187980,
+          "file_name": "Achit_nuur_zochid_buudal.jpg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гранд зочид буудал",
+         "phone": "99454435, 99452996",
+         "location": "Улаангом 10-р баг ",
+         "image": {
+          "id": 187981,
+          "file_name": "grand.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Чингис зочид буудал",
+         "phone": "99459001, 99458118, 70458118, 85300303",
+         "location": "Улаангом ",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хяргас нуур зочид буудал",
+         "phone": "99065691",
+         "location": "Улаангом ",
+         "image": {
+          "id": 183231,
+          "file_name": "Screen_Shot_2023-07-07_at_13.57.09.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "177bd40b-5f3f-421a-9496-9721fdfafe0e"
+      }
+     ]
+    }
+   ],
+   "id": "9c9524c3-08e9-4a6f-95cf-d29b45bcc3e9",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "a4267dd2-d468-4173-9ff3-6ae072eac3aa",
+   "content": "<h2 style=\"text-align: center;\">Ресторан</h2>",
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "6a0e5d9e-0327-44df-b7cf-96b24b65d859",
+   "content": "<h4 style=\"text-align: center;\">Ресторан</h4>",
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их өргөө pесторан",
+         "image": {
+          "id": 187988,
+          "file_name": "ikh.jpeg"
+         },
+         "phone": "85453300",
+         "location": "Увс, Улаангом "
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хан Хөхий ресторан",
+         "phone": "90452222",
+         "location": "Увс, Улаангом Мөнхийн чанар ХХК төв байрны хойно",
+         "image": {
+          "id": 187989,
+          "file_name": "han.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c9426f50-84ef-4726-9809-0a7bc7213ea7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Grand restaurant",
+         "phone": "99454435, 99452996",
+         "location": "Улаангом 10-р баг ",
+         "image": {
+          "id": 187981,
+          "file_name": "grand.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэнгэр ресторан",
+         "image": {
+          "id": 187983,
+          "file_name": "tenger.jpeg"
+         },
+         "phone": "99452229",
+         "location": "Улаангом 3-р баг "
+        }
+       ],
+       "type": "small",
+       "id": "177bd40b-5f3f-421a-9496-9721fdfafe0e"
+      }
+     ]
+    }
+   ],
+   "id": "e581b0e6-2bf5-4bce-adda-7d02505c312f",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "96ac86cc-2e7d-49d7-9a01-d2d389de62df",
+   "content": "<h2 style=\"text-align: center;\">Кофе шоп</h2>",
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "35934449-3e06-4616-b7eb-7f5017fa4875",
+   "content": "<h4 style=\"text-align: center;\">Кофе шоп</h4>",
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Sondor coffee shop",
+         "phone": "80662266",
+         "location": "Улаангом",
+         "image": {
+          "id": 187992,
+          "file_name": "son.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c9426f50-84ef-4726-9809-0a7bc7213ea7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Lovely coffee shop",
+         "phone": "95515920",
+         "location": "Улаангом",
+         "image": {
+          "id": 187994,
+          "file_name": "lo.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "177bd40b-5f3f-421a-9496-9721fdfafe0e"
+      }
+     ]
+    }
+   ],
+   "id": "850f16c7-e88c-4ea8-aa87-1b7cb4f3fa3f",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "8055534d-7f54-4793-9150-f1a21b4b61ba",
+   "content": "<h2 style=\"text-align: center;\">Эмнэлэг</h2>",
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "80c798b6-2b20-41a6-a7c6-e1ba69252d3d",
+   "content": "<h4 style=\"text-align: center;\">Эмнэлэг</h4>",
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Увс аймгийн нэгдсэн эмнэлэг",
+         "phone": "19001507",
+         "location": "Увс, Улаангом сум 3-р баг ",
+         "image": {
+          "id": 247221,
+          "file_name": "Untitled_design_(44).png"
+         },
+         "address": "hospital@uvs.gov.mn"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гэгээн булаг эмнэлэг ",
+         "phone": "9945 8276",
+         "location": "Увс, Улаангом сум 3-р баг ",
+         "image": {
+          "id": 188001,
+          "file_name": "gegee.jpeg"
+         },
+         "address": "g.tseveen_uvs@yahoo.com"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онош эмнэлэг",
+         "phone": "9545 8048",
+         "location": "Увс, Улаангом 3-р баг",
+         "image": {
+          "id": 188002,
+          "file_name": "onosh.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Жаргалын үүд эмнэлэг",
+         "phone": "95953796",
+         "location": "Увс, Улаангом 3-р баг",
+         "address": "enkhmaabatulzii589@gmail.com",
+         "image": {
+          "id": 188015,
+          "file_name": "jargal.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмүүлэл-Увс мэс заслын клиник эмнэлэг",
+         "location": "Улаангом 3-р баг, Болор цахиур",
+         "phone": "99072321, 99455134, 99455062",
+         "image": {
+          "id": 188016,
+          "file_name": "temuulel.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c9426f50-84ef-4726-9809-0a7bc7213ea7"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эбажи клиник эмнэлэг ",
+         "phone": "95982016",
+         "location": "Увс, Улаангом 3-р баг",
+         "image": {
+          "id": 188003,
+          "file_name": "ebaji.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": " Tiffany med",
+         "phone": "9653 8001",
+         "address": "Уламжлалт бариа засал, био цахилгаан эмчилгээ",
+         "location": " Улаангом 3-р баг",
+         "image": {
+          "id": 188004,
+          "file_name": "tiff.jpeg"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "БАДАМЛЯНХУА эмэгтэйчүүдийн эмнэлэг",
+         "phone": "8064 1638",
+         "address": "badamlyanhuahospital@gmail.com",
+         "image": {
+          "id": 188006,
+          "file_name": "badam.jpeg"
+         },
+         "location": "Увс,  Улаангом 3-р баг"
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Болор цахиур шүдний эмнэлэг",
+         "phone": "9906 8403",
+         "location": "Улаангом 3-р баг",
+         "image": {
+          "id": 247222,
+          "file_name": "Untitled_design_(45).png"
+         }
+        },
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "\"Арга билиг\" уламжлалт бариа заслын эмнэлэг",
+         "location": "Улаангом 3-р баг",
+         "phone": "99870006",
+         "image": {
+          "id": 188014,
+          "file_name": "arga.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "177bd40b-5f3f-421a-9496-9721fdfafe0e"
+      }
+     ]
+    }
+   ],
+   "id": "d372131a-8e21-4f94-bdd3-d6c825b193c0",
+   "column": "2"
+  }
+ ]
+}

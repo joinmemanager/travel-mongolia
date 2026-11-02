@@ -3,7 +3,7 @@ import React from 'react';
 
 import AccommodationGuide from '@/components/accommodation/AccommodationGuide';
 import TicAccommodationDirectory from '@/components/accommodation/TicAccommodationDirectory';
-import { getAccommodations, KIND_LABEL, TIC_NOTICE } from '@/lib/accommodation';
+import { accommodationNotice, getAccommodations, KIND_LABEL } from '@/lib/accommodation';
 import { isPreviewEnv } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 
@@ -17,7 +17,7 @@ export default async function AccommodationPage() {
   const items = await getAccommodations();
   return (
     <AccommodationGuide
-      directory={items.length > 0 ? <TicAccommodationDirectory items={items} notice={TIC_NOTICE} kindLabel={KIND_LABEL} /> : undefined}
+      directory={items.length > 0 ? <TicAccommodationDirectory items={items} notice={accommodationNotice(items)} kindLabel={KIND_LABEL} /> : undefined}
     />
   );
 }

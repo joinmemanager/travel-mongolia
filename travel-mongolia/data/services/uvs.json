@@ -1,0 +1,120 @@
+{
+  "province": "Увс",
+  "slug": "uvs",
+  "source": "joinme.mn",
+  "fetchedAt": "2026-10-30",
+  "items": [
+    {
+      "id": "joinme-dd8549fb48f69bb7",
+      "name": "\"Арга билиг\" уламжлалт бариа заслын эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Улаангом 3-р баг",
+      "phones": [
+        "99870006"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188014/original/arga.jpeg"
+    },
+    {
+      "id": "joinme-afb5f9c5408161b7",
+      "name": "Tiffany med",
+      "type": "hospital",
+      "soum": null,
+      "location": "Улаангом 3-р баг",
+      "phones": [
+        "96538001"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188004/original/tiff.jpeg"
+    },
+    {
+      "id": "joinme-4ba2402bf857b3b2",
+      "name": "БАДАМЛЯНХУА эмэгтэйчүүдийн эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Увс, Улаангом 3-р баг",
+      "phones": [
+        "80641638"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188006/original/badam.jpeg"
+    },
+    {
+      "id": "joinme-e7f7917689b3c769",
+      "name": "Болор цахиур шүдний эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Улаангом 3-р баг",
+      "phones": [
+        "99068403"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/247222/original/Untitled_design_(45).png"
+    },
+    {
+      "id": "joinme-c80c0e3fc37a23b3",
+      "name": "Жаргалын үүд эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Увс, Улаангом 3-р баг",
+      "phones": [
+        "95953796"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188015/original/jargal.jpeg"
+    },
+    {
+      "id": "joinme-d2e18535d1ea0980",
+      "name": "Онош эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Увс, Улаангом 3-р баг",
+      "phones": [
+        "95458048"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188002/original/onosh.jpeg"
+    },
+    {
+      "id": "joinme-924fdc235f03d8bc",
+      "name": "Тэмүүлэл-Увс мэс заслын клиник эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Улаангом 3-р баг, Болор цахиур",
+      "phones": [
+        "99072321",
+        "99455134",
+        "99455062"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188016/original/temuulel.jpeg"
+    },
+    {
+      "id": "joinme-742920319b8adb1e",
+      "name": "Эбажи клиник эмнэлэг",
+      "type": "hospital",
+      "soum": null,
+      "location": "Увс, Улаангом 3-р баг",
+      "phones": [
+        "95982016"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188003/original/ebaji.jpeg"
+    },
+    {
+      "id": "joinme-4c558ae2fbcbfd81",
+      "name": "Гэгээн булаг эмнэлэг",
+      "type": "hospital",
+      "soum": "Улаангом",
+      "location": "Увс, Улаангом сум 3-р баг",
+      "phones": [
+        "99458276"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/188001/original/gegee.jpeg"
+    },
+    {
+      "id": "joinme-4397e336d06fbae8",
+      "name": "Увс аймгийн нэгдсэн эмнэлэг",
+      "type": "hospital",
+      "soum": "Улаангом",
+      "location": "Увс, Улаангом сум 3-р баг",
+      "phones": [
+        "19001507"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/247221/original/Untitled_design_(44).png"
+    }
+  ]
+}

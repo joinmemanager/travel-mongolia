@@ -51,6 +51,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com', // Нүүр хуудсанд ашигласан байгалийн зураг
       },
+      {
+        protocol: 'https',
+        hostname: 'd1f6qhhrbg3j8a.cloudfront.net', // joinme.mn-ийн байгууллагын зураг (localProvider.externalImages)
+      },
     ],
   },
 };

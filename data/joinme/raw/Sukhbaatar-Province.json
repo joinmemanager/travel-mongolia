@@ -1,0 +1,1573 @@
+{
+ "id": 1428,
+ "title": null,
+ "meta_title": "Сүхбаатар аймаг",
+ "meta_description": "",
+ "meta_keywords": "",
+ "visible": true,
+ "created_at": "2021-01-06T10:53:30.000Z",
+ "updated_at": "2024-02-23T05:18:24.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46945,
+     "file_name": "Header.jpg"
+    },
+    {
+     "id": 46926,
+     "file_name": "Header-2.jpg"
+    },
+    {
+     "id": 46946,
+     "file_name": "Header-3.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:814",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "853f63d3-e381-40eb-acce-96b79a327b30",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "4000",
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "2125c09e-d8cf-4c55-80cc-ccc4e1523816",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46725/original/About.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "f028db54-33ab-44b0-a3e2-67c85df05666",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250607/original/sukhbaatar.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250609,
+     "file_name": "1.png"
+    },
+    {
+     "id": 250616,
+     "file_name": "1.png"
+    },
+    {
+     "id": 250617,
+     "file_name": "1.png"
+    },
+    {
+     "id": 250618,
+     "file_name": "1.png"
+    },
+    {
+     "id": 250619,
+     "file_name": "1.png"
+    },
+    {
+     "id": 250620,
+     "file_name": "1.png"
+    },
+    {
+     "id": 250621,
+     "file_name": "1.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:760",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "coverflow",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "bullets",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "ee24f538-db79-4742-90f9-5093892d66f4",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "",
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "fc61ddbc-8095-4ece-8948-d18c661f3a62",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/47022/original/Highlights.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ff74a071-dc94-4049-aa4c-bdcf0c445765",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46941/original/Destination-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46929,
+     "file_name": "Route-1.jpg"
+    },
+    {
+     "id": 46930,
+     "file_name": "Route-2.jpg"
+    },
+    {
+     "id": 46931,
+     "file_name": "Route-3.jpg"
+    },
+    {
+     "id": 46932,
+     "file_name": "Route-4.jpg"
+    },
+    {
+     "id": 46933,
+     "file_name": "Route-5.jpg"
+    },
+    {
+     "id": 46934,
+     "file_name": "Route-6.jpg"
+    },
+    {
+     "id": 68600,
+     "file_name": "Route-7.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:760",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "coverflow",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "bullets",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "ed59561f-cadf-4ca7-ab49-035b721144b0",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dabb787a-beb5-4d04-8656-d3a2ba3bfbf6",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46727/original/Album-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dc9d8ca0-49da-43d0-96e2-af648d4f4eac",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250623/original/sukhbaatar.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "FeaturedSwiper",
+   "items": [
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46728,
+      "file_name": "Sukhbaatar-Photo-_(1).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46729,
+      "file_name": "Sukhbaatar-Photo-_(2).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46730,
+      "file_name": "Sukhbaatar-Photo-_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46731,
+      "file_name": "Sukhbaatar-Photo-_(4).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46732,
+      "file_name": "Sukhbaatar-Photo-_(5).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46733,
+      "file_name": "Sukhbaatar-Photo-_(6).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46734,
+      "file_name": "Sukhbaatar-Photo-_(7).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46735,
+      "file_name": "Sukhbaatar-Photo-_(8).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46736,
+      "file_name": "Sukhbaatar-Photo-_(9).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46737,
+      "file_name": "Sukhbaatar-Photo-_(10).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46738,
+      "file_name": "Sukhbaatar-Photo-_(11).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46739,
+      "file_name": "Sukhbaatar-Photo-_(12).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46740,
+      "file_name": "Sukhbaatar-Photo-_(13).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46741,
+      "file_name": "Sukhbaatar-Photo-_(14).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46742,
+      "file_name": "Sukhbaatar-Photo-_(15).jpg"
+     }
+    }
+   ],
+   "id": "f274b905-afbd-49e3-af86-ed3969ee2f18",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "FeaturedSwiper",
+   "items": [
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46728,
+      "file_name": "Sukhbaatar-Photo-_(1).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46729,
+      "file_name": "Sukhbaatar-Photo-_(2).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46730,
+      "file_name": "Sukhbaatar-Photo-_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46731,
+      "file_name": "Sukhbaatar-Photo-_(4).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46732,
+      "file_name": "Sukhbaatar-Photo-_(5).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46733,
+      "file_name": "Sukhbaatar-Photo-_(6).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46734,
+      "file_name": "Sukhbaatar-Photo-_(7).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46735,
+      "file_name": "Sukhbaatar-Photo-_(8).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46736,
+      "file_name": "Sukhbaatar-Photo-_(9).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46737,
+      "file_name": "Sukhbaatar-Photo-_(10).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46738,
+      "file_name": "Sukhbaatar-Photo-_(11).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46739,
+      "file_name": "Sukhbaatar-Photo-_(12).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46740,
+      "file_name": "Sukhbaatar-Photo-_(13).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46741,
+      "file_name": "Sukhbaatar-Photo-_(14).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 46742,
+      "file_name": "Sukhbaatar-Photo-_(15).jpg"
+     }
+    }
+   ],
+   "id": "e5b72902-a17d-4560-9e98-77cd83d6e167",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46935,
+     "file_name": "Treasure-1.jpg"
+    },
+    {
+     "id": 46936,
+     "file_name": "Treasure-2.jpg"
+    },
+    {
+     "id": 46937,
+     "file_name": "Treasure-3.jpg"
+    },
+    {
+     "id": 46938,
+     "file_name": "Treasure-4.jpg"
+    },
+    {
+     "id": 46939,
+     "file_name": "Treasure-5.jpg"
+    },
+    {
+     "id": 46940,
+     "file_name": "Treasure-6.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:760",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "cf643ab0-4984-4d8e-93a0-43c9e80e52da",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250624,
+     "file_name": "2.png"
+    },
+    {
+     "id": 250625,
+     "file_name": "2.png"
+    },
+    {
+     "id": 250630,
+     "file_name": "2.png"
+    },
+    {
+     "id": 250631,
+     "file_name": "2.png"
+    },
+    {
+     "id": 250632,
+     "file_name": "2.png"
+    },
+    {
+     "id": 250633,
+     "file_name": "2.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:760",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "efa5b372-8ae7-4eaf-8a3d-1080d256dc86",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ce0060dd-7894-4e5b-8263-f6a323d61a90",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46928/original/Museum-1.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b324157f-0200-47ab-9da7-3e6fa2173bd8",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250634/original/sukhbaatar.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46748,
+     "file_name": "News-1.jpg",
+     "link": "https://joinme.mn/media/831"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:530",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "6985fe83-930a-4aee-8cca-d67725b87c97",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "160px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250635,
+     "file_name": "sukhbaatar.png",
+     "link": "https://joinme.mn/media/831"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:530",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "1586670c-8c60-4663-bf20-f44fbbce4d4a",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "160px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "52242892-2279-444c-9c47-7f9cade1767a",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46749/original/Event-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "200px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d32bb142-448e-4522-8ccd-55baef65d736",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250637/original/sukhbaatar.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "200px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46751,
+     "file_name": "Event-2.jpg",
+     "link": "/products/414_jm-narharah-001"
+    },
+    {
+     "id": 46750,
+     "file_name": "Event-1.jpg",
+     "link": "/products/414_jm-agtanahureet-001"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "660:495",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "2",
+   "id": "9a6cf0e9-bb33-4cf0-aaab-5a13c72dc969",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46751,
+     "file_name": "Event-2.jpg",
+     "link": "/products/414_jm-narharah-001"
+    },
+    {
+     "id": 46750,
+     "file_name": "Event-1.jpg",
+     "link": "/products/414_jm-agtanahureet-001"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "660:495",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "e5b3e1cf-7e32-45c7-8bd4-6567f31ea4f5",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true,
+   "autoplay": "3500"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ad36da53-c3b0-45dc-8dbb-65f9436c7678",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46756/original/Monuments-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "41ed0251-74d7-4af1-8d65-4401bc608c12",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250639/original/sukhbaatar.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46765,
+     "file_name": "Historical-_(1).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=2"
+    },
+    {
+     "id": 46766,
+     "file_name": "Historical-_(2).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=76"
+    },
+    {
+     "id": 46767,
+     "file_name": "Historical-_(3).jpg",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=7"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "796b7bc1-a11e-4cf9-aa92-597f9cba01e0",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46765,
+     "file_name": "Historical-_(1).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=2"
+    },
+    {
+     "id": 46766,
+     "file_name": "Historical-_(2).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=76"
+    },
+    {
+     "id": 46767,
+     "file_name": "Historical-_(3).jpg",
+     "link": "http://www.touristinfocenter.mn/cate5_more.aspx?ItemID=7"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "30155f11-218e-46c6-b33a-ac09c8b98aa4",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "a8add5a6-3d7d-49d4-b23f-5b03925d0c69",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/46752/original/Historical-Title.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "140px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dee59cc3-8fec-4dd8-9bae-fb3bdbc37bf1",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250638/original/sukhbaatar.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "140px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46768,
+     "file_name": "Monuments-_(1).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=533"
+    },
+    {
+     "id": 46769,
+     "file_name": "Monuments-_(2).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=110"
+    },
+    {
+     "id": 46770,
+     "file_name": "Monuments-_(3).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=30"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "39f788b9-7699-4d46-8926-1d73cdee4446",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 46768,
+     "file_name": "Monuments-_(1).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=533"
+    },
+    {
+     "id": 46769,
+     "file_name": "Monuments-_(2).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=110"
+    },
+    {
+     "id": 46770,
+     "file_name": "Monuments-_(3).jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=30"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "6dbcfe89-eb61-478b-bc16-880d32a02aad",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "fixed"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 48217,
+     "file_name": "Stay-1.jpg"
+    },
+    {
+     "id": 48218,
+     "file_name": "Stay-2.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:814",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "5218fda9-3b4f-4bc8-93dd-f226fc758510",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d5c9b786-7138-4bc3-add4-febeb7e422af",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250640/original/sukhbaatar.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b30aad80-cfce-4509-8424-66ad801dc157",
+   "content": "<h1 style=\"text-align: center;\"><strong>Жуулчны бааз</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "df746a66-e305-4326-bb33-4744de012536",
+   "content": "<h4 style=\"text-align: center;\"><strong>Жуулчны бааз</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Талын Агуй Жуулчны Бааз",
+         "address": "Талын Агуй Жуулчны Бааз",
+         "location": "Сүхбаатар аймаг Дарьганга",
+         "phone": " 99261659",
+         "image": {
+          "id": 174734,
+          "file_name": "Talin_agui.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8807886a-8038-4824-95a3-fa675562393c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Шилийн Богд Жуулчны Бааз",
+         "location": "Сүхбаатар аймгийн Дарьганга сумаас 45 км",
+         "phone": " 99033140, 91033140",
+         "image": {
+          "id": 174735,
+          "file_name": "Shiliin_bogd.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "0c116319-d0f2-45e4-a669-98eb3befb2c3"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хөх Тэнгэрийн Зам Жуулчны Бааз",
+         "address": "",
+         "location": "Сүхбаатар аймгаг Дарьганга сум, Шилийн богд уулаас 7 км зайтай",
+         "phone": "94628888",
+         "image": {
+          "id": 174771,
+          "file_name": "khoh_tenger.JPG"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "1f8aefdf-d739-4343-bcd1-73153cb5418d"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хүслийн Хүслэн Жуулчны Бааз",
+         "phone": "99884400",
+         "location": "Сүхбаатар аймаг Баруун-Уртаас 9км ",
+         "image": {
+          "id": 174774,
+          "file_name": "Khuslin.JPG"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "4be690f3-1f38-4ab3-9456-6d1036738fb7"
+      },
+      {
+       "component": "Address",
+       "items": [],
+       "type": "small",
+       "id": "a697af1b-b2fe-4040-ac04-10393f678fa9"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Хүрээ Бүрд Жуулчны Бааз",
+         "location": "Онгон сумаас 40 км",
+         "phone": "95851129",
+         "address": "“Хүрээ бүрд” жуулчны бааз",
+         "image": {
+          "id": 174733,
+          "file_name": "khuree_bvrd.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "d469107a-cd9c-451b-938f-46041b6f3d92"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Наадаан Жуулчны бааз",
+         "address": "НААДААН РЕСОРТ",
+         "phone": "75776767",
+         "location": "Сүхбаатар аймаг Баруун-Урт сум, 9-р баг",
+         "image": {
+          "id": 174764,
+          "file_name": "naadaan.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6f63a5d4-41c9-4252-adbc-1fb80663df46"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гангар Хун Жуулчны Бааз",
+         "address": "Гангар хун жуулчны бааз",
+         "phone": "99170299",
+         "location": "Сүхбаатар аймаг Дарьганга сумын төвөөс 10 км байрлана",
+         "image": {
+          "id": 174773,
+          "file_name": "Gangar_khun.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "55f0e804-2b76-431b-9b73-9898ea193275"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дагшин Булаг Жуулчны Бааз",
+         "phone": "96260066, 95043299",
+         "address": "Orgil9191@yahoo.com",
+         "location": "Сүх",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "77395774-b71f-45f5-8a4e-f293a520656e"
+      }
+     ]
+    }
+   ],
+   "id": "00896266-5f32-44b9-9475-49f802952619",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "5284617b-9e20-4354-a83e-58f5ff6d3557",
+   "content": "<h1 style=\"text-align: center;\"><strong>Зочид буудал</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b12276f2-243e-4333-8d70-55f03147d7cc",
+   "content": "<h4 style=\"text-align: center;\"><strong>Зочид буудал</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дарьганга Зочид Буудал",
+         "address": "Dariganga Hotel",
+         "location": "Сүхбаатар аймаг Баруун-Урт сум, Эрдэнэмандал хийдийн баруун урд талд",
+         "phone": " 77413333",
+         "image": {
+          "id": 174765,
+          "file_name": "Dariganga.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "63a1f192-1c89-4202-8dac-94f9a7284cf9"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ургах Наран Зочид Буудал",
+         "phone": "99070231",
+         "address": "Ургах наран буудал /Сүхбаатар аймаг/",
+         "location": "Сүхбаатар аймаг Баруун-Урт залуусын гудамж",
+         "image": {
+          "id": 174841,
+          "file_name": "Urgah_naran.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "b82a8c71-2f37-4da5-959a-bbecf3f40408"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Их Уул Зочид Буудал",
+         "phone": " 99109323",
+         "location": "Сүрбаатар аймаг, Зүүн бүсийн худалдааны төвийн хойно",
+         "address": "ИХ УУЛ Зочид буудал - Сүхбаатар аймаг",
+         "image": {
+          "id": 174737,
+          "file_name": "Ikh_uul1.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "389f7141-a856-471b-a7a6-59f775828c90"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тансаг Зочид Буудал",
+         "phone": " 99112001",
+         "location": "Сүхбаатар аймаг ",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "391ef8c5-b444-4dd9-9130-2462d32656b6"
+      }
+     ]
+    }
+   ],
+   "id": "4b1725ba-7cd5-4776-9a19-acba83739402",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "cba5a4fe-74ff-4367-b9ce-f2368abfd29c",
+   "content": "<h1 style=\"text-align: center;\"><strong>Ресторан</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "66e6c22b-8b10-4452-b667-5e1c057ffade",
+   "content": "<h4 style=\"text-align: center;\"><strong>Ресторан</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Үүлэн Ресторан ",
+         "address": "Үүлэн Төв",
+         "location": "Сүхбаатар аймаг Баруун-Урт ",
+         "phone": "99272010",
+         "image": {
+          "id": 172857,
+          "file_name": "uulen.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "431f51a1-f123-4a4f-b31b-c5aa9e170a25"
+      }
+     ]
+    },
+    {
+     "type": "6"
+    }
+   ],
+   "id": "4e1b37e0-df80-498f-8f04-ea4c1b64313e",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ff09e299-ab29-4913-abd6-4370a759a344",
+   "content": "<h1 style=\"text-align: center;\"><strong>Кофе шоп</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dd1c432d-f3ec-48d6-b7d6-786cc0a37c05",
+   "content": "<h4 style=\"text-align: center;\"><strong>Кофе шоп</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Mini Office and Coffee House",
+         "address": "Mini office & 11 coffee house",
+         "location": "Сүхбаатар аймаг Баруун-Урт ",
+         "phone": " 88063220",
+         "image": {
+          "id": 172858,
+          "file_name": "Mini_office___11_coffee_house.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "5847dcff-2d6e-4cf5-8146-b0812993d198"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Enjoy Coffe Shop",
+         "address": "Enjoy Coffee shop",
+         "location": "Сүхбаатар аймаг Баруун-Урт",
+         "phone": " 99642548",
+         "image": {
+          "id": 174887,
+          "file_name": "enjoy.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7767be4f-5273-4a7a-8050-fb78f53bf08d"
+      }
+     ]
+    }
+   ],
+   "id": "ce6215a1-3554-4c95-84ab-30a4d53735f1",
+   "column": "2"
+  }
+ ]
+}

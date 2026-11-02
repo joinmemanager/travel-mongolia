@@ -12,6 +12,7 @@ import Gallery from '@/components/province/Gallery';
 import OpenDetailsOnHash from '@/components/province/OpenDetailsOnHash';
 import ProvinceFactsBand, { type FactItem } from '@/components/province/ProvinceFactsBand';
 import ReadMore from '@/components/province/ReadMore';
+import UsefulServices from '@/components/province/UsefulServices';
 import WeatherCard from '@/components/province/WeatherCard';
 import RichText from '@/components/RichText';
 import { GuidanceBlock, PlaceEsgBlocks } from '@/components/templates/DetailBlocks';
@@ -429,6 +430,8 @@ export default async function ProvinceDetailPage({ params }: Props) {
 
       <div className="px-6 mx-auto mt-20 space-y-12 max-w-7xl sm:px-10">
         <RelatedBookings items={related} campaign="province" contentId={provinceSlug} />
+        {/* Эзэмшигч батлах хүртэл зөвхөн preview-д (joinme.mn-ийн утас, шинэчлэгдээгүй байж болно) */}
+        {isPreviewEnv() && <UsefulServices provinceSlug={provinceSlug} />}
         {placesHere.length > 0 && (
           <section>
             <h2 className="pl-4 mb-6 text-2xl font-black tracking-tight border-l-4 border-[#15803d] text-neutral-900 sm:text-3xl">

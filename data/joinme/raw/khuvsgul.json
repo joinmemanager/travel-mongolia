@@ -1,0 +1,137 @@
+{
+ "id": 650,
+ "title": "Хөвсгөл",
+ "meta_title": "Хөвсгөлийн аяллууд",
+ "meta_description": "Тайгын аялал, Гүний шумбалт, Завь унах зэргээр бүх үйлчилгээг нэг дороос",
+ "meta_keywords": "joinme.mn, joinme, lizing, leasing,лизингь зээл, аялал, shoppy, аялал, эх орны аялал, хөвсгөл, dubai, дубай, thailand, тайланд, dornogobi, дорноговь, хамрын хийд, сакура, taiga, тайга, цагааннуур, улаан уул сум, шишгэдийн гол",
+ "visible": true,
+ "created_at": "2020-03-13T15:10:04.000Z",
+ "updated_at": "2024-04-06T10:14:49.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "Banner",
+   "text_position": "center",
+   "id": "d2fade47-949b-4d4f-ac48-9fdbdef7f629",
+   "banner": {
+    "id": 18357,
+    "file_name": "Khuvsgul_TopSection.png",
+    "ratio": 1.1192708333333334
+   },
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginBottom": "20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 18358,
+     "file_name": "Tsaatan_Swiper.png"
+    },
+    {
+     "id": 18359,
+     "file_name": "Shishged_Swiper.png"
+    },
+    {
+     "id": 18360,
+     "file_name": "Rashaan_Swiper.png"
+    },
+    {
+     "id": 18361,
+     "file_name": "HoridolSaridag_Swiper.png"
+    },
+    {
+     "id": 18362,
+     "file_name": "DayanCave_Swiper.png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1110:500",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "1",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "46644abe-e6e9-4800-94d4-c1f30a093241",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "3000",
+   "style": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "Banner",
+   "text_position": "bottom",
+   "id": "d2483dac-514e-4242-bed0-cfb8e80a6c53",
+   "banner": {
+    "id": 16271,
+    "file_name": "Aylluud_Title_Component.png",
+    "ratio": 0.10304347826086957
+   },
+   "style": {
+    "backgroundColor": "#fff"
+   },
+   "hideMobile": true,
+   "hideDesktop": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 18388,
+     "file_name": "Khuvsgul_1.png",
+     "link": "/products/414_jm-khuvsgul"
+    },
+    {
+     "id": 18389,
+     "file_name": "Khuvsgul_2.png",
+     "link": "/products/414_jm-tj-002"
+    },
+    {
+     "id": 18390,
+     "file_name": "Khuvsgul_3.png",
+     "link": "/products/414_jm-khlake-001"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "856:1030",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "0",
+   "pagination": "hide",
+   "scrollbar": "0",
+   "per_view": "3",
+   "id": "ee3ed369-dee9-4ac0-ab53-caf010ca7b31",
+   "style": {
+    "paddingTop": "20px",
+    "paddingBottom": "60px",
+    "backgroundColor": "#fff"
+   },
+   "mobileStyle": {
+    "paddingTop": "20px",
+    "paddingBottom": "60px"
+   },
+   "hideMobile": true,
+   "hideDesktop": true,
+   "hideInApp": true
+  }
+ ]
+}

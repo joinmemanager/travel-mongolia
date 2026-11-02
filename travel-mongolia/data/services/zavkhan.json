@@ -1,0 +1,893 @@
+{
+  "province": "Завхан",
+  "slug": "zavkhan",
+  "source": "joinme.mn",
+  "fetchedAt": "2026-10-30",
+  "items": [
+    {
+      "id": "joinme-f680bd3c05e046f5",
+      "name": "Алдархаан ШТС",
+      "type": "fuel_station",
+      "soum": "Алдархаан",
+      "location": "Алдархаан сум, Мандаат баг",
+      "phones": [
+        "99037873"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-b0b3b947ddd3bb77",
+      "name": "Цагаанчулуут ШТС",
+      "type": "fuel_station",
+      "soum": "Алдархаан",
+      "location": "Алдархаан сум, Мандаат баг сумын төвийн зүүн хойд хэсэгт",
+      "phones": [
+        "99469009"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-60e00049c800f832",
+      "name": "Асгат ШТС",
+      "type": "fuel_station",
+      "soum": "Асгат",
+      "location": "Суварга баг, сумын төвийн зүүн талд",
+      "phones": [
+        "86996724"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-ca9f7321d2ef4a26",
+      "name": "Баянтэс ШТС",
+      "type": "fuel_station",
+      "soum": "Баянтэс",
+      "location": "Бужир баг сумын төвийн зүүн урд хэсэгт",
+      "phones": [
+        "98623529"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-7bbbf8eb8a033797",
+      "name": "Баянхайрхан ШТС",
+      "type": "fuel_station",
+      "soum": "Баянхайрхан",
+      "location": "Баянхайрхан, Наран баг",
+      "phones": [
+        "98169906"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-68baedb24ee45a83",
+      "name": "Дөрвөлжин ШТС",
+      "type": "fuel_station",
+      "soum": "Дөрвөлжин",
+      "location": "Буга баг, сумын төвийн зүүн хэсэгт",
+      "phones": [
+        "89712006"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-cb2870716afcf6c3",
+      "name": "Завханмандал ШТС",
+      "type": "fuel_station",
+      "soum": "Завханмандал",
+      "location": "Нуга баг, сумын төвийн урд хэсэгт",
+      "phones": [
+        "99037873"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-b77c67c114f34db5",
+      "name": "Идэр ШТС",
+      "type": "fuel_station",
+      "soum": "Идэр",
+      "location": "99635899Цэцэрлэг баг, сумын төвийн баруун хэсэгт",
+      "phones": [
+        "99635899"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-3d9ddb5a7dc1dc3c",
+      "name": "Их-уул ШТС",
+      "type": "fuel_station",
+      "soum": "Их-Уул",
+      "location": "Завхан аймаг Их-уул сум Жавхлантын 5-н 1тоот",
+      "phones": [
+        "90779153",
+        "90084525"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183103/original/340848677_742053887634044_4207075255527566515_n.jpeg"
+    },
+    {
+      "id": "joinme-ea72f8938d637641",
+      "name": "Их-Уул ШТС",
+      "type": "fuel_station",
+      "soum": "Их-Уул",
+      "location": "Их ууд сум, Баян-Ухаа баг",
+      "phones": [
+        "98050546"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-a7bf9a420da497da",
+      "name": "Магнай Трейд-Их-уул ШТС",
+      "type": "fuel_station",
+      "soum": "Их-Уул",
+      "location": "Завхан аймаг Их-Уул сум Баян-Ухаа 1-р баг",
+      "phones": [
+        "97125689",
+        "78001010"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183104/original/327318089_1197754500946827_6566659293644573666_n.png"
+    },
+    {
+      "id": "joinme-9eae30bbaf54519d",
+      "name": "Нөмрөг ШТС",
+      "type": "fuel_station",
+      "soum": "Нөмрөг",
+      "location": "Завхан аймаг Нөмрөг сум Хөдрөг баг",
+      "phones": [
+        "91060402",
+        "91890038"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183103/original/340848677_742053887634044_4207075255527566515_n.jpeg"
+    },
+    {
+      "id": "joinme-861bf22589b5185d",
+      "name": "Нөмрөг ШТС",
+      "type": "fuel_station",
+      "soum": "Нөмрөг",
+      "location": "Нөмрөг сумын төвийн баруун хэсэгт",
+      "phones": [
+        "93226702"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-562c2461cdfee67b",
+      "name": "Отгон ШТС",
+      "type": "fuel_station",
+      "soum": "Отгон",
+      "location": "Хужирт баг, сумын төвийн баруун хэсэгт",
+      "phones": [
+        "99518151"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-6a42a4aab5636ed7",
+      "name": "Магнай Трейд-Сонгино ШТС",
+      "type": "fuel_station",
+      "soum": "Сонгино",
+      "location": "Завхан аймаг Сонгино сум Бор-өндөр",
+      "phones": [
+        "93223802",
+        "78001010"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183104/original/327318089_1197754500946827_6566659293644573666_n.png"
+    },
+    {
+      "id": "joinme-c7045e72f928ac87",
+      "name": "Сонгино ШТС",
+      "type": "fuel_station",
+      "soum": "Сонгино",
+      "location": "Завхан аймаг Сонгино сум Хайрхан баг 6-1тоот",
+      "phones": [
+        "91995979",
+        "91899002"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183103/original/340848677_742053887634044_4207075255527566515_n.jpeg"
+    },
+    {
+      "id": "joinme-825c8b8979f94e5a",
+      "name": "Сонгино ШТС",
+      "type": "fuel_station",
+      "soum": "Сонгино",
+      "location": "Бор-Өндөр баг сумын төвийн зүүн урд",
+      "phones": [
+        "92065417"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-fa416557e8114775",
+      "name": "Тэс Петролиум-Сонгино",
+      "type": "fuel_station",
+      "soum": "Сонгино",
+      "location": "Сонгино Бор Өндөр баг",
+      "phones": [
+        "80904218"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183105/original/22688325_355042044920639_8756155727654466746_n.jpg"
+    },
+    {
+      "id": "joinme-866d15e0651c0132",
+      "name": "Дашваанжил газ АХЦС-36",
+      "type": "fuel_station",
+      "soum": "Тосонцэнгэл",
+      "location": "Тосонцэнгэл- Лам толгой баг",
+      "phones": [
+        "93221196"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183108/original/341459195_764862115296696_5004654565232351537_n.jpg"
+    },
+    {
+      "id": "joinme-ac7d787e45b75a4d",
+      "name": "Тосонцэнгэл ШТС",
+      "type": "fuel_station",
+      "soum": "Тосонцэнгэл",
+      "location": "Завхан аймаг Тосонцэнгэл сум Улаан толгой",
+      "phones": [
+        "91898150",
+        "91994397"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183103/original/340848677_742053887634044_4207075255527566515_n.jpeg"
+    },
+    {
+      "id": "joinme-bf357d168e4aaad6",
+      "name": "Тосонцэнгэл ШТС-1",
+      "type": "fuel_station",
+      "soum": "Тосонцэнгэл",
+      "location": "Хайрхан баг, сумын төвийн баруун хойд хэсэгт",
+      "phones": [
+        "90909971"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-c9119074ba237613",
+      "name": "Тосонцэнгэл ШТС-2",
+      "type": "fuel_station",
+      "soum": "Тосонцэнгэл",
+      "location": "Тосонцэнгэл-Улаантолгой баг",
+      "phones": [
+        "90909971"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-ebad209f4bfb647a",
+      "name": "Тэс Петролиум-Тосонцэнгэл",
+      "type": "fuel_station",
+      "soum": "Тосонцэнгэл",
+      "location": "Тосонцэнгэл Улаантолгой баг",
+      "phones": [
+        "80502065"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183105/original/22688325_355042044920639_8756155727654466746_n.jpg"
+    },
+    {
+      "id": "joinme-bc849a94b3980cc8",
+      "name": "Магнай Трейд-Түдэвтэй ШТС",
+      "type": "fuel_station",
+      "soum": "Түдэвтэй",
+      "location": "Түдэвтэй сум",
+      "phones": [
+        "98028744"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183104/original/327318089_1197754500946827_6566659293644573666_n.png"
+    },
+    {
+      "id": "joinme-36d4581848d12795",
+      "name": "Петровис-Тэлмэн ШТС",
+      "type": "fuel_station",
+      "soum": "Тэлмэн",
+      "location": "Өвөгдий баг төв зам дагуу",
+      "phones": [
+        "99039944"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-34fb4efaf40fbe54",
+      "name": "Тэс Петролиум-Тэлмэн",
+      "type": "fuel_station",
+      "soum": "Тэлмэн",
+      "location": "Тэлмэн Өвөгдий баг",
+      "phones": [
+        "80502086"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183105/original/22688325_355042044920639_8756155727654466746_n.jpg"
+    },
+    {
+      "id": "joinme-ddc1132f97ab8513",
+      "name": "Тэс ШТС",
+      "type": "fuel_station",
+      "soum": "Тэс",
+      "location": "Зүр баг, сумын төвийн зүүн урд хэсэгт",
+      "phones": [
+        "91611557"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-9dafadededd1fab1",
+      "name": "Дашваанжил газ АХЦС-30",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Жаргалант баг",
+      "phones": [
+        "98356699"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183108/original/341459195_764862115296696_5004654565232351537_n.jpg"
+    },
+    {
+      "id": "joinme-7e611f270ff0d937",
+      "name": "Магнай Трейд-Улиастай ШТС-019",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Улиастай сум Жинст",
+      "phones": [
+        "97130404",
+        "78001010"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183104/original/327318089_1197754500946827_6566659293644573666_n.png"
+    },
+    {
+      "id": "joinme-f4c279e05a68e831",
+      "name": "Магнай Трейд-Улиастай ШТС-109",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Улиастай сум Жаргалант",
+      "phones": [
+        "97130404",
+        "78001010"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183104/original/327318089_1197754500946827_6566659293644573666_n.png"
+    },
+    {
+      "id": "joinme-8b6e9e5f76ef07d2",
+      "name": "Төвийн ШТС-1",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Улиастай сум,Жаргалант баг, Цэргийн ангийн хойшоо Нефтийн хажууд",
+      "phones": [
+        "88192067"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-dee8cb1d1cb5e3ca",
+      "name": "Төвийн ШТС-2",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Улиастай сум,Жинст баг Ногоочдын хэсэг",
+      "phones": [
+        "88401167"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-b629529ad0818a73",
+      "name": "Төвийн ШТС-3",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Улиастай сум, Нэгдсэн эмнэлгийн урд",
+      "phones": [
+        "88192067"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-8a274120b5adef72",
+      "name": "Төвийн ШТС-4",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Улиастай Богдын гол баг Баруун бүсийн худалдааны төвийн хажууд",
+      "phones": [
+        "88401167"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-8ad37c7fc6e0a292",
+      "name": "Төвийн ШТС-5",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Улиастай Алтангийн хэсэг таван чих",
+      "phones": [
+        "94117797"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-51df9c86b9043cc2",
+      "name": "Тэс Петролиум-Улиастай",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Улиастай Жинст баг",
+      "phones": [
+        "80502099"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183105/original/22688325_355042044920639_8756155727654466746_n.jpg"
+    },
+    {
+      "id": "joinme-2aa1f8fff00a7ef0",
+      "name": "Ундарга-ШТС-1",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Улиастай сум Чигэстэй баг",
+      "phones": [
+        "99819010"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183109/original/p1cg3t6dhbvjghkt1k8c11bof4o1.jpg"
+    },
+    {
+      "id": "joinme-aecacc701b349dc5",
+      "name": "Ундарга-ШТС-2",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Улиастай сум Богдын гол баг",
+      "phones": [
+        "99819010"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183109/original/p1cg3t6dhbvjghkt1k8c11bof4o1.jpg"
+    },
+    {
+      "id": "joinme-02003cb1edb8bf33",
+      "name": "Хөрс ШТС",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Улиастай сум Жинст баг",
+      "phones": [
+        "80023239"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183107/original/327295474_521332473431196_6849758732042114749_n.jpg"
+    },
+    {
+      "id": "joinme-6d52e88d904ca707",
+      "name": "Шунхалай-Улиастай ШТС",
+      "type": "fuel_station",
+      "soum": "Улиастай",
+      "location": "Завхан аймаг Улиастай сум Өлзийт баг",
+      "phones": [
+        "91899047",
+        "91994392"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183103/original/340848677_742053887634044_4207075255527566515_n.jpeg"
+    },
+    {
+      "id": "joinme-36b35fba01ee3e09",
+      "name": "Ургамал ШТС",
+      "type": "fuel_station",
+      "soum": "Ургамал",
+      "location": "Хүнгүй баг, сумын төвийн зүүн хэсэгт",
+      "phones": [
+        "86352636"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-a978796b7efea3a6",
+      "name": "Цагаанхайрхан ШТС",
+      "type": "fuel_station",
+      "soum": "Цагаанхайрхан",
+      "location": "Агьт баг, сумын төвийн зүүн хойт хэсэгт",
+      "phones": [
+        "99469009"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-bceb154c8924c048",
+      "name": "Цэцэн-Уул ШТС",
+      "type": "fuel_station",
+      "soum": "Цэцэн-Уул",
+      "location": "Батсуурь баг сумын төвийн баруун хэсэгт",
+      "phones": [
+        "80311392"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-2fa43e74614f228f",
+      "name": "Шилүүстэй ШТС",
+      "type": "fuel_station",
+      "soum": "Шилүүстэй",
+      "location": "Чандмань баг,сумын төвийн урд хэсэгт",
+      "phones": [
+        "80701087"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-b28a225cf9850244",
+      "name": "Эрдэнэхайрхан ШТС",
+      "type": "fuel_station",
+      "soum": "Эрдэнэхайрхан",
+      "location": "Алтан баг, сумын төвийн бауун хэсэгт",
+      "phones": [
+        "88462828"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-091dcba866121e34",
+      "name": "Яруу ШТС",
+      "type": "fuel_station",
+      "soum": "Яруу",
+      "location": "Чандмань баг, сумын төвийн зүүн урд хэсэгт",
+      "phones": [
+        "95381244"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/187673/original/petrovis.png"
+    },
+    {
+      "id": "joinme-f04e29e2e7b5420f",
+      "name": "ЗДТГ",
+      "type": "government",
+      "soum": "Баянтэс",
+      "location": "Баянтэс сум",
+      "phones": [
+        "98131451"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183231/original/Screen_Shot_2023-07-07_at_13.57.09.png"
+    },
+    {
+      "id": "joinme-b06f01ea8b4a5ab2",
+      "name": "ЗДТГ",
+      "type": "government",
+      "soum": "Баянхайрхан",
+      "location": "Баянхайрхан сум",
+      "phones": [
+        "98990820"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183231/original/Screen_Shot_2023-07-07_at_13.57.09.png"
+    },
+    {
+      "id": "joinme-b3c625f104467460",
+      "name": "ЗДТГ",
+      "type": "government",
+      "soum": "Их-Уул",
+      "location": "Их уул сум",
+      "phones": [
+        "98803272"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183231/original/Screen_Shot_2023-07-07_at_13.57.09.png"
+    },
+    {
+      "id": "joinme-8fca08fab01f6043",
+      "name": "Түдэвтэй ЗДТГ",
+      "type": "government",
+      "soum": "Түдэвтэй",
+      "location": "Түдэвтэй сум",
+      "phones": [],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183231/original/Screen_Shot_2023-07-07_at_13.57.09.png"
+    },
+    {
+      "id": "joinme-f5b08c5f08f36322",
+      "name": "Ургамал ЗДТГ",
+      "type": "government",
+      "soum": "Ургамал",
+      "location": "Ургамал сум",
+      "phones": [
+        "99012949"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183231/original/Screen_Shot_2023-07-07_at_13.57.09.png"
+    },
+    {
+      "id": "joinme-72c1395dcfebab45",
+      "name": "Алдархаан сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Алдархаан",
+      "location": "Завхан аймаг, Алдархаан сум",
+      "phones": [
+        "99917505"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-55a85e5cb353ba15",
+      "name": "Асгат сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Асгат",
+      "location": "Асгат сум",
+      "phones": [
+        "95878713"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-8882442767081df2",
+      "name": "Баянтэс сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Баянтэс",
+      "location": "Баянтэс сум",
+      "phones": [
+        "85657171"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-756a1dc467249f58",
+      "name": "Баянхайрхан сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Баянхайрхан",
+      "location": "Баянхайрхан сум",
+      "phones": [
+        "91229955"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-12196d0f9f6e2802",
+      "name": "Дөрвөлжин сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Дөрвөлжин",
+      "location": "Дөрвөлжин сум",
+      "phones": [
+        "95159683"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-432aff18741b006d",
+      "name": "Завханмандал сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Завханмандал",
+      "location": "Завханмандал сум",
+      "phones": [
+        "99808682"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-965e7ebd5c106d05",
+      "name": "Идэр сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Идэр",
+      "location": "Идэр сум",
+      "phones": [
+        "89192249"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-b30889d96c62dc2e",
+      "name": "Их-Уул сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Их-Уул",
+      "location": "Их-Уул сум",
+      "phones": [
+        "99919179"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-2fdcf15b6bae5236",
+      "name": "Нөмрөг сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Нөмрөг",
+      "location": "Нөмрөг сум",
+      "phones": [
+        "99174829"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-397396cc4242e591",
+      "name": "Отгон сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Отгон",
+      "location": "Отгон сум",
+      "phones": [
+        "99577866"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-f496edda1b0d6a7b",
+      "name": "Сантмаргаз сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Сантмаргаз",
+      "location": "Сантмаргаз сум",
+      "phones": [
+        "89538558"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-0e6fc92888b6f901",
+      "name": "Сонгино сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Сонгино",
+      "location": "Сонгино сум",
+      "phones": [
+        "98184483"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-7181a2af055f2bf2",
+      "name": "Мөнхийн алба өрхийн эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Тосонцэнгэл",
+      "location": "Тосонцэнгэл сум",
+      "phones": [
+        "88986691"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-c56419ab1d61d497",
+      "name": "Тосонцэнгэл сумын нэгдсэн эмнэлэг",
+      "type": "hospital",
+      "soum": "Тосонцэнгэл",
+      "location": "Тосонцэнгэл сум",
+      "phones": [
+        "70468103"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-8e1d07b6ba5f9449",
+      "name": "Тэлмэн сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Тэлмэн",
+      "location": "Тэлмэн сум",
+      "phones": [
+        "99269007"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-8ba6af1f07eba2ec",
+      "name": "Тэс сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Тэс",
+      "location": "Тэс сум",
+      "phones": [
+        "99940976"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-61044a9d44e8d675",
+      "name": "Аймгийн Нэгдсэн эмнэлэг",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай Жинст баг",
+      "phones": [],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-1891349d5fa51e4c",
+      "name": "Биндэргарав өрхийн эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай сум Богдын гол",
+      "phones": [
+        "94677686"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-9609c207a17aa764",
+      "name": "Дөрвөн оноо өрхийн эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай сум Жаргалант баг",
+      "phones": [
+        "99143063"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-f820ec14b354a1a0",
+      "name": "Ургамал сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Ургамал",
+      "location": "Ургамал сум",
+      "phones": [
+        "86967088"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-08ce087cc1c50c5a",
+      "name": "Цагаанхайрхан сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Цагаанхайрхан",
+      "location": "Цагаанхайрхан сум",
+      "phones": [
+        "99066436"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-6f946f5076332a80",
+      "name": "Цагаанчулуут сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Цагаанчулуут",
+      "location": "Цагаанчулуут сум",
+      "phones": [
+        "90217191"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-1e19953eec09527c",
+      "name": "Цэцэн-Уул сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Цэцэн-Уул",
+      "location": "Цэцэн-Уул сум",
+      "phones": [
+        "91110388"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-c258013ba96f5d11",
+      "name": "Шилүүстэй сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Шилүүстэй",
+      "location": "Шилүүстэй сум",
+      "phones": [
+        "88031802"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-70e79ac59a0cbf44",
+      "name": "Сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Эрдэнэхайрхан",
+      "location": "Эрдэнэхайрхан сум",
+      "phones": [
+        "99658878"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-eec48346f0004935",
+      "name": "Яруу сумын эрүүл мэндийн төв",
+      "type": "hospital",
+      "soum": "Яруу",
+      "location": "Яруу сум",
+      "phones": [
+        "91612127"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    },
+    {
+      "id": "joinme-373e53c4aee752e4",
+      "name": "\"Сүмт минж ХХК\" эмийн сан",
+      "type": "pharmacy",
+      "soum": "Тэс",
+      "location": "Тэс сумын төв",
+      "phones": [
+        "96765684"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png"
+    },
+    {
+      "id": "joinme-8597371ee0982288",
+      "name": "Эмийн эргэлтийн сан",
+      "type": "pharmacy",
+      "soum": "Эрдэнэхайрхан",
+      "location": "Эрдэнэхайрхан сумын төв",
+      "phones": [
+        "88468005"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png"
+    },
+    {
+      "id": "joinme-06ad25e20d72c817",
+      "name": "Эмийн эргэлтийн сан",
+      "type": "pharmacy",
+      "soum": "Яруу",
+      "location": "Яруу сумын төв",
+      "phones": [
+        "88914092"
+      ],
+      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png"
+    }
+  ]
+}

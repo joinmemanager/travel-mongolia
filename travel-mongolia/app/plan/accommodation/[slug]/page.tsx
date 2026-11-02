@@ -6,7 +6,7 @@ import React from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RichText from '@/components/RichText';
-import { ACCOMMODATION_BASE, getAccommodation, KIND_LABEL, TIC_NOTICE } from '@/lib/accommodation';
+import { ACCOMMODATION_BASE, accommodationNotice, getAccommodation, KIND_LABEL } from '@/lib/accommodation';
 import { cdnImage } from '@/lib/imageUrl';
 import { isPreviewEnv } from '@/lib/navigation';
 import { entryMeta } from '@/lib/pageMeta';
@@ -40,7 +40,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
   const url = `${SITE_URL}${a.href}`;
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': a.kind === 'hotel' ? 'Hotel' : 'Campground',
+    '@type': a.kind === 'hotel' ? 'Hotel' : a.kind === 'resort' ? 'Resort' : a.kind === 'guesthouse' ? 'LodgingBusiness' : 'Campground',
     name: a.name,
     url,
     image: a.image?.src,
@@ -66,7 +66,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
           {a.province ? ` · ${a.province}` : ''}
         </Link>
         <h1 className="mb-6 text-3xl font-black tracking-tight leading-tight sm:text-5xl">{a.name}</h1>
-        <p className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">{TIC_NOTICE}</p>
+        <p className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">{accommodationNotice([a])}</p>
 
         {a.image && (
           <figure className="overflow-hidden mb-8 rounded-2xl bg-neutral-100">
@@ -75,8 +75,30 @@ export default async function AccommodationDetailPage({ params }: Props) {
           </figure>
         )}
 
-        {(a.contact || a.priceFrom || a.services.length > 0) && (
+        {(a.contact || a.phones.length > 0 || a.locationText || a.priceFrom || a.services.length > 0) && (
           <dl className="grid gap-3 p-5 mb-8 text-sm bg-white rounded-2xl border border-neutral-200 sm:grid-cols-2">
+            {a.phones.length > 0 && (
+              <div>
+                <dt className="text-xs font-bold tracking-wider uppercase text-neutral-400">Утас</dt>
+                <dd className="mt-1 text-neutral-700">
+                  {a.phones.map((p, i) => (
+                    <React.Fragment key={p}>
+                      {i > 0 && ', '}
+                      <a href={`tel:+976${p}`} className="hover:underline">{p}</a>
+                    </React.Fragment>
+                  ))}
+                </dd>
+              </div>
+            )}
+            {a.locationText && (
+              <div>
+                <dt className="text-xs font-bold tracking-wider uppercase text-neutral-400">Байршил</dt>
+                <dd className="mt-1 text-neutral-700">
+                  {a.soum ? `${a.soum} сум. ` : ''}
+                  {a.locationText}
+                </dd>
+              </div>
+            )}
             {a.contact && (
               <div className="sm:col-span-2">
                 <dt className="text-xs font-bold tracking-wider uppercase text-neutral-400">Холбоо барих, хаяг</dt>

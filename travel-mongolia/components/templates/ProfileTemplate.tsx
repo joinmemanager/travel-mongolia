@@ -54,10 +54,13 @@ export default function ProfileTemplate({
         <FactsCard
           facts={[
             { label: 'Төрөл', value: typeLabel },
-            { label: 'Хаана', value: p.province },
+            { label: 'Хаана', value: [p.province, p.soum && `${p.soum} сум`].filter(Boolean).join(', ') },
+            { label: 'Байршил', value: p.locationText },
             { label: 'Үнэ', value: p.priceFrom ? `${p.priceFrom}-аас` : '' },
+            { label: 'Утас', value: p.phones.join(', ') },
             { label: 'Холбоо барих', value: p.contact },
             { label: 'Тусгай зөвшөөрөл', value: p.licenseIfRequired },
+            { label: 'Эх сурвалж', value: p.fromJoinme ? 'joinme.mn' : '' },
           ]}
           bookingUrl={p.bookingUrl}
           campaign="provider"

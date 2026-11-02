@@ -1,0 +1,545 @@
+﻿status,match_method,joinme_id,joinme_name,joinme_name_en,joinme_type,joinme_province,joinme_soum,tic_entry_id,tic_name,tic_province,tic_slug,tic_source_url
+both,exact (+1 өөр нэр дэвшигч),1917:e10a9e86-0d69-489e-9e66-c5399f9d4f80:0,Бага Газрын Чулуу Бааз,,tourist_camp,Дундговь,Дэлгэрцогт,tic-c22-204,Дундговь - Бага газрын чулуу бааз,Дундговь,dundgovi-baga-gazryn-chuluu-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=204
+both,exact,1917:57e173c7-c6ba-4f30-a32c-c3d44ff615eb:0,Баянбулаг Жуулчны Бааз,,tourist_camp,Дундговь,Дэлгэрцогт,tic-c22-149,Дундговь - Баянбулаг бааз (Бага газрын чулуу),Дундговь,dundgovi-bayanbulag-baaz-baga-gazryn-chuluu,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=149
+both,exact,1917:f61fd96d-1f7c-4295-9cab-4f471559a609:0,Говь Караван Серай Бааз,Gobi Caravanserai,tourist_camp,Дундговь,Өлзийт,tic-c22-1343,Дундговь - Говь караван серай (Gobi Caravan Serai),Дундговь,dundgovi-govi-karavan-serai-gobi-caravan-serai,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1343
+both,fuzzy,1917:293e01d6-10d1-41eb-b21d-6df08738abe3:0,Онги Энерги Жуулчны бааз,Ongi Energy tourist camp,tourist_camp,Дундговь,Сайхан-Овоо,tic-c22-214,Дундговь - Онги энержи бааз,Дундговь,dundgovi-ongi-enerji-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=214
+both,exact,1917:9d0e372e-7b71-4d68-ade2-44af228c49e6:0,Онгийн Нууц Жуулчны Бааз,,tourist_camp,Дундговь,Сайхан-Овоо,tic-c22-151,Дундговь - Онгийн нууц бааз,Дундговь,dundgovi-ongiin-nuuts-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=151
+both,exact,1917:3a2c5bd3-e1dc-4155-b451-311a0a6a05d2:0,Төв Боржигон Жуулчны Бааз,,tourist_camp,Дундговь,,tic-c22-153,Дундговь - Төв Боржигон бааз,Дундговь,dundgovi-tuv-borjigon-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=153
+both,exact,1917:0329cd22-87ce-4bf1-bb78-8cc5b99c181b:0,Цагаан Суварга Жуулчны Бааз,,tourist_camp,Дундговь,,tic-c22-154,Дундговь - Цагаан суварга бааз,Дундговь,dundgovi-tsagaan-suvarga-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=154
+both,exact,1917:76489a3c-406e-4011-ab1b-3b4df038b516:0,Эрдэнэ Ухаа Жуулчны Бааз,,tourist_camp,Дундговь,,tic-c22-155,Дундговь - Эрдэнэ-Ухаа бааз,Дундговь,dundgovi-erdene-ukhaa-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=155
+both,exact,5674:c3a75312-fc05-4f72-868d-4d92827df8c3:0,“Оргих” зочид буудал,,hotel,Завхан,Нөмрөг,tic-c22-244,Завхан - Оргих бааз,Завхан,zavkhan-orgikh-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=244
+both,contains,5674:6bcb0d13-8f6c-4889-b5d0-a94cd88ac44d:0,Sky line зрчид буудал,,hotel,Завхан,Тосонцэнгэл,tic-c21-98,Завхан - Скай лайн (Sky Line Hotel),Завхан,zavkhan-skai-lain-sky-line-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=98
+both,exact (+1 өөр нэр дэвшигч),5674:aa6de12b-134b-4117-9058-fa14c21e7db1:2,Өргөө зочид буудал,,hotel,Завхан,Улиастай,tic-c21-126,Завхан - Өргөө (Urguu Hotel),Завхан,zavkhan-urguu-urguu-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=126
+both,exact,5674:aa6de12b-134b-4117-9058-fa14c21e7db1:3,Улиастай зочид буудал,,hotel,Завхан,Улиастай,tic-c21-89,Завхан - Улиастай (Uliastai Hotel),Завхан,zavkhan-uliastai-uliastai-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=89
+both,exact,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:1,"""Хар нуур"" жуулчны бааз",,tourist_camp,Завхан,Эрдэнэхайрхан,tic-c22-139,Завхан - Хар нуур бааз,Завхан,zavkhan-khar-nuur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=139
+both,contains,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:1,Бадар Хундага ресорт /Отгон Буянт Хангай /,,tourist_camp,Завхан,Отгон,tic-c22-21,Завхан - Отгон буянт хангай бааз,Завхан,zavkhan-otgon-buyant-khangai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=21
+both,exact,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:2,Замбага жуулчны бааз,,tourist_camp,Завхан,Отгон,tic-c22-245,Завхан - Замбага бааз,Завхан,zavkhan-zambaga-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=245
+both,exact,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:1,Их Монгол жуулчны бааз,,tourist_camp,Завхан,Алдархаан,tic-c22-7,Завхан - Их Монгол бааз,Завхан,zavkhan-ikh-mongol-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=7
+both,exact,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:1,Их тэнгэрийн хүрээ жуулчны бааз,,tourist_camp,Завхан,Эрдэнэхайрхан,tic-c22-1347,Завхан - Их тэнгэрийн хүрээ бааз,Завхан,zavkhan-ikh-tengeriin-khuree-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1347
+both,exact,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:2,Оргих жуулчны бааз,,tourist_camp,Завхан,Алдархаан,tic-c22-244,Завхан - Оргих бааз,Завхан,zavkhan-orgikh-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=244
+both,exact,652:454ab5d3-39cc-437d-8264-5f0f3699092e:1,Gobi Hotel,Gobi hotel,hotel,Өмнөговь,,tic-c21-103,Ханбогд - Говь (Gobi Hotel),Өмнөговь,khanbogd-govi-gobi-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=103
+both,fuzzy,652:eb1affe4-48fa-4762-aa91-73579ee42167:2,Gobi Sands Hotel,,hotel,Өмнөговь,,tic-c21-97,Даланзадгад - Говь сэнд (Gobi Sand Hotel),Өмнөговь,dalanzadgad-govi-send-gobi-sand-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=97
+both,exact,652:454ab5d3-39cc-437d-8264-5f0f3699092e:5,Говь Зочид Буудал,,hotel,Өмнөговь,Ханбогд,tic-c21-103,Ханбогд - Говь (Gobi Hotel),Өмнөговь,khanbogd-govi-gobi-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=103
+both,exact,652:eb1affe4-48fa-4762-aa91-73579ee42167:1,Дэлгэрэх Зочид Буудал,Delgerekh hotel,hotel,Өмнөговь,,tic-c21-96,Даланзадгад - Дэлгэрэх (Delgerekh Hotel),Өмнөговь,dalanzadgad-delgerekh-delgerekh-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=96
+both,exact (+1 өөр нэр дэвшигч),652:eb1affe4-48fa-4762-aa91-73579ee42167:4,Өргөө Зочид Буудал,,hotel,Өмнөговь,,tic-c21-135,Даланзадгад - Өргөө (Urguu Hotel),Өмнөговь,dalanzadgad-urguu-urguu-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=135
+both,exact,652:454ab5d3-39cc-437d-8264-5f0f3699092e:0,Хан Уул Зочид буудал,,hotel,Өмнөговь,,tic-c21-95,Даланзадгад - Хан уул (Khan Uul Hotel),Өмнөговь,dalanzadgad-khan-uul-khan-uul-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=95
+both,exact,652:eb1affe4-48fa-4762-aa91-73579ee42167:6,Эрхэс Зочид Буудал,,hotel,Өмнөговь,,tic-c21-1136,Даланзадгад - Эрхэс (Erkhes Hotel),,dalanzadgad-erkhes-erkhes-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1136
+both,fuzzy (+1 өөр нэр дэвшигч),652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:10,Жуулчин Говь,JuulchinGobi,resort,Өмнөговь,,tic-c22-77,Өмнөговь - Жуулчин говь 1,Өмнөговь,umnugovi-juulchin-govi-1,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=77
+both,exact,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:6,Dream Gobi Lodge,Dream Gobi Lodge,tourist_camp,Өмнөговь,Булган,tic-c22-251,Өмнөговь - Дрийм гоби (Dream Gobi Lodge),Өмнөговь,umnugovi-driim-gobi-dream-gobi-lodge,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=251
+both,exact,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:6,Gobi Anar Tourist Camp,Gobi Anar Tourist Camp,tourist_camp,Өмнөговь,,tic-c22-200,Өмнөговь - Говийн анар бааз,Өмнөговь,umnugovi-goviin-anar-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=200
+both,exact,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:9,Gobi Tour,Gobitour Tourist Camp,tourist_camp,Өмнөговь,,tic-c22-201,Өмнөговь - Говь тур бааз,Өмнөговь,umnugovi-govi-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=201
+both,exact,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:5,Mongolian Gobi Tourist Camp,Mongolian Gobi tourist camp,tourist_camp,Өмнөговь,Булган,tic-c22-78,Өмнөговь - Монгол говь (Mongolian Gobi Camp),Өмнөговь,umnugovi-mongol-govi-mongolian-gobi-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=78
+both,exact,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:5,Three Camel Lodge,Three Camel Lodge,tourist_camp,Өмнөговь,,tic-c22-73,Өмнөговь - Гурван тэмээт (Three Camel Lodge),Өмнөговь,umnugovi-gurvan-temeet-three-camel-lodge,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=73
+both,exact (+1 өөр нэр дэвшигч),652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:1,Баянзаг Жуулчны Бааз,Bayanzag Tourist Camp,tourist_camp,Өмнөговь,,tic-c22-32,Өмнөговь - Баянзаг бааз,Өмнөговь,umnugovi-bayanzag-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=32
+both,fuzzy (+1 өөр нэр дэвшигч),652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:4,Говийн Баянбүрд Жуулчны Бааз,Goviin Bayanburd - Gobi Oasis Camp,tourist_camp,Өмнөговь,,tic-c22-38,Өмнөговь - Говийн Баянбүрд 1,Өмнөговь,umnugovi-goviin-bayanburd-1,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=38
+both,exact,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:0,Говийн Өргөө Жуулчны Бааз,,tourist_camp,Өмнөговь,,tic-c22-1353,Өмнөговь - Говийн өргөө,Өмнөговь,umnugovi-goviin-urguu,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1353
+both,fuzzy,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:9,Говь Динозавар Жуулчны Бааз,,tourist_camp,Өмнөговь,,tic-c22-1338,Өмнөговь - Говь динозавр,Өмнөговь,umnugovi-govi-dinozavr,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1338
+both,exact,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:2,Дүнгэнээ Жуулчны Бааз,Dungenee tourist camp,tourist_camp,Өмнөговь,Ханхонгор,tic-c22-304,Өмнөговь - Дүнгэнээ (Ёлын ам),Өмнөговь,umnugovi-dungenee-yolyn-am,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=304
+both,fuzzy (+1 өөр нэр дэвшигч),652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:2,Жуулчин Говь Жуулчны бааз,,tourist_camp,Өмнөговь,,tic-c22-77,Өмнөговь - Жуулчин говь 1,Өмнөговь,umnugovi-juulchin-govi-1,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=77
+both,exact,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:7,Сайжрах Говь Жуулчны Бааз,,tourist_camp,Өмнөговь,,tic-c22-237,Өмнөговь - Сайжрах говь,Өмнөговь,umnugovi-saijrakh-govi,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=237
+both,exact,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:0,Түвшин Наран Жуулчны Бааз,Tuvshin Naran tourist camp,tourist_camp,Өмнөговь,,tic-c22-324,Өмнөговь - Түвшин наран бааз,Өмнөговь,umnugovi-tuvshin-naran-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=324
+both,exact,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:3,Ханбогд Жуулчны Бааз,Khanbogd tourist camp,tourist_camp,Өмнөговь,,tic-c22-81,Өмнөговь - Ханбогд,Өмнөговь,umnugovi-khanbogd,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=81
+both,exact,1428:8807886a-8038-4824-95a3-fa675562393c:0,Талын Агуй Жуулчны Бааз,,tourist_camp,Сүхбаатар,,tic-c22-307,Сүхбаатар - Талын агуй бааз,Сүхбаатар,sukhbaatar-talyn-agui-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=307
+both,exact,1428:1f8aefdf-d739-4343-bcd1-73153cb5418d:0,Хөх Тэнгэрийн Зам Жуулчны Бааз,,tourist_camp,Сүхбаатар,Дарьганга,tic-c22-309,Сүхбаатар - Хөх тэнгэрийн зам бааз,Сүхбаатар,sukhbaatar-khukh-tengeriin-zam-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=309
+both,exact,1428:0c116319-d0f2-45e4-a669-98eb3befb2c3:0,Шилийн Богд Жуулчны Бааз,,tourist_camp,Сүхбаатар,,tic-c22-308,Сүхбаатар - Шилийн богд,Сүхбаатар,sukhbaatar-shiliin-bogd,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=308
+both,exact,5442:c9426f50-84ef-4726-9809-0a7bc7213ea7:0,Оршин тогтнохуй жуулчны бааз,contact@ottour.mn,tourist_camp,Увс,Түргэн,tic-c22-135,Увс - Оршин тогтнохуй бааз,Увс,uvs-orshin-togtnokhui-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=135
+both,contains,5442:f3b0563e-d0e3-460b-80bc-d23f5f7557aa:2,Сайхан хархираа амралтын газар,,tourist_camp,Увс,Улаангом,tic-c22-137,Увс - Хархираа бааз,Увс,uvs-kharkhiraa-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=137
+both,exact,5442:7ac5f6b6-800a-4be2-95dc-dca80121f0d8:4,Хархираа хүүхдийн зуслан,zuslan.kharkhiraa@gmail.com,tourist_camp,Увс,,tic-c22-137,Увс - Хархираа бааз,Увс,uvs-kharkhiraa-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=137
+both,exact,5442:c9426f50-84ef-4726-9809-0a7bc7213ea7:2,Хэцүү хад жуулчны бааз,Skh.ketsuukhad@gmail.com,tourist_camp,Увс,Завхан,tic-c22-138,Увс - Хэцүү хад бааз,Увс,uvs-khetsuu-khad-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=138
+both,exact,1225:669667a7-1106-4771-a0cd-87d9c90908e3:0,Ханбүргэд Зочид Буудал,Khanburged Hotel,hotel,Хэнтий,,tic-c21-1148,Khan Burged Hotel,,khan-burged-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1148
+both,exact,1225:dda90ec8-b59f-4538-a7f4-634ad599f120:0,Эзэнт Гүрэн Зочид Буудал,,hotel,Хэнтий,,tic-c21-1134,Хэнтий - Эзэнт Гүрэн (Ezent Guren Hotel),Хэнтий,khentii-ezent-guren-ezent-guren-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1134
+both,exact,1225:bce1cd9a-9879-4b01-8cfe-6dbfbdb42334:0,Алтаргана Жуулчны Бааз,Altargana Tourist camp,tourist_camp,Хэнтий,,tic-c22-168,Хэнтий - Алтаргана (Altargana Camp),Хэнтий,khentii-altargana-altargana-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=168
+both,exact,1225:0032be62-c61f-4df7-a00d-be89d3a42db2:0,Баянгол Жуулчны Бааз,Bayangol tourist camp,tourist_camp,Хэнтий,,tic-c22-268,Хэнтий - Баянгол бааз,Хэнтий,khentii-bayangol-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=268
+both,exact,1225:cc6e0bc4-21d0-4cbe-ba9c-685e00f8d742:0,Онон Балж Жуулчны Бааз,,tourist_camp,Хэнтий,,tic-c22-170,Хэнтий - Онон балж,Хэнтий,khentii-onon-balj,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=170
+both,exact,1225:7d05ff70-1a34-49ab-806a-4ce4040fa7c2:0,Онон-Ёл Жуулчны бааз,Onon Yol tourist camp,tourist_camp,Хэнтий,,tic-c22-320,Хэнтий - Онон Ёл,Хэнтий,khentii-onon-yol,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=320
+both,exact,1225:4618ea65-b23a-4ddc-b071-dceea6f8648e:0,Хар Зүрхний Хөх Нуур Жуулчны Бааз,,tourist_camp,Хэнтий,,tic-c22-173,Хэнтий - Хар зүрхний Хөх нуур бааз,Хэнтий,khentii-khar-zurkhnii-khukh-nuur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=173
+both,exact,1225:3a11c3b5-31a0-4dcf-b383-801c57932d50:0,Хүннү Хөдөө Арал,,tourist_camp,Хэнтий,,tic-c22-172,Хэнтий - Хүннү Хөдөө арал бааз,Хэнтий,khentii-khunnu-khuduu-aral-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=172
+both,exact,1225:f1efcbf5-d07b-4eab-96da-43c6bc07c7ec:0,Чингисийн Гурван Нуур Жуулчны Бааз,,tourist_camp,Хэнтий,,tic-c22-266,Хэнтий - Чингисийн гурван нуур,Хэнтий,khentii-chingisiin-gurvan-nuur,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=266
+both,exact,1225:8b116361-ceb6-4686-bbdc-9454decdeadc:0,Чингисийн Өлгий Жуулчны Бааз,,tourist_camp,Хэнтий,,tic-c22-174,Хэнтий - Чингисийн өлгий бааз,Хэнтий,khentii-chingisiin-ulgii-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=174
+joinme_only,,1917:8f0b6d38-1862-44be-b9b9-2293532f168f:0,Ашид Зочид Буудал,,hotel,Дундговь,,,,,,
+joinme_only,,1917:2667c646-943a-45e1-8a54-31bb5fec42a9:0,Говь Зочид Буудал,b.chinzogo@yahoo.com,hotel,Дундговь,Сайнцагаан,,,,,
+joinme_only,,1917:32e21813-1ec0-4f2d-92a0-807994dbb841:0,Дэлгэрэх Бүрд Зочид Буудал,Burd restaurant & hotel,hotel,Дундговь,,,,,,
+joinme_only,,1917:70f0e7f7-899f-4089-b622-5a9d5ad40b21:0,Мандал Зочид Буудал,,hotel,Дундговь,Сайнцагаан,,,,,
+joinme_only,,1917:b10bbdfb-83b3-4ffb-8554-c3ba8d83802e:0,Рояал Зочид Буудал,,hotel,Дундговь,Сайнцагаан,,,,,
+joinme_only,,1917:c8d44dda-a943-4e42-8c82-b458606aeb6c:0,Тэмүжин Зочид Буудал,,hotel,Дундговь,Сайнцагаан,,,,,
+joinme_only,,1917:6bc7d86f-836d-4f1e-b33a-3c107591d656:0,Gobi Elm Lodge жуулчны бааз,,tourist_camp,Дундговь,Дэрэн,,,,,
+joinme_only,,1917:55209250-a287-4c6c-a612-a505939d1716:0,Аялал Оргил Амралтын Газар,,tourist_camp,Дундговь,Сайнцагаан,,,,,
+joinme_only,,1917:3e7624e0-eb78-4f72-8cbc-a1e79e58896d:0,Рашаантын Ам Эко Амралтын Газар,,tourist_camp,Дундговь,Сайнцагаан,,,,,
+joinme_only,,1917:f4e9eef3-6721-479b-ac50-056965f42d7e:0,Сүм Хөх Бүрд Жуулчны Бааз,,tourist_camp,Дундговь,Адаацаг,,,,,
+joinme_only,,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:3,Гэр буудал,,guesthouse,Завхан,Тэс,,,,,
+joinme_only,,5674:c3a75312-fc05-4f72-868d-4d92827df8c3:4,“Зоос бор” буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:f9a5e11d-9004-43f2-9b9e-57594d0dafe7:3,“Ногоон Алт” буудал,,hotel,Завхан,Тэлмэн,,,,,
+joinme_only,,5674:8391d1a4-2c08-4fb3-a07f-c84a669f7daf:2,“Тэлмэн Өртөө” буудал,,hotel,Завхан,Тэлмэн,,,,,
+joinme_only,,5674:aa6de12b-134b-4117-9058-fa14c21e7db1:1,Алтан зочид буудал,,hotel,Завхан,Улиастай,,,,,
+joinme_only,,5674:6e89dcbb-b452-453a-be75-0682bd168bfb:2,Алтан уул буудал,,hotel,Завхан,Их-Уул,,,,,
+joinme_only,,5674:c3a75312-fc05-4f72-868d-4d92827df8c3:1,Арвин зочид буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:c3a75312-fc05-4f72-868d-4d92827df8c3:3,Баян-Дүнгээ буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:23402483-e2c2-4588-8deb-4994987e07e6:4,Бугат буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:3,Буянт зочид буудал,,hotel,Завхан,Отгон,,,,,
+joinme_only,,5674:ad5e243b-8e9e-4932-8993-63bb199d2843:2,Даян зочид буудал,,hotel,Завхан,Улиастай,,,,,
+joinme_only,,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:4,Жаргалант буудал,,hotel,Завхан,Отгон,,,,,
+joinme_only,,5674:ad5e243b-8e9e-4932-8993-63bb199d2843:3,Завхан зочид буудал,,hotel,Завхан,Улиастай,,,,,
+joinme_only,,5674:9ed37730-76ff-41cd-b51a-33e89ca6bf74:1,Идэр Отгон буудал,,hotel,Завхан,Түдэвтэй,,,,,
+joinme_only,,5674:6e89dcbb-b452-453a-be75-0682bd168bfb:1,ОД буудал,,hotel,Завхан,Их-Уул,,,,,
+joinme_only,,5674:9ed37730-76ff-41cd-b51a-33e89ca6bf74:0,Ойгон нуур буудал,,hotel,Завхан,Түдэвтэй,,,,,
+joinme_only,,5674:c3a75312-fc05-4f72-868d-4d92827df8c3:2,Оргил Зоогийн газар буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:4,Соёмбо дэлгэрэх буудал,,hotel,Завхан,Отгон,,,,,
+joinme_only,,5674:23402483-e2c2-4588-8deb-4994987e07e6:1,Таван нүдэн буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:5,Тэгш дүүрэн буудал,,hotel,Завхан,Отгон,,,,,
+joinme_only,,5674:aa6de12b-134b-4117-9058-fa14c21e7db1:4,Уран байгаль зочид буудал,,hotel,Завхан,Улиастай,,,,,
+joinme_only,,5674:23402483-e2c2-4588-8deb-4994987e07e6:5,Уран жинст буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:23402483-e2c2-4588-8deb-4994987e07e6:2,Хан хөхий буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:23402483-e2c2-4588-8deb-4994987e07e6:3,Хантайшир буудал,,hotel,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:5,Хишигт буудал,,hotel,Завхан,Отгон,,,,,
+joinme_only,,5674:ad5e243b-8e9e-4932-8993-63bb199d2843:4,Хүннү зочид буудал,,hotel,Завхан,Улиастай,,,,,
+joinme_only,,5674:e017d123-a833-42fe-bf42-741efe5cabdb:3,Чандмань эрдэнэ буудал,,hotel,Завхан,Их-Уул,,,,,
+joinme_only,,5674:6e89dcbb-b452-453a-be75-0682bd168bfb:3,Энгүүр дэлгэрэх буудал,,hotel,Завхан,Их-Уул,,,,,
+joinme_only,,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:4,"""Даян-Очир"" Хүүхдийн зуслан",,resort,Завхан,Алдархаан,,,,,
+joinme_only,,5674:9ed37730-76ff-41cd-b51a-33e89ca6bf74:2,Баян улаан хоолойн рашаан,,resort,Завхан,Тосонцэнгэл,,,,,
+joinme_only,,5674:23402483-e2c2-4588-8deb-4994987e07e6:0,Баянзүрх-Рашаан амралт,,resort,Завхан,Нөмрөг,,,,,
+joinme_only,,5674:6e89dcbb-b452-453a-be75-0682bd168bfb:0,Дунд цэцүүх рашаан амралт,,resort,Завхан,Их-Уул,,,,,
+joinme_only,,5674:e017d123-a833-42fe-bf42-741efe5cabdb:0,Зартын рашаан амралт,,resort,Завхан,Их-Уул,,,,,
+joinme_only,,5674:8391d1a4-2c08-4fb3-a07f-c84a669f7daf:0,Отгонтэнгэрийн Рашаан амралт,,resort,Завхан,Алдархаан,,,,,
+joinme_only,,5674:f9a5e11d-9004-43f2-9b9e-57594d0dafe7:0,Улаан хаалга -Рашаан амралт,,resort,Завхан,Алдархаан,,,,,
+joinme_only,,5674:e017d123-a833-42fe-bf42-741efe5cabdb:1,Ундрах амралтын газар,,resort,Завхан,Их-Уул,,,,,
+joinme_only,,5674:f9a5e11d-9004-43f2-9b9e-57594d0dafe7:2,Хожуулын рашаан,,resort,Завхан,Тосонцэнгэл,,,,,
+joinme_only,,5674:e017d123-a833-42fe-bf42-741efe5cabdb:4,Хөшөг мод амралтын газар,,resort,Завхан,Их-Уул,,,,,
+joinme_only,,5674:9ed37730-76ff-41cd-b51a-33e89ca6bf74:0,Бар Үр жуулчны бааз,,tourist_camp,Завхан,Тосонцэнгэл,,,,,
+joinme_only,,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:3,Мөстийн ам жуулчны бааз,,tourist_camp,Завхан,Алдархаан,,,,,
+joinme_only,,5674:7a9d0254-1e9f-446e-8a16-28bb130bafd4:5,Ногоон тохой жуулчны бааз,,tourist_camp,Завхан,Алдархаан,,,,,
+joinme_only,,5674:f9a5e11d-9004-43f2-9b9e-57594d0dafe7:1,Сайхан Төгөл жуулчны бааз,,tourist_camp,Завхан,Тосонцэнгэл,,,,,
+joinme_only,,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:4,Хатан Өргөө жуулчны бааз,,tourist_camp,Завхан,Алдархаан,,,,,
+joinme_only,,5674:f9a5e11d-9004-43f2-9b9e-57594d0dafe7:0,Хожуулын гол жуулчны бааз,,tourist_camp,Завхан,Тосонцэнгэл,,,,,
+joinme_only,,5674:6bbb86fb-0d10-4659-b2ef-4e330741cffe:3,Цагаан уул жуулчны бааз,,tourist_camp,Завхан,Алдархаан,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:0,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:1,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:2,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:3,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:4,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:5,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:6,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:7,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:8,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:9,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:10,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:11,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:12,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:13,Гэр,,guesthouse,Өмнөговь,Баяндалай,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:14,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:15,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:16,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:d76aa5bd-13ed-44d2-a394-1ea399d8f880:17,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:0,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:1,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:2,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:3,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:4,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:5,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:6,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:7,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:8,Гэр,,guesthouse,Өмнөговь,,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:9,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:10,Гэр,,guesthouse,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:11,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:12,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:13,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:14,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:15,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:16,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:4581e979-fa49-4615-9ecd-f838e27a27b3:17,Гэр,,guesthouse,Өмнөговь,Булган,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:0,H9 Hotel Nine Tsogttsetsii,Hotel-Nine Tsogttsetsii,hotel,Өмнөговь,Цогт-Цэций,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:3,Royal Hotel,Royal Hotel,hotel,Өмнөговь,,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:8,Sun Shine Hotel,Sun Shine Hotel,hotel,Өмнөговь,,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:9,Баян Говь Зочид Буудал,,hotel,Өмнөговь,Даланзадгад,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:8,Гэгээн Говь Зочид Буудал,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:6,Даймонд Зочид Буудал,Diamond Hotel Dalanzadgad,hotel,Өмнөговь,,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:5,Дугант Зочид Буудал,,hotel,Өмнөговь,Цогт-Цэций,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:9,Нутгийн Удирдлагын Ордон Зочид Буудал,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:7,Онги Зочид Буудал,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:4,Өгөөмөр Зочид Буудал,,hotel,Өмнөговь,Ханбогд,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:7,Өнөр Бүл Зочид Буудал,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:3,Саруул Зочид Буудал,,hotel,Өмнөговь,Ханбогд,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:2,Хаан Болор Зочид Буудал,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:454ab5d3-39cc-437d-8264-5f0f3699092e:10,Хур Зочид Буудал,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:eb1affe4-48fa-4762-aa91-73579ee42167:10,Хур Мотел,,hotel,Өмнөговь,,,,,,
+joinme_only,,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:1,Говь Дисковери Тур,Gobi Discovery Tour,resort,Өмнөговь,,,,,,
+joinme_only,,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:10,Нүдэн Булаг Амралт,,resort,Өмнөговь,,,,,,
+joinme_only,,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:4,Gobi Mirage Lodge,Gobi Mirage Lodge,tourist_camp,Өмнөговь,,,,,,
+joinme_only,,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:3,Gobi Nomad Lodge Camp,Gobi Nomad Lodge,tourist_camp,Өмнөговь,Ханхонгор,,,,,
+joinme_only,,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:7,Гранд Говь Ресорт,,tourist_camp,Өмнөговь,,,,,,
+joinme_only,,652:fb609741-c2b0-4edd-b3b6-43f9c0633c4d:8,Гүюг Хаан Жуулчны Бааз,,tourist_camp,Өмнөговь,,,,,,
+joinme_only,,652:3a942286-eaf9-4484-b25c-ccc0fa69a0b0:8,Ундрах Говь Жуулчны Бааз,,tourist_camp,Өмнөговь,Булган,,,,,
+joinme_only,,1428:63a1f192-1c89-4202-8dac-94f9a7284cf9:0,Дарьганга Зочид Буудал,Dariganga Hotel,hotel,Сүхбаатар,Баруун-Урт,,,,,
+joinme_only,,1428:389f7141-a856-471b-a7a6-59f775828c90:0,Их Уул Зочид Буудал,,hotel,Сүхбаатар,,,,,,
+joinme_only,,1428:391ef8c5-b444-4dd9-9130-2462d32656b6:0,Тансаг Зочид Буудал,,hotel,Сүхбаатар,,,,,,
+joinme_only,,1428:b82a8c71-2f37-4da5-959a-bbecf3f40408:0,Ургах Наран Зочид Буудал,,hotel,Сүхбаатар,,,,,,
+joinme_only,,1428:55f0e804-2b76-431b-9b73-9898ea193275:0,Гангар Хун Жуулчны Бааз,,tourist_camp,Сүхбаатар,Дарьганга,,,,,
+joinme_only,,1428:77395774-b71f-45f5-8a4e-f293a520656e:0,Дагшин Булаг Жуулчны Бааз,,tourist_camp,Сүхбаатар,,,,,,
+joinme_only,,1428:6f63a5d4-41c9-4252-adbc-1fb80663df46:0,Наадаан Жуулчны бааз,,tourist_camp,Сүхбаатар,Баруун-Урт,,,,,
+joinme_only,,1428:d469107a-cd9c-451b-938f-46041b6f3d92:0,Хүрээ Бүрд Жуулчны Бааз,,tourist_camp,Сүхбаатар,,,,,,
+joinme_only,,1428:4be690f3-1f38-4ab3-9456-6d1036738fb7:0,Хүслийн Хүслэн Жуулчны Бааз,,tourist_camp,Сүхбаатар,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:0,Ачит нуур,,hotel,Увс,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:1,Гранд зочид буудал,,hotel,Увс,,,,,,
+joinme_only,,5442:c9426f50-84ef-4726-9809-0a7bc7213ea7:3,Сарнай,,hotel,Увс,,,,,,
+joinme_only,,5442:c9426f50-84ef-4726-9809-0a7bc7213ea7:1,Таван од,,hotel,Увс,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:3,Хяргас нуур зочид буудал,,hotel,Увс,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:2,Чингис зочид буудал,,hotel,Увс,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:2,Baruun beach camp,tsogankhbayar@gmail.com,tourist_camp,Увс,Завхан,,,,,
+joinme_only,,5442:719b0c9c-eef5-440a-b02e-3fd8ea27854c:0,Гэр толгой гэр буудал,,tourist_camp,Увс,Ховд,,,,,
+joinme_only,,5442:719b0c9c-eef5-440a-b02e-3fd8ea27854c:1,Жаргалант амралт,,tourist_camp,Увс,Наранбулаг,,,,,
+joinme_only,,5442:7ac5f6b6-800a-4be2-95dc-dca80121f0d8:2,Их нуур амралтын газар,,tourist_camp,Увс,Улаангом,,,,,
+joinme_only,,5442:a2b640ed-6bcc-40b8-8c70-2d6d394aeaa7:0,Мандах наран гэр буудал,,tourist_camp,Увс,Сагил,,,,,
+joinme_only,,5442:f3b0563e-d0e3-460b-80bc-d23f5f7557aa:3,Могой гол амралтын газар,,tourist_camp,Увс,Малчин,,,,,
+joinme_only,,5442:f3b0563e-d0e3-460b-80bc-d23f5f7557aa:1,Өгөөмөр хяргас нуур жуулчны бааз,,tourist_camp,Увс,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:0,Сүлдэт цахиур жуулчны бааз,suldetcamp@gmail.com,tourist_camp,Увс,Сагил,,,,,
+joinme_only,,5442:7ac5f6b6-800a-4be2-95dc-dca80121f0d8:1,Тарлаг тур жуулчны бааз,,tourist_camp,Увс,,,,,,
+joinme_only,,5442:177bd40b-5f3f-421a-9496-9721fdfafe0e:1,Тээл парк жуулчны бааз,,tourist_camp,Увс,Тариалан,,,,,
+joinme_only,,5442:c9426f50-84ef-4726-9809-0a7bc7213ea7:1,Увс нуур жуулчны бааз,Uvsnuur.camp@yahoo.com,tourist_camp,Увс,Сагил,,,,,
+joinme_only,,5442:a2b640ed-6bcc-40b8-8c70-2d6d394aeaa7:1,Ундрал мөнх хайрхан,,tourist_camp,Увс,Тариалан,,,,,
+joinme_only,,5442:a2b640ed-6bcc-40b8-8c70-2d6d394aeaa7:2,Үүргийн долгио жуулчны бааз,,tourist_camp,Увс,Сагил,,,,,
+joinme_only,,5442:7ac5f6b6-800a-4be2-95dc-dca80121f0d8:3,Хар тэрмис амралтын газар,,tourist_camp,Увс,Малчин,,,,,
+joinme_only,,5442:f3b0563e-d0e3-460b-80bc-d23f5f7557aa:0,Хяргас нуур жуулчны бааз,,tourist_camp,Увс,Хяргас,,,,,
+joinme_only,,5442:7ac5f6b6-800a-4be2-95dc-dca80121f0d8:0,Хяргас Хөх Бух жуулчны бааз,khyargas_ecotour_mongolia@gmail.com,tourist_camp,Увс,Малчин,,,,,
+joinme_only,,5442:f3b0563e-d0e3-460b-80bc-d23f5f7557aa:4,Цүнхэг амралтын газар,,tourist_camp,Увс,,,,,,
+joinme_only,,1225:74838913-ef59-429b-9156-186deb3fd394:0,Бадрах Хаан Зочид Буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:3c2abdcf-769f-4dff-b100-c8c129d3b0d2:0,КH-ийн Зочид Буудал,KH hotel and restaurant,hotel,Хэнтий,,,,,,
+joinme_only,,1225:c84054b6-1698-4751-937e-138a7f84b939:0,Нэгдэлчин Эн Би Жи Зочид буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:f03e0b4f-8723-4bde-ae9c-07100150447c:0,Нямодо Зочид Буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:4ad6b9a4-7b41-489a-b37c-af0ba3b1f090:0,Хангарьд Зочид буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:031dd919-b8f3-480c-a01b-1bb3349a853c:0,Хөвчийн Жонон Зочид Буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:deba5b06-bc8e-4ba4-b20d-40f006c72f5c:0,Элит Зочид Буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:c43da267-5bf2-423a-8aff-9c0d47af6aa3:0,Эрдэнэ Зочид Буудал,,hotel,Хэнтий,,,,,,
+joinme_only,,1225:fe20d6a6-a18a-453e-9f28-8dcced3760dd:0,Алтан Ураг Жуулчны Бааз,,tourist_camp,Хэнтий,Биндэр,,,,,
+joinme_only,,1225:1c50f6d2-1bfb-40dc-ae81-3a539f090c69:0,Баян Гүрэм Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:2084cbfa-3685-4294-8dab-b8034cece98d:0,Баянбулаг Жуулчны Бааз,Baynbulag camp Mongolia,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:a13b498d-3256-441e-9038-9b287d073c93:0,Баянхүрээ Жуулчны Бааз,Bayan-Khuree Tourist Camp,tourist_camp,Хэнтий,Баянхутаг,,,,,
+joinme_only,,1225:5b521be5-07d5-4a0c-afee-6294e04dc612:0,Бишрэлт Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:45172336-6c4c-4c6b-abd8-c33c16ad8f7d:0,Дадал Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:2cc8c7a0-5f27-4361-8fb5-f666b4348287:0,Дөрвөн Баян Долоон Түмэн Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:0b17a387-5cb4-4eb4-a1ed-69889aa8cf5a:0,Дуурилаг Нарс Жуулчны бааз,Duurlig nars tourist camp,tourist_camp,Хэнтий,Баян-Адарга,,,,,
+joinme_only,,1225:dadb5de5-5a20-476b-9ab4-a8366e4555a5:0,Дэлгэр Боржигон Амралтын Газар,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:b0ab1ff2-5271-4c54-a535-facbd2eb457f:0,Зуун Сарнай Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:6ce956e7-6dc9-431a-94b5-6b6342e3c090:0,Ирээдүй Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:4a7eb224-293e-4b4d-b1d2-f73aae33868d:0,Мандал Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:972d5087-4f6d-41ef-9d4c-2fd40cb89ad1:0,Онон-Хурх Өргөө Жуулчны бааз,info@chinggistoonot.mn,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:65914e2e-73f9-44d3-92af-0b413ca39eb8:0,Өглөгч Валл Эко Лоож,Uglugch Wall Eco Lodge,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:d0f8c8ef-a21a-4dd0-ac77-ace2ee7ea584:0,Өндөрхаан Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:18b261fc-00e2-4227-b726-81ac6369afda:0,Сэнгүүр Амралтын Газар,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:c501bcc1-12ca-4957-91b2-7cb3b7eac97c:0,Тайван Рэнж Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:2cf2fd39-2f1d-48bf-a5fb-47f5e723e1bf:0,Талын Өргөө Эко Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:f3b662db-fd83-425b-8b68-458f5e0f9ed0:0,Тамгат Жуулчны Бааз,,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:b904b808-93c8-48e2-818b-47b3a4a9f3ff:0,Хэнтий Эко Жуулчны Бааз,Khentii Eco Camp,tourist_camp,Хэнтий,,,,,,
+joinme_only,,1225:9a99e254-954e-499b-8fb0-99235af09b4f:0,Чингисийн Дэлүүн Нуур Амралтын Газар,,tourist_camp,Хэнтий,,,,,,
+tic_only,,,,,,,,tic-c21-2,Амарбаясгалант (Amarbayasgalant Hotel),Улаанбаатар,amarbayasgalant-amarbayasgalant-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=2
+tic_only,,,,,,,,tic-c21-1147,Sats Hotel,,sats-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1147
+tic_only,,,,,,,,tic-c21-1135,Алтай (Altai Hotel),Өмнөговь,altai-altai-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1135
+tic_only,,,,,,,,tic-c21-3,Амуре (Amure Hotel),Улаанбаатар,amure-amure-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=3
+tic_only,,,,,,,,tic-c21-4,Ангара (Angara Hotel),Улаанбаатар,angara-angara-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=4
+tic_only,,,,,,,,tic-c21-128,Архангай - Онч (Хайрхан сум),Архангай,arkhangai-onch-khairkhan-sum,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=128
+tic_only,,,,,,,,tic-c21-110,Атлас (Atlas Hotel),Улаанбаатар,atlas-atlas-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=110
+tic_only,,,,,,,,tic-c21-6,Баянгол (Bayangol Hotel),Улаанбаатар,bayangol-bayangol-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=6
+tic_only,,,,,,,,tic-c21-107,Баянхонгор - Жаргалант (Jargalant Hotel),Баянхонгор,bayankhongor-jargalant-jargalant-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=107
+tic_only,,,,,,,,tic-c21-108,Баянхонгор - Нью стар (New Star Hotel),Баянхонгор,bayankhongor-niyu-star-new-star-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=108
+tic_only,,,,,,,,tic-c21-106,Баянхонгор - Сөүл (Seoul Hotel),Баянхонгор,bayankhongor-suul-seoul-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=106
+tic_only,,,,,,,,tic-c21-58,Бест вестерн пример Туушин (Best Western Premier Tuushin Hotel),Улаанбаатар,best-vestern-primer-tuushin-best-western-premier-tuushin,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=58
+tic_only,,,,,,,,tic-c21-105,Баянхонгор (Bayankhongor Hotel),Баянхонгор,bayankhongor-bayankhongor-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=105
+tic_only,,,,,,,,tic-c21-7,Бишрэлт (Bishrelt Hotel),Улаанбаатар,bishrelt-bishrelt-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=7
+tic_only,,,,,,,,tic-c21-79,Блю скай (Blue Sky Hotel),Улаанбаатар,blyu-skai-blue-sky-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=79
+tic_only,,,,,,,,tic-c21-109,Вива (Viva Hotel),Улаанбаатар,viva-viva-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=109
+tic_only,,,,,,,,tic-c21-63,Вояж (Voyage Hotel),Улаанбаатар,voyaj-voyage-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=63
+tic_only,,,,,,,,tic-c21-64,Вояж плас (Voyage Plus Hotel),Улаанбаатар,voyaj-plas-voyage-plus-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=64
+tic_only,,,,,,,,tic-c21-21,Гайд (Guide Hotel),Улаанбаатар,gaid-guide-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=21
+tic_only,,,,,,,,tic-c21-65,Вайт хаус (White House Hotel),Улаанбаатар,vait-khaus-white-house-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=65
+tic_only,,,,,,,,tic-c21-120,Гранд хилл (Grand Hill Hotel),Улаанбаатар,grand-khill-grand-hill-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=120
+tic_only,,,,,,,,tic-c21-28,Дархан хот - Нью Киви (New Kiwi Hotel),Дархан-Уул,darkhan-khot-niyu-kivi-new-kiwi-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=28
+tic_only,,,,,,,,tic-c21-76,Даланзадгад (Dalanzadgad Hotel),Өмнөговь,dalanzadgad-dalanzadgad-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=76
+tic_only,,,,,,,,tic-c21-78,Дархан хот - Комфорт (Comfort Hotel),Дархан-Уул,darkhan-khot-komfort-comfort-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=78
+tic_only,,,,,,,,tic-c21-113,Декор (Decor Hotel),Улаанбаатар,dekor-decor-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=113
+tic_only,,,,,,,,tic-c21-1143,Дипломат,Улаанбаатар,diplomat,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1143
+tic_only,,,,,,,,tic-c21-86,Дархан хот - Дархан (Darkhan Hotel),Дархан-Уул,darkhan-khot-darkhan-darkhan-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=86
+tic_only,,,,,,,,tic-c21-1140,Дорнод (Болор төв),Дорнод,dornod-bolor-tuv,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1140
+tic_only,,,,,,,,tic-c21-1142,Дорнод (Royal),Дорнод,dornod-royal,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1142
+tic_only,,,,,,,,tic-c21-1141,Дорнод (То Ван),Дорнод,dornod-to-van,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1141
+tic_only,,,,,,,,tic-c21-1139,Дорнод (East Palace),Дорнод,dornod-east-palace,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1139
+tic_only,,,,,,,,tic-c21-14,Дрийм (Dream Hotel),Улаанбаатар,driim-dream-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=14
+tic_only,,,,,,,,tic-c21-23,Жи Ди Эл (JDL Hotel),Улаанбаатар,ji-di-el-jdl-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=23
+tic_only,,,,,,,,tic-c21-1137,Дорнод (Ольхон),Дорнод,dornod-olikhon,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1137
+tic_only,,,,,,,,tic-c21-124,Завхан - Жим (Jim Hotel),Завхан,zavkhan-jim-jim-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=124
+tic_only,,,,,,,,tic-c21-1138,Дорнод (Хэрлэн),Дорнод,dornod-kherlen,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1138
+tic_only,,,,,,,,tic-c21-125,Завхан - Загасан нүд ( Zagasan Nud Hotel),Завхан,zavkhan-zagasan-nud-zagasan-nud-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=125
+tic_only,,,,,,,,tic-c21-122,Жэй (J Hotel),Улаанбаатар,jei-j-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=122
+tic_only,,,,,,,,tic-c21-114,Зайсан гэйте (Zaisan Gate Hotel),Улаанбаатар,zaisan-geite-zaisan-gate-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=114
+tic_only,,,,,,,,tic-c21-66,Залуучууд (Zaluuchuud Hotel),Улаанбаатар,zaluuchuud-zaluuchuud-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=66
+tic_only,,,,,,,,tic-c21-1146,Их хорум (Ikh Khorum),Өвөрхангай,ikh-khorum-ikh-khorun,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1146
+tic_only,,,,,,,,tic-c21-74,Золо стар (Zolo Star Hotel),Улаанбаатар,zolo-star-zolo-star-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=74
+tic_only,,,,,,,,tic-c21-25,Кемпинский (Kempinski Hotel Khan Palace),Улаанбаатар,kempinskii-kempinski-hotel-khan-palace,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=25
+tic_only,,,,,,,,tic-c21-11,Континентал (Continental Hotel),,kontinental-continental-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=11
+tic_only,,,,,,,,tic-c21-1145,Кёкүшю зочид буудал (Hotel),Улаанбаатар,kekushyu-zochid-buudal-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1145
+tic_only,,,,,,,,tic-c21-12,Корпорайт 1 (Corporate Hotel),Улаанбаатар,korporait-1-corporate-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=12
+tic_only,,,,,,,,tic-c21-41,Корпорайт 3 (Corporate Hotel & Nukht Resort),Улаанбаатар,korporait-3-corporate-hotel-nukht-resort,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=41
+tic_only,,,,,,,,tic-c21-123,Корпорайт 2 (Corporate Hotel & Convention Center),Улаанбаатар,korporait-2-corporate-hotel-convention-center,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=123
+tic_only,,,,,,,,tic-c21-1144,Маргад (Margad Hotel),Улаанбаатар,margad-margad-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=1144
+tic_only,,,,,,,,tic-c21-32,Миами (Miami Hotel),Улаанбаатар,miami-miami-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=32
+tic_only,,,,,,,,tic-c21-116,Монголиан империал (Mongolian Imperial Hotel),Улаанбаатар,mongolian-imperial-mongolian-imperial-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=116
+tic_only,,,,,,,,tic-c21-34,Мика (Mika Hotel),Улаанбаатар,mika-mika-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=34
+tic_only,,,,,,,,tic-c21-33,Мишээл (Michelle Hotel),Улаанбаатар,misheel-michelle-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=33
+tic_only,,,,,,,,tic-c21-22,Монгол шилтгээн (Hotel Mongolia),Улаанбаатар,mongol-shiltgeen-hotel-mongolia,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=22
+tic_only,,,,,,,,tic-c21-100,Мөрөн - Чингис (Chinggis Hotel),Хөвсгөл,murun-chingis-chinggis-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=100
+tic_only,,,,,,,,tic-c21-75,Монголика (Mongolica Hotel),Улаанбаатар,mongolika-mongolica-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=75
+tic_only,,,,,,,,tic-c21-94,Мөрөн - 50*100 (50*100 Hotel),Хөвсгөл,murun-50-100-50-100-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=94
+tic_only,,,,,,,,tic-c21-102,H9 - УБ (H9 - UB Hotel),Улаанбаатар,n9-ub-h9-ub-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=102
+tic_only,,,,,,,,tic-c21-119,H9 - Сэлэнгэ (H9 Selenge),Сүхбаатар,n9-selenge-h9-selenge,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=119
+tic_only,,,,,,,,tic-c21-37,Нарантуул (Narantuul Hotel),Улаанбаатар,narantuul-narantuul-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=37
+tic_only,,,,,,,,tic-c21-36,Намуун (Namuun Hotel),Улаанбаатар,namuun-namuun-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=36
+tic_only,,,,,,,,tic-c21-70,Нью ворлд (New World Hotel),Улаанбаатар,niyu-vorld-new-world-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=70
+tic_only,,,,,,,,tic-c21-39,Нью вест (New West Hotel),Улаанбаатар,niyu-vest-new-west-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=39
+tic_only,,,,,,,,tic-c21-91,Өвөрхангай - Арвайхээр палас (Арвайхээр хот),Өвөрхангай,uvurkhangai-arvaikheer-palas-arvaikheer-khot,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=91
+tic_only,,,,,,,,tic-c21-71,Оффис (Office Hotel),Улаанбаатар,offis-office-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=71
+tic_only,,,,,,,,tic-c21-130,Өвөрхангай - Шунхлай (Shunkhlai Hotel),Өвөрхангай,uvurkhangai-shunkhlai-shunkhlai-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=130
+tic_only,,,,,,,,tic-c21-127,Өвөрхангай - Их Өшгөг (Арвайхээр),Өвөрхангай,uvurkhangai-ikh-ushgug-arvaikheer,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=127
+tic_only,,,,,,,,tic-c21-43,Пийс бриж (Peace Bridge Hotel),Улаанбаатар,piis-brij-peace-bridge-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=43
+tic_only,,,,,,,,tic-c21-87,Парк (Park Hotel),Улаанбаатар,park-park-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=87
+tic_only,,,,,,,,tic-c21-44,Пума империал (Puma Imperial Hotel),Улаанбаатар,puma-imperial-puma-imperial-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=44
+tic_only,,,,,,,,tic-c21-93,Платинум (Platinum Hotel),Улаанбаатар,platinum-platinum-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=93
+tic_only,,,,,,,,tic-c21-45,Ричфилд (Richfield Hotel),Улаанбаатар,richfild-richfield-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=45
+tic_only,,,,,,,,tic-c21-73,Рамада (Ramada Hotel),Улаанбаатар,ramada-ramada-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=73
+tic_only,,,,,,,,tic-c21-46,Рояал хаус (Royal House Hotel),Улаанбаатар,royaal-khaus-royal-house-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=46
+tic_only,,,,,,,,tic-c21-115,Рояал (Royal Hotel),Улаанбаатар,royaal-royal-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=115
+tic_only,,,,,,,,tic-c21-117,Сайншанд - Хур говь (Khur Gobi Hotel),Дорноговь,sainshand-khur-govi-khur-gobi-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=117
+tic_only,,,,,,,,tic-c21-84,Сайншанд - Дорноговь (Dornogobi),Дорноговь,sainshand-dornogovi-dornogobi,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=84
+tic_only,,,,,,,,tic-c21-53,Спрингс (Springs Hotel),Улаанбаатар,springs-springs-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=53
+tic_only,,,,,,,,tic-c21-51,Сайншанд - Шанд плаза (Shand Plaza Hotel),Дорноговь,sainshand-shand-plaza-shand-plaza-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=51
+tic_only,,,,,,,,tic-c21-129,Сүхбаатар - Баянбулаг (Bayanbulag),Сүхбаатар,sukhbaatar-bayanbulag-bayanbulag,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=129
+tic_only,,,,,,,,tic-c21-54,Сүнжингранд (Sunjingrand Hotel),Улаанбаатар,sunjingrand-sunjingrand-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=54
+tic_only,,,,,,,,tic-c21-81,Тото (Toto Hotel),Улаанбаатар,toto-toto-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=81
+tic_only,,,,,,,,tic-c21-49,Сэнтий (Sentii Hotel),Улаанбаатар,sentii-sentii-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=49
+tic_only,,,,,,,,tic-c21-56,Тэрэлж (Terelj Hotel),Улаанбаатар,terelj-terelj-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=56
+tic_only,,,,,,,,tic-c21-83,УБ сити (UB City Hotel),Улаанбаатар,ub-siti-ub-city-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=83
+tic_only,,,,,,,,tic-c21-59,Улаанбаатар (Ulaanbaatar Hotel),Улаанбаатар,ulaanbaatar-ulaanbaatar-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=59
+tic_only,,,,,,,,tic-c21-55,Тэмүүжин (Temuujin Hotel),Улаанбаатар,temuujin-temuujin-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=55
+tic_only,,,,,,,,tic-c21-60,Улаанбаатар-2 (UB-2 Hotel),Улаанбаатар,ulaanbaatar-2-ub-2-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=60
+tic_only,,,,,,,,tic-c21-26,Хараа (Kharaa Hotel),Улаанбаатар,kharaa-kharaa-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=26
+tic_only,,,,,,,,tic-c21-99,Хүннү палас (Khunnu Palace Hotel),Улаанбаатар,khunnu-palas-khunnu-palace-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=99
+tic_only,,,,,,,,tic-c21-18,Цэцэг (Flower Hotel),Улаанбаатар,tsetseg-flower-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=18
+tic_only,,,,,,,,tic-c21-9,Чингис хаан (Chinggis Khaan Hotel),Улаанбаатар,chingis-khaan-chinggis-khaan-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=9
+tic_only,,,,,,,,tic-c21-121,Шангри-Ла (Shangri-La Hotel),Улаанбаатар,shangri-la-shangri-la-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=121
+tic_only,,,,,,,,tic-c21-17,Эвергрийн (Evergreen Hotel),Улаанбаатар,evergriin-evergreen-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=17
+tic_only,,,,,,,,tic-c21-133,Хөвсгөл нуур (Khuvsgul Lake),Хөвсгөл,khuvsgul-nuur-khuvsgul-lake,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=133
+tic_only,,,,,,,,tic-c21-15,Эдельвайс (Edelweiss Hotel),Улаанбаатар,edelivais-edelweiss-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=15
+tic_only,,,,,,,,tic-c21-16,Эпос (Epos Hotel),Улаанбаатар,epos-epos-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=16
+tic_only,,,,,,,,tic-c21-80,Эрин (Erin Hotel),Улаанбаатар,erin-erin-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=80
+tic_only,,,,,,,,tic-c22-34,Архангай - Бадмаараг бааз,Архангай,arkhangai-badmaarag-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=34
+tic_only,,,,,,,,tic-c22-35,Архангай - Гурванбулган бааз,Архангай,arkhangai-gurvanbulgan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=35
+tic_only,,,,,,,,tic-c22-236,Архангай - Дуут ресорт,Архангай,arkhangai-duut-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=236
+tic_only,,,,,,,,tic-c22-37,Архангай - Их хаган Хубилай бааз,Архангай,arkhangai-ikh-khagan-khubilai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=37
+tic_only,,,,,,,,tic-c22-329,Архангай - Их Улаан шивэрт бааз,Архангай,arkhangai-ikh-ulaan-shivert-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=329
+tic_only,,,,,,,,tic-c22-1354,Тэрэлж - Баянмонгол ресорт,Улаанбаатар,terelj-bayanmongol-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1354
+tic_only,,,,,,,,tic-c22-39,Архангай - Майхан толгой бааз,Архангай,arkhangai-maikhan-tolgoi-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=39
+tic_only,,,,,,,,tic-c22-40,Архангай - Өгий тур бааз,Архангай,arkhangai-ugii-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=40
+tic_only,,,,,,,,tic-c21-132,Эрдэнэт Инн (Erdenet Inn Hotel),Орхон,erdenet-inn-erdenet-inn-hotel,https://www.touristinfocenter.mn/cate21_more.aspx?ItemID=132
+tic_only,,,,,,,,tic-c22-255,Архангай - Майдар сан бааз,Архангай,arkhangai-maidar-san-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=255
+tic_only,,,,,,,,tic-c22-42,Архангай - Сөртийн тулга нөхөрлөл,Архангай,arkhangai-surtiin-tulga-nukhurlul,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=42
+tic_only,,,,,,,,tic-c22-239,Архангай - Тайхар бааз,Архангай,arkhangai-taikhar-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=239
+tic_only,,,,,,,,tic-c22-43,Архангай - Тунгалаг Тамир бааз,Архангай,arkhangai-tungalag-tamir-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=43
+tic_only,,,,,,,,tic-c22-44,Архангай - Хавтгай мод бааз,Архангай,arkhangai-khavtgai-mod-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=44
+tic_only,,,,,,,,tic-c22-208,Архангай - Их Хорго бааз,Архангай,arkhangai-ikh-khorgo-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=208
+tic_only,,,,,,,,tic-c22-1341,Архангай - Хангай ресорт,Архангай,arkhangai-khangai-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1341
+tic_only,,,,,,,,tic-c22-46,Архангай - Хатан Өгий бааз,Архангай,arkhangai-khatan-ugii-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=46
+tic_only,,,,,,,,tic-c22-48,Архангай - Хорго бааз,Архангай,arkhangai-khorgo-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=48
+tic_only,,,,,,,,tic-c22-51,Архангай - Цэнхэр жигүүр бааз,Архангай,arkhangai-tsenkher-jiguur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=51
+tic_only,,,,,,,,tic-c22-54,Архангай - Эх байгаль бааз,Архангай,arkhangai-ekh-baigali-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=54
+tic_only,,,,,,,,tic-c22-49,Архангай - Цагаан нуур бааз,Архангай,arkhangai-tsagaan-nuur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=49
+tic_only,,,,,,,,tic-c22-50,Архангай - Цайдам бааз,Архангай,arkhangai-tsaidam-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=50
+tic_only,,,,,,,,tic-c22-248,Баян-Өлгий - Баавгайн хөндий бааз,Баян-Өлгий,bayan-ulgii-baavgain-khundii-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=248
+tic_only,,,,,,,,tic-c22-52,Архангай - Чулуутын хавцал бааз,Архангай,arkhangai-chuluutyn-khavtsal-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=52
+tic_only,,,,,,,,tic-c22-257,Баян-Өлгий - Уэст Монголиа бааз,Баян-Өлгий,bayan-ulgii-uest-mongolia-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=257
+tic_only,,,,,,,,tic-c22-1351,Баян-Өлгий - Толбо Нуур,Баян-Өлгий,bayan-ulgii-tolbo-nuur,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1351
+tic_only,,,,,,,,tic-c22-56,Баянхонгор - Говийн тэмээ бааз,Баянхонгор,bayankhongor-goviin-temee-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=56
+tic_only,,,,,,,,tic-c22-1352,Баянхонгор - Гандирсын хүрээлэн бааз,Баянхонгор,bayankhongor-gandirsyn-khureelen-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1352
+tic_only,,,,,,,,tic-c22-280,Баянхонгор - Мандухай жуулчны бааз,Баянхонгор,bayankhongor-mandukhai-juulchny-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=280
+tic_only,,,,,,,,tic-c22-1350,Баянхонгор-Тэргүүн Говь,Баянхонгор,bayankhongor-terguun-govi,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1350
+tic_only,,,,,,,,tic-c22-1349,Баян-Өлгий-The Wanderers Camp,Баян-Өлгий,bayan-ulgii-the-wanderers-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1349
+tic_only,,,,,,,,tic-c22-59,Булган - Бичигт хад бааз,Булган,bulgan-bichigt-khad-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=59
+tic_only,,,,,,,,tic-c22-325,Булган - Дэлгэр эко бааз,Булган,bulgan-delger-eko-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=325
+tic_only,,,,,,,,tic-c22-221,Булган - Мойлт эко лоож,Булган,bulgan-moilt-eko-looj,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=221
+tic_only,,,,,,,,tic-c22-62,Булган - Хангай дисковэри бааз,Булган,bulgan-khangai-diskoveri-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=62
+tic_only,,,,,,,,tic-c22-61,Булган - Туст бааз,Булган,bulgan-tust-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=61
+tic_only,,,,,,,,tic-c22-292,Булган - Монгол Алтай бааз,Булган,bulgan-mongol-altai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=292
+tic_only,,,,,,,,tic-c22-64,Булган - Ханхар уул бааз,Булган,bulgan-khankhar-uul-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=64
+tic_only,,,,,,,,tic-c22-66,Булган - Хөгнө хаан бааз,Булган,bulgan-khugnu-khaan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=66
+tic_only,,,,,,,,tic-c22-63,Булган - Хоёр загал бааз,Булган,bulgan-khoer-zagal-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=63
+tic_only,,,,,,,,tic-c22-68,Булган - Эрдэнэ бааз,Булган,bulgan-erdene-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=68
+tic_only,,,,,,,,tic-c22-178,Гачуурт - Монгол шилтгээн,Улаанбаатар,gachuurt-mongol-shiltgeen,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=178
+tic_only,,,,,,,,tic-c22-275,Гачуурт - Шинэ Монгол төв,Улаанбаатар,gachuurt-shine-mongol-tuv,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=275
+tic_only,,,,,,,,tic-c22-313,Дорноговь - Говийн өглөө (Сайншанд),Дорноговь,dornogovi-goviin-ugluu-sainshand,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=313
+tic_only,,,,,,,,tic-c22-69,Говь-Алтай - Жуулчин Алтай бааз,Говь-Алтай,govi-altai-juulchin-altai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=69
+tic_only,,,,,,,,tic-c22-71,Дорноговь - Таван дохио бааз,Дорноговь,dornogovi-tavan-dokhio-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=71
+tic_only,,,,,,,,tic-c22-72,Дорноговь - Шанд бааз,Дорноговь,dornogovi-shand-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=72
+tic_only,,,,,,,,tic-c22-1336,Дорнод - Баян Буйр бааз,Дорнод,dornod-bayan-buir-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1336
+tic_only,,,,,,,,tic-c22-1335,Дорнод - Ногоон төгөл бааз,Дорнод,dornod-nogoon-tugul-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1335
+tic_only,,,,,,,,tic-c22-243,Говь-Алтай - Эрээн нуур бааз,Говь-Алтай,govi-altai-ereen-nuur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=243
+tic_only,,,,,,,,tic-c22-207,Дундговь - Говь суварга бааз,Дундговь,dundgovi-govi-suvarga-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=207
+tic_only,,,,,,,,tic-c22-150,Дундговь - Дундговь бааз,Дундговь,dundgovi-dundgovi-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=150
+tic_only,,,,,,,,tic-c22-14,Завхан - Маргад ембүү бааз,Завхан,zavkhan-margad-yembuu-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=14
+tic_only,,,,,,,,tic-c22-82,Өвөрхангай - Анар бааз,Өвөрхангай,uvurkhangai-anar-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=82
+tic_only,,,,,,,,tic-c22-192,Өвөрхангай - Sweet Gobi Geolodges,Өвөрхангай,uvurkhangai-sweet-gobi-geolodges,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=192
+tic_only,,,,,,,,tic-c22-262,Өвөрхангай - Анжа эко бааз,Өвөрхангай,uvurkhangai-anja-eko-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=262
+tic_only,,,,,,,,tic-c22-283,Өвөрхангай - Баясгалан бааз,Өвөрхангай,uvurkhangai-bayasgalan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=283
+tic_only,,,,,,,,tic-c22-84,Өвөрхангай - Баянговь бааз,Өвөрхангай,uvurkhangai-bayangovi-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=84
+tic_only,,,,,,,,tic-c22-267,Өвөрхангай - Бөөрөг бааз,Өвөрхангай,uvurkhangai-buurug-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=267
+tic_only,,,,,,,,tic-c22-87,Өвөрхангай - Asa Land Resort,Өвөрхангай,uvurkhangai-asa-land-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=87
+tic_only,,,,,,,,tic-c22-182,Өвөрхангай - Мишээл бааз,Өвөрхангай,uvurkhangai-misheel-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=182
+tic_only,,,,,,,,tic-c22-89,Өвөрхангай - Мөнх тэнгэр бааз,Өвөрхангай,uvurkhangai-munkh-tenger-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=89
+tic_only,,,,,,,,tic-c22-298,Өвөрхангай - Могойт спа бааз,Өвөрхангай,uvurkhangai-mogoit-spa-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=298
+tic_only,,,,,,,,tic-c22-330,Өвөрхангай - Найман нуур бааз,Өвөрхангай,uvurkhangai-naiman-nuur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=330
+tic_only,,,,,,,,tic-c22-193,Өвөрхангай - Ойдов бааз,Өвөрхангай,uvurkhangai-oidov-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=193
+tic_only,,,,,,,,tic-c22-189,Өвөрхангай - Орхон бааз,Өвөрхангай,uvurkhangai-orkhon-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=189
+tic_only,,,,,,,,tic-c22-231,Өвөрхангай - Орхон түшээ бааз,Өвөрхангай,uvurkhangai-orkhon-tushee-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=231
+tic_only,,,,,,,,tic-c22-1331,Өвөрхангай - Орхоны хүрхрээ,Өвөрхангай,uvurkhangai-orkhony-khurkhree,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1331
+tic_only,,,,,,,,tic-c22-181,Өвөрхангай - Ривэр сайд (Хархорин),Өвөрхангай,uvurkhangai-river-said-kharkhorin,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=181
+tic_only,,,,,,,,tic-c22-92,Өвөрхангай - Талбиун бааз,Өвөрхангай,uvurkhangai-talbiun-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=92
+tic_only,,,,,,,,tic-c22-294,Өвөрхангай - Улаан цутгалан бааз,Өвөрхангай,uvurkhangai-ulaan-tsutgalan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=294
+tic_only,,,,,,,,tic-c22-183,Өвөрхангай - Урса мажор геолодж,Өвөрхангай,uvurkhangai-ursa-major-geolodj,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=183
+tic_only,,,,,,,,tic-c22-94,Өвөрхангай - Хаан тайж бааз (Хархорин),Өвөрхангай,uvurkhangai-khaan-taij-baaz-kharkhorin,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=94
+tic_only,,,,,,,,tic-c22-97,Өвөрхангай - Хархорин бааз,Өвөрхангай,uvurkhangai-kharkhorin-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=97
+tic_only,,,,,,,,tic-c22-233,Өвөрхангай - Хашхан бааз,Өвөрхангай,uvurkhangai-khashkhan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=233
+tic_only,,,,,,,,tic-c22-98,Өвөрхангай - Хубилай хаан бааз,Өвөрхангай,uvurkhangai-khubilai-khaan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=98
+tic_only,,,,,,,,tic-c22-99,Өвөрхангай - Хужирт тур бааз,Өвөрхангай,uvurkhangai-khujirt-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=99
+tic_only,,,,,,,,tic-c22-100,Өвөрхангай - Цагаан бургас бааз,Өвөрхангай,uvurkhangai-tsagaan-burgas-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=100
+tic_only,,,,,,,,tic-c22-85,Өвөрхангай - Цэнгүүн хүрээ бааз,Өвөрхангай,uvurkhangai-tsenguun-khuree-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=85
+tic_only,,,,,,,,tic-c22-190,Өвөрхангай - Хайрхан бааз,Өвөрхангай,uvurkhangai-khairkhan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=190
+tic_only,,,,,,,,tic-c22-327,Өмнөговь - Говийн Баянбүрд 2 (Баянзаг),Өмнөговь,umnugovi-goviin-bayanburd-2-bayanzag,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=327
+tic_only,,,,,,,,tic-c22-305,Өмнөговь - Говь дисковери 1,Өмнөговь,umnugovi-govi-diskoveri-1,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=305
+tic_only,,,,,,,,tic-c22-41,Өмнөговь - Говь дисковери 2 (Хонгорын элс),Өмнөговь,umnugovi-govi-diskoveri-2-khongoryn-els,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=41
+tic_only,,,,,,,,tic-c22-58,Өмнөговь - Говь мираж бааз,Өмнөговь,umnugovi-govi-miraj-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=58
+tic_only,,,,,,,,tic-c22-249,Өмнөговь - Говь-Эрдэнэ (Хонгорын элс),Өмнөговь,umnugovi-govi-erdene-khongoryn-els,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=249
+tic_only,,,,,,,,tic-c22-322,Өмнөговь - Жуулчин говь 2 (Хонгорын элс),Өмнөговь,umnugovi-juulchin-govi-2-khongoryn-els,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=322
+tic_only,,,,,,,,tic-c22-80,Өмнөговь - Шинэ Төвшин,Өмнөговь,umnugovi-shine-tuvshin,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=80
+tic_only,,,,,,,,tic-c22-1348,Өргөө бааз,,urguu-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1348
+tic_only,,,,,,,,tic-c22-317,Сүхбаатар - Хүслийн хүсэл бааз,Сүхбаатар,sukhbaatar-khusliin-khusel-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=317
+tic_only,,,,,,,,tic-c22-102,Сэлэнгэ - Амарбаясгалант өргөө бааз,Сэлэнгэ,selenge-amarbayasgalant-urguu-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=102
+tic_only,,,,,,,,tic-c22-103,Сэлэнгэ - Грэйт Сэлэнгэ бааз,Сэлэнгэ,selenge-greit-selenge-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=103
+tic_only,,,,,,,,tic-c22-310,Сүхбаатар - Вүүд хаус бааз,Сүхбаатар,sukhbaatar-vuud-khaus-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=310
+tic_only,,,,,,,,tic-c22-106,Сэлэнгэ - Ноён тур бааз,Сэлэнгэ,selenge-noen-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=106
+tic_only,,,,,,,,tic-c22-116,Төв - His Khaan Resort,Төв,tuv-his-khaan-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=116
+tic_only,,,,,,,,tic-c22-122,Төв - Steppe Nomads бааз,Төв,tuv-steppe-nomads-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=122
+tic_only,,,,,,,,tic-c22-222,Төв - XIII зуун цогцолбор,Төв,tuv-xiii-zuun-tsogtsolbor,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=222
+tic_only,,,,,,,,tic-c22-108,Төв - Ар бүрд элс (Ar Burd Els Camp),Төв,tuv-ar-burd-els-ar-burd-els-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=108
+tic_only,,,,,,,,tic-c22-105,Сэлэнгэ - Иф тур бааз,Сэлэнгэ,selenge-if-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=105
+tic_only,,,,,,,,tic-c22-290,Төв - Ариг Монгол хаад бааз (Цонжинболдог),Төв,tuv-arig-mongol-khaad-baaz-tsonjinboldog,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=290
+tic_only,,,,,,,,tic-c22-302,Төв - Баянгол бааз (Батсүмбэр),Төв,tuv-bayangol-baaz-batsumber,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=302
+tic_only,,,,,,,,tic-c22-112,Төв - Говь Мон бааз,Төв,tuv-govi-mon-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=112
+tic_only,,,,,,,,tic-c22-113,Төв - Дрездэн бааз,Төв,tuv-drezden-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=113
+tic_only,,,,,,,,tic-c22-109,Төв - Баянцогт,Төв,tuv-bayantsogt,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=109
+tic_only,,,,,,,,tic-c22-111,Төв - Говь инн,Төв,tuv-govi-inn,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=111
+tic_only,,,,,,,,tic-c22-114,Төв - Дугана хад бааз,Төв,tuv-dugana-khad-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=114
+tic_only,,,,,,,,tic-c22-279,Төв - Дэлгэр тур бааз,Төв,tuv-delger-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=279
+tic_only,,,,,,,,tic-c22-119,Төв - Молцог элс (Хустай),Төв,tuv-moltsog-els-khustai,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=119
+tic_only,,,,,,,,tic-c22-133,Төв - Мандал ресорт,Төв,tuv-mandal-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=133
+tic_only,,,,,,,,tic-c22-115,Төв - Жирмийн цагаан нуур бааз,Төв,tuv-jirmiin-tsagaan-nuur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=115
+tic_only,,,,,,,,tic-c22-110,Төв - Бүрги эрэг бааз,Төв,tuv-burgi-ereg-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=110
+tic_only,,,,,,,,tic-c22-120,Төв - Монголын нууц товчоо бааз,Төв,tuv-mongolyn-nuuts-tovchoo-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=120
+tic_only,,,,,,,,tic-c22-118,Төв - Мөнгөн агт бааз,Төв,tuv-mungun-agt-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=118
+tic_only,,,,,,,,tic-c22-246,Төв - Нарны орон бааз,Төв,tuv-narny-oron-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=246
+tic_only,,,,,,,,tic-c22-176,Төв - Монгол цэргийн хүрээ жуулчны бааз,Төв,tuv-mongol-tsergiin-khuree-juulchny-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=176
+tic_only,,,,,,,,tic-c22-30,Төв - Овооны энгэр (Манзушир),Төв,tuv-ovoony-enger-manzushir,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=30
+tic_only,,,,,,,,tic-c22-121,Төв - Өндөрширээт бааз,Төв,tuv-undurshireet-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=121
+tic_only,,,,,,,,tic-c22-235,Төв - Өртөө толгой,Төв,tuv-urtuu-tolgoi,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=235
+tic_only,,,,,,,,tic-c22-284,Төв - Морь уналгын газар (Салхит),Төв,tuv-mori-unalgyn-gazar-salkhit,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=284
+tic_only,,,,,,,,tic-c22-124,Төв - Сүм бааз,Төв,tuv-sum-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=124
+tic_only,,,,,,,,tic-c22-125,Төв - Талын говь бааз,Төв,tuv-talyn-govi-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=125
+tic_only,,,,,,,,tic-c22-234,Төв - Түүхт Ази бааз,Төв,tuv-tuukht-azi-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=234
+tic_only,,,,,,,,tic-c22-126,Төв - Хаан жимс,Төв,tuv-khaan-jims,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=126
+tic_only,,,,,,,,tic-c22-219,Төв - Монгол номадик бааз,Төв,tuv-mongol-nomadik-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=219
+tic_only,,,,,,,,tic-c22-128,Төв - Хустайн нуруу бааз,Төв,tuv-khustain-nuruu-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=128
+tic_only,,,,,,,,tic-c22-123,Төв - Согоот бааз,Төв,tuv-sogoot-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=123
+tic_only,,,,,,,,tic-c22-127,Төв - Хаан Хэрлэн бааз,Төв,tuv-khaan-kherlen-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=127
+tic_only,,,,,,,,tic-c22-197,Төв - Цонжин бааз,Төв,tuv-tsonjin-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=197
+tic_only,,,,,,,,tic-c22-130,Төв - Чингис бааз,Төв,tuv-chingis-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=130
+tic_only,,,,,,,,tic-c22-132,Төв - Элстэй бааз,Төв,tuv-elstei-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=132
+tic_only,,,,,,,,tic-c22-20,Тэрэлж - UB-2 бааз,,terelj-ub-2-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=20
+tic_only,,,,,,,,tic-c22-281,Төв - Цэцэгт нуга амралт,Төв,tuv-tsetsegt-nuga-amralt,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=281
+tic_only,,,,,,,,tic-c22-129,Төв - Чандмань булаг,Төв,tuv-chandmani-bulag,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=129
+tic_only,,,,,,,,tic-c22-301,Тэрэлж - Аянчин лоож (Ayanchin Four Seasons Lodge),,terelj-ayanchin-looj-ayanchin-four-seasons-lodge,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=301
+tic_only,,,,,,,,tic-c22-225,Тэрэлж - Байгалийн нууц бааз,Улаанбаатар,terelj-baigaliin-nuuts-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=225
+tic_only,,,,,,,,tic-c22-2,Тэрэлж - Баянхад (Bayankhad Camp),,terelj-bayankhad-bayankhad-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=2
+tic_only,,,,,,,,tic-c22-131,Төв - Чингис хааны хөшөөт цогцолбор,Төв,tuv-chingis-khaany-khushuut-tsogtsolbor,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=131
+tic_only,,,,,,,,tic-c22-300,Тэрэлж - Алунгоо бааз,Улаанбаатар,terelj-alungoo-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=300
+tic_only,,,,,,,,tic-c22-179,Тэрэлж - Гүнж бааз (Гүнжийн сүм),,terelj-gunj-baaz-gunjiin-sum,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=179
+tic_only,,,,,,,,tic-c22-4,Тэрэлж - Бенибана бааз,,terelj-benibana-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=4
+tic_only,,,,,,,,tic-c22-1,Тэрэлж - Жуулчин Баялаг бааз,Улаанбаатар,terelj-juulchin-bayalag-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1
+tic_only,,,,,,,,tic-c22-6,Тэрэлж - Бүүвэйт бааз,Улаанбаатар,terelj-buuveit-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=6
+tic_only,,,,,,,,tic-c22-5,Тэрэлж - Булагтай бааз,Улаанбаатар,terelj-bulagtai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=5
+tic_only,,,,,,,,tic-c22-223,Тэрэлж - Монгол морьд бааз,Улаанбаатар,terelj-mongol-morid-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=223
+tic_only,,,,,,,,tic-c22-8,Тэрэлж - Гүрү бааз,Улаанбаатар,terelj-guru-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=8
+tic_only,,,,,,,,tic-c22-203,Тэрэлж - Их Монгол бааз,Улаанбаатар,terelj-ikh-mongol-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=203
+tic_only,,,,,,,,tic-c22-15,Тэрэлж - Сан бааз,Улаанбаатар,terelj-san-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=15
+tic_only,,,,,,,,tic-c22-10,Тэрэлж - Мираж бааз,,terelj-miraj-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=10
+tic_only,,,,,,,,tic-c22-293,Тэрэлж - Отгонтайж бааз,Улаанбаатар,terelj-otgontaij-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=293
+tic_only,,,,,,,,tic-c22-296,Тэрэлж - Талын сондор бааз,Улаанбаатар,terelj-talyn-sondor-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=296
+tic_only,,,,,,,,tic-c22-276,Тэрэлж - Түмэн хаан бааз,Улаанбаатар,terelj-tumen-khaan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=276
+tic_only,,,,,,,,tic-c22-16,Тэрэлж - Тамир бааз,,terelj-tamir-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=16
+tic_only,,,,,,,,tic-c22-1339,Тэрэлж - Тэрэлж Хиллс (Terelj Hills Lodge),Улаанбаатар,terelj-terelj-khills-terelj-hills-lodge,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1339
+tic_only,,,,,,,,tic-c22-216,Тэрэлж - Тэнгэрийн элч бааз,Улаанбаатар,terelj-tengeriin-elch-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=216
+tic_only,,,,,,,,tic-c22-22,Тэрэлж - Хотула бааз,,terelj-khotula-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=22
+tic_only,,,,,,,,tic-c22-19,Тэрэлж - Тэрэлж Бумбан тур бааз,Улаанбаатар,terelj-terelj-bumban-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=19
+tic_only,,,,,,,,tic-c22-230,Тэрэлж - Тэрэлж Лоож,Улаанбаатар,terelj-terelj-looj,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=230
+tic_only,,,,,,,,tic-c22-211,Тэрэлж - Уу булан бааз,Улаанбаатар,terelj-uu-bulan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=211
+tic_only,,,,,,,,tic-c22-198,Тэрэлж - Хубилай лоож,Улаанбаатар,terelj-khubilai-looj,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=198
+tic_only,,,,,,,,tic-c22-26,Улаанбаатар - Богд хан ресорт & Чингисийн өргөө цогцолбор,Улаанбаатар,ulaanbaatar-bogd-khan-resort-chingisiin-urguu-tsogtsolbor,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=26
+tic_only,,,,,,,,tic-c22-1346,Улаанбаатар - Мөнхтэнгэр-2 Богд бааз,Улаанбаатар,ulaanbaatar-munkhtenger-2-bogd-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1346
+tic_only,,,,,,,,tic-c22-319,Улаанбаатар - Хүрэл тогоот (Одон орон судлах төв),Улаанбаатар,ulaanbaatar-khurel-togoot-odon-oron-sudlakh-tuv,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=319
+tic_only,,,,,,,,tic-c22-210,Тэрэлж - Чингисийн өвөлжөө бааз,Улаанбаатар,terelj-chingisiin-uvuljuu-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=210
+tic_only,,,,,,,,tic-c22-270,Ховд - Мөнгөн уул бааз,Ховд,khovd-mungun-uul-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=270
+tic_only,,,,,,,,tic-c22-33,Улаанбаатар - Чингисийн хүрээ бааз,Улаанбаатар,ulaanbaatar-chingisiin-khuree-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=33
+tic_only,,,,,,,,tic-c22-269,Ховд - Ховд Гайд бааз,Ховд,khovd-khovd-gaid-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=269
+tic_only,,,,,,,,tic-c22-134,Улаанбаатар - Эрхэт сүлд бааз,Улаанбаатар,ulaanbaatar-erkhet-suld-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=134
+tic_only,,,,,,,,tic-c22-1332,Хөвсгөл - Art 88 Resort,Хөвсгөл,khuvsgul-art-88-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1332
+tic_only,,,,,,,,tic-c22-180,Хөвсгөл - Ар давхар хойг бааз,Хөвсгөл,khuvsgul-ar-davkhar-khoig-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=180
+tic_only,,,,,,,,tic-c22-141,Хөвсгөл - Байгаль-Үүд (Nature Door Camp),Хөвсгөл,khuvsgul-baigali-uud-nature-door-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=141
+tic_only,,,,,,,,tic-c22-140,Хөвсгөл - Ашихай бааз (Ashikhai Camp),Хөвсгөл,khuvsgul-ashikhai-baaz-ashikhai-camp,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=140
+tic_only,,,,,,,,tic-c22-259,Хөвсгөл - Баян-Улаан,Хөвсгөл,khuvsgul-bayan-ulaan,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=259
+tic_only,,,,,,,,tic-c22-142,Хөвсгөл - Буган чулуу тур,Хөвсгөл,khuvsgul-bugan-chuluu-tur,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=142
+tic_only,,,,,,,,tic-c22-229,Ховд - Гурван сэнхэр бааз,Ховд,khovd-gurvan-senkher-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=229
+tic_only,,,,,,,,tic-c22-264,Хөвсгөл - Гурван Эрдэнэ бааз,Хөвсгөл,khuvsgul-gurvan-erdene-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=264
+tic_only,,,,,,,,tic-c22-143,Хөвсгөл - Галтын халуун рашаан бааз,Хөвсгөл,khuvsgul-galtyn-khaluun-rashaan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=143
+tic_only,,,,,,,,tic-c22-277,Хөвсгөл - Далай ван 1 бааз,Хөвсгөл,khuvsgul-dalai-van-1-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=277
+tic_only,,,,,,,,tic-c22-263,Хөвсгөл - Гоюул бааз,Хөвсгөл,khuvsgul-goyuul-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=263
+tic_only,,,,,,,,tic-c22-278,Хөвсгөл - Далай ван 2 бааз,Хөвсгөл,khuvsgul-dalai-van-2-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=278
+tic_only,,,,,,,,tic-c22-177,Хөвсгөл - Далай тур бааз,Хөвсгөл,khuvsgul-dalai-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=177
+tic_only,,,,,,,,tic-c22-144,Хөвсгөл - Дөл тур бааз,Хөвсгөл,khuvsgul-dul-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=144
+tic_only,,,,,,,,tic-c22-145,Хөвсгөл - Жаргал жигүүр бааз,Хөвсгөл,khuvsgul-jargal-jiguur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=145
+tic_only,,,,,,,,tic-c22-1340,Хөвсгөл - Лэйк форест (Lake Forest Lodge),Хөвсгөл,khuvsgul-leik-forest-lake-forest-lodge,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1340
+tic_only,,,,,,,,tic-c22-146,Хөвсгөл - Монгол далай,Хөвсгөл,khuvsgul-mongol-dalai,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=146
+tic_only,,,,,,,,tic-c22-147,Хөвсгөл - Мөнх сарьдаг бааз,Хөвсгөл,khuvsgul-munkh-saridag-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=147
+tic_only,,,,,,,,tic-c22-261,Хөвсгөл - Мөнх хаан бааз,Хөвсгөл,khuvsgul-munkh-khaan-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=261
+tic_only,,,,,,,,tic-c22-274,Хөвсгөл - Гранд тур бааз,Хөвсгөл,khuvsgul-grand-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=274
+tic_only,,,,,,,,tic-c22-1344,Хөвсгөл - Мөнхтэнгэр-3 Отогт эко бааз,Хөвсгөл,khuvsgul-munkhtenger-3-otogt-eko-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1344
+tic_only,,,,,,,,tic-c22-1333,Хөвсгөл - Далай ээж бааз,Хөвсгөл,khuvsgul-dalai-eej-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1333
+tic_only,,,,,,,,tic-c22-1334,Хөвсгөл - Монгол-Үжин бааз,Хөвсгөл,khuvsgul-mongol-ujin-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1334
+tic_only,,,,,,,,tic-c22-202,Хөвсгөл - Өгөөмөр тур бааз,Хөвсгөл,khuvsgul-uguumur-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=202
+tic_only,,,,,,,,tic-c22-331,Хөвсгөл - Наран зангилаа бааз,Хөвсгөл,khuvsgul-naran-zangilaa-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=331
+tic_only,,,,,,,,tic-c22-148,Хөвсгөл - Тэнгис бааз,Хөвсгөл,khuvsgul-tengis-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=148
+tic_only,,,,,,,,tic-c22-158,Хөвсгөл - Ханагай бааз,Хөвсгөл,khuvsgul-khanagai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=158
+tic_only,,,,,,,,tic-c22-323,Хөвсгөл - Онголог тур бааз,Хөвсгөл,khuvsgul-ongolog-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=323
+tic_only,,,,,,,,tic-c22-156,Хөвсгөл - Тойлогт бааз,Хөвсгөл,khuvsgul-toilogt-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=156
+tic_only,,,,,,,,tic-c22-160,Хөвсгөл - Хөвсгөл Булнай бааз,Хөвсгөл,khuvsgul-khuvsgul-bulnai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=160
+tic_only,,,,,,,,tic-c22-303,Хөвсгөл - Таван гол бааз,Хөвсгөл,khuvsgul-tavan-gol-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=303
+tic_only,,,,,,,,tic-c22-232,Хөвсгөл - Хөвсгөл далай бааз,Хөвсгөл,khuvsgul-khuvsgul-dalai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=232
+tic_only,,,,,,,,tic-c22-161,Хөвсгөл - Хөвсгөл сор бааз,Хөвсгөл,khuvsgul-khuvsgul-sor-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=161
+tic_only,,,,,,,,tic-c22-260,Хөвсгөл - Хөвсгөл дөл тур бааз,Хөвсгөл,khuvsgul-khuvsgul-dul-tur-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=260
+tic_only,,,,,,,,tic-c22-258,Хөвсгөл - Хөвсгөл усан зам аялал жуулчлалын бааз,Хөвсгөл,khuvsgul-khuvsgul-usan-zam-ayalal-juulchlalyn-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=258
+tic_only,,,,,,,,tic-c22-250,Хөвсгөл - Хөвсгөл сант бааз,Хөвсгөл,khuvsgul-khuvsgul-sant-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=250
+tic_only,,,,,,,,tic-c22-163,Хөвсгөл - Хөвсгөл эко тур,Хөвсгөл,khuvsgul-khuvsgul-eko-tur,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=163
+tic_only,,,,,,,,tic-c22-162,Хөвсгөл - Хөвсгөл хангарьд бааз,Хөвсгөл,khuvsgul-khuvsgul-khangarid-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=162
+tic_only,,,,,,,,tic-c22-164,Хөвсгөл - Хөг бааз,Хөвсгөл,khuvsgul-khug-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=164
+tic_only,,,,,,,,tic-c22-166,Хөвсгөл - Эг тур,Хөвсгөл,khuvsgul-eg-tur,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=166
+tic_only,,,,,,,,tic-c22-167,Хөвсгөл - Энотэ Ерлөг бааз,Хөвсгөл,khuvsgul-enote-yerlug-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=167
+tic_only,,,,,,,,tic-c22-1337,Хөвсгөл - Хийморь бааз,Хөвсгөл,khuvsgul-khiimori-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=1337
+tic_only,,,,,,,,tic-c22-318,Хөвсгөл - Цагаан нуур ресорт,Хөвсгөл,khuvsgul-tsagaan-nuur-resort,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=318
+tic_only,,,,,,,,tic-c22-165,Хөвсгөл - Хөх сувд бааз,Хөвсгөл,khuvsgul-khukh-suvd-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=165
+tic_only,,,,,,,,tic-c22-240,Хэнтий - Ононцэнт бааз,Хэнтий,khentii-onontsent-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=240
+tic_only,,,,,,,,tic-c22-321,Хөвсгөл - Эртний далай бааз,Хөвсгөл,khuvsgul-ertnii-dalai-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=321
+tic_only,,,,,,,,tic-c22-171,Хэнтий - Өглөгчийн хэрэм бааз,Хэнтий,khentii-uglugchiin-kherem-baaz,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=171
+tic_only,,,,,,,,tic-c22-226,Хэнтий - Хавтгар орон нутгийн түр отог,Хэнтий,khentii-khavtgar-oron-nutgiin-tur-otog,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=226
+tic_only,,,,,,,,tic-c22-175,Хэнтий - Чингисийн тоонот,Хэнтий,khentii-chingisiin-toonot,https://www.touristinfocenter.mn/cate22_more.aspx?ItemID=175

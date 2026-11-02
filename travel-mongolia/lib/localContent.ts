@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { ACCOMMODATION_BASE, isTicAccommodation } from '@/lib/accommodation';
+import { ACCOMMODATION_BASE, isDirectoryAccommodation } from '@/lib/accommodation';
 import { client, rethrowOutage } from '@/lib/contentful';
 import type { SiteImage } from '@/lib/images';
 import { isPreviewEnv } from '@/lib/navigation';
@@ -19,7 +19,8 @@ export type ProviderType =
   | 'artisan'
   | 'food'
   | 'small-business'
-  | 'accommodation';
+  | 'accommodation'
+  | 'tour';
 
 // Ангиллын нэр (цэсний нэртэй ижил) ба ангиллын хуудас
 export const PROVIDER_TYPES: { id: ProviderType; mn: string; href?: string }[] = [
@@ -29,6 +30,7 @@ export const PROVIDER_TYPES: { id: ProviderType; mn: string; href?: string }[] =
   { id: 'food', mn: 'Нутгийн хоол', href: '/local/food' },
   { id: 'small-business', mn: 'Жижиг бизнес' },
   { id: 'accommodation', mn: 'Байр' },
+  { id: 'tour', mn: 'Тэмээ, морин аялал' },
 ];
 
 export const providerTypeLabel = (t: string) => PROVIDER_TYPES.find((p) => p.id === t)?.mn || '';
@@ -55,6 +57,10 @@ export interface LocalProvider {
   priceFrom: string;
   bookingUrl: string;
   contact: string;
+  phones: string[];
+  soum: string;
+  locationText: string;
+  fromJoinme: boolean;
   localOwned: boolean;
   communityParticipation: string;
   responsiblePractices: string[];
@@ -163,7 +169,7 @@ function linkedRef(e: any): LinkedRef | undefined {
   const title = str(f.title) || str(f.name);
   if (!title || !isVisible(title)) return undefined;
   const href =
-    type === 'localProvider' ? (isTicAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : `/local/${slug}`)
+    type === 'localProvider' ? (isDirectoryAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : `/local/${slug}`)
     : type === 'communityExperience' ? `/local/experiences/${slug}`
     : type === 'localProduct' ? '/local/products'
     : type === 'destination' ? `/destination/${slug}`
@@ -193,7 +199,8 @@ function toProvider(e: any): LocalProvider {
   const name = str(f.name);
   const slug = entrySlug(e);
   const loc = f.location;
-  const movedTo = isTicAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : undefined;
+  const movedTo = isDirectoryAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : undefined;
+  const own = photos(f.photos, name);
   return {
     id: e.sys.id,
     slug,
@@ -208,13 +215,18 @@ function toProvider(e: any): LocalProvider {
     priceFrom: str(f.priceFrom),
     bookingUrl: str(f.bookingUrl),
     contact: str(f.contact),
+    phones: strList(f.phones),
+    soum: str(f.soum),
+    locationText: str(f.locationText),
+    fromJoinme: !!f.joinmeId,
     localOwned: f.localOwned === true,
     communityParticipation: str(f.communityParticipation),
     responsiblePractices: strList(f.responsiblePractices),
     recognizedCertification: str(f.recognizedCertification),
     licenseIfRequired: str(f.licenseIfRequired),
     womenOrYouthLed: f.womenOrYouthLed === true,
-    photos: photos(f.photos, name),
+    // joinme.mn-ийн зураг Contentful-д байхгүй, CDN-ийн холбоосоор шууд
+    photos: own.length ? own : strList(f.externalImages).map((src) => ({ src, alt: name })),
   };
 }
 
@@ -334,7 +346,8 @@ function toStory(e: any): StoryEntry {
 
 // ------------------------------------------------------------------ татах
 export const getProviders = cache(async (): Promise<LocalProvider[]> =>
-  (await entriesOf('localProvider', { order: 'fields.name' }))
+  // Байрыг (500-аас олон) энд татахгүй: /plan/accommodation-д (lib/accommodation.ts). limit 500 таслахгүйн тулд
+  (await entriesOf('localProvider', { order: 'fields.name', 'fields.providerType[ne]': 'accommodation' }))
     .map(toProvider)
     .filter((p) => p.name && isVisible(p.name) && !p.movedTo)
 );

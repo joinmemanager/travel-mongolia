@@ -1,0 +1,1804 @@
+{
+ "id": 1917,
+ "title": "Дундговь аймаг",
+ "meta_title": "Дундговь аймаг",
+ "meta_description": "",
+ "meta_keywords": "",
+ "visible": true,
+ "created_at": "2021-03-26T11:04:06.000Z",
+ "updated_at": "2024-02-23T03:14:28.000Z",
+ "layout": null,
+ "items": [
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 59961,
+     "file_name": "Dundgovi-Header.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:814",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "853f63d3-e381-40eb-acce-96b79a327b30",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "4000",
+   "style": {
+    "marginTop": "-40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "7cbeacb8-00fa-448e-acb8-2d1d209ef558",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59962/original/Dundgovi-Highlights.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dc9d8ca0-49da-43d0-96e2-af648d4f4eac",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250576/original/dundgovi.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "fc61ddbc-8095-4ece-8948-d18c661f3a62",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59963/original/Dundgovi-About.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "2496e3c5-7a92-4766-a110-ccb061be2312",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59964/original/Dundgovi-Title-1.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ff74a071-dc94-4049-aa4c-bdcf0c445765",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59965/original/Dundgovi-Close-City-Map.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "168d08b3-5f81-4bd1-9d1e-7748be9630c2",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/60287/original/Dundgovi-Title-Route.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 60291,
+     "file_name": "Route-1.jpg"
+    },
+    {
+     "id": 60449,
+     "file_name": "Route-2.jpg"
+    },
+    {
+     "id": 60450,
+     "file_name": "Route-3.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:760",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "coverflow",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "3adb12df-f0c0-4d9e-9df7-e43aae95c3f2",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "",
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 250578,
+     "file_name": "d_(1).png"
+    },
+    {
+     "id": 250579,
+     "file_name": "d_(2).png"
+    },
+    {
+     "id": 250580,
+     "file_name": "d_(3).png"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:760",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "coverflow",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "ed59561f-cadf-4ca7-ab49-035b721144b0",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "autoplay": "3500",
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "4d87380b-13ef-464b-b11c-9a38fac2cbff",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250581/original/zurag.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dabb787a-beb5-4d04-8656-d3a2ba3bfbf6",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59966/original/Dundgovi-Title-2.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "FeaturedSwiper",
+   "items": [
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59969,
+      "file_name": "baga_gazar_2.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59970,
+      "file_name": "_8151491.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59971,
+      "file_name": "_8151681.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59972,
+      "file_name": "choiriin_hiid.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59973,
+      "file_name": "del_ul.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59974,
+      "file_name": "morintolgoin_tsaw_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59975,
+      "file_name": "Olziit_Tsagaan_suvarga__2.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59976,
+      "file_name": "Sangiin_dalai_hiid_e_(4).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59977,
+      "file_name": "sangiin_dalai.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59978,
+      "file_name": "sum_hoh_burd.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59979,
+      "file_name": "tahiliin_ongon__(2).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59980,
+      "file_name": "tsagaan_suwarga_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59981,
+      "file_name": "ongiin_nuuts.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59982,
+      "file_name": "tsagaan_eleg.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59983,
+      "file_name": "ikh_gazriin_chuluu.jpg"
+     }
+    }
+   ],
+   "id": "1dd1d0bc-93a5-47ad-a4ea-d6b68b83afb1",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "FeaturedSwiper",
+   "items": [
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59969,
+      "file_name": "baga_gazar_2.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59970,
+      "file_name": "_8151491.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59971,
+      "file_name": "_8151681.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59972,
+      "file_name": "choiriin_hiid.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59973,
+      "file_name": "del_ul.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59974,
+      "file_name": "morintolgoin_tsaw_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59975,
+      "file_name": "Olziit_Tsagaan_suvarga__2.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59976,
+      "file_name": "Sangiin_dalai_hiid_e_(4).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59977,
+      "file_name": "sangiin_dalai.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59978,
+      "file_name": "sum_hoh_burd.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59979,
+      "file_name": "tahiliin_ongon__(2).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59980,
+      "file_name": "tsagaan_suwarga_(3).jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59981,
+      "file_name": "ongiin_nuuts.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59982,
+      "file_name": "tsagaan_eleg.jpg"
+     }
+    },
+    {
+     "items": [
+      {}
+     ],
+     "image": {
+      "id": 59983,
+      "file_name": "ikh_gazriin_chuluu.jpg"
+     }
+    }
+   ],
+   "id": "e5b72902-a17d-4560-9e98-77cd83d6e167",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px",
+    "backgroundColor": "#fff"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "86f73cbe-b8e8-435b-aec9-2d79cf8bfa9f",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59984/original/Dundgovi-Title-3.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "b324157f-0200-47ab-9da7-3e6fa2173bd8",
+   "content": "<p><a href=\"../../media/1087\"><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250582/original/niitlel.png\" alt=\"\" width=\"100%\" /></a></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-60px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 59988,
+     "file_name": "Dundgovi-Media.jpg",
+     "link": "/media/1087"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:518",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "fade",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "1586670c-8c60-4663-bf20-f44fbbce4d4a",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "48d65bf1-377d-4bcf-bde6-c25ab9564fae",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59989/original/Dundgovi-Title-4.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ae161cf3-0b53-4867-bbef-c94a37e1f207",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250586/original/arga_hemjee.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideDesktop": true,
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 59990,
+     "file_name": "Dundgovi-Event.jpg"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "1920:644",
+   "ratio_mobile": "768:768",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "e17bcd83-b72d-408b-b5bc-e78ba73f969b",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "01d3fd4c-4679-4234-933b-fa539d90e100",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/60501/original/Dundgovi-Title-5.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 60502,
+     "file_name": "Group_24153.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=537"
+    },
+    {
+     "id": 60503,
+     "file_name": "Group_24152.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=538"
+    },
+    {
+     "id": 60504,
+     "file_name": "Group_24151.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=84"
+    },
+    {
+     "id": 60505,
+     "file_name": "Group_24150.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=265"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "870:308",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "4",
+   "id": "f98d138e-e0d9-48ad-b19e-5b59afa72a59",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 60502,
+     "file_name": "Group_24153.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=537"
+    },
+    {
+     "id": 60503,
+     "file_name": "Group_24152.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=538"
+    },
+    {
+     "id": 60504,
+     "file_name": "Group_24151.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=84"
+    },
+    {
+     "id": 60505,
+     "file_name": "Group_24150.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=265"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "870:308",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "69e7984e-2e93-4f87-b95d-7877d4b98d38",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true,
+   "autoplay": "3000",
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "fe542295-2104-4d24-9384-7c4ee1a0f866",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/60506/original/Dundgovi-Title-6.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "d32bb142-448e-4522-8ccd-55baef65d736",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250589/original/uzesgelent.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "80px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 60507,
+     "file_name": "Group_24149.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=46"
+    },
+    {
+     "id": 60508,
+     "file_name": "Group_24148.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=184"
+    },
+    {
+     "id": 60509,
+     "file_name": "Group_24147.jpg",
+     "link": "http://www.touristinfocenter.mn/cate8_more.aspx?ItemID=21"
+    },
+    {
+     "id": 60510,
+     "file_name": "Group_24146.jpg",
+     "link": "http://www.touristinfocenter.mn/cate3_more.aspx?ItemID=7"
+    },
+    {
+     "id": 60511,
+     "file_name": "Group_24145.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=3"
+    },
+    {
+     "id": 60512,
+     "file_name": "Group_24144.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=28"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "870:308",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "4",
+   "id": "ce4a1d39-7e73-4d08-9a6a-a60edd306a76",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "BannerSwiper",
+   "images": [
+    {
+     "id": 60507,
+     "file_name": "Group_24149.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=46"
+    },
+    {
+     "id": 60508,
+     "file_name": "Group_24148.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=184"
+    },
+    {
+     "id": 60509,
+     "file_name": "Group_24147.jpg",
+     "link": "http://www.touristinfocenter.mn/cate8_more.aspx?ItemID=21"
+    },
+    {
+     "id": 60510,
+     "file_name": "Group_24146.jpg",
+     "link": "http://www.touristinfocenter.mn/cate3_more.aspx?ItemID=7"
+    },
+    {
+     "id": 60511,
+     "file_name": "Group_24145.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=3"
+    },
+    {
+     "id": 60512,
+     "file_name": "Group_24144.jpg",
+     "link": "http://www.touristinfocenter.mn/cate1_more.aspx?ItemID=28"
+    }
+   ],
+   "images_mobile": [],
+   "ratio": "870:308",
+   "ratio_mobile": "870:308",
+   "type": "",
+   "effect": "slide",
+   "infinite": "0",
+   "arrows": "1",
+   "pagination": "brick",
+   "scrollbar": "0",
+   "per_view": "1",
+   "id": "e5b3e1cf-7e32-45c7-8bd4-6567f31ea4f5",
+   "container": {
+    "type": "fixed"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "60px"
+   },
+   "hideDesktop": true,
+   "autoplay": "3000",
+   "mobileStyle": {
+    "marginTop": "-20px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "9dc467ab-97f6-4190-9037-8ac0616eff68",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59991/original/Dundgovi-Title-7.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "13be21ff-4b85-47c4-a7f7-5d8d3d3dc342",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/250590/original/muzei.png\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "100px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "c74f7601-ae41-423c-a4d9-f5dced579dc3",
+   "content": "<p><img src=\"https://d1f6qhhrbg3j8a.cloudfront.net/img/59992/original/Dundgovi-Museum.jpg\" alt=\"\" width=\"100%\" /></p>",
+   "container": {
+    "type": "none"
+   },
+   "mobileContainer": {
+    "type": "none"
+   },
+   "style": {
+    "marginTop": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "bdbddd3a-584c-4916-8650-d5544c849b1f",
+   "content": "<h1 style=\"text-align: center;\"><strong>Жуулчны бааз</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "ce2a7e81-63d7-486f-96ce-60c7a054040e",
+   "content": "<h4 style=\"text-align: center;\"><strong>Жуулчны бааз</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Баянбулаг Жуулчны Бааз",
+         "address": "",
+         "location": " Дэлгэрцогт сум Бага газрын чулуу",
+         "phone": "99898338",
+         "image": {
+          "id": 174096,
+          "file_name": "Bayanbulag.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "57e173c7-c6ba-4f30-a32c-c3d44ff615eb"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Караван Серай Бааз",
+         "address": "Gobi Caravanserai",
+         "location": "Дундговь аймаг, Өлзийт сум, Цагаан суварга",
+         "phone": "77091232",
+         "image": {
+          "id": 174097,
+          "file_name": "Gobi_Caravani.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f61fd96d-1f7c-4295-9cab-4f471559a609"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "Ongi Energy tourist camp",
+         "name": "Онги Энерги Жуулчны бааз",
+         "location": "Дундговь аймаг, Сайхан-Овоо сум, 1-р баг, Онгийн хийд",
+         "phone": "89402070",
+         "image": {
+          "id": 174100,
+          "file_name": "Ongi_energy.jpeg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "293e01d6-10d1-41eb-b21d-6df08738abe3"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Бага Газрын Чулуу Бааз",
+         "address": "",
+         "location": "Дундговь, Дэлгэрцогт сум бага газрын чулууны ууланд ",
+         "phone": "99686847, 99595555",
+         "image": {
+          "id": 174484,
+          "file_name": "baga_gazrin_chuluu.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "e10a9e86-0d69-489e-9e66-c5399f9d4f80"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Сүм Хөх Бүрд Жуулчны Бааз",
+         "address": "",
+         "location": "Дундгоь, Адаацаг сум Сүм хөх бүрд",
+         "phone": "99116487",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f4e9eef3-6721-479b-ac50-056965f42d7e"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Рашаантын Ам Эко Амралтын Газар ",
+         "address": "Рашаантын ам",
+         "location": "Дундговь, Сайнцагаан сум Хөрхийн хад аймгийн төвөөс 7 км",
+         "phone": "99995708",
+         "image": {
+          "id": 174509,
+          "file_name": "Rashaantin_am.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3e7624e0-eb78-4f72-8cbc-a1e79e58896d"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Gobi Elm Lodge жуулчны бааз",
+         "location": "Дундговь аймаг Дэрэн сум, Хайлаастын ам",
+         "phone": "98114801 ",
+         "image": {
+          "id": 174098,
+          "file_name": "Gobi_Elm_Lodge.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "6bc7d86f-836d-4f1e-b33a-3c107591d656"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Эрдэнэ Ухаа Жуулчны Бааз",
+         "location": "Дундговийн Бага газрын чулуунаас баруун хойш 14км",
+         "phone": "99043556 ",
+         "address": "",
+         "image": {
+          "id": 174719,
+          "file_name": "Erdene.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "76489a3c-406e-4011-ab1b-3b4df038b516"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Цагаан Суварга Жуулчны Бааз",
+         "phone": "99051514, 98610107",
+         "location": "Дундговь аймгийн Өлзийт сумаас 70 км, Цагаан суваргын зүүн талд байрладаг",
+         "address": "",
+         "image": {
+          "id": 247220,
+          "file_name": "Untitled_design_(43).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "0329cd22-87ce-4bf1-bb78-8cc5b99c181b"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Онгийн Нууц Жуулчны Бааз",
+         "address": "Онгийн Хийд ",
+         "location": "Дундговь, Сайхан-Овоо сум Онгийн хийд",
+         "phone": "96665256",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "9d0e372e-7b71-4d68-ade2-44af228c49e6"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Төв Боржигон Жуулчны Бааз",
+         "address": "chunaa211@yahoo.com",
+         "location": "Дундговь, Их газрын чулууны ууланд",
+         "phone": "99997918, 93123300",
+         "image": {
+          "id": 174424,
+          "file_name": "Photo_Motivational_Quote_Instagram_Post_(1).png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "3a2c5bd3-e1dc-4155-b451-311a0a6a05d2"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Аялал Оргил Амралтын Газар",
+         "address": "Ачлал Оргил жуулчны бааз- Achlal camp Mongolia",
+         "location": "Дундговь, Сайнцагаан сум ",
+         "phone": "99055513",
+         "image": {
+          "id": 174511,
+          "file_name": "achlal_orgil.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "55209250-a287-4c6c-a612-a505939d1716"
+      }
+     ]
+    }
+   ],
+   "id": "ceb592bf-2914-4bd4-a7d7-750aadbdeff6",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "bc33e428-163f-4460-b018-f4af54413afa",
+   "content": "<h1 style=\"text-align: center;\"><strong>Зочид буудал</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "8cadce6e-7eec-47f3-838b-b16fea1d050e",
+   "content": "<h4 style=\"text-align: center;\"><strong>Зочид буудал</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Мандал Зочид Буудал",
+         "address": "",
+         "location": "Дундговь, Сайнцагаан сум ",
+         "phone": " 99116487",
+         "image": {
+          "id": 174513,
+          "file_name": "mandal_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "70f0e7f7-899f-4089-b622-5a9d5ad40b21"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Рояал Зочид Буудал",
+         "address": "",
+         "location": "Дундговь, Сайнцагаан сум ",
+         "phone": "99595555, 99621100",
+         "image": {
+          "id": 172779,
+          "file_name": "Royal_restautrant___hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "b10bbdfb-83b3-4ffb-8554-c3ba8d83802e"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ашид Зочид Буудал ",
+         "address": "Ашид restaurant & Hotel",
+         "phone": "85821011",
+         "location": "Дундговь, Хишиг дэлгүүрийн баруун талд",
+         "image": {
+          "id": 174580,
+          "file_name": "Ashid_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8f0b6d38-1862-44be-b9b9-2293532f168f"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Говь Зочид Буудал ",
+         "address": "b.chinzogo@yahoo.com",
+         "location": "Дундговь, Сайнцагаан сум ",
+         "phone": "99595555",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "2667c646-943a-45e1-8a54-31bb5fec42a9"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тэмүжин Зочид Буудал",
+         "location": "Дундговь, Сайнцагаан сум ",
+         "phone": "99019030, 99599599",
+         "image": {
+          "id": 174089,
+          "file_name": "hotel_vector.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c8d44dda-a943-4e42-8c82-b458606aeb6c"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дэлгэрэх Бүрд Зочид Буудал",
+         "address": "Burd restaurant & hotel",
+         "phone": "77782199",
+         "location": "Дундговь аймаг Мандалговь хот ",
+         "image": {
+          "id": 173480,
+          "file_name": "Burd_restaurant___hotel_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "32e21813-1ec0-4f2d-92a0-807994dbb841"
+      }
+     ]
+    }
+   ],
+   "id": "c8354443-3d28-47c8-970c-52796bf402cb",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "80a47691-a7da-46ce-879f-27cedaa5c3a2",
+   "content": "<h1 style=\"text-align: center;\"><strong>Ресторан&nbsp;</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideMobile": true,
+   "hideInApp": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "3bcf3281-d2be-45df-9ac8-356eec7192e3",
+   "content": "<h4 style=\"text-align: center;\"><strong>Ресторан&nbsp;</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Рояал Ресторан ",
+         "address": " Royal restaurant& hotel",
+         "location": "Дундговь аймаг Цэнгэлдэх хүрээлэнгийн хойно",
+         "phone": "8585 7788",
+         "image": {
+          "id": 173479,
+          "file_name": "Royal_restautrant___hotel_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "a0c3f4b5-78a7-48ab-bed7-32d0c9c8eca3"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Дэлгэрэх Бүрд Ресторан",
+         "address": "Burd restaurant & hotelb",
+         "location": "Дундговь аймаг Мандалговь Burd hotel",
+         "phone": "77782199",
+         "image": {
+          "id": 172780,
+          "file_name": "Burd_restaurant___hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "c92dfa39-cef4-495d-8e3e-266e57e87c12"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Simple Great",
+         "location": "Дундговь Мандалговь , Удирдлагын ордоны ард ",
+         "phone": "80328991",
+         "address": "Simple&Great restaurant",
+         "image": {
+          "id": 173485,
+          "file_name": "Simple___Great_restaurant_(1).jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "71a950c3-6263-45be-ab58-89d18219118a"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ашид Ресторан ",
+         "phone": "85821011",
+         "address": "Ашид restaurant & Hotel",
+         "location": "Дундговь, Хишиг дэлгүүрийн баруун тал",
+         "image": {
+          "id": 174580,
+          "file_name": "Ashid_hotel.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "8cfb37a8-bc4f-4cbd-8359-80b5304a26dd"
+      }
+     ]
+    }
+   ],
+   "id": "d2927037-904f-490c-8ac4-0090dc05f09b",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "09b1af67-df63-47f9-a77f-b8c2be168954",
+   "content": "<h1 style=\"text-align: center;\"><strong>Зоогийн газар</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "435dabe1-d483-4899-8a5e-2b7d6e378cb3",
+   "content": "<h4 style=\"text-align: center;\"><strong>Зоогийн газар</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Өндөр Ээж Зоогийн Газар ",
+         "address": "ӨНДӨР ЭЭЖ",
+         "location": "Дундговь, Мандалговь",
+         "phone": "8687 7776",
+         "image": {
+          "id": 174729,
+          "file_name": "Ondor_eej1.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "90cc72c4-095f-430c-9841-90da8e6d4f84"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Ембүү Зоогийн газар ",
+         "phone": "90829081",
+         "address": "Ембүү зоог",
+         "location": "Дундговь, Мандал",
+         "image": {
+          "id": 173482,
+          "file_name": "yembuu.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7f20870d-fd2b-4830-893f-2c739e912f96"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "address": "Дундговь \"Сондор\" зоог",
+         "name": "Сондор зоогийн газар ",
+         "phone": "88184365",
+         "location": "Дундговь, Мандалговь өнөмөнх хайрханы 2 давхарт",
+         "image": {
+          "id": 174567,
+          "file_name": "sondor_zoog.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "de3a5c1c-3f72-4108-a918-55dec6c3c007"
+      }
+     ]
+    }
+   ],
+   "id": "b8884628-7fed-4c2c-8287-61ac512e4015",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "39b451ce-55f4-45fc-b181-942980cfffdd",
+   "content": "<h1 style=\"text-align: center;\"><strong>Кофе шоп</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   }
+  },
+  {
+   "component": "HTMLBox",
+   "id": "e744ec40-d7ae-49d8-9d62-e85afdef7926",
+   "content": "<h4 style=\"text-align: center;\"><strong>Кофе шоп</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   }
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Coffe and lounge",
+         "phone": "90114288",
+         "location": "Дундговь амйаг С.Буянэмэхийн өргөн чөлөө, Mandalgovi",
+         "address": "And Coffee and Lounge",
+         "image": {
+          "id": 174727,
+          "file_name": "and_coffe1.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "f5768578-f352-48c5-9d33-3f10925825ae"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "The Lighthouse book cafe",
+         "location": "Дундговь, ББТ Санхүүгийн нэгдэлийн хажууд ",
+         "phone": "94221230",
+         "address": "The Lighthouse - Гэрэлт цамхаг ",
+         "image": {
+          "id": 174728,
+          "file_name": "cafe.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "7030b3c4-1bac-4db4-bc22-af877fe9efe0"
+      }
+     ]
+    }
+   ],
+   "id": "d42bc687-9042-45f3-9925-932c1ec17f23",
+   "column": "2"
+  },
+  {
+   "component": "HTMLBox",
+   "id": "dd633e31-f0ae-4fd3-9d97-e5c75089e5e7",
+   "content": "<h1 style=\"text-align: center;\"><strong>Гар урлал&nbsp;</strong></h1>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideInApp": true,
+   "hideMobile": true
+  },
+  {
+   "component": "HTMLBox",
+   "id": "2873b168-454a-4ee0-94b1-e8e4710ac63a",
+   "content": "<h4 style=\"text-align: center;\"><strong>Гар урлал&nbsp;</strong></h4>",
+   "style": {
+    "marginTop": "40px",
+    "marginBottom": "40px"
+   },
+   "hideDesktop": true
+  },
+  {
+   "component": "Row",
+   "columns": [
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гар урлал ",
+         "address": "Chultem Tsagaanaa",
+         "location": "Дундговь, Мандалговь",
+         "phone": "89952255",
+         "image": {
+          "id": 174347,
+          "file_name": "344605877_1821566104907352_7890081192006879091_n-removebg-preview.png"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "895415ca-3a4b-4d0c-b846-42ec52d78414"
+      },
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Гого Лаа  Урлал",
+         "address": " Гого Лаа Урлал Дундговь",
+         "phone": "998044999",
+         "location": "Дундговь, Мандалговь хот ",
+         "image": {
+          "id": 174711,
+          "file_name": "GOGO_LAA.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "a386a140-15a7-48d7-9f3d-44abd80a13ed"
+      }
+     ]
+    },
+    {
+     "type": "6",
+     "items": [
+      {
+       "component": "Address",
+       "items": [
+        {
+         "timetable": [
+          {}
+         ],
+         "name": "Тансаг урлал ",
+         "phone": "99017098, 88098198",
+         "address": "Тансаг Сонголт Урлан Догоо",
+         "location": "Дундговь аймаг Сайнцагаан сум ",
+         "image": {
+          "id": 174710,
+          "file_name": "Tansag__songolt.jpg"
+         }
+        }
+       ],
+       "type": "small",
+       "id": "83c86e25-42ba-4e48-a24d-e8ad1889dbcc"
+      }
+     ]
+    }
+   ],
+   "id": "0a76dbab-7263-416b-b124-c1eee83f2278",
+   "column": "2"
+  }
+ ]
+}

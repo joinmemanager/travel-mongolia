@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { client, rethrowOutage } from '@/lib/contentful';
-import { ACCOMMODATION_BASE, isTicAccommodation } from '@/lib/accommodation';
+import { ACCOMMODATION_BASE, isDirectoryAccommodation } from '@/lib/accommodation';
 import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
 import { entryKey } from '@/lib/entries';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
@@ -154,7 +154,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.5 })),
     // TIC-ийн зочид буудал, жуулчны бааз (/plan/accommodation/<slug>)
     ...providers
-      .filter((e) => isTicAccommodation(e.fields) && !isThinContent(e.fields.story))
+      .filter((e) => isDirectoryAccommodation(e.fields) && !isThinContent(e.fields.story))
       .map((e) => ({ path: `${ACCOMMODATION_BASE}/${entryKey(e)}`, e }))
       .filter(({ path }) => !isUnpublishedPage(path))
       .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.4 })),
