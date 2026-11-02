@@ -2,6 +2,7 @@ import { cache } from 'react';
 
 import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
+import { placeholderImage } from '@/lib/imageUrl';
 
 // Tourist Info Center-ээс шилжүүлсэн зочид буудал (cate21), жуулчны бааз (cate22): Contentful `localProvider`,
 // providerType = accommodation, sourceUrl = touristinfocenter.mn. «Нутгийн Монгол» (/local, soft)-оос тусдаа,
@@ -72,18 +73,21 @@ function toAccommodation(e: any, full: boolean): Accommodation {
   const url: string | undefined = photo?.fields?.file?.url;
   const external: string | undefined = Array.isArray(f.externalImages) ? f.externalImages[0] : undefined;
   const slug = String(f.slug || e.sys.id);
+  const kind = kindOf(f, services);
   return {
     id: e.sys.id,
     name: String(f.name || ''),
     slug,
     href: `${ACCOMMODATION_BASE}/${slug}`,
-    kind: kindOf(f, services),
+    kind,
     province: String(f.province || ''),
     image: url
       ? { src: url.startsWith('//') ? `https:${url}` : url, alt: photo.fields.title || f.name, credit: creditOf(photo) }
       : external
         ? { src: external, alt: f.name }
-        : undefined,
+        : f.joinmeId
+          ? { src: placeholderImage(kind === 'hotel' ? 'hotel' : 'ger'), alt: f.name }
+          : undefined,
     story: full ? f.story : undefined,
     services: services.filter((s) => s !== 'Зочид буудал' && s !== 'Жуулчны бааз'),
     contact: f.contact,

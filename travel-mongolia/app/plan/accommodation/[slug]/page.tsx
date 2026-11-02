@@ -7,7 +7,7 @@ import React from 'react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RichText from '@/components/RichText';
 import { ACCOMMODATION_BASE, accommodationNotice, getAccommodation, KIND_LABEL } from '@/lib/accommodation';
-import { cdnImage } from '@/lib/imageUrl';
+import { cdnImage, realImage } from '@/lib/imageUrl';
 import { isPreviewEnv } from '@/lib/navigation';
 import { entryMeta } from '@/lib/pageMeta';
 import { isThinContent, NOINDEX, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: a.seoTitle || `${a.name} — ${KIND_LABEL[a.kind]}`,
     description: a.seoDescription || truncate(richTextToPlain(a.story) || `${a.name}: ${KIND_LABEL[a.kind]}, ${a.province}.`),
     path: a.href,
-    image: a.image?.src,
+    image: realImage(a.image?.src),
   });
   const out = a.seoTitle ? { ...meta, title: { absolute: a.seoTitle } } : meta;
   return isThinContent(a.story) ? { ...out, robots: NOINDEX } : out;
@@ -43,7 +43,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
     '@type': a.kind === 'hotel' ? 'Hotel' : a.kind === 'resort' ? 'Resort' : a.kind === 'guesthouse' ? 'LodgingBusiness' : 'Campground',
     name: a.name,
     url,
-    image: a.image?.src,
+    image: realImage(a.image?.src),
     address: { '@type': 'PostalAddress', addressRegion: a.province || undefined, addressCountry: 'MN' },
   };
 

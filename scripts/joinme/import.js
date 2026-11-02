@@ -2,7 +2,8 @@
 //   node scripts/joinme/import.js build         # API-гүй: data/services/*.json, тайлангийн CSV, төлөвлөгөө
 //   node scripts/joinme/import.js schema        # localProvider-д талбар нэмнэ (дахин ажиллуулахад аюулгүй)
 //   node scripts/joinme/import.js run [--dry]   # 280 шинэ Draft + 47 TIC entry-д дутуу талбар нөхнө
-//   node scripts/joinme/import.js titles [--dry] # давхардсан нэрэнд сум, аймаг нэмнэ (slug хэвээр)
+//   node scripts/joinme/import.js titles [--dry] # давхардсан нэрэнд сум, газар, аймаг, дугаар нэмнэ (slug хэвээр)
+//   node scripts/joinme/import.js clean [--dry]  # decisions.json-д хассан зургийг entry-ээс авна
 // Хуваарилалт (эзэмшигч баталсан, 2026-11-02):
 //   байр (providerType accommodation): tourist_camp, hotel, resort, guesthouse (Өмнөговийн «Гэр»-ээс бусад)
 //   нутгийн: Өмнөговийн «Гэр» → herder-family, camel_tour/horse_tour → tour, crafts → artisan, restaurant/cafe → food
@@ -44,13 +45,28 @@ function groupOf(p) {
   if (isHerder(p)) return 'herder-family';
   return {
     tourist_camp: 'accommodation', hotel: 'accommodation', resort: 'accommodation', guesthouse: 'accommodation',
-    camel_tour: 'tour', horse_tour: 'tour', crafts: 'artisan', restaurant: 'food', cafe: 'food',
+    camel_tour: 'tour', horse_tour: 'tour', crafts: 'artisan', restaurant: 'food', cafe: 'food', bakery: 'food',
   }[p.type];
 }
 
+// Эзэмшигчийн шийдвэр (data/joinme/decisions.json): ангилалгүйг хуваарилах, тулгалт, хасах зураг
+const decisions = () => JSON.parse(rd(path.join(DATA, 'decisions.json')));
+
 function load() {
   const providers = JSON.parse(rd(path.join(DATA, 'providers.json'))).providers;
-  for (const p of providers) { p.id = entryId(p); p.group = groupOf(p); }
+  const dec = decisions();
+  const blocked = new Set(Object.values(dec.blockedImages).flat());
+  for (const p of providers) {
+    p.id = entryId(p);
+    const d = (p.type === 'other' || p.type === 'company') && dec.unclassified[p.name.trim()];
+    if (d && d.type) {
+      p.type = d.type;
+      // Ангилалгүйгээс шилжсэн практик үйлчилгээ зураггүй
+      if (PRACTICAL.has(d.type)) p.images = [];
+    }
+    p.images = (p.images || []).filter((u) => !blocked.has(u));
+    p.group = groupOf(p);
+  }
   if (new Set(providers.map((p) => p.id)).size !== providers.length) throw new Error('id давхцлаа');
   const both = parseCsv(rd(path.join(DATA, 'match-with-tic.csv'))).filter((m) => m.status === 'both');
   const byKey = new Map();
@@ -66,7 +82,9 @@ function load() {
     const p = found[0];
     const method = m.match_method.split(' ')[0];
     const review = perTic[m.tic_entry_id] > 1 ? 'нэг TIC entry-д хэд хэдэн joinme' : method === 'contains' ? 'нэр хэсэгчлэн таарсан (contains)' : '';
-    return { m, p, review };
+    const action = review ? dec.match[`${p.name.trim()}|${p.type}`] : 'merge';
+    if (!action) throw new Error(`тулгалтын шийдвэр алга: ${p.name}`);
+    return { m, p, review, action };
   });
   return { providers, matches };
 }
@@ -151,14 +169,14 @@ function build() {
   }
   const un = providers.filter((p) => p.group === 'unclassified');
   writeCsv(path.join(DATA, 'unclassified.csv'), ['name', 'type', 'province', 'soum', 'location', 'phones', 'image'], un.map((p) => [p.name, p.type, p.province, p.soum || '', location(p), (p.phones || []).join(' / '), (p.images || [])[0] || '']));
-  writeCsv(path.join(DATA, 'match-review.csv'), ['шалтгаан', 'joinme_name', 'joinme_type', 'joinme_province', 'joinme_soum', 'joinme_location', 'joinme_phones', 'tic_entry_id', 'tic_name', 'tic_slug'],
-    matches.filter((x) => x.review).map(({ m, p, review }) => [review, p.name, p.type, p.province, p.soum || '', location(p), (p.phones || []).join(' / '), m.tic_entry_id, m.tic_name, m.tic_slug]));
-  const matched = new Set(matches.map((x) => x.p.id));
+  writeCsv(path.join(DATA, 'match-review.csv'), ['шийдвэр', 'шалтгаан', 'joinme_name', 'joinme_type', 'joinme_province', 'joinme_soum', 'joinme_location', 'joinme_phones', 'tic_entry_id', 'tic_name', 'tic_slug'],
+    matches.filter((x) => x.review).map(({ m, p, review, action }) => [action, review, p.name, p.type, p.province, p.soum || '', location(p), (p.phones || []).join(' / '), m.tic_entry_id, m.tic_name, m.tic_slug]));
+  const matched = new Set(matches.filter((x) => x.action !== 'create').map((x) => x.p.id));
   const create = providers.filter((p) => !['practical', 'unclassified'].includes(p.group) && !matched.has(p.id));
   const longest = (a) => a.reduce((n, s) => Math.max(n, String(s).length), 0);
   console.log('бүлэг', tally(providers, (p) => p.group));
   console.log('үүсгэх', create.length, tally(create, (p) => `${p.group}/${p.type}`));
-  console.log('тулгалт', matches.length, 'нэгтгэх', matches.filter((x) => !x.review).length, 'шалгах', matches.filter((x) => x.review).length);
+  console.log('тулгалт', matches.length, tally(matches, (x) => x.action));
   console.log('практик JSON', counts, 'шалгах (ангилалгүй)', un.length);
   console.log('хамгийн урт: нэр', longest(providers.map((p) => p.name)), 'зураг', longest(providers.flatMap((p) => p.images || [])), 'утас', longest(providers.flatMap((p) => p.phones || [])));
   return { providers, matches, create };
@@ -203,7 +221,9 @@ async function run() {
   }
   const result = { created: [], skipped: [], merged: [], errors: [] };
   const guard = () => { if (callCount() >= MAX_CALLS) throw new Error(`${MAX_CALLS} хүсэлтийн хязгаар — зогсоов`); };
-  const save = () => { if (!DRY) fs.writeFileSync(RESULT, JSON.stringify({ ...result, calls: callCount() }, null, 1)); };
+  // Дахин ажиллуулахад өмнө үүсгэсэн жагсаалтыг хадгална
+  const prior = fs.existsSync(RESULT) ? JSON.parse(fs.readFileSync(RESULT, 'utf8')).created || [] : [];
+  const save = () => { if (!DRY) fs.writeFileSync(RESULT, JSON.stringify({ ...result, created: [...prior, ...result.created], calls: callCount() }, null, 1)); };
 
   for (const p of create) {
     if (already.has(p.id)) { result.skipped.push(p.id); continue; }
@@ -226,8 +246,9 @@ async function run() {
 
   const rows = [];
   const snap = new Map(entries.map((e) => [e.sys.id, e]));
-  for (const { m, p, review } of matches) {
-    if (review) continue;
+  const notes = decisions().storyNotes;
+  for (const { m, p, action } of matches) {
+    if (action !== 'merge') continue;
     guard();
     const e = DRY ? snap.get(m.tic_entry_id) : await cma('GET', `/entries/${m.tic_entry_id}`);
     if (!e) { result.errors.push({ id: m.tic_entry_id, error: 'TIC entry олдсонгүй' }); continue; }
@@ -240,6 +261,15 @@ async function run() {
     const add = mergeFields(e, p);
     // Сум зөрүүтэй бол (өөр газар байж магадгүй) сум, байршлыг нөхөхгүй: эзэмшигч жагсаалтаар шийднэ
     if (diffs.some((d) => d.field === 'сум')) { delete add.soum; delete add.locationText; }
+    // TIC-ийн текстэд өөр утас байвал хоёр өөр дугаар харуулахгүй
+    if (diffs.some((d) => d.field === 'утас')) delete add.phones;
+    // Эзэмшигчийн шийдвэрээр тайлбарын төгсгөлд нэг догол мөр нэмнэ, TIC-ийн текст хэвээр
+    const note = notes[e.sys.id];
+    const story = e.fields.story && e.fields.story[LOCALE];
+    if (note && !plain(story).includes(note)) {
+      const paragraph = { nodeType: 'paragraph', data: {}, content: [{ nodeType: 'text', value: note, marks: [], data: {} }] };
+      add.story = { ...e.fields.story, [LOCALE]: story ? { ...story, content: [...story.content, paragraph] } : { nodeType: 'document', data: {}, content: [paragraph] } };
+    }
     const keys = Object.keys(add);
     if (!DRY && keys.length) {
       try {
@@ -262,34 +292,81 @@ async function run() {
   if (providers.length !== 465) throw new Error(`мөрийн тоо ${providers.length}`);
 }
 
-// Давхардсан нэртэй шинэ entry-ийн гарчиг: «Гэр» → «Гэр, Булган сум, Өмнөговь». Slug хэвээр, нийтлэгдсэн entry-д хүрэхгүй.
+async function joinmeEntries() {
+  const items = [];
+  for (let skip = 0; ; skip += 1000) {
+    const r = await cma('GET', `/entries?content_type=${CT}&fields.joinmeId[exists]=true&limit=1000&skip=${skip}`);
+    items.push(...r.items);
+    if (skip + 1000 >= r.total) break;
+  }
+  return items;
+}
+
+// Байршлын текстээс газрын нэр. Малчин өрхөд баг, тоот, зайг оруулахгүй (гэрийн хаяг сайтад гарахгүй).
+function placeOf(p) {
+  const prefix = new RegExp(`^${p.province}(\\s+аймаг(ийн)?)?[,.]?\\s*`, 'iu');
+  let s = location(p).replace(/\s+/g, ' ').replace(prefix, '');
+  if (p.soum) s = s.replace(/\S+\s+сум(ын)?[,.]?\s*/iu, '');
+  s = s.replace(/Сэврэй[.,]?\s+[Хх]онгорын гол/u, 'Сэврэй Хонгорын гол');
+  if (p.group === 'herder-family') {
+    s = s.replace(/(\S+\s+)?баг(?=[\s,.]|$)/giu, '');
+    if (/\d/.test(s)) s = '';
+  }
+  s = s.replace(/^[\s,.]+|[\s,.]+$/g, '');
+  if (s === 'төв' || s === 'сумын төв') s = '';
+  return s ? s[0].toUpperCase() + s.slice(1) : '';
+}
+
+// Давхардсан нэртэй шинэ entry-ийн гарчиг: «Гэр, Булган сум, Өмнөговь», «Тэмээ, Модон овоо, Өмнөговь 2».
+// Slug хэвээр, нийтлэгдсэн entry-д хүрэхгүй.
 async function titles() {
   const { providers } = load();
   const byId = new Map(providers.map((p) => [p.id, p]));
-  const items = [];
-  for (let skip = 0; ; skip += 1000) {
-    const r = await cma('GET', `/entries?content_type=${CT}&sys.id[match]=joinme-&limit=1000&skip=${skip}`);
-    items.push(...r.items.filter((e) => byId.has(e.sys.id)));
-    if (skip + 1000 >= r.total) break;
-  }
-  const count = tally(items, (e) => byId.get(e.sys.id).name.trim());
-  const changed = [];
-  for (const e of items) {
+  const items = (await joinmeEntries()).filter((e) => e.sys.id.startsWith('joinme-') && byId.has(e.sys.id));
+  const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const count = tally(items, (e) => norm(byId.get(e.sys.id).name));
+  const dup = items.filter((e) => count[norm(byId.get(e.sys.id).name)] > 1)
+    .sort((a, b) => a.fields.slug[LOCALE].localeCompare(b.fields.slug[LOCALE], 'en', { numeric: true }));
+  const seen = {};
+  const final = [];
+  let changed = 0;
+  for (const e of dup) {
     const p = byId.get(e.sys.id);
-    const name = p.name.trim();
-    if (count[name] < 2) continue;
     if (e.sys.publishedVersion) throw new Error(`нийтлэгдсэн entry: ${e.sys.id} — зогсоов`);
-    const title = [name, p.soum && `${p.soum} сум`, p.province].filter(Boolean).join(', ');
+    const base = [p.name.trim(), p.soum && `${p.soum} сум`, placeOf(p), p.province].filter(Boolean).join(', ');
+    const n = (seen[norm(base)] = (seen[norm(base)] || 0) + 1);
+    const title = n > 1 ? `${base} ${n}` : base;
+    final.push(title);
     if (e.fields.name[LOCALE] === title) continue;
-    changed.push({ id: e.sys.id, slug: e.fields.slug[LOCALE], from: e.fields.name[LOCALE], title });
+    changed++;
     if (DRY) continue;
-    const label = LABEL[p.type] || p.type_mn;
-    await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields: { ...e.fields, name: L(title), seoTitle: L(seoTitle(title, label)) } } });
+    const fields = { ...e.fields, name: L(title), seoTitle: L(seoTitle(title, LABEL[p.type] || p.type_mn)) };
+    if (p.group === 'herder-family') fields.seoDescription = L(`${title}: Малчин өрх.`);
+    await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields } });
   }
-  const after = tally(items, (e) => { const p = byId.get(e.sys.id); const name = p.name.trim(); return count[name] < 2 ? e.fields.name[LOCALE] : [name, p.soum && `${p.soum} сум`, p.province].filter(Boolean).join(', '); });
-  console.log(`${DRY ? '[dry] ' : ''}гарчиг`, changed.length, 'давхардсан нэр', tally(items.filter((e) => count[byId.get(e.sys.id).name.trim()] > 1), (e) => byId.get(e.sys.id).name.trim()));
-  console.log('үлдсэн давхардал', Object.entries(after).filter(([, n]) => n > 1));
+  console.log(`${DRY ? '[dry] ' : ''}гарчиг`, dup.length, 'өөрчилсөн', changed, 'дугаартай', final.filter((t) => / \d+$/.test(t)).length, 'давтагдсан', final.length - new Set(final).size);
+  final.filter((_, i) => i % 9 === 0).forEach((t) => console.log(' ', t));
   console.log(`CMA ${callCount()}`);
+}
+
+// Хассан зургийг Contentful-ийн externalImages-ээс авна. Бусад талбар, нийтлэлийн төлөвт хүрэхгүй.
+async function clean() {
+  const blocked = new Set(Object.values(decisions().blockedImages).flat());
+  const items = await joinmeEntries();
+  const out = { draft: 0, tic: 0, emptied: 0 };
+  for (const e of items) {
+    const list = (e.fields.externalImages && e.fields.externalImages[LOCALE]) || [];
+    const keep = list.filter((u) => !blocked.has(u));
+    if (keep.length === list.length) continue;
+    out[e.sys.publishedVersion ? 'tic' : 'draft']++;
+    if (!keep.length) out.emptied++;
+    if (DRY) continue;
+    const fields = { ...e.fields };
+    if (keep.length) fields.externalImages = L(keep);
+    else delete fields.externalImages;
+    await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields } });
+  }
+  console.log(`${DRY ? '[dry] ' : ''}зураг хасав`, out, `нийт entry ${items.length}, CMA ${callCount()}`);
 }
 
 (async () => {
@@ -298,5 +375,6 @@ async function titles() {
   else if (cmd === 'schema') await schema();
   else if (cmd === 'run') await run();
   else if (cmd === 'titles') await titles();
-  else throw new Error('хэрэглээ: build | schema | run [--dry] | titles [--dry]');
+  else if (cmd === 'clean') await clean();
+  else throw new Error('хэрэглээ: build | schema | run [--dry] | titles [--dry] | clean [--dry]');
 })().catch((e) => { console.error(e.message); console.error(`CMA ${callCount()}`); process.exit(1); });

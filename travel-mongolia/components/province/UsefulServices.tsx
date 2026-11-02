@@ -1,6 +1,14 @@
 import React from 'react';
 
+import { placeholderImage } from '@/lib/imageUrl';
 import { getProvinceServices, SERVICE_LABEL, type ServiceType } from '@/lib/provinceServices';
+
+const SERVICE_ICON: Record<ServiceType, string> = {
+  fuel_station: 'fuel',
+  hospital: 'hospital',
+  pharmacy: 'pharmacy',
+  government: 'government',
+};
 
 // «Хэрэгтэй үйлчилгээ»: аймгийн шатахуун, эмнэлэг, эмийн сан, ЗДТГ. Мэдээлэлгүй аймагт юу ч гаргахгүй.
 export default function UsefulServices({ provinceSlug }: { provinceSlug: string }) {
@@ -24,10 +32,9 @@ export default function UsefulServices({ provinceSlug }: { provinceSlug: string 
                 .filter((x) => x.type === t)
                 .map((x) => (
                   <li key={x.id} className="flex gap-3 p-3 bg-white rounded-2xl border border-neutral-200">
-                    {x.image && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={x.image} alt={x.name} loading="lazy" className="object-cover w-16 h-16 rounded-xl shrink-0 bg-neutral-100" />
-                    )}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={x.image || placeholderImage(SERVICE_ICON[x.type])} alt={x.name} loading="lazy" className="object-cover w-16 h-16 rounded-xl shrink-0 bg-neutral-100" />
+
                     <div className="min-w-0 text-sm">
                       <p className="font-bold leading-snug text-neutral-900">{x.name}</p>
                       {(x.soum || x.location) && (

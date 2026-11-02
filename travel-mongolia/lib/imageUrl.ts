@@ -12,6 +12,10 @@ export function isDirectImage(src: string): boolean {
   return /^https:\/\/d1f6qhhrbg3j8a\.cloudfront\.net\//.test(src);
 }
 
+// joinme.mn-ийн entry-д зураггүй үеийн ангиллын энгийн дүрс (public/placeholders). og:image, JSON-LD-д оруулахгүй.
+export const placeholderImage = (icon: string) => `/placeholders/${icon}.svg`;
+export const realImage = (src?: string) => (src && !src.startsWith('/placeholders/') ? src : undefined);
+
 export function cdnImage(src: string, width: number, quality = 70): string {
   if (!isCdnImage(src)) return src;
   try {

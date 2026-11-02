@@ -4,6 +4,7 @@ import RichText from '@/components/RichText';
 import { IMAGES } from '@/lib/images';
 import {
   choiceBadges,
+  CONTACT_VIA_JOINME,
   type LocalProvider,
   PROVIDER_TYPES,
   providerTypeLabel,
@@ -29,8 +30,8 @@ export default function ProfileTemplate({
   const typeLabel = providerTypeLabel(p.providerType);
   const category = PROVIDER_TYPES.find((t) => t.id === p.providerType);
   const badges = choiceBadges(p);
-  // Малчин өрхийн утас сайтад гарахгүй (lib/localContent.ts), холбоо нь joinme.mn-ээр
-  const contactViaJoinme = p.providerType === 'herder-family' && !!p.joinmeUrl;
+  // Малчин өрх, тэмээ, морины утас сайтад гарахгүй, холбоо нь joinme.mn-ээр
+  const contactViaJoinme = CONTACT_VIA_JOINME.includes(p.providerType) && !!p.joinmeUrl;
 
   return (
     <PlaceTemplate

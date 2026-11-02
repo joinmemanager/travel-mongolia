@@ -1,11 +1,11 @@
-﻿шалтгаан,joinme_name,joinme_type,joinme_province,joinme_soum,joinme_location,joinme_phones,tic_entry_id,tic_name,tic_slug
-нэг TIC entry-д хэд хэдэн joinme,“Оргих” зочид буудал,hotel,Завхан,Нөмрөг,Нөмрөг сум,99685945,tic-c22-244,Завхан - Оргих бааз,zavkhan-orgikh-baaz
-нэр хэсэгчлэн таарсан (contains),Sky line зрчид буудал,hotel,Завхан,Тосонцэнгэл,"УБ хотоос 800км, Тосонцэнгэл сумын төв дээр",99254155,tic-c21-98,Завхан - Скай лайн (Sky Line Hotel),zavkhan-skai-lain-sky-line-hotel
-нэр хэсэгчлэн таарсан (contains),Бадар Хундага ресорт /Отгон Буянт Хангай /,tourist_camp,Завхан,Отгон,Улаанбаатраас 1005 км/баянхонгороор ирвэл 1157км/,88068958,tic-c22-21,Завхан - Отгон буянт хангай бааз,zavkhan-otgon-buyant-khangai-baaz
-нэг TIC entry-д хэд хэдэн joinme,Оргих жуулчны бааз,tourist_camp,Завхан,Алдархаан,"УБ хотоос 992км, Улиастайгаас 8км",99084199,tic-c22-244,Завхан - Оргих бааз,zavkhan-orgikh-baaz
-нэг TIC entry-д хэд хэдэн joinme,Gobi Hotel,hotel,Өмнөговь,,Даланзадгад хот Хийдийн 7-301,89259988,tic-c21-103,Ханбогд - Говь (Gobi Hotel),khanbogd-govi-gobi-hotel
-нэг TIC entry-д хэд хэдэн joinme,Говь Зочид Буудал,hotel,Өмнөговь,Ханбогд,"Өмнөговь, Ханбогд сум бага булаг",88724000 / 80111145,tic-c21-103,Ханбогд - Говь (Gobi Hotel),khanbogd-govi-gobi-hotel
-нэг TIC entry-д хэд хэдэн joinme,Жуулчин Говь,resort,Өмнөговь,,"Өмнөговь аймаг, Даланзадгад хот",86100608 / 88113389,tic-c22-77,Өмнөговь - Жуулчин говь 1,umnugovi-juulchin-govi-1
-нэг TIC entry-д хэд хэдэн joinme,Жуулчин Говь Жуулчны бааз,tourist_camp,Өмнөговь,,Даланзадгад хотоос баруун хойш 35 км,88113389,tic-c22-77,Өмнөговь - Жуулчин говь 1,umnugovi-juulchin-govi-1
-нэг TIC entry-д хэд хэдэн joinme,Сайхан хархираа амралтын газар,tourist_camp,Увс,Улаангом,Увс аймаг Улаангим сум Хархираа уул,99452021 / 99978765,tic-c22-137,Увс - Хархираа бааз,uvs-kharkhiraa-baaz
-нэг TIC entry-д хэд хэдэн joinme,Хархираа хүүхдийн зуслан,tourist_camp,Увс,,Увс аймаг улаангом сум Хархираа уул,99452021,tic-c22-137,Увс - Хархираа бааз,uvs-kharkhiraa-baaz
+﻿шийдвэр,шалтгаан,joinme_name,joinme_type,joinme_province,joinme_soum,joinme_location,joinme_phones,tic_entry_id,tic_name,tic_slug
+create,нэг TIC entry-д хэд хэдэн joinme,“Оргих” зочид буудал,hotel,Завхан,Нөмрөг,Нөмрөг сум,99685945,tic-c22-244,Завхан - Оргих бааз,zavkhan-orgikh-baaz
+merge,нэр хэсэгчлэн таарсан (contains),Sky line зрчид буудал,hotel,Завхан,Тосонцэнгэл,"УБ хотоос 800км, Тосонцэнгэл сумын төв дээр",99254155,tic-c21-98,Завхан - Скай лайн (Sky Line Hotel),zavkhan-skai-lain-sky-line-hotel
+merge,нэр хэсэгчлэн таарсан (contains),Бадар Хундага ресорт /Отгон Буянт Хангай /,tourist_camp,Завхан,Отгон,Улаанбаатраас 1005 км/баянхонгороор ирвэл 1157км/,88068958,tic-c22-21,Завхан - Отгон буянт хангай бааз,zavkhan-otgon-buyant-khangai-baaz
+merge,нэг TIC entry-д хэд хэдэн joinme,Оргих жуулчны бааз,tourist_camp,Завхан,Алдархаан,"УБ хотоос 992км, Улиастайгаас 8км",99084199,tic-c22-244,Завхан - Оргих бааз,zavkhan-orgikh-baaz
+create,нэг TIC entry-д хэд хэдэн joinme,Gobi Hotel,hotel,Өмнөговь,,Даланзадгад хот Хийдийн 7-301,89259988,tic-c21-103,Ханбогд - Говь (Gobi Hotel),khanbogd-govi-gobi-hotel
+merge,нэг TIC entry-д хэд хэдэн joinme,Говь Зочид Буудал,hotel,Өмнөговь,Ханбогд,"Өмнөговь, Ханбогд сум бага булаг",88724000 / 80111145,tic-c21-103,Ханбогд - Говь (Gobi Hotel),khanbogd-govi-gobi-hotel
+skip,нэг TIC entry-д хэд хэдэн joinme,Жуулчин Говь,resort,Өмнөговь,,"Өмнөговь аймаг, Даланзадгад хот",86100608 / 88113389,tic-c22-77,Өмнөговь - Жуулчин говь 1,umnugovi-juulchin-govi-1
+merge,нэг TIC entry-д хэд хэдэн joinme,Жуулчин Говь Жуулчны бааз,tourist_camp,Өмнөговь,,Даланзадгад хотоос баруун хойш 35 км,88113389,tic-c22-77,Өмнөговь - Жуулчин говь 1,umnugovi-juulchin-govi-1
+merge,нэг TIC entry-д хэд хэдэн joinme,Сайхан хархираа амралтын газар,tourist_camp,Увс,Улаангом,Увс аймаг Улаангим сум Хархираа уул,99452021 / 99978765,tic-c22-137,Увс - Хархираа бааз,uvs-kharkhiraa-baaz
+skip,нэг TIC entry-д хэд хэдэн joinme,Хархираа хүүхдийн зуслан,tourist_camp,Увс,,Увс аймаг улаангом сум Хархираа уул,99452021,tic-c22-137,Увс - Хархираа бааз,uvs-kharkhiraa-baaz

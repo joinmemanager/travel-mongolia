@@ -581,7 +581,7 @@
       "phones": [
         "99917505"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-55a85e5cb353ba15",
@@ -592,7 +592,7 @@
       "phones": [
         "95878713"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-8882442767081df2",
@@ -603,7 +603,7 @@
       "phones": [
         "85657171"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-756a1dc467249f58",
@@ -614,7 +614,7 @@
       "phones": [
         "91229955"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-12196d0f9f6e2802",
@@ -625,7 +625,7 @@
       "phones": [
         "95159683"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-432aff18741b006d",
@@ -636,7 +636,7 @@
       "phones": [
         "99808682"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-965e7ebd5c106d05",
@@ -647,7 +647,7 @@
       "phones": [
         "89192249"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-b30889d96c62dc2e",
@@ -658,7 +658,7 @@
       "phones": [
         "99919179"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-2fdcf15b6bae5236",
@@ -669,7 +669,7 @@
       "phones": [
         "99174829"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-397396cc4242e591",
@@ -680,7 +680,7 @@
       "phones": [
         "99577866"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-f496edda1b0d6a7b",
@@ -691,7 +691,7 @@
       "phones": [
         "89538558"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-0e6fc92888b6f901",
@@ -702,7 +702,7 @@
       "phones": [
         "98184483"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-7181a2af055f2bf2",
@@ -713,7 +713,7 @@
       "phones": [
         "88986691"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-c56419ab1d61d497",
@@ -724,7 +724,7 @@
       "phones": [
         "70468103"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-8e1d07b6ba5f9449",
@@ -735,7 +735,7 @@
       "phones": [
         "99269007"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-8ba6af1f07eba2ec",
@@ -746,7 +746,7 @@
       "phones": [
         "99940976"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-61044a9d44e8d675",
@@ -755,7 +755,18 @@
       "soum": "Улиастай",
       "location": "Улиастай Жинст баг",
       "phones": [],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
+    },
+    {
+      "id": "joinme-1228552b32f3d503",
+      "name": "Ахмадын сувилал",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай хотын төвд",
+      "phones": [
+        "99460032"
+      ],
+      "image": null
     },
     {
       "id": "joinme-1891349d5fa51e4c",
@@ -766,7 +777,7 @@
       "phones": [
         "94677686"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-9609c207a17aa764",
@@ -777,7 +788,40 @@
       "phones": [
         "99143063"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
+    },
+    {
+      "id": "joinme-594f376612fc5fa6",
+      "name": "Отгонтэнгэр сувилал",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай хотын төвд",
+      "phones": [
+        "99071938"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-f7bfbdd505e40b73",
+      "name": "Уламжлалт анагаах ухааны төв",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай Жинст",
+      "phones": [
+        "99051478"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-18ec666256722737",
+      "name": "Эрүүл мэндийн газар",
+      "type": "hospital",
+      "soum": "Улиастай",
+      "location": "Улиастай сум Жинст баг",
+      "phones": [
+        "70462280"
+      ],
+      "image": null
     },
     {
       "id": "joinme-f820ec14b354a1a0",
@@ -788,7 +832,7 @@
       "phones": [
         "86967088"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-08ce087cc1c50c5a",
@@ -799,7 +843,7 @@
       "phones": [
         "99066436"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-6f946f5076332a80",
@@ -810,7 +854,7 @@
       "phones": [
         "90217191"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-1e19953eec09527c",
@@ -821,7 +865,7 @@
       "phones": [
         "91110388"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-c258013ba96f5d11",
@@ -832,7 +876,7 @@
       "phones": [
         "88031802"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-70e79ac59a0cbf44",
@@ -843,7 +887,7 @@
       "phones": [
         "99658878"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
     },
     {
       "id": "joinme-eec48346f0004935",
@@ -854,7 +898,172 @@
       "phones": [
         "91612127"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+      "image": null
+    },
+    {
+      "id": "joinme-b8da56c21cba5eb6",
+      "name": "Тунамал бүрд",
+      "type": "pharmacy",
+      "soum": "Алдархаан",
+      "location": "Алдархаан сумын төв",
+      "phones": [
+        "86064660"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-beb3165126c8ec73",
+      "name": "Баян-Алтайн сөд ХХК",
+      "type": "pharmacy",
+      "soum": "Баянтэс",
+      "location": "Баянтэс сумын төв",
+      "phones": [
+        "98040800"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-2df4c27ef26ad533",
+      "name": "Баянхайрхан жигст ХХК",
+      "type": "pharmacy",
+      "soum": "Баянхайрхан",
+      "location": "Баянхайрхан сумын төв",
+      "phones": [
+        "98123773"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-8fcf70e2c8ca04f3",
+      "name": "Чацарганат үрэл ХХК",
+      "type": "pharmacy",
+      "soum": "Дөрвөлжин",
+      "location": "Дөрвөлжин сумын төв",
+      "phones": [
+        "88200323"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-a62a58d12e156502",
+      "name": "Бүрхээр хайрхан ХХК",
+      "type": "pharmacy",
+      "soum": "Завханмандал",
+      "location": "Завханмандал сумын төв",
+      "phones": [
+        "88250029"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-bd8de9486494064f",
+      "name": "Арвин агь ундрах ХХК",
+      "type": "pharmacy",
+      "soum": "Идэр",
+      "location": "Идэр сумын төв",
+      "phones": [
+        "99718083"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-8ededc82cf11f818",
+      "name": "Гурван эрдэнэ",
+      "type": "pharmacy",
+      "soum": "Их-Уул",
+      "location": "Их-уул сумын төв",
+      "phones": [
+        "95096777"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-9f01b1c92a451d51",
+      "name": "Төгөлдөр Аз ХХК",
+      "type": "pharmacy",
+      "soum": "Их-Уул",
+      "location": "Их-уул сумын төв",
+      "phones": [
+        "80707026"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-788dbebe2e01e2b9",
+      "name": "Уулсын уран итгэлт ХХК",
+      "type": "pharmacy",
+      "soum": "Их-Уул",
+      "location": "Их-уул сумын төв",
+      "phones": [
+        "88033433"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-82b2a4dbef7e4f52",
+      "name": "Нөмрөг гурван тулгат ХХК",
+      "type": "pharmacy",
+      "soum": "Нөмрөг",
+      "location": "Нөмрөг сумын төв",
+      "phones": [
+        "98112598"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-e09cc12972845a9c",
+      "name": "Очирваань хайрханы Вансэмбэрүү",
+      "type": "pharmacy",
+      "soum": "Отгон",
+      "location": "Отгон сумын төв",
+      "phones": [
+        "95230363"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-1170c28843d8862f",
+      "name": "Маргазхан ХХК",
+      "type": "pharmacy",
+      "soum": "Сантмаргаз",
+      "location": "Сантмаргаз сумын төв",
+      "phones": [
+        "98150858"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-fb091ffd958f159f",
+      "name": "Сонгино гэрэлт шүтээн ХХК",
+      "type": "pharmacy",
+      "soum": "Сонгино",
+      "location": "Сонгино сумын төв",
+      "phones": [
+        "93032941"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-10396a0425f50e90",
+      "name": "Түдэвтэй шидэт үрэл ХХК",
+      "type": "pharmacy",
+      "soum": "Түдэвтэй",
+      "location": "Түдэвтэй сумын төв",
+      "phones": [
+        "97056842"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-5e9c501d0b045150",
+      "name": "Тэлмэн саран ХХК",
+      "type": "pharmacy",
+      "soum": "Тэлмэн",
+      "location": "Тэлмэн сумын төв",
+      "phones": [
+        "93032891"
+      ],
+      "image": null
     },
     {
       "id": "joinme-373e53c4aee752e4",
@@ -865,7 +1074,95 @@
       "phones": [
         "96765684"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png"
+      "image": null
+    },
+    {
+      "id": "joinme-4b4f7e2779396492",
+      "name": "Азифарм",
+      "type": "pharmacy",
+      "soum": "Улиастай",
+      "location": "Улиастай сумын төв",
+      "phones": [
+        "99001121"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-b70272774924eb30",
+      "name": "Завхан эм хангамж ХХК",
+      "type": "pharmacy",
+      "soum": "Улиастай",
+      "location": "Улиастай сумын төв",
+      "phones": [
+        "89184118"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-47b27e932f5741ba",
+      "name": "Монос - Улиастай ХХК",
+      "type": "pharmacy",
+      "soum": "Улиастай",
+      "location": "Улиастай сумын төв",
+      "phones": [
+        "99241985"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-de3d8168429b8b71",
+      "name": "Нахиа салбар",
+      "type": "pharmacy",
+      "soum": "Улиастай",
+      "location": "Улиастай сумын төв",
+      "phones": [
+        "99788176"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-3aa6c6fd35be2db9",
+      "name": "Үнхэлцэг хайрхан ХХК",
+      "type": "pharmacy",
+      "soum": "Цагаанхайрхан",
+      "location": "Цагаанхайрхан сумын төв",
+      "phones": [
+        "98182124"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-dd5a4d5d4acca0c7",
+      "name": "Энх тун цагаанчулуут ХХК",
+      "type": "pharmacy",
+      "soum": "Цагаанчулуут",
+      "location": "Цагаанчулуут сумын төв",
+      "phones": [
+        "98019811"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-9a6702de898ad087",
+      "name": "Цэцэн-Баян далай ХХК",
+      "type": "pharmacy",
+      "soum": "Цэцэн-Уул",
+      "location": "Цэцэн-уул сумын төв",
+      "phones": [
+        "91866974"
+      ],
+      "image": null
+    },
+    {
+      "id": "joinme-b9a4e9616a085a82",
+      "name": "Их мянганы тан ХХК",
+      "type": "pharmacy",
+      "soum": "Шилүүстэй",
+      "location": "Шилүүстэй сумын төв",
+      "phones": [
+        "88606994"
+      ],
+      "image": null
     },
     {
       "id": "joinme-8597371ee0982288",
@@ -876,7 +1173,7 @@
       "phones": [
         "88468005"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png"
+      "image": null
     },
     {
       "id": "joinme-06ad25e20d72c817",
@@ -887,7 +1184,7 @@
       "phones": [
         "88914092"
       ],
-      "image": "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png"
+      "image": null
     }
   ]
 }

@@ -3,6 +3,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import React from 'react';
 
 import ProfileTemplate from '@/components/templates/ProfileTemplate';
+import { realImage } from '@/lib/imageUrl';
 import { getExperiences, getProducts, getProviderBySlug, providerTypeLabel } from '@/lib/localContent';
 import { entryMeta } from '@/lib/pageMeta';
 import { getRelatedItems } from '@/lib/related';
@@ -22,12 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!p) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
   const meta = entryMeta({
     // Давхардсан нэрийн гарчигт аймаг аль хэдийн орсон (scripts/joinme/import.js titles)
-    title: p.province && !p.name.endsWith(p.province) ? `${p.name}, ${p.province}` : p.name,
+    title: p.province && !p.name.includes(p.province) ? `${p.name}, ${p.province}` : p.name,
     description: truncate(
       richTextToPlain(p.story) || `${p.name}: ${providerTypeLabel(p.providerType)}, ${p.province}. Үйлчилгээ, үнэ, захиалга.`
     ),
     path: `/local/${p.slug}`,
-    image: p.photos[0]?.src,
+    image: realImage(p.photos[0]?.src),
   });
   // Ганц хуудас хайлтад орохгүй, зөвхөн аймаг, ангиллын жагсаалт index (2026-11-02)
   return { ...meta, robots: NOINDEX };

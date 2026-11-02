@@ -3,6 +3,7 @@ import { cache } from 'react';
 import { ACCOMMODATION_BASE, isDirectoryAccommodation } from '@/lib/accommodation';
 import { client, rethrowOutage } from '@/lib/contentful';
 import type { SiteImage } from '@/lib/images';
+import { placeholderImage } from '@/lib/imageUrl';
 import { isPreviewEnv } from '@/lib/navigation';
 import { assetUrl } from '@/lib/places';
 
@@ -34,6 +35,16 @@ export const PROVIDER_TYPES: { id: ProviderType; mn: string; href?: string }[] =
 ];
 
 export const providerTypeLabel = (t: string) => PROVIDER_TYPES.find((p) => p.id === t)?.mn || '';
+
+// Утсыг харуулахгүй, «joinme-ээр холбогдох» товчтой ангиллууд
+export const CONTACT_VIA_JOINME: string[] = ['herder-family', 'tour'];
+
+const PROVIDER_ICON: Partial<Record<ProviderType, string>> = {
+  'herder-family': 'ger',
+  artisan: 'artisan',
+  food: 'food',
+  tour: 'tour',
+};
 
 export interface LinkedRef {
   id: string;
@@ -202,6 +213,7 @@ function toProvider(e: any): LocalProvider {
   const loc = f.location;
   const movedTo = isDirectoryAccommodation(f) ? `${ACCOMMODATION_BASE}/${slug}` : undefined;
   const own = photos(f.photos, name);
+  const external = strList(f.externalImages);
   return {
     id: e.sys.id,
     slug,
@@ -216,10 +228,11 @@ function toProvider(e: any): LocalProvider {
     priceFrom: str(f.priceFrom),
     bookingUrl: str(f.bookingUrl),
     contact: str(f.contact),
-    // Малчин өрхийн утас хувийн дугаар: Contentful-д хадгалагдана, сайтад гарахгүй (оронд нь joinmeUrl)
-    phones: f.providerType === 'herder-family' ? [] : strList(f.phones),
+    // Хувийн дугаар: Contentful-д хадгалагдана, сайтад гарахгүй (оронд нь joinmeUrl)
+    phones: CONTACT_VIA_JOINME.includes(f.providerType) ? [] : strList(f.phones),
     soum: str(f.soum),
-    locationText: str(f.locationText),
+    // Малчин өрхийн гэрийн хаяг (баг, тоот) сайтад гарахгүй, зөвхөн сум, аймаг
+    locationText: f.providerType === 'herder-family' ? '' : str(f.locationText),
     fromJoinme: !!f.joinmeId,
     joinmeUrl: str(f.joinmeUrl),
     localOwned: f.localOwned === true,
@@ -229,7 +242,13 @@ function toProvider(e: any): LocalProvider {
     licenseIfRequired: str(f.licenseIfRequired),
     womenOrYouthLed: f.womenOrYouthLed === true,
     // joinme.mn-ийн зураг Contentful-д байхгүй, CDN-ийн холбоосоор шууд
-    photos: own.length ? own : strList(f.externalImages).map((src) => ({ src, alt: name })),
+    photos: own.length
+      ? own
+      : external.length
+        ? external.map((src) => ({ src, alt: name }))
+        : f.joinmeId
+          ? [{ src: placeholderImage(PROVIDER_ICON[f.providerType as ProviderType] || 'hotel'), alt: name }]
+          : [],
   };
 }
 

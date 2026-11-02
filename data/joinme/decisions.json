@@ -1,0 +1,156 @@
+{
+  "decidedAt": "2026-11-02",
+  "match": {
+    "“Оргих” зочид буудал|hotel": "create",
+    "Оргих жуулчны бааз|tourist_camp": "merge",
+    "Sky line зрчид буудал|hotel": "merge",
+    "Бадар Хундага ресорт /Отгон Буянт Хангай /|tourist_camp": "merge",
+    "Gobi Hotel|hotel": "create",
+    "Говь Зочид Буудал|hotel": "merge",
+    "Жуулчин Говь|resort": "skip",
+    "Жуулчин Говь Жуулчны бааз|tourist_camp": "merge",
+    "Сайхан хархираа амралтын газар|tourist_camp": "merge",
+    "Хархираа хүүхдийн зуслан|tourist_camp": "skip"
+  },
+  "storyNotes": {
+    "tic-c22-21": "Одоогийн нэр: Бадар Хундага ресорт"
+  },
+  "unclassified": {
+    "Арвин агь ундрах ХХК": {
+      "type": "pharmacy"
+    },
+    "Баян-Алтайн сөд ХХК": {
+      "type": "pharmacy"
+    },
+    "Баянхайрхан жигст ХХК": {
+      "type": "pharmacy"
+    },
+    "Бүрхээр хайрхан ХХК": {
+      "type": "pharmacy"
+    },
+    "Завхан эм хангамж ХХК": {
+      "type": "pharmacy"
+    },
+    "Их мянганы тан ХХК": {
+      "type": "pharmacy"
+    },
+    "Маргазхан ХХК": {
+      "type": "pharmacy"
+    },
+    "Монос - Улиастай ХХК": {
+      "type": "pharmacy"
+    },
+    "Нөмрөг гурван тулгат ХХК": {
+      "type": "pharmacy"
+    },
+    "Сонгино гэрэлт шүтээн ХХК": {
+      "type": "pharmacy"
+    },
+    "Төгөлдөр Аз ХХК": {
+      "type": "pharmacy"
+    },
+    "Түдэвтэй шидэт үрэл ХХК": {
+      "type": "pharmacy"
+    },
+    "Тэлмэн саран ХХК": {
+      "type": "pharmacy"
+    },
+    "Уулсын уран итгэлт ХХК": {
+      "type": "pharmacy"
+    },
+    "Үнхэлцэг хайрхан ХХК": {
+      "type": "pharmacy"
+    },
+    "Цэцэн-Баян далай ХХК": {
+      "type": "pharmacy"
+    },
+    "Чацарганат үрэл ХХК": {
+      "type": "pharmacy"
+    },
+    "Энх тун цагаанчулуут ХХК": {
+      "type": "pharmacy"
+    },
+    "Гурван эрдэнэ": {
+      "type": "pharmacy"
+    },
+    "Очирваань хайрханы Вансэмбэрүү": {
+      "type": "pharmacy"
+    },
+    "Тунамал бүрд": {
+      "type": "pharmacy"
+    },
+    "Азифарм": {
+      "type": "pharmacy"
+    },
+    "Нахиа салбар": {
+      "type": "pharmacy"
+    },
+    "Ахмадын сувилал": {
+      "type": "hospital"
+    },
+    "Отгонтэнгэр сувилал": {
+      "type": "hospital"
+    },
+    "Уламжлалт анагаах ухааны төв": {
+      "type": "hospital"
+    },
+    "Эрүүл мэндийн газар": {
+      "type": "hospital"
+    },
+    "River 800": {
+      "type": "hotel"
+    },
+    "Тосон-Краван": {
+      "type": "hotel"
+    },
+    "СҮМБЭР ХАЙРХАН": {
+      "type": "hotel"
+    },
+    "Буурал ойгон": {
+      "type": "tourist_camp"
+    },
+    "Бүст нуур": {
+      "type": "tourist_camp"
+    },
+    "Тэлмэн нуур": {
+      "type": "tourist_camp"
+    },
+    "Тэлмэн Андууд": {
+      "type": "tourist_camp"
+    },
+    "Тосон Краван мини хаус": {
+      "type": "tourist_camp"
+    },
+    "Удвал бэйкери": {
+      "type": "bakery"
+    },
+    "Spark": {
+      "skip": true
+    },
+    "Зоонозын өвчин судлалын төв": {
+      "skip": true
+    }
+  },
+  "blockedImages": {
+    "stock сайтын файлын нэр": [
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174324/original/150929101049-black-coffee-stock.jpg",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174349/original/150929101049-black-coffee-stock_(1).jpg",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174417/original/istockphoto-1191089720-612x612-removebg-preview.png",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/183114/original/istockphoto-905791476-612x612.jpg"
+    ],
+    "stock сайтын усан тэмдэг (нүдээр шалгасан)": [
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/183346/original/Screen_Shot_2023-07-08_at_08.23.15.png",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/183323/original/Screen_Shot_2023-07-07_at_22.32.25.png"
+    ],
+    "зурагчны тэмдэг (нүдээр шалгасан)": [
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174066/original/198750530_292241705966108_1262697683608294141_n.jpg",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174152/original/301950059_494681795993370_363842893696896245_n.jpg",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174325/original/301950059_494681795993370_363842893696896245_n_(1).jpg",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/174228/original/122533613_3329043487208332_519743501530150938_n.jpg"
+    ],
+    "холбоос 502 алдаа өгсөн": [
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/187788/original/14.jpg",
+      "https://d1f6qhhrbg3j8a.cloudfront.net/img/187794/original/zagasan_nvd1.jpg"
+    ]
+  }
+}

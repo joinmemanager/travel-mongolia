@@ -16,6 +16,10 @@
 - [ ] TIC түүхийн холбоогүй 16 зураг: хэвээр үлдээсэн, яагаад хасагдсан нь тодорхойгүй (жагсаалт: branch
       `docs/contentful-cleanup`, `docs/plan/contentful-cleanup.md`).
 
+## joinme
+- [ ] joinme дээр айл бүрийн хуудас гарвал холбоосыг шинэчлэх. Одоо «joinme-ээр холбогдох» товч аймгийн хуудас
+      руу очдог (`joinmeUrl`, малчин өрх 36, тэмээ, морь 38).
+
 ## Git
 - [ ] `feat/tic-batch-10`-ийн `7434d51` (`fix-orkhon-darkhan.js`, `fix-titles.js`, `missing-soums-*.md` г.м.) `main`-д
       ороогүй. Зөвхөн `today2-progress.md`-ийг авчирсан.
