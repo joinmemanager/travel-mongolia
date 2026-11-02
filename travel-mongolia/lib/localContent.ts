@@ -36,7 +36,7 @@ export const PROVIDER_TYPES: { id: ProviderType; mn: string; href?: string }[] =
 
 export const providerTypeLabel = (t: string) => PROVIDER_TYPES.find((p) => p.id === t)?.mn || '';
 
-// Утсыг харуулахгүй, «joinme-ээр холбогдох» товчтой ангиллууд
+// Утас, байршлын мөрийг харуулахгүй, «joinme-ээр холбогдох» товчтой ангиллууд
 export const CONTACT_VIA_JOINME: string[] = ['herder-family', 'tour'];
 
 const PROVIDER_ICON: Partial<Record<ProviderType, string>> = {
@@ -231,8 +231,8 @@ function toProvider(e: any): LocalProvider {
     // Хувийн дугаар: Contentful-д хадгалагдана, сайтад гарахгүй (оронд нь joinmeUrl)
     phones: CONTACT_VIA_JOINME.includes(f.providerType) ? [] : strList(f.phones),
     soum: str(f.soum),
-    // Малчин өрхийн гэрийн хаяг (баг, тоот) сайтад гарахгүй, зөвхөн сум, аймаг
-    locationText: f.providerType === 'herder-family' ? '' : str(f.locationText),
+    // Гэрийн хаяг (баг, тоот) сайтад гарахгүй, зөвхөн сум, аймаг
+    locationText: CONTACT_VIA_JOINME.includes(f.providerType) ? '' : str(f.locationText),
     fromJoinme: !!f.joinmeId,
     joinmeUrl: str(f.joinmeUrl),
     localOwned: f.localOwned === true,

@@ -302,13 +302,16 @@ async function joinmeEntries() {
   return items;
 }
 
-// Байршлын текстээс газрын нэр. Малчин өрхөд баг, тоот, зайг оруулахгүй (гэрийн хаяг сайтад гарахгүй).
+// Байршлын мөр нь сайтад гарахгүй ангиллууд (lib/localContent.ts CONTACT_VIA_JOINME)
+const PRIVATE_GROUPS = ['herder-family', 'tour'];
+
+// Байршлын текстээс газрын нэр. Хувийн ангилалд баг, тоот, зайг оруулахгүй (гэрийн хаяг сайтад гарахгүй).
 function placeOf(p) {
   const prefix = new RegExp(`^${p.province}(\\s+аймаг(ийн)?)?[,.]?\\s*`, 'iu');
   let s = location(p).replace(/\s+/g, ' ').replace(prefix, '');
   if (p.soum) s = s.replace(/\S+\s+сум(ын)?[,.]?\s*/iu, '');
   s = s.replace(/Сэврэй[.,]?\s+[Хх]онгорын гол/u, 'Сэврэй Хонгорын гол');
-  if (p.group === 'herder-family') {
+  if (PRIVATE_GROUPS.includes(p.group)) {
     s = s.replace(/(\S+\s+)?баг(?=[\s,.]|$)/giu, '');
     if (/\d/.test(s)) s = '';
   }
@@ -337,11 +340,12 @@ async function titles() {
     const n = (seen[norm(base)] = (seen[norm(base)] || 0) + 1);
     const title = n > 1 ? `${base} ${n}` : base;
     final.push(title);
-    if (e.fields.name[LOCALE] === title) continue;
+    const label = p.group === 'herder-family' ? 'Малчин өрх' : LABEL[p.type] || p.type_mn;
+    const description = PRIVATE_GROUPS.includes(p.group) ? `${title}: ${label}.` : e.fields.seoDescription[LOCALE];
+    if (e.fields.name[LOCALE] === title && e.fields.seoDescription[LOCALE] === description) continue;
     changed++;
     if (DRY) continue;
-    const fields = { ...e.fields, name: L(title), seoTitle: L(seoTitle(title, LABEL[p.type] || p.type_mn)) };
-    if (p.group === 'herder-family') fields.seoDescription = L(`${title}: Малчин өрх.`);
+    const fields = { ...e.fields, name: L(title), seoTitle: L(seoTitle(title, LABEL[p.type] || p.type_mn)), seoDescription: L(description) };
     await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields } });
   }
   console.log(`${DRY ? '[dry] ' : ''}гарчиг`, dup.length, 'өөрчилсөн', changed, 'дугаартай', final.filter((t) => / \d+$/.test(t)).length, 'давтагдсан', final.length - new Set(final).size);
