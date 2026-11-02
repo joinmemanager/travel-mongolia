@@ -61,6 +61,7 @@ export interface LocalProvider {
   soum: string;
   locationText: string;
   fromJoinme: boolean;
+  joinmeUrl: string;
   localOwned: boolean;
   communityParticipation: string;
   responsiblePractices: string[];
@@ -215,10 +216,12 @@ function toProvider(e: any): LocalProvider {
     priceFrom: str(f.priceFrom),
     bookingUrl: str(f.bookingUrl),
     contact: str(f.contact),
-    phones: strList(f.phones),
+    // Малчин өрхийн утас хувийн дугаар: Contentful-д хадгалагдана, сайтад гарахгүй (оронд нь joinmeUrl)
+    phones: f.providerType === 'herder-family' ? [] : strList(f.phones),
     soum: str(f.soum),
     locationText: str(f.locationText),
     fromJoinme: !!f.joinmeId,
+    joinmeUrl: str(f.joinmeUrl),
     localOwned: f.localOwned === true,
     communityParticipation: str(f.communityParticipation),
     responsiblePractices: strList(f.responsiblePractices),

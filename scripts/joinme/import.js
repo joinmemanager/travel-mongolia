@@ -2,6 +2,7 @@
 //   node scripts/joinme/import.js build         # API-гүй: data/services/*.json, тайлангийн CSV, төлөвлөгөө
 //   node scripts/joinme/import.js schema        # localProvider-д талбар нэмнэ (дахин ажиллуулахад аюулгүй)
 //   node scripts/joinme/import.js run [--dry]   # 280 шинэ Draft + 47 TIC entry-д дутуу талбар нөхнө
+//   node scripts/joinme/import.js titles [--dry] # давхардсан нэрэнд сум, аймаг нэмнэ (slug хэвээр)
 // Хуваарилалт (эзэмшигч баталсан, 2026-11-02):
 //   байр (providerType accommodation): tourist_camp, hotel, resort, guesthouse (Өмнөговийн «Гэр»-ээс бусад)
 //   нутгийн: Өмнөговийн «Гэр» → herder-family, camel_tour/horse_tour → tour, crafts → artisan, restaurant/cafe → food
@@ -261,10 +262,41 @@ async function run() {
   if (providers.length !== 465) throw new Error(`мөрийн тоо ${providers.length}`);
 }
 
+// Давхардсан нэртэй шинэ entry-ийн гарчиг: «Гэр» → «Гэр, Булган сум, Өмнөговь». Slug хэвээр, нийтлэгдсэн entry-д хүрэхгүй.
+async function titles() {
+  const { providers } = load();
+  const byId = new Map(providers.map((p) => [p.id, p]));
+  const items = [];
+  for (let skip = 0; ; skip += 1000) {
+    const r = await cma('GET', `/entries?content_type=${CT}&sys.id[match]=joinme-&limit=1000&skip=${skip}`);
+    items.push(...r.items.filter((e) => byId.has(e.sys.id)));
+    if (skip + 1000 >= r.total) break;
+  }
+  const count = tally(items, (e) => byId.get(e.sys.id).name.trim());
+  const changed = [];
+  for (const e of items) {
+    const p = byId.get(e.sys.id);
+    const name = p.name.trim();
+    if (count[name] < 2) continue;
+    if (e.sys.publishedVersion) throw new Error(`нийтлэгдсэн entry: ${e.sys.id} — зогсоов`);
+    const title = [name, p.soum && `${p.soum} сум`, p.province].filter(Boolean).join(', ');
+    if (e.fields.name[LOCALE] === title) continue;
+    changed.push({ id: e.sys.id, slug: e.fields.slug[LOCALE], from: e.fields.name[LOCALE], title });
+    if (DRY) continue;
+    const label = LABEL[p.type] || p.type_mn;
+    await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields: { ...e.fields, name: L(title), seoTitle: L(seoTitle(title, label)) } } });
+  }
+  const after = tally(items, (e) => { const p = byId.get(e.sys.id); const name = p.name.trim(); return count[name] < 2 ? e.fields.name[LOCALE] : [name, p.soum && `${p.soum} сум`, p.province].filter(Boolean).join(', '); });
+  console.log(`${DRY ? '[dry] ' : ''}гарчиг`, changed.length, 'давхардсан нэр', tally(items.filter((e) => count[byId.get(e.sys.id).name.trim()] > 1), (e) => byId.get(e.sys.id).name.trim()));
+  console.log('үлдсэн давхардал', Object.entries(after).filter(([, n]) => n > 1));
+  console.log(`CMA ${callCount()}`);
+}
+
 (async () => {
   const cmd = process.argv[2];
   if (cmd === 'build') build();
   else if (cmd === 'schema') await schema();
   else if (cmd === 'run') await run();
-  else throw new Error('хэрэглээ: build | schema | run [--dry]');
+  else if (cmd === 'titles') await titles();
+  else throw new Error('хэрэглээ: build | schema | run [--dry] | titles [--dry]');
 })().catch((e) => { console.error(e.message); console.error(`CMA ${callCount()}`); process.exit(1); });

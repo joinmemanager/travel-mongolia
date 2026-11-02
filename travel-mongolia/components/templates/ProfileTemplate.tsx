@@ -29,6 +29,8 @@ export default function ProfileTemplate({
   const typeLabel = providerTypeLabel(p.providerType);
   const category = PROVIDER_TYPES.find((t) => t.id === p.providerType);
   const badges = choiceBadges(p);
+  // Малчин өрхийн утас сайтад гарахгүй (lib/localContent.ts), холбоо нь joinme.mn-ээр
+  const contactViaJoinme = p.providerType === 'herder-family' && !!p.joinmeUrl;
 
   return (
     <PlaceTemplate
@@ -62,7 +64,8 @@ export default function ProfileTemplate({
             { label: 'Тусгай зөвшөөрөл', value: p.licenseIfRequired },
             { label: 'Эх сурвалж', value: p.fromJoinme ? 'joinme.mn' : '' },
           ]}
-          bookingUrl={p.bookingUrl}
+          bookingUrl={contactViaJoinme ? p.joinmeUrl : p.bookingUrl}
+          bookingLabel={contactViaJoinme ? 'joinme-ээр холбогдох' : undefined}
           campaign="provider"
           contentId={p.slug}
           providerId={p.id}

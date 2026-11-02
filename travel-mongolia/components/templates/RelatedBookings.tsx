@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { type BookingCampaign, bookingHref } from '@/lib/booking';
+import { isDirectImage } from '@/lib/imageUrl';
 import { liveHref } from '@/lib/navigation';
 import type { RelatedItem } from '@/lib/related';
 
@@ -47,6 +48,7 @@ export default function RelatedBookings({
                       alt={item.image.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      unoptimized={isDirectImage(item.image.src)}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   )}

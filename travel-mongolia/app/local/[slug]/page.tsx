@@ -6,7 +6,7 @@ import ProfileTemplate from '@/components/templates/ProfileTemplate';
 import { getExperiences, getProducts, getProviderBySlug, providerTypeLabel } from '@/lib/localContent';
 import { entryMeta } from '@/lib/pageMeta';
 import { getRelatedItems } from '@/lib/related';
-import { richTextToPlain, truncate } from '@/lib/seo';
+import { NOINDEX, richTextToPlain, truncate } from '@/lib/seo';
 
 // Нутгийн үйлчилгээ үзүүлэгчийн профайл (Б хэсэг, /local-ийн draft төлвийг өвлөнө)
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
@@ -20,14 +20,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const p = await getProviderBySlug(slug);
   if (!p) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
-  return entryMeta({
-    title: [p.name, p.province].filter(Boolean).join(', '),
+  const meta = entryMeta({
+    // Давхардсан нэрийн гарчигт аймаг аль хэдийн орсон (scripts/joinme/import.js titles)
+    title: p.province && !p.name.endsWith(p.province) ? `${p.name}, ${p.province}` : p.name,
     description: truncate(
       richTextToPlain(p.story) || `${p.name}: ${providerTypeLabel(p.providerType)}, ${p.province}. Үйлчилгээ, үнэ, захиалга.`
     ),
     path: `/local/${p.slug}`,
     image: p.photos[0]?.src,
   });
+  // Ганц хуудас хайлтад орохгүй, зөвхөн аймаг, ангиллын жагсаалт index (2026-11-02)
+  return { ...meta, robots: NOINDEX };
 }
 
 export default async function ProviderPage({ params }: Props) {

@@ -5,7 +5,7 @@ import React from 'react';
 
 import ImageCreditLine from '@/components/ImageCreditLine';
 import type { ImageCredit } from '@/lib/imageCredit';
-import { cdnImage, isCdnImage } from '@/lib/imageUrl';
+import { cdnImage, isCdnImage, isDirectImage } from '@/lib/imageUrl';
 
 // Unsplash, Contentful зургийг тэдний CDN-ээс дэлгэцийн өргөнд тохируулан (WebP/AVIF) авна.
 // Сайтын өөрийн зураг (/hero.jpg г.м.) Next.js-ийн оновчлолоор дамжина.
@@ -55,6 +55,7 @@ export default function ImageHero({
           fill
           priority
           loader={isCdnImage(image.src) ? cdnLoader : undefined}
+          unoptimized={isDirectImage(image.src)}
           sizes="100vw"
           className="object-cover brightness-[0.5]"
         />

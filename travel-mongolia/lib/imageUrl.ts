@@ -6,6 +6,12 @@ export function isCdnImage(src: string): boolean {
   return /^(https?:)?\/\/images\.(unsplash\.com|ctfassets\.net)\//.test(src);
 }
 
+// joinme.mn-ийн зураг (localProvider.externalImages): өөрийнх нь хэмжээгээр шууд, Vercel-ийн оновчлолоор дамжихгүй.
+// next/image-д unoptimized-аар, хэмжээг CSS-ийн хайрцаг хязгаарлана, lazy нь next/image-ийн анхны утга.
+export function isDirectImage(src: string): boolean {
+  return /^https:\/\/d1f6qhhrbg3j8a\.cloudfront\.net\//.test(src);
+}
+
 export function cdnImage(src: string, width: number, quality = 70): string {
   if (!isCdnImage(src)) return src;
   try {

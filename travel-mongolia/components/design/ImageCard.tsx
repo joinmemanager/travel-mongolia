@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import type { SiteImage } from '@/lib/images';
+import { isDirectImage } from '@/lib/imageUrl';
 
 import { GOLD_TEXT } from './tokens';
 
@@ -44,6 +45,7 @@ export default function ImageCard({
           alt={image.alt}
           fill
           sizes={sizes}
+          unoptimized={isDirectImage(image.src)}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       )}
