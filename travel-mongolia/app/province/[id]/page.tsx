@@ -431,7 +431,7 @@ export default async function ProvinceDetailPage({ params }: Props) {
       <div className="px-6 mx-auto mt-20 space-y-12 max-w-7xl sm:px-10">
         <RelatedBookings items={related} campaign="province" contentId={provinceSlug} />
         {/* Эзэмшигч батлах хүртэл зөвхөн preview-д (joinme.mn-ийн утас, шинэчлэгдээгүй байж болно) */}
-        {isPreviewEnv() && <UsefulServices provinceSlug={provinceSlug} />}
+        <UsefulServices provinceSlug={provinceSlug} />
         {placesHere.length > 0 && (
           <section>
             <h2 className="pl-4 mb-6 text-2xl font-black tracking-tight border-l-4 border-[#15803d] text-neutral-900 sm:text-3xl">

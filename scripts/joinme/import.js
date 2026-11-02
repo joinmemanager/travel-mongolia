@@ -4,6 +4,8 @@
 //   node scripts/joinme/import.js run [--dry]   # 280 шинэ Draft + 47 TIC entry-д дутуу талбар нөхнө
 //   node scripts/joinme/import.js titles [--dry] # давхардсан нэрэнд сум, газар, аймаг, дугаар нэмнэ (slug хэвээр)
 //   node scripts/joinme/import.js clean [--dry]  # decisions.json-д хассан зургийг entry-ээс авна
+//   node scripts/joinme/import.js fixes [--dry]  # decisions.json ticFixes: TIC-ийн гарчиг, сум, байршил, утас
+// Нийтлэх нь тусдаа: scripts/joinme/publish-accommodation.js
 // Хуваарилалт (эзэмшигч баталсан, 2026-11-02):
 //   байр (providerType accommodation): tourist_camp, hotel, resort, guesthouse (Өмнөговийн «Гэр»-ээс бусад)
 //   нутгийн: Өмнөговийн «Гэр» → herder-family, camel_tour/horse_tour → tour, crafts → artisan, restaurant/cafe → food
@@ -263,6 +265,8 @@ async function run() {
     if (diffs.some((d) => d.field === 'сум')) { delete add.soum; delete add.locationText; }
     // TIC-ийн текстэд өөр утас байвал хоёр өөр дугаар харуулахгүй
     if (diffs.some((d) => d.field === 'утас')) delete add.phones;
+    // Эзэмшигч түр хассан утсыг дахин нөхөхгүй (ticFixes)
+    if ((decisions().ticFixes[e.sys.id] || {}).removePhones) delete add.phones;
     // Эзэмшигчийн шийдвэрээр тайлбарын төгсгөлд нэг догол мөр нэмнэ, TIC-ийн текст хэвээр
     const note = notes[e.sys.id];
     const story = e.fields.story && e.fields.story[LOCALE];
@@ -363,6 +367,31 @@ async function titles() {
   console.log(`CMA ${callCount()}`);
 }
 
+// Эзэмшигчийн шийдвэрээр TIC entry-ийн гарчиг, сум, байршил, утсыг засна (decisions.json ticFixes). Slug хэвээр, нийтлэхгүй.
+async function fixes() {
+  for (const [id, fix] of Object.entries(decisions().ticFixes)) {
+    const e = await cma('GET', `/entries/${id}`);
+    const fields = { ...e.fields };
+    if (fix.name && e.fields.name[LOCALE] !== fix.name) {
+      const old = e.fields.name[LOCALE];
+      fields.name = L(fix.name);
+      fields.seoTitle = L(seoTitle(fix.name, 'Зочид буудал'));
+      fields.seoDescription = L(e.fields.seoDescription[LOCALE].replace(old, fix.name));
+    }
+    if (fix.soum) fields.soum = L(fix.soum);
+    if (fix.locationText) fields.locationText = L(fix.locationText);
+    if (fix.removePhones) {
+      const keep = ((e.fields.phones && e.fields.phones[LOCALE]) || []).filter((n) => !fix.removePhones.includes(n));
+      if (keep.length) fields.phones = L(keep);
+      else delete fields.phones;
+    }
+    if (JSON.stringify(fields) === JSON.stringify(e.fields)) { console.log(id, 'өөрчлөлтгүй'); continue; }
+    if (!DRY) await cma('PUT', `/entries/${id}`, { version: e.sys.version, body: { fields } });
+    console.log(`${DRY ? '[dry] ' : ''}${id}`, Object.keys(fields).filter((k) => JSON.stringify(fields[k]) !== JSON.stringify(e.fields[k])), Object.keys(e.fields).filter((k) => !fields[k]));
+  }
+  console.log(`CMA ${callCount()}`);
+}
+
 // Хассан зургийг Contentful-ийн externalImages-ээс авна. Бусад талбар, нийтлэлийн төлөвт хүрэхгүй.
 async function clean() {
   const blocked = new Set(Object.values(decisions().blockedImages).flat());
@@ -390,5 +419,6 @@ async function clean() {
   else if (cmd === 'run') await run();
   else if (cmd === 'titles') await titles();
   else if (cmd === 'clean') await clean();
-  else throw new Error('хэрэглээ: build | schema | run [--dry] | titles [--dry] | clean [--dry]');
+  else if (cmd === 'fixes') await fixes();
+  else throw new Error('хэрэглээ: build | schema | run [--dry] | titles [--dry] | clean [--dry] | fixes [--dry]');
 })().catch((e) => { console.error(e.message); console.error(`CMA ${callCount()}`); process.exit(1); });
