@@ -30,7 +30,7 @@ export default function ProfileTemplate({
   const typeLabel = providerTypeLabel(p.providerType);
   const category = PROVIDER_TYPES.find((t) => t.id === p.providerType);
   const badges = choiceBadges(p);
-  // Малчин өрх, тэмээ, морины утас сайтад гарахгүй, холбоо нь joinme.mn-ээр
+  // Малчин өрх, тэмээ, морь, гар урлаачийн утас сайтад гарахгүй, холбоо нь joinme.mn-ээр
   const contactViaJoinme = CONTACT_VIA_JOINME.includes(p.providerType) && !!p.joinmeUrl;
 
   return (

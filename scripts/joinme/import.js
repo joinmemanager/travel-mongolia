@@ -303,7 +303,7 @@ async function joinmeEntries() {
 }
 
 // Байршлын мөр нь сайтад гарахгүй ангиллууд (lib/localContent.ts CONTACT_VIA_JOINME)
-const PRIVATE_GROUPS = ['herder-family', 'tour'];
+const PRIVATE_GROUPS = ['herder-family', 'tour', 'artisan'];
 
 // Байршлын текстээс газрын нэр. Хувийн ангилалд баг, тоот, зайг оруулахгүй (гэрийн хаяг сайтад гарахгүй).
 function placeOf(p) {
@@ -312,7 +312,8 @@ function placeOf(p) {
   if (p.soum) s = s.replace(/\S+\s+сум(ын)?[,.]?\s*/iu, '');
   s = s.replace(/Сэврэй[.,]?\s+[Хх]онгорын гол/u, 'Сэврэй Хонгорын гол');
   if (PRIVATE_GROUPS.includes(p.group)) {
-    s = s.replace(/(\S+\s+)?баг(?=[\s,.]|$)/giu, '');
+    // Хоёр үгтэй багийн нэр: доорх дүрэм эхний үгийг үлдээчих байсан
+    s = s.replace(/замын шанд баг/iu, '').replace(/(\S+\s+)?баг(?=[\s,.]|$)/giu, '');
     if (/\d/.test(s)) s = '';
   }
   s = s.replace(/^[\s,.]+|[\s,.]+$/g, '');
@@ -347,6 +348,15 @@ async function titles() {
     if (DRY) continue;
     const fields = { ...e.fields, name: L(title), seoTitle: L(seoTitle(title, LABEL[p.type] || p.type_mn)), seoDescription: L(description) };
     await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields } });
+  }
+  // Давхардаагүй нэртэй хувийн ангиллын SEO тайлбарт хаяг үлдээхгүй
+  for (const e of items) {
+    const p = byId.get(e.sys.id);
+    if (dup.includes(e) || !PRIVATE_GROUPS.includes(p.group)) continue;
+    const description = `${e.fields.name[LOCALE]}: ${LABEL[p.type] || p.type_mn}.`;
+    if (e.fields.seoDescription[LOCALE] === description) continue;
+    changed++;
+    if (!DRY) await cma('PUT', `/entries/${e.sys.id}`, { version: e.sys.version, body: { fields: { ...e.fields, seoDescription: L(description) } } });
   }
   console.log(`${DRY ? '[dry] ' : ''}гарчиг`, dup.length, 'өөрчилсөн', changed, 'дугаартай', final.filter((t) => / \d+$/.test(t)).length, 'давтагдсан', final.length - new Set(final).size);
   final.filter((_, i) => i % 9 === 0).forEach((t) => console.log(' ', t));

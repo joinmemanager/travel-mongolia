@@ -37,7 +37,7 @@ export const PROVIDER_TYPES: { id: ProviderType; mn: string; href?: string }[] =
 export const providerTypeLabel = (t: string) => PROVIDER_TYPES.find((p) => p.id === t)?.mn || '';
 
 // Утас, байршлын мөрийг харуулахгүй, «joinme-ээр холбогдох» товчтой ангиллууд
-export const CONTACT_VIA_JOINME: string[] = ['herder-family', 'tour'];
+export const CONTACT_VIA_JOINME: string[] = ['herder-family', 'tour', 'artisan'];
 
 const PROVIDER_ICON: Partial<Record<ProviderType, string>> = {
   'herder-family': 'ger',
