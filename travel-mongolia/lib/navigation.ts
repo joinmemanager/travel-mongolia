@@ -36,8 +36,6 @@ const page = (mn: string, en: string, href: string): NavItem => ({
   href,
   status: 'live',
 });
-// Шинэ, эзэмшигч хараахан батлаагүй дэд хуудас (preview-д «Ноорог», production-д нуугдана)
-const draftPage = (mn: string, en: string, href: string): NavItem => ({ ...page(mn, en, href), status: 'draft' });
 
 export interface NavSection {
   id: string;
@@ -69,7 +67,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Монгол орныг товчхон', 'Mongolia at a Glance', '/about/at-a-glance'),
           page('Монголын түүх', 'History', '/about/history'),
           // TIC cate14 түүхэн хүмүүс (10-р багц, 2026-10-21)
-          draftPage('Түүхэн хүмүүс', 'Historical Figures', '/about/history/people'),
+          page('Түүхэн хүмүүс', 'Historical Figures', '/about/history/people'),
           page('Өнөөгийн Монгол', 'Modern Mongolia', '/about/modern'),
         ],
       },
@@ -157,8 +155,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Соёл ба өв', 'Culture & Heritage', '/about/culture'),
           page('Ёс заншил, уламжлал', 'Traditions', '/about/traditions'),
           // TIC cate14 угсаатан, cate15 шашин (10-р багц, 2026-10-21)
-          draftPage('Угсаатнууд', 'Ethnic Groups', '/about/culture/ethnic-groups'),
-          draftPage('Шашин шүтлэг', 'Religion', '/about/culture/religion'),
+          page('Угсаатнууд', 'Ethnic Groups', '/about/culture/ethnic-groups'),
+          page('Шашин шүтлэг', 'Religion', '/about/culture/religion'),
         ],
       },
       {
