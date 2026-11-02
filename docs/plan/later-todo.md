@@ -1,0 +1,21 @@
+# Дараа шалгах ажлууд
+
+## Sitemap
+- [ ] **`revalidatePath('/sitemap.xml')` ажиллахгүй байгаа бололтой** (2026-11-02). `/api/revalidate` хариундаа
+      `/sitemap.xml`-ийг тэмдэглэсэн гэж буцаасан ч (гар хүсэлт, мөн webhook идэвхтэй үеийн нийтлэлт)
+      `/sitemap.xml` `x-vercel-cache: HIT`, `last-modified` хэвээр, 1,859 URL. `f791bc1`-ийн production deploy-н дараа
+      ч өөрчлөгдөөгүй. Шалтгааныг шалгаагүй. `app/sitemap.ts`-д `revalidate = 86400`. Нөлөө: шинэ хуудас sitemap-д
+      шууд орохгүй, webhook-ийн IndexNow нь sitemap-аас хамаардаггүй.
+
+## Контент
+- [ ] 10-р багцын `needsReplacement` тэмдэгтэй 145 нийтлэлийн зургийг солих эсэх (байгаагаараа нийтлэгдсэн).
+- [ ] Цэнгэл сум (`tic-c13-65`): 1,291 → 3,587 тэмдэгт болсон засвар progress-т бүртгэлгүй байсан, нийтлэгдсэн.
+      Агуулгыг нягтлах.
+- [ ] `tic-c15-60`, `tic-c15-57` (шашны давхар хувилбар) болон тэдний 2 зураг draft хэвээр. Хэрэггүй бол устгах эсэхийг
+      эзэмшигч шийднэ.
+- [ ] TIC түүхийн холбоогүй 16 зураг: хэвээр үлдээсэн, яагаад хасагдсан нь тодорхойгүй (жагсаалт: branch
+      `docs/contentful-cleanup`, `docs/plan/contentful-cleanup.md`).
+
+## Git
+- [ ] `feat/tic-batch-10`-ийн `7434d51` (`fix-orkhon-darkhan.js`, `fix-titles.js`, `missing-soums-*.md` г.м.) `main`-д
+      ороогүй. Зөвхөн `today2-progress.md`-ийг авчирсан.

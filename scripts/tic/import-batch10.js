@@ -1,3 +1,6 @@
+// АНХААРУУЛГА: Дахин ажиллуулбал docs/redirects/batch-10-people-culture.csv-ийн гараар хийсэн засвар дарагдана
+// (2026-11-02: cate15 ItemID 60, 57 → /about/traditions). Иймд CSV байвал --dry-гүй ажиллуулахад юу ч бичихээс өмнө
+// зогсоно. Зориуд дарах бол --overwrite-csv нэмнэ.
 // TIC 10-р багц: шийдээгүй 304 нийтлэл → cultureArticle (бүгд Draft).
 //   cate14 TypeID 1 (угсаатан)      → section ethnic-groups → /about/culture/ethnic-groups/<slug>
 //   cate14 TypeID 3 (түүхэн хүмүүс) → section people        → /about/history/people/<slug>
@@ -25,6 +28,11 @@ const B = require('./_batch03-06');
 const CACHE = process.argv[2];
 const DRY = process.argv.includes('--dry');
 if (!CACHE) { console.error('кэш хавтас өгнө үү'); process.exit(1); }
+const REDIRECT_CSV = path.join(ROOT, 'docs', 'redirects', 'batch-10-people-culture.csv');
+if (!DRY && fs.existsSync(REDIRECT_CSV) && !process.argv.includes('--overwrite-csv')) {
+  console.error(`${REDIRECT_CSV} байна, гараар хийсэн засвар дарагдана — зогсоов (юу ч бичээгүй). Зориуд дарах бол --overwrite-csv`);
+  process.exit(1);
+}
 
 const SITE = 'https://www.travelhubmongolia.com';
 const REPORT_JSON = path.join(ROOT, 'backups', 'tic-cache', 'batch10-result.json');
@@ -175,7 +183,7 @@ async function resolveImages(it, report) {
   }
 
   const redirects = result.entries.map((e) => [e.oldUrl, SITE + e.path, e.title, SECTION[e.section].csv, '']);
-  if (!DRY) writeCsv(path.join(ROOT, 'docs', 'redirects', 'batch-10-people-culture.csv'), ['old_url', 'new_url', 'title', 'ангилал', 'аймаг'], redirects);
+  if (!DRY) writeCsv(REDIRECT_CSV, ['old_url', 'new_url', 'title', 'ангилал', 'аймаг'], redirects);
   result.redirectRows = redirects.length;
   fs.writeFileSync(REPORT_JSON, JSON.stringify(result, null, 2), 'utf8');
   console.log(`entry ${result.entries.length}, redirect ${redirects.length}, зургийн алдаа ${imageErrors.length}, CMA ${callCount()}`);
