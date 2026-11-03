@@ -9,7 +9,7 @@ import { entryMeta } from '@/lib/pageMeta';
 import { getRelatedItems } from '@/lib/related';
 import { NOINDEX, richTextToPlain, truncate } from '@/lib/seo';
 
-// Нутгийн үйлчилгээ үзүүлэгчийн профайл (Б хэсэг, /local-ийн draft төлвийг өвлөнө)
+// Нутгийн үйлчилгээ үзүүлэгчийн профайл (Б хэсэг)
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
 export const revalidate = 604800;
 

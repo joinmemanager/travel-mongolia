@@ -5,7 +5,7 @@ import { IMAGES } from '@/lib/images';
 import { getProviders } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
 
-// Нутгийн Монгол: Нутгийн хоол (Б хэсэг, soft). "Ангиллын жагсаалт" загвар.
+// Нутгийн Монгол: Нутгийн хоол (Б хэсэг, live). "Ангиллын жагсаалт" загвар.
 export const dynamic = 'force-dynamic';
 export const metadata = metaFor('/local/food');
 

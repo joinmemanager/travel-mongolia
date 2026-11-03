@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArticleTeaser from '@/components/ArticleTeaser';
 import DarkPanel from '@/components/design/DarkPanel';
 import LinkCard from '@/components/design/LinkCard';
 import PatternBand from '@/components/design/PatternBand';
@@ -9,8 +10,9 @@ import { LOCAL_PAGES } from '@/components/templates/LocalListingPage';
 import { IMAGES } from '@/lib/images';
 import { getExperiences, getProviders, PROVIDER_TYPES, SAMPLE_PREFIX } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
+import { getSectionArticles } from '@/lib/sectionArticles';
 
-// "Нутгийн Монгол" hub (Б хэсэг). Төлөв: soft (lib/navigation.ts PAGE_STATUS).
+// "Нутгийн Монгол" hub (Б хэсэг). Төлөв: live (lib/navigation.ts PAGE_STATUS).
 // Hub загвар: зурагтай картууд → нэг бараан ногоон самбар → холбоосны карт.
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
 export const revalidate = 604800;
@@ -25,10 +27,11 @@ const CHOICE_ITEMS = [
 ];
 
 export default async function LocalHubPage() {
-  const [providers, experiences] = await Promise.all([getProviders(), getExperiences()]);
+  const [providers, experiences, articles] = await Promise.all([getProviders(), getExperiences(), getSectionArticles('local')]);
 
   const sections: HubSection[] = [
-    ...PROVIDER_TYPES.map((t) => ({
+    // Хуудасгүй, хоосон ангиллыг гаргахгүй (байр /plan/accommodation-д, жижиг бизнес хараахан алга)
+    ...PROVIDER_TYPES.filter((t) => t.href || providers.some((p) => p.providerType === t.id)).map((t) => ({
       id: t.id,
       title: t.mn,
       href: t.href,
@@ -82,6 +85,19 @@ export default async function LocalHubPage() {
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-12 space-y-16">
+        {articles.length > 0 && (
+          <section id="articles" className="scroll-mt-28">
+            <h2 className="mb-6 text-2xl sm:text-3xl font-black text-neutral-900">Нийтлэлүүд</h2>
+            <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {articles.map((a) => (
+                <li key={a.id}>
+                  <ArticleTeaser article={a} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <LocalHubClient sections={sections} emptyText="Удахгүй нэмэгдэнэ." />
 
         <DarkPanel

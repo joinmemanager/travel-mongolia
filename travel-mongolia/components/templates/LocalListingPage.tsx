@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArticleTeaser from '@/components/ArticleTeaser';
 import ComingSoon from '@/components/design/ComingSoon';
 import LinkCard from '@/components/design/LinkCard';
 import type { SiteImage } from '@/lib/images';
@@ -11,6 +12,7 @@ import {
   SAMPLE_PREFIX,
 } from '@/lib/localContent';
 import { inviteSubject, LOCAL_INVITES } from '@/lib/localInvites';
+import { getArticleAt } from '@/lib/sectionArticles';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
 import CategoryListing, { type ListingSpot } from './CategoryListing';
@@ -75,7 +77,7 @@ export function productSpot(x: LocalProduct): ListingSpot {
   };
 }
 
-export default function LocalListingPage({
+export default async function LocalListingPage({
   hero,
   kicker,
   title,
@@ -98,6 +100,8 @@ export default function LocalListingPage({
   // "[ЖИШЭЭ]"-ээс бусад entry байхгүй бол "Тун удахгүй" блок (preview дээр жишээ картууд доор нь харагдана)
   const isEmpty = !spots.some((s) => !s.title.startsWith(SAMPLE_PREFIX));
   const invite = LOCAL_INVITES[inviteKey];
+  // Энэ дэд хэсгийн нийтлэл (lib/sectionArticles.ts)
+  const article = await getArticleAt('local', current);
   // Шүүлтүүр: жагсаалтад байгаа аймгууд
   const provinces = Array.from(new Set(spots.map((s) => s.categoryKey).filter((k) => k !== 'other')));
   const categories = [
@@ -116,8 +120,11 @@ export default function LocalListingPage({
       countLabel={countLabel}
       cta="Дэлгэрэнгүй"
       notice={
-        isEmpty && invite ? (
-          <ComingSoon title={invite.text} invite={invite.invite} ctaSubject={inviteSubject(inviteKey)} />
+        article || (isEmpty && invite) ? (
+          <div className="space-y-8">
+            {article && <ArticleTeaser article={article} />}
+            {isEmpty && invite && <ComingSoon title={invite.text} invite={invite.invite} ctaSubject={inviteSubject(inviteKey)} />}
+          </div>
         ) : undefined
       }
       footer={

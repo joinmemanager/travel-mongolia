@@ -121,11 +121,14 @@ export default function CategoryListing<T extends ListingSpot>({
   const list = (
     <>
       {notice && <div className="mb-10">{notice}</div>}
-      <div className="flex justify-between items-end mb-6">
-        <p className="text-xs text-neutral-500 font-semibold uppercase tracking-wider">
-          Нийт {filteredSpots.length} {countLabel}
-        </p>
-      </div>
+      {/* Жагсаалт бүхэлдээ хоосон бол (жишээ нь нийтлэлтэй /local/guides) «Нийт 0» мөр гаргахгүй */}
+      {spots.length > 0 && (
+        <div className="flex justify-between items-end mb-6">
+          <p className="text-xs text-neutral-500 font-semibold uppercase tracking-wider">
+            Нийт {filteredSpots.length} {countLabel}
+          </p>
+        </div>
+      )}
 
       <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${embedded ? 'xl:grid-cols-3' : 'lg:grid-cols-3'}`}>
         {filteredSpots.map((spot) => (
@@ -164,7 +167,8 @@ export default function CategoryListing<T extends ListingSpot>({
     <main className="min-h-screen bg-[#fafafa] pb-24">
       {hero && <ImageHero image={hero} kicker={kicker} title={title || ''} intro={intro} />}
 
-      {/* Ангиллын шүүлтүүр: 2 талдаа сумтай хэвтээ мөр */}
+      {/* Ангиллын шүүлтүүр: 2 талдаа сумтай хэвтээ мөр (сонгох зүйлгүй бол гаргахгүй) */}
+      {categories.length > 1 && (
       <div className="sticky top-(--nav-h) z-40 bg-white border-b border-neutral-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative flex items-center py-3.5">
           <button
@@ -193,6 +197,7 @@ export default function CategoryListing<T extends ListingSpot>({
           </button>
         </div>
       </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-10">{list}</div>
     </main>

@@ -6,9 +6,9 @@ import ExperienceTemplate from '@/components/templates/ExperienceTemplate';
 import { getExperienceBySlug, getProducts, getProviders } from '@/lib/localContent';
 import { getRelatedItems } from '@/lib/related';
 import { entryMeta } from '@/lib/pageMeta';
-import { richTextToPlain, truncate } from '@/lib/seo';
+import { NOINDEX, richTextToPlain, truncate } from '@/lib/seo';
 
-// Нутгийн туршлага (Б хэсэг, /local-ийн draft төлвийг өвлөнө)
+// Нутгийн туршлага (Б хэсэг)
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
 export const revalidate = 604800;
 
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const x = await getExperienceBySlug(slug);
   if (!x) return { title: 'Мэдээлэл олдсонгүй', robots: { index: false } };
-  return entryMeta({
+  const meta = entryMeta({
     title: x.title,
     description: truncate(
       richTextToPlain(x.whatYouDo) || `${x.title}: ${[x.province, x.duration].filter(Boolean).join(', ')}. Нутгийн иргэдийн зохион байгуулдаг туршлага.`
@@ -28,6 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/local/experiences/${x.slug}`,
     image: x.photos[0]?.src,
   });
+  // Ганц хуудас хайлтад орохгүй, зөвхөн жагсаалт index (/local/<slug>-тэй адил)
+  return { ...meta, robots: NOINDEX };
 }
 
 export default async function ExperiencePage({ params }: Props) {

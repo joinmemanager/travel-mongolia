@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArticleTeaser from '@/components/ArticleTeaser';
 import ComingSoon from '@/components/design/ComingSoon';
 import DarkPanel from '@/components/design/DarkPanel';
 import LinkCard from '@/components/design/LinkCard';
@@ -10,8 +11,9 @@ import { IMPACT_HUB as hub, partnerMailto } from '@/lib/impactData';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { getProvinceLinks } from '@/lib/provinces';
+import { getSectionArticles } from '@/lib/sectionArticles';
 
-// "Үр өгөөж & түншлэл" hub (ia-plan.md C14, 5г). Төлөв: draft (цэсний 5 зүйл).
+// "Үр өгөөж & түншлэл" hub (ia-plan.md C14, 5г). Төлөв: live (цэсний 5 зүйл).
 // /impact/* дэд хуудсын оронд нэг хуудас, 5 хэсэг. Цэс хэсэг бүр рүү anchor-оор заана.
 // НООРОГ текст: lib/impactData.ts
 export const metadata = metaFor('/impact');
@@ -85,6 +87,12 @@ export default async function ImpactHubPage() {
     return v !== null && !/^0%?$/.test(v);
   });
   const hasPending = metrics.length < hub.localImpact.metrics.length;
+  // Дэд хэсэг бүрийн нийтлэл (lib/sectionArticles.ts)
+  const articles = await getSectionArticles('impact');
+  const articleFor = (id: string) => {
+    const a = articles.find((x) => x.place?.href === `/impact#${id}`);
+    return a && <div className="mb-6"><ArticleTeaser article={a} /></div>;
+  };
 
   return (
     <main className="min-h-screen bg-[#fcfbf9] text-neutral-900">
@@ -121,6 +129,7 @@ export default async function ImpactHubPage() {
         <div className="flex-1 w-full space-y-16">
           {/* 01. Орон нутгийн үр өгөөж: Contentful-ын бодит тоо, өгөгдөлгүй бол "Мэдээлэл удахгүй" */}
           <Section id="local-impact" index={1} title={hub.localImpact.title} intro={hub.localImpact.intro}>
+            {articleFor('local-impact')}
             {metrics.length > 0 && (
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {metrics.map((metric) => {
@@ -154,14 +163,17 @@ export default async function ImpactHubPage() {
 
           {/* 02. Түншлэлийн төслүүд */}
           <Section id="projects" index={2} title={hub.projects.title} intro={hub.projects.intro}>
-            <div className="space-y-6">
-              <EmptyNote text={hub.projects.empty} />
-              <PartnerButton label={hub.projects.cta} subject={hub.projects.mailSubject} />
-            </div>
+            {articleFor('projects') || (
+              <div className="mb-6">
+                <EmptyNote text={hub.projects.empty} />
+              </div>
+            )}
+            <PartnerButton label={hub.projects.cta} subject={hub.projects.mailSubject} />
           </Section>
 
           {/* 03. Аймаг, DMO: Contentful-ын аймгууд автоматаар */}
           <Section id="provinces" index={3} title={hub.provinces.title} intro={hub.provinces.intro}>
+            {articleFor('provinces')}
             {provinces.length > 0 ? (
               // Холбоосны карт (components/design/LinkCard)
               <LinkCard
@@ -176,6 +188,7 @@ export default async function ImpactHubPage() {
 
           {/* 04. Аяллын бизнес */}
           <Section id="businesses" index={4} title={hub.businesses.title} intro={hub.businesses.intro}>
+            {articleFor('businesses')}
             <PartnerButton label={hub.businesses.cta} subject={hub.businesses.mailSubject} />
           </Section>
 
@@ -186,6 +199,7 @@ export default async function ImpactHubPage() {
             intro={hub.donors.intro}
             items={hub.donors.outcomes}
           />
+          {articleFor('donors')}
         </div>
       </div>
 

@@ -103,6 +103,17 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         { path: '/stories/news' },
         one(`/impact/examples/${key}`, '/impact/examples/[slug]'),
         { path: '/impact/examples' },
+        // Дэд хэсгүүдийн нийтлэл (topic = local / respect / impact, lib/sectionArticles.ts) ба карттай хуудсууд.
+        // /local/<ангилал> нь force-dynamic, /impact-ийг доор бүх төрөлд тэмдэглэдэг.
+        one(`/local/articles/${key}`, '/local/articles/[slug]'),
+        one(`/respect/articles/${key}`, '/respect/articles/[slug]'),
+        one(`/impact/articles/${key}`, '/impact/articles/[slug]'),
+        { path: '/local' },
+        { path: '/respect' },
+        { path: '/respect/etiquette' },
+        { path: '/respect/nature' },
+        { path: '/respect/accessible' },
+        { path: '/plan/safety-info' },
       ];
     case 'cultureArticle':
       // section-ийг webhook-ийн payload-аас уншина (Unpublish-д байхгүй → дөрвөн route-ийг бүгдийг)

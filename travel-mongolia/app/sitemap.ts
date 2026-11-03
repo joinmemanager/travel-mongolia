@@ -4,9 +4,11 @@ import { client, rethrowOutage } from '@/lib/contentful';
 import { ACCOMMODATION_BASE, isDirectoryAccommodation } from '@/lib/accommodation';
 import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
 import { entryKey } from '@/lib/entries';
+import { REPORTS_BASE } from '@/lib/internationalReports';
 import { isUnpublishedPage, REDIRECTED_PATHS } from '@/lib/navigation';
 import { NEWS_BASE } from '@/lib/news';
 import { PAGE_META } from '@/lib/pageMeta';
+import { articleHref, isArticleSection } from '@/lib/sectionArticles';
 import { isThinContent, SITE_URL } from '@/lib/seo';
 import { allShorts, isAllIndexable, isTopicIndexable, lastAdded, SHORTS_BASE, shortsHref } from '@/lib/shorts';
 import { getShortsTopics } from '@/lib/shortsData';
@@ -164,6 +166,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((e) => ({ path: `${NEWS_BASE}/${entryKey(e)}`, e }))
       .filter(({ path }) => !isUnpublishedPage(path))
       .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.4 })),
+    // Нутгийн Монгол, Хүндэтгэлтэй аялал, Үр өгөөж & түншлэлийн нийтлэл, олон улсын тайлангийн хураангуй
+    // (/local/<slug> профайлууд noindex тул орохгүй)
+    ...stories
+      .filter((e) => isArticleSection(e.fields.topic) || e.fields.topic === 'international')
+      .map((e) => ({
+        path: isArticleSection(e.fields.topic) ? articleHref(e.fields.topic, entryKey(e)) : `${REPORTS_BASE}/${entryKey(e)}`,
+        e,
+      }))
+      .filter(({ path }) => !isUnpublishedPage(path))
+      .map(({ path, e }) => ({ url: `${SITE_URL}${path}`, lastModified: e.sys.updatedAt, priority: 0.5 })),
   ];
 
   return [...staticPages, ...dynamicPages];

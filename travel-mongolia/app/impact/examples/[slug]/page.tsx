@@ -11,7 +11,7 @@ import { isPreviewEnv } from '@/lib/navigation';
 import { entryMeta } from '@/lib/pageMeta';
 import { richTextToPlain, truncate } from '@/lib/seo';
 
-// Олон улсын тайлангийн монгол хураангуй (story, topic «international»). /impact/examples-ийн soft төлвийг өвлөнө (noindex).
+// Олон улсын тайлангийн монгол хураангуй (story, topic «international»). /impact/examples-ийн төлвийг өвлөнө.
 export const revalidate = 604800;
 
 interface Props {

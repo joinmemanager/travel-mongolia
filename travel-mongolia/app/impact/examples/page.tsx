@@ -7,7 +7,7 @@ import { getInternationalReports, SOURCE_TYPE_LABEL } from '@/lib/internationalR
 import { isPreviewEnv } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 
-// «Үр өгөөж & түншлэл» › «Олон улсын жишиг ба тайлан»: тайлангуудын жагсаалт. Төлөв: soft (noindex, sitemap-гүй).
+// «Үр өгөөж & түншлэл» › «Олон улсын жишиг ба тайлан»: тайлангуудын жагсаалт. Төлөв: live.
 export const metadata = metaFor('/impact/examples');
 export const revalidate = 604800;
 

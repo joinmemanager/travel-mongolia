@@ -1,3 +1,4 @@
+import ArticleTeaser from '@/components/ArticleTeaser';
 import DarkPanel from '@/components/design/DarkPanel';
 import ImageCard from '@/components/design/ImageCard';
 import PatternBand from '@/components/design/PatternBand';
@@ -7,8 +8,10 @@ import { IMAGES, type SiteImage } from '@/lib/images';
 import { liveHref } from '@/lib/navigation';
 import { metaFor } from '@/lib/pageMeta';
 import { RESPECT_HUB as hub } from '@/lib/respectData';
+import { getArticleAt } from '@/lib/sectionArticles';
 
 export const metadata = metaFor('/respect');
+export const revalidate = 604800;
 
 // Дэд хуудасны картын зураг (Монголынх нь шалгагдсан, docs/plan/images.md)
 const SUBPAGE_IMAGES: Record<string, SiteImage> = {
@@ -18,7 +21,8 @@ const SUBPAGE_IMAGES: Record<string, SiteImage> = {
   '/plan/safety-info': IMAGES.redCliffs,
 };
 
-export default function RespectHubPage() {
+export default async function RespectHubPage() {
+  const article = await getArticleAt('respect', '/respect');
   return (
     <GuidePage
       notice={RESPECT_REVIEW_NOTICE}
@@ -34,6 +38,8 @@ export default function RespectHubPage() {
       related={hub.related}
       bottomBand={<PatternBand />}
     >
+      {article && <ArticleTeaser article={article} />}
+
       {/* Дэд хуудсууд: зурагтай картууд */}
       <section className="p-8 sm:p-10 rounded-3xl border border-neutral-200/80 bg-white shadow-sm">
         <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-6">

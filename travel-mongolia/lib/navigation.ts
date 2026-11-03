@@ -131,7 +131,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Аяллын маршрутууд', 'Itineraries', '/inspiration/itineraries'),
         ],
       },
-      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'soft' },
+      { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'live' },
       { mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
       { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', status: 'live' },
       {
@@ -196,12 +196,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     mn: 'Нутгийн Монгол',
     en: 'Local Mongolia',
     items: [
-      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'soft' },
-      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'soft' },
-      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'soft' },
-      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'soft' },
-      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'soft' },
-      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'soft' },
+      { mn: 'Нутгийн туршлага', en: 'Community Experiences', href: '/local/experiences', status: 'live' },
+      { mn: 'Нутгийн хөтөч', en: 'Local Guides', href: '/local/guides', status: 'live' },
+      { mn: 'Малчин өрх', en: 'Herder Families', href: '/local/herder-families', status: 'live' },
+      { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'live' },
+      { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'live' },
+      { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'live' },
       { mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
       { mn: 'Хэрэгтэй үйлчилгээ', en: 'Useful Services', href: '/plan/useful-services', status: 'live' },
     ],
@@ -224,12 +224,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
     en: 'Impact & Partners',
     items: [
       // /impact/* дэд хуудсын оронд нэг хуудасны хэсгүүд рүү anchor-оор заана (ia-plan.md 5г)
-      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact#local-impact', status: 'soft' },
-      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact#projects', status: 'soft' },
-      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'soft' },
-      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'soft' },
-      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'soft' },
-      { mn: 'Олон улсын жишиг ба тайлан', en: 'International Examples & Reports', href: '/impact/examples', status: 'soft' },
+      { mn: 'Орон нутгийн үр өгөөж', en: 'Local Impact', href: '/impact#local-impact', status: 'live' },
+      { mn: 'Түншлэлийн төслүүд', en: 'Partner Projects', href: '/impact#projects', status: 'live' },
+      { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'live' },
+      { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'live' },
+      { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'live' },
+      { mn: 'Олон улсын жишиг ба тайлан', en: 'International Examples & Reports', href: '/impact/examples', status: 'live' },
     ],
   },
 ];
@@ -277,10 +277,10 @@ export const PAGE_STATUS: Record<string, NavStatus> = {
   [SHORTS_BASE]: SHORTS_STATUS,
   // TIC-ийн мэдээний архив (8-р багц): эзэмшигч 2026-10-21-нд live болгосон. /stories/news/<slug> өвлөнө.
   '/stories/news': 'live',
-  // Нутгийн Монгол hub: soft. /local/<slug> профайлууд энэ төлвийг өвлөнө.
-  '/local': 'soft',
-  // Олон улсын тайлангийн хураангуй: soft. /impact/examples/<slug> энэ төлвийг өвлөнө.
-  '/impact/examples': 'soft',
+  // Нутгийн Монгол hub: live (2026-11-03). /local/<slug> профайлууд өөрсдөө noindex (app/local/[slug]/page.tsx).
+  '/local': 'live',
+  // Олон улсын тайлангийн хураангуй: live (2026-11-03). /impact/examples/<slug> энэ төлвийг өвлөнө.
+  '/impact/examples': 'live',
 };
 
 // Өөр хаяг руу байнгын redirect хийдэг хаягууд (next.config.js). Sitemap-д оруулахгүй.

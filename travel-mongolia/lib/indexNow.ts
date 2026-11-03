@@ -1,4 +1,5 @@
 import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
+import { articleHref, isArticleSection } from '@/lib/sectionArticles';
 import { SITE_URL } from '@/lib/seo';
 import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
 import { SPECIES_SECTION } from '@/lib/species';
@@ -44,12 +45,14 @@ export function entryUrls(contentType: string, fields: Record<string, any> | und
       break;
     }
     case 'localProvider':
-      // Зөвхөн TIC-ийн буудал, бааз (/plan/accommodation); бусад нь /local (soft)
+      // Зөвхөн TIC-ийн буудал, бааз (/plan/accommodation); бусад нь /local/<slug> (noindex)
       if (f('providerType') === 'accommodation' && /touristinfocenter/.test(String(f('sourceUrl') || ''))) paths.push(`/plan/accommodation/${key}`);
       break;
     case 'story':
-      // Зөвхөн TIC-ийн мэдээний архив (иргэдийн түүх зөвшөөрлөөс хамаарна)
+      // TIC-ийн мэдээний архив, хэсгүүдийн нийтлэл, олон улсын тайлан (иргэдийн түүх зөвшөөрлөөс хамаарна)
       if (f('topic') === 'news') paths.push(`/stories/news/${key}`);
+      if (isArticleSection(f('topic'))) paths.push(articleHref(f('topic'), key));
+      if (f('topic') === 'international') paths.push(`/impact/examples/${key}`);
       break;
     case 'place': {
       const info = CATEGORY_INFO[f('category') as PlaceCategory];
