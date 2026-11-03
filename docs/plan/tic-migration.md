@@ -313,7 +313,7 @@ API дуудлага: 2026-08-30-аас хойш CDA 20,592, CMA 6,018 дууд�
 | `/cate12.aspx` (ангиллын жагсаалт) | `/about/nature` | 1 |
 | `/cate13.aspx` (ангиллын жагсаалт) | `/destination/region` | 1 |
 | `/cate14.aspx` (ангиллын жагсаалт) | `/about/history` | 1 |
-| `/cate15.aspx` (ангиллын жагсаалт) | `/about/culture` | 1 |
+| `/cate15.aspx` (ангиллын жагсаалт) | `/about/culture/religion` | 1 |
 | `/cate16.aspx` (ангиллын жагсаалт) | `/about/traditions` | 1 |
 | `/cate17.aspx` (ангиллын жагсаалт) | `/things-to-do/culture` | 1 |
 | `/cate20.aspx` (ангиллын жагсаалт) | `/things-to-do/events` | 1 |

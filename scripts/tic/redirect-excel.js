@@ -61,8 +61,8 @@ function cellXml(ref, v, style) {
   return `<c r="${ref}"${s} t="inlineStr"><is><t>${esc(v)}</t></is></c>`;
 }
 
-function sheetXml(rows, { autoFilter, boldLast }) {
-  const widths = rows[0].map((_, c) => Math.min(255, Math.max(...rows.map((r) => {
+function sheetXml(rows, { autoFilter, boldLast, colWidths }) {
+  const widths = colWidths || rows[0].map((_, c) => Math.min(255, Math.max(...rows.map((r) => {
     const v = r[c];
     return String(v && typeof v === 'object' ? v.v : v ?? '').length;
   })) + 3));
@@ -124,15 +124,42 @@ function zip(files) {
   return Buffer.concat([...parts, dir, end]);
 }
 
-function workbook(rows, counts) {
+// «Кодерт анхааруулах» хуудас: cate14-ийн дүрмүүдийн дараалал. Хаягийг мөрүүдээс авна (CSV-тэй зөрөхгүй).
+function coderNotes(rows) {
+  const target = (old) => {
+    const row = rows.find((r) => r[0] === `https://www.touristinfocenter.mn${old}`);
+    if (!row) throw new Error(`мөр олдсонгүй: ${old}`);
+    return row[1];
+  };
+  const pathOf = (u) => new URL(u).pathname;
+  const type3 = target('/cate14.aspx?TypeID=3');
+  const general = target('/cate14.aspx');
+  return [
+    ['Дараалал', 'Хуучин хаяг (TIC)', 'Query-ийн нөхцөл', 'Шинэ хаяг (Travel Hub)', 'Тайлбар'],
+    [1, '/cate14.aspx', 'TypeID=1', target('/cate14.aspx?TypeID=1'), 'Угсаатны үүсэл'],
+    [2, '/cate14.aspx', 'TypeID=2', target('/cate14.aspx?TypeID=2'), 'Улсын түүх'],
+    [3, '/cate14.aspx', 'TypeID=3', type3, 'Түүхэн хүмүүс'],
+    [4, '/cate14.aspx', 'Query-гүй (ерөнхий дүрэм)', general, 'Хамгийн сүүлд ажиллана'],
+    [],
+    ['Шаардлага: TypeID-тэй дүрмүүд query-г шалгаж, ерөнхий cate14.aspx-ийн дүрмээс ӨМНӨ ажиллах ёстой.'],
+    [`Зөв жишээ: /cate14.aspx?TypeID=3 → 3-р дүрэм → ${pathOf(type3)}`],
+    [`Буруу жишээ: ерөнхий дүрэм эхэлж ажиллавал /cate14.aspx?TypeID=3 → ${pathOf(general)} (буруу хуудас).`],
+    ['Шалтгаан: TIC-ийн одоогийн redirect query тоохгүй байж болно (жишээ: cate10.aspx?TypeID=2 нь cate10.aspx-тэй ижил хаяг руу очдог).'],
+    [`cate15.aspx нэг дүрэмтэй: TypeID=1, 2, 3 бүгд ${pathOf(target('/cate15.aspx'))} руу очно, query шалгах шаардлагагүй.`],
+  ];
+}
+
+function workbook(rows, counts, notes) {
   const main = [['Хуучин хаяг (TIC)', 'Шинэ хаяг (Travel Hub)', 'Ангилал', 'Шалгалт'], ...rows];
   const total = counts.reduce((n, [, c]) => n + c, 0);
   const summary = [['Ангилал', 'Тоо'], ...counts, ['Нийт', { f: `SUM(B2:B${counts.length + 1})`, v: total }]];
-  const names = ['Redirect', 'Ангиллаар тоо'];
+  const names = ['Redirect', 'Ангиллаар тоо', ...(notes ? ['Кодерт анхааруулах'] : [])];
+  const sheetTypes = names.map((_, i) => `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('');
+  const sheetRels = names.map((_, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i + 1}.xml"/>`).join('');
   return zip({
-    '[Content_Types].xml': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/worksheets/sheet2.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>',
+    '[Content_Types].xml': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>' + sheetTypes + '<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>',
     '_rels/.rels': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>',
-    'xl/_rels/workbook.xml.rels': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet2.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>',
+    'xl/_rels/workbook.xml.rels': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' + sheetRels + `<Relationship Id="rId${names.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`,
     'xl/workbook.xml': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
       + `<sheets>${names.map((n, i) => `<sheet name="${n}" sheetId="${i + 1}" r:id="rId${i + 1}"/>`).join('')}</sheets>`
       + `<definedNames><definedName name="_xlnm._FilterDatabase" localSheetId="0" hidden="1">Redirect!$A$1:$D$${main.length}</definedName></definedNames>`
@@ -140,6 +167,7 @@ function workbook(rows, counts) {
     'xl/styles.xml': STYLES,
     'xl/worksheets/sheet1.xml': sheetXml(main, { autoFilter: true }),
     'xl/worksheets/sheet2.xml': sheetXml(summary, { boldLast: true }),
+    ...(notes ? { 'xl/worksheets/sheet3.xml': sheetXml(notes, { colWidths: [11, 20, 28, 62, 26] }) } : {}),
   });
 }
 
@@ -170,7 +198,7 @@ function workbook(rows, counts) {
       tally[r.ангилал] = (tally[r.ангилал] || 0) + 1;
     }
     const counts = Object.entries(tally).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'mn'));
-    fs.writeFileSync(path.join(OUT, `${batch}.xlsx`), workbook(keep, counts));
+    fs.writeFileSync(path.join(OUT, `${batch}.xlsx`), workbook(keep, counts, batch === 'batch-09-deferred' ? coderNotes(keep) : null));
     stats[batch] = { csv: rows.length, excel: keep.length, redirect: keep.filter((x) => x[3] === 'redirect').length, bad: rows.length - keep.length, noindex: rows.filter((r) => results[r.new_url].noindex).length, counts };
   }
   const cell = (v) => (/[",\n\r]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
