@@ -203,6 +203,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'soft' },
       { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'soft' },
       { mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
+      { mn: 'Хэрэгтэй үйлчилгээ', en: 'Useful Services', href: '/plan/useful-services', status: 'live' },
     ],
   },
   {

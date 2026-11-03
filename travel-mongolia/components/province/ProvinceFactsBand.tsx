@@ -13,7 +13,7 @@ export interface FactItem {
 // Багана: утас 2, tablet 3 (2 мөр), xl (≥1280) нэг мөрөнд агуулгын өргөнөөр (auto) тэгш зайтай.
 // Аймгийн төвийн хамгийн урт нэр «Даланзадгад» (11 үсэг, lib/provinceFacts.ts) 1fr баганад багтахгүй
 // дараагийн багана руу наалдаж байсан (2026-10-22). min-w-0 + overflow-wrap нь сүүлчийн хамгаалалт.
-export default function ProvinceFactsBand({ items, note }: { items: FactItem[]; note?: string }) {
+export default function ProvinceFactsBand({ items, note, action }: { items: FactItem[]; note?: string; action?: React.ReactNode }) {
   if (!items.length) return null;
   return (
     <section aria-label="Аймгийн үндсэн үзүүлэлтүүд" className={`${DARK_GREEN_BG} text-white`}>
@@ -29,6 +29,7 @@ export default function ProvinceFactsBand({ items, note }: { items: FactItem[]; 
             </div>
           ))}
         </dl>
+        {action && <div className="mt-6">{action}</div>}
         {note && <p className={`mt-6 text-xs ${MUTED_ON_DARK} opacity-80`}>{note}</p>}
       </div>
     </section>

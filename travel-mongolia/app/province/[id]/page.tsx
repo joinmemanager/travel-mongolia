@@ -28,6 +28,7 @@ import { isPreviewEnv, liveHref } from '@/lib/navigation';
 import { getHeritagePlaceCards } from '@/lib/places';
 import { ACCOMMODATION_BASE, getAccommodations } from '@/lib/accommodation';
 import { POPULATION_YEAR, PROVINCE_ALIASES, PROVINCE_FACTS } from '@/lib/provinceFacts';
+import { getProvinceServices } from '@/lib/provinceServices';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { splitRichText } from '@/lib/richTextParts';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
@@ -301,6 +302,16 @@ export default async function ProvinceDetailPage({ params }: Props) {
       {/* Hero ногоон туузтай шууд залгана (хооронд цагаан зурвасгүй) */}
       <ProvinceFactsBand
         items={facts}
+        action={
+          getProvinceServices(provinceSlug).length > 0 && (
+            <a
+              href="#useful-services"
+              className="inline-flex items-center px-4 py-2 text-sm font-bold rounded-full transition-colors bg-white text-[#0b3b20] hover:bg-emerald-50"
+            >
+              Хэрэгтэй үйлчилгээ ↓
+            </a>
+          )
+        }
         note={
           usedStatic
             ? `Эх сурвалж: ҮСХ (${POPULATION_YEAR} оны тооллого), Wikipedia, touristinfocenter.mn; дундаж өндөршил — Copernicus DEM-ээс тооцоолсон.`

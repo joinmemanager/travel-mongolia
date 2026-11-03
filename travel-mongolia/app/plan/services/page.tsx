@@ -149,6 +149,7 @@ export default function ServicesPage() {
       related={[
           { label: 'Өмнөх: 04. Байрлах газар', href: '/plan/accommodation' },
           { label: 'Дараах: 06. Аюулгүй байдал', href: '/plan/safety-info' },
+          { label: 'Хэрэгтэй үйлчилгээ: шатахуун, эмнэлэг, банк', href: '/plan/useful-services' },
       ]}
     >
 

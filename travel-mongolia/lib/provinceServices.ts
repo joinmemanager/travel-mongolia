@@ -1,30 +1,61 @@
+import osmArkhangai from '@/data/services/osm/arkhangai.json';
+import osmBayanUlgii from '@/data/services/osm/bayan-ulgii.json';
+import osmBayankhongor from '@/data/services/osm/bayankhongor.json';
+import osmBulgan from '@/data/services/osm/bulgan.json';
+import osmDarkhanUul from '@/data/services/osm/darkhan-uul.json';
+import osmDornod from '@/data/services/osm/dornod.json';
+import osmDornogov from '@/data/services/osm/dornogov.json';
+import osmDundgov from '@/data/services/osm/dundgov.json';
+import osmGovAltai from '@/data/services/osm/gov-altai.json';
+import osmGovsumber from '@/data/services/osm/govsumber.json';
+import osmKhentii from '@/data/services/osm/khentii.json';
+import osmKhovd from '@/data/services/osm/khovd.json';
+import osmKhuvsgul from '@/data/services/osm/khuvsgul.json';
+import osmOrkhon from '@/data/services/osm/orkhon.json';
+import osmSelenge from '@/data/services/osm/selenge.json';
+import osmSukhbaatar from '@/data/services/osm/sukhbaatar.json';
+import osmTuv from '@/data/services/osm/tuv.json';
+import osmUmnugov from '@/data/services/osm/umnugov.json';
+import osmUvs from '@/data/services/osm/uvs.json';
+import osmUvurkhangai from '@/data/services/osm/uvurkhangai.json';
+import osmZavkhan from '@/data/services/osm/zavkhan.json';
 import uvs from '@/data/services/uvs.json';
 import zavkhan from '@/data/services/zavkhan.json';
+import type { ProvinceService } from '@/lib/serviceTypes';
 
-// Аймгийн практик үйлчилгээ (шатахуун, эмнэлэг, эмийн сан, ЗДТГ). Contentful-д биш, репод: data/services/<аймаг>.json.
-// Эх: joinme.mn, scripts/joinme/import.js build үүсгэнэ. Одоогоор Завхан, Увсын мэдээлэл л бий.
-export type ServiceType = 'fuel_station' | 'hospital' | 'pharmacy' | 'government';
+// Аймгийн практик үйлчилгээ. Contentful-д биш, репод, эх сурвалж тус бүр тусдаа файлд:
+//   data/services/<аймаг>.json: joinme.mn (Завхан, Увс), scripts/joinme/import.js build үүсгэнэ
+//   data/services/osm/<аймаг>.json: OpenStreetMap (ODbL), scripts/osm/services.js build үүсгэнэ
+const items = (file: { items: unknown[] }) => file.items as ProvinceService[];
 
-export interface ProvinceService {
-  id: string;
-  name: string;
-  type: ServiceType;
-  soum: string | null;
-  location: string | null;
-  phones: string[];
-  image: string | null;
-}
-
-export const SERVICE_LABEL: Record<ServiceType, string> = {
-  fuel_station: 'Шатахуун түгээх станц',
-  hospital: 'Эмнэлэг',
-  pharmacy: 'Эмийн сан',
-  government: 'Засаг даргын тамгын газар',
+const JOINME: Record<string, ProvinceService[]> = { uvs: items(uvs), zavkhan: items(zavkhan) };
+const OSM: Record<string, ProvinceService[]> = {
+  arkhangai: items(osmArkhangai),
+  'bayan-ulgii': items(osmBayanUlgii),
+  bayankhongor: items(osmBayankhongor),
+  bulgan: items(osmBulgan),
+  'darkhan-uul': items(osmDarkhanUul),
+  dornod: items(osmDornod),
+  dornogov: items(osmDornogov),
+  dundgov: items(osmDundgov),
+  'gov-altai': items(osmGovAltai),
+  govsumber: items(osmGovsumber),
+  khentii: items(osmKhentii),
+  khovd: items(osmKhovd),
+  khuvsgul: items(osmKhuvsgul),
+  orkhon: items(osmOrkhon),
+  selenge: items(osmSelenge),
+  sukhbaatar: items(osmSukhbaatar),
+  tuv: items(osmTuv),
+  umnugov: items(osmUmnugov),
+  uvs: items(osmUvs),
+  uvurkhangai: items(osmUvurkhangai),
+  zavkhan: items(osmZavkhan),
 };
 
-const BY_PROVINCE: Record<string, ProvinceService[]> = {
-  uvs: uvs.items as ProvinceService[],
-  zavkhan: zavkhan.items as ProvinceService[],
-};
+export const SERVICE_PROVINCES = Object.keys(OSM);
 
-export const getProvinceServices = (provinceSlug: string): ProvinceService[] => BY_PROVINCE[provinceSlug] || [];
+export const getProvinceServices = (provinceSlug: string): ProvinceService[] => [
+  ...(JOINME[provinceSlug] || []),
+  ...(OSM[provinceSlug] || []),
+];
