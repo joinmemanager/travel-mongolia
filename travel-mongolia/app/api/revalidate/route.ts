@@ -95,12 +95,14 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         { path: '/about/nature/plants' },
       ];
     case 'story':
-      // Түүх & өв hub-ийн нийтлэл эсвэл TIC-ийн мэдээ (topic = news, /stories/news/<slug>)
+      // Түүх & өв hub-ийн нийтлэл, TIC-ийн мэдээ (topic = news, /stories/news/<slug>) эсвэл олон улсын тайлан (topic = international)
       return [
         one(`/stories/${key}`, '/stories/[slug]'),
         { path: '/stories' },
         one(`/stories/news/${key}`, '/stories/news/[slug]'),
         { path: '/stories/news' },
+        one(`/impact/examples/${key}`, '/impact/examples/[slug]'),
+        { path: '/impact/examples' },
       ];
     case 'cultureArticle':
       // section-ийг webhook-ийн payload-аас уншина (Unpublish-д байхгүй → дөрвөн route-ийг бүгдийг)

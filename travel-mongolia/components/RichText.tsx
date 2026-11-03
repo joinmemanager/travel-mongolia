@@ -5,7 +5,7 @@ import { parseCredit } from '@/lib/imageCredit';
 import { cdnImage } from '@/lib/imageUrl';
 import { SITE_URL } from '@/lib/seo';
 
-// Contentful Rich Text-ийг энгийн HTML болгон харуулна (догол мөр, гарчиг, жагсаалт, ишлэл, холбоос,
+// Contentful Rich Text-ийг энгийн HTML болгон харуулна (догол мөр, гарчиг, жагсаалт, хүснэгт, ишлэл, холбоос,
 // оруулсан зураг). Entry оруулгыг алгасна. Текст доторх мөр шилжилт (\n) <br> болно.
 function renderText(value: string): React.ReactNode {
   if (!value.includes('\n')) return value;
@@ -54,6 +54,20 @@ function renderNode(node: any, key: number): React.ReactNode {
       return <li key={key}>{children}</li>;
     case 'blockquote':
       return <blockquote key={key} className="my-6 pl-4 border-l-4 border-[#15803d] italic text-neutral-700">{children}</blockquote>;
+    case 'table':
+      return (
+        <div key={key} className="overflow-x-auto mb-6">
+          <table className="w-full text-sm border-collapse [&_p]:mb-0 [&_p]:text-sm">
+            <tbody>{children}</tbody>
+          </table>
+        </div>
+      );
+    case 'table-row':
+      return <tr key={key} className="border-b border-neutral-200 align-top">{children}</tr>;
+    case 'table-header-cell':
+      return <th key={key} scope="col" className="p-3 text-left font-bold bg-neutral-50 [&_p]:font-bold [&_p]:text-neutral-900">{children}</th>;
+    case 'table-cell':
+      return <td key={key} className="p-3">{children}</td>;
     case 'hr':
       return <hr key={key} className="my-8 border-neutral-200" />;
     case 'hyperlink': {

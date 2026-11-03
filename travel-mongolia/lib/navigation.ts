@@ -229,6 +229,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'soft' },
       { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'soft' },
       { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'soft' },
+      { mn: 'Олон улсын жишиг ба тайлан', en: 'International Examples & Reports', href: '/impact/examples', status: 'soft' },
     ],
   },
 ];
@@ -278,6 +279,8 @@ export const PAGE_STATUS: Record<string, NavStatus> = {
   '/stories/news': 'live',
   // Нутгийн Монгол hub: soft. /local/<slug> профайлууд энэ төлвийг өвлөнө.
   '/local': 'soft',
+  // Олон улсын тайлангийн хураангуй: soft. /impact/examples/<slug> энэ төлвийг өвлөнө.
+  '/impact/examples': 'soft',
 };
 
 // Өөр хаяг руу байнгын redirect хийдэг хаягууд (next.config.js). Sitemap-д оруулахгүй.
