@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import type { Accommodation, AccommodationKind } from '@/lib/accommodation';
 import { cdnImage } from '@/lib/imageUrl';
@@ -12,10 +12,13 @@ export default function TicAccommodationDirectory({
   items,
   notice,
   kindLabel,
+  aimagSlugs,
 }: {
   items: Accommodation[];
   notice: string;
   kindLabel: Record<AccommodationKind, string>;
+  // Аймгийн нэр → slug (?aimag=<slug>)
+  aimagSlugs: Record<string, string>;
 }) {
   const [aimag, setAimag] = useState('');
   const [kind, setKind] = useState<AccommodationKind | ''>('');
@@ -23,6 +26,20 @@ export default function TicAccommodationDirectory({
     () => [...new Set(items.map((x) => x.province).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'mn')),
     [items]
   );
+  // ?aimag=<slug>: аймгийн хуудасны холбоос. useSearchParams биш: хуудас статик, бүх мөр server HTML-д үлдэнэ.
+  // Мэдэгдэхгүй утгыг үл тоомсорлоно (бүх аймаг).
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get('aimag');
+    const name = aimags.find((a) => aimagSlugs[a] === slug);
+    if (name) setAimag(name);
+  }, [aimags, aimagSlugs]);
+  const chooseAimag = (name: string) => {
+    setAimag(name);
+    const url = new URL(window.location.href);
+    if (aimagSlugs[name]) url.searchParams.set('aimag', aimagSlugs[name]);
+    else url.searchParams.delete('aimag');
+    window.history.replaceState(window.history.state, '', url);
+  };
   const visible = (x: Accommodation) => (!aimag || x.province === aimag) && (!kind || x.kind === kind);
   const shown = items.filter(visible).length;
   const chip = (active: boolean) =>
@@ -51,7 +68,7 @@ export default function TicAccommodationDirectory({
           Аймаг
           <select
             value={aimag}
-            onChange={(e) => setAimag(e.target.value)}
+            onChange={(e) => chooseAimag(e.target.value)}
             className="px-3 py-1.5 rounded-lg border border-neutral-200 bg-white text-xs font-semibold text-neutral-800"
           >
             <option value="">Бүх аймаг</option>

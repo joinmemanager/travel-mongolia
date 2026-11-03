@@ -54,7 +54,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
         <Breadcrumbs
           items={[
             { label: 'Нүүр', href: '/' },
-            { label: 'Байр', href: ACCOMMODATION_BASE },
+            { label: 'Байрлах газар', href: ACCOMMODATION_BASE },
             { label: a.name, href: a.href },
           ]}
         />

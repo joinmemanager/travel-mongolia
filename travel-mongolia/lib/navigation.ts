@@ -132,7 +132,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
         ],
       },
       { mn: 'Туршлагууд', en: 'Experiences', href: '/local/experiences', status: 'soft' },
-      { mn: 'Байр', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
+      { mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
       { mn: 'Нутгийн үйлчилгээ', en: 'Local Services', href: '/plan/services', status: 'live' },
       {
         mn: 'Тээвэр', en: 'Transport', href: '/plan/getting-around', status: 'live',
@@ -202,6 +202,7 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'soft' },
       { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'soft' },
       { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'soft' },
+      { mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
     ],
   },
   {

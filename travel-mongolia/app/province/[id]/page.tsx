@@ -26,6 +26,7 @@ import { cdnImage } from '@/lib/imageUrl';
 import { getGuidanceFor } from '@/lib/localContent';
 import { isPreviewEnv, liveHref } from '@/lib/navigation';
 import { getHeritagePlaceCards } from '@/lib/places';
+import { ACCOMMODATION_BASE, getAccommodations } from '@/lib/accommodation';
 import { POPULATION_YEAR, PROVINCE_ALIASES, PROVINCE_FACTS } from '@/lib/provinceFacts';
 import { getRelatedItems, linkIds } from '@/lib/related';
 import { splitRichText } from '@/lib/richTextParts';
@@ -260,6 +261,8 @@ export default async function ProvinceDetailPage({ params }: Props) {
   const soumPages = soums.filter((s) => s.ownPage);
   const soumBriefs = soums.filter((s) => !s.ownPage);
   const plannerHref = liveHref('/planner');
+  // Энэ аймагт байр байвал лавлах руу аймгаар шүүсэн холбоос (components/accommodation/TicAccommodationDirectory)
+  const hasAccommodation = (await getAccommodations()).some((a) => a.province === provinceStem);
 
   // Хэсгүүд ээлжлэн цагаан / цайвар ногоон дэвсгэртэй
   let n = 0;
@@ -329,6 +332,14 @@ export default async function ProvinceDetailPage({ params }: Props) {
                 className="flex justify-center items-center px-6 py-4 text-base font-bold text-white rounded-2xl shadow-sm transition-colors bg-[#15803d] hover:bg-[#0b3b20]"
               >
                 Аялал төлөвлөх →
+              </Link>
+            )}
+            {hasAccommodation && (
+              <Link
+                href={`${ACCOMMODATION_BASE}?aimag=${provinceSlug}#directory`}
+                className="flex justify-center items-center px-6 py-4 text-base font-bold rounded-2xl border transition-colors bg-white border-[#15803d] text-[#15803d] hover:bg-emerald-50"
+              >
+                Энэ {isCapital ? 'хотын' : 'аймгийн'} байрлах газар →
               </Link>
             )}
             {staticFacts?.coords && <WeatherCard slug={provinceSlug} center={cfText(f.center) || staticFacts.center} />}
@@ -430,7 +441,6 @@ export default async function ProvinceDetailPage({ params }: Props) {
 
       <div className="px-6 mx-auto mt-20 space-y-12 max-w-7xl sm:px-10">
         <RelatedBookings items={related} campaign="province" contentId={provinceSlug} />
-        {/* Эзэмшигч батлах хүртэл зөвхөн preview-д (joinme.mn-ийн утас, шинэчлэгдээгүй байж болно) */}
         <UsefulServices provinceSlug={provinceSlug} />
         {placesHere.length > 0 && (
           <section>
