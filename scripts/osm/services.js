@@ -81,8 +81,12 @@ function phonesOf(t) {
   }).filter(Boolean))];
 }
 
-function locationOf(t) {
-  return [t['addr:district'], t['addr:subdistrict'], t['addr:city'], t['addr:street'], t['addr:housenumber']].map((x) => (x || '').trim()).filter(Boolean).join(', ') || null;
+// Салбарт төв байрны (Улаанбаатар) хаягийг тэмдэглэсэн: хаягийг харуулахгүй, зөвхөн аймаг (Дорноговь, Хаан банк)
+const WRONG_ADDRESS = new Set(['way/1530338146']);
+
+function locationOf(t, e) {
+  if (WRONG_ADDRESS.has(`${e.type}/${e.id}`)) return null;
+  return[t['addr:district'], t['addr:subdistrict'], t['addr:city'], t['addr:street'], t['addr:housenumber']].map((x) => (x || '').trim()).filter(Boolean).join(', ') || null;
 }
 
 function distanceM(a, b) {
@@ -131,7 +135,7 @@ function build() {
         name,
         type,
         soum: null,
-        location: locationOf(t),
+        location: locationOf(t, e),
         phones: phonesOf(t),
         image: null,
         source: 'osm',

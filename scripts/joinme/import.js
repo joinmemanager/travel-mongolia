@@ -164,7 +164,9 @@ function build() {
     const slug = PROVINCE_SLUG[province];
     if (!slug) throw new Error(`аймгийн slug алга: ${province}`);
     const items = list.map((p) => ({
-      id: p.id, name: p.name.trim(), type: p.type, soum: p.soum || null, location: location(p) || null, phones: p.phones || [], image: (p.images || [])[0] || null,
+      id: p.id, name: p.name.trim(), type: p.type, soum: p.soum || null, location: location(p) || null, phones: p.phones || [],
+      // joinme ЗДТГ-т зочид буудлын дүрс тавьсан: сайт өөрийн ЗДТГ-ийн дүрсийг харуулна
+      image: p.type === 'government' ? null : (p.images || [])[0] || null,
     })).sort((a, b) => a.type.localeCompare(b.type) || (a.soum || '').localeCompare(b.soum || '', 'mn') || a.name.localeCompare(b.name, 'mn'));
     fs.writeFileSync(path.join(SERVICES, `${slug}.json`), `${JSON.stringify({ province, slug, source: 'joinme.mn', fetchedAt: '2026-10-30', items }, null, 2)}\n`);
     counts[slug] = items.length;
