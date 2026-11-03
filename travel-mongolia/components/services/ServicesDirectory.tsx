@@ -4,21 +4,27 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import ServiceCard from '@/components/services/ServiceCard';
 import ServiceSources from '@/components/services/ServiceSources';
-import { type ProvinceService, SERVICE_LABEL, type ServiceType } from '@/lib/serviceTypes';
+import { loadAimagServices } from '@/lib/serviceLoaders';
+import { isGenericService, SERVICE_LABEL, type ServiceRow, type ServiceType } from '@/lib/serviceTypes';
 
-export interface ServiceRow extends ProvinceService {
-  aimag: string;
+export interface AimagSummary {
+  slug: string;
+  name: string;
+  counts: Partial<Record<ServiceType, number>>;
 }
 
 const PAGE_SIZE = 60;
 const TYPES = Object.keys(SERVICE_LABEL) as ServiceType[];
 
 // /plan/useful-services: аймаг, төрлөөр шүүнэ. ?aimag=<slug>&type=<төрөл> нь ?cat=-ийн адил хуудас доторх шүүлтүүр.
-// useSearchParams биш: хуудас статик, эхний мөрүүд server HTML-д үлдэнэ.
-export default function ServicesDirectory({ rows, aimags }: { rows: ServiceRow[]; aimags: { slug: string; name: string }[] }) {
+// Эхний мөрүүд (`initial`) server-ээс; бусдыг аймгийн JSON-оос хэрэгтэй үед нь ачаална (lib/serviceLoaders.ts).
+export default function ServicesDirectory({ initial, aimags }: { initial: ServiceRow[]; aimags: AimagSummary[] }) {
   const [aimag, setAimag] = useState('');
   const [type, setType] = useState<ServiceType | ''>('');
   const [limit, setLimit] = useState(PAGE_SIZE);
+  const [loaded, setLoaded] = useState<Record<string, ServiceRow[]>>({});
+  const [loading, setLoading] = useState('');
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
@@ -36,12 +42,48 @@ export default function ServicesDirectory({ rows, aimags }: { rows: ServiceRow[]
     else url.searchParams.delete('type');
     window.history.replaceState(window.history.state, '', url);
     setLimit(PAGE_SIZE);
+    setFailed(false);
   };
   const chooseAimag = (v: string) => { setAimag(v); syncUrl(v, type); };
   const chooseType = (v: ServiceType | '') => { setType(v); syncUrl(aimag, v); };
 
-  const inAimag = useMemo(() => (aimag ? rows.filter((x) => x.aimag === aimag) : rows), [rows, aimag]);
-  const shown = useMemo(() => (type ? inAimag.filter((x) => x.type === type) : inAimag), [inAimag, type]);
+  // Шүүлтүүрт харагдах мөрүүд. «Бүх аймаг»: эхний мөрүүд → ачаалсан аймгуудын нэртэй газрууд;
+  // ерөнхий нэртэйг бүх аймаг ачаалагдсаны дараа хамгийн сүүлд (өмнө нь гарсан мөрийн байр өөрчлөгдөхгүй).
+  const available = useMemo(() => {
+    const ofType = (rows: ServiceRow[]) => (type ? rows.filter((x) => x.type === type) : rows);
+    if (aimag) return ofType(loaded[aimag] || initial.filter((x) => x.aimag === aimag));
+    const seen = new Set(initial.map((x) => x.id));
+    const more = aimags.flatMap((a) => loaded[a.slug] || []).filter((x) => !seen.has(x.id));
+    const allLoaded = aimags.every((a) => loaded[a.slug]);
+    return ofType([
+      ...initial,
+      ...more.filter((x) => !isGenericService(x.name)),
+      ...(allLoaded ? more.filter((x) => isGenericService(x.name)) : []),
+    ]);
+  }, [aimag, type, loaded, initial, aimags]);
+
+  const scope = aimag ? aimags.filter((a) => a.slug === aimag) : aimags;
+  const countOf = (t: ServiceType) => scope.reduce((n, a) => n + (a.counts[t] || 0), 0);
+  const scopeTotal = TYPES.reduce((n, t) => n + countOf(t), 0);
+  const total = type ? countOf(type) : scopeTotal;
+
+  // Хэрэгтэй аймгийн JSON: сонгосон аймаг, эсвэл харуулах мөр дутвал дараагийн аймаг
+  useEffect(() => {
+    if (loading || failed) return;
+    const next = aimag
+      ? (loaded[aimag] ? undefined : aimag)
+      : available.length < Math.min(limit, total)
+        ? aimags.find((a) => !loaded[a.slug])?.slug
+        : undefined;
+    if (!next) return;
+    setLoading(next);
+    loadAimagServices(next)
+      .then((rows) => setLoaded((prev) => ({ ...prev, [next]: rows })))
+      .catch(() => setFailed(true))
+      .finally(() => setLoading(''));
+  }, [aimag, available.length, limit, total, loaded, loading, failed, aimags]);
+
+  const shown = available.slice(0, limit);
   const nameOf = (slug: string) => aimags.find((x) => x.slug === slug)?.name || '';
   const chip = (active: boolean) =>
     `px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
@@ -52,11 +94,11 @@ export default function ServicesDirectory({ rows, aimags }: { rows: ServiceRow[]
     <section id="directory" className="scroll-mt-28">
       <div className="flex flex-wrap gap-2 items-center mb-4">
         <button type="button" className={chip(type === '')} onClick={() => chooseType('')}>
-          Бүгд ({inAimag.length})
+          Бүгд ({scopeTotal})
         </button>
-        {TYPES.filter((t) => inAimag.some((x) => x.type === t)).map((t) => (
+        {TYPES.filter((t) => countOf(t) > 0).map((t) => (
           <button key={t} type="button" className={chip(type === t)} onClick={() => chooseType(t)}>
-            {SERVICE_LABEL[t]} ({inAimag.filter((x) => x.type === t).length})
+            {SERVICE_LABEL[t]} ({countOf(t)})
           </button>
         ))}
         <label className="flex gap-2 items-center ml-auto text-xs font-bold text-neutral-600">
@@ -75,25 +117,22 @@ export default function ServicesDirectory({ rows, aimags }: { rows: ServiceRow[]
           </select>
         </label>
       </div>
-      <p className="mb-4 text-xs text-neutral-500">{shown.length} газар</p>
+      <p className="mb-4 text-xs text-neutral-500">{total} газар</p>
 
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {shown.slice(0, limit).map((x) => (
+        {shown.map((x) => (
           <ServiceCard key={`${x.aimag}-${x.id}`} item={x} aimag={aimag ? undefined : nameOf(x.aimag)} />
         ))}
       </ul>
-      {shown.length > limit && (
+      {failed && <p className="mt-6 text-sm text-center text-red-700">Мэдээллийг ачаалж чадсангүй. Хуудсаа дахин ачаална уу.</p>}
+      {!failed && shown.length < total && (
         <p className="mt-6 text-center">
-          <button type="button" className={chip(false)} onClick={() => setLimit((n) => n + PAGE_SIZE)}>
-            Дахин үзэх ({shown.length - limit} үлдсэн)
+          <button type="button" disabled={!!loading} className={chip(false)} onClick={() => setLimit((n) => n + PAGE_SIZE)}>
+            {loading ? 'Ачаалж байна…' : `Дахин үзэх (${total - shown.length} үлдсэн)`}
           </button>
         </p>
       )}
-      <ServiceSources
-        joinme={shown.some((x) => !x.source)}
-        osm={shown.some((x) => x.source === 'osm')}
-        className="mt-8 text-xs text-neutral-500"
-      />
+      <ServiceSources joinme osm className="mt-8 text-xs text-neutral-500" />
     </section>
   );
 }

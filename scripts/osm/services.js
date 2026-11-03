@@ -29,6 +29,10 @@ const SLUG = {
   Сэлэнгэ: 'selenge', Төв: 'tuv', Увс: 'uvs', Ховд: 'khovd', Хөвсгөл: 'khuvsgul', Хэнтий: 'khentii',
 };
 
+// Магнай Трейд-ийн колонк: OSM-д «МТ», «MT ШТС», «МТ трейд ШТС» г.м. олон хэлбэрээр (кирилл, латин холимог)
+const MT_BRAND = 'Магнай Трейд (МТ)';
+const MT_NAME = /^([mм][tт](ш|рейд|\s*-?\s*(штс|бинзен колонк|klonk|shatguun tvgegvvr|petroleum station|трейд(\s+штс)?))?|магнай\s+тр[еэ]йд(\s+штс)?)$/iu;
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function overpass(query) {
@@ -90,7 +94,7 @@ function distanceM(a, b) {
 function build() {
   const raw = JSON.parse(fs.readFileSync(RAW, 'utf8'));
   fs.mkdirSync(OUT, { recursive: true });
-  const stats = { droppedUnnamed: 0, droppedJunk: 0, droppedPrivate: 0, droppedNoCoords: 0, droppedDuplicate: 0, droppedJoinmeType: 0, reclassified: 0 };
+  const stats = { droppedUnnamed: 0, droppedJunk: 0, droppedPrivate: 0, droppedNoCoords: 0, droppedDuplicate: 0, droppedJoinmeType: 0, reclassified: 0, mtRenamed: 0 };
   const rows = [];
   for (const r of Object.values(raw)) {
     const slug = SLUG[r.name];
@@ -111,6 +115,7 @@ function build() {
         if (type !== 'fuel_station') { stats.droppedUnnamed++; continue; }
         name = FUEL_NAME;
       }
+      if (type === 'fuel_station' && MT_NAME.test(name)) { name = MT_BRAND; stats.mtRenamed++; }
       // Төрлөө буруу тэмдэглэсэн («эмнэлэг» гэсэн эмийн сан)
       if (type === 'hospital' && /эмийн сан/i.test(name)) { type = 'pharmacy'; stats.reclassified++; }
       if (joinmeTypes.has(type)) { stats.droppedJoinmeType++; continue; }
