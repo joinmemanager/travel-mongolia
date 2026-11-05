@@ -29,6 +29,9 @@ export interface NavItem {
   sectionLabel?: string;
 }
 
+// Дэд цэсний anchor (#...) нь хуудасны бодит <section id>-тай таарах ёстой. Хэсгийн үндсэн хаяг руу
+// заасан anchor нь «Сэдвийн жагсаалт»-д мөр болж орохгүй (lib/sections.ts sectionRows).
+
 // Нийтлэгдсэн, сайтын доторх энгийн холбоос (дэд холбоосуудад)
 const page = (mn: string, en: string, href: string): NavItem => ({
   mn,
@@ -168,9 +171,36 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Ургамал', 'Plants', '/about/nature/plants'),
         ],
       },
-      { mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', status: 'live' },
-      { mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live' },
-      { mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live' },
+      {
+        mn: 'Нүүдэлчдийн амьдрал', en: 'Nomadic Life', href: '/about/nomadic-life', status: 'live',
+        children: [
+          page('Монгол гэр', 'The Ger', '/about/nomadic-life#ger'),
+          page('Таван хошуу мал', 'Five Animals', '/about/nomadic-life#five-animals'),
+          page('Улирлын нүүдэл', 'Seasonal Moves', '/about/nomadic-life#four-seasons'),
+          page('Мал маллах ухаан', 'Herding Know-how', '/about/nomadic-life#herding'),
+          page('Ардын тоглоом', 'Folk Games', '/about/nomadic-life#games'),
+        ],
+      },
+      {
+        mn: 'Хоол', en: 'Food', href: '/about/food', status: 'live',
+        children: [
+          page('Махан хоол', 'Meat Dishes', '/about/food#meat-dishes'),
+          page('Цагаан идээ', 'Dairy', '/about/food#dairy'),
+          page('Гурилан хоол', 'Flour Dishes', '/about/food#flour-dishes'),
+          page('Айраг', 'Airag', '/about/food#airag'),
+          page('Монгол цай', 'Mongolian Tea', '/about/food#mongolian-tea'),
+        ],
+      },
+      {
+        mn: 'Хүмүүс', en: 'People', href: '/about/people', status: 'live',
+        children: [
+          page('Монголчууд', 'Mongolians', '/about/people#mongolians'),
+          page('Угсаатны бүлгүүд', 'Ethnic Groups', '/about/people#ethnic-groups'),
+          page('Хэл, бичиг', 'Language & Script', '/about/people#language-script'),
+          page('Зочломтгой ёс', 'Hospitality', '/about/people#hospitality'),
+          page('Аж төрөх ёс', 'Way of Life', '/about/people#lifestyle'),
+        ],
+      },
       {
         // Богино бичлэгийн сэдвүүд (lib/shorts.ts): цэсэнд богино нэр, хэсгийн жагсаалтад бүтэн нэр
         mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: SHORTS_BASE, status: SHORTS_STATUS,
@@ -202,7 +232,17 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Гар урлаач', en: 'Artisans', href: '/local/artisans', status: 'live' },
       { mn: 'Нутгийн хоол', en: 'Local Food', href: '/local/food', status: 'live' },
       { mn: 'Нутгийн бүтээгдэхүүн', en: 'Local Products', href: '/local/products', status: 'live' },
-      { mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live' },
+      {
+        mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live',
+        children: [
+          page('Зочид буудал', 'Hotels', '/plan/accommodation#hotels'),
+          page('Жуулчны бааз', 'Tourist Camps', '/plan/accommodation#tourist-camps'),
+          page('Гэр кэмп', 'Ger Camps', '/plan/accommodation#ger-camps'),
+          page('Хостел', 'Guesthouses & Hostels', '/plan/accommodation#hostels'),
+          page('Малчин айлд', 'Homestays', '/plan/accommodation#nomad-stay'),
+          page('Буудал, баазын лавлах', 'Directory', '/plan/accommodation#directory'),
+        ],
+      },
       { mn: 'Хэрэгтэй үйлчилгээ', en: 'Useful Services', href: '/plan/useful-services', status: 'live' },
     ],
   },
@@ -212,10 +252,47 @@ export const MAIN_NAVIGATION: NavSection[] = [
     en: 'Travel with Respect',
     items: [
       { mn: 'Хариуцлагатай аяллын гарын авлага', en: 'Responsible Travel Guide', href: '/respect', status: 'live' },
-      { mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'live' },
-      { mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'live' },
-      { mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', status: 'live' },
-      { mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'live' },
+      {
+        mn: 'Соёл, ёс заншил', en: 'Culture & Etiquette', href: '/respect/etiquette', status: 'live',
+        children: [
+          page('Гэрт орох ёс', 'Entering a Ger', '/respect/etiquette#ger'),
+          page('Зочлох ёс', 'Hospitality', '/respect/etiquette#hospitality'),
+          page('Хоол, цай', 'Food & Tea', '/respect/etiquette#food'),
+          page('Овоо', 'Ovoo', '/respect/etiquette#ovoo'),
+          page('Хийд', 'Monasteries', '/respect/etiquette#religious'),
+          page('Зураг авах', 'Taking Photos', '/respect/etiquette#photos'),
+        ],
+      },
+      {
+        mn: 'Байгальд ээлтэй аялал', en: 'Nature Guidance', href: '/respect/nature', status: 'live',
+        children: [
+          page('Хог хаягдал', 'Waste', '/respect/nature#waste'),
+          page('Ус', 'Water', '/respect/nature#water'),
+          page('Гал', 'Fire', '/respect/nature#fire'),
+          page('Зам', 'Tracks', '/respect/nature#tracks'),
+          page('Зэрлэг амьтан', 'Wildlife', '/respect/nature#wildlife'),
+          page('Тусгай хамгаалалттай газар', 'Protected Areas', '/respect/nature#protected'),
+        ],
+      },
+      {
+        mn: 'Аюулгүй байдал', en: 'Safety', href: '/plan/safety-info', status: 'live',
+        children: [
+          page('Ерөнхий зөвлөгөө', 'General Advice', '/plan/safety-info#safety'),
+          page('Хууль, дүрэм', 'Local Rules', '/plan/safety-info#local-laws'),
+          page('Эрүүл мэнд', 'Health', '/plan/safety-info#health'),
+          page('Яаралтай утас', 'Emergency Numbers', '/plan/safety-info#emergency'),
+          page('Түгээмэл асуулт', 'FAQ', '/plan/safety-info#faq'),
+        ],
+      },
+      {
+        mn: 'Хүртээмжтэй аялал', en: 'Accessible Travel', href: '/respect/accessible', status: 'live',
+        children: [
+          page('Хөдөлгөөний бэрхшээлтэй', 'Reduced Mobility', '/respect/accessible#mobility'),
+          page('Ахмад настан', 'Older Travellers', '/respect/accessible#seniors'),
+          page('Хүүхэдтэй аялагчид', 'Travelling with Children', '/respect/accessible#families'),
+          page('Урьдчилан холбогдох', 'Contact Us First', '/respect/accessible#contact'),
+        ],
+      },
     ],
   },
   {
@@ -229,7 +306,18 @@ export const MAIN_NAVIGATION: NavSection[] = [
       { mn: 'Аймаг, DMO', en: 'Provinces & DMOs', href: '/impact#provinces', status: 'live' },
       { mn: 'Аяллын бизнес', en: 'Tourism Businesses', href: '/impact#businesses', status: 'live' },
       { mn: 'Хандивлагч, хөрөнгө оруулагч', en: 'Donors & Investors', href: '/impact#donors', status: 'live' },
-      { mn: 'Олон улсын жишиг ба тайлан', en: 'International Examples & Reports', href: '/impact/examples', status: 'live' },
+      {
+        mn: 'Олон улсын жишиг ба тайлан', en: 'International Examples & Reports', href: '/impact/examples', status: 'live',
+        // Contentful `story` (topic: international), slug нь scripts/contentful/esg-examples.js-ээс
+        children: [
+          page('GSTC шалгуур', 'GSTC Criteria', '/impact/examples/gstc-criteria'),
+          page('OECD', 'OECD', '/impact/examples/oecd-recovery'),
+          page('Европын парламент', 'European Parliament', '/impact/examples/eu-tourism'),
+          page('Словени', 'Slovenia', '/impact/examples/slovenia-green'),
+          page('Booking Holdings', 'Booking Holdings', '/impact/examples/booking-holdings'),
+          page('Marriott', 'Marriott', '/impact/examples/marriott-serve-360'),
+        ],
+      },
     ],
   },
 ];
