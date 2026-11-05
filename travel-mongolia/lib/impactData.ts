@@ -24,11 +24,10 @@ export const IMPACT_HUB = {
     // Үзүүлэлтийн нэр. Тоог lib/impact.ts Contentful-аас автоматаар тооцоолно, зохиож бичихгүй.
     // Өгөгдөлгүй үзүүлэлт "Мэдээлэл удахгүй" гэж харагдана.
     metrics: [
-      { key: 'providers', label: 'Холбогдсон нутгийн үйлчилгээ үзүүлэгч' },
+      { key: 'providers', label: 'Бүртгэлтэй газар, үйлчилгээ' },
       { key: 'provinces', label: 'Хамрагдсан аймаг' },
       { key: 'experiences', label: 'Нутгийн туршлага' },
       { key: 'womenYouthLed', label: 'Эмэгтэйчүүд, залуучуудын удирддаг бизнес' },
-      { key: 'sourcedStories', label: 'Эх сурвалжтай нийтлэл' },
       { key: 'contentToBooking', label: 'Контентоос захиалга руу шилжсэн хувь' },
       { key: 'income', label: 'Нутгийн айл өрхөд хүрсэн орлого' },
       { key: 'projects', label: 'Хэрэгжсэн түншлэлийн төсөл' },

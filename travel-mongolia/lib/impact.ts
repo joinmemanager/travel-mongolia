@@ -10,7 +10,6 @@ export type ImpactKey =
   | 'providers'
   | 'provinces'
   | 'experiences'
-  | 'sourcedStories'
   | 'womenYouthLed'
   | 'income'
   | 'projects'
@@ -23,9 +22,11 @@ export interface ImpactValue {
   note?: string;
 }
 
-async function allEntries(contentType: string): Promise<any[]> {
+// Зөвхөн тоолоход хэрэгтэй талбарууд: бүтэн entry 2 MB-аас хэтэрвэл Data Cache-д (lib/contentful.ts) орохгүй,
+// хуудас дахин үүсэх бүрт Contentful руу хүсэлт явна
+async function allEntries(contentType: string, select: string[]): Promise<any[]> {
   try {
-    const res = await client.getEntries({ content_type: contentType, limit: 1000, include: 0 } as any);
+    const res = await client.getEntries({ content_type: contentType, select: ['sys.id', ...select], limit: 1000, include: 0 } as any);
     return res.items as any[];
   } catch (err) {
     rethrowOutage(err);
@@ -42,24 +43,21 @@ const notSample = (e: any) => {
 const text = (v: any) => (typeof v === 'string' ? v.trim() : '');
 
 export async function computeImpact(): Promise<Record<ImpactKey, ImpactValue>> {
-  const [providers, experiences, stories] = (
-    await Promise.all([allEntries('localProvider'), allEntries('communityExperience'), allEntries('story')])
+  const [providers, experiences] = (
+    await Promise.all([
+      allEntries('localProvider', ['fields.name', 'fields.province', 'fields.womenOrYouthLed']),
+      allEntries('communityExperience', ['fields.title', 'fields.province']),
+    ])
   ).map((list) => list.filter(notSample));
 
   // Хамрагдсан аймаг: үйлчилгээ үзүүлэгч, туршлагын аймгийн нэрс (21 аймаг + Улаанбаатар)
   const provinces = new Set<string>();
   [...providers, ...experiences].forEach((e) => provincesIn(text(e.fields?.province)).forEach((p) => provinces.add(p)));
 
-  const sourced = stories.filter((s) => text(s.fields?.source)).length;
-
   return {
     providers: { value: String(providers.length) },
     provinces: { value: String(provinces.size) },
     experiences: { value: String(experiences.length) },
-    sourcedStories:
-      stories.length > 0
-        ? { value: `${Math.round((sourced / stories.length) * 100)}%`, note: `${stories.length} нийтлэлээс ${sourced}` }
-        : { value: null },
     womenYouthLed: { value: String(providers.filter((p) => p.fields?.womenOrYouthLed === true).length) },
     // Contentful-д байхгүй өгөгдөл (docs/analytics.md, 5-р хэсэг)
     income: { value: null },
