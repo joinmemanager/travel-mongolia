@@ -26,7 +26,19 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let calls = 0;
 
 // CMA хүсэлт. GET 404 → null. 429 → дахин оролдоно. Алдааны мэдээнд token орохгүй.
+// Сессийн нийт хүсэлтийн хязгаар (заавал биш): CMA_BUDGET_FILE (тоолуурын файл), CMA_BUDGET_MAX.
+// Хязгаарт хүрвэл хүсэлт явуулахгүй, алдаа шиднэ.
+function budgetTick() {
+  const f = process.env.CMA_BUDGET_FILE;
+  if (!f) return;
+  const max = Number(process.env.CMA_BUDGET_MAX || Infinity);
+  const n = fs.existsSync(f) ? Number(fs.readFileSync(f, 'utf8').trim() || 0) : 0;
+  if (n >= max) throw new Error(`CMA хязгаар хүрсэн: ${n} / ${max}`);
+  fs.writeFileSync(f, String(n + 1));
+}
+
 async function cma(method, p, { body, version, contentType, raw, spaceLevel } = {}) {
+  budgetTick();
   const headers = { Authorization: `Bearer ${TOKEN}` };
   if (version !== undefined && version !== null) headers['X-Contentful-Version'] = String(version);
   if (contentType) headers['X-Contentful-Content-Type'] = contentType;
