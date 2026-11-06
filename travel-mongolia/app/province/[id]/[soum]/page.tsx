@@ -5,10 +5,11 @@ import React, { cache } from 'react';
 
 import RichText from '@/components/RichText';
 import PlaceTemplate from '@/components/templates/PlaceTemplate';
-import { IMAGES } from '@/lib/images';
+import { cdnImage } from '@/lib/imageUrl';
 import { PROVINCE_ALIASES } from '@/lib/provinceFacts';
 import { isPreviewEnv } from '@/lib/navigation';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
+import { SOUM_EMBLEM_ASSETS, SOUM_NOT_HERO_ASSETS } from '@/lib/soumHeroImages';
 import { getSoum, getSoumsOfProvince } from '@/lib/soums';
 
 // Сумын дэлгэрэнгүй (/province/<аймаг>/<сум>). Зөвхөн ownPage=true (150-аас дээш үгтэй) сумд
@@ -19,8 +20,6 @@ interface Props {
   params: Promise<{ id: string; soum: string }>;
 }
 
-// Сумын entry-д зураггүй үеийн hero (Монголд авсан нь шалгагдсан зураг)
-const FALLBACK_IMAGE = IMAGES.whiteHorse.src;
 
 const loadSoum = cache(async (id: string, soum: string) => getSoum(id, soum));
 
@@ -33,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: s.seoTitle || `${s.title}, ${s.provinceTitle}`,
     description: s.seoDescription || truncate(richTextToPlain(s.body)),
     path: `/province/${s.provinceSlug}/${s.slug}`,
-    image: s.image,
+    image: s.image && !(s.imageId && (SOUM_EMBLEM_ASSETS.has(s.imageId) || SOUM_NOT_HERO_ASSETS.has(s.imageId))) ? s.image : s.provinceHero.src,
   });
   return s.seoTitle ? { ...meta, title: { absolute: s.seoTitle } } : meta;
 }
@@ -59,9 +58,27 @@ export default async function SoumPage({ params }: Props) {
     { label: 'Газар нутаг', value: s.area },
   ].filter((x) => x.value);
 
+  // Сумын зураг сүлд/лого бол hero-д сунгахгүй: hero = аймгийн hero, сүлд нь гарчгийн дээрх 96px дугуй тэмдэг.
+  // Газрын зураг, хөрөг (SOUM_NOT_HERO_ASSETS) мөн hero болохгүй. Ангилал: docs/plan/soum-hero-emblems.csv
+  const isEmblem = !!s.imageId && SOUM_EMBLEM_ASSETS.has(s.imageId);
+  const notHero = isEmblem || (!!s.imageId && SOUM_NOT_HERO_ASSETS.has(s.imageId));
+  // Зураггүй сумд ч аймгийн hero-г харуулна
+  const heroImage = s.image && !notHero ? { src: s.image, alt: s.title, credit: s.imageCredit } : s.provinceHero;
+  const badge =
+    isEmblem && s.image ? (
+      <img
+        src={cdnImage(s.image, 192)}
+        alt={`${s.title}ын сүлд`}
+        width={96}
+        height={96}
+        className="object-contain p-1.5 mx-auto mb-4 w-20 h-20 bg-white rounded-full shadow-lg sm:w-24 sm:h-24"
+      />
+    ) : undefined;
+
   return (
     <PlaceTemplate
-      image={{ src: s.image || FALLBACK_IMAGE, alt: s.title, credit: s.image ? s.imageCredit : undefined }}
+      image={heroImage}
+      badge={badge}
       title={s.title}
       subtitle={s.provinceTitle}
       back={{ href: `/province/${s.provinceSlug}#soums`, label: `${s.provinceTitle} руу буцах` }}

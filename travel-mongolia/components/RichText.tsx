@@ -104,7 +104,9 @@ function renderNode(node: any, key: number): React.ReactNode {
             width={dims?.width}
             height={dims?.height}
             loading="lazy"
-            className="w-full h-auto rounded-2xl bg-neutral-100"
+            // 800px-ээс нарийн зургийг (сүлд, TIC-ийн жижиг зураг) сунгаж бүдгэрүүлэхгүй: өөрийн өргөнөөр, голд
+            style={dims?.width && dims.width < 800 ? { maxWidth: dims.width } : undefined}
+            className="mx-auto w-full h-auto rounded-2xl bg-neutral-100"
           />
           {credit && (
             <figcaption>
