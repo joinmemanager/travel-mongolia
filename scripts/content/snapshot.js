@@ -6,7 +6,7 @@ const path = require('path');
 const { cma, ROOT, callCount } = require('../tic/_cma');
 
 const day = new Date().toISOString().slice(0, 10);
-const OUT = path.join(ROOT, 'backups', `contentful-snapshot-${day}`);
+const OUT = path.join(ROOT, 'backups', process.argv[2] || `contentful-snapshot-${day}`);
 
 async function all(kind) {
   const items = [];
