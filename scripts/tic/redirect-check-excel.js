@@ -77,6 +77,10 @@ const notes = [
   [6, '«Redirect хийгдээгүй»: TIC хуучин хуудсаа (200) эсвэл 404 буцаадаг. Дүрэм нэмэх шаардлагатай.'],
   [7, '«404»: TIC зөв хаяг руу заадаг ч Travel Hub дээр хуудас олдохгүй байна. Энэ нь Travel Hub талын асуудал (TIC-ийн кодер засах шаардлагагүй).'],
   [8, 'Query-тэй хаяг (ItemID=, NewsID=): дүрэм ItemID-г яг тэнцүүгээр шалгах ёстой (ItemID=1 нь ItemID=1148-тэй таарч болохгүй).'],
+  [9, 'Алдаатай мөрүүдийн «Хүлээгдэж буй шинэ хаяг» бүгд Travel Hub дээр 200 буцааж байгааг тусад нь шалгасан: засвар зөвхөн TIC серверийн redirect дүрэмд хийгдэнэ.'],
+  [10, 'batch-07-ийн cate4_more.aspx 95 мөр, batch-02-ийн cate14_more.aspx?ItemID=168 нь tic-server-fixes.xlsx-д аль хэдийн илгээгдсэн. Одоо ч засагдаагүй байна.'],
+  [11, 'batch-11-reconsider-ийн 32 мөр (News_more.aspx?CateID=0&NewsID=…) 2026-11-06-нд шинээр нэмэгдсэн тул TIC дээр хараахан тохируулагдаагүй.'],
+  [12, 'batch-10-ийн cate14_more.aspx?ItemID=92 нь шинээр илэрсэн: TIC 200 буцаадаг (redirect дүрэм алга).'],
 ];
 fs.writeFileSync(OUT, xlsx([
   { name: 'Алдаатай redirect', rows: main, autoFilter: true },
