@@ -1,5 +1,6 @@
 import { client, rethrowOutage } from '@/lib/contentful';
 import { creditOf, type ImageCredit } from '@/lib/imageCredit';
+import { provinceHeroImage } from '@/lib/provinceHero';
 
 // Аймгийн сумд (soum төрөл, TIC-ээс шилжүүлсэн). ownPage=true бол /province/<аймаг>/<сум>
 // тусдаа хуудастай, бусад нь аймгийн хуудсанд товч жагсаалтаар харагдана.
@@ -10,7 +11,10 @@ export interface Soum {
   ownPage: boolean;
   body: any;
   image?: string;
+  imageId?: string;
   imageCredit?: ImageCredit;
+  // Аймгийн hero (сумын зураг сүлд/газрын зураг үед hero-д хэрэглэнэ). getSoum (include: 2) дээр л бүрэн.
+  provinceHero: { src: string; alt: string; credit?: ImageCredit };
   seoTitle?: string;
   seoDescription?: string;
   // Тоо баримт (Contentful-д бөглөсөн бол): сумын төв, хүн ам, газар нутаг
@@ -38,6 +42,7 @@ function toSoum(e: any): Soum {
     ownPage: f.ownPage === true,
     body: f.body,
     image: imageUrl(f.image),
+    imageId: f.image?.sys?.id,
     imageCredit: creditOf(f.image),
     seoTitle: f.seoTitle,
     seoDescription: f.seoDescription,
@@ -47,6 +52,7 @@ function toSoum(e: any): Soum {
     provinceId: String(f.province?.sys?.id || ''),
     provinceSlug: String(p.slug || f.province?.sys?.id || ''),
     provinceTitle: String(p.title || ''),
+    provinceHero: provinceHeroImage(p, String(p.slug || ''), String(p.title || '')),
   };
 }
 
@@ -75,7 +81,8 @@ export async function getSoum(provinceSlug: string, soumSlug: string): Promise<S
       content_type: 'soum',
       'fields.slug': decodeURIComponent(soumSlug),
       limit: 50,
-      include: 1,
+      // 2: аймгийн entry-ийн зураг/сүлд asset-ийг задална (provinceHero)
+      include: 2,
     } as any);
     const found = res.items.map(toSoum).find((s) => s.provinceSlug === decodeURIComponent(provinceSlug));
     return found || null;

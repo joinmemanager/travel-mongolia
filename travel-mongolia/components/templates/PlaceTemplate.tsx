@@ -27,9 +27,12 @@ export default function PlaceTemplate({
   analytics,
   links,
   breadcrumbs,
+  badge,
   children,
 }: {
   image: { src: string; alt: string; credit?: ImageCredit };
+  // Гарчгийн дээрх жижиг тэмдэг (сумын сүлд г.м., components/templates/ImageHero)
+  badge?: React.ReactNode;
   title: string;
   subtitle?: string;
   back: { href: string; label: string };
@@ -61,6 +64,7 @@ export default function PlaceTemplate({
         image={image}
         title={title}
         intro={subtitle}
+        badge={badge}
         topLeft={
           <Link
             href={back.href}
