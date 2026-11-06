@@ -44,3 +44,6 @@ yarn.lock
 
 # Claude Code-ийн хувийн тохиргоо
 .claude/settings.local.json
+
+# Зургийн туршилтын гаралт (scripts/content/enhance-images.sh)
+/tmp/
