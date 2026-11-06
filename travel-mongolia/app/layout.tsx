@@ -25,8 +25,12 @@ import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo';
 import { LanguageProvider } from '../components/LanguageContext';
 import Navbar from '../components/Navbar';
 
+// Брэндийн нэрийг латинаар тайлбарт оруулна (Google-д «Travel Hub Mongolia» гэж хайхад таних)
 const siteDescription =
-  'Монголд аялах бүх мэдээлэл нэг дор: үзэх газрууд, нүүдэлчин соёл, баяр наадам, аяллын маршрут, байрлах газар, аяллын зөвлөгөө.';
+  'Travel Hub Mongolia: Монголд аялах бүх мэдээлэл нэг дор. Үзэх газрууд, нүүдэлчин соёл, баяр наадам, аяллын маршрут, байрлах газар, аяллын зөвлөгөө.';
+
+// Брэндийн өөр бичлэгүүд (JSON-LD alternateName)
+const SITE_ALT_NAMES = ['TravelHub Mongolia', 'Трэвэл Хаб Монголиа'];
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -61,19 +65,27 @@ export const metadata: Metadata = {
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
   name: SITE_NAME,
-  url: SITE_URL,
+  alternateName: SITE_ALT_NAMES,
+  url: `${SITE_URL}/`,
   inLanguage: 'mn',
   description: siteDescription,
+  publisher: { '@id': `${SITE_URL}/#organization` },
 };
 
 // Байгууллагын мэдээлэл (Google-ийн лого, сошиал холбоос). sameAs нь Footer-ийн сошиал холбоосуудтай ижил.
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  url: 'https://www.travelhubmongolia.com',
-  logo: 'https://www.travelhubmongolia.com/brand/logo-color-trim.png',
+  alternateName: SITE_ALT_NAMES,
+  url: `${SITE_URL}/`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/brand/logo-color-trim.png`,
+  },
   sameAs: [
     'https://www.facebook.com/profile.php?id=61592368934535',
     'https://www.instagram.com/travelhubmongolia/',
