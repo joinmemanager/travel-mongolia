@@ -1,6 +1,7 @@
 // Redirect CSV-үүдийг production дээр шалгаад кодерт өгөх Excel үүсгэнэ (docs/redirects/excel/).
 // CSV-ийг өөрчлөхгүй. 404 өгсөн мөр Excel-д орохгүй, 404-review.csv-д гарна.
 //   node scripts/tic/redirect-excel.js
+//   node scripts/tic/redirect-excel.js --only=batch-11-reconsider   # зөвхөн нэг багц
 // .xlsx-ийг scripts/tic/_xlsx.js бичнэ (нэмэлт сангүй).
 const fs = require('fs');
 const path = require('path');
@@ -17,7 +18,20 @@ const BATCHES = {
   'batch-07': read('batch-07-events-camps-hotels.csv'),
   'batch-10': read('batch-10-people-culture.csv'),
   'batch-09-deferred': read('batch-09-listing-pages.csv').filter((r) => DEFERRED.test(r.old_url)),
+  'batch-11-reconsider': read('batch-11-reconsider.csv'),
 };
+// --only=<багц>: зөвхөн тэр багцын Excel (бусад xlsx, 404-review.csv-д хүрэхгүй)
+const ONLY = (process.argv.find((a) => a.startsWith('--only=')) || '').split('=')[1];
+if (ONLY && !BATCHES[ONLY]) throw new Error(`багц алга: ${ONLY}`);
+if (ONLY) for (const k of Object.keys(BATCHES)) if (k !== ONLY) delete BATCHES[k];
+
+// 11-р багц: эдгээр TIC хаяг өмнө нь not-redirected.csv-д (алгассан мэдээ) байсан
+const batch11Notes = () => [
+  ['Тэмдэглэл'],
+  ['Эдгээр 32 хуучин TIC хаяг өмнө нь docs/redirects/not-redirected.csv-д («Мэдээ — алгассан») байсан. Одоо redirect хийнэ.'],
+  ['NewsID=965 нь Travel Hub-д байсан «Манай орны хамгийн залуу нуур» (NewsID=1265-ийн мэдээ) руу заана: ижил нийтлэл тул шинээр үүсгээгүй.'],
+  ['Бүх шинэ хаяг /stories/news/<slug> (мэдээний архив). Query-тэй хаяг: CateID=0&NewsID=<тоо> бүтнээр нь тааруулна.'],
+];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function step(url) {
@@ -82,7 +96,7 @@ function workbook(rows, counts, notes) {
   return xlsx([
     { name: 'Redirect', rows: main, autoFilter: true },
     { name: 'Ангиллаар тоо', rows: summary, boldLast: true },
-    ...(notes ? [{ name: 'Кодерт анхааруулах', rows: notes, colWidths: [11, 20, 28, 62, 26] }] : []),
+    ...(notes ? [{ name: 'Кодерт анхааруулах', rows: notes, colWidths: notes[0].length > 1 ? [11, 20, 28, 62, 26] : [120] }] : []),
   ]);
 }
 
@@ -113,12 +127,13 @@ function workbook(rows, counts, notes) {
       tally[r.ангилал] = (tally[r.ангилал] || 0) + 1;
     }
     const counts = Object.entries(tally).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'mn'));
-    fs.writeFileSync(path.join(OUT, `${batch}.xlsx`), workbook(keep, counts, batch === 'batch-09-deferred' ? coderNotes(keep) : null));
+    fs.writeFileSync(path.join(OUT, `${batch}.xlsx`), workbook(keep, counts, batch === 'batch-09-deferred' ? coderNotes(keep) : batch === 'batch-11-reconsider' ? batch11Notes() : null));
     stats[batch] = { csv: rows.length, excel: keep.length, redirect: keep.filter((x) => x[3] === 'redirect').length, bad: rows.length - keep.length, noindex: rows.filter((r) => results[r.new_url].noindex).length, counts };
   }
   const cell = (v) => (/[",\n\r]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
   const head = ['batch', 'Хуучин хаяг (TIC)', 'Шинэ хаяг (Travel Hub)', 'Эцсийн хаяг', 'Шалгалт', 'Тэмдэглэл', 'Гарчиг', 'Ангилал'];
-  fs.writeFileSync(path.join(OUT, '404-review.csv'), `﻿${[head, ...review].map((r) => r.map(cell).join(',')).join('\r\n')}\r\n`);
+  if (ONLY) for (const r of review) console.log('  404:', r.slice(1, 5).join(' | '));
+  else fs.writeFileSync(path.join(OUT, '404-review.csv'),`﻿${[head, ...review].map((r) => r.map(cell).join(',')).join('\r\n')}\r\n`);
   console.log(JSON.stringify(stats, null, 1));
   console.log('шалгалтад тэнцээгүй:', review.length, 'давтагдашгүй хаяг:', unique.length);
   // Хаяг ба гарчгийн таарц (CSV-ийн гарчгийн эхний үг хуудасны <title>-д байх ёстой)
