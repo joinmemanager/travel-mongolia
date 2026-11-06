@@ -318,6 +318,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
           page('Marriott', 'Marriott', '/impact/examples/marriott-serve-360'),
         ],
       },
+      // Google Form-тэй хуудас: live (цэсэнд харагдана), гэхдээ хуудас өөрөө noindex, sitemap-д ороогүй
+      { mn: 'Судалгаанд оролцох', en: 'Take the Survey', href: '/impact/survey', status: 'live' },
     ],
   },
 ];
