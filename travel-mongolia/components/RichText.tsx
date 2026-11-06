@@ -39,13 +39,17 @@ function renderNode(node: any, key: number): React.ReactNode {
       return <React.Fragment key={key}>{children}</React.Fragment>;
     case 'paragraph':
       return <p key={key} className="mb-4 text-base sm:text-lg leading-relaxed text-neutral-700">{children}</p>;
+    // Контентын түвшинг HTML-д хадгална (SEO): heading-1/2 → <h2> (хуудас өөрийн H1-тэй тул H1 давхарлахгүй),
+    // heading-3 → <h3>, 4–6 → <h4>. Харагдах байдал өмнөхтэй ижил (бүгд нэг загвартай байсан).
     case 'heading-1':
     case 'heading-2':
+      return <h2 key={key} className="mt-8 mb-3 text-xl font-black text-neutral-900">{children}</h2>;
     case 'heading-3':
+      return <h3 key={key} className="mt-8 mb-3 text-xl font-black text-neutral-900">{children}</h3>;
     case 'heading-4':
     case 'heading-5':
     case 'heading-6':
-      return <h3 key={key} className="mt-8 mb-3 text-xl font-black text-neutral-900">{children}</h3>;
+      return <h4 key={key} className="mt-8 mb-3 text-xl font-black text-neutral-900">{children}</h4>;
     case 'unordered-list':
       return <ul key={key} className="mb-4 space-y-2 list-disc pl-6 text-neutral-700">{children}</ul>;
     case 'ordered-list':

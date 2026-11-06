@@ -7,6 +7,7 @@ const { cma, ROOT, LOCALE, callCount } = require('../tic/_cma');
 const plain = (n) => (n.nodeType === 'text' ? n.value : (n.content || []).map(plain).join(''));
 
 const [id, field, n, prefix, seoTitle, seoDescription] = process.argv.slice(2);
+if ([...(seoTitle || '')].length > 60 || [...(seoDescription || '')].length > 155) throw new Error('seoTitle ≤60, seoDescription ≤155 байх ёстой');
 (async () => {
   const e = await cma('GET', `/entries/${id}`);
   const BACKUP = path.join(ROOT, 'backups', 'rewrite-originals');
