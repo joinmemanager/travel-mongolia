@@ -80,13 +80,20 @@ const notes = [
   [9, 'Алдаатай мөрүүдийн «Хүлээгдэж буй шинэ хаяг» бүгд Travel Hub дээр 200 буцааж байгааг тусад нь шалгасан: засвар зөвхөн TIC серверийн redirect дүрэмд хийгдэнэ.'],
   [10, 'batch-07-ийн cate4_more.aspx 95 мөр, batch-02-ийн cate14_more.aspx?ItemID=168 нь tic-server-fixes.xlsx-д аль хэдийн илгээгдсэн. Одоо ч засагдаагүй байна.'],
   [11, 'batch-11-reconsider-ийн 32 мөр (News_more.aspx?CateID=0&NewsID=…) 2026-11-06-нд шинээр нэмэгдсэн тул TIC дээр хараахан тохируулагдаагүй.'],
-  [12, 'batch-10-ийн cate14_more.aspx?ItemID=92 нь шинээр илэрсэн: TIC 200 буцаадаг (redirect дүрэм алга).'],
+  [12, 'batch-10-ийн cate14_more.aspx?ItemID=92 нь шинээр илэрсэн: TIC 200 буцаадаг (redirect дүрэм алга). Дэлгэрэнгүйг доорх тусгай мөрөөс харна уу.'],
+  [],
+  ['ТУСГАЙ МӨР: cate14_more.aspx?ItemID=92'],
+  ['Хуучин хаяг', 'https://www.touristinfocenter.mn/cate14_more.aspx?ItemID=92'],
+  ['Одоогийн хариу', `${DAY}: 200, redirect хийдэггүй (хуучин TIC хуудас нээгддэг)`],
+  ['Зөв хаяг (301)', 'https://www.travelhubmongolia.com/about/history/people/sanjaasurengiin-zorig (Санжаасүрэнгийн Зориг, Түүхэн хүн; 200 нээгдэж байгааг шалгасан)'],
+  ['Эх файл', 'docs/redirects/batch-10-people-culture.csv'],
+  ['Анхааруулга', 'cate16_more.aspx?ItemID=92 (Бөхийн барилдаан → /about/traditions/bukhiin-barildaan) зөв ажиллаж байгаа. Дүрэм нэмэхдээ хуудасны нэр (cate14 ба cate16) болон ItemID-г хоёуланг нь яг тэнцүүгээр шалгаж, cate16-гийн дүрэмд нөлөөлөхгүй байх.'],
 ];
 fs.writeFileSync(OUT, xlsx([
   { name: 'Алдаатай redirect', rows: main, autoFilter: true },
   { name: 'Төрлөөр тоо', rows: summary, boldLast: true },
   { name: 'Багцаар', rows: batchRows },
-  { name: 'Кодерт анхааруулах', rows: notes, colWidths: [5, 140] },
+  { name: 'Кодерт анхааруулах', rows: notes, colWidths: [16, 140] },
 ]));
 console.log(OUT);
 console.log(JSON.stringify({ шалгасан: rows.length, ...Object.fromEntries(counts) }, null, 1));
