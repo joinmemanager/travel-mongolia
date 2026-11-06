@@ -102,7 +102,10 @@ const uris = (n) => [...JSON.stringify(n).matchAll(/"uri":"([^"]+)"/g)].map((x) 
   const e = await cma('GET', `/entries/${id}`);
   if (!e) throw new Error(`entry олдсонгүй: ${id}`);
   const st = !e.sys.publishedVersion ? 'draft' : e.sys.version > e.sys.publishedVersion + 1 ? 'changed' : 'published';
-  const oldDoc = e.fields[field]?.[LOCALE];
+  // Дахин хадгалах үед анхны (дахин бичихээс өмнөх) хувилбартай харьцуулна
+  const bakFile = path.join(BACKUP, `${id}.json`);
+  const orig = fs.existsSync(bakFile) ? JSON.parse(fs.readFileSync(bakFile, 'utf8')) : e;
+  const oldDoc = orig.fields[field]?.[LOCALE];
   if (!oldDoc) throw new Error(`талбар хоосон: ${field}`);
   // Эх бичвэрт байсан зураг шинэд бүгд байх ёстой
   const missing = assetIds(oldDoc).filter((a) => !assetIds(rich).includes(a));
@@ -111,7 +114,7 @@ const uris = (n) => [...JSON.stringify(n).matchAll(/"uri":"([^"]+)"/g)].map((x) 
   const report = { id, field, contentful: st, oldWords: plainWords(oldDoc), newWords: plainWords(rich), links: internal, seoTitle: meta.seoTitle, seoDescription: meta.seoDescription };
   // baselineWords: одоогийн талбар буруу (жишээ нь өөр entry-ийн хуулбар) үед анхны эх бичвэрийн үгийн тоо
   if (meta.baselineWords) report.oldWords = Number(meta.baselineWords);
-  if (report.newWords < report.oldWords * 0.97) throw new Error(`шинэ бичвэр богино: ${report.newWords} < ${report.oldWords}`);
+  if (report.newWords < report.oldWords) throw new Error(`шинэ бичвэр богино: ${report.newWords} < ${report.oldWords}`);
   if (st === 'changed' && !fs.existsSync(path.join(BACKUP, `${id}.json`))) throw new Error('нийтлээгүй өөрчлөлттэй entry: алгасав');
 
   if (DRY) { console.log(JSON.stringify({ dry: true, ...report }, null, 1)); return; }
