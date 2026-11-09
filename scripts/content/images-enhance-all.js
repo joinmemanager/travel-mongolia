@@ -116,6 +116,8 @@ async function replaceOne(r, cma, SPACE, LOCALE) {
 
 (async () => {
   if (ENHANCE) {
+    // Өмнө нь (туршилт эсвэл тасарсан ажил) гарсан файлыг GPU-гаар дахин боловсруулахгүй
+    for (const r of todo) if (!r['сайжруулсан'] && [`${r.asset_id}.jpg`, `${r.asset_id}.png`].some((f) => fs.existsSync(path.join(OUT, f)))) r['сайжруулсан'] = 'тийм өмнө';
     let n = 0;
     const t0 = Date.now();
     for (const r of todo) {
@@ -138,6 +140,9 @@ async function replaceOne(r, cma, SPACE, LOCALE) {
     for (const r of todo.slice(0, MAX)) {
       if (r['солисон'] === 'тийм') continue;
       if (!/^тийм/.test(r['сайжруулсан'] || '')) continue;
+      // Asset-ийг хагас дутуу (нийтлээгүй) үлдээхгүйн тулд хязгаарт хүрэхээс өмнө зогсоно: нэг зурагт ≈6, боловсруулалт удвал ≤26 хүсэлт
+      const bf = process.env.CMA_BUDGET_FILE;
+      if (bf && fs.existsSync(bf) && Number(fs.readFileSync(bf, 'utf8').trim() || 0) + 30 > Number(process.env.CMA_BUDGET_MAX || Infinity)) { console.log('хязгаарт ойртсон тул зогслоо'); break; }
       try {
         const res = await replaceOne(r, cma, SPACE, LOCALE);
         r['солисон'] = 'тийм';

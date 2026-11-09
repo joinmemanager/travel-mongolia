@@ -12,7 +12,7 @@
 | 4 | **38 хуудас бүхэлдээ `'use client'`**: about, plan, things-to-do, inspiration, destination ангиллын хуудсууд. Статик текст, өгөгдөл JavaScript-ээр давхар татагддаг (about хуудас бүр 300–450 мөр). | Дунд (JS-ийн хэмжээ, TBT) | Хийгээгүй. Санал: интерактив хэсгийг (цэс, шүүлтүүр) жижиг client компонент болгож, хуудсыг server компонент болгох. Хуудас бүрт шалгалт шаардлагатай тул тусдаа ажил |
 | 5 | **Google Translate script** (`translate.google.com/.../element.js`) бүх хуудсанд `afterInteractive`-аар ачаалагддаг. | Дунд (гуравдагч талын JS) | Хийгээгүй. Санал: `strategy="lazyOnload"` эсвэл хэрэглэгч хэл сонгох үед л ачаалах. Хэл солих ажиллагааг шалгасны дараа |
 | 6 | **Body зургууд** (about, сэтгүүл) `<img>`-ээр бүгд шууд ачаалагддаг. | Бага–дунд | **Засагдсан**: `loading="lazy"`, `decoding="async"` |
-| 7 | **URL параметр уншдаг хуудсууд** (`?cat=`, `?style=`, `?days=`): things-to-do 8, inspiration 7, `/local/*` ангилал 6, festivals. `useSearchParams`-тай тул статик болгохгүй. | Бага (хүсэлт бүрт render) | Хэвээр (`force-dynamic`). Санал: параметрийг server талд `searchParams`-аар уншиж, хуудсыг кэшлэх боломжтой болгох |
+| 7 | **URL параметр уншдаг хуудсууд** (`?cat=`, `?style=`, `?days=`): things-to-do 8, inspiration 7, `/local/*` ангилал 6, festivals. `useSearchParams`-тай тул статик болгохгүй. | Бага (хүсэлт бүрт render) | **Засагдсан 2026-11-09**: статик/ISR, параметрийг Suspense дотор уншина, fallback нь бүтэн агуулга (`docs/plan/vercel-cpu.md`) |
 | 8 | **Contentful хүсэлтүүд**: `getEntries`-ийн хариу Next.js-ийн fetch cache-д ордоггүй (SDK өөрийн HTTP клиент ашигладаг). Нэг хуудсанд `react.cache`-ээр давхардлыг арилгасан. | Бага (кэш нэмэгдсэн тул) | Хэвээр. #1 засварын дараа хуудас бүр 4 минутад нэг л удаа Contentful руу хүсэлт явуулна |
 | 9 | **Фонт**: Rubik 4 жин, `next/font`-оор, `display: swap`. | Бага | Асуудалгүй |
 
@@ -25,7 +25,7 @@
   - `/destination/[id]`, `/recommendation/[id]`, `/local/[slug]`, `/local/experiences/[slug]`, `/stories/[slug]`, `/local`.
   - Хуучин ID-аас slug руу хийдэг redirect хэвээр ажиллана.
 - `/impact`, `/destination/routes`: 3600-аас 240 болсон (5 минутын шаардлага).
-- **URL параметр уншдаг 15 хуудас** өөрсдийн `layout.tsx`-д `force-dynamic` хэвээр байна. Статик болговол server HTML-д H1, агуулга орохгүй болж SEO-д муу. Эдгээр: things-to-do 8, inspiration 7. `/local/*` ангилал болон festivals аль хэдийн `force-dynamic`.
+- **URL параметр уншдаг хуудсууд** (things-to-do, inspiration, `/local/*`, festivals) 2026-11-09-нөөс `force-dynamic` биш: Suspense-ийн fallback нь бүтэн агуулга тул server HTML-д H1, агуулга хэвээр. Дэлгэрэнгүйг `docs/plan/vercel-cpu.md`.
 - `sitemap.xml` 3600 хэвээр.
 
 ### 2. Hero зургийг шахах
