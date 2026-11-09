@@ -2,7 +2,7 @@ import { timingSafeEqual } from 'crypto';
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { after } from 'next/server';
 
-import { CONTENTFUL_TAG } from '@/lib/contentful';
+import { CONTENTFUL_TAG, contentfulTypeTag } from '@/lib/contentful';
 import { entryUrls, submitIndexNow } from '@/lib/indexNow';
 import { SHORTS_BASE, SHORTS_LANGS, SHORTS_TAG } from '@/lib/shorts';
 import { checkShortsApi } from '@/lib/shortsData';
@@ -16,6 +16,27 @@ import { checkShortsApi } from '@/lib/shortsData';
 //   header x-revalidate-secret: CONTENTFUL_REVALIDATE_SECRET
 // revalidatePath нь хуудсыг зөвхөн "хуучирсан" гэж тэмдэглэнэ, дараагийн зочлолтоор шинээр үүснэ
 // (олон хуудсыг нэг дор дахин үүсгэж API дуудлага үрэхгүй).
+
+// Тухайн төрлийн entry-г холбоосоор (include) агуулж харуулдаг төрлүүд: тэдний query-ийн кэшийг мөн шинэчилнэ.
+// Жагсаалтад байхгүй төрөл (cultureHeritage, visitorGuidance г.м.) нийтлэгдвэл өмнөх шигээ бүх Contentful кэшийг.
+const LINKED_BY: Record<string, string[]> = {
+  province: ['soum', 'place', 'heritagePlace', 'destination', 'event'],
+  soum: [],
+  place: ['story'],
+  heritagePlace: ['heritageCategory', 'story', 'destination'],
+  heritageCategory: [],
+  destination: ['story', 'recommendation'],
+  historyArticle: [],
+  cultureArticle: [],
+  species: [],
+  story: [],
+  event: [],
+  recommendation: [],
+  localProvider: ['communityExperience', 'localProduct', 'event', 'province', 'destination', 'heritagePlace'],
+  communityExperience: ['localProduct', 'province', 'destination', 'heritagePlace', 'story'],
+  localProduct: ['communityExperience', 'province', 'destination', 'heritagePlace', 'story'],
+  faqItem: ['province', 'destination'],
+};
 
 function validSecret(given: string | null): boolean {
   const expected = process.env.CONTENTFUL_REVALIDATE_SECRET;
@@ -36,6 +57,9 @@ function fieldValue(fields: any, id: string): any {
 // payload-д талбар байдаггүй) бол тухайн route-ийн бүх хуудсыг тэмдэглэнэ.
 type Target = { path: string; type?: 'page' | 'layout' };
 
+// /local/<ангилал> жагсаалтууд (localProvider, story-ийн нийтлэл): 2026-11-06-ноос ISR (өмнө нь force-dynamic)
+const LOCAL_LISTS: Target[] = ['artisans', 'experiences', 'food', 'guides', 'herder-families', 'products'].map((c) => ({ path: `/local/${c}` }));
+
 function targetsFor(contentType: string, key: string | null): Target[] | null {
   const one = (literal: string, pattern: string): Target =>
     key ? { path: literal } : { path: pattern, type: 'page' };
@@ -52,7 +76,8 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
       return [one(`/destination/${key}`, '/destination/[id]'), { path: '/' }, { path: '/province/[id]', type: 'page' }];
     case 'recommendation':
     case 'event':
-      return [one(`/recommendation/${key}`, '/recommendation/[id]'), { path: '/' }];
+      // /things-to-do/festivals нь 2026-11-06-ноос ISR (өмнө нь force-dynamic)
+      return [one(`/recommendation/${key}`, '/recommendation/[id]'), { path: '/' }, { path: '/things-to-do/festivals' }];
     case 'cultureHeritage':
       return [{ path: '/' }];
     case 'heritageCategory':
@@ -106,6 +131,7 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
         // Дэд хэсгүүдийн нийтлэл (topic = local / respect / impact, lib/sectionArticles.ts) ба карттай хуудсууд.
         // /local/<ангилал> нь force-dynamic, /impact-ийг доор бүх төрөлд тэмдэглэдэг.
         one(`/local/articles/${key}`, '/local/articles/[slug]'),
+        ...LOCAL_LISTS,
         one(`/respect/articles/${key}`, '/respect/articles/[slug]'),
         one(`/impact/articles/${key}`, '/impact/articles/[slug]'),
         { path: '/local' },
@@ -132,13 +158,14 @@ function targetsFor(contentType: string, key: string | null): Target[] | null {
       return [
         one(`/local/${key}`, '/local/[slug]'),
         { path: '/local' },
+        ...LOCAL_LISTS,
         one(`/plan/accommodation/${key}`, '/plan/accommodation/[slug]'),
         { path: '/plan/accommodation' },
       ];
     case 'communityExperience':
-      return [one(`/local/experiences/${key}`, '/local/experiences/[slug]'), { path: '/local' }];
+      return [one(`/local/experiences/${key}`, '/local/experiences/[slug]'), { path: '/local' }, ...LOCAL_LISTS];
     case 'localProduct':
-      return [{ path: '/local/products' }, { path: '/local' }];
+      return [{ path: '/local' }, ...LOCAL_LISTS];
     default:
       // visitorGuidance, faqItem г.м. олон хуудсанд холбогддог төрөл: бүх сайтыг тэмдэглэнэ
       return null;
@@ -181,7 +208,10 @@ export async function POST(req: Request) {
   const slug = fieldValue(payload?.fields, 'slug');
   const key = typeof slug === 'string' && slug.trim() ? slug.trim() : sys.type === 'Entry' && sys.id ? sys.id : null;
 
-  revalidateTag(CONTENTFUL_TAG, { expire: 0 });
+  // Зөвхөн тухайн төрөл, түүнийг агуулдаг төрлүүд, content_type-гүй query-ийн кэш (өмнө нь бүх кэш = бүх хуудас)
+  const linked = LINKED_BY[contentType];
+  const tags = linked ? [contentType, ...linked].map(contentfulTypeTag).concat(contentfulTypeTag()) : [CONTENTFUL_TAG];
+  for (const t of tags) revalidateTag(t, { expire: 0 });
   const targets = targetsFor(contentType, key);
   const done: string[] = [];
   if (!targets) {
@@ -199,5 +229,5 @@ export async function POST(req: Request) {
   const urls = process.env.VERCEL_ENV === 'production' ? entryUrls(contentType, payload?.fields, key) : [];
   if (urls.length) after(() => submitIndexNow(urls).then((status) => console.log('IndexNow', status, urls.join(' '))));
 
-  return Response.json({ ok: true, contentType, id: sys.id, revalidated: done, indexNow: urls });
+  return Response.json({ ok: true, contentType, id: sys.id, tags, revalidated: done, indexNow: urls });
 }

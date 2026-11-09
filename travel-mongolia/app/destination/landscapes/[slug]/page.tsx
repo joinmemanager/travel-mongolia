@@ -10,6 +10,7 @@ import { IMAGES } from '@/lib/images';
 import { isPreviewEnv } from '@/lib/navigation';
 import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 import { CATEGORY_INFO, getPlace, getPlacesByCategory } from '@/lib/tourismPlaces';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Байгалийн үзэсгэлэнт газрын дэлгэрэнгүй (/destination/landscapes/<slug>, Contentful `place` landscape, TIC cate1).
 // Жагсаалт: /destination/landscapes#all-places, аймгийн хуудасны #landscapes.
@@ -90,3 +91,6 @@ export default async function LandscapePlacePage({ params }: Props) {
     </PlaceTemplate>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

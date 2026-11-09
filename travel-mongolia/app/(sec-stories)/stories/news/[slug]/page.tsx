@@ -10,6 +10,7 @@ import { isPreviewEnv } from '@/lib/navigation';
 import { getNews, NEWS_BASE, newsDate } from '@/lib/news';
 import { entryMeta } from '@/lib/pageMeta';
 import { isThinContent, NOINDEX, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // TIC-ийн мэдээний архивын нийтлэл (story, topic «news»). «Түүхүүд» хэсэг (sec-stories) дотор: H1, замчлал энд.
 export const revalidate = 604800;
@@ -82,3 +83,6 @@ export default async function NewsArticlePage({ params }: Props) {
     </article>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

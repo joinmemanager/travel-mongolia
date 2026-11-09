@@ -4,12 +4,16 @@ import LocalListingPage, { productSpot } from '@/components/templates/LocalListi
 import { IMAGES } from '@/lib/images';
 import { getProducts } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
+import { connection } from 'next/server';
+import { isPreviewEnv } from '@/lib/navigation';
 
 // Нутгийн Монгол: Нутгийн бүтээгдэхүүн (Б хэсэг, live). "Ангиллын жагсаалт" загвар.
-export const dynamic = 'force-dynamic';
+// 2026-11-06-ноос статик/ISR: ?cat= (?style=, ?days= г.м.) параметрийг жагсаалтын Suspense доторх хэсэг уншина,
+// server HTML-д «Бүгд»-ийн бүтэн агуулга орно (Vercel CPU-г хэмнэх; docs/plan/performance.md).
 export const metadata = metaFor('/local/products');
 
 export default async function Page() {
+  if (isPreviewEnv()) await connection();
   const products = await getProducts();
   return (
     <LocalListingPage

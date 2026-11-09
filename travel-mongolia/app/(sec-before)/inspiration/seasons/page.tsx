@@ -71,9 +71,13 @@ const SEASONS_DATA: SeasonItem[] = [
   },
 ];
 
-function SeasonsContent() {
+// URL-ийн ?season=-ийг зөвхөн Suspense доторх хэсэг уншина: хуудас статик/ISR, server HTML-д бүтэн агуулга (fallback)
+function SeasonsFromUrl() {
   const searchParams = useSearchParams();
-  const seasonParam = searchParams.get('season');
+  return <SeasonsContent seasonParam={searchParams.get('season')} />;
+}
+
+function SeasonsContent({ seasonParam }: { seasonParam: string | null }) {
   const [activeSeason, setActiveSeason] = useState<string>('summer');
 
   useEffect(() => {
@@ -208,8 +212,8 @@ function SeasonsContent() {
 
 export default function SeasonsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#fcfbf9] text-neutral-700 p-10">Уншиж байна...</div>}>
-      <SeasonsContent />
+    <Suspense fallback={<SeasonsContent seasonParam={null} />}>
+      <SeasonsFromUrl />
     </Suspense>
   );
 }

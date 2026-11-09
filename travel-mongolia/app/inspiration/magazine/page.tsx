@@ -149,9 +149,13 @@ const MAGAZINE_SECTIONS: SectionData[] = [
   },
 ];
 
-function MagazineContent() {
+// URL-ийн ?cat=-ийг зөвхөн Suspense доторх хэсэг уншина: хуудас статик/ISR, server HTML-д бүтэн агуулга (fallback)
+function MagazineFromUrl() {
   const searchParams = useSearchParams();
-  const catQuery = searchParams.get('cat');
+  return <MagazineContent catQuery={searchParams.get('cat')} />;
+}
+
+function MagazineContent({ catQuery }: { catQuery: string | null }) {
 
   // URL-аас параметр орж ирвэл шууд тухайн хэсэг рүү зөөлөн гүйлгэнэ
   useEffect(() => {
@@ -328,8 +332,8 @@ function MagazineContent() {
 
 export default function MagazinePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#fcfbf9] text-neutral-700 p-12">Уншиж байна...</div>}>
-      <MagazineContent />
+    <Suspense fallback={<MagazineContent catQuery={null} />}>
+      <MagazineFromUrl />
     </Suspense>
   );
 }

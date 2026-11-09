@@ -16,6 +16,7 @@ import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, SITE_URL, trunca
 import { creditOf } from '@/lib/imageCredit';
 import { photoSrc } from '@/lib/images';
 import { mergedPlaceFacts } from '@/lib/tourismPlaces';
+import { productionStaticParams } from '@/lib/navigation';
 
 // 'heritagePlace' entry-г slug-аар (хуучин холбоосод ID-аар) татна.
 // generateMetadata болон хуудас хоёулаа ашиглах тул нэг л удаа татна.
@@ -164,3 +165,6 @@ export default async function HeritagePlaceDetailPage({
     </PlaceTemplate>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

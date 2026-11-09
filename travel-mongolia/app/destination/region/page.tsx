@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import LinkCard from '@/components/design/LinkCard';
 import RegionDirectory, {
   type ExternalSearchItem,
 } from '@/components/RegionDirectory';
+import RegionDirectoryFromUrl from '@/components/RegionDirectoryFromUrl';
 import { client, rethrowOutage } from '@/lib/contentful';
 import { metaFor } from '@/lib/pageMeta';
 
 export const metadata = metaFor('/destination/region');
-
-interface Props {
-  searchParams: Promise<{ region?: string }>;
-}
 
 function plainText(value: any): string {
   if (!value) return '';
@@ -21,6 +18,11 @@ function plainText(value: any): string {
     return value.content.map(plainText).join(' ');
   }
   return '';
+}
+
+// Хайлтын түлхүүр үг: давхардсан үгсийг хасна (scoreMatch дарааллаас үл хамаарна, хайлтын үр дүн ижил, хуудас ~2 дахин бага)
+function uniqueWords(text: string): string {
+  return [...new Set(text.split(' ').filter(Boolean))].join(' ');
 }
 
 interface ProvinceLink {
@@ -48,7 +50,7 @@ async function getContentfulData(): Promise<{
         subtitle: String(f.region || ''),
         group: 'Түүхэн өв',
         href: `/destination/heritage/place/${f.slug || item.sys.id}`,
-        keywords: [plainText(f.description)],
+        keywords: [uniqueWords(plainText(f.description))],
       };
     });
 
@@ -62,7 +64,7 @@ async function getContentfulData(): Promise<{
         href: `/province/${f.slug || item.sys.id}`,
         keywords: [
           ...[f.highlights].flat().filter(Boolean).map(String),
-          plainText(f.description2),
+          uniqueWords(plainText(f.description2)),
         ],
       };
     });
@@ -87,17 +89,14 @@ async function getContentfulData(): Promise<{
   }
 }
 
-export default async function RegionPage({ searchParams }: Props) {
-  const { region } = await searchParams;
+export default async function RegionPage() {
   const { searchItems, provinces } = await getContentfulData();
 
   return (
     <main className="min-h-screen bg-white">
-      <RegionDirectory
-        key={region ?? 'all'}
-        initialSubSlug={region}
-        externalItems={searchItems}
-      />
+      <Suspense fallback={<RegionDirectory externalItems={searchItems} />}>
+        <RegionDirectoryFromUrl externalItems={searchItems} />
+      </Suspense>
 
       {/* Contentful-д нэмэгдсэн аймаг бүр энд автоматаар холбогдоно (цэсний "Аймгууд" энэ хэсэг рүү заана) */}
       {provinces.length > 0 && (

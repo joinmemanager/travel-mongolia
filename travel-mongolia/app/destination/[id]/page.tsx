@@ -17,6 +17,7 @@ import { getRelatedItems, linkIds } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { photoSrc } from '@/lib/images';
 import { mergedPlaceFacts } from '@/lib/tourismPlaces';
+import { productionStaticParams } from '@/lib/navigation';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -115,3 +116,6 @@ export default async function DestinationDetailPage({ params }: Props) {
     </PlaceTemplate>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

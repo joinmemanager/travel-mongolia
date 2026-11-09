@@ -1,8 +1,7 @@
 import { metaFor } from '@/lib/pageMeta';
 
-// Хуудас ?cat= (?style=, ?days= г.м.) параметрийг useSearchParams-аар уншдаг тул хүсэлт бүрт render хийнэ.
-// Статик болговол server HTML-д агуулга (H1) орохгүй болно (docs/plan/performance.md).
-export const dynamic = 'force-dynamic';
+// 2026-11-06-ноос статик/ISR: ?cat= (?style=, ?days= г.м.) параметрийг жагсаалтын Suspense доторх хэсэг уншина,
+// server HTML-д «Бүгд»-ийн бүтэн агуулга орно (Vercel CPU-г хэмнэх; docs/plan/performance.md).
 
 export const metadata = metaFor('/inspiration/styles');
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import PlaceArticle, { placeArticleMetadata, type PlaceArticleConfig } from '@/components/places/PlaceArticle';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Рашаан сувиллын нийтлэл (Contentful `place`, TIC cate8). Жагсаалт: /things-to-do/wellness#sanatorium
 export const revalidate = 604800;
@@ -23,3 +24,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   return <PlaceArticle slug={(await params).slug} cfg={CFG} />;
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

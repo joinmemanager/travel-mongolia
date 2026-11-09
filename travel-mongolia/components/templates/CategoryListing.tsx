@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 
 import ImageCard from '@/components/design/ImageCard';
 import { useActiveFilter, useRegisterSectionFilters } from '@/components/section/SectionFilters';
@@ -52,9 +52,32 @@ interface Props<T extends ListingSpot> {
   embedded?: boolean;
 }
 
+// Хэсгийн хуудсанд (embedded) зүүн талын «Сэдвийн жагсаалт»-д бүртгэх ангиллууд
+function filterSetOf(embedded: boolean | undefined, categories: ListingCategory[]) {
+  return embedded && categories.length > 1 ? { param: 'cat', options: categories.filter((c) => c.id !== 'all') } : null;
+}
+
 // "Ангиллын жагсаалт" загвар (docs/plan/templates.md): /things-to-do/*, /local/* хуудсууд.
 // Зурагтай толгой → наалддаг ангиллын шүүлтүүр (?cat=) → зурагтай картуудын тор.
-export default function CategoryListing<T extends ListingSpot>({
+// Хуудас статик/ISR байхын тулд URL-ийн ?cat=-г зөвхөн Suspense доторх хэсэг уншина. Server HTML-д (fallback)
+// «Бүгд» ангиллын бүтэн жагсаалт орно: агуулга, H1 хайлтын системд харагдана, хуудас хүсэлт бүрт render хийгдэхгүй.
+export default function CategoryListing<T extends ListingSpot>(props: Props<T>) {
+  return (
+    <Suspense fallback={<CategoryListingView {...props} catQuery={null} urlFilter="all" />}>
+      <CategoryListingFromUrl {...props} />
+    </Suspense>
+  );
+}
+
+function CategoryListingFromUrl<T extends ListingSpot>(props: Props<T>) {
+  const searchParams = useSearchParams();
+  const urlFilter = useActiveFilter(filterSetOf(props.embedded, props.categories));
+  return <CategoryListingView {...props} catQuery={searchParams.get('cat')} urlFilter={urlFilter} />;
+}
+
+function CategoryListingView<T extends ListingSpot>({
+  catQuery,
+  urlFilter,
   hero,
   kicker,
   title,
@@ -68,11 +91,9 @@ export default function CategoryListing<T extends ListingSpot>({
   footer,
   notice,
   embedded,
-}: Props<T>) {
+}: Props<T> & { catQuery: string | null; urlFilter: string }) {
   // Хэсгийн хуудсанд товч нь «Дэлгэрэнгүй →» (зөвхөн тусдаа хуудастай картад)
   const cta = ctaProp ?? (embedded ? 'Дэлгэрэнгүй' : 'Дэлгэрэнгүй үзэх');
-  const searchParams = useSearchParams();
-  const catQuery = searchParams.get('cat');
   const [activeTab, setActiveTab] = useState('all');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -89,11 +110,7 @@ export default function CategoryListing<T extends ListingSpot>({
 
   // Хэсгийн хуудсанд ангиллууд зүүн талын «Сэдвийн жагсаалт»-д (components/section/SectionFilters),
   // сонголт нь URL-ийн ?cat= (хуучин холбоосууд ажиллана). Хуудас доторх товчны мөр байхгүй.
-  const filterSet =
-    embedded && categories.length > 1
-      ? { param: 'cat', options: categories.filter((c) => c.id !== 'all') }
-      : null;
-  const urlFilter = useActiveFilter(filterSet);
+  const filterSet = filterSetOf(embedded, categories);
   useRegisterSectionFilters(filterSet && { ...filterSet, active: urlFilter });
   const current = embedded ? urlFilter : activeTab;
 

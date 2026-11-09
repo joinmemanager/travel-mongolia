@@ -10,6 +10,7 @@ import { IMAGES } from '@/lib/images';
 import { isPreviewEnv } from '@/lib/navigation';
 import { isThinContent, NOINDEX, pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
 import { CATEGORY_INFO, getPlace, getPlacesByCategory, PROTECTED_CATEGORIES } from '@/lib/tourismPlaces';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Тусгай хамгаалалттай газрын дэлгэрэнгүй (/destination/protected/<slug>, Contentful `place`, TIC cate2–5).
 // Ангиллын жагсаалт: /destination/strictly-protected, /national-parks, /nature-reserves, /natural-monuments.
@@ -84,3 +85,6 @@ export default async function ProtectedPlacePage({ params }: Props) {
     </PlaceTemplate>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

@@ -7,6 +7,7 @@ import { getExperienceBySlug, getProducts, getProviders } from '@/lib/localConte
 import { getRelatedItems } from '@/lib/related';
 import { entryMeta } from '@/lib/pageMeta';
 import { NOINDEX, richTextToPlain, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Нутгийн туршлага (Б хэсэг)
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
@@ -48,3 +49,6 @@ export default async function ExperiencePage({ params }: Props) {
   });
   return <ExperienceTemplate experience={x} related={related} isLocalProvider={Boolean(host?.localOwned)} />;
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

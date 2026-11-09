@@ -10,6 +10,7 @@ import { getInternationalReport, REPORTS_BASE, SOURCE_TYPE_LABEL } from '@/lib/i
 import { isPreviewEnv } from '@/lib/navigation';
 import { entryMeta } from '@/lib/pageMeta';
 import { richTextToPlain, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Олон улсын тайлангийн монгол хураангуй (story, topic «international»). /impact/examples-ийн төлвийг өвлөнө.
 export const revalidate = 604800;
@@ -90,3 +91,6 @@ export default async function InternationalReportPage({ params }: Props) {
     </main>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

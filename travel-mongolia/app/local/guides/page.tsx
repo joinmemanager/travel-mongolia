@@ -4,12 +4,16 @@ import LocalListingPage, { providerSpot } from '@/components/templates/LocalList
 import { IMAGES } from '@/lib/images';
 import { getProviders } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
+import { connection } from 'next/server';
+import { isPreviewEnv } from '@/lib/navigation';
 
 // Нутгийн Монгол: Нутгийн хөтөч (Б хэсэг, live). "Ангиллын жагсаалт" загвар.
-export const dynamic = 'force-dynamic';
+// 2026-11-06-ноос статик/ISR: ?cat= (?style=, ?days= г.м.) параметрийг жагсаалтын Suspense доторх хэсэг уншина,
+// server HTML-д «Бүгд»-ийн бүтэн агуулга орно (Vercel CPU-г хэмнэх; docs/plan/performance.md).
 export const metadata = metaFor('/local/guides');
 
 export default async function Page() {
+  if (isPreviewEnv()) await connection();
   const providers = (await getProviders()).filter((p) => p.providerType === 'guide');
   return (
     <LocalListingPage
