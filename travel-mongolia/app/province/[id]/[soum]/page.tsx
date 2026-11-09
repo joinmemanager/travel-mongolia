@@ -11,6 +11,7 @@ import { isPreviewEnv } from '@/lib/navigation';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { SOUM_EMBLEM_ASSETS, SOUM_NOT_HERO_ASSETS } from '@/lib/soumHeroImages';
 import { getSoum, getSoumsOfProvince } from '@/lib/soums';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Сумын дэлгэрэнгүй (/province/<аймаг>/<сум>). Зөвхөн ownPage=true (150-аас дээш үгтэй) сумд
 // тусдаа хуудастай; бусдыг нь аймгийн хуудасны "Сумд" хэсэг рүү (#<сум>) шилжүүлнэ.
@@ -115,3 +116,6 @@ export default async function SoumPage({ params }: Props) {
     </PlaceTemplate>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

@@ -7,6 +7,7 @@ import { getStoryBySlug } from '@/lib/localContent';
 import { entryMeta } from '@/lib/pageMeta';
 import { getRelatedItems } from '@/lib/related';
 import { richTextToPlain, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Contentful-ын 'story' төрлийн нийтлэл (/stories-ийн draft төлвийг өвлөнө)
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
@@ -40,3 +41,6 @@ export default async function StoryPage({ params }: Props) {
   });
   return <StoryTemplate story={s} bookings={bookings} />;
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

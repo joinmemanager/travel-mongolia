@@ -12,6 +12,7 @@ import {
 } from '@/lib/localContent';
 import { getRelatedItems } from '@/lib/related';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Арга хэмжээний дэлгэрэнгүй ("Арга хэмжээ" загвар). Эхлээд 'event' төрлөөс slug-аар,
 // олдохгүй бол хуучин 'recommendation' (наадмууд)-аас slug эсвэл хуучин ID-аар хайна.
@@ -94,3 +95,6 @@ export default async function EventPage({ params }: Props) {
     />
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

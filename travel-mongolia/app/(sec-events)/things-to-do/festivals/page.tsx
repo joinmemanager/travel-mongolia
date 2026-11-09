@@ -5,13 +5,17 @@ import CategoryListing from '@/components/templates/CategoryListing';
 import { IMAGES } from '@/lib/images';
 import { eventDateLabel, getAllEvents } from '@/lib/localContent';
 import { metaFor } from '@/lib/pageMeta';
+import { connection } from 'next/server';
+import { isPreviewEnv } from '@/lib/navigation';
 
 // Баяр наадам, фестивалиуд: "Арга хэмжээ" загварын жагсаалт. Contentful-ын 'event' төрөл
 // болон хуучин 'recommendation' (наадмууд) нэг жагсаалтад, дэлгэрэнгүй нь /recommendation/<slug>.
-export const dynamic = 'force-dynamic';
+// 2026-11-06-ноос статик/ISR: ?cat= (?style=, ?days= г.м.) параметрийг жагсаалтын Suspense доторх хэсэг уншина,
+// server HTML-д «Бүгд»-ийн бүтэн агуулга орно (Vercel CPU-г хэмнэх; docs/plan/performance.md).
 export const metadata = metaFor('/things-to-do/festivals');
 
 export default async function FestivalsPage() {
+  if (isPreviewEnv()) await connection();
   const events = await getAllEvents();
 
   const provinces = Array.from(new Set(events.map((e) => e.province).filter(Boolean)));

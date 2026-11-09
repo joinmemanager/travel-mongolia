@@ -11,6 +11,7 @@ import { cdnImage, realImage } from '@/lib/imageUrl';
 import { isPreviewEnv } from '@/lib/navigation';
 import { entryMeta } from '@/lib/pageMeta';
 import { isThinContent, NOINDEX, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Tourist Info Center-ээс шилжүүлсэн зочид буудал, жуулчны баазын хуудас (localProvider, 7-р багц).
 export const revalidate = 604800;
@@ -133,3 +134,6 @@ export default async function AccommodationDetailPage({ params }: Props) {
     </main>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

@@ -8,6 +8,7 @@ import { getExperiences, getProducts, getProviderBySlug, providerTypeLabel } fro
 import { entryMeta } from '@/lib/pageMeta';
 import { getRelatedItems } from '@/lib/related';
 import { NOINDEX, richTextToPlain, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Нутгийн үйлчилгээ үзүүлэгчийн профайл (Б хэсэг)
 // Кэш (ISR) өдөрт нэг: Contentful-д Publish/Unpublish хийхэд /api/revalidate (webhook) шууд шинэчилнэ
@@ -51,3 +52,6 @@ export default async function ProviderPage({ params }: Props) {
   });
   return <ProfileTemplate provider={p} related={related} />;
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

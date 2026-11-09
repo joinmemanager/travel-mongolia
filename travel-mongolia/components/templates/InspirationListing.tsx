@@ -38,9 +38,17 @@ interface Props {
 
 // "Ангиллын жагсаалт" загвар, /inspiration/* хувилбар (docs/plan/templates.md):
 // текст толгой + шүүлтүүр → зурагтай картуудын masonry тор → дараах хуудасны холбоос.
-function InspirationListingContent({ kicker, title, intro, param, filters, items, footerLinks, footerNote, embedded }: Props) {
+const filterSetOf = (embedded: boolean | undefined, param: string, filters: Props['filters']) =>
+  embedded && filters.length > 1 ? { param, options: filters.filter((f) => f.id !== 'all') } : null;
+
+// URL-ийн параметрийг зөвхөн Suspense доторх хэсэг уншина (хуудас статик/ISR), server HTML-д бүх зүйлтэй жагсаалт орно
+function InspirationListingFromUrl(props: Props) {
   const searchParams = useSearchParams();
-  const paramValue = searchParams.get(param);
+  const urlFilter = useActiveFilter(filterSetOf(props.embedded, props.param, props.filters));
+  return <InspirationListingContent {...props} paramValue={searchParams.get(props.param)} urlFilter={urlFilter} />;
+}
+
+function InspirationListingContent({ kicker, title, intro, param, filters, items, footerLinks, footerNote, embedded, paramValue, urlFilter }: Props & { paramValue: string | null; urlFilter: string }) {
   const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
@@ -51,9 +59,7 @@ function InspirationListingContent({ kicker, title, intro, param, filters, items
 
   // Хэсгийн хуудсанд шүүлтүүр зүүн талын «Сэдвийн жагсаалт»-д (components/section/SectionFilters),
   // сонголт нь URL-ийн параметр (?cat=, ?style= г.м.). Хуудас доторх товчны мөр байхгүй.
-  const filterSet =
-    embedded && filters.length > 1 ? { param, options: filters.filter((f) => f.id !== 'all') } : null;
-  const urlFilter = useActiveFilter(filterSet);
+  const filterSet = filterSetOf(embedded, param, filters);
   useRegisterSectionFilters(filterSet && { ...filterSet, active: urlFilter });
   const current = embedded ? urlFilter : activeFilter;
 
@@ -129,8 +135,8 @@ function InspirationListingContent({ kicker, title, intro, param, filters, items
 
 export default function InspirationListing(props: Props) {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#fcfbf9] text-neutral-700 p-10">Уншиж байна...</div>}>
-      <InspirationListingContent {...props} />
+    <Suspense fallback={<InspirationListingContent {...props} paramValue={null} urlFilter="all" />}>
+      <InspirationListingFromUrl {...props} />
     </Suspense>
   );
 }

@@ -388,6 +388,11 @@ export function isPreviewEnv(): boolean {
   return (process.env.SITE_ENV || process.env.VERCEL_ENV) !== 'production';
 }
 
+// [slug] хуудсуудын generateStaticParams: хоосон жагсаалт = build үед үүсгэхгүй, эхний хүсэлтээр render хийж ISR-ээр кэшлэнэ.
+// Үүнгүй бол Next.js dynamic segment-тэй хуудсыг хүсэлт бүрт render хийдэг (Vercel CPU, 2026-11-06). Preview-д идэвхгүй:
+// тэнд connection()-оор хүсэлт бүрт render хийж draft харуулдаг, хоёулаа зэрэг байвал 500 алдаа гардаг.
+export const productionStaticParams = isPreviewEnv() ? undefined : async () => [];
+
 // ---------------------------------------------------------------- хуудасны төлөв
 // Хуудасны төлвийг PAGE_STATUS болон цэсний status-аас уншина (нэг эх сурвалж). live
 // биш хуудас production дээр robots noindex, sitemap-д орохгүй, цэсэнд харагдахгүй, түүн

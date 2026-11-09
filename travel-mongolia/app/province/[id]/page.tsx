@@ -35,6 +35,7 @@ import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
 import { getSoumsOfProvince } from '@/lib/soums';
 import PlaceList from '@/components/places/PlaceList';
 import { CULTURE_CATEGORIES, getPlacesOfProvince, PROTECTED_CATEGORIES, type PlaceSummary } from '@/lib/tourismPlaces';
+import { productionStaticParams } from '@/lib/navigation';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -478,3 +479,6 @@ export default async function ProvinceDetailPage({ params }: Props) {
     </main>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

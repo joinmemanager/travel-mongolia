@@ -10,6 +10,7 @@ import { getHistoryArticle, getHistoryArticles, HISTORY_PERIODS } from '@/lib/hi
 import { isPreviewEnv } from '@/lib/navigation';
 import { getSection, sectionTitle } from '@/lib/sections';
 import { pageMetadata, richTextToPlain, SITE_URL, truncate } from '@/lib/seo';
+import { productionStaticParams } from '@/lib/navigation';
 
 // «Монголын түүх»-ийн нийтлэл (historyArticle). «Монголын тухай» хэсгийн (sec-about) дотор тул hero,
 // «Сэдвийн жагсаалт» хадгалагдаж, жагсаалтад «Монголын түүх» мөр идэвхтэй байна. H1, замчлалыг энд гаргана.
@@ -112,3 +113,6 @@ export default async function HistoryArticlePage({ params }: Props) {
     </article>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

@@ -20,9 +20,13 @@ const raw = createClient({
 // SDK нь axios ашигладаг тул fetch cache-д ордоггүй байсан: хуудас бүр дахин үүсэх бүрт 2–10 хүсэлт явдаг байв.
 // - Түлхүүр = query (+ CDA/CPA). Хариуг холбоосгүй (withoutLinkResolution) хадгалж, буцаахдаа SDK-тай адил
 //   resolveResponse-оор холбоно (холбоос тойрог үүсгэж болох тул JSON-д хадгалах боломжгүй).
-// - Хугацаа 7 хоног. Нийтлэхэд webhook (/api/revalidate) `contentful` tag-ийг шууд хүчингүй болгоно.
+// - Хугацаа 7 хоног. Нийтлэхэд webhook (/api/revalidate) тухайн төрлийн `contentful:<type>` tag-ийг шууд хүчингүй болгоно.
 // - Vercel-ийн Data Cache deploy хооронд хадгалагддаг тул шинэ deploy бүх хуудсыг Contentful-аас дахин татахгүй.
 export const CONTENTFUL_TAG = 'contentful';
+// Content type-аар нь tag (2026-11-06, Vercel CPU): нийтлэхэд зөвхөн тухайн төрлийг (болон түүнийг холбоосоор агуулдаг
+// төрлүүдийг, app/api/revalidate) хүчингүй болгоно. Ерөнхий tag бүх хуудсыг (~3,000) нэг дор хуучирсан болгож
+// bot-ууд бүгдийг дахин render хийлгэдэг байв. content_type-гүй query 'contentful:any'-д орж, нийтлэл бүрт шинэчлэгдэнэ.
+export const contentfulTypeTag = (type?: string) => `contentful:${type || 'any'}`;
 const DATA_TTL = 7 * 24 * 60 * 60;
 
 // Contentful ажиллахгүй (сүлжээ, 401/403/429/5xx, хязгаар хэтэрсэн) үеийн алдаа. Дуудагч catch-д залгилгүй
@@ -66,7 +70,7 @@ async function getEntries(query: Query = {}): Promise<any> {
   const data = contentfulPreview
     ? await fetchRaw(query)
     : await unstable_cache(() => fetchRaw(query), ['contentful', 'cda', JSON.stringify(query)], {
-        tags: [CONTENTFUL_TAG],
+        tags: [CONTENTFUL_TAG, contentfulTypeTag(query.content_type)],
         revalidate: DATA_TTL,
       })();
   return { ...data, items: resolveResponse(data, { removeUnresolved: false, itemEntryPoints: ['fields'] }) };

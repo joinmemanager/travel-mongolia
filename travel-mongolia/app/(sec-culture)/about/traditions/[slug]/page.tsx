@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import CultureArticlePage, { cultureMetadata } from '@/components/culture/CultureArticlePage';
+import { productionStaticParams } from '@/lib/navigation';
 
 // Зан заншлын нийтлэл (cultureArticle, section = traditions). Жагсаалт нь /about/traditions#articles.
 export const revalidate = 604800;
@@ -16,3 +17,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   return <CultureArticlePage section="traditions" slug={(await params).slug} />;
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;

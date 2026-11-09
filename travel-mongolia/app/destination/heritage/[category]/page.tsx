@@ -7,6 +7,7 @@ import ImageCard from '@/components/design/ImageCard';
 import ImageHero from '@/components/templates/ImageHero';
 import { pageMetadata, truncate } from '@/lib/seo';
 import { photoSrc } from '@/lib/images';
+import { productionStaticParams } from '@/lib/navigation';
 
 function getImageUrl(imageField: any): string {
   if (!imageField)
@@ -142,3 +143,6 @@ export default async function HeritageCategoryPage({
     </main>
   );
 }
+
+// Production-д ISR (lib/navigation.ts), preview-д хүсэлт бүрт (draft харуулна)
+export const generateStaticParams = productionStaticParams;
