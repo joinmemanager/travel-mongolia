@@ -26,7 +26,8 @@ const cards = t.map((r) => `
   <p class="meta">Анхны: ${esc(r['анхны_хэмжээ'])}, ${r['анхны_KB']} KB · Шинэ: ${esc(r['шинэ_хэмжээ'])}, ${r['шинэ_KB']} KB · ${r['секунд']} сек</p>
   <div class="pair">
     <figure><img src="../../backups/images-original/${esc(r['файл'])}" alt="Анхны ${esc(r.asset_id)}"><figcaption>Анхны (Contentful)</figcaption></figure>
-    <figure><img src="${esc(r['файл'])}" alt="Сайжруулсан ${esc(r.asset_id)}"><figcaption>Real-ESRGAN x4plus → 2×</figcaption></figure>
+    ${fs.existsSync(path.join(OUT, 'toned', r.asset_id + '-esrgan2x.jpg')) ? `<figure><img src="toned/${esc(r.asset_id)}-esrgan2x.jpg" alt="ESRGAN ${esc(r.asset_id)}"><figcaption>Real-ESRGAN 2× (контрастгүй)</figcaption></figure>` : ''}
+    <figure><img src="${esc(r['файл'])}" alt="Сайжруулсан ${esc(r.asset_id)}"><figcaption>Real-ESRGAN 2× + хөнгөн CLAHE (slope 2, mix 0.8) + ханалт 1.04, JPEG 85</figcaption></figure>
   </div>
 </section>`).join('\n');
 
@@ -36,7 +37,7 @@ const html = `<!DOCTYPE html>
 body{font-family:system-ui,sans-serif;margin:24px;background:#f5f5f4;color:#1c1917}
 h1{font-size:22px} section{background:#fff;border-radius:12px;padding:16px;margin:16px 0}
 h2{font-size:16px;margin:0 0 4px} .meta{color:#57534e;font-size:13px;margin:0 0 12px}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px} figure{margin:0}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px} figure{margin:0}
 /* Хоёуланг ижил өргөнөөр харуулна: анхны нь сунаж, шинэ нь багасна — нарийвчлалыг харьцуулах */
 img{width:100%;height:auto;display:block;border-radius:8px;image-rendering:auto}
 figcaption{font-size:12px;color:#57534e;margin-top:4px}
