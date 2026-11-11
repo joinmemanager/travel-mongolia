@@ -5,11 +5,18 @@
 #  - Preview: commit-ийн мессежид [preview] байвал эсвэл staging branch бол л build хийнэ.
 #  - Production (main): сайтын код өөрчлөгдсөн бол үргэлж build хийнэ.
 
-# Өмнөх commit-оос хойш энэ хавтас (Vercel-ийн Root Directory) өөрчлөгдсөн эсэх.
-# Shallow clone-д HEAD^ байхгүй бол аюулгүй тал руу: build хийнэ.
-if git rev-parse --verify --quiet HEAD^ >/dev/null && git diff --quiet HEAD^ HEAD -- .; then
-  echo "travel-mongolia/ өөрчлөгдөөгүй — build алгасав"
+# Энэ branch-ийн сүүлийн амжилттай deploy-оос (VERCEL_GIT_PREVIOUS_SHA) хойш энэ хавтас (Vercel-ийн Root Directory)
+# өөрчлөгдсөн эсэх. HEAD^-тэй харьцуулбал merge commit (эхний эцэг нь өөрчлөлтгүй байж болно) болон
+# хоосон commit-ийн өмнөх өөрчлөлт алгасагддаг байв (2026-11-11, f5c9e57 / 9eeb145).
+# Хувьсагч байхгүй, эсвэл тэр commit shallow clone-д олдохгүй бол аюулгүй тал руу: build хийнэ.
+PREV="$VERCEL_GIT_PREVIOUS_SHA"
+if [ -z "$PREV" ] || ! git cat-file -e "$PREV^{commit}" 2>/dev/null; then
+  echo "Сүүлийн амжилттай deploy-ийн commit олдсонгүй (${PREV:-байхгүй}) — build хийнэ"
+elif git diff --quiet "$PREV" HEAD -- .; then
+  echo "travel-mongolia/ ${PREV:0:7}-оос хойш өөрчлөгдөөгүй — build алгасав"
   exit 0
+else
+  echo "travel-mongolia/ ${PREV:0:7}-оос хойш өөрчлөгдсөн"
 fi
 
 if [ "$VERCEL_ENV" = "production" ]; then
