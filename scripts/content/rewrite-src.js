@@ -16,7 +16,7 @@ const byId = new Map(E.map((e) => [e.sys.id, e]));
 const assetById = new Map(A.map((a) => [a.sys.id, a]));
 const OUT = path.join(lib.ROOT, 'tmp', 'rewrite-src');
 fs.mkdirSync(OUT, { recursive: true });
-const FIELD = { province: 'description2', heritagePlace: 'description', localProvider: 'story' };
+const FIELD = { province: 'description2', heritagePlace: 'description', localProvider: 'story', destination: 'description' };
 const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').split('=')[1];
 
 function inl(n) {
