@@ -236,3 +236,8 @@ tic-c13-170
 tic-c1-539
 tic-c1-38
 tic-c17-7
+tic-c8-43
+tic-c1-532
+tic-c17-27
+tic-c17-10
+tic-c1-450
