@@ -1,0 +1,557 @@
+﻿mn,en,төрөл,тэмдэглэл
+аймаг,province,засаг захиргаа,"Эхний удаа: ""Khentii Province (aimag)"", дараа нь ""province"". Нэрний хамт: ""Khentii Province""."
+сум,soum,засаг захиргаа,"Жижиг үсгээр: ""Dadal soum"". ""district/county"" гэж орчуулахгүй."
+баг,bag,засаг захиргаа,"Эхний удаа: ""bag (the smallest administrative unit)""."
+дүүрэг,district,засаг захиргаа,"Улаанбаатарын: ""Khan-Uul District""."
+сумын төв,soum center,засаг захиргаа,
+аймгийн төв,provincial center,засаг захиргаа,
+нийслэл,the capital,засаг захиргаа,
+Монгол Улс,Mongolia,газар,"""Mongolian State"" биш."
+Улаанбаатар,Ulaanbaatar,газар,"""Ulan Bator"" биш."
+ОХУ,Russia,газар,
+БНХАУ,China,газар,
+Өвөр Монгол,Inner Mongolia,газар,
+гэр,ger,соёл,"""yurt"" биш. SEO description-д нэг удаа ""ger (yurt)"" гэж болно."
+овоо,ovoo,соёл,"Эхний удаа: ""ovoo (sacred stone cairn)""."
+наадам,Naadam,соёл,"Том үсгээр. ""Naadam Festival""."
+эрийн гурван наадам,the Three Manly Games,соёл,"wrestling, horse racing, archery"
+бөх,wrestling,соёл,"Бөх (хүн) = ""wrestler"". Монгол бөх = ""Mongolian wrestling (bökh)"" эхний удаа."
+морин уралдаан,horse racing,соёл,
+сур харваа,archery,соёл,
+шагай,shagai (anklebone games),соёл,
+морин хуур,morin khuur (horsehead fiddle),соёл,Эхний удаа хаалтын тайлбартай.
+хөөмий,khoomei (throat singing),соёл,
+уртын дуу,urtiin duu (long song),соёл,
+дээл,deel,соёл,"Эхний удаа: ""deel (traditional robe)""."
+айраг,airag,хоол,"Эхний удаа: ""airag (fermented mare's milk)""."
+бууз,buuz,хоол,"Эхний удаа: ""buuz (steamed dumplings)""."
+хуушуур,khuushuur,хоол,"Эхний удаа: ""khuushuur (fried meat pastries)""."
+аарц,aarts (dried curd drink),хоол,
+ааруул,aaruul (dried curds),хоол,
+боодог,boodog,хоол,"Эхний удаа: ""boodog (meat cooked with hot stones inside the skin)""."
+хорхог,khorkhog,хоол,"Эхний удаа: ""khorkhog (meat cooked with hot stones)""."
+Цагаан сар,Tsagaan Sar (Lunar New Year),соёл,
+малчин,herder,соёл,"""shepherd"" биш."
+малчин айл,herder family,соёл,
+нүүдэлчин,nomad,соёл,"Тэмдэг нэр: ""nomadic""."
+таван хошуу мал,the five types of livestock,соёл,"horses, camels, cattle (incl. yaks), sheep, goats"
+хийморь,khiimori (wind horse),соёл,
+хадаг,khadag (ceremonial silk scarf),соёл,
+тахилга,worship ceremony,соёл,"Овооны тахилга = ""ovoo worship ceremony""."
+бүргэдчин,eagle hunter,соёл,
+цаатан,Tsaatan (Dukha) reindeer herders,ард түмэн,
+халх,Khalkha,ард түмэн,
+казах,Kazakh,ард түмэн,
+буриад,Buryat,ард түмэн,
+дархад,Darkhad,ард түмэн,
+урианхай,Uriankhai,ард түмэн,
+ойрад,Oirat,ард түмэн,
+дөрвөд,Durvud,ард түмэн,
+ястан,ethnic group,ард түмэн,"""tribe"" биш."
+сүм,temple,шашин,
+хийд,monastery,шашин,"Нэрний хамт: ""Amarbayasgalant Monastery""."
+дацан,datsan (monastic college),шашин,
+лам,lama,шашин,
+бөө,shaman,шашин,
+бөө мөргөл,shamanism,шашин,
+буддын шашин,Buddhism,шашин,
+Хөх тэнгэр,the Eternal Blue Sky,шашин,
+Занабазар,Zanabazar,түүх,
+Өндөр гэгээн,Undur Gegeen,түүх,
+Богд хаан,Bogd Khan,түүх,
+Чингис хаан,Chinggis Khaan,түүх,"Эхний удаа: ""Chinggis Khaan (Genghis Khan)"", дараа нь ""Chinggis Khaan""."
+Их Монгол Улс,the Great Mongol State,түүх,
+Монголын эзэнт гүрэн,the Mongol Empire,түүх,
+Хүннү,Xiongnu,түүх,"Эхний удаа: ""Xiongnu (Hunnu)""."
+Түрэг,Turkic,түүх,"Түрэгийн хаант улс = ""the Turkic Khaganate""."
+Уйгур,Uighur,түүх,
+Сяньби,Xianbei,түүх,
+Нирун,Rouran,түүх,
+Хятан,Khitan,түүх,
+Манж,Manchu (Qing),түүх,"Манжийн дарлал = ""Qing rule""."
+хиргисүүр,khirigsuur (burial mound),дурсгал,
+буган хөшөө,deer stone,дурсгал,
+хүн чулуу,stone figure,дурсгал,"""stone man"" биш."
+хадны зураг,rock painting,дурсгал,
+хадны сийлбэр,petroglyph,дурсгал,
+бичээс,inscription,дурсгал,
+дурсгал,monument,дурсгал,"Түүх соёлын дурсгалт газар = ""historical and cultural site""."
+хэрэм,fortress wall,дурсгал,
+хөшөө,statue,дурсгал,"Дурсгалын хөшөө = ""memorial""."
+музей,museum,дурсгал,
+нуур,Lake,байгаль,"Нэрний ард: ""Khuvsgul Lake"" (монгол дарааллаар), ""Lake Khuvsgul"" биш."
+гол,River,байгаль,"""Onon River""."
+уул,Mountain,байгаль,"""Burkhan Khaldun Mountain""."
+нуруу,Range,байгаль,"""Khangai Range""."
+хайрхан,Khairkhan,байгаль,"Нэрийн нэг хэсэг: ""Ikh Bogd Khairkhan"". Тайлбарт: ""sacred mountain""."
+оргил,peak,байгаль,
+хөндий,Valley,байгаль,"""Orkhon Valley""."
+тал,steppe,байгаль,"""plain"" биш, хээр тал = ""steppe""."
+хээр,steppe,байгаль,
+говь,Gobi,байгаль,"Цөлийн бүс = ""the Gobi"". Аймгийн нэрэнд ""govi"" (Umnugovi)."
+цөл,desert,байгаль,
+элсэн манхан,sand dunes,байгаль,"Хонгорын элс = ""Khongor Sand Dunes""."
+тайга,taiga,байгаль,
+ой,forest,байгаль,
+рашаан,mineral spring,байгаль,"Халуун рашаан = ""hot spring""."
+халуун рашаан,hot spring,байгаль,
+сувилал,sanatorium,байгаль,"Рашаан сувилал = ""spa sanatorium""."
+булаг,spring,байгаль,
+хүрхрээ,waterfall,байгаль,
+агуй,cave,байгаль,
+галт уул,volcano,байгаль,
+мөнх цас,glacier,байгаль,
+бэлчээр,pasture,байгаль,
+тусгай хамгаалалттай газар,protected area,хамгаалалт,
+дархан цаазат газар,strictly protected area,хамгаалалт,"Нэрний хамт: ""Khan Khentii Strictly Protected Area""."
+байгалийн цогцолборт газар,national park,хамгаалалт,"Нэрний хамт: ""Gorkhi-Terelj National Park""."
+байгалийн нөөц газар,nature reserve,хамгаалалт,
+байгалийн дурсгалт газар,natural monument,хамгаалалт,
+Дэлхийн өв,UNESCO World Heritage Site,хамгаалалт,
+тахь,Przewalski's horse (takhi),амьтан,
+хулан,Mongolian wild ass (khulan),амьтан,
+цагаан зээр,Mongolian gazelle,амьтан,
+хар сүүлт,goitered gazelle,амьтан,
+аргаль,argali,амьтан,
+янгир,Siberian ibex,амьтан,
+ирвэс,snow leopard,амьтан,
+хавтгай,wild Bactrian camel,амьтан,
+мазаалай,Gobi bear (mazaalai),амьтан,
+бүргэд,golden eagle,амьтан,
+тарвага,marmot,амьтан,
+хандгай,moose,амьтан,
+цаа буга,reindeer,амьтан,
+сарлаг,yak,амьтан,
+тэмээ,camel,амьтан,"Хоёр бөхт = ""Bactrian camel""."
+тул загас,taimen,амьтан,
+Хөвсгөл нуур,Khuvsgul Lake,газар,
+Тэрэлж,Terelj,газар,
+Горхи-Тэрэлж,Gorkhi-Terelj National Park,газар,
+Орхоны хөндий,Orkhon Valley,газар,"UNESCO: ""Orkhon Valley Cultural Landscape""."
+Хархорум,Kharkhorum,газар,"Эхний удаа: ""Kharkhorum (Karakorum)""."
+Эрдэнэ Зуу,Erdene Zuu Monastery,газар,
+Хустай,Khustai National Park,газар,
+Хонгорын элс,Khongor Sand Dunes,газар,
+Ёлын ам,Yolyn Am,газар,
+Баянзаг,Bayanzag (Flaming Cliffs),газар,
+Тэрхийн цагаан нуур,Terkhiin Tsagaan Lake,газар,
+Хорго,Khorgo,газар,"Хорго уул = ""Khorgo volcano""."
+Увс нуур,Uvs Lake,газар,
+Хар ус нуур,Khar Us Lake,газар,
+Өгий нуур,Ugii Lake,газар,
+Алтай Таван Богд,Altai Tavan Bogd National Park,газар,
+Бурхан Халдун,Burkhan Khaldun Mountain,газар,
+Отгонтэнгэр,Otgontenger Mountain,газар,
+Хөгнө Хан,Khugnu Khan Mountain,газар,
+Хан Хэнтий,Khan Khentii Strictly Protected Area,газар,
+Говь Гурван Сайхан,Gobi Gurvan Saikhan National Park,газар,
+Говийн их дархан газар,Great Gobi Strictly Protected Area,газар,
+Онон,Onon River,газар,
+Хэрлэн,Kherlen River,газар,
+Туул,Tuul River,газар,
+Орхон гол,Orkhon River,газар,
+Сэлэнгэ мөрөн,Selenge River,газар,
+Завхан гол,Zavkhan River,газар,
+Амарбаясгалант хийд,Amarbayasgalant Monastery,газар,
+Гандантэгчэнлин хийд,Gandantegchinlen Monastery,газар,"Товчоор ""Gandan Monastery""."
+Хамарын хийд,Khamar Monastery,газар,
+Сүхбаатарын талбай,Sukhbaatar Square,газар,
+Чингис хааны морьт хөшөө,Chinggis Khaan Equestrian Statue,газар,Цонжин Болдог
+Хангай,Khangai,газар,"Хангайн нуруу = ""Khangai Range""."
+Алтай,Altai,газар,"Монгол Алтайн нуруу = ""Mongolian Altai Range""."
+Хэнтийн нуруу,Khentii Range,газар,
+Дорнод тал,the Eastern Steppe,газар,
+Монголын нууц товчоо,The Secret History of the Mongols,түүх,"Ишлэлд хашилтгүй, налуугүй: ""The Secret History of the Mongols""."
+Алтан товч,Altan Tobchi,түүх,"Эхний удаа: ""Altan Tobchi (the Golden Summary)""."
+Тэмүжин,Temujin,түүх,Чингис хааны багын нэр.
+Өүлэн эх,Mother Hoelun,түүх,
+Алунгоо,Alan Gua,түүх,
+Добу мэргэн,Dobun Mergen,түүх,
+Боданчир,Bodonchar,түүх,
+Ван хан,Wang Khan,түүх,"Хэрэйдийн Ван хан Тоорил = ""Toghrul Wang Khan of the Kereit""."
+Хэрэйд,Kereit,түүх,
+Мэргид,Merkit,түүх,
+БНМАУ,Mongolian People's Republic,түүх,1924–1992 оны улсын нэр.
+Улсын Их Хурал,State Great Khural,засаг захиргаа,Монгол Улсын парламент.
+хошуу,banner (khoshuu),түүх,"Манж, Богд хаант үеийн засаг захиргааны нэгж."
+хороо,khoroo (sub-district),засаг захиргаа,Улаанбаатарын дүүргийн дэд нэгж.
+нэгдэл,cooperative,түүх,"Социализмын үеийн малчдын нэгдэл = ""herders' cooperative (negdel)""."
+сангийн аж ахуй,state farm,түүх,
+отор,otor (seasonal long-distance grazing),соёл,
+зуд,dzud,байгаль,"Эхний удаа: ""dzud (a harsh winter that kills livestock)""."
+хярс,corsac fox,амьтан,"""steppe polecat"" биш (энэ нь өмхий хүрэн)."
+мануул,Pallas's cat,амьтан,
+өмхий хүрэн,steppe polecat,амьтан,
+ятуу,Daurian partridge,амьтан,
+ууль,capercaillie,амьтан,
+сойр,black grouse,амьтан,
+цэн тогоруу,white-naped crane,амьтан,
+буга,red deer,амьтан,
+бор гөрөөс,roe deer,амьтан,
+чандага,mountain hare,амьтан,
+чацаргана,sea buckthorn,ургамал,
+мойл,Asian bird cherry,ургамал,
+хялгана,feather grass,ургамал,
+заг,saxaul,ургамал,
+жуулчны бааз,tourist ger camp,аялал,"Гэргүй бол ""tourist camp""."
+зочид буудал,hotel,аялал,
+аялал жуулчлал,tourism,аялал,
+аялагч,traveler,аялал,Америк англи бичлэг.
+жуулчин,visitor,аялал,"""tourist"" зөвхөн ""tourist ger camp"" г.м."
+хүн ам,population,тоо баримт,
+нутаг дэвсгэр,area,тоо баримт,"""territory"" биш, тоотой: ""an area of 4,200 km²""."
+далайн түвшнээс дээш,above sea level,тоо баримт,"""1,200 m above sea level""."
+хавтгай дөрвөлжин километр,km²,тоо баримт,"Тоо: ""4,200 km²"" (мянгатыг таслалаар)."
+төгрөг,MNT,тоо баримт,"""₮"" → ""MNT 50,000""."
+Ховд,Khovd,аймаг,"""Khovd Province"". URL: /province/khovd"
+Архангай,Arkhangai,аймаг,"""Arkhangai Province"". URL: /province/arkhangai"
+Баян-Өлгий,Bayan-Ulgii,аймаг,"""Bayan-Ulgii Province"". URL: /province/bayan-ulgii"
+Баянхонгор,Bayankhongor,аймаг,"""Bayankhongor Province"". URL: /province/bayankhongor"
+Булган,Bulgan,аймаг,"""Bulgan Province"". URL: /province/bulgan"
+Говь-Алтай,Govi-Altai,аймаг,"""Govi-Altai Province"". URL: /province/gov-altai"
+Говьсүмбэр,Govisumber,аймаг,"""Govisumber Province"". URL: /province/govsumber"
+Дархан-Уул,Darkhan-Uul,аймаг,"""Darkhan-Uul Province"". URL: /province/darkhan-uul"
+Дорноговь,Dornogovi,аймаг,"""Dornogovi Province"". URL: /province/dornogov"
+Дорнод,Dornod,аймаг,"""Dornod Province"". URL: /province/dornod"
+Дундговь,Dundgovi,аймаг,"""Dundgovi Province"". URL: /province/dundgov"
+Завхан,Zavkhan,аймаг,"""Zavkhan Province"". URL: /province/zavkhan"
+Орхон,Orkhon,аймаг,"""Orkhon Province"". URL: /province/orkhon"
+Өвөрхангай,Uvurkhangai,аймаг,"""Uvurkhangai Province"". URL: /province/uvurkhangai"
+Өмнөговь,Umnugovi,аймаг,"""Umnugovi Province"". URL: /province/umnugov"
+Сүхбаатар,Sukhbaatar,аймаг,"""Sukhbaatar Province"". URL: /province/sukhbaatar"
+Сэлэнгэ,Selenge,аймаг,"""Selenge Province"". URL: /province/selenge"
+Төв,Tuv,аймаг,"""Tuv Province"". URL: /province/tuv"
+Увс,Uvs,аймаг,"""Uvs Province"". URL: /province/uvs"
+Хөвсгөл,Khuvsgul,аймаг,"""Khuvsgul Province"". URL: /province/khuvsgul"
+Хэнтий,Khentii,аймаг,"""Khentii Province"". URL: /province/khentii"
+Адаацаг,Adaatsag,сум,"""Adaatsag soum"", Dundgovi. URL: /province/dundgov/adaatsag"
+Алаг-Эрдэнэ,Alag-Erdene,сум,"""Alag-Erdene soum"", Khuvsgul. URL: /province/khuvsgul/alag-erdene"
+Алдархаан,Aldarkhaan,сум,"""Aldarkhaan soum"", Zavkhan. URL: /province/zavkhan/aldarkhaan"
+Алтай (Баян-Өлгий),Altai,сум,"""Altai soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/altai"
+Алтай (Говь-Алтай),Altai,сум,"""Altai soum"", Govi-Altai. URL: /province/gov-altai/altai"
+Алтай (Ховд),Altai,сум,"""Altai soum"", Khovd. URL: /province/khovd/altai"
+Алтанбулаг (Сэлэнгэ),Altanbulag,сум,"""Altanbulag soum"", Selenge. URL: /province/selenge/altanbulag"
+Алтанбулаг (Төв),Altanbulag,сум,"""Altanbulag soum"", Tuv. URL: /province/tuv/altanbulag"
+Алтанцөгц,Altantsugts,сум,"""Altantsugts soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/altantsugts"
+Алтанширээ,Altanshiree,сум,"""Altanshiree soum"", Dornogovi. URL: /province/dornogov/altanshiree"
+Арбулаг,Arbulag,сум,"""Arbulag soum"", Khuvsgul. URL: /province/khuvsgul/arbulag"
+Арвайхээр,Arvaikheer,сум,"""Arvaikheer soum"", Uvurkhangai. URL: /province/uvurkhangai/arvaikheer"
+Аргалант,Argalant,сум,"""Argalant soum"", Tuv. URL: /province/tuv/argalant"
+Архуст,Arkhust,сум,"""Arkhust soum"", Tuv. URL: /province/tuv/arkhust"
+Асгат (Сүхбаатар),Asgat,сум,"""Asgat soum"", Sukhbaatar. URL: /province/sukhbaatar/asgat"
+Асгат (Завхан),Asgat,сум,"""Asgat soum"", Zavkhan. URL: /province/zavkhan/asgat"
+Баацагаан,Baatsagaan,сум,"""Baatsagaan soum"", Bayankhongor. URL: /province/bayankhongor/baatsagaan"
+Багануур,Baganuur,дүүрэг,"""Baganuur District"", Ulaanbaatar. URL: /province/ulaanbaatar/baganuur"
+Багахангай,Bagakhangai,дүүрэг,"""Bagakhangai District"", Ulaanbaatar. URL: /province/ulaanbaatar/bagakhangai"
+Баруун-Урт,Baruun-Urt,сум,"""Baruun-Urt soum"", Sukhbaatar. URL: /province/sukhbaatar/baruun-urt"
+Баруунбаян-Улаан,Baruunbayan-Ulaan,сум,"""Baruunbayan-Ulaan soum"", Uvurkhangai. URL: /province/uvurkhangai/baruunbayan-ulaan"
+Баруунбүрэн,Baruunburen,сум,"""Baruunburen soum"", Selenge. URL: /province/selenge/baruunburen"
+Баруунтуруун,Baruunturuun,сум,"""Baruunturuun soum"", Uvs. URL: /province/uvs/baruunturuun"
+Бат-Өлзий,Bat-Ulzii,сум,"""Bat-Ulzii soum"", Uvurkhangai. URL: /province/uvurkhangai/bat-ulzii"
+Батноров,Batnorov,сум,"""Batnorov soum"", Khentii. URL: /province/khentii/batnorov"
+Батсүмбэр,Batsumber,сум,"""Batsumber soum"", Tuv. URL: /province/tuv/batsumber"
+Батцэнгэл,Battsengel,сум,"""Battsengel soum"", Arkhangai. URL: /province/arkhangai/battsengel"
+Батширээт,Batshireet,сум,"""Batshireet soum"", Khentii. URL: /province/khentii/batshireet"
+Баян,Bayan,сум,"""Bayan soum"", Tuv. URL: /province/tuv/bayan"
+Баян-Агт,Bayan-Agt,сум,"""Bayan-Agt soum"", Bulgan. URL: /province/bulgan/bayan-agt"
+Баян-Адарга,Bayan-Adarga,сум,"""Bayan-Adarga soum"", Khentii. URL: /province/khentii/bayan-adarga"
+Баян-Овоо (Хэнтий),Bayan-Ovoo,сум,"""Bayan-Ovoo soum"", Khentii. URL: /province/khentii/bayan-ovoo"
+Баян-Овоо (Өмнөговь),Bayan-Ovoo,сум,"""Bayan-Ovoo soum"", Umnugovi. URL: /province/umnugov/bayan-ovoo"
+Баян-Овоо (Баянхонгор),Bayan-Ovoo,сум,"""Bayan-Ovoo soum"", Bayankhongor. URL: /province/bayankhongor/bayan-ovoo"
+Баян-Өндөр (Баянхонгор),Bayan-Undur,сум,"""Bayan-Undur soum"", Bayankhongor. URL: /province/bayankhongor/bayan-undur"
+Баян-Өндөр (Орхон),Bayan-Undur,сум,"""Bayan-Undur soum"", Orkhon. URL: /province/orkhon/bayan-undur"
+Баян-Өндөр (Өвөрхангай),Bayan-Undur,сум,"""Bayan-Undur soum"", Uvurkhangai. URL: /province/uvurkhangai/bayan-undur"
+Баян-Өнжүүл,Bayan-Unjuul,сум,"""Bayan-Unjuul soum"", Tuv. URL: /province/tuv/bayan-unjuul"
+Баян-Уул (Дорнод),Bayan-Uul,сум,"""Bayan-Uul soum"", Dornod. URL: /province/dornod/bayan-uul"
+Баян-Уул (Говь-Алтай),Bayan-Uul,сум,"""Bayan-Uul soum"", Govi-Altai. URL: /province/gov-altai/bayan-uul"
+Баянбулаг,Bayanbulag,сум,"""Bayanbulag soum"", Bayankhongor. URL: /province/bayankhongor/bayanbulag"
+Баянговь,Bayangov,сум,"""Bayangov soum"", Bayankhongor. URL: /province/bayankhongor/bayangov"
+Баянгол,Bayangol,дүүрэг,"""Bayangol District"", Ulaanbaatar. URL: /province/ulaanbaatar/bayangol"
+Баянгол (Сэлэнгэ),Bayangol,сум,"""Bayangol soum"", Selenge. URL: /province/selenge/bayangol"
+Баянгол (Өвөрхангай),Bayangol,сум,"""Bayangol soum"", Uvurkhangai. URL: /province/uvurkhangai/bayangol"
+Баяндалай,Bayandalai,сум,"""Bayandalai soum"", Umnugovi. URL: /province/umnugov/bayandalai"
+Баяндун,Bayandun,сум,"""Bayandun soum"", Dornod. URL: /province/dornod/bayandun"
+Баяндэлгэр (Сүхбаатар),Bayandelger,сум,"""Bayandelger soum"", Sukhbaatar. URL: /province/sukhbaatar/bayandelger"
+Баяндэлгэр (Төв),Bayandelger,сум,"""Bayandelger soum"", Tuv. URL: /province/tuv/bayandelger"
+Баянжаргалан (Дундговь),Bayanjargalan,сум,"""Bayanjargalan soum"", Dundgovi. URL: /province/dundgov/bayanjargalan"
+Баянжаргалан (Төв),Bayanjargalan,сум,"""Bayanjargalan soum"", Tuv. URL: /province/tuv/bayanjargalan"
+Баянзүрх,Bayanzurkh,дүүрэг,"""Bayanzurkh District"", Ulaanbaatar. URL: /province/ulaanbaatar/bayanzurkh"
+Баянлиг,Bayanlig,сум,"""Bayanlig soum"", Bayankhongor. URL: /province/bayankhongor/bayanlig"
+Баянмөнх,Bayanmunkh,сум,"""Bayanmunkh soum"", Khentii. URL: /province/khentii/bayanmunkh"
+Баяннуур (Баян-Өлгий),Bayannuur,сум,"""Bayannuur soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/bayannuur"
+Баяннуур (Булган),Bayannuur,сум,"""Bayannuur soum"", Bulgan. URL: /province/bulgan/bayannuur"
+Баянтал,Bayantal,сум,"""Bayantal soum"", Govisumber. URL: /province/govsumber/bayantal"
+Баянтүмэн,Bayantumen,сум,"""Bayantumen soum"", Dornod. URL: /province/dornod/bayantumen"
+Баянтэс,Bayantes,сум,"""Bayantes soum"", Zavkhan. URL: /province/zavkhan/bayantes"
+Баянхайрхан,Bayankhairkhan,сум,"""Bayankhairkhan soum"", Zavkhan. URL: /province/zavkhan/bayankhairkhan"
+Баянхангай,Bayankhangai,сум,"""Bayankhangai soum"", Tuv. URL: /province/tuv/bayankhangai"
+Баянхутаг,Bayankhutag,сум,"""Bayankhutag soum"", Khentii. URL: /province/khentii/bayankhutag"
+Баянцагаан (Баянхонгор),Bayantsagaan,сум,"""Bayantsagaan soum"", Bayankhongor. URL: /province/bayankhongor/bayantsagaan"
+Баянцагаан (Төв),Bayantsagaan,сум,"""Bayantsagaan soum"", Tuv. URL: /province/tuv/bayantsagaan"
+Баянцогт,Bayantsogt,сум,"""Bayantsogt soum"", Tuv. URL: /province/tuv/bayantsogt"
+Баянчандмань,Bayanchandman,сум,"""Bayanchandman soum"", Tuv. URL: /province/tuv/bayanchandman"
+Бигэр,Biger,сум,"""Biger soum"", Govi-Altai. URL: /province/gov-altai/biger"
+Биндэр,Binder,сум,"""Binder soum"", Khentii. URL: /province/khentii/binder"
+Богд (Баянхонгор),Bogd,сум,"""Bogd soum"", Bayankhongor. URL: /province/bayankhongor/bogd"
+Богд (Өвөрхангай),Bogd,сум,"""Bogd soum"", Uvurkhangai. URL: /province/uvurkhangai/bogd"
+Бор-Өндөр,Bor-Undur,сум,"""Bor-Undur soum"", Khentii. URL: /province/khentii/bor-undur"
+Борнуур,Bornuur,сум,"""Bornuur soum"", Tuv. URL: /province/tuv/bornuur"
+Бөмбөгөр,Bumbugur,сум,"""Bumbugur soum"", Bayankhongor. URL: /province/bayankhongor/bumbugur"
+Бөхмөрөн,Bukhmurun,сум,"""Bukhmurun soum"", Uvs. URL: /province/uvs/bukhmurun"
+Бугат (Баян-Өлгий),Bugat,сум,"""Bugat soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/bugat"
+Бугат (Булган),Bugat,сум,"""Bugat soum"", Bulgan. URL: /province/bulgan/bugat"
+Бугат (Говь-Алтай),Bugat,сум,"""Bugat soum"", Govi-Altai. URL: /province/gov-altai/bugat"
+Булган (Архангай),Bulgan,сум,"""Bulgan soum"", Arkhangai. URL: /province/arkhangai/bulgan"
+Булган (Баян-Өлгий),Bulgan,сум,"""Bulgan soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/bulgan"
+Булган (Булган),Bulgan,сум,"""Bulgan soum"", Bulgan. URL: /province/bulgan/bulgan"
+Булган (Дорнод),Bulgan,сум,"""Bulgan soum"", Dornod. URL: /province/dornod/bulgan"
+Булган (Ховд),Bulgan,сум,"""Bulgan soum"", Khovd. URL: /province/khovd/bulgan"
+Булган (Өмнөговь),Bulgan,сум,"""Bulgan soum"", Umnugovi. URL: /province/umnugov/bulgan"
+Бууцагаан,Buutsagaan,сум,"""Buutsagaan soum"", Bayankhongor. URL: /province/bayankhongor/buutsagaan"
+Буянт (Баян-Өлгий),Buyant,сум,"""Buyant soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/buyant"
+Буянт (Ховд),Buyant,сум,"""Buyant soum"", Khovd. URL: /province/khovd/buyant"
+Бүрд,Burd,сум,"""Burd soum"", Uvurkhangai. URL: /province/uvurkhangai/burd"
+Бүрэгхангай,Buregkhangai,сум,"""Buregkhangai soum"", Bulgan. URL: /province/bulgan/buregkhangai"
+Бүрэн,Buren,сум,"""Buren soum"", Tuv. URL: /province/tuv/buren"
+Бүрэнтогтох,Burentogtokh,сум,"""Burentogtokh soum"", Khuvsgul. URL: /province/khuvsgul/burentogtokh"
+Галт,Galt,сум,"""Galt soum"", Khuvsgul. URL: /province/khuvsgul/galt"
+Галуут,Galuut,сум,"""Galuut soum"", Bayankhongor. URL: /province/bayankhongor/galuut"
+Галшар,Galshar,сум,"""Galshar soum"", Khentii. URL: /province/khentii/galshar"
+Говь-Угтаал,Gov-Ugtaal,сум,"""Gov-Ugtaal soum"", Dundgovi. URL: /province/dundgov/gov-ugtaal"
+Гурванбулаг (Баянхонгор),Gurvanbulag,сум,"""Gurvanbulag soum"", Bayankhongor. URL: /province/bayankhongor/gurvanbulag"
+Гурванбулаг (Булган),Gurvanbulag,сум,"""Gurvanbulag soum"", Bulgan. URL: /province/bulgan/gurvanbulag"
+Гурванзагал,Gurvanzagal,сум,"""Gurvanzagal soum"", Dornod. URL: /province/dornod/gurvanzagal"
+Гурвансайхан,Gurvansaikhan,сум,"""Gurvansaikhan soum"", Dundgovi. URL: /province/dundgov/gurvansaikhan"
+Гурвантэс,Gurvantes,сум,"""Gurvantes soum"", Umnugovi. URL: /province/umnugov/gurvantes"
+Гучин-Ус,Guchin-Us,сум,"""Guchin-Us soum"", Uvurkhangai. URL: /province/uvurkhangai/guchin-us"
+Давст,Davst,сум,"""Davst soum"", Uvs. URL: /province/uvs/davst"
+Дадал,Dadal,сум,"""Dadal soum"", Khentii. URL: /province/khentii/dadal"
+Даланжаргалан,Dalanjargalan,сум,"""Dalanjargalan soum"", Dornogovi. URL: /province/dornogov/dalanjargalan"
+Даланзадгад,Dalanzadgad,сум,"""Dalanzadgad soum"", Umnugovi. URL: /province/umnugov/dalanzadgad"
+Дарви (Говь-Алтай),Darvi,сум,"""Darvi soum"", Govi-Altai. URL: /province/gov-altai/darvi"
+Дарви (Ховд),Darvi,сум,"""Darvi soum"", Khovd. URL: /province/khovd/darvi"
+Дархан (Дархан-Уул),Darkhan,сум,"""Darkhan soum"", Darkhan-Uul. URL: /province/darkhan-uul/darkhan"
+Дархан (Хэнтий),Darkhan,сум,"""Darkhan soum"", Khentii. URL: /province/khentii/darkhan"
+Дарьганга,Darganga,сум,"""Darganga soum"", Sukhbaatar. URL: /province/sukhbaatar/darganga"
+Дашбалбар,Dashbalbar,сум,"""Dashbalbar soum"", Dornod. URL: /province/dornod/dashbalbar"
+Дашинчилэн,Dashinchilen,сум,"""Dashinchilen soum"", Bulgan. URL: /province/bulgan/dashinchilen"
+Дөрвөлжин,Durvuljin,сум,"""Durvuljin soum"", Zavkhan. URL: /province/zavkhan/durvuljin"
+Дөргөн,Durgun,сум,"""Durgun soum"", Khovd. URL: /province/khovd/durgun"
+Дуут,Duut,сум,"""Duut soum"", Khovd. URL: /province/khovd/duut"
+Дэлгэр,Delger,сум,"""Delger soum"", Govi-Altai. URL: /province/gov-altai/delger"
+Дэлгэрхаан (Хэнтий),Delgerkhaan,сум,"""Delgerkhaan soum"", Khentii. URL: /province/khentii/delgerkhaan"
+Дэлгэрхаан (Төв),Delgerkhaan,сум,"""Delgerkhaan soum"", Tuv. URL: /province/tuv/delgerkhaan"
+Дэлгэрхангай,Delgerkhangai,сум,"""Delgerkhangai soum"", Dundgovi. URL: /province/dundgov/delgerkhangai"
+Дэлгэрцогт,Delgertsogt,сум,"""Delgertsogt soum"", Dundgovi. URL: /province/dundgov/delgertsogt"
+Дэлгэрэх,Delgerekh,сум,"""Delgerekh soum"", Dornogovi. URL: /province/dornogov/delgerekh"
+Дэлүүн,Deluun,сум,"""Deluun soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/deluun"
+Дэрэн,Deren,сум,"""Deren soum"", Dundgovi. URL: /province/dundgov/deren"
+Ерөө,Yeruu,сум,"""Yeruu soum"", Selenge. URL: /province/selenge/yeruu"
+Есөнбулаг,Yesunbulag,сум,"""Yesunbulag soum"", Govi-Altai. URL: /province/gov-altai/yesunbulag"
+Есөнзүйл,Yesunzuil,сум,"""Yesunzuil soum"", Uvurkhangai. URL: /province/uvurkhangai/yesunzuil"
+Жавхлант,Javkhlant,сум,"""Javkhlant soum"", Selenge. URL: /province/selenge/javkhlant"
+Жаргалан,Jargalan,сум,"""Jargalan soum"", Govi-Altai. URL: /province/gov-altai/jargalan"
+Жаргалант (Архангай),Jargalant,сум,"""Jargalant soum"", Arkhangai. URL: /province/arkhangai/jargalant"
+Жаргалант (Баянхонгор),Jargalant,сум,"""Jargalant soum"", Bayankhongor. URL: /province/bayankhongor/jargalant"
+Жаргалант (Ховд),Jargalant,сум,"""Jargalant soum"", Khovd. URL: /province/khovd/jargalant"
+Жаргалант (Хөвсгөл),Jargalant,сум,"""Jargalant soum"", Khuvsgul. URL: /province/khuvsgul/jargalant"
+Жаргалант (Орхон),Jargalant,сум,"""Jargalant soum"", Orkhon. URL: /province/orkhon/jargalant"
+Жаргалант (Төв),Jargalant,сум,"""Jargalant soum"", Tuv. URL: /province/tuv/jargalant"
+Жаргалтхаан,Jargaltkhaan,сум,"""Jargaltkhaan soum"", Khentii. URL: /province/khentii/jargaltkhaan"
+Жинст,Jinst,сум,"""Jinst soum"", Bayankhongor. URL: /province/bayankhongor/jinst"
+Заамар,Zaamar,сум,"""Zaamar soum"", Tuv. URL: /province/tuv/zaamar"
+Завханмандал,Zavkhanmandal,сум,"""Zavkhanmandal soum"", Zavkhan. URL: /province/zavkhan/zavkhanmandal"
+Замын-Үүд,Zamyn-Uud,сум,"""Zamyn-Uud soum"", Dornogovi. URL: /province/dornogov/zamyn-uud"
+Зуунмод хот,Zuunmod,сум,"""Zuunmod soum"", Tuv. URL: /province/tuv/zuunmod"
+Зүүнбаян-Улаан,Zuunbayan-Ulaan,сум,"""Zuunbayan-Ulaan soum"", Uvurkhangai. URL: /province/uvurkhangai/zuunbayan-ulaan"
+Зүүнбүрэн,Zuunburen,сум,"""Zuunburen soum"", Selenge. URL: /province/selenge/zuunburen"
+Зүүнговь,Zuungov,сум,"""Zuungov soum"", Uvs. URL: /province/uvs/zuungov"
+Зүүнхангай,Zuunkhangai,сум,"""Zuunkhangai soum"", Uvs. URL: /province/uvs/zuunkhangai"
+Зэрэг,Zereg,сум,"""Zereg soum"", Khovd. URL: /province/khovd/zereg"
+Идэр,Ider,сум,"""Ider soum"", Zavkhan. URL: /province/zavkhan/ider"
+Их-Уул (Хөвсгөл),Ikh-Uul,сум,"""Ikh-Uul soum"", Khuvsgul. URL: /province/khuvsgul/ikh-uul"
+Их-Уул (Завхан),Ikh-Uul,сум,"""Ikh-Uul soum"", Zavkhan. URL: /province/zavkhan/ikh-uul"
+Ихтамир,Ikhtamir,сум,"""Ikhtamir soum"", Arkhangai. URL: /province/arkhangai/ikhtamir"
+Иххэт,Ikhkhet,сум,"""Ikhkhet soum"", Dornogovi. URL: /province/dornogov/ikhkhet"
+Луус,Luus,сум,"""Luus soum"", Dundgovi. URL: /province/dundgov/luus"
+Лүн,Lun,сум,"""Lun soum"", Tuv. URL: /province/tuv/lun"
+Мандал,Mandal,сум,"""Mandal soum"", Selenge. URL: /province/selenge/mandal"
+Мандал-Овоо,Mandal-Ovoo,сум,"""Mandal-Ovoo soum"", Umnugovi. URL: /province/umnugov/mandal-ovoo"
+Мандах,Mandakh,сум,"""Mandakh soum"", Dornogovi. URL: /province/dornogov/mandakh"
+Манлай,Manlai,сум,"""Manlai soum"", Umnugovi. URL: /province/umnugov/manlai"
+Манхан,Mankhan,сум,"""Mankhan soum"", Khovd. URL: /province/khovd/mankhan"
+Матад,Matad,сум,"""Matad soum"", Dornod. URL: /province/dornod/matad"
+Могод,Mogod,сум,"""Mogod soum"", Bulgan. URL: /province/bulgan/mogod"
+Мөнгөнморьт,Mungunmort,сум,"""Mungunmort soum"", Tuv. URL: /province/tuv/mungunmort"
+Мөнххаан,Munkhkhaan,сум,"""Munkhkhaan soum"", Sukhbaatar. URL: /province/sukhbaatar/munkhkhaan"
+Мөнххайрхан,Munkhkhairkhan,сум,"""Munkhkhairkhan soum"", Khovd. URL: /province/khovd/munkhkhairkhan"
+Мөрөн (Хэнтий),Murun,сум,"""Murun soum"", Khentii. URL: /province/khentii/murun"
+Мөрөн (Хөвсгөл),Murun,сум,"""Murun soum"", Khuvsgul. URL: /province/khuvsgul/murun"
+Мөст,Must,сум,"""Must soum"", Khovd. URL: /province/khovd/must"
+Мянгад,Myangad,сум,"""Myangad soum"", Khovd. URL: /province/khovd/myangad"
+Налайх,Nalaikh,дүүрэг,"""Nalaikh District"", Ulaanbaatar. URL: /province/ulaanbaatar/nalaikh"
+Наран,Naran,сум,"""Naran soum"", Sukhbaatar. URL: /province/sukhbaatar/naran"
+Наранбулаг,Naranbulag,сум,"""Naranbulag soum"", Uvs. URL: /province/uvs/naranbulag"
+Нарийнтээл,Nariinteel,сум,"""Nariinteel soum"", Uvurkhangai. URL: /province/uvurkhangai/nariinteel"
+Ногооннуур,Nogoonnuur,сум,"""Nogoonnuur soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/nogoonnuur"
+Ноён,Noyon,сум,"""Noyon soum"", Umnugovi. URL: /province/umnugov/noyon"
+Номгон,Nomgon,сум,"""Nomgon soum"", Umnugovi. URL: /province/umnugov/nomgon"
+Норовлин,Norovlin,сум,"""Norovlin soum"", Khentii. URL: /province/khentii/norovlin"
+Нөмрөг,Numrug,сум,"""Numrug soum"", Zavkhan. URL: /province/zavkhan/numrug"
+Онгон,Ongon,сум,"""Ongon soum"", Sukhbaatar. URL: /province/sukhbaatar/ongon"
+Орхон (Булган),Orkhon,сум,"""Orkhon soum"", Bulgan. URL: /province/bulgan/orkhon"
+Орхон (Дархан-Уул),Orkhon,сум,"""Orkhon soum"", Darkhan-Uul. URL: /province/darkhan-uul/orkhon"
+Орхон (Сэлэнгэ),Orkhon,сум,"""Orkhon soum"", Selenge. URL: /province/selenge/orkhon"
+Орхонтуул,Orkhontuul,сум,"""Orkhontuul soum"", Selenge. URL: /province/selenge/orkhontuul"
+Отгон,Otgon,сум,"""Otgon soum"", Zavkhan. URL: /province/zavkhan/otgon"
+Өгийнуур,Ugiinuur,сум,"""Ugiinuur soum"", Arkhangai. URL: /province/arkhangai/ugiinuur"
+Өлгий (Увс),Ulgii,сум,"""Ulgii soum"", Uvs. URL: /province/uvs/ulgii"
+Өлгий (Баян-Өлгий),Ulgii,сум,"""Ulgii soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/ulgii"
+Өлзийт (Архангай),Ulziit,сум,"""Ulziit soum"", Arkhangai. URL: /province/arkhangai/ulziit"
+Өлзийт (Баянхонгор),Ulziit,сум,"""Ulziit soum"", Bayankhongor. URL: /province/bayankhongor/ulziit"
+Өлзийт (Дундговь),Ulziit,сум,"""Ulziit soum"", Dundgovi. URL: /province/dundgov/ulziit"
+Өлзийт (Өвөрхангай),Ulziit,сум,"""Ulziit soum"", Uvurkhangai. URL: /province/uvurkhangai/ulziit"
+Өмнөдэлгэр,Umnudelger,сум,"""Umnudelger soum"", Khentii. URL: /province/khentii/umnudelger"
+Өндөр-Улаан,Undur-Ulaan,сум,"""Undur-Ulaan soum"", Arkhangai. URL: /province/arkhangai/undur-ulaan"
+Өндөрхангай,Undurkhangai,сум,"""Undurkhangai soum"", Uvs. URL: /province/uvs/undurkhangai"
+Өндөршил,Undurshil,сум,"""Undurshil soum"", Dundgovi. URL: /province/dundgov/undurshil"
+Өндөрширээт,Undurshireet,сум,"""Undurshireet soum"", Tuv. URL: /province/tuv/undurshireet"
+Өргөн,Urgun,сум,"""Urgun soum"", Dornogovi. URL: /province/dornogov/urgun"
+Рашаант (Булган),Rashaant,сум,"""Rashaant soum"", Bulgan. URL: /province/bulgan/rashaant"
+Рашаант (Хөвсгөл),Rashaant,сум,"""Rashaant soum"", Khuvsgul. URL: /province/khuvsgul/rashaant"
+Рэнчинлхүмбэ,Renchinlkhumbe,сум,"""Renchinlkhumbe soum"", Khuvsgul. URL: /province/khuvsgul/renchinlkhumbe"
+Сагил,Sagil,сум,"""Sagil soum"", Uvs. URL: /province/uvs/sagil"
+Сагсай,Sagsai,сум,"""Sagsai soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/sagsai"
+Сайнцагаан,Saintsagaan,сум,"""Saintsagaan soum"", Dundgovi. URL: /province/dundgov/saintsagaan"
+Сайншанд,Sainshand,сум,"""Sainshand soum"", Dornogovi. URL: /province/dornogov/sainshand"
+Сайхан (Булган),Saikhan,сум,"""Saikhan soum"", Bulgan. URL: /province/bulgan/saikhan"
+Сайхан (Сэлэнгэ),Saikhan,сум,"""Saikhan soum"", Selenge. URL: /province/selenge/saikhan"
+Сайхан-Овоо,Saikhan-Ovoo,сум,"""Saikhan-Ovoo soum"", Dundgovi. URL: /province/dundgov/saikhan-ovoo"
+Сайхандулаан,Saikhandulaan,сум,"""Saikhandulaan soum"", Dornogovi. URL: /province/dornogov/saikhandulaan"
+Сант (Сэлэнгэ),Sant,сум,"""Sant soum"", Selenge. URL: /province/selenge/sant"
+Сант (Өвөрхангай),Sant,сум,"""Sant soum"", Uvurkhangai. URL: /province/uvurkhangai/sant"
+Сантмаргац,Santmargats,сум,"""Santmargats soum"", Zavkhan. URL: /province/zavkhan/santmargats"
+Сонгино,Songino,сум,"""Songino soum"", Zavkhan. URL: /province/zavkhan/songino"
+Сонгинохайрхан,Songinokhairkhan,дүүрэг,"""Songinokhairkhan District"", Ulaanbaatar. URL: /province/ulaanbaatar/songinokhairkhan"
+Сүмбэр (Говьсүмбэр),Sumber,сум,"""Sumber soum"", Govisumber. URL: /province/govsumber/sumber"
+Сүмбэр (Төв),Sumber,сум,"""Sumber soum"", Tuv. URL: /province/tuv/sumber"
+Сүхбаатар (Сэлэнгэ),Sukhbaatar,сум,"""Sukhbaatar soum"", Selenge. URL: /province/selenge/sukhbaatar"
+Сүхбаатар (Сүхбаатар),Sukhbaatar,сум,"""Sukhbaatar soum"", Sukhbaatar. URL: /province/sukhbaatar/sukhbaatar"
+Сэврэй,Sevrei,сум,"""Sevrei soum"", Umnugovi. URL: /province/umnugov/sevrei"
+Сэргэлэн (Дорнод),Sergelen,сум,"""Sergelen soum"", Dornod. URL: /province/dornod/sergelen"
+Сэргэлэн (Төв),Sergelen,сум,"""Sergelen soum"", Tuv. URL: /province/tuv/sergelen"
+Тайшир,Taishir,сум,"""Taishir soum"", Govi-Altai. URL: /province/gov-altai/taishir"
+Тарагт,Taragt,сум,"""Taragt soum"", Uvurkhangai. URL: /province/uvurkhangai/taragt"
+Тариалан (Хөвсгөл),Tarialan,сум,"""Tarialan soum"", Khuvsgul. URL: /province/khuvsgul/tarialan"
+Тариалан (Увс),Tarialan,сум,"""Tarialan soum"", Uvs. URL: /province/uvs/tarialan"
+Тариат,Tariat,сум,"""Tariat soum"", Arkhangai. URL: /province/arkhangai/tariat"
+Толбо,Tolbo,сум,"""Tolbo soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/tolbo"
+Тонхил,Tonkhil,сум,"""Tonkhil soum"", Govi-Altai. URL: /province/gov-altai/tonkhil"
+Тосонцэнгэл (Хөвсгөл),Tosontsengel,сум,"""Tosontsengel soum"", Khuvsgul. URL: /province/khuvsgul/tosontsengel"
+Тосонцэнгэл (Завхан),Tosontsengel,сум,"""Tosontsengel soum"", Zavkhan. URL: /province/zavkhan/tosontsengel"
+Төвшрүүлэх,Tuvshruulekh,сум,"""Tuvshruulekh soum"", Arkhangai. URL: /province/arkhangai/tuvshruulekh"
+Төгрөг (Говь-Алтай),Tugrug,сум,"""Tugrug soum"", Govi-Altai. URL: /province/gov-altai/tugrug"
+Төгрөг (Өвөрхангай),Tugrug,сум,"""Tugrug soum"", Uvurkhangai. URL: /province/uvurkhangai/tugrug"
+Төмөрбулаг,Tumurbulag,сум,"""Tumurbulag soum"", Khuvsgul. URL: /province/khuvsgul/tumurbulag"
+Түвшинширээ,Tuvshinshiree,сум,"""Tuvshinshiree soum"", Sukhbaatar. URL: /province/sukhbaatar/tuvshinshiree"
+Түдэвтэй,Tudevtei,сум,"""Tudevtei soum"", Zavkhan. URL: /province/zavkhan/tudevtei"
+Түмэнцогт,Tumentsogt,сум,"""Tumentsogt soum"", Sukhbaatar. URL: /province/sukhbaatar/tumentsogt"
+Түнэл,Tunel,сум,"""Tunel soum"", Khuvsgul. URL: /province/khuvsgul/tunel"
+Түргэн,Turgen,сум,"""Turgen soum"", Uvs. URL: /province/uvs/turgen"
+Түшиг,Tushig,сум,"""Tushig soum"", Selenge. URL: /province/selenge/tushig"
+Тэлмэн,Telmen,сум,"""Telmen soum"", Zavkhan. URL: /province/zavkhan/telmen"
+Тэс (Увс),Tes,сум,"""Tes soum"", Uvs. URL: /province/uvs/tes"
+Тэс (Завхан),Tes,сум,"""Tes soum"", Zavkhan. URL: /province/zavkhan/tes"
+Тэшиг,Teshig,сум,"""Teshig soum"", Bulgan. URL: /province/bulgan/teshig"
+Угтаалцайдам,Ugtaaltsaidam,сум,"""Ugtaaltsaidam soum"", Tuv. URL: /province/tuv/ugtaaltsaidam"
+Улаан-Уул,Ulaan-Uul,сум,"""Ulaan-Uul soum"", Khuvsgul. URL: /province/khuvsgul/ulaan-uul"
+Улаанбадрах,Ulaanbadrakh,сум,"""Ulaanbadrakh soum"", Dornogovi. URL: /province/dornogov/ulaanbadrakh"
+Улаангом,Ulaangom,сум,"""Ulaangom soum"", Uvs. URL: /province/uvs/ulaangom"
+Улаанхус,Ulaankhus,сум,"""Ulaankhus soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/ulaankhus"
+Улиастай,Uliastai,сум,"""Uliastai soum"", Zavkhan. URL: /province/zavkhan/uliastai"
+Ургамал,Urgamal,сум,"""Urgamal soum"", Zavkhan. URL: /province/zavkhan/urgamal"
+Уулбаян,Uulbayan,сум,"""Uulbayan soum"", Sukhbaatar. URL: /province/sukhbaatar/uulbayan"
+Уянга,Uyanga,сум,"""Uyanga soum"", Uvurkhangai. URL: /province/uvurkhangai/uyanga"
+Үенч,Uyench,сум,"""Uyench soum"", Khovd. URL: /province/khovd/uyench"
+Хайрхандулаан,Khairkhandulaan,сум,"""Khairkhandulaan soum"", Uvurkhangai. URL: /province/uvurkhangai/khairkhandulaan"
+Халзан,Khalzan,сум,"""Khalzan soum"", Sukhbaatar. URL: /province/sukhbaatar/khalzan"
+Халиун,Khaliun,сум,"""Khaliun soum"", Govi-Altai. URL: /province/gov-altai/khaliun"
+Халхгол,Khalkhgol,сум,"""Khalkhgol soum"", Dornod. URL: /province/dornod/khalkhgol"
+Хан-Уул,Khan-Uul,дүүрэг,"""Khan-Uul District"", Ulaanbaatar. URL: /province/ulaanbaatar/khan-uul"
+Ханбогд,Khanbogd,сум,"""Khanbogd soum"", Umnugovi. URL: /province/umnugov/khanbogd"
+Хангал,Khangal,сум,"""Khangal soum"", Bulgan. URL: /province/bulgan/khangal"
+Ханх,Khankh,сум,"""Khankh soum"", Khuvsgul. URL: /province/khuvsgul/khankh"
+Ханхонгор,Khankhongor,сум,"""Khankhongor soum"", Umnugovi. URL: /province/umnugov/khankhongor"
+Хархорин,Kharkhorin,сум,"""Kharkhorin soum"", Uvurkhangai. URL: /province/uvurkhangai/kharkhorin"
+Хатанбулаг,Khatanbulag,сум,"""Khatanbulag soum"", Dornogovi. URL: /province/dornogov/khatanbulag"
+Хатгал,Khatgal,сум,"""Khatgal soum"", Khuvsgul. URL: /province/khuvsgul/khatgal"
+Хашаат,Khashaat,сум,"""Khashaat soum"", Arkhangai. URL: /province/arkhangai/khashaat"
+Хишиг-Өндөр,Khishig-Undur,сум,"""Khishig-Undur soum"", Bulgan. URL: /province/bulgan/khishig-undur"
+Ховд (Ховд),Khovd,сум,"""Khovd soum"", Khovd. URL: /province/khovd/khovd"
+Ховд (Увс),Khovd,сум,"""Khovd soum"", Uvs. URL: /province/uvs/khovd"
+Хонгор,Khongor,сум,"""Khongor soum"", Darkhan-Uul. URL: /province/darkhan-uul/khongor"
+Хотонт,Khotont,сум,"""Khotont soum"", Arkhangai. URL: /province/arkhangai/khotont"
+Хөлөнбуйр,Khulunbuir,сум,"""Khulunbuir soum"", Dornod. URL: /province/dornod/khulunbuir"
+Хөхморьт,Khukhmort,сум,"""Khukhmort soum"", Govi-Altai. URL: /province/gov-altai/khukhmort"
+Хужирт,Khujirt,сум,"""Khujirt soum"", Uvurkhangai. URL: /province/uvurkhangai/khujirt"
+Хулд,Khuld,сум,"""Khuld soum"", Dundgovi. URL: /province/dundgov/khuld"
+Хутаг-Өндөр,Khutag-Undur,сум,"""Khutag-Undur soum"", Bulgan. URL: /province/bulgan/khutag-undur"
+Хушаат,Khushaat,сум,"""Khushaat soum"", Selenge. URL: /province/selenge/khushaat"
+Хүдэр,Khuder,сум,"""Khuder soum"", Selenge. URL: /province/selenge/khuder"
+Хүрмэн,Khurmen,сум,"""Khurmen soum"", Umnugovi. URL: /province/umnugov/khurmen"
+Хүрээмарал,Khureemaral,сум,"""Khureemaral soum"", Bayankhongor. URL: /province/bayankhongor/khureemaral"
+Хэрлэн (Дорнод),Kherlen,сум,"""Kherlen soum"", Dornod. URL: /province/dornod/kherlen"
+Хэрлэн (Хэнтий),Kherlen,сум,"""Kherlen soum"", Khentii. URL: /province/khentii/kherlen"
+Хяргас,Khyargas,сум,"""Khyargas soum"", Uvs. URL: /province/uvs/khyargas"
+Цагаан-Овоо,Tsagaan-Ovoo,сум,"""Tsagaan-Ovoo soum"", Dornod. URL: /province/dornod/tsagaan-ovoo"
+Цагаан-Уул,Tsagaan-Uul,сум,"""Tsagaan-Uul soum"", Khuvsgul. URL: /province/khuvsgul/tsagaan-uul"
+Цагаан-Үүр,Tsagaan-Uur,сум,"""Tsagaan-Uur soum"", Khuvsgul. URL: /province/khuvsgul/tsagaan-uur"
+Цагаандэлгэр,Tsagaandelger,сум,"""Tsagaandelger soum"", Dundgovi. URL: /province/dundgov/tsagaandelger"
+Цагааннуур (Хөвсгөл),Tsagaannuur,сум,"""Tsagaannuur soum"", Khuvsgul. URL: /province/khuvsgul/tsagaannuur"
+Цагааннуур (Сэлэнгэ),Tsagaannuur,сум,"""Tsagaannuur soum"", Selenge. URL: /province/selenge/tsagaannuur"
+Цагааннуур тосгон,Tsagaannuur,сум,"""Tsagaannuur soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/tsagaannuur"
+Цагаанхайрхан (Увс),Tsagaankhairkhan,сум,"""Tsagaankhairkhan soum"", Uvs. URL: /province/uvs/tsagaankhairkhan"
+Цагаанхайрхан (Завхан),Tsagaankhairkhan,сум,"""Tsagaankhairkhan soum"", Zavkhan. URL: /province/zavkhan/tsagaankhairkhan"
+Цагаанчулуут,Tsagaanchuluut,сум,"""Tsagaanchuluut soum"", Zavkhan. URL: /province/zavkhan/tsagaanchuluut"
+Цахир,Tsakhir,сум,"""Tsakhir soum"", Arkhangai. URL: /province/arkhangai/tsakhir"
+Цогт,Tsogt,сум,"""Tsogt soum"", Govi-Altai. URL: /province/gov-altai/tsogt"
+Цогт-Овоо,Tsogt-Ovoo,сум,"""Tsogt-Ovoo soum"", Umnugovi. URL: /province/umnugov/tsogt-ovoo"
+Цогтцэций,Tsogttsetsii,сум,"""Tsogttsetsii soum"", Umnugovi. URL: /province/umnugov/tsogttsetsii"
+Цэнгэл,Tsengel,сум,"""Tsengel soum"", Bayan-Ulgii. URL: /province/bayan-ulgii/tsengel"
+Цэнхэр,Tsenkher,сум,"""Tsenkher soum"", Arkhangai. URL: /province/arkhangai/tsenkher"
+Цэнхэрмандал,Tsenkhermandal,сум,"""Tsenkhermandal soum"", Khentii. URL: /province/khentii/tsenkhermandal"
+Цэцэг,Tsetseg,сум,"""Tsetseg soum"", Khovd. URL: /province/khovd/tsetseg"
+Цэцэн-Уул,Tsetsen-Uul,сум,"""Tsetsen-Uul soum"", Zavkhan. URL: /province/zavkhan/tsetsen-uul"
+Цэцэрлэг (Архангай),Tsetserleg,сум,"""Tsetserleg soum"", Arkhangai. URL: /province/arkhangai/tsetserleg"
+Цэцэрлэг (Хөвсгөл),Tsetserleg,сум,"""Tsetserleg soum"", Khuvsgul. URL: /province/khuvsgul/tsetserleg"
+Цээл (Говь-Алтай),Tseel,сум,"""Tseel soum"", Govi-Altai. URL: /province/gov-altai/tseel"
+Цээл (Төв),Tseel,сум,"""Tseel soum"", Tuv. URL: /province/tuv/tseel"
+Чандмань (Говь-Алтай),Chandman,сум,"""Chandman soum"", Govi-Altai. URL: /province/gov-altai/chandman"
+Чандмань (Ховд),Chandman,сум,"""Chandman soum"", Khovd. URL: /province/khovd/chandman"
+Чандмань-Өндөр,Chandman-Undur,сум,"""Chandman-Undur soum"", Khuvsgul. URL: /province/khuvsgul/chandman-undur"
+Чингэлтэй,Chingeltei,дүүрэг,"""Chingeltei District"", Ulaanbaatar. URL: /province/ulaanbaatar/chingeltei"
+Чойбалсан,Choibalsan,сум,"""Choibalsan soum"", Dornod. URL: /province/dornod/choibalsan"
+Чойр,Choir,сум,"""Choir soum"", Govisumber. URL: /province/govsumber/choir"
+Чулуунхороот,Chuluunkhoroot,сум,"""Chuluunkhoroot soum"", Dornod. URL: /province/dornod/chuluunkhoroot"
+Чулуут,Chuluut,сум,"""Chuluut soum"", Arkhangai. URL: /province/arkhangai/chuluut"
+Шаамар,Shaamar,сум,"""Shaamar soum"", Selenge. URL: /province/selenge/shaamar"
+Шарга,Sharga,сум,"""Sharga soum"", Govi-Altai. URL: /province/gov-altai/sharga"
+Шарын гол,Sharyn Gol,сум,"""Sharyn Gol soum"", Darkhan-Uul. URL: /province/darkhan-uul/sharyn-gol"
+Шивээговь,Shiveegov,сум,"""Shiveegov soum"", Govisumber. URL: /province/govsumber/shiveegov"
+Шилүүстэй,Shiluustei,сум,"""Shiluustei soum"", Zavkhan. URL: /province/zavkhan/shiluustei"
+Шинэ-Идэр,Shine-Ider,сум,"""Shine-Ider soum"", Khuvsgul. URL: /province/khuvsgul/shine-ider"
+Шинэжинст,Shinejinst,сум,"""Shinejinst soum"", Bayankhongor. URL: /province/bayankhongor/shinejinst"
+Эрдэнэ (Дорноговь),Erdene,сум,"""Erdene soum"", Dornogovi. URL: /province/dornogov/erdene"
+Эрдэнэ (Говь-Алтай),Erdene,сум,"""Erdene soum"", Govi-Altai. URL: /province/gov-altai/erdene"
+Эрдэнэ (Төв),Erdene,сум,"""Erdene soum"", Tuv. URL: /province/tuv/erdene"
+Эрдэнэбулган (Архангай),Erdenebulgan,сум,"""Erdenebulgan soum"", Arkhangai. URL: /province/arkhangai/erdenebulgan"
+Эрдэнэбулган (Хөвсгөл),Erdenebulgan,сум,"""Erdenebulgan soum"", Khuvsgul. URL: /province/khuvsgul/erdenebulgan"
+Эрдэнэбүрэн,Erdeneburen,сум,"""Erdeneburen soum"", Khovd. URL: /province/khovd/erdeneburen"
+Эрдэнэдалай,Erdenedalai,сум,"""Erdenedalai soum"", Dundgovi. URL: /province/dundgov/erdenedalai"
+Эрдэнэмандал,Erdenemandal,сум,"""Erdenemandal soum"", Arkhangai. URL: /province/arkhangai/erdenemandal"
+Эрдэнэсант,Erdenesant,сум,"""Erdenesant soum"", Tuv. URL: /province/tuv/erdenesant"
+Эрдэнэт,Erdenet,сум,"""Erdenet soum"", Orkhon. URL: /province/orkhon/erdenet"
+Эрдэнэхайрхан,Erdenekhairkhan,сум,"""Erdenekhairkhan soum"", Zavkhan. URL: /province/zavkhan/erdenekhairkhan"
+Эрдэнэцагаан,Erdenetsagaan,сум,"""Erdenetsagaan soum"", Sukhbaatar. URL: /province/sukhbaatar/erdenetsagaan"
+Эрдэнэцогт,Erdenetsogt,сум,"""Erdenetsogt soum"", Bayankhongor. URL: /province/bayankhongor/erdenetsogt"
+Яруу,Yaruu,сум,"""Yaruu soum"", Zavkhan. URL: /province/zavkhan/yaruu"

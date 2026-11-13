@@ -47,3 +47,8 @@ yarn.lock
 
 # Зургийн туршилтын гаралт (scripts/content/enhance-images.sh)
 /tmp/
+
+# Payload CMS (feat/payload): локал DB (PGlite), локал зураг, хэрэгслүүд (pnpm, node shim)
+/travel-mongolia/.payload-db/
+/travel-mongolia/.payload-media/
+/.tools/
