@@ -22,8 +22,8 @@ import {
 } from '@/lib/navigation';
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo';
 
-import { LanguageProvider } from '../components/LanguageContext';
-import Navbar from '../components/Navbar';
+import { LanguageProvider } from '@/components/LanguageContext';
+import Navbar from '@/components/Navbar';
 
 // Брэндийн нэрийг латинаар тайлбарт оруулна (Google-д «Travel Hub Mongolia» гэж хайхад таних)
 const siteDescription =

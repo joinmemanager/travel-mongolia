@@ -2,15 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-import CultureFestivals from '../components/CultureFestivals';
-import HeroFlight from '../components/HeroFlight';
-import RegionMap from '../components/RegionMap';
-import SeasonRecommendations from '../components/SeasonRecommendations';
-import TopDestinations from '../components/TopDestinations';
-import { ShortsTabs } from '../components/shorts/Shorts';
-import { client as baseClient, rethrowOutage } from '../lib/contentful';
-import { SHORTS_BASE } from '../lib/shorts';
-import { getShortsTopics } from '../lib/shortsData';
+import CultureFestivals from '@/components/CultureFestivals';
+import HeroFlight from '@/components/HeroFlight';
+import RegionMap from '@/components/RegionMap';
+import SeasonRecommendations from '@/components/SeasonRecommendations';
+import TopDestinations from '@/components/TopDestinations';
+import { ShortsTabs } from '@/components/shorts/Shorts';
+import { client as baseClient, rethrowOutage } from '@/lib/contentful';
+import { SHORTS_BASE } from '@/lib/shorts';
+import { getShortsTopics } from '@/lib/shortsData';
 const client = baseClient as any;
 
 // Цаг тутам дахин үүснэ: Shorts-ийн fetch кэш (24 цаг) шинэчлэгдсэний дараа шинэ бичлэг удалгүй гарна.

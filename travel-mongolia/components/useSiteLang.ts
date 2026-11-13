@@ -2,8 +2,13 @@
 
 import { useEffect, useState } from 'react';
 
-// Google Translate-ийн googtrans cookie-нээс сонгосон хэлийг уншина (анхдагч: 'mn')
+import { splitLocalePath } from '@/lib/i18n/locales';
+
+// Сайтын хэл: орчуулсан хуудсанд (/en/…, /zh/… — lib/i18n/locales.ts) URL-ийн хэл, бусад үед Google Translate-ийн
+// googtrans cookie-нээс сонгосон хэл (анхдагч: 'mn'). Монгол хуудсанд (угтваргүй URL) өмнөх шигээ зөвхөн cookie.
 export function readSiteLang(): string {
+  const fromUrl = splitLocalePath(window.location.pathname).code;
+  if (fromUrl !== 'mn') return fromUrl;
   const match = document.cookie.match(/googtrans=\/mn\/([a-zA-Z-]+)/);
   return match?.[1] || 'mn';
 }

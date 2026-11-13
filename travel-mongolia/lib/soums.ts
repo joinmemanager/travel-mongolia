@@ -24,6 +24,8 @@ export interface Soum {
   provinceId: string;
   provinceSlug: string;
   provinceTitle: string;
+  // Орчуулга нийтлэгдсэн хэлүүд (Payload-ийн publishedLocales; Contentful горимд үргэлж хоосон) — /en/... хуудас
+  publishedLocales: string[];
 }
 
 function imageUrl(asset: any): string | undefined {
@@ -53,6 +55,7 @@ function toSoum(e: any): Soum {
     provinceSlug: String(p.slug || f.province?.sys?.id || ''),
     provinceTitle: String(p.title || ''),
     provinceHero: provinceHeroImage(p, String(p.slug || ''), String(p.title || '')),
+    publishedLocales: Array.isArray(f.publishedLocales) ? f.publishedLocales : [],
   };
 }
 

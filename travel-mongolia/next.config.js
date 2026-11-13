@@ -1,9 +1,24 @@
+// Payload CMS (feat/payload): admin /admin, REST /api/<collection> (app/(payload)). withPayload нь Payload-ийн
+// серверийн package-уудыг bundle-ээс гаргах г.м. тохиргоог нэмнэ.
+const { withPayload } = require('@payloadcms/next/withPayload');
+
+// R2-ийн public домэйн (Payload-ийн зураг, payload.config.ts). Тохируулаагүй бол нэмэхгүй.
+const r2Host = (() => {
+  try {
+    return process.env.R2_PUBLIC_URL ? new URL(process.env.R2_PUBLIC_URL).hostname : null;
+  } catch {
+    return null;
+  }
+})();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Vercel-ийн орчныг (production / preview) client компонентод ч хүргэнэ.
   // lib/navigation.ts-ийн isPreviewEnv() үүгээр draft/planned хуудас руу заасан холбоосыг нууна.
   env: {
     SITE_ENV: process.env.VERCEL_ENV || 'development',
+    // Payload-ийн зургийн R2 public домэйн (lib/imageUrl.ts cdnImage), client компонентод ч хэрэгтэй
+    MEDIA_URL: process.env.R2_PUBLIC_URL || '',
   },
   // ia-plan.md 5в: хуучин "Түүхүүд", "Фото/видео түүх" хаягууд Түүх & өв hub руу (lib/navigation.ts REDIRECTED_PATHS)
   async redirects() {
@@ -55,8 +70,9 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'd1f6qhhrbg3j8a.cloudfront.net', // joinme.mn-ийн байгууллагын зураг (localProvider.externalImages)
       },
+      ...(r2Host ? [{ protocol: 'https', hostname: r2Host }] : []),
     ],
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPayload(nextConfig, { devBundleServerPackages: false });
