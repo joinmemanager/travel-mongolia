@@ -665,3 +665,8 @@ tic-c9-23
 tic-c9-45
 tic-c1-298
 tic-c17-32
+tic-c1-295
+tic-c1-158
+tic-c1-482
+tic-c1-74
+tic-c4-12
