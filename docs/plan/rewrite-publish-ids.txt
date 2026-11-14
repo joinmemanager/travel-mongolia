@@ -569,3 +569,8 @@ tic-c3-20
 tic-c1-296
 tic-c1-37
 tic-c1-30
+tic-c1-343
+tic-c1-49
+tic-c2-61
+tic-c1-575
+tic-c1-498
