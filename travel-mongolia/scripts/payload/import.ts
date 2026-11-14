@@ -179,7 +179,8 @@ function dataFor(collection: string, entry: any, locale: string, sys: any) {
     const raw = entry.fields[f.id]?.[locale];
     if (raw === undefined) {
       // Contentful-д утгагүй талбарыг Payload-д хоосолно (дахин импортод хуучин утга үлдэхгүй)
-      if (locale === 'mn') data[f.id] = f.hasMany ? [] : null;
+      // (group талбар обьект байх ёстой: { lat: null, lon: null })
+      if (locale === 'mn') data[f.id] = f.kind === 'location' ? { lat: null, lon: null } : f.hasMany ? [] : null;
       continue;
     }
     data[f.id] = convert(f, raw, `${collection}/${sys.id}.${f.id}`);
@@ -187,7 +188,8 @@ function dataFor(collection: string, entry: any, locale: string, sys: any) {
   if (locale === 'mn') {
     Object.assign(data, {
       contentfulId: sys.id,
-      cfCreatedAt: sys.createdAt,
+      // Contentful CDA-ийн sys.createdAt = анх нийтэлсэн огноо (CMA-ийн firstPublishedAt); сайт '-sys.createdAt'-ээр эрэмбэлдэг
+      cfCreatedAt: sys.firstPublishedAt || sys.createdAt,
       cfFirstPublishedAt: sys.firstPublishedAt || null,
       cfVersion: sys.version,
     });
@@ -220,7 +222,7 @@ async function importEntries() {
     if (!types.includes(t) || docId.has(e.sys.id) || statusOf(e.sys) === 'archived') continue;
     const doc = await payload.create({
       collection: t as any,
-      data: { contentfulId: e.sys.id, cfCreatedAt: e.sys.createdAt } as any,
+      data: { contentfulId: e.sys.id, cfCreatedAt: e.sys.firstPublishedAt || e.sys.createdAt } as any,
       draft: true,
       overrideAccess: true,
       context: ctx,

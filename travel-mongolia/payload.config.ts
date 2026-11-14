@@ -60,6 +60,9 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || LOCAL_DB,
       max: 5,
+      // Сул холболтыг эрт хаана: Neon-ий pooler болон serverless орчин удаан сул холболтыг тасалдаг (ECONNRESET)
+      idleTimeoutMillis: 10_000,
+      connectionTimeoutMillis: 10_000,
     },
     migrationDir: path.resolve(dirname, 'payload/migrations'),
     // Схемийг локал болон production-д ижил migration-оор (payload/migrations). Dev push-ийг PAYLOAD_DB_PUSH=1-ээр
@@ -69,7 +72,8 @@ export default buildConfig({
   sharp,
   graphQL: { disable: true },
   telemetry: false,
-  typescript: { outputFile: path.resolve(dirname, 'payload/payload-types.ts') },
+  // Төрлүүдийг гараар үүсгэнэ (node scripts/payload/cli.mjs generate:types); dev-д ачаалах бүрт процесс эхлүүлэхгүй
+  typescript: { autoGenerate: false, outputFile: path.resolve(dirname, 'payload/payload-types.ts') },
   upload: { limits: { fileSize: 25_000_000 } },
   plugins: r2
     ? [

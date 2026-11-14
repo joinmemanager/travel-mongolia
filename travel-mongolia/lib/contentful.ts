@@ -75,11 +75,19 @@ type Query = Record<string, any>;
 
 async function fetchRaw(query: Query, locale: string) {
   if (CMS_SOURCE === 'payload') {
-    try {
-      const { payloadGetEntries } = await import('@/lib/cms/payloadSource');
-      return JSON.parse(JSON.stringify(await payloadGetEntries(query, { locale, draft: contentfulPreview })));
-    } catch (err) {
-      throw new ContentfulOutageError(undefined, err);
+    const { payloadGetEntries } = await import('@/lib/cms/payloadSource');
+    // Тасарсан холболт (ECONNRESET г.м.) нэг удаа шинэ холболтоор дахин оролдоно; бодит тасалдал outage болж,
+    // ISR өмнөх сайн хуудсаа харуулсаар байна.
+    for (let attempt = 1; ; attempt++) {
+      try {
+        return JSON.parse(JSON.stringify(await payloadGetEntries(query, { locale, draft: contentfulPreview })));
+      } catch (err: any) {
+        const transient = /ECONNRESET|ECONNREFUSED|ETIMEDOUT|Connection terminated|terminating connection/i.test(
+          `${err?.message} ${err?.cause?.message} ${err?.cause?.cause?.message}`
+        );
+        if (attempt < 2 && transient) continue;
+        throw new ContentfulOutageError(undefined, err);
+      }
     }
   }
   if (CMS_SOURCE === 'snapshot') {
@@ -102,12 +110,24 @@ async function getEntries(query: Query = {}): Promise<any> {
   // Contentful горимд кэшийн түлхүүр хуучнаараа (deploy-ийн дараа Data Cache хоосрохгүй)
   const keyParts = CMS_SOURCE === 'contentful' ? ['contentful', 'cda'] : ['contentful', CMS_SOURCE, locale];
   // Preview: ноорог засвар webhook/hook-гүй тул кэшлэхгүй (preview-д цөөн хүн ордог)
-  const data = contentfulPreview
-    ? await fetchRaw(query, locale)
-    : await unstable_cache(() => fetchRaw(query, locale), [...keyParts, JSON.stringify(query)], {
+  let fetched: any;
+  const run = () => fetchRaw(query, locale).then((d) => (fetched = d));
+  let data: any;
+  if (contentfulPreview) data = await run();
+  else {
+    try {
+      data = await unstable_cache(run, [...keyParts, JSON.stringify(query)], {
         tags: [CONTENTFUL_TAG, contentfulTypeTag(query.content_type)],
         revalidate: DATA_TTL,
       })();
+    } catch (err: any) {
+      // Data Cache 2 MB-аас том хариуг хадгалж чаддаггүй бөгөөд заримдаа алдаа шиддэг (2026-11-14 илэрсэн:
+      // sitemap-ийн 250 entry-тэй хэсэг → алдаа → sitemap.ts хоосон жагсаалт → сумын 300+ хаяг sitemap-аас алга).
+      // Өгөгдөл аль хэдийн татагдсан тул кэшгүйгээр буцаана (нэмэлт хүсэлтгүй).
+      if (fetched && /over 2MB/i.test(String(err?.message))) data = fetched;
+      else throw err;
+    }
+  }
   return { ...data, items: resolveResponse(data, { removeUnresolved: false, itemEntryPoints: ['fields'] }) };
 }
 

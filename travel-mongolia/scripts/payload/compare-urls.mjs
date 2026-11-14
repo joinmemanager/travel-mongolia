@@ -1,7 +1,8 @@
 // Хуучин (Contentful-ийн локал экспорт) ба шинэ (Payload) өгөгдлөөр рендерлэсэн сайтыг харьцуулна.
 // Contentful руу хүсэлт явуулахгүй. Хоёр локал сервер:
-//   CMS_SOURCE=snapshot CF_SNAPSHOT_DIR=<экспорт> CMS_PREVIEW_DRAFTS=0 next dev --webpack -p 3201
-//   CMS_SOURCE=payload                             CMS_PREVIEW_DRAFTS=0 next dev --webpack -p 3202
+//   CMS_SOURCE=snapshot CF_SNAPSHOT_DIR=<экспорт> CMS_PREVIEW_DRAFTS=0 next dev --webpack -p 3201   (анхдагч .next)
+//   CMS_SOURCE=payload NEXT_DIST_DIR=.next-b        CMS_PREVIEW_DRAFTS=0 next dev --webpack -p 3202
+// (Хоёулаа өөр distDir-тэй үед нэг нь бүх хуудсанд 404 өгсөн — Next dev-ийн онцлог; нэгийг нь анхдагч .next-ээр.)
 //   node scripts/payload/compare-urls.mjs [--a http://localhost:3201] [--b http://localhost:3202] [--limit N] [--sample N]
 // Шалгалт: /sitemap.xml-ийн хаягийн жагсаалт ижил эсэх; хаяг бүрийн HTTP статус, <title>, canonical, H1,
 // meta description, <main>-ийн текстийн hash. Үр дүн: docs/plan/payload-url-compare.md

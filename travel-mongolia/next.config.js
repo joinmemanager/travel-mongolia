@@ -13,6 +13,8 @@ const r2Host = (() => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Локал тулгалтад хоёр dev server зэрэг ажиллуулахад (scripts/payload/compare-urls.mjs). Анхдагч .next хэвээр.
+  ...(process.env.NEXT_DIST_DIR ? { distDir: process.env.NEXT_DIST_DIR } : {}),
   // Vercel-ийн орчныг (production / preview) client компонентод ч хүргэнэ.
   // lib/navigation.ts-ийн isPreviewEnv() үүгээр draft/planned хуудас руу заасан холбоосыг нууна.
   env: {

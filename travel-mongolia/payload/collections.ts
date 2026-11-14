@@ -53,11 +53,24 @@ const GROUPS: Record<string, string> = {
 };
 
 function toField(f: CfField): Field {
+  // Localized заавал талбар зөвхөн монгол (үндсэн) хэлэнд заавал: орчуулагч хэсэгчилсэн орчуулгаа хадгалж чадна,
+  // орчуулга бүрэн эсэхийг publishedLocales шийднэ. Хэлээс үл хамаарах талбарт ердийн required.
+  const requiredInMn = f.required && f.localized;
   const common = {
     name: f.id,
     label: f.name,
     localized: f.localized || undefined,
-    required: f.required || undefined,
+    required: (f.required && !f.localized) || undefined,
+    ...(requiredInMn
+      ? {
+          // Ноорогт шалгахгүй (Payload-ийн required-тэй адил)
+          validate: (value: unknown, { req, data }: { req: { locale?: string }; data?: { _status?: string } }) =>
+            data?._status === 'draft' ||
+            (req?.locale && req.locale !== 'mn') ||
+            (value !== null && value !== undefined && value !== '') ||
+            'Монгол хэлэнд заавал бөглөнө',
+        }
+      : {}),
     ...(f.localized ? {} : { access: { update: notTranslator, create: notTranslator } }),
     ...(f.maxLength ? { admin: { description: `Хайлтын системд ≤${f.maxLength} тэмдэгт` } } : {}),
   };

@@ -1,0 +1,35 @@
+# Хуучин ↔ Payload: хаяг, хуудасны тулгалт (2026-11-14 03:39)
+
+A = хуучин өгөгдөл (Contentful-ийн локал экспорт, `CMS_SOURCE=snapshot`), B = Payload (`CMS_SOURCE=payload`). Скрипт: `travel-mongolia/scripts/payload/compare-urls.mjs`.
+
+| | Тоо |
+|---|--:|
+| sitemap.xml-ийн хаяг (A) | 2297 |
+| sitemap.xml-ийн хаяг (B) | 2297 |
+| Зөвхөн A-д | 0 |
+| Зөвхөн B-д | 0 |
+| Харьцуулсан хуудас | 329 (дээжээр) |
+| Ижил (статус, title, canonical, description, H1, үндсэн текстийн hash) | **316** |
+| Зөрүүтэй | **13** |
+
+## Зөрүү (эхний 50)
+
+- `/about/culture/religion/lovon-badamjunai`: status: «500» ≠ «undefined»; location: «» ≠ «undefined»; title: «undefined» ≠ «Ловон Бадамжунай — Шашин шүтлэг | Travel Hub Mongolia»; canonical: «undefined» ≠ «https://www.travelhubmongolia.com/about/culture/religion/lovon-badamjunai»; description: «undefined» ≠ «Ловон Бадамжунай: Улааны урсгал болох Нимава ёсоныг үндэслэгч бөгөөд НТ YII зуун»; h1: «undefined» ≠ «Ловон Бадамжунай»; hash: «undefined» ≠ «cc4f718963a8»
+- `/about/culture/religion/manzushir-burkhan`: status: «500» ≠ «undefined»; location: «» ≠ «undefined»; title: «undefined» ≠ «Манзушир бурхан — Шашин шүтлэг | Travel Hub Mongolia»; canonical: «undefined» ≠ «https://www.travelhubmongolia.com/about/culture/religion/manzushir-burkhan»; description: «undefined» ≠ «Манзушир бурхан: Эрдэм мэдлэг оюун ухааны бурхан бөгөөд монголоор Зөөлөн эгшигт »; h1: «undefined» ≠ «Манзушир бурхан»; hash: «undefined» ≠ «43801ee0538e»
+- `/about/culture/religion/ochir`: status: «500» ≠ «undefined»; location: «» ≠ «undefined»; title: «undefined» ≠ «Очир — Шашин шүтлэг | Travel Hub Mongolia»; canonical: «undefined» ≠ «https://www.travelhubmongolia.com/about/culture/religion/ochir»; description: «undefined» ≠ «Очир нь бат бөхийн бэлгэдэл юм. Бурханы шашинд очирыг түлэгддэггүй, тасардаггүй,»; h1: «undefined» ≠ «Очир»; hash: «undefined» ≠ «5f587aac444f»
+- `/province/zavkhan/bayantes`: status: «undefined» ≠ «500»; title: «Баянтэс сум — Завхан аймаг | Travel Hub Mongolia» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/province/zavkhan/bayantes» ≠ «undefined»; description: «1924 онд хошууг 10 сумтай 53 багтай захиргааны нэгжийн байгуулалтад оруулсан бай» ≠ «undefined»; h1: «Баянтэс сум» ≠ «undefined»; hash: «b1d4bd3fb331» ≠ «undefined»; location: «undefined» ≠ «»
+- `/stories/news/choijin-lamyn-muzeid-udur-bur-toglolttoi`: status: «undefined» ≠ «500»; title: «Чойжин ламын музейд өдөр бүр тоглолттой — Мэдээний архив» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/stories/news/choijin-lamyn-muzeid-udur-bur-tog» ≠ «undefined»; description: «Манай орны урлаг соёлын хөгжилд шашны дуу бүжиг, дуу хөгжим ихээхэн үүрэг гүйцэт» ≠ «undefined»; h1: «Чойжин ламын музейд өдөр бүр тоглолттой» ≠ «undefined»; hash: «7498a4d9dfa2» ≠ «undefined»; location: «undefined» ≠ «»
+- `/stories/news/delkhiid-bidniig-taniulsan-delgetsiin-buteeluud`: status: «undefined» ≠ «500»; title: «Дэлхийд биднийг таниулсан дэлгэцийн бүтээлүүд — Мэдээний…» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/stories/news/delkhiid-bidniig-taniulsan-delget» ≠ «undefined»; description: «Дэлхийд биднийг таниулсан дэлгэцийн бүтээлүүд: 1991 оны бүтээл “УУРГА” Оросын нэ» ≠ «undefined»; h1: «Дэлхийд биднийг таниулсан дэлгэцийн бүтээлүүд» ≠ «undefined»; hash: «bec89b8ba169» ≠ «undefined»; location: «undefined» ≠ «»
+- `/stories/news/yunesko-mongol-bichgiig-yaaraltai-khamgaalaltdaa-avakh`: status: «undefined» ≠ «500»; title: «ЮНЕСКО: Монгол бичгийг яаралтай хамгаалалтдаа авах ёстой…» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/stories/news/yunesko-mongol-bichgiig-yaaraltai» ≠ «undefined»; description: «ЮНЕСКО: Монгол бичгийг яаралтай хамгаалалтдаа авах ёстой: Өчигдөр УИХ-ын чуулган» ≠ «undefined»; h1: «ЮНЕСКО: Монгол бичгийг яаралтай хамгаалалтдаа авах ёстой» ≠ «undefined»; hash: «c2b85e7ee1a5» ≠ «undefined»; location: «undefined» ≠ «»
+- `/things-to-do/adventure`: status: «0» ≠ «undefined»; location: «» ≠ «undefined»; title: «undefined» ≠ «Адал явдалт аялал: морь, тэмээ, явган | Travel Hub Mongolia»; canonical: «undefined» ≠ «https://www.travelhubmongolia.com/things-to-do/adventure»; description: «undefined» ≠ «Морин аялал, тэмээ унах, явган аялал, уулын авиралт, дугуй, каяк зэрэг Монголын »; h1: «undefined» ≠ «Адал явдалт аялал»; hash: «undefined» ≠ «1a4f70b82126»
+- `/things-to-do/museums/an-agnuuryn-muzei`: status: «0» ≠ «undefined»; location: «» ≠ «undefined»; title: «undefined» ≠ «Ан агнуурын музей — Музей | Travel Hub Mongolia»; canonical: «undefined» ≠ «https://www.travelhubmongolia.com/things-to-do/museums/an-agnuuryn-muzei»; description: «undefined» ≠ «Анх 1978 онд Монголын анчдын нийгэмлэг байгуулагдсанаар тус музей нээгджээ. Олон»; h1: «undefined» ≠ «Ан агнуурын музей»; hash: «undefined» ≠ «75523ff6a541»
+- `/things-to-do/museums/chingis-khaan-vaks-barimalyn-muzei`: status: «0» ≠ «undefined»; location: «» ≠ «undefined»; title: «undefined» ≠ «Чингис хаан вакс барималын музей — Музей»; canonical: «undefined» ≠ «https://www.travelhubmongolia.com/things-to-do/museums/chingis-khaan-vaks-barima»; description: «undefined» ≠ «Урга трэвэл компани нь 2014 оны 3-р сард Монголын хамгийн анхны Их эзэн Чингис х»; h1: «undefined» ≠ «Чингис хаан вакс барималын музей»; hash: «undefined» ≠ «7fe30085757d»
+- `/things-to-do/museums/ulsyn-filarmoni`: status: «undefined» ≠ «500»; title: «Улсын филармони — Театр, урлагийн чуулга» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/things-to-do/museums/ulsyn-filarmoni» ≠ «undefined»; description: «Улсын филармони: 1972 онд байгуулагдсан бөгөөд найрал хөгжмийн 60 хүний бүрэлдэх» ≠ «undefined»; h1: «Улсын филармони» ≠ «undefined»; hash: «8d9e892261e8» ≠ «undefined»; location: «undefined» ≠ «»
+- `/things-to-do/wellness/galtyn-salbartyn-khaluun-rashaan`: status: «undefined» ≠ «500»; title: «Галтын (Салбартын) халуун рашаан — Рашаан сувилал» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/things-to-do/wellness/galtyn-salbartyn-khaluun» ≠ «undefined»; description: «Галтын (Салбартын) халуун рашаан: 1961 онд Хөвсгөл аймгийн Галт сумын “Идэрийн-У» ≠ «undefined»; h1: «Галтын (Салбартын) халуун рашаан» ≠ «undefined»; hash: «fa22941e37f8» ≠ «undefined»; location: «undefined» ≠ «»
+- `/things-to-do/wellness/tsagaan-golyn-rashaan-amralt`: status: «undefined» ≠ «500»; title: «Цагаан голын рашаан амралт — Рашаан сувилал» ≠ «undefined»; canonical: «https://www.travelhubmongolia.com/things-to-do/wellness/tsagaan-golyn-rashaan-am» ≠ «undefined»; description: «Цагаан голын рашаан амралт нь Булган аймгийн Баян-Агт сумын нутагт Цагаан голын » ≠ «undefined»; h1: «Цагаан голын рашаан амралт» ≠ «undefined»; hash: «1d02b6e1078b» ≠ «undefined»; location: «undefined» ≠ «»
+
+## Дахин шалгалт (2026-11-14)
+
+Дээрх 13 зөрүү бүгд нэг талд л 500/холболт тасарсан (хоёр `next dev` зэрэг ажиллаж санах ой дууссан). Серверийг нэг
+нэгээр нь асаагаад 13-ыг дахин татахад: статус 200/200, title, canonical, description, H1, текстийн hash — **13/13 ижил**.
+Нийт: **329/329 ижил**.

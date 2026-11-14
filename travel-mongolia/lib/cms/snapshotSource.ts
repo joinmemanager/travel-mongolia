@@ -88,7 +88,8 @@ export async function snapshotGetEntries(query: Query, { locale, draft }: { loca
     .filter((e) => !query.content_type || e.sys.contentType.sys.id === query.content_type)
     .map((e) => localize(e, (query.locale as string) || locale))
     .filter((e) => matches(e, query))
-    .sort(compare(query.order));
+    // order-гүй query: шинэ нь эхэндээ (payloadSource-тэй ижил)
+    .sort(compare(query.order || '-sys.createdAt,sys.id'));
   let items = all.slice(skip, skip + limit);
   if (query.select) {
     const keep = new Set(listOf(query.select).filter((s) => s.startsWith('fields.')).map((s) => s.slice(7)));

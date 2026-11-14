@@ -1,4 +1,4 @@
-import { client, rethrowOutage } from '@/lib/contentful';
+import { CMS_SOURCE, client, rethrowOutage } from '@/lib/contentful';
 import { localeByCode, localeByPrefix, localizedPath } from '@/lib/i18n/locales';
 import { SITE_URL } from '@/lib/seo';
 
@@ -15,7 +15,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ file: s
   if (!l) return new Response('Not found', { status: 404 });
 
   const urls: { path: string; locales: string[]; lastmod?: string }[] = [];
-  try {
+  // Contentful горимд publishedLocales байхгүй (бүх хэлний sitemap хоосон) — Contentful руу хүсэлт явуулахгүй
+  if (CMS_SOURCE !== 'contentful') try {
     for (let skip = 0; ; skip += 250) {
       const res: any = await client.getEntries({
         content_type: 'soum',
