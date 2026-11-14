@@ -78,10 +78,11 @@ main-д merge хийгээгүй.** Contentful-д нэг ч бичилт хий�
 - `cfCreatedAt` нь CMA-ийн `createdAt` байсан; сайтын эрэмбэ CDA-ийн `sys.createdAt`-аас (= анх нийтэлсэн огноо)
   хамаардаг → `firstPublishedAt` болгож засав (импорт + DB-ийн бүх хүснэгт). `order`-гүй query-д хоёр эх үүсвэрт
   ижил тогтмол эрэмбэ.
-- **Production-д ч байгаа алдаа (main):** `unstable_cache` 2 MB-аас том хариуг хадгалж чадахгүй үед заримдаа алдаа
-  шиддэг → `sitemap.ts` хоосон жагсаалт авч **сумын 303 хаяг sitemap-аас алга болдог**. `feat/payload`-д
-  засагдсан (`lib/contentful.ts`: татсан өгөгдлийг кэшгүй буцаана, нэмэлт хүсэлтгүй). main-д тусад нь засах эсэхийг
-  та шийднэ (өөрчлөлт 10 мөр).
+- **Зөвхөн `next dev`-д:** `unstable_cache` 2 MB-аас том хариуг dev горимд алдаа болгон шиддэг → `sitemap.ts`
+  хоосон жагсаалт авч сумын 303 хаяг локал sitemap-аас алга болж байсан. `feat/payload`-д засагдсан
+  (`lib/contentful.ts`: татсан өгөгдлийг кэшгүй буцаана). **Production-д нөлөөгүй** (2026-11-14 шалгасан): Next.js
+  16.3.5 production-д зөвхөн анхааруулга бичиж өгөгдлөө буцаадаг (`incremental-cache`: `if (this.dev) throw`);
+  live `sitemap.xml`-д 2,301 хаяг байна. (Өмнөх хувилбарт «production-д ч байгаа» гэж буруу бичсэн байсныг засав.)
 - Postgres-ийн сул холболт тасрах (ECONNRESET) → pool-ийн timeout + нэг удаа дахин оролдох.
 - `/sitemaps/en.xml` хоосон байсан (`publishedLocales`-ээр шүүх query) → засав.
 
@@ -110,7 +111,6 @@ main-д merge хийгээгүй.** Contentful-д нэг ч бичилт хий�
 | Англи орчуулга 322 хуудас → бусад ≈3,200 | 12-р сар | HOW-TO; Batch API автоматжуулалтад `ANTHROPIC_API_KEY` |
 | Хэл солигчийг жинхэнэ хуудас руу (§5 төлөвлөгөө) | 12-р сарын эцэс | payload-migration.md §5 |
 | 2FA / admin-ий хамгаалалт | 12/1-ээс өмнө | Cloudflare Access эсвэл `payload-totp` (cms-migration-plan.md) |
-| main-ийн sitemap-ийн 2 MB алдаа (§3) | Аль болох эрт | feat/payload-д засагдсан; main-д тусад нь (таны шийдвэр) |
 | `<html lang>`-ийг SSR-д хэлээр (одоо client талд) | 12-р сар | Root layout-ийг хэлээр салгах |
 | `next.config.js`-ийн `eslint` түлхүүр Next 16-д танигдахгүй (анхааруулга) | Хүссэн үедээ | Өмнө нь ч байсан |
 
