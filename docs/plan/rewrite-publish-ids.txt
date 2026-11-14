@@ -584,3 +584,8 @@ tic-c5-5
 tic-c5-6
 tic-c1-186
 tic-c3-18
+tic-c9-48
+tic-c17-70
+tic-c1-495
+tic-c3-4
+tic-c1-157
