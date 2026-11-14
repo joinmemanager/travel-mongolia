@@ -42,7 +42,7 @@ main-д merge хийгээгүй.** Contentful-д нэг ч бичилт хий�
 
 **Орчуулга (`docs/translation/`):** [HOW-TO.md](../translation/HOW-TO.md), [glossary.csv](../translation/glossary.csv)
 (556), [style-guide.md](../translation/style-guide.md), [pilot-en/](../translation/pilot-en/) (10 хуудас, шалгагч
-алдаа 0), [batches/](../translation/batches/) (322 хуудас → 7 файл), шалгагч, Payload импорт,
+алдаа 0), [batches/](../translation/batches/) (313 хуудас → 7 файл; экспортоос хойш дахин бичсэн 394 нь дараагийн экспортод), шалгагч, Payload импорт,
 [api-comparison.md](../translation/api-comparison.md).
 
 **Redirect** (тусдаа ажил, branch `docs/redirect-check-1112`): 3,371 хаягаас 3,370 зөв; зөвхөн
@@ -108,7 +108,7 @@ main-д merge хийгээгүй.** Contentful-д нэг ч бичилт хий�
 | Preview дээр бүтэн туршилт (`CMS_SOURCE=payload`, Neon + R2) | Түлхүүрийн дараа | Push хийх зөвшөөрөл хэрэгтэй (`feat/payload`-ийг preview болгох) |
 | Зургийг R2 руу: импортыг R2-тэй орчинд дахин (зөвхөн зураг) | Түлхүүрийн дараа | Локал кэшээс, Contentful-д хүсэлтгүй |
 | `[lang]` хувилбар: аймаг, газар, өвийн газар, нийтлэл, амьтан, мэдээ, нүүр, жагсаалт | 12-р сар | Сумын загвараар; цэс/footer-ийг хэлээр |
-| Англи орчуулга 322 хуудас → бусад ≈3,200 | 12-р сар | HOW-TO; Batch API автоматжуулалтад `ANTHROPIC_API_KEY` |
+| Англи орчуулга 313 хуудас (+394 шинэ экспортын дараа) → бусад ≈3,200 | 12-р сар | HOW-TO; Batch API автоматжуулалтад `ANTHROPIC_API_KEY` |
 | Хэл солигчийг жинхэнэ хуудас руу (§5 төлөвлөгөө) | 12-р сарын эцэс | payload-migration.md §5 |
 | 2FA / admin-ий хамгаалалт | 12/1-ээс өмнө | Cloudflare Access эсвэл `payload-totp` (cms-migration-plan.md) |
 | `<html lang>`-ийг SSR-д хэлээр (одоо client талд) | 12-р сар | Root layout-ийг хэлээр салгах |

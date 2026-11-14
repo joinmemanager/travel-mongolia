@@ -26,15 +26,30 @@ const PREFIX = arg('--prefix', LANG);
 
 const LANG_NAME = { en: 'American English', 'zh-CN': 'Simplified Chinese', ru: 'Russian', ko: 'Korean', ja: 'Japanese' };
 
-const listCsv = arg('--list')
-  ? fs.readFileSync(path.resolve(arg('--list')), 'utf8')
-  : execSync('git show main:docs/plan/rewrite-list.csv', { cwd: ROOT, maxBuffer: 50e6 }).toString('utf8');
-const rows = parseCsv(listCsv.replace(/^﻿/, ''))
-  .filter((r) => (ONLY ? ONLY.includes(r.entry_id) : /^дахин бичсэн/.test(r['төлөв'])))
-  .sort((a, b) => Number(a['эрэмбэ']) - Number(b['эрэмбэ']));
-
 const ex = loadExport();
 const glossary = loadGlossary();
+
+// Экспортоос ХОЙШ дахин бичсэн хуудсын экспорт дахь текст нь ХУУЧИН (дахин бичихээс өмнөх) байдаг (2026-11-14 илэрсэн:
+// 446–454-р мөр экспортоос 5–10 минутын дараа бичигдсэн). Иймд жагсаалтыг экспорт эхэлсэн мөчийн main-ийн
+// төлвөөр уншина (git түүх; дахин бичигч session эхлээд Contentful-д хадгалаад дараа нь commit хийдэг тул энэ нь
+// аюулгүй тал руу алддаг). Түүнээс хойш нэмэгдсэнийг «дараагийн экспортод» гэж мэдээлнэ.
+const git = (cmd) => execSync(`git ${cmd}`, { cwd: ROOT, maxBuffer: 50e6 }).toString('utf8');
+const isRewritten = (r) => /^дахин бичсэн/.test(r['төлөв']);
+const parseList = (csv) => parseCsv(csv.replace(/^﻿/, ''));
+let listRows;
+let pendingAfterExport = [];
+if (arg('--list')) listRows = parseList(fs.readFileSync(path.resolve(arg('--list')), 'utf8'));
+else {
+  const exportedAt = ex.meta.startedAt;
+  const commit = git(`rev-list -1 --before="${exportedAt}" main`).trim();
+  listRows = parseList(git(`show ${commit}:docs/plan/rewrite-list.csv`));
+  const atExport = new Set(listRows.filter(isRewritten).map((r) => r.entry_id));
+  pendingAfterExport = parseList(git('show main:docs/plan/rewrite-list.csv')).filter((r) => isRewritten(r) && !atExport.has(r.entry_id));
+  console.log(`Жагсаалт: main @ ${commit.slice(0, 7)} (экспорт эхэлсэн ${exportedAt}-ээс өмнөх сүүлийн commit)`);
+}
+const rows = listRows
+  .filter((r) => (ONLY ? ONLY.includes(r.entry_id) : isRewritten(r)))
+  .sort((a, b) => Number(a['эрэмбэ']) - Number(b['эрэмбэ']));
 
 // Орчуулах талбарууд: Contentful-д localized, mn утгатай, текст төрлийн. Дараалал: гарчиг → SEO → бусад → rich text
 function translatableFields(entry) {
@@ -140,3 +155,9 @@ console.log(`${entries.length} хуудас → ${files.length} файл (${path
 console.table(files);
 if (missing.length) console.log(`Экспортод олдоогүй entry (${missing.length}): ${missing.join(', ')}`);
 console.log(`Эх сурвалж: ${path.basename(ex.dir)} (ноорог = CMA-ийн хамгийн сүүлийн хувилбар)`);
+if (pendingAfterExport.length)
+  console.log(
+    `Экспортоос хойш дахин бичсэн ${pendingAfterExport.length} хуудас багцад ороогүй (экспортод хуучин текст нь байна). ` +
+      `Шинэ экспорт (scripts/payload/export-delta.js, 4 хүсэлт) хийсний дараа энэ скриптийг дахин ажиллуулна — ` +
+      `орчуулга эхэлсэн багцыг хөндөхгүй, шинэ хуудсууд дараагийн дугаартай файлд орно.`
+  );
