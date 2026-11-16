@@ -9,6 +9,7 @@ import { cdnImage } from '@/lib/imageUrl';
 import { PROVINCE_ALIASES } from '@/lib/provinceFacts';
 import { isPreviewEnv } from '@/lib/navigation';
 import { pageMetadata, richTextToPlain, truncate } from '@/lib/seo';
+import { SOUM_EMBLEMS } from '@/lib/soumEmblems';
 import { SOUM_EMBLEM_ASSETS, SOUM_NOT_HERO_ASSETS } from '@/lib/soumHeroImages';
 import { getSoum, getSoumsOfProvince } from '@/lib/soums';
 import { productionStaticParams } from '@/lib/navigation';
@@ -65,10 +66,12 @@ export default async function SoumPage({ params }: Props) {
   const notHero = isEmblem || (!!s.imageId && SOUM_NOT_HERO_ASSETS.has(s.imageId));
   // Зураггүй сумд ч аймгийн hero-г харуулна
   const heroImage = s.image && !notHero ? { src: s.image, alt: s.title, credit: s.imageCredit } : s.provinceHero;
+  // Hero-г Commons зургаар сольсон сумдын сүлд (lib/soumEmblems.ts) мөн тэмдэг хэвээр харагдана
+  const emblemSrc = isEmblem ? s.image : SOUM_EMBLEMS[s.id]?.url;
   const badge =
-    isEmblem && s.image ? (
+    emblemSrc ? (
       <img
-        src={cdnImage(s.image, 192)}
+        src={cdnImage(emblemSrc, 192)}
         alt={`${s.title}ын сүлд`}
         width={96}
         height={96}
