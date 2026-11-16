@@ -38,11 +38,21 @@ async function getAll(api, resource, since, extra = '') {
   const base = api === 'cma' ? CMA : CDA;
   const token = api === 'cma' ? ENV.CONTENTFUL_MANAGEMENT_TOKEN : ENV.CONTENTFUL_ACCESS_TOKEN;
   const items = [];
+  // Contentful-ийн хариу ≤7 MB: урт rich text-тэй олон entry 1000-аар багтахгүй (2026-11-16) → 500-аас эхэлж,
+  // хэт том бол хоёр дахин багасгана
+  let limit = resource === 'entries' ? 500 : 1000;
   for (let skip = 0; ; ) {
-    const p = `/${resource}?limit=1000&skip=${skip}&order=sys.updatedAt&sys.updatedAt[gte]=${encodeURIComponent(since)}${extra}`;
+    const p = `/${resource}?limit=${limit}&skip=${skip}&order=sys.updatedAt&sys.updatedAt[gte]=${encodeURIComponent(since)}${extra}`;
     const res = await fetch(base + p, { headers: { Authorization: `Bearer ${token}` } });
     log.push({ api, path: p.replace(/\?.*/, '?…'), status: res.status, at: new Date().toISOString() });
-    if (!res.ok) throw new Error(`${api} ${resource} → ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    if (!res.ok) {
+      const text = await res.text();
+      if (res.status === 400 && /Response size too big/i.test(text) && limit > 50) {
+        limit = Math.floor(limit / 2);
+        continue;
+      }
+      throw new Error(`${api} ${resource} → ${res.status}: ${text.slice(0, 200)}`);
+    }
     const data = await res.json();
     items.push(...data.items);
     skip += data.items.length;
@@ -54,6 +64,7 @@ async function getAll(api, resource, since, extra = '') {
 (async () => {
   const read = (f) => JSON.parse(fs.readFileSync(path.join(BASE, f), 'utf8'));
   const baseMeta = read('meta.json');
+  const startedAt = new Date().toISOString(); // дараагийн delta, багцын жагсаалт энэ мөчөөс
   const since = baseMeta.startedAt; // экспорт эхэлсэн мөчөөс (давхцал байж болно, id-аар солино)
   const merge = (list, fresh) => {
     const byId = new Map(list.map((x) => [x.sys.id, x]));
@@ -75,7 +86,7 @@ async function getAll(api, resource, since, extra = '') {
     counts[f] = { updated: fresh.length, total: merged.length };
   }
   const meta = {
-    startedAt: new Date().toISOString(),
+    startedAt,
     finishedAt: new Date().toISOString(),
     deltaOf: path.basename(BASE),
     since,

@@ -22,7 +22,7 @@ const SIZE = Number(arg('--size', 50));
 const LANG = arg('--lang', 'en');
 const OUT = path.resolve(ROOT, arg('--out', 'docs/translation/batches'));
 const ONLY = arg('--ids') ? arg('--ids').split(',') : null;
-const PREFIX = arg('--prefix', LANG);
+const PREFIX = arg('--prefix', args.includes('--review') ? `${LANG}-review` : LANG);
 
 const LANG_NAME = { en: 'American English', 'zh-CN': 'Simplified Chinese', ru: 'Russian', ko: 'Korean', ja: 'Japanese' };
 
@@ -47,8 +47,23 @@ else {
   pendingAfterExport = parseList(git('show main:docs/plan/rewrite-list.csv')).filter((r) => isRewritten(r) && !atExport.has(r.entry_id));
   console.log(`Жагсаалт: main @ ${commit.slice(0, 7)} (экспорт эхэлсэн ${exportedAt}-ээс өмнөх сүүлийн commit)`);
 }
+// --review: «ГАРААР ШАЛГАХ» тэмдэглэгээтэй хуудсууд (нийтлээгүй, ноорог хувилбараар) тусдаа en-review-NNN.md-д.
+// Анхдагч: тэдгээрийг хасаад, сүүлийн хувилбар нь НИЙТЛЭГДСЭН хуудсууд (нийтлээгүй/алгассан ноорог орохгүй).
+// --any-status: өмнөх шиг нийтлэгдсэн эсэхийг үл харгалзана (2026-11-14-ний en-001–007 ийм байдлаар гарсан).
+const REVIEW = args.includes('--review');
+const needsReview = (r) => /ГАРААР ШАЛГАХ/.test(r['тэмдэглэл'] || '');
+const { statusOf } = require('../payload/lib/export');
+const skipped = { review: 0, unpublished: 0 };
 const rows = listRows
-  .filter((r) => (ONLY ? ONLY.includes(r.entry_id) : isRewritten(r)))
+  .filter((r) => {
+    if (ONLY) return ONLY.includes(r.entry_id);
+    if (!isRewritten(r)) return false;
+    if (REVIEW) return needsReview(r);
+    if (needsReview(r)) return skipped.review++, false;
+    const e = ex.entryById.get(r.entry_id);
+    if (e && !args.includes('--any-status') && statusOf(e.sys) !== 'published') return skipped.unpublished++, false;
+    return true;
+  })
   .sort((a, b) => Number(a['эрэмбэ']) - Number(b['эрэмбэ']));
 
 // Орчуулах талбарууд: Contentful-д localized, mn утгатай, текст төрлийн. Дараалал: гарчиг → SEO → бусад → rich text
@@ -117,20 +132,23 @@ for (const r of rows) {
   entries.push({ id: e.sys.id, type: e.sys.contentType.sys.id, url: r['хаяг'] || '', fields: translatableFields(e) });
 }
 
-// Орчуулга нь эхэлсэн (done/<нэр> байгаа) багцыг дахин бичихгүй: эх нь өөрчлөгдвөл шалгагч эвдэрнэ.
-// Тэдгээрийн хуудсыг шинэ багцуудаас хасна, дугаарлалт тэдгээрийн дараагаас үргэлжилнэ.
+// Аль хэдийн гаргасан багцыг (<PREFIX>-NNN.md) дахин бичихгүй: орчуулагч авсан байж болно, эх нь өөрчлөгдвөл
+// шалгагч эвдэрнэ (2026-11-16-наас; өмнө нь зөвхөн done/-д хариутай багцыг). --rebuild бол done/-гүйг дахин гаргана.
+// Ямар нэг багцад (en-review орно) аль хэдийн орсон хуудсыг дахин оруулахгүй — давхар орчуулахгүй.
 const { parseBatch } = require('./lib/batch');
 const DONE = path.join(path.dirname(OUT), 'done');
+const own = new RegExp(`^${PREFIX.replace(/[-]/g, '\\-')}-\\d{3}\\.md$`);
 const frozen = new Set();
 const frozenIds = new Set();
-if (fs.existsSync(DONE)) {
-  for (const f of fs.readdirSync(DONE)) {
-    if (!f.startsWith(`${PREFIX}-`) || /\.report\.md$/.test(f) || !fs.existsSync(path.join(OUT, f))) continue;
-    frozen.add(f);
-    parseBatch(fs.readFileSync(path.join(OUT, f), 'utf8')).entries.forEach((e) => frozenIds.add(e.id));
-  }
+for (const f of fs.readdirSync(OUT)) {
+  if (!/^[a-zA-Z-]+-\d{3}\.md$/.test(f)) continue;
+  const mine = own.test(f);
+  if (mine && args.includes('--rebuild') && !fs.existsSync(path.join(DONE, f))) continue;
+  if (mine) frozen.add(f);
+  parseBatch(fs.readFileSync(path.join(OUT, f), 'utf8')).entries.forEach((e) => frozenIds.add(e.id));
 }
 const pool = entries.filter((e) => !frozenIds.has(e.id));
+const alreadyBatched = entries.length - pool.length;
 let num = 0;
 const nextName = () => {
   let n;
@@ -138,7 +156,7 @@ const nextName = () => {
   while (frozen.has(n));
   return n;
 };
-if (frozen.size) console.log(`Орчуулга эхэлсэн тул хөндөөгүй багц: ${[...frozen].join(', ')}`);
+if (frozen.size) console.log(`Аль хэдийн гаргасан тул хөндөөгүй багц: ${[...frozen].join(", ")}`);
 
 const files = [];
 for (let i = 0; i < pool.length; i += SIZE) {
@@ -151,7 +169,7 @@ for (let i = 0; i < pool.length; i += SIZE) {
   fs.writeFileSync(path.join(OUT, name), prompt(name, chunk, terms) + '\n' + body + '\n');
   files.push({ name, pages: chunk.length, words: body.split(/\s+/).length, terms: terms.length });
 }
-console.log(`${entries.length} хуудас → ${files.length} файл (${path.relative(ROOT, OUT)})`);
+console.log(`Сонгогдсон ${entries.length}, өмнөх багцад орсон ${alreadyBatched}, шинэ ${pool.length} хуудас → ${files.length} шинэ файл (${path.relative(ROOT, OUT)}). Хасагдсан: ГАРААР ШАЛГАХ ${skipped.review}, нийтлэгдээгүй/алгассан ${skipped.unpublished}`);
 console.table(files);
 if (missing.length) console.log(`Экспортод олдоогүй entry (${missing.length}): ${missing.join(', ')}`);
 console.log(`Эх сурвалж: ${path.basename(ex.dir)} (ноорог = CMA-ийн хамгийн сүүлийн хувилбар)`);
