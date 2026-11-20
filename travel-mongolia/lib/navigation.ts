@@ -27,7 +27,13 @@ export interface NavItem {
   children?: NavItem[];
   // Хэсгийн «Сэдвийн жагсаалт»-д (lib/sections.ts) цэснийхээс өөр, бүтэн нэрээр харагдах бол
   sectionLabel?: string;
+  // Компьютерийн mega menu-д 3-р түвшний холбоос MENU_CHILD_LIMIT-ээс олон бол зөвхөн featured-ийг
+  // харуулна (үлдсэн нь «Бүгдийг үзэх (N)»-ээр). Гар утасны цэс бүгдийг харуулна.
+  featured?: boolean;
 }
+
+// Mega menu-д дэд цэс бүрийн доор харуулах 3-р түвшний холбоосын дээд хязгаар
+export const MENU_CHILD_LIMIT = 5;
 
 // Дэд цэсний anchor (#...) нь хуудасны бодит <section id>-тай таарах ёстой. Хэсгийн үндсэн хаяг руу
 // заасан anchor нь «Сэдвийн жагсаалт»-д мөр болж орохгүй (lib/sections.ts sectionRows).
@@ -39,6 +45,9 @@ const page = (mn: string, en: string, href: string): NavItem => ({
   href,
   status: 'live',
 });
+
+// Mega menu-д харагдах (featured) холбоос
+const top = (item: NavItem): NavItem => ({ ...item, featured: true });
 
 export interface NavSection {
   id: string;
@@ -60,6 +69,9 @@ const shortsChildren = (): NavItem[] =>
     status: SHORTS_STATUS,
     sectionLabel: c.title,
   }));
+
+// «Архив, түүхүүд»-ийн mega menu-д харагдах сэдвүүд (lib/shorts.ts slug)
+const FEATURED_SHORTS = ['traditions', 'historical-figures', 'buddhism', 'legends'];
 
 // «Захиалах»: цэсний гадна, header-ийн жижиг товч (components/Navbar.tsx). Footer-т ч бий.
 export const BOOK_NOW_URL =
@@ -126,13 +138,13 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Ёс, уламжлал', en: 'Customs & Traditions', href: '/about/people', status: 'live',
         children: [
-          page('Ёс заншил, уламжлал', 'Traditions', '/about/traditions'),
-          page('Монголчууд', 'Mongolians', '/about/people#mongolians'),
+          top(page('Ёс заншил, уламжлал', 'Traditions', '/about/traditions')),
+          top(page('Монголчууд', 'Mongolians', '/about/people#mongolians')),
           page('Угсаатны бүлгүүд', 'Ethnic Groups', '/about/people#ethnic-groups'),
           // TIC cate14 угсаатан (10-р багц). Жагсаалтад заагаагүй тул ойрын «Ёс, уламжлал»-д
-          page('Угсаатнууд', 'Ethnic Groups (Articles)', '/about/culture/ethnic-groups'),
-          page('Хэл, бичиг', 'Language & Script', '/about/people#language-script'),
-          page('Зочломтгой ёс', 'Hospitality', '/about/people#hospitality'),
+          top(page('Угсаатнууд', 'Ethnic Groups (Articles)', '/about/culture/ethnic-groups')),
+          top(page('Хэл, бичиг', 'Language & Script', '/about/people#language-script')),
+          top(page('Зочломтгой ёс', 'Hospitality', '/about/people#hospitality')),
           page('Аж төрөх ёс', 'Way of Life', '/about/people#lifestyle'),
         ],
       },
@@ -152,8 +164,8 @@ export const MAIN_NAVIGATION: NavSection[] = [
         // ia-plan.md 5в: /inspiration/stories, /inspiration/magazine нь /stories руу redirect (next.config.js)
         mn: 'Архив, түүхүүд', en: 'Archives & Stories', href: '/stories', status: 'live',
         children: [
-          { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: SHORTS_BASE, status: SHORTS_STATUS },
-          ...shortsChildren(),
+          { mn: 'Фото/видео түүх', en: 'Photo & Video Stories', href: SHORTS_BASE, status: SHORTS_STATUS, featured: true },
+          ...shortsChildren().map((c) => (FEATURED_SHORTS.some((s) => c.href === shortsHref(s)) ? top(c) : c)),
         ],
       },
     ],
@@ -174,14 +186,14 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Үзэх, хийх зүйлс', en: 'Things to Do', href: '/things-to-do', status: 'live',
         children: [
-          page('Байгальд аялах', 'Nature & Outdoors', '/things-to-do/nature'),
-          page('Адал явдалт аялал', 'Adventure', '/things-to-do/adventure'),
-          page('Түүх, соёлын аялал', 'Culture & History', '/things-to-do/culture'),
+          top(page('Байгальд аялах', 'Nature & Outdoors', '/things-to-do/nature')),
+          top(page('Адал явдалт аялал', 'Adventure', '/things-to-do/adventure')),
+          top(page('Түүх, соёлын аялал', 'Culture & History', '/things-to-do/culture')),
           // TIC cate17 (2026-10-20, эзэмшигч баталсан)
           page('Музей, театр', 'Museums & Theatres', '/things-to-do/museums'),
           page('Хоол, ундааны туршлага', 'Food & Drink', '/things-to-do/food'),
-          page('Нүүдэлчин ахуйг мэдрэх', 'Nomadic Experiences', '/things-to-do/nomadic'),
-          page('Амралт, рашаан сувилал', 'Wellness', '/things-to-do/wellness'),
+          top(page('Нүүдэлчин ахуйг мэдрэх', 'Nomadic Experiences', '/things-to-do/nomadic')),
+          top(page('Амралт, рашаан сувилал', 'Wellness', '/things-to-do/wellness')),
           page('Зэрлэг амьтан, шувуу ажиглах', 'Wildlife', '/things-to-do/wildlife'),
           page('Аяллын хэв маягаар', 'Travel Styles', '/inspiration/styles'),
           page('Нууц үзэсгэлэнт газрууд', 'Hidden Mongolia', '/inspiration/hidden'),
@@ -191,12 +203,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Нутгийн амьдрал', en: 'Local Life', href: '/about/nomadic-life', status: 'live',
         children: [
-          page('Монгол гэр', 'The Ger', '/about/nomadic-life#ger'),
-          page('Таван хошуу мал', 'Five Animals', '/about/nomadic-life#five-animals'),
-          page('Улирлын нүүдэл', 'Seasonal Moves', '/about/nomadic-life#four-seasons'),
+          top(page('Монгол гэр', 'The Ger', '/about/nomadic-life#ger')),
+          top(page('Таван хошуу мал', 'Five Animals', '/about/nomadic-life#five-animals')),
+          top(page('Улирлын нүүдэл', 'Seasonal Moves', '/about/nomadic-life#four-seasons')),
           page('Мал маллах ухаан', 'Herding Know-how', '/about/nomadic-life#herding'),
-          page('Ардын тоглоом', 'Folk Games', '/about/nomadic-life#games'),
-          page('Малчин өрх', 'Herder Families', '/local/herder-families'),
+          top(page('Ардын тоглоом', 'Folk Games', '/about/nomadic-life#games')),
+          top(page('Малчин өрх', 'Herder Families', '/local/herder-families')),
         ],
       },
       // Хуучин «Төлөвлөх & захиалах › Туршлагууд»-тай нэг хуудас: нэг болгосон
@@ -213,12 +225,12 @@ export const MAIN_NAVIGATION: NavSection[] = [
         // Хуучин хоёр «Байрлах газар»-ыг (дэд холбоостой нь) нэг болгосон
         mn: 'Байрлах газар', en: 'Accommodation', href: '/plan/accommodation', status: 'live',
         children: [
-          page('Зочид буудал', 'Hotels', '/plan/accommodation#hotels'),
-          page('Жуулчны бааз', 'Tourist Camps', '/plan/accommodation#tourist-camps'),
-          page('Гэр кэмп', 'Ger Camps', '/plan/accommodation#ger-camps'),
+          top(page('Зочид буудал', 'Hotels', '/plan/accommodation#hotels')),
+          top(page('Жуулчны бааз', 'Tourist Camps', '/plan/accommodation#tourist-camps')),
+          top(page('Гэр кэмп', 'Ger Camps', '/plan/accommodation#ger-camps')),
           page('Хостел', 'Guesthouses & Hostels', '/plan/accommodation#hostels'),
-          page('Малчин айлд', 'Homestays', '/plan/accommodation#nomad-stay'),
-          page('Буудал, баазын лавлах', 'Directory', '/plan/accommodation#directory'),
+          top(page('Малчин айлд', 'Homestays', '/plan/accommodation#nomad-stay')),
+          top(page('Буудал, баазын лавлах', 'Directory', '/plan/accommodation#directory')),
         ],
       },
       {
@@ -246,23 +258,23 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Аяллын ёс зүй', en: 'Travel Etiquette', href: '/respect/etiquette', status: 'live',
         children: [
-          page('Гэрт орох ёс', 'Entering a Ger', '/respect/etiquette#ger'),
-          page('Зочлох ёс', 'Hospitality', '/respect/etiquette#hospitality'),
+          top(page('Гэрт орох ёс', 'Entering a Ger', '/respect/etiquette#ger')),
+          top(page('Зочлох ёс', 'Hospitality', '/respect/etiquette#hospitality')),
           page('Хоол, цай', 'Food & Tea', '/respect/etiquette#food'),
-          page('Овоо', 'Ovoo', '/respect/etiquette#ovoo'),
-          page('Хийд', 'Monasteries', '/respect/etiquette#religious'),
-          page('Зураг авах', 'Taking Photos', '/respect/etiquette#photos'),
+          top(page('Овоо', 'Ovoo', '/respect/etiquette#ovoo')),
+          top(page('Хийд', 'Monasteries', '/respect/etiquette#religious')),
+          top(page('Зураг авах', 'Taking Photos', '/respect/etiquette#photos')),
         ],
       },
       {
         mn: 'Байгальд ээлтэй', en: 'Nature-Friendly Travel', href: '/respect/nature', status: 'live',
         children: [
-          page('Хог хаягдал', 'Waste', '/respect/nature#waste'),
-          page('Ус', 'Water', '/respect/nature#water'),
-          page('Гал', 'Fire', '/respect/nature#fire'),
+          top(page('Хог хаягдал', 'Waste', '/respect/nature#waste')),
+          top(page('Ус', 'Water', '/respect/nature#water')),
+          top(page('Гал', 'Fire', '/respect/nature#fire')),
           page('Зам', 'Tracks', '/respect/nature#tracks'),
-          page('Зэрлэг амьтан', 'Wildlife', '/respect/nature#wildlife'),
-          page('Тусгай хамгаалалттай газар', 'Protected Areas', '/respect/nature#protected'),
+          top(page('Зэрлэг амьтан', 'Wildlife', '/respect/nature#wildlife')),
+          top(page('Тусгай хамгаалалттай газар', 'Protected Areas', '/respect/nature#protected')),
         ],
       },
       {
@@ -287,11 +299,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
       {
         mn: 'Аяллаа төлөвлөх', en: 'Plan Your Trip', href: '/plan/before-you-travel', status: 'live',
         children: [
-          page('Аялахаас өмнө мэдэх зүйлс', 'Before You Travel', '/plan/before-you-travel'),
-          page('Хэзээ аялах вэ: улирлаар', 'When to Go', '/inspiration/seasons'),
-          page('Аялал төлөвлөгч', 'Trip Planner', '/planner'),
-          page('Монгол дотор аялах', 'Getting Around', '/plan/getting-around'),
-          page('Монголд хэрхэн ирэх вэ', 'Getting to Mongolia', '/plan/getting-to-mongolia'),
+          top(page('Аялахаас өмнө мэдэх зүйлс', 'Before You Travel', '/plan/before-you-travel')),
+          top(page('Хэзээ аялах вэ: улирлаар', 'When to Go', '/inspiration/seasons')),
+          top(page('Аялал төлөвлөгч', 'Trip Planner', '/planner')),
+          top(page('Монгол дотор аялах', 'Getting Around', '/plan/getting-around')),
+          top(page('Монголд хэрхэн ирэх вэ', 'Getting to Mongolia', '/plan/getting-to-mongolia')),
           page('Аяллын чиглэлүүд', 'Routes', '/destination/routes'),
           page('Аяллын маршрутууд', 'Itineraries', '/inspiration/itineraries'),
         ],
@@ -322,11 +334,11 @@ export const MAIN_NAVIGATION: NavSection[] = [
         mn: 'Олон улсын туршлага', en: 'International Practice', href: '/impact/examples', status: 'live',
         // Contentful `story` (topic: international), slug нь scripts/contentful/esg-examples.js-ээс
         children: [
-          page('GSTC шалгуур', 'GSTC Criteria', '/impact/examples/gstc-criteria'),
-          page('OECD', 'OECD', '/impact/examples/oecd-recovery'),
-          page('Европын парламент', 'European Parliament', '/impact/examples/eu-tourism'),
-          page('Словени', 'Slovenia', '/impact/examples/slovenia-green'),
-          page('Booking Holdings', 'Booking Holdings', '/impact/examples/booking-holdings'),
+          top(page('GSTC шалгуур', 'GSTC Criteria', '/impact/examples/gstc-criteria')),
+          top(page('OECD', 'OECD', '/impact/examples/oecd-recovery')),
+          top(page('Европын парламент', 'European Parliament', '/impact/examples/eu-tourism')),
+          top(page('Словени', 'Slovenia', '/impact/examples/slovenia-green')),
+          top(page('Booking Holdings', 'Booking Holdings', '/impact/examples/booking-holdings')),
           page('Marriott', 'Marriott', '/impact/examples/marriott-serve-360'),
         ],
       },

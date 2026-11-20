@@ -8,6 +8,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   BOOK_NOW_URL,
   MAP_HREF,
+  MENU_CHILD_LIMIT,
   liveHref,
   type NavItem,
   type NavSection,
@@ -69,6 +70,14 @@ function ViewAllLink({
       {content}
     </Link>
   );
+}
+
+// Mega menu-д харуулах 3-р түвшний холбоосууд: MENU_CHILD_LIMIT-ээс олон бол featured-ийг (байхгүй бол
+// эхний хэсгийг), цэсийн дарааллаар. Гар утасны цэс бүгдийг харуулна.
+function desktopChildren(children: NavItem[]): NavItem[] {
+  if (children.length <= MENU_CHILD_LIMIT) return children;
+  const featured = children.filter((c) => c.featured);
+  return (featured.length ? featured : children).slice(0, MENU_CHILD_LIMIT);
 }
 
 function Chevron({ open, className = '' }: { open: boolean; className?: string }) {
@@ -447,7 +456,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
           </div>
         </div>
 
-        {/* 4. КОМПЬЮТЕРИЙН САМБАР. Дэд цэс бүр нэг багана, мөрөнд 4 (8 дэд цэстэй хэсэг 2 мөр).
+        {/* 4. КОМПЬЮТЕРИЙН САМБАР. Дэд цэс бүр нэг багана, мөрөнд 4. 3-р түвшний холбоос хамгийн ихдээ MENU_CHILD_LIMIT (featured), илүүг «Бүгдийг үзэх (N)».
             Хаалттай үед ч HTML-д байна, зөвхөн CSS-ээр нуугдана (SEO). */}
         <div
           ref={panelRef}
@@ -455,7 +464,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             activeMenu ? '' : 'hidden'
           }`}
         >
-          <div className="relative py-12 px-6 mx-auto max-w-7xl sm:px-10">
+          <div className="relative py-8 px-6 mx-auto max-w-7xl sm:px-10">
             <button
               type="button"
               onClick={closePanel}
@@ -475,8 +484,12 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                 aria-label={labelOf(section)}
                 className={activeMenu === section.id ? '' : 'hidden'}
               >
-                <ul className="grid grid-cols-4 gap-x-8 gap-y-12 pr-10">
-                  {section.items.map((item) => (
+                <ul className="grid grid-cols-4 gap-x-8 gap-y-8 pr-10">
+                  {section.items.map((item) => {
+                    const allChildren = item.children || [];
+                    const shown = desktopChildren(allChildren);
+                    const more = allChildren.length > shown.length;
+                    return (
                     <li
                       key={`${item.href}-${item.mn}`}
                       className="flex flex-col min-w-0"
@@ -485,20 +498,20 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                         item={item}
                         english={isEnglish}
                         onClick={closeMenu}
-                        className="block text-[21px] font-bold leading-tight text-gray-900 hover:text-[#15803d] transition-colors xl:text-[22px]"
+                        className="block text-[20px] font-bold leading-tight text-gray-900 hover:text-[#15803d] transition-colors xl:text-[21px]"
                         badgeClassName="inline-block ml-2 py-0.5 px-2 align-middle text-[10px] font-bold rounded-full"
                       >
                         {label(item)}
                       </NavItemLink>
-                      {item.children && item.children.length > 0 && (
-                        <ul className="mt-4 space-y-2.5">
-                          {item.children.map((child) => (
+                      {shown.length > 0 && (
+                        <ul className="mt-2.5 space-y-1.5">
+                          {shown.map((child) => (
                             <li key={`${child.href}-${child.mn}`}>
                               <NavItemLink
                                 item={child}
                                 english={isEnglish}
                                 onClick={closeMenu}
-                                className="group flex gap-2 items-baseline text-base leading-snug text-gray-600 hover:text-gray-900 transition-colors"
+                                className="group flex gap-2 items-baseline text-[15px] leading-snug text-gray-600 hover:text-gray-900 transition-colors"
                                 badgeClassName="ml-1 py-0.5 px-1.5 text-[10px] font-bold rounded-full"
                               >
                                 <span aria-hidden="true" className={`font-bold ${GREEN}`}>›</span>
@@ -510,12 +523,18 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                       )}
                       <ViewAllLink
                         item={item}
-                        label={textLabel('viewAll')}
+                        label={
+                          <span {...labelProps}>
+                            {text('viewAll')}
+                            {more ? ` (${allChildren.length})` : ''}
+                          </span>
+                        }
                         onClick={closeMenu}
-                        className={`inline-block mt-5 text-base font-bold ${GREEN} hover:underline`}
+                        className={`inline-block mt-3 text-[15px] font-bold ${GREEN} hover:underline`}
                       />
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </div>
             ))}
