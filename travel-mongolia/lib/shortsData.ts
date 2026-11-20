@@ -92,7 +92,7 @@ const API = 'https://www.googleapis.com/youtube/v3';
 // nextPageToken-ий хамгаалалт (50 × 20 = 1000 бичлэг)
 const MAX_PAGES = 20;
 
-async function youtube(path: string, params: Record<string, string>, init?: RequestInit): Promise<any> {
+export async function youtube(path: string, params: Record<string, string>, init?: RequestInit): Promise<any> {
   const key = process.env.YOUTUBE_API_KEY;
   if (!key) throw new Error('YOUTUBE_API_KEY тохируулаагүй');
   const res = await fetch(`${API}/${path}?${new URLSearchParams(params)}`, {

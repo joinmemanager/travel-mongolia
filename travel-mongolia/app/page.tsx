@@ -8,9 +8,13 @@ import RegionMap from '../components/RegionMap';
 import SeasonRecommendations from '../components/SeasonRecommendations';
 import TopDestinations from '../components/TopDestinations';
 import { ShortsTabs } from '../components/shorts/Shorts';
+import { VideoGrid } from '../components/videos/Videos';
 import { client as baseClient, rethrowOutage } from '../lib/contentful';
+import { getProvinceSliderImages } from '../lib/provinceSlider';
 import { SHORTS_BASE } from '../lib/shorts';
 import { getShortsTopics } from '../lib/shortsData';
+import { VIDEOS_BASE, VIDEOS_HOME_COUNT, VIDEOS_TITLE } from '../lib/videos';
+import { getVideos } from '../lib/videosData';
 const client = baseClient as any;
 
 // Цаг тутам дахин үүснэ: Shorts-ийн fetch кэш (24 цаг) шинэчлэгдсэний дараа шинэ бичлэг удалгүй гарна.
@@ -51,6 +55,8 @@ export default async function Home() {
   const recommendations = await getRecommendations();
   // Бичлэггүй сэдвийн таб харагдахгүй
   const shorts = (await getShortsTopics()).filter((t) => t.videos.length > 0);
+  // «Монголын үзэсгэлэн»: API алдаатай (null) эсвэл хоосон бол хэсэг нуугдана
+  const [videos, provinceImages] = await Promise.all([getVideos(), getProvinceSliderImages()]);
 
   return (
     <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
@@ -58,7 +64,7 @@ export default async function Home() {
       <HeroFlight />
 
       {/* 2. АЙМГУУДЫН ИНТЕРАКТИВ ЗУРАГ */}
-      <RegionMap />
+      <RegionMap images={provinceImages} />
 
       {/* 3. ОНЦЛОХ ГАЗРУУДЫН СЛАЙДЕР */}
       <TopDestinations items={destinations} />
@@ -78,6 +84,25 @@ export default async function Home() {
             </Link>
           </div>
           <ShortsTabs categories={shorts} />
+        </section>
+      )}
+
+      {/* 4б. ХЭВТЭЭ БИЧЛЭГ «Монголын үзэсгэлэн»: playlist-ийн эхний 3 (lib/videosData.ts, components/videos/) */}
+      {videos && videos.length > 0 && (
+        <section aria-labelledby="videos-heading" className="py-10 px-6 mx-auto max-w-7xl sm:px-10">
+          <div className="flex gap-4 justify-between items-end mb-4">
+            <h2 id="videos-heading" className="text-xl font-black tracking-tight text-neutral-900 sm:text-3xl">
+              {VIDEOS_TITLE}
+            </h2>
+            <Link
+              href={VIDEOS_BASE}
+              data-ga-event="videos_view_all"
+              className="flex shrink-0 gap-1 items-center text-xs font-bold text-neutral-900 hover:text-[#15803d]"
+            >
+              Бүгдийг үзэх →
+            </Link>
+          </div>
+          <VideoGrid videos={videos.slice(0, VIDEOS_HOME_COUNT)} source="home" />
         </section>
       )}
 
