@@ -10,10 +10,10 @@ const { loadExport, ROOT } = require('../payload/lib/export');
 const CURATED = [
   // --- Засаг захиргаа
   ['аймаг', 'province', 'засаг захиргаа', 'Эхний удаа: "Khentii Province (aimag)", дараа нь "province". Нэрний хамт: "Khentii Province".'],
-  ['сум', 'soum', 'засаг захиргаа', 'Жижиг үсгээр: "Dadal soum". "district/county" гэж орчуулахгүй.'],
+  ['сум', 'sum', 'засаг захиргаа', 'Жижиг үсгээр: "Dadal sum", олон тоо "sums". "soum", "district/county" гэж бичихгүй.'],
   ['баг', 'bag', 'засаг захиргаа', 'Эхний удаа: "bag (the smallest administrative unit)".'],
   ['дүүрэг', 'district', 'засаг захиргаа', 'Улаанбаатарын: "Khan-Uul District".'],
-  ['сумын төв', 'soum center', 'засаг захиргаа', ''],
+  ['сумын төв', 'sum center', 'засаг захиргаа', ''],
   ['аймгийн төв', 'provincial center', 'засаг захиргаа', ''],
   ['нийслэл', 'the capital', 'засаг захиргаа', ''],
   ['Монгол Улс', 'Mongolia', 'газар', '"Mongolian State" биш.'],
@@ -46,7 +46,7 @@ const CURATED = [
   ['малчин айл', 'herder family', 'соёл', ''],
   ['нүүдэлчин', 'nomad', 'соёл', 'Тэмдэг нэр: "nomadic".'],
   ['таван хошуу мал', 'the five types of livestock', 'соёл', 'horses, camels, cattle (incl. yaks), sheep, goats'],
-  ['хийморь', 'khiimori (wind horse)', 'соёл', ''],
+  ['хийморь', 'khiimori', 'соёл', 'Эхний удаа: "khiimori (a person\'s vital energy and good fortune)", дараа нь зөвхөн "khiimori". "wind horse" гэж орчуулахгүй.'],
   ['хадаг', 'khadag (ceremonial silk scarf)', 'соёл', ''],
   ['тахилга', 'worship ceremony', 'соёл', 'Овооны тахилга = "ovoo worship ceremony".'],
   ['бүргэдчин', 'eagle hunter', 'соёл', ''],
@@ -262,7 +262,7 @@ for (const s of soums) {
   const en = s.fields.slug.mn.split('-').map(cap).join(mn.includes('-') ? '-' : ' ');
   const where = p ? `${p.en}` : '';
   const key = dup[title] > 1 ? `${mn} (${p?.mn || ''})` : mn;
-  add([key, en, district ? 'дүүрэг' : 'сум', `${district ? `"${en} District"` : `"${en} soum"`}${where ? `, ${where}` : ''}. URL: /province/${p?.slug || '?'}/${s.fields.slug.mn}`]);
+  add([key, en, district ? 'дүүрэг' : 'сум', `${district ? `"${en} District"` : `"${en} sum"`}${where ? `, ${where}` : ''}. URL: /province/${p?.slug || '?'}/${s.fields.slug.mn}`]);
 }
 
 const csvCell = (v) => (/[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);

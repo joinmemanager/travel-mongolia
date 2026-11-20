@@ -1,0 +1,166 @@
+{
+ "count": {
+  "at": "2026-11-20T04:33:09.655Z",
+  "effort": "medium",
+  "models": {
+   "haiku": {
+    "model": "claude-haiku-5-5",
+    "systemTokens": 22001,
+    "pages": 983,
+    "contentTokens": 1746562
+   },
+   "sonnet": {
+    "model": "claude-sonnet-5-5",
+    "systemTokens": 22001,
+    "pages": 983,
+    "contentTokens": 1746562
+   }
+  },
+  "files": {
+   "en-001": {
+    "pages": 50,
+    "haiku": 92506,
+    "sonnet": 92506
+   },
+   "en-002": {
+    "pages": 50,
+    "haiku": 72089,
+    "sonnet": 72089
+   },
+   "en-003": {
+    "pages": 50,
+    "haiku": 111558,
+    "sonnet": 111558
+   },
+   "en-004": {
+    "pages": 50,
+    "haiku": 70622,
+    "sonnet": 70622
+   },
+   "en-005": {
+    "pages": 50,
+    "haiku": 130872,
+    "sonnet": 130872
+   },
+   "en-006": {
+    "pages": 50,
+    "haiku": 181264,
+    "sonnet": 181264
+   },
+   "en-007": {
+    "pages": 13,
+    "haiku": 38658,
+    "sonnet": 38658
+   },
+   "en-008": {
+    "pages": 50,
+    "haiku": 128859,
+    "sonnet": 128859
+   },
+   "en-009": {
+    "pages": 50,
+    "haiku": 106157,
+    "sonnet": 106157
+   },
+   "en-010": {
+    "pages": 50,
+    "haiku": 95920,
+    "sonnet": 95920
+   },
+   "en-011": {
+    "pages": 50,
+    "haiku": 91575,
+    "sonnet": 91575
+   },
+   "en-012": {
+    "pages": 50,
+    "haiku": 82170,
+    "sonnet": 82170
+   },
+   "en-013": {
+    "pages": 50,
+    "haiku": 75050,
+    "sonnet": 75050
+   },
+   "en-014": {
+    "pages": 50,
+    "haiku": 70141,
+    "sonnet": 70141
+   },
+   "en-015": {
+    "pages": 50,
+    "haiku": 67181,
+    "sonnet": 67181
+   },
+   "en-016": {
+    "pages": 50,
+    "haiku": 63105,
+    "sonnet": 63105
+   },
+   "en-017": {
+    "pages": 50,
+    "haiku": 57341,
+    "sonnet": 57341
+   },
+   "en-018": {
+    "pages": 50,
+    "haiku": 51208,
+    "sonnet": 51208
+   },
+   "en-019": {
+    "pages": 30,
+    "haiku": 28534,
+    "sonnet": 28534
+   },
+   "en-review-001": {
+    "pages": 50,
+    "haiku": 83928,
+    "sonnet": 83928
+   },
+   "en-review-002": {
+    "pages": 40,
+    "haiku": 47824,
+    "sonnet": 47824
+   }
+  }
+ },
+ "estimate_all_983_pages": {
+  "haiku": {
+   "outRatio": 1.158,
+   "outTokens": 2022633,
+   "usd_expected": 0.75,
+   "usd_no_cache_hits": 1.67,
+   "parts": {
+    "content": 0.09,
+    "cacheRead": 0.11,
+    "cacheWrite": 0.05,
+    "output": 0.51
+   }
+  },
+  "sonnet": {
+   "outRatio": 0.683,
+   "outTokens": 1193434,
+   "usd_expected": 9.72,
+   "usd_no_cache_hits": 29.34,
+   "parts": {
+    "content": 1.75,
+    "cacheRead": 1.08,
+    "cacheWrite": 0.92,
+    "output": 5.97
+   }
+  },
+  "opus": {
+   "outRatio": 0.683,
+   "outTokens": 1193434,
+   "usd_expected": 19.44,
+   "usd_no_cache_hits": 58.68,
+   "parts": {
+    "content": 3.49,
+    "cacheRead": 2.16,
+    "cacheWrite": 1.85,
+    "output": 11.93
+   }
+  },
+  "note": "opus: Sonnet-ийн гаралтын харьцаагаар (хэмжээгүй)"
+ }
+}

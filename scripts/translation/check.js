@@ -2,7 +2,7 @@
 //   node scripts/translation/check.js docs/translation/done/en-001.md [--source docs/translation/batches/en-001.md]
 //   node scripts/translation/check.js docs/translation/done            (хавтсын бүх файл)
 // АЛДАА (импорт хийхгүй): бүтэц эвдэрсэн (ENTRY/FIELD/END), дутуу/илүү хуудас, талбар, Markdown-ийн бүтэц
-//   (гарчиг, жагсаалт, хүснэгт, зураг, холбоос) өөр, кирилл үсэг үлдсэн, seoTitle > 60, seoDescription > 155.
+//   (гарчиг, жагсаалт, хүснэгт, зураг, холбоос) өөр, кирилл үсэг үлдсэн, «soum»/«wind horse», seoTitle > 60, seoDescription > 155.
 // АНХААРУУЛГА (шалгаж үзэх): толь бичгийн нэр томъёо олдсонгүй, H2 асуулт биш, урт эхээсээ хэт зөрүүтэй,
 //   seoDescription < 110.
 'use strict';
@@ -61,6 +61,10 @@ function checkFile(donePath, sourcePath) {
       if (!dText.trim()) E(s.id, `«${sf.id}» хоосон`);
       const cyr = dText.match(new RegExp(`.{0,25}${CYRILLIC.source}.{0,25}`));
       if (cyr) E(s.id, `«${sf.id}»-д кирилл үсэг үлдсэн: «${cyr[0].replace(/\n/g, ' ')}»`);
+      // Толь бичгийн хориотой хэлбэр (URL доторхыг тооцохгүй)
+      const plain = dText.replace(/\]\([^)]*\)|<[^>]*>|https?:\/\/\S+/g, '');
+      const banned = plain.match(/.{0,25}\b(soums?|wind[ -]?horses?)\b.{0,25}/i);
+      if (banned) E(s.id, `«${sf.id}»-д хориотой нэр томъёо («soum» → «sum», «wind horse» → «khiimori»): «${banned[0].replace(/\n/g, ' ')}»`);
       if (sf.kind === 'list' && df.value.length !== sf.value.length) E(s.id, `«${sf.id}» жагсаалтын мөр ${df.value.length} (эхэд ${sf.value.length})`);
 
       if (sf.id === 'seoTitle' && [...dText].length > SEO_TITLE_MAX) E(s.id, `seoTitle ${[...dText].length} тэмдэгт (≤${SEO_TITLE_MAX}): «${dText}»`);

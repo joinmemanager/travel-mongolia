@@ -1,0 +1,8 @@
+{
+  "name": "thm-translation-scripts",
+  "private": true,
+  "description": "Орчуулгын скриптүүд (api-translate.mjs-д Anthropic SDK). Суулгах: ../../.tools/bin/pnpm install --dir scripts/translation",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.11.0"
+  }
+}

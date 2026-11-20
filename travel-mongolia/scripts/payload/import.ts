@@ -1,5 +1,6 @@
 // Contentful экспорт → Payload. Дахин ажиллуулахад давхардахгүй (contentfulId-аар тулгана), өөрчлөгдөөгүйг алгасна.
 //   node scripts/payload/cli.mjs run scripts/payload/import.ts [--export <dir>] [--only media|entries] [--types a,b] [--force] [--limit N]
+//        [--enhanced <dir>]   — <dir>/<asset_id>.<jpg|png> байвал (сайжруулсан зураг) эх файлын оронд түүнийг upload хийнэ
 // Contentful руу API хүсэлт илгээхгүй: локал экспортыг уншина. Зургийн файлыг images.ctfassets.net-ээс НЭГ удаа
 // татаж backups/asset-files/-д кэшлэнэ (Asset bandwidth, API хүсэлтэд тооцогдохгүй).
 //
@@ -33,10 +34,25 @@ const TYPES = arg('--types')?.split(',');
 const FORCE = args.includes('--force');
 const LIMIT = Number(arg('--limit') || Infinity);
 const CACHE = path.join(REPO, 'backups', 'asset-files');
-const ctx = { skipRevalidate: true };
+const ENHANCED = arg('--enhanced');
+const enhancedFiles = new Map<string, string>(); // asset id → файл
+if (ENHANCED) for (const f of fs.readdirSync(ENHANCED)) {
+  const m = f.match(/^(.+)\.(jpg|jpeg|png|webp|gif)$/i);
+  if (m) enhancedFiles.set(m[1], path.join(ENHANCED, f));
+}
+// Дуудлага бүрт ШИНЭ context: R2 (storage-s3) plugin context-д файлын мэдээлэл хадгалдаг тул хуваалцвал дараагийн зураг upload хийгдэхгүй
+const ctx = () => ({ skipRevalidate: true });
 
 const payload = await getPayload({ config });
-const log = { started: new Date().toISOString(), export: path.basename(ex.dir), media: { created: 0, updated: 0, skipped: 0, failed: [] as string[] }, entries: {} as Record<string, any>, warnings: [] as string[] };
+// Neon сул/удаан холболтыг тасалдаг: listener-гүй pg Client-ийн 'error' event процессыг бүхэлд нь унагадаг.
+// Сонсож бүртгэнэ — тухайн хүсэлт алдаа болж (failed-д орно), дараагийнх нь шинэ холболт авна.
+const pool = (payload.db as any).pool;
+let connErrors = 0;
+pool?.on('error', (e: Error) => { connErrors++; console.warn(`pool алдаа (${connErrors}): ${e.message}`); });
+const onClientErr = (e: Error) => { connErrors++; console.warn(`холболт тасарсан (${connErrors}): ${e.message}`); };
+pool?.on('connect', (c: any) => c.on('error', onClientErr));
+for (const c of pool?._clients || []) c.on('error', onClientErr);
+const log = { started: new Date().toISOString(), export: path.basename(ex.dir), media: { created: 0, updated: 0, skipped: 0, enhanced: 0, failed: [] as string[] }, entries: {} as Record<string, any>, warnings: [] as string[] };
 const warn = (s: string) => {
   if (log.warnings.length < 2000) log.warnings.push(s);
 };
@@ -93,16 +109,26 @@ async function importMedia() {
     try {
       if (prev && prev.cfFileUrl === file.url) {
         if (FORCE) {
-          await payload.update({ collection: 'media', id: prev.id, data, locale: 'mn', overrideAccess: true, context: ctx });
+          await payload.update({ collection: 'media', id: prev.id, data, locale: 'mn', overrideAccess: true, context: ctx() });
           log.media.updated++;
         } else log.media.skipped++;
         continue;
       }
       const local = path.join(CACHE, `${a.sys.id}-${file.fileName}`.replace(/[^\w.\-]+/g, '_'));
-      await download(file.url, local);
+      let filePath = local;
+      const enh = enhancedFiles.get(a.sys.id);
+      if (enh) {
+        // Сайжруулсан файлыг эх файлын нэрээр (өргөтгөл нь сайжруулсных) — R2-ийн нэр тайлбарлаг хэвээр
+        filePath = path.join(CACHE, 'enhanced', path.basename(local).replace(/.[^.]+$/, '') + path.extname(enh).toLowerCase());
+        if (!fs.existsSync(filePath) || fs.statSync(filePath).size !== fs.statSync(enh).size) {
+          fs.mkdirSync(path.dirname(filePath), { recursive: true });
+          fs.copyFileSync(enh, filePath);
+        }
+        log.media.enhanced++;
+      } else await download(file.url, local);
       const doc = prev
-        ? await payload.update({ collection: 'media', id: prev.id, data, filePath: local, locale: 'mn', overrideAccess: true, context: ctx })
-        : await payload.create({ collection: 'media', data, filePath: local, locale: 'mn', overrideAccess: true, context: ctx });
+        ? await payload.update({ collection: 'media', id: prev.id, data, filePath, locale: 'mn', overrideAccess: true, context: ctx() })
+        : await payload.create({ collection: 'media', data, filePath, locale: 'mn', overrideAccess: true, context: ctx() });
       mediaId.set(a.sys.id, doc.id);
       // Англи alt/тайлбар Contentful-д байвал
       if (src.fields.title?.en || src.fields.description?.en) {
@@ -112,7 +138,7 @@ async function importMedia() {
           locale: 'en',
           data: { title: src.fields.title?.en, description: src.fields.description?.en },
           overrideAccess: true,
-          context: ctx,
+          context: ctx(),
         });
       }
       prev ? log.media.updated++ : log.media.created++;
@@ -200,11 +226,11 @@ function dataFor(collection: string, entry: any, locale: string, sys: any) {
 async function write(collection: string, id: any, entry: any, sys: any, draft: boolean) {
   // Drafts идэвхтэй collection-д нийтлэхийн тулд _status: 'published' заавал (draft: false дангаараа нийтэлдэггүй)
   const mnData = { ...dataFor(collection, entry, 'mn', sys), _status: draft ? 'draft' : 'published' };
-  await payload.update({ collection: collection as any, id, locale: 'mn', data: mnData, draft, overrideAccess: true, context: ctx });
+  await payload.update({ collection: collection as any, id, locale: 'mn', data: mnData, draft, overrideAccess: true, context: ctx() });
   const hasEn = Object.values<any>(entry.fields).some((v) => v && typeof v === 'object' && 'en' in v);
   if (hasEn) {
     const enData = { ...dataFor(collection, entry, 'en', sys), _status: draft ? 'draft' : 'published' };
-    await payload.update({ collection: collection as any, id, locale: 'en', data: enData, draft, overrideAccess: true, context: ctx });
+    await payload.update({ collection: collection as any, id, locale: 'en', data: enData, draft, overrideAccess: true, context: ctx() });
   }
 }
 
@@ -225,7 +251,7 @@ async function importEntries() {
       data: { contentfulId: e.sys.id, cfCreatedAt: e.sys.firstPublishedAt || e.sys.createdAt } as any,
       draft: true,
       overrideAccess: true,
-      context: ctx,
+      context: ctx(),
     });
     docId.set(e.sys.id, { collection: t, id: doc.id });
   }

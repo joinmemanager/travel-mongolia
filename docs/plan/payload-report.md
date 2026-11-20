@@ -221,3 +221,61 @@ verification, GA4; монгол Дадал `lang="mn"` хэвээр, hreflang en
    орчуулга хуучирна).
 2. 9 сумын сүлдний код production-д гарч, монгол нь нийтлэгдсэний дараа тэдгээрийн англиа нийтлэх.
 3. Neon/R2 түлхүүр (§5) → preview туршилт → 12/1-ний шилжилт (§6; эцсийн экспорт нь энэ экспорт дээр delta).
+
+## 10. 11/20: Neon + R2 дээр бүтэн импорт, нэр томъёо, Shorts, API орчуулгын туршилт
+
+**Neon + R2 (Contentful-д хүсэлтгүй, `contentful-export-2026-11-16`-аас):**
+
+| Шалгалт | Үр дүн |
+|---|---|
+| Migration (Neon) | `initial` + `r2_storage` + `mn_collation` — бүгд хэрэглэгдсэн |
+| Импорт | entry 3,538, зураг 2,361; **failed 0** ([тайлан](../../backups/) `payload-import-2026-11-20T091003.json`) |
+| R2 | 11,805 объект (2,361 × эх + 4 хэмжээ), 657 MB; **дутуу 0, илүү 0** |
+| Сайжруулсан зураг (`tmp/images-enhanced`, asset id-аар) | **2,205 / 2,205** нь эхийн оронд орсон; үлдсэн 156 нь эх |
+| `verify.ts` | 3,747 хувилбар **бүгд ижил, зөрүү 0**; 18/18 төрлийн тоо таарсан ([payload-verify.md](payload-verify.md)) |
+| `compare-urls.mjs` | sitemap 2,372 = 2,372 (зөвхөн нэг талд 0); дээжийн 339 хуудаснаас **336 ижил**, 3 нь сайжруулсан зургийн цомог (доор); **бодит зөрүү 0** ([payload-url-compare.md](payload-url-compare.md)) |
+
+**Явцад олдож засагдсан алдаа (production-д ч нөлөөлөх байсан):**
+1. **R2 багана дутуу** — анхны migration R2 plugin-гүй орчинд үүссэн тул `media.prefix`, `_objectkey` алга → бүх зураг
+   алдаа. `20261120_042234_r2_storage` migration нэмэв. Цаашид `migrate:create`-ийг R2-ийн env-тэй ажиллуулах
+   (эс бөгөөс эдгээр баганыг DROP хийх migration үүснэ).
+2. **Зураг R2-д чимээгүй алгасагдах** — импорт бүх дуудлагад нэг `context` объект дамжуулж байсан; storage plugin
+   түүнд файлын төлөв хадгалдаг тул эхнийхээс бусад нь upload хийгдээгүй (doc үүссэн, файл 404). Дуудлага бүрт шинэ
+   context.
+3. **Neon холболт тасрах** («Connection terminated unexpectedly») — listener-гүй pg client-ийн `error` event процессыг
+   унагадаг байсан (импорт 2 удаа 1,600 зураг / 2,600 entry дээр унасан). Импортод pool/client-ийн error listener
+   нэмэв; дахин ажиллуулахад дууссаныг алгасдаг тул өгөгдөл давхардаагүй.
+4. **Кирилл эрэмбэ** — Neon-ий DB `C.UTF-8` collation-тай: `order: 'fields.name'` нь «Өндөр», «Үүлэн»-ийг жагсаалтын
+   төгсгөлд гаргаж байсан (`/local/food` г.м.). `20261120_100000_mn_collation` migration: `*_locales.title/name`
+   18 баганыг `und-x-icu` (Ө нь О-гийн, Ү нь У-гийн дараа, латин эхэнд — Contentful/snapshot-той ижил).
+5. **Тэнцүү утгын эрэмбэ** — `startDate`-гүй 33 арга хэмжээний дараалал тогтмол бус байв → хоёр адаптерт
+   `sys.id`-аар tiebreak.
+6. Локал тулгалтын хуурамч зөрүү: `next dev`-ийн `.next/dev/cache/fetch-cache` 11/13-ны экспортын өгөгдлийг
+   хадгалсаар байсан (sitemap 2,297 гэж харагдсан) — тулгалтын өмнө кэшийг цэвэрлэх.
+
+**Хүлээгдэж буй ялгаа (алдаа биш):** сайжруулсан зураг 2× том тул 250px-ийн зарим зураг 500px болж аймгийн
+«Зургийн цомог»-т орох босгыг давна (Дорнод, Өмнөговь, Баянхонгор) — шинэ сайт дээр цомог нэмэгдэж харагдана.
+
+**Нэр томъёо (орчуулга):** сум → «sum» (олон тоо «sums», «soum» хэрэглэхгүй); хийморь → эхэндээ «khiimori (a person's
+vital energy and good fortune)», дараа нь «khiimori», «wind horse» хэзээ ч үгүй. Засагдсан газар: `glossary.csv` 327,
+21 багцын prompt 2,557, `pilot-en` 10 орчуулгад **239** («soum's» 8-ыг оруулаад) + README 1, style-guide 8, build-glossary.js / export-batches.js-ийн жишээ 5+.
+`done/` хоосон (0). «wind horse» орчуулгад 0 удаа байсан. `check.js` одоо «soum», «wind horse»-ийг АЛДАА гэж барина;
+pilot-en 10 файл алдаа 0. **Анхаар:** ажлын хуулбарын `glossary.csv` Excel-ээр cp1251 болж бүх кирилл «?» болсон
+байсан — HEAD-ээс сэргээж засав (эвдэрсэн хуулбар `.tools/glossary.corrupted-backup.csv`). Excel-ээр хадгалахгүй.
+
+**Shorts (EN):** кэш биш. `lib/shortsData.ts`-ийн англи playlist-ууд бүгд зөв ID, бүгд байдаг; нийтэд харагдах бичлэг:
+traditions 2, historical-figures 1, buddhism 3, heritage 2, nature 3, **legends 0, monasteries 0** → хоосон тул монгол
+руу fallback. YouTube Studio-д бичлэгийг Public болгож яг тэр playlist-д нэмэх; дараа нь
+`POST /api/revalidate?tag=shorts` (header `x-revalidate-secret`) — зөвхөн shorts-ийн кэш, API алдвал хуучнаа үлдээнэ.
+Main-д код өөрчлөөгүй.
+
+**API орчуулга:** [model-test/README.md](../translation/model-test/README.md) — туршилт $0.195; бүх 983 хуудас
+Sonnet 5.5 ≈ $9.7, Haiku 5.5 ≈ $0.75 (чанар муу), Opus ≈ $19. Зөвлөмж Sonnet. Скрипт
+`scripts/translation/api-translate.mjs` (Batch API + 1 цагийн prompt cache).
+
+**Preview:** Vercel Preview-д `CMS_SOURCE=payload` хэрэгтэй (Git branch: `feat/payload`-д л) — эс бөгөөс preview
+Contentful-ээс уншина. Build нь `DATABASE_URI` байвал migration-ыг өөрөө ажиллуулна (`scripts/vercel-build.sh`).
+
+**12/1-д бэлэн үү:** өгөгдөл, зураг, тулгалт — **бэлэн** (Neon дээр). Үлдсэн нь: preview-г push хийж бодит Vercel
+орчинд шалгах, admin-ий 2FA, `main`-ийн шинэ өөрчлөлтийг `feat/payload` руу merge, эцсийн экспорт/импорт
+(`--enhanced` хамт; шинэ R2 багана, collation migration аль хэдийн Neon-д).

@@ -71,3 +71,13 @@ node scripts/payload/cli.mjs run scripts/payload/import-translations.ts docs/tra
   rewrite-list.csv-ийг экспорт хийсэн мөчийн төлвөөр уншдаг тул экспортоос хойш дахин бичсэн хуудас хуучин
   текстээрээ багцад орохгүй.
 - Хуудсыг Contentful-д дахин засвал орчуулга хуучирна — тэр хуудсыг дараагийн багцад дахин гаргана.
+
+## API-аар автоматаар (2026-11-20-аас)
+
+`scripts/translation/api-translate.mjs` (Message Batches −50%, толь бичиг + style-guide кэштэй, хуудас бүр нэг
+хүсэлт). Түлхүүр: `travel-mongolia/.env.local`-ийн `ANTHROPIC_API_KEY`. Анх нэг удаа:
+`.tools/bin/pnpm install --dir scripts/translation`.
+
+- `node scripts/translation/api-translate.mjs run --file en-008 --model sonnet --max-usd 3` → `done/en-008.md`
+  (илгээхээс өмнө `count_tokens`-оор хамгийн муу тохиолдлын зардлыг тооцож, хязгаараас хэтэрвэл зогсоно).
+- Дараа нь 4-р алхам (шалгагч). Загварын харьцуулалт, зардал: [model-test/README.md](model-test/README.md).

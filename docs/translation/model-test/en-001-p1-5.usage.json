@@ -1,0 +1,34 @@
+{
+ "file": "en-001",
+ "pages": 5,
+ "effort": "medium",
+ "at": "2026-11-20T04:39:47.144Z",
+ "models": {
+  "haiku": {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 26546,
+    "cache_creation_input_tokens": 22003,
+    "cache_read_input_tokens": 88012,
+    "output_tokens": 63914
+   },
+   "usd": 0.0199,
+   "issues": [
+    "tic-c13-110: stop_reason max_tokens",
+    "tic-c13-138: stop_reason max_tokens",
+    "tic-c13-29: stop_reason max_tokens"
+   ]
+  },
+  "sonnet": {
+   "model": "claude-sonnet-5-5",
+   "usage": {
+    "input_tokens": 26546,
+    "cache_creation_input_tokens": 22003,
+    "cache_read_input_tokens": 88012,
+    "output_tokens": 18139
+   },
+   "usd": 0.1656,
+   "issues": []
+  }
+ }
+}

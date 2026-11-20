@@ -62,7 +62,9 @@ function matches(e: any, query: Query): boolean {
 }
 
 function compare(order: any) {
+  // Тэнцүү утгатай (жишээ нь startDate хоосон) entry-ийн дараалал тогтмол байхаар sys.id-аар төгсгөнө (payloadSource-тэй ижил)
   const keys = order ? listOf(order) : [];
+  if (!keys.some((k) => k.replace(/^-/, '') === 'sys.id')) keys.push('sys.id');
   return (a: any, b: any) => {
     for (const k of keys) {
       const desc = k.startsWith('-');
@@ -73,7 +75,8 @@ function compare(order: any) {
       if (va === vb) continue;
       if (va === undefined || va === null) return 1;
       if (vb === undefined || vb === null) return -1;
-      const c = typeof va === 'number' && typeof vb === 'number' ? va - vb : String(va).localeCompare(String(vb));
+      // sys.id: Postgres-ийн C collation-тай ижил (кодын цэгээр)
+      const c = typeof va === 'number' && typeof vb === 'number' ? va - vb : p === 'sys.id' ? (va < vb ? -1 : 1) : String(va).localeCompare(String(vb));
       if (c) return desc ? -c : c;
     }
     return 0;

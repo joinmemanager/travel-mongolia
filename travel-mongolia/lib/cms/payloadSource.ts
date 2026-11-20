@@ -218,7 +218,10 @@ async function buildWhere(payload: any, collection: string, query: Query, draft:
 
 function sortOf(order: any): string[] | undefined {
   if (!order) return undefined;
-  return listOf(order).map((o) => {
+  // Тэнцүү утгатай (жишээ нь startDate хоосон) doc-ийн дараалал тогтмол байхаар sys.id-аар төгсгөнө (snapshotSource-тэй ижил)
+  const keys = listOf(order);
+  if (!keys.some((k) => k.replace(/^-/, '') === 'sys.id')) keys.push('sys.id');
+  return keys.map((o) => {
     const desc = o.startsWith('-');
     const k = o.replace(/^-/, '');
     const field = k === 'sys.createdAt' ? 'cfCreatedAt' : k === 'sys.updatedAt' ? 'updatedAt' : k === 'sys.id' ? 'contentfulId' : k.replace(/^fields\./, '');

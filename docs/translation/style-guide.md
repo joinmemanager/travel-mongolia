@@ -30,7 +30,7 @@ Travel Hub Mongolia-ийн англи хувилбарт (`/en/...`) зориу�
   Khangai Range**. Олон тоо: "the Onon and Balj rivers".
 - Хүний нэр: овог товчлол + нэр: "S. Batmunkh", "D. Zunduidagva". Түүхэн хүн: glossary-ийн хэлбэр
   (Chinggis Khaan — эхний удаа "Chinggis Khaan (Genghis Khan)").
-- Засаг захиргаа: `Khentii Province (aimag)` эхний удаа, дараа нь `province`; `Dadal soum` (soum жижиг үсгээр);
+- Засаг захиргаа: `Khentii Province (aimag)` эхний удаа, дараа нь `province`; `Dadal sum` (sum жижиг үсгээр, олон тоо `sums`; "soum" гэж бичихгүй);
   Улаанбаатарын `Khan-Uul District`; `bag`, `khoroo` эхний удаа тайлбартай.
 
 ## 4. Монгол нэр томъёо
@@ -38,6 +38,8 @@ Travel Hub Mongolia-ийн англи хувилбарт (`/en/...`) зориу�
 - Англи хэлэнд тогтсон монгол үгийг хэвээр, налуугүй: ger, ovoo, deel, airag, Naadam, dzud, khoomei.
 - Эхний удаа богино тайлбар хаалтанд (glossary-ийн «тэмдэглэл» баганад бий): "ovoo (sacred stone cairn)",
   дараа нь зөвхөн "ovoo".
+- **хийморь** → эхний удаа "khiimori (a person's vital energy and good fortune)", дараа нь зөвхөн "khiimori".
+  "wind horse" гэж бүү орчуул (хийморь нь хүний сүр сүнс, аз хийморь; хийморийн туг/лундаа биш).
 - "yurt" гэж бичихгүй (SEO description-д нэг удаа "ger (yurt)" гэж болно).
 
 ## 5. Тоо, нэгж
@@ -57,10 +59,10 @@ Travel Hub Mongolia-ийн англи хувилбарт (`/en/...`) зориу�
 
 | Талбар | Дүрэм |
 |---|---|
-| `title` | Хуудасны нэр: "Dadal soum", "Nalaikh District". Тайлбар нэмэхгүй. |
-| `seoTitle` | **≤ 60 тэмдэгт** (шалгагч алдаа гэж үзнэ). Гол түлхүүр үгээр эхэлнэ: "Dadal soum, Khentii: …". Брэндийн нэр бичихгүй (сайт өөрөө нэмнэ). |
+| `title` | Хуудасны нэр: "Dadal sum", "Nalaikh District". Тайлбар нэмэхгүй. |
+| `seoTitle` | **≤ 60 тэмдэгт** (шалгагч алдаа гэж үзнэ). Гол түлхүүр үгээр эхэлнэ: "Dadal sum, Khentii: …". Брэндийн нэр бичихгүй (сайт өөрөө нэмнэ). |
 | `seoDescription` | **≤ 155 тэмдэгт** (алдаа), 110-аас урт байвал сайн (анхааруулга). 1–2 бүтэн өгүүлбэр, гол түлхүүр үг эхний өгүүлбэрт, зай/юу үзэх гэх мэт тодорхой мэдээлэл. |
-| `##` (H2) | **Асуултын хэлбэрээр**, аялагчийн хайдаг асуултаар: "Where is Dadal soum?", "What is there to see in Dadal soum?", "How do I get to Tseel soum?". Эхийн гарчгийн утга, дарааллыг хадгална. Ганц үл хамаарах нь "Frequently asked questions". |
+| `##` (H2) | **Асуултын хэлбэрээр**, аялагчийн хайдаг асуултаар: "Where is Dadal sum?", "What is there to see in Dadal sum?", "How do I get to Tseel sum?". Эхийн гарчгийн утга, дарааллыг хадгална. Ганц үл хамаарах нь "Frequently asked questions". |
 | `###` (H3) | Тайлбар хэлбэр болно ("Places linked to Chinggis Khaan"). FAQ-ийн доорх H3 нь асуулт. |
 | Түлхүүр үг | Хуудасны нэрийг эхний догол мөр, нэг H2-т байлгана. Хэт давтахгүй. |
 
@@ -72,7 +74,7 @@ Hreflang, canonical, хэлний sitemap-ийг сайт өөрөө үүсгэ�
 
 | Монгол | Муу | Сайн |
 |---|---|---|
-| Дадал сум хаана байдаг вэ? | Where is located Dadal sum? | Where is Dadal soum? |
+| Дадал сум хаана байдаг вэ? | Where is located Dadal sum? | Where is Dadal sum? |
 | Хүн ам ба багууд | Population and bags | How many people live in Dadal and what are its bags? |
 | Өвөлдөө 35–42 хэм хүйтэн | 35–42 degrees cold in winter | Winters drop to −35 to −42 °C. |
 | Хөвсгөл нуур | Lake Hovsgol | Khuvsgul Lake |

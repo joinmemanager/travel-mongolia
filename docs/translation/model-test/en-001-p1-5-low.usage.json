@@ -1,0 +1,19 @@
+{
+ "file": "en-001",
+ "pages": 5,
+ "effort": "low",
+ "at": "2026-11-20T04:46:15.919Z",
+ "models": {
+  "haiku": {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 26546,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 110015,
+    "output_tokens": 30742
+   },
+   "usd": 0.0096,
+   "issues": []
+  }
+ }
+}

@@ -52,3 +52,6 @@ yarn.lock
 /travel-mongolia/.payload-db/
 /travel-mongolia/.payload-media/
 /.tools/
+
+# Орчуулгын скриптийн хамаарал
+/scripts/translation/node_modules
