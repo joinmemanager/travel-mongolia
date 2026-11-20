@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
-import { client, rethrowOutage } from '@/lib/contentful';
+// Хуудаслан татах туслах нь lib/contentfulAll.ts-д (lib/siteStats.ts-тэй ижил query, ижил кэш)
+import { contentfulEntries } from '@/lib/contentfulAll';
 import { ACCOMMODATION_BASE, isDirectoryAccommodation } from '@/lib/accommodation';
 import { CULTURE_SECTIONS, type CultureSection } from '@/lib/cultureArticles';
 import { entryKey } from '@/lib/entries';
@@ -24,23 +25,6 @@ const placeBase = (c: PlaceCategory) => CATEGORY_INFO[c]?.base || '/destination/
 // Contentful-ын Data Cache-ийг (lib/contentful.ts) хүчингүй болгодог тул шинэ хуудас даруй орно.
 // force-dynamic үед bot бүрийн дуудлага ~20 CDA хүсэлт зарцуулж байв (2026-10-21, API хязгаар хэтэрсэн).
 export const revalidate = 86400;
-
-// Хуудаслан татна: TIC-ийн мэдээ (body-тэй 600+) нэг хариунд багтахгүй (Contentful-ийн хариуны хэмжээний хязгаар)
-async function contentfulEntries(contentType: string, query: Record<string, unknown> = {}) {
-  try {
-    const items: any[] = [];
-    for (let skip = 0; ; skip += 250) {
-      const res = await client.getEntries({ content_type: contentType, limit: 250, skip, ...query } as any);
-      items.push(...res.items);
-      if (skip + 250 >= res.total) break;
-    }
-    return items;
-  } catch (err) {
-    rethrowOutage(err);
-    console.error(`Sitemap: ${contentType} татахад алдаа гарлаа`, err);
-    return [];
-  }
-}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [shortsTopics, videos] = await Promise.all([getShortsTopics(), getVideos()]);

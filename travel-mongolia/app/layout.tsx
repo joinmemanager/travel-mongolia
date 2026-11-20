@@ -10,6 +10,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 
 import Footer from '@/components/Footer';
+import SiteStatsSection from '@/components/SiteStatsSection';
 import { siteFont } from '@/lib/fonts';
 import {
   FOOTER_LEGAL,
@@ -115,6 +116,8 @@ export default function RootLayout({
           {/* Дээд талын үндсэн цэс */}
           <Navbar sections={visibleSections(MAIN_NAVIGATION, preview)} />
           {children}
+          {/* Footer-ийн дээрх статистик: зочид (GA4) ба агуулгын тоо (components/SiteStats.tsx) */}
+          <SiteStatsSection />
           <Footer
             groups={visibleSections(
               // Footer цэс v2-оос өмнөхтэй ижил: «Төлөвлөх & захиалах» багана FOOTER_NAVIGATION-д шилжсэн
