@@ -90,16 +90,25 @@ export default async function Home() {
       {/* 4б. ХЭВТЭЭ БИЧЛЭГ «Монголын үзэсгэлэн»: playlist-ийн эхний 3 (lib/videosData.ts, components/videos/) */}
       {videos && videos.length > 0 && (
         <section aria-labelledby="videos-heading" className="py-10 px-6 mx-auto max-w-7xl sm:px-10">
-          <div className="flex gap-4 justify-between items-end mb-4">
+          {/* Гар утсанд (<640px) товч гарчгийн доор бүтэн өргөнөөр, түүнээс өргөнд нэг мөрөнд босоо голлосон.
+              Ногоон нь Shorts-ийн идэвхтэй ангиллын товчтой ижил (#15803d). Серверт нэг удаа render хийгдэх
+              статик бичвэр тул Google Translate орчуулсан ч React дахин хөндөхгүй; тоо, сум notranslate. */}
+          <div className="flex flex-col gap-3 mb-5 sm:flex-row sm:gap-4 sm:justify-between sm:items-center">
             <h2 id="videos-heading" className="text-xl font-black tracking-tight text-neutral-900 sm:text-3xl">
               {VIDEOS_TITLE}
             </h2>
             <Link
               href={VIDEOS_BASE}
               data-ga-event="videos_view_all"
-              className="flex shrink-0 gap-1 items-center text-xs font-bold text-neutral-900 hover:text-[#15803d]"
+              className="inline-flex shrink-0 gap-2 justify-center items-center py-2.5 px-5 w-full text-[15px] font-medium text-white rounded-full shadow-sm transition-colors sm:w-auto sm:text-base bg-[#15803d] hover:bg-[#166534] focus-visible:bg-[#166534] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2"
             >
-              Бүгдийг үзэх →
+              <span>Бүх бичлэгийг үзэх</span>
+              <span translate="no" className="notranslate">
+                ({videos.length})
+              </span>
+              <span aria-hidden="true" translate="no" className="notranslate">
+                →
+              </span>
             </Link>
           </div>
           <VideoGrid videos={videos.slice(0, VIDEOS_HOME_COUNT)} source="home" />
