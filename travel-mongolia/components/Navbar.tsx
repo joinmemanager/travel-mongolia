@@ -13,20 +13,14 @@ import {
   type NavItem,
   type NavSection,
 } from '@/lib/navigation';
+import { SITE_LANGUAGES } from '@/lib/languages';
 import { navText, type NavStringKey } from '@/lib/navStrings';
 
 import NavItemLink from './NavItemLink';
 import { readSiteLang } from './useSiteLang';
 
-// 6 хэлний тохиргоо (Google Translate кодуудтай таарсан)
-const LANGUAGES = [
-  { code: 'mn', label: 'MN', name: 'Монгол' },
-  { code: 'en', label: 'EN', name: 'English' },
-  { code: 'zh-CN', label: 'ZH', name: '中文' },
-  { code: 'ru', label: 'RU', name: 'Русский' },
-  { code: 'ko', label: 'KO', name: '한국어' },
-  { code: 'ja', label: 'JA', name: '日本語' },
-];
+// 6 хэлний тохиргоо: lib/languages.ts
+const LANGUAGES = SITE_LANGUAGES;
 
 // Цэс hero бичлэг дээр тунгалаг давхарлагддаг хуудсууд. Hero элемент нь data-nav-overlay
 // атрибуттай; түүнийг өнгөрөх хүртэл цэс тунгалаг, дараа нь цагаан болно.
