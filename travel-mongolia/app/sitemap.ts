@@ -13,6 +13,8 @@ import { isThinContent, SITE_URL } from '@/lib/seo';
 import { allShorts, isAllIndexable, isTopicIndexable, lastAdded, SHORTS_BASE, shortsHref } from '@/lib/shorts';
 import { getShortsTopics } from '@/lib/shortsData';
 import { SPECIES_SECTION } from '@/lib/species';
+import { lastAddedVideo, VIDEOS_BASE } from '@/lib/videos';
+import { getVideos } from '@/lib/videosData';
 import { CATEGORY_INFO, type PlaceCategory } from '@/lib/tourismPlaces';
 
 const placeBase = (c: PlaceCategory) => CATEGORY_INFO[c]?.base || '/destination/protected';
@@ -41,7 +43,7 @@ async function contentfulEntries(contentType: string, query: Record<string, unkn
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const shortsTopics = await getShortsTopics();
+  const [shortsTopics, videos] = await Promise.all([getShortsTopics(), getVideos()]);
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: 'weekly', priority: 1 },
     // Production дээр live биш (draft/planned) хуудсыг sitemap-д оруулахгүй. Богино бичлэгийн хэсгийг доор.
@@ -61,6 +63,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...shortsTopics
         .filter((t) => isTopicIndexable(t))
         .map((t) => ({ path: shortsHref(t.slug), lastModified: lastAdded(t.videos), priority: 0.5 })),
+      // «Монголын үзэсгэлэн» (lib/videos.ts): бичлэгтэй (API алдаагүй) үед л
+      ...(videos?.length ? [{ path: VIDEOS_BASE, lastModified: lastAddedVideo(videos), priority: 0.6 }] : []),
     ].map(({ path, lastModified, priority }) => ({
       url: `${SITE_URL}${path}`,
       ...(lastModified && { lastModified }),

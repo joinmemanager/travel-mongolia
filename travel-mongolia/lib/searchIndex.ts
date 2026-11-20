@@ -9,6 +9,14 @@ export interface SearchItem {
 }
 
 export const SITE_SEARCH_INDEX: SearchItem[] = [
+  {
+    id: 'videos',
+    title: 'Монголын үзэсгэлэн (бичлэгүүд)',
+    category: 'Бичлэг',
+    description: 'Монголын байгаль, нүүдлийн ахуй, соёлын үзэсгэлэнт газруудын бичлэгүүд.',
+    href: '/videos',
+    keywords: ['бичлэг', 'видео', 'video', 'youtube', 'үзэсгэлэн', 'кино'],
+  },
   // 01. МОНГОЛЫН ТУХАЙ
   {
     id: 'at-a-glance',

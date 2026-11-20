@@ -16,6 +16,8 @@
 
 import type { ImageKey } from '@/lib/images';
 
+import aliasList from './provinceAliases.json';
+
 export interface ProvinceFacts {
   name: string;
   // Түр hero зураг (lib/images.ts-ийн шалгагдсан зураг, бүс нутагт нь тохируулсан). Аймгийн өөрийн
@@ -59,27 +61,12 @@ export const PROVINCE_FACTS: Record<string, ProvinceFacts> = {
 };
 
 // Аймгийн нэрийн өөр латин бичлэгүүд → сайтын slug. /province/<өөр бичлэг> хаягаар (жишээ нь Google,
-// гадаад сайтын холбоос) орж ирвэл 308-аар зөв хаяг руу шилжүүлнэ (app/province/[id]/page.tsx).
-const ALIASES: Record<string, string[]> = {
-  arkhangai: ['arkhangay', 'arhangai', 'arkhangai-aimag'],
-  'bayan-ulgii': ['bayan-olgii', 'bayan-ulgiy', 'bayanulgii', 'bayan-olgiy', 'bayan-ölgii'],
-  bayankhongor: ['bayanhongor', 'bayan-khongor'],
-  'darkhan-uul': ['darkhan', 'darkhanuul', 'darhan-uul'],
-  dornogov: ['dornogovi', 'dornogobi', 'dornogovi-aimag', 'east-gobi'],
-  dundgov: ['dundgovi', 'dundgobi', 'middle-gobi'],
-  'gov-altai': ['govi-altai', 'gobi-altai', 'govialtai', 'gov-altay', 'govi-altay'],
-  govsumber: ['govisumber', 'gobisumber', 'govi-sumber', 'gov-sumber'],
-  khentii: ['hentii', 'khentiy', 'khentei'],
-  khovd: ['hovd', 'khovd-aimag'],
-  khuvsgul: ['khovsgol', 'hovsgol', 'huvsgul', 'khuvsgul-aimag'],
-  orkhon: ['erdenet', 'orhon'],
-  umnugov: ['umnugovi', 'omnogovi', 'umnugobi', 'omnogobi', 'south-gobi'],
-  uvurkhangai: ['ovorkhangai', 'uvurhangai', 'ovorhangai'],
-  sukhbaatar: ['suhbaatar', 'sükhbaatar'],
-  tuv: ['tov', 'töv', 'tuv-aimag'],
-  zavkhan: ['zavhan', 'dzavkhan'],
-  ulaanbaatar: ['ub', 'ulan-bator', 'ulaan-baatar'],
-};
+// гадаад сайтын холбоос) орж ирвэл 308-аар зөв хаяг руу шилжүүлнэ.
+// Жагсаалт lib/provinceAliases.json-д: next.config.js-ийн redirects үүнээс 308-ыг routing түвшинд
+// (хуудас render хийлгүй, Contentful-аас хамааралгүй) өгнө. Өмнө нь зөвхөн хуудас дотор
+// permanentRedirect байсан тул ISR дахин үүсэх үед Googlebot «Redirect error» авч байсан
+// (/province/umnugovi, 2026-11-19). Хуудсан дахь redirect (app/province/[id]/page.tsx) нөөц болж үлдэнэ.
+const ALIASES: Record<string, string[]> = aliasList;
 
 export const PROVINCE_ALIASES: Record<string, string> = Object.fromEntries(
   Object.entries(ALIASES).flatMap(([slug, names]) => names.map((n) => [n, slug]))
