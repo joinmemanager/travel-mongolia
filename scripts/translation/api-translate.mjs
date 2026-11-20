@@ -253,8 +253,294 @@ async function cmdRun() {
   console.log({ usage: tot, usd: usd(m, tot).toFixed(3) });
 }
 
+// ------------------------------------------------------------------ all (бүх багц, дарааллаар, төсөвтэй)
+// node scripts/translation/api-translate.mjs all --model sonnet --budget 4.5 [--hard 4.9] [--files en-001,en-002]
+// - en-review-*-ийг алгасна; done/-д байгаа хуудсыг (болон эх нь өөрчлөгдөөгүй pilot-en орчуулгыг) дахин орчуулахгүй.
+// - Хариу бүр .tools/translation-raw/<file>.jsonl-д шууд бичигдэнэ; илгээсэн batch-ийн id state-д → тасарвал дахин
+//   ажиллуулахад төлбөр давхардахгүй (collect хийнэ).
+// - Шалгагч: seoTitle/seoDescription урт → богиносгох хүсэлт; бусад алдаа → алдааг нь хэлж дахин орчуулах (2 удаа).
+// - Зарцуулалт (энэ ажлын нийт) ≥ budget бол шинэ batch илгээхгүй; эхэлснийг дуусгана. budget-ээс доош байсан ч
+//   дараагийн batch-ийн тооцоолсон зардал hard-аас (урьдчилсан цэнэг) давахаар бол илгээхгүй.
+const RUN = path.join(T, 'api-run');
+const RAW = path.join(ROOT, '.tools', 'translation-raw');
+const LEDGER = path.join(RUN, 'ledger.json');
+
+function loadLedger() {
+  return fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : { model: null, spent: 0, batches: [], pending: null, files: {} };
+}
+function saveLedger(l) {
+  fs.mkdirSync(RUN, { recursive: true });
+  fs.writeFileSync(LEDGER, JSON.stringify(l, null, 1));
+}
+function runLog(s) {
+  const line = `${new Date().toISOString().slice(0, 19).replace('T', ' ')} ${s}`;
+  console.log(line);
+  fs.mkdirSync(RUN, { recursive: true });
+  fs.appendFileSync(path.join(RUN, 'run.log'), line + '\n');
+}
+
+// raw: id → { text, stop, usage, kind } (сүүлийнх нь хүчинтэй)
+function loadRaw(file) {
+  const p = path.join(RAW, `${file}.jsonl`);
+  const m = new Map();
+  if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n').filter(Boolean)) {
+    const r = JSON.parse(l);
+    if (r.kind === 'translate') m.set(r.id, r); // зөвхөн орчуулга (богиносгох хариу тусдаа)
+  }
+  return m;
+}
+// Хариунаас зөвхөн «@@@ ENTRY» … «@@@ END» хэсэг (өмнө/хойно илүү текст, code fence байвал хасна)
+function pageOnly(text) {
+  const s = text.indexOf('@@@ ENTRY');
+  const ends = [...text.matchAll(/^@@@ END \S+\s*$/gm)];
+  if (s < 0 || !ends.length) return text.trim();
+  const last = ends[ends.length - 1];
+  return text.slice(s, last.index + last[0].length).trim();
+}
+// Загвар заримдаа сүүлийн «@@@ END <id>»-г id-гүй бичих эсвэл орхидог (stop = end_turn — текст бүтэн) → нөхнө
+function ensureEnd(text, id) {
+  let t = text.trim().replace(/```\s*$/, '').trim();
+  if (t.split('\n').some((l) => l.trim() === `@@@ END ${id}`)) return t;
+  t = t.replace(/\n@@@ END\s*$/, '').trim();
+  return `${t}\n@@@ END ${id}`;
+}
+function appendRaw(file, rec) {
+  fs.mkdirSync(RAW, { recursive: true });
+  fs.appendFileSync(path.join(RAW, `${file}.jsonl`), JSON.stringify(rec) + '\n');
+}
+
+// Аль хэдийн орчуулсан хуудас: done/*.md (өөр файлд ч) + pilot-en (эх нь одоогийн багцтай ижил бол)
+function existingTranslations() {
+  const m = new Map();
+  const doneDir = path.join(T, 'done');
+  if (fs.existsSync(doneDir)) for (const f of fs.readdirSync(doneDir).filter((f) => /^en-\d+\.md$/.test(f))) {
+    for (const e of parseBatch(fs.readFileSync(path.join(doneDir, f), 'utf8')).entries) m.set(e.id, { entry: e, from: `done/${f}` });
+  }
+  return m;
+}
+function pilotTranslations() {
+  const dir = path.join(T, 'pilot-en');
+  const src = new Map();
+  const sdir = path.join(dir, 'source');
+  if (fs.existsSync(sdir)) for (const f of fs.readdirSync(sdir).filter((f) => f.endsWith('.md'))) {
+    for (const e of parseBatch(fs.readFileSync(path.join(sdir, f), 'utf8')).entries) src.set(e.id, e);
+  }
+  const m = new Map();
+  for (const f of fs.readdirSync(dir).filter((f) => /^\d+-.+\.md$/.test(f) && !f.endsWith('.report.md'))) {
+    for (const e of parseBatch(fs.readFileSync(path.join(dir, f), 'utf8')).entries) m.set(e.id, { entry: e, source: src.get(e.id), from: `pilot-en/${f}` });
+  }
+  return m;
+}
+
+// check.js-ийг ажиллуулж тайлангаас хуудас бүрийн алдааг уншина
+async function checkDone(file) {
+  const { spawnSync } = await import('node:child_process');
+  const donePath = path.join(T, 'done', `${file}.md`);
+  spawnSync(process.execPath, [path.join(HERE, 'check.js'), donePath], { encoding: 'utf8' });
+  const rep = fs.readFileSync(donePath.replace(/\.md$/, '.report.md'), 'utf8');
+  const errSec = rep.split(/^## Алдаа/m)[1]?.split(/^## Анхааруулга/m)[0] || '';
+  const byId = new Map();
+  const general = [];
+  for (const l of errSec.split('\n')) {
+    const m = l.match(/^- `([^`]+)` (.*)$/);
+    // «Формат: 62-р мөр: tic-c13-93-ийн «@@@ END» мөр алга» → тухайн хуудасных
+    const fm = l.match(/^- Формат: .*?(\S+)-ийн «@@@ END»/) || l.match(/^- Формат: .*?END (\S+) ≠ ENTRY/) || l.match(/^- Формат: (\S+): файлын төгсгөлд/);
+    if (m) byId.set(m[1], [...(byId.get(m[1]) || []), m[2]]);
+    else if (fm) byId.set(fm[1], [...(byId.get(fm[1]) || []), l.slice(2)]);
+    else if (/^- /.test(l)) general.push(l.slice(2));
+  }
+  const warnings = (rep.split(/^## Анхааруулга/m)[1] || '').split('\n').filter((l) => /^- `/.test(l)).length;
+  return { byId, general, warnings };
+}
+
+const SEO_ONLY = /^(seoDescription \d+ тэмдэгт|seoTitle \d+ тэмдэгт)/;
+
+const shortenParams = (m, field, text, max) => ({
+  model: MODELS[m].id,
+  max_tokens: 1500,
+  // Sonnet 5.5-д thinking-ийг унтраах арга нь between_tools (effort ≤ high); өмнө нь thinking 400 token-ийг бүгдийг идэж хоосон хариу өгч байв
+  ...(m === 'sonnet' && { thinking: { type: 'between_tools' } }),
+  output_config: { effort: 'low' },
+  messages: [{
+    role: 'user',
+    content: `Shorten this ${field === 'seoTitle' ? 'SEO page title' : 'SEO meta description'} for a Mongolia travel guide to at most ${max} characters${field === 'seoDescription' ? ' (aim for 130–150)' : ''}. Keep the main keyword at the start, keep the meaning and every name as written, American English, no Cyrillic. Return only the new text, nothing else.\n\n${text}`,
+  }],
+});
+
+async function cmdAll() {
+  const m = modelKeys[0];
+  const budget = Number(arg('--budget', 4.5));
+  const hard = Number(arg('--hard', 4.9));
+  const only = arg('--files')?.split(',');
+  const files = fs.readdirSync(path.join(T, 'batches')).filter((f) => /^en-\d+\.md$/.test(f)).map((f) => f.replace(/\.md$/, '')).sort().filter((f) => !only || only.includes(f));
+  const L = loadLedger();
+  L.model = MODELS[m].id;
+  const pilots = pilotTranslations();
+  let stopped = null;
+
+  const record = (file, kind, id, r) => {
+    if (r.usage) L.spent += usd(m, r.usage);
+    appendRaw(file, { id, kind, at: new Date().toISOString(), ...r });
+  };
+  const canSend = (estimate) => {
+    if (L.spent >= budget) return `зарцуулалт $${L.spent.toFixed(3)} ≥ $${budget}`;
+    if (L.spent + estimate > hard) return `дараагийн batch-ийн тооцоо ($${L.spent.toFixed(2)} + ≈$${estimate.toFixed(2)}) > $${hard}`;
+    return null;
+  };
+  // Хуудасны дундаж зардал (одоогийн ажлаас; эхэндээ туршилтын $0.033)
+  const perPage = () => {
+    const n = Object.values(L.files).reduce((s, f) => s + (f.translated || 0), 0);
+    return n > 10 ? L.spent / n : 0.04;
+  };
+
+  // Batch илгээх/үргэлжлүүлэх. reqs: [{ custom_id, params, meta }]
+  async function runBatch(file, label, reqs) {
+    let id = L.pending?.file === file && L.pending?.label === label ? L.pending.id : null;
+    if (!id) {
+      const b = await client.messages.batches.create({ requests: reqs.map(({ custom_id, params }) => ({ custom_id, params })) });
+      id = b.id;
+      L.pending = { file, label, id, meta: Object.fromEntries(reqs.map((r) => [r.custom_id, r.meta])) };
+      L.batches.push({ at: new Date().toISOString(), file, label, id, requests: reqs.length });
+      saveLedger(L);
+      runLog(`${file} ${label}: batch ${id} (${reqs.length} хүсэлт) илгээв`);
+    } else runLog(`${file} ${label}: өмнө илгээсэн batch ${id}-г үргэлжлүүлэв`);
+    let b = await client.messages.batches.retrieve(id);
+    let tick = 0;
+    while (b.processing_status !== 'ended') {
+      await new Promise((r) => setTimeout(r, 30_000));
+      b = await client.messages.batches.retrieve(id);
+      if (++tick % 10 === 0) runLog(`  ${id}: ok=${b.request_counts.succeeded} err=${b.request_counts.errored} үлдсэн ${b.request_counts.processing}`);
+    }
+    const res = await collect(id);
+    const meta = L.pending.meta;
+    for (const [cid, r] of res) {
+      const k = meta[cid].kind;
+      record(file, k, meta[cid].id, r.error ? { error: r.error } : { text: k === 'translate' ? pageOnly(r.text) : r.text, stop: r.stop, usage: r.usage, field: meta[cid].field });
+    }
+    L.pending = null;
+    saveLedger(L);
+    runLog(`  ${id} дууссан; нийт зарцуулалт $${L.spent.toFixed(3)}`);
+    return res;
+  }
+
+  for (const file of files) {
+    const pages = loadPages(file);
+    const st = (L.files[file] ||= { pages: pages.length, translated: 0, reused: 0, status: 'эхлээгүй' });
+    if (st.status === 'дууссан' && !(args.includes('--recheck') && st.errors)) continue;
+    const done = existingTranslations();
+    const raw = loadRaw(file);
+    const good = (id) => raw.get(id)?.kind === 'translate' && raw.get(id).text && raw.get(id).stop === 'end_turn';
+
+    // Ашиглах бэлэн орчуулга
+    const reuse = new Map();
+    for (const p of pages) {
+      const d = done.get(p.id);
+      if (d && d.from !== `done/${file}.md`) reuse.set(p.id, d.entry);
+      const pl = pilots.get(p.id);
+      if (!reuse.has(p.id) && pl?.source && serializeEntry(pl.source) === serializeEntry(p)) reuse.set(p.id, pl.entry);
+    }
+    // Энэ файлын done/-д аль хэдийн байгаа (өмнөх ажиллуулалтаас) хуудсыг raw-аас сэргээнэ — raw байхгүй бол done-оос
+    const ownDone = new Map((done.size ? [...done].filter(([, v]) => v.from === `done/${file}.md`) : []).map(([k, v]) => [k, v.entry]));
+    const todo = pages.filter((p) => !reuse.has(p.id) && !good(p.id) && !(ownDone.has(p.id) && !raw.has(p.id)));
+
+    if (args.includes('--dry')) {
+      console.log(`${file}: ${pages.length} хуудас, бэлэн ${reuse.size} (${[...reuse.keys()].join(',')}), орчуулах ${todo.length}`);
+      continue;
+    }
+    if (todo.length) {
+      const why = canSend(todo.length * perPage() * 1.3);
+      if (why && !(L.pending?.file === file)) { stopped = `${file}: ${why}`; break; }
+      await runBatch(file, 'translate', todo.map((p, i) => ({ custom_id: `t${i}`, params: params(m, p), meta: { kind: 'translate', id: p.id } })));
+    }
+
+    // Угсрах → шалгах → засах (2 давталт)
+    const assemble = () => {
+      const r = loadRaw(file);
+      const parts = [];
+      const missing = [];
+      for (const p of pages) {
+        if (reuse.has(p.id)) parts.push(serializeEntry(reuse.get(p.id)));
+        else if (r.get(p.id)?.text && r.get(p.id).stop === 'end_turn') parts.push(ensureEnd(r.get(p.id).text, p.id));
+        else if (ownDone.has(p.id)) parts.push(serializeEntry(ownDone.get(p.id)));
+        else missing.push(p.id);
+      }
+      fs.mkdirSync(path.join(T, 'done'), { recursive: true });
+      fs.writeFileSync(path.join(T, 'done', `${file}.md`), parts.join('\n\n') + '\n');
+      return missing;
+    };
+    let missing = assemble();
+    let chk = await checkDone(file);
+    for (let round = 1; round <= 2; round++) {
+      const shorten = [];
+      const retrans = [];
+      const r = loadRaw(file);
+      for (const p of pages) {
+        if (reuse.has(p.id)) continue;
+        const errs = chk.byId.get(p.id) || [];
+        if (missing.includes(p.id)) retrans.push({ p, errs: [`previous attempt failed: ${r.get(p.id)?.error || r.get(p.id)?.stop || 'no output'}`] });
+        else if (errs.length && errs.every((e) => SEO_ONLY.test(e))) {
+          const entry = parseBatch(r.get(p.id)?.text || '').entries[0];
+          for (const e of errs) {
+            const field = e.startsWith('seoTitle') ? 'seoTitle' : 'seoDescription';
+            const f = entry?.fields.find((x) => x.id === field);
+            if (f) shorten.push({ p, field, text: f.value, max: field === 'seoTitle' ? 60 : 155 });
+          }
+        } else if (errs.length) retrans.push({ p, errs });
+      }
+      if (!shorten.length && !retrans.length) break;
+      const why = L.pending?.file === file ? null : canSend((retrans.length * perPage() + shorten.length * 0.001) * 1.3);
+      if (why) { stopped = `${file} засвар: ${why}`; break; }
+      const reqs = [
+        ...shorten.map((s, i) => ({ custom_id: `s${i}`, params: shortenParams(m, s.field, s.text, s.max), meta: { kind: 'shorten', id: s.p.id, field: s.field } })),
+        ...retrans.map((x, i) => {
+          const pr = params(m, x.p);
+          pr.max_tokens = 32000;
+          pr.messages = [{ role: 'user', content: [
+            { type: 'text', text: serializeEntry(x.p) },
+            { type: 'text', text: `A previous translation of this page failed the automatic check:\n${x.errs.map((e) => `- ${e}`).join('\n')}\nTranslate the page again following all rules; output only the page.` },
+          ] }];
+          return { custom_id: `r${i}`, params: pr, meta: { kind: 'translate', id: x.p.id } };
+        }),
+      ];
+      runLog(`${file} засвар ${round}: богиносгох ${shorten.length}, дахин орчуулах ${retrans.length}`);
+      await runBatch(file, `fix${round}`, reqs);
+      // Богиносгосон утгыг хуудсанд суулгана
+      const r2 = loadRaw(file);
+      const lines = fs.readFileSync(path.join(RAW, `${file}.jsonl`), 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
+      const lastShort = new Map();
+      for (const x of lines) if (x.kind === 'shorten' && x.text) lastShort.set(`${x.id}|${x.field}`, x.text.trim().replace(/^"|"$/g, ''));
+      for (const s of shorten) {
+        const t = lastShort.get(`${s.p.id}|${s.field}`);
+        const base = r2.get(s.p.id);
+        if (!t || !base?.text) continue;
+        const entry = parseBatch(base.text).entries[0];
+        const f = entry.fields.find((x) => x.id === s.field);
+        if (f && [...t].length <= s.max) f.value = t;
+        appendRaw(file, { id: s.p.id, kind: 'translate', at: new Date().toISOString(), text: serializeEntry(entry), stop: 'end_turn', note: `${s.field} богиносгосон` });
+      }
+      missing = assemble();
+      chk = await checkDone(file);
+    }
+    const rr = loadRaw(file);
+    st.translated = pages.filter((p) => !reuse.has(p.id) && rr.has(p.id)).length;
+    st.reused = reuse.size;
+    st.missing = missing.length;
+    st.errors = [...chk.byId.values()].reduce((s, e) => s + e.length, 0) + chk.general.length;
+    st.errorPages = [...chk.byId.keys()];
+    st.warnings = chk.warnings;
+    st.status = stopped ? 'засвар дутуу' : 'дууссан';
+    saveLedger(L);
+    runLog(`${file}: ${pages.length} хуудас (шинэ ${st.translated}, бэлэн ${st.reused}), алдаа ${st.errors}, анхааруулга ${st.warnings}; нийт $${L.spent.toFixed(3)}`);
+    if (stopped) break;
+  }
+  L.stoppedAt = stopped;
+  saveLedger(L);
+  runLog(stopped ? `ЗОГСОВ: ${stopped}` : 'Бүх багц дууссан');
+}
+
 if (cmd === 'count') await cmdCount();
 else if (cmd === 'test') await cmdTest();
 else if (cmd === 'run') await cmdRun();
+else if (cmd === 'all') await cmdAll();
 else if (cmd === 'collect') console.log([...(await collect(args[1])).entries()].map(([k, v]) => `${k}: ${v.error || v.stop}`).join('\n'));
 else console.log('count | test | run | collect — файлын эхний тайлбарыг үз');

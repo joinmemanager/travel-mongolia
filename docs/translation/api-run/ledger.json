@@ -1,0 +1,334 @@
+{
+ "model": "claude-sonnet-5-5",
+ "spent": 4.462430149999999,
+ "batches": [
+  {
+   "at": "2026-11-20T12:54:04.003Z",
+   "file": "en-001",
+   "label": "translate",
+   "id": "msgbatch_01UamkcjqkbJgyPbAieM1qWd",
+   "requests": 40
+  },
+  {
+   "at": "2026-11-20T12:59:46.515Z",
+   "file": "en-001",
+   "label": "fix1",
+   "id": "msgbatch_01QYtXTC9pmMUTnGFNNe9TCk",
+   "requests": 18
+  },
+  {
+   "at": "2026-11-20T13:01:50.636Z",
+   "file": "en-001",
+   "label": "fix2",
+   "id": "msgbatch_01JgbUVitPwgLp6QVQNUEqzf",
+   "requests": 17
+  },
+  {
+   "at": "2026-11-20T13:03:57.600Z",
+   "file": "en-002",
+   "label": "translate",
+   "id": "msgbatch_01925ify4z5EBACQnMFrbJPL",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-20T13:10:38.709Z",
+   "file": "en-002",
+   "label": "fix1",
+   "id": "msgbatch_011wzkVEFncHB3BqMu3vZEcM",
+   "requests": 21
+  },
+  {
+   "at": "2026-11-20T13:16:17.760Z",
+   "file": "en-002",
+   "label": "fix2",
+   "id": "msgbatch_013ZUQR74gkkX1jzrVymyxHw",
+   "requests": 18
+  },
+  {
+   "at": "2026-11-20T13:22:00.317Z",
+   "file": "en-003",
+   "label": "translate",
+   "id": "msgbatch_01MWJvdyKEmdv4ob4hcPqLr4",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-20T13:28:10.374Z",
+   "file": "en-003",
+   "label": "fix1",
+   "id": "msgbatch_014CBoiEkc7a24Vc8KF12H9p",
+   "requests": 23
+  },
+  {
+   "at": "2026-11-20T13:34:24.236Z",
+   "file": "en-003",
+   "label": "fix2",
+   "id": "msgbatch_01XnaHHUDzprizJQLpUJsCEZ",
+   "requests": 22
+  },
+  {
+   "at": "2026-11-20T13:40:03.359Z",
+   "file": "en-004",
+   "label": "translate",
+   "id": "msgbatch_01SEumpMsehodwwHzVV7Lt1Y",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-20T13:46:42.192Z",
+   "file": "en-004",
+   "label": "fix1",
+   "id": "msgbatch_01LH1DMKAyRZCZYvVq4sRE2b",
+   "requests": 22
+  },
+  {
+   "at": "2026-11-20T13:49:47.515Z",
+   "file": "en-004",
+   "label": "fix2",
+   "id": "msgbatch_01WVjoJGV4LAiE7WBDYbLSME",
+   "requests": 22
+  },
+  {
+   "at": "2026-11-20T13:51:52.904Z",
+   "file": "en-005",
+   "label": "translate",
+   "id": "msgbatch_01CkuDjXX3GXszN57iuyfzFa",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-20T13:58:05.727Z",
+   "file": "en-005",
+   "label": "fix1",
+   "id": "msgbatch_0185uvrPoKVMdH9q5487kd6n",
+   "requests": 20
+  },
+  {
+   "at": "2026-11-20T14:04:46.323Z",
+   "file": "en-005",
+   "label": "fix2",
+   "id": "msgbatch_01BrNFE1ewZ6gjCSg86QvsKq",
+   "requests": 19
+  },
+  {
+   "at": "2026-11-20T14:10:35.419Z",
+   "file": "en-005",
+   "label": "fix1",
+   "id": "msgbatch_018x8THriFTtx7a1xmAFpEsh",
+   "requests": 19
+  },
+  {
+   "at": "2026-11-20T14:16:17.166Z",
+   "file": "en-005",
+   "label": "fix2",
+   "id": "msgbatch_01DYRyq3aYdCF4Tv7WtYzoDX",
+   "requests": 18
+  },
+  {
+   "at": "2026-11-20T14:18:27.559Z",
+   "file": "en-006",
+   "label": "translate",
+   "id": "msgbatch_016m7AsXrDB7jB92EoNUUecJ",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-20T14:25:06.702Z",
+   "file": "en-006",
+   "label": "fix1",
+   "id": "msgbatch_01BGRRRreebfPwTnRXFpeZ5L",
+   "requests": 21
+  },
+  {
+   "at": "2026-11-20T14:31:45.541Z",
+   "file": "en-006",
+   "label": "fix2",
+   "id": "msgbatch_01U3cKrSxpfntmuoazLQGdGA",
+   "requests": 17
+  },
+  {
+   "at": "2026-11-20T14:34:51.482Z",
+   "file": "en-007",
+   "label": "translate",
+   "id": "msgbatch_011DrskwU5spevBF8L1VHMPH",
+   "requests": 13
+  },
+  {
+   "at": "2026-11-20T14:40:59.556Z",
+   "file": "en-007",
+   "label": "fix1",
+   "id": "msgbatch_018bcnH1CKUt7Mzn4dPGNxzV",
+   "requests": 9
+  },
+  {
+   "at": "2026-11-20T14:46:36.817Z",
+   "file": "en-007",
+   "label": "fix2",
+   "id": "msgbatch_016VKWLg5ZTi2NHg4ER9c9co",
+   "requests": 7
+  },
+  {
+   "at": "2026-11-20T14:50:15.266Z",
+   "file": "en-001",
+   "label": "fix1",
+   "id": "msgbatch_01WLqHmGrvDS1pgwcahwf5pq",
+   "requests": 17
+  },
+  {
+   "at": "2026-11-20T14:52:49.721Z",
+   "file": "en-001",
+   "label": "fix2",
+   "id": "msgbatch_01FWbJcqypvvncjNUxo2BTY9",
+   "requests": 2
+  },
+  {
+   "at": "2026-11-20T14:55:24.442Z",
+   "file": "en-002",
+   "label": "fix1",
+   "id": "msgbatch_0182fAmCnAMTQvEzK7VusHP1",
+   "requests": 18
+  },
+  {
+   "at": "2026-11-20T15:01:02.165Z",
+   "file": "en-002",
+   "label": "fix2",
+   "id": "msgbatch_01ENCRCtwSCLqVdqnk5rKwKL",
+   "requests": 2
+  },
+  {
+   "at": "2026-11-20T15:06:40.059Z",
+   "file": "en-003",
+   "label": "fix1",
+   "id": "msgbatch_01RDEX3t2WTMLG2Lkn97AHap",
+   "requests": 21
+  },
+  {
+   "at": "2026-11-20T15:09:14.604Z",
+   "file": "en-003",
+   "label": "fix2",
+   "id": "msgbatch_01KZPnmJXE1jF7e82gi4dTxq",
+   "requests": 2
+  },
+  {
+   "at": "2026-11-20T15:11:19.106Z",
+   "file": "en-004",
+   "label": "fix1",
+   "id": "msgbatch_01DyMLgrdBSsvxNAbE4KZmwh",
+   "requests": 22
+  },
+  {
+   "at": "2026-11-20T15:13:23.266Z",
+   "file": "en-004",
+   "label": "fix2",
+   "id": "msgbatch_01UG5YGFgkunjXsFH1QoZoD4",
+   "requests": 3
+  },
+  {
+   "at": "2026-11-20T15:15:27.806Z",
+   "file": "en-005",
+   "label": "fix1",
+   "id": "msgbatch_012AHR8JViVkR1xYz3pWaYwq",
+   "requests": 18
+  },
+  {
+   "at": "2026-11-20T15:17:32.015Z",
+   "file": "en-005",
+   "label": "fix2",
+   "id": "msgbatch_01S9HtPsoDmLjcxnU9HfHCD9",
+   "requests": 3
+  },
+  {
+   "at": "2026-11-20T15:19:36.609Z",
+   "file": "en-006",
+   "label": "fix1",
+   "id": "msgbatch_015hXx4hjgDQTCZqgBnnGNDD",
+   "requests": 17
+  },
+  {
+   "at": "2026-11-20T15:21:40.976Z",
+   "file": "en-007",
+   "label": "fix1",
+   "id": "msgbatch_017TLDjKUqgD8JyZEZgGNiLd",
+   "requests": 7
+  }
+ ],
+ "pending": null,
+ "files": {
+  "en-001": {
+   "pages": 50,
+   "translated": 40,
+   "reused": 10,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 48
+  },
+  "en-002": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 60
+  },
+  "en-003": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 103
+  },
+  "en-004": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 48
+  },
+  "en-005": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 75
+  },
+  "en-006": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 191
+  },
+  "en-007": {
+   "pages": 13,
+   "translated": 13,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 65
+  },
+  "en-008": {
+   "pages": 50,
+   "translated": 0,
+   "reused": 0,
+   "status": "дууссан",
+   "errors": 0,
+   "errorPages": []
+  }
+ },
+ "stoppedAt": null,
+ "manualFixes": 7
+}
