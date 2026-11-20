@@ -8,7 +8,8 @@ export const NAV_STRINGS = {
     openMenu: 'Цэс нээх',
     closeMenu: 'Цэс хаах',
     search: 'Хайх',
-    planBook: 'Төлөвлөх & захиалах',
+    map: 'Газрын зураг',
+    book: 'Захиалах',
     language: 'Хэл сонгох',
   },
   en: {
@@ -18,7 +19,8 @@ export const NAV_STRINGS = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     search: 'Search',
-    planBook: 'Plan & Book',
+    map: 'Map',
+    book: 'Book now',
     language: 'Choose language',
   },
 } as const;
