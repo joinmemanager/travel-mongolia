@@ -67,7 +67,7 @@ export default function Footer({
 
                 {/* Instagram */}
                 <a
-                  href="https://www.instagram.com/travelhubmongolia/?__d=1utm_sourceig_embed"
+                  href="https://www.instagram.com/travelhubmongolia/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex justify-center items-center w-9 h-9 text-neutral-300 hover:text-white bg-neutral-900 hover:bg-[#15803d] rounded-full border border-neutral-700 hover:border-[#15803d] transition-all"
