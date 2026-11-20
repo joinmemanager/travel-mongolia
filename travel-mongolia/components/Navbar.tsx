@@ -6,7 +6,8 @@ import { usePathname } from 'next/navigation';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-  PLAN_SECTION_ID,
+  BOOK_NOW_URL,
+  MAP_HREF,
   liveHref,
   type NavItem,
   type NavSection,
@@ -106,12 +107,9 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
   const focusPanelRef = useRef(false);
 
   const overlayPage = OVERLAY_PATHS.includes(pathname);
-  // Компьютерийн дээд цэс: "Төлөвлөх & захиалах"-аас бусад хэсэг (тэр нь газрын зургийн icon)
-  const desktopSections = sections.filter((s) => s.id !== PLAN_SECTION_ID);
-  const planSection = sections.find((s) => s.id === PLAN_SECTION_ID);
-  const planHref = liveHref(
-    planSection?.items.find((i) => i.status !== 'planned' && i.href.startsWith('/'))?.href
-  );
+  // Цэс v2: 5 хэсэг бүгд дээд цэсэнд. Газрын зургийн icon /destination/map руу, «Захиалах» нь жижиг товч
+  const desktopSections = sections;
+  const mapHref = liveHref(MAP_HREF);
 
   // Хөтөч ачааллахад өмнө нь сонгогдсон хэлийг cookie-нээс унших
   useEffect(() => {
@@ -338,7 +336,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             })}
           </nav>
 
-          {/* 3. БАРУУН ТАЛ: ХАЙЛТ, ТӨЛӨВЛӨХ & ЗАХИАЛАХ, ХЭЛ, УТАСНЫ ЦЭС */}
+          {/* 3. БАРУУН ТАЛ: ХАЙЛТ, ГАЗРЫН ЗУРАГ, ЗАХИАЛАХ, ХЭЛ, УТАСНЫ ЦЭС */}
           <div className="flex gap-1 items-center shrink-0 sm:gap-2">
             <button
               type="button"
@@ -352,13 +350,13 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               </svg>
             </button>
 
-            {/* Төлөвлөх & захиалах: дээд цэсний оронд газрын зургийн icon */}
-            {planHref && (
+            {/* Газрын зураг (/destination/map) */}
+            {mapHref && (
               <Link
-                href={planHref}
+                href={mapHref}
                 onClick={closeMenu}
-                aria-label={text('planBook')}
-                title={text('planBook')}
+                aria-label={text('map')}
+                title={text('map')}
                 className={iconBtn}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -367,6 +365,20 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                 </svg>
               </Link>
             )}
+
+            {/* «Захиалах» (joinme.mn): цэсний гадна жижиг товч. Нарийн дэлгэцэнд утасны цэсийн доод талд */}
+            <a
+              href={BOOK_NOW_URL}
+              target="_blank"
+              rel="noopener"
+              className={`hidden sm:inline-flex items-center py-1.5 px-3.5 text-xs font-bold rounded-full transition-colors ${
+                onHero
+                  ? 'text-white border border-white/70 hover:bg-white/15'
+                  : 'text-white bg-[#15803d] hover:bg-[#166534]'
+              }`}
+            >
+              {textLabel('book')}
+            </a>
 
             {/* ХЭЛ СОНГОГЧ */}
             <div className="relative">
@@ -435,7 +447,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
           </div>
         </div>
 
-        {/* 4. КОМПЬЮТЕРИЙН САМБАР. Дэд цэс бүр нэг багана, багтахгүй бол дараагийн мөрөнд.
+        {/* 4. КОМПЬЮТЕРИЙН САМБАР. Дэд цэс бүр нэг багана, мөрөнд 4 (8 дэд цэстэй хэсэг 2 мөр).
             Хаалттай үед ч HTML-д байна, зөвхөн CSS-ээр нуугдана (SEO). */}
         <div
           ref={panelRef}
@@ -463,17 +475,17 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                 aria-label={labelOf(section)}
                 className={activeMenu === section.id ? '' : 'hidden'}
               >
-                <ul className="flex flex-wrap gap-x-8 gap-y-12 pr-10">
+                <ul className="grid grid-cols-4 gap-x-8 gap-y-12 pr-10">
                   {section.items.map((item) => (
                     <li
                       key={`${item.href}-${item.mn}`}
-                      className="flex flex-col flex-1 min-w-[9.5rem] max-w-[18rem]"
+                      className="flex flex-col min-w-0"
                     >
                       <NavItemLink
                         item={item}
                         english={isEnglish}
                         onClick={closeMenu}
-                        className="block text-[24px] font-bold leading-tight text-gray-900 hover:text-[#15803d] transition-colors xl:text-[26px]"
+                        className="block text-[21px] font-bold leading-tight text-gray-900 hover:text-[#15803d] transition-colors xl:text-[22px]"
                         badgeClassName="inline-block ml-2 py-0.5 px-2 align-middle text-[10px] font-bold rounded-full"
                       >
                         {label(item)}
@@ -511,7 +523,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
         </div>
 
         {/* 5. УТАСНЫ БҮТЭН ДЭЛГЭЦИЙН ЦЭС. Хэсэг, дэд цэс бүр дарахад доош задарна (accordion).
-            "Төлөвлөх & захиалах" энд бүтнээрээ. Хаалттай үед ч HTML-д байна (SEO). */}
+            «Захиалах» товч доод талд. Хаалттай үед ч HTML-д байна (SEO). */}
         <nav
           id="nav-mobile"
           aria-label={text('mainNav')}
@@ -519,7 +531,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             isMobileOpen ? '' : 'hidden'
           }`}
         >
-          <ul className="px-4 pt-2 pb-16 mx-auto max-w-3xl sm:px-10">
+          <ul className="px-4 pt-2 pb-6 mx-auto max-w-3xl sm:px-10">
             {sections.map((section) => {
               const sectionOpen = mobileSection === section.id;
               return (
@@ -603,6 +615,18 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               );
             })}
           </ul>
+          <div className="px-4 pb-16 mx-auto max-w-3xl sm:px-10">
+            <a
+              href={BOOK_NOW_URL}
+              target="_blank"
+              rel="noopener"
+              onClick={closeMenu}
+              className="inline-flex items-center py-2.5 px-5 text-base font-bold text-white bg-[#15803d] rounded-full"
+            >
+              {textLabel('book')}
+              <span aria-hidden="true">&nbsp;→</span>
+            </a>
+          </div>
         </nav>
       </header>
 

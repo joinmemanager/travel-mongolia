@@ -15,7 +15,6 @@ import {
   FOOTER_LEGAL,
   FOOTER_NAVIGATION,
   MAIN_NAVIGATION,
-  PLAN_SECTION_ID,
   isPreviewEnv,
   visibleItems,
   visibleSections,
@@ -89,7 +88,7 @@ const organizationJsonLd = {
   sameAs: [
     'https://www.facebook.com/profile.php?id=61592368934535',
     'https://www.instagram.com/travelhubmongolia/',
-    'https://www.youtube.com/@travelhubmongolia7049',
+    'https://www.youtube.com/@TravelHubMongolia',
   ],
 };
 
@@ -118,8 +117,8 @@ export default function RootLayout({
           {children}
           <Footer
             groups={visibleSections(
-              // "Төлөвлөх & захиалах" дээд цэсэнд icon болсон тул footer-т бүтнээрээ
-              [...MAIN_NAVIGATION.filter((s) => s.id === PLAN_SECTION_ID), ...FOOTER_NAVIGATION],
+              // Footer цэс v2-оос өмнөхтэй ижил: «Төлөвлөх & захиалах» багана FOOTER_NAVIGATION-д шилжсэн
+              FOOTER_NAVIGATION,
               preview
             )}
             legal={visibleItems(FOOTER_LEGAL, preview)}
