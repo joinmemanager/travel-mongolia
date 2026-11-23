@@ -152,11 +152,8 @@ export default function SiteStats({ initial }: { initial: SiteStatsData }) {
   return (
     // Сайтын хамгийн бараан ногоон (#14532d, Tailwind green-900), footer-ийн бараан хэсгийн шууд дээр.
     // Ялгарал (WCAG AA): цагаан 9.1:1, шошгоны #C0DD97 6.1:1.
-    <section ref={ref} aria-labelledby="site-stats-title" className="bg-[#14532d] text-white">
-      <div className="px-4 py-14 mx-auto max-w-6xl sm:px-10 md:py-16 lg:px-16">
-        <h2 id="site-stats-title" className="mb-10 text-2xl font-extrabold tracking-tight text-center text-white md:mb-12 md:text-3xl">
-          Монголыг нэг дор
-        </h2>
+    <section ref={ref} aria-label="Сайтын статистик" data-site-stats className="bg-[#14532d] text-white">
+      <div className="px-4 py-10 mx-auto max-w-6xl sm:px-10 md:py-12 lg:px-16">
         {visitors && visitors.length > 0 && (
           <>
             <StatRow items={visitors} progress={progress} big />

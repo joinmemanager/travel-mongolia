@@ -111,7 +111,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
   const focusPanelRef = useRef(false);
 
   const overlayPage = OVERLAY_PATHS.includes(pathname);
-  // Цэс v2: 5 хэсэг бүгд дээд цэсэнд. Газрын зургийн icon /destination/map руу, «Захиалах» нь жижиг товч
+  // Цэс v2: 5 хэсэг бүгд дээд цэсэнд (≥1280px). Цэсний бичиг 15px, ≥1536px-д 16px (header 1440px болж өргөснө)
   const desktopSections = sections;
   const mapHref = liveHref(MAP_HREF);
 
@@ -278,7 +278,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             : 'bg-white border-b border-gray-100 shadow-sm'
         }`}
       >
-        <div className="flex gap-4 justify-between items-center px-4 mx-auto max-w-7xl h-(--nav-h) sm:px-10 min-[1280px]:px-6">
+        <div className="flex gap-4 justify-between items-center px-4 mx-auto max-w-7xl h-(--nav-h) sm:px-10 min-[1280px]:px-6 min-[1536px]:max-w-[1440px]">
           {/* 1. LOGO */}
           <Link
             href="/"
@@ -309,7 +309,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
           {/* 2. ҮНДСЭН ЦЭС. Нэр дээр ДАРАХАД доор бүтэн өргөнтэй самбар нээгдэнэ */}
           <nav
             aria-label={text('mainNav')}
-            className="hidden gap-5 items-center h-full min-[1280px]:flex min-[1440px]:gap-7"
+            className="hidden gap-5 items-center h-full min-[1280px]:flex min-[1440px]:gap-6 min-[1536px]:gap-7"
           >
             {desktopSections.map((section) => {
               const isActive = activeMenu === section.id;
@@ -323,14 +323,14 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                   aria-expanded={isActive}
                   aria-controls={`nav-panel-${section.id}`}
                   onClick={(e) => toggleSection(section.id, e)}
-                  className={`relative flex gap-1.5 items-center h-full whitespace-nowrap text-[14px] min-[1440px]:text-[15px] font-semibold rounded-md outline-none transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#15803d] after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-t after:bg-[#15803d] after:transition-opacity ${
+                  className={`relative flex gap-1.5 items-center h-full whitespace-nowrap text-[15px] min-[1536px]:text-[16px] font-semibold rounded-md outline-none transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#15803d] after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-t after:bg-[#15803d] after:transition-opacity ${
                     isActive ? 'after:opacity-100' : 'after:opacity-0'
                   } ${
                     onHero
                       ? 'text-white hover:text-white/80'
                       : isActive
                         ? GREEN
-                        : 'text-gray-800 hover:text-black'
+                        : 'text-gray-900 hover:text-black'
                   }`}
                 >
                   {label(section)}
