@@ -13,10 +13,12 @@ import Footer from '@/components/Footer';
 import SiteStatsSection from '@/components/SiteStatsSection';
 import { siteFont } from '@/lib/fonts';
 import {
+  ABOUT_US_HREF,
   FOOTER_LEGAL,
   FOOTER_NAVIGATION,
   MAIN_NAVIGATION,
   isPreviewEnv,
+  liveHref,
   visibleItems,
   visibleSections,
 } from '@/lib/navigation';
@@ -125,6 +127,8 @@ export default function RootLayout({
               preview
             )}
             legal={visibleItems(FOOTER_LEGAL, preview)}
+            // SHOW_ABOUT_US (lib/navigation.ts) false үед production дээр undefined → холбоос нуугдана
+            aboutHref={liveHref(ABOUT_US_HREF)}
           />
         </LanguageProvider>
 

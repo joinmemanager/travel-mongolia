@@ -512,8 +512,16 @@ export const FOOTER_LEGAL: NavItem[] = [
   { mn: 'Холбоо барих', en: 'Contact', href: 'mailto:contact@joinme.mn', status: 'live' },
 ];
 
+// «Бидний тухай» (/about-us, data/team.ts). Одоо ЖИШЭЭ мэдээлэлтэй тул false: production дээр хуудас noindex,
+// sitemap-д орохгүй, footer-ийн «Бидний тухай →» холбоос нуугдана (хуудас өөрөө 200 буцаана). Preview/staging
+// (VERCEL_ENV=preview) дээр хуудас ба холбоос харагдана. Жинхэнэ мэдээлэл оруулсны дараа true болгоно.
+export const SHOW_ABOUT_US = false;
+export const ABOUT_US_HREF = '/about-us';
+
 // Цэсэнд (одоохондоо) ороогүй хуудсуудын төлөв. Цэсний зүйлтэй адил дүрмээр ажиллана.
 export const PAGE_STATUS: Record<string, NavStatus> = {
+  // SHOW_ABOUT_US-аас: draft = production дээр noindex, sitemap-гүй, liveHref → undefined
+  [ABOUT_US_HREF]: SHOW_ABOUT_US ? 'live' : 'draft',
   // Түүх & өв hub (C10): live. /stories/<slug> нийтлэлүүд энэ төлвийг өвлөнө.
   '/stories': 'live',
   // Богино бичлэгийн хэсэг: live (index-ийг хуудас бичлэгийн тоогоор шийднэ). /stories/photo-video/<slug> өвлөнө.
