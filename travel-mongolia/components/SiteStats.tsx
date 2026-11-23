@@ -15,13 +15,15 @@ const easeOut = (p: number) => 1 - Math.pow(1 - p, 3);
 
 function Num({ item, progress, className }: { item: StatItem; progress: number; className: string }) {
   const final = statText(item);
+  // Хайрцгийн өргөнийг эцсийн тоо (::before, data-final) тогтооно. Тоолж буй тоо тэр хайрцагт зүүнээс эхэлдэг
+  // тул текстийн эхлэх цэг хөдлөхгүй (CLS 0). Псевдо-элементийн текст индекслэгдэхгүй тул тоо давхардахгүй.
   return (
     <span
       translate="no"
-      className={`notranslate inline-block tabular-nums ${className}`}
-      style={{ minWidth: `${final.length}ch` }}
+      data-final={final}
+      className={`notranslate inline-grid tabular-nums before:invisible before:content-[attr(data-final)] before:[grid-area:1/1] ${className}`}
     >
-      {progress >= 1 ? final : statText(item, item.value * progress)}
+      <span className="[grid-area:1/1] text-left">{progress >= 1 ? final : statText(item, item.value * progress)}</span>
     </span>
   );
 }
@@ -93,14 +95,16 @@ export default function SiteStats({ initial }: { initial: SiteStatsData }) {
   const [data, setData] = useState(initial);
   const [progress, setProgress] = useState(1);
   const ref = useRef<HTMLElement>(null);
+  const hasData = !!data.visitors?.length || data.content.length > 0;
 
-  // Хамгийн сүүлийн (өдөрт 1 удаа кэшлэгдсэн) тоо
+  // Хамгийн сүүлийн (өдөрт 1 удаа кэшлэгдсэн) тоо. Хоосон хариугаар (Contentful түр алдаа) байгаа тоог
+  // дарахгүй. Server HTML хоосон ирсэн хуудсанд (build үеийн 429) хэсэг эндээс нөхөгдөнө.
   useEffect(() => {
     let alive = true;
     fetch('/api/stats')
       .then((r) => (r.ok ? r.json() : null))
       .then((d: SiteStatsData | null) => {
-        if (alive && d && Array.isArray(d.content)) setData(d);
+        if (alive && d && Array.isArray(d.content) && (d.content.length > 0 || !!d.visitors?.length)) setData(d);
       })
       .catch(() => {});
     return () => {
@@ -140,10 +144,10 @@ export default function SiteStats({ initial }: { initial: SiteStatsData }) {
       io.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [hasData]);
 
   const { visitors, content } = data;
-  if (!visitors?.length && !content.length) return null;
+  if (!hasData) return null;
 
   return (
     // Сайтын хамгийн бараан ногоон (#14532d, Tailwind green-900), footer-ийн бараан хэсгийн шууд дээр.

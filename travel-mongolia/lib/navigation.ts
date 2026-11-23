@@ -74,6 +74,9 @@ const shortsChildren = (): NavItem[] =>
 const FEATURED_SHORTS = ['traditions', 'historical-figures', 'buddhism', 'legends'];
 
 // «Захиалах»: цэсний гадна, header-ийн жижиг товч (components/Navbar.tsx). Footer-т ч бий.
+// Header-т (компьютер, гар утасны цэс) харуулах эсэх. 2026-11-23-нд эзэмшигчийн хүсэлтээр унтраасан;
+// буцааж асаахад true болгоход л хангалттай. Footer-ийн «Захиалах» холбоосод нөлөөлөхгүй.
+export const SHOW_HEADER_BOOK_BUTTON = false;
 export const BOOK_NOW_URL =
   'https://joinme.mn?utm_source=travelhubmongolia&utm_medium=referral&utm_campaign=nav';
 

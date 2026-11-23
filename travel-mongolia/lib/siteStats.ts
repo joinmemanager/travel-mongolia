@@ -81,8 +81,9 @@ const cachedVisitors = (on: boolean) =>
   unstable_cache(visitorStats, ['site-stats', 'visitors', on ? 'ga4' : 'none'], { revalidate: DAY })();
 
 // Процесс бүрт нэг удаа: layout бүх хуудсанд дуудагддаг тул build-ийн worker дотор (ялангуяа Data Cache-гүй
-// Preview API-тай орчинд) хуудас бүр Contentful руу дахин хүсэлт илгээхээс сэргийлнэ. Амжилттай бол 1 өдөр,
-// агуулгын тоо хоосон (алдаа) бол 10 минут санана.
+// Preview API-тай орчинд) хуудас бүр Contentful руу дахин хүсэлт илгээхээс сэргийлнэ. Амжилттай бол 1 өдөр.
+// Агуулгын тоо хоосон (алдаа) бол зөвхөн 1 минут санана: дараагийн хуудсууд дахин оролдоно. Өмнө нь 10 минут
+// санадаг байсан тул 429 авсан build-ийн worker-ийн бүх хуудас (staging дээр ~1/6) хэсэггүй үлдэж байв (2026-11-23).
 let memo: { until: number; promise: Promise<SiteStatsData> } | null = null;
 
 export function getSiteStats(): Promise<SiteStatsData> {
@@ -90,14 +91,25 @@ export function getSiteStats(): Promise<SiteStatsData> {
   const promise = loadSiteStats();
   memo = { until: Date.now() + DAY * 1000, promise };
   promise.then((s) => {
-    if (!s.content.length && memo?.promise === promise) memo.until = Date.now() + 10 * 60 * 1000;
+    if (!s.content.length && memo?.promise === promise) memo.until = Date.now() + 60 * 1000;
   });
   return promise;
 }
 
+// Contentful 429 (хүсэлтийн хязгаар) түр зуурын тул нэг удаа 3 секундын дараа дахин оролдоно
+async function contentWithRetry(): Promise<StatItem[]> {
+  try {
+    return await cachedContent();
+  } catch (err) {
+    console.warn('SiteStats: агуулгын тоо, дахин оролдоно', (err as Error)?.message);
+    await new Promise((r) => setTimeout(r, 3000));
+    return cachedContent();
+  }
+}
+
 async function loadSiteStats(): Promise<SiteStatsData> {
   const [content, visitors] = await Promise.all([
-    cachedContent().catch((err) => (console.error('SiteStats: агуулгын тоо', err), [] as StatItem[])),
+    contentWithRetry().catch((err) => (console.error('SiteStats: агуулгын тоо', err), [] as StatItem[])),
     (ga4Configured() ? cachedVisitors(true) : Promise.resolve(null)).catch(
       (err) => (console.error('SiteStats: GA4', err), null)
     ),
