@@ -13,9 +13,11 @@ import { useSiteLang } from './useSiteLang';
 export default function Footer({
   groups,
   legal,
+  aboutHref,
 }: {
   groups: NavSection[];
   legal: NavItem[];
+  aboutHref?: string;
 }) {
   const isEnglish = useSiteLang() === 'en';
   const labelOf = (x: { mn: string; en: string }) => (isEnglish ? x.en : x.mn);
@@ -45,6 +47,19 @@ export default function Footer({
               баялаг өв соёл, хязгааргүй уудам тал нутгийн аяллыг албан ёсны
               мэдээллээр хүргэж байна.
             </p>
+
+            {/* «Бидний тухай →»: layout liveHref-ээр дамжуулна (SHOW_ABOUT_US false үед production дээр undefined) */}
+            {aboutHref && (
+              <Link
+                href={aboutHref}
+                className="inline-block text-sm font-semibold text-white hover:text-[#86efac] transition-colors"
+              >
+                <span {...(isEnglish ? { translate: 'no' as const, className: 'notranslate' } : {})}>
+                  {isEnglish ? 'About us' : 'Бидний тухай'}
+                </span>
+                <span aria-hidden="true"> →</span>
+              </Link>
+            )}
 
             {/* Сошиал сувгууд */}
             <div className="space-y-2">

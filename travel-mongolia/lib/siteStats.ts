@@ -75,7 +75,8 @@ async function visitorStats(): Promise<StatItem[] | null> {
 }
 
 // Алдаа гарвал кэшлэхгүй (unstable_cache дотор throw), тухайн хэсгийг харуулахгүй
-const cachedContent = unstable_cache(contentStats, ['site-stats', 'content'], { revalidate: DAY });
+// v2: StatItem.raw (бүхэлдээгүй тоо, /about-us) нэмэгдсэн тул хуучин кэшээс уншихгүй
+const cachedContent = unstable_cache(contentStats, ['site-stats', 'content-v2'], { revalidate: DAY });
 // Түлхүүрт GA4 тохируулсан эсэх: env нэмсний дараах deploy-д хуучин null кэшээс уншихгүй
 const cachedVisitors = (on: boolean) =>
   unstable_cache(visitorStats, ['site-stats', 'visitors', on ? 'ga4' : 'none'], { revalidate: DAY })();
