@@ -9,6 +9,7 @@ import {
   BOOK_NOW_URL,
   MAP_HREF,
   MENU_CHILD_LIMIT,
+  SHOW_HEADER_BOOK_BUTTON,
   liveHref,
   type NavItem,
   type NavSection,
@@ -277,7 +278,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             : 'bg-white border-b border-gray-100 shadow-sm'
         }`}
       >
-        <div className="flex gap-4 justify-between items-center px-4 mx-auto max-w-7xl h-(--nav-h) sm:px-10 min-[1200px]:px-6">
+        <div className="flex gap-4 justify-between items-center px-4 mx-auto max-w-7xl h-(--nav-h) sm:px-10 min-[1280px]:px-6">
           {/* 1. LOGO */}
           <Link
             href="/"
@@ -308,7 +309,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
           {/* 2. ҮНДСЭН ЦЭС. Нэр дээр ДАРАХАД доор бүтэн өргөнтэй самбар нээгдэнэ */}
           <nav
             aria-label={text('mainNav')}
-            className="hidden gap-7 items-center h-full min-[1200px]:flex"
+            className="hidden gap-5 items-center h-full min-[1280px]:flex min-[1440px]:gap-7"
           >
             {desktopSections.map((section) => {
               const isActive = activeMenu === section.id;
@@ -322,7 +323,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
                   aria-expanded={isActive}
                   aria-controls={`nav-panel-${section.id}`}
                   onClick={(e) => toggleSection(section.id, e)}
-                  className={`relative flex gap-1.5 items-center h-full whitespace-nowrap text-[15px] font-semibold rounded-md outline-none transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#15803d] after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-t after:bg-[#15803d] after:transition-opacity ${
+                  className={`relative flex gap-1.5 items-center h-full whitespace-nowrap text-[14px] min-[1440px]:text-[15px] font-semibold rounded-md outline-none transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#15803d] after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-t after:bg-[#15803d] after:transition-opacity ${
                     isActive ? 'after:opacity-100' : 'after:opacity-0'
                   } ${
                     onHero
@@ -369,19 +370,22 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               </Link>
             )}
 
-            {/* «Захиалах» (joinme.mn): цэсний гадна жижиг товч. Нарийн дэлгэцэнд утасны цэсийн доод талд */}
-            <a
-              href={BOOK_NOW_URL}
-              target="_blank"
-              rel="noopener"
-              className={`hidden sm:inline-flex items-center py-1.5 px-3.5 text-xs font-bold rounded-full transition-colors ${
-                onHero
-                  ? 'text-white border border-white/70 hover:bg-white/15'
-                  : 'text-white bg-[#15803d] hover:bg-[#166534]'
-              }`}
-            >
-              {textLabel('book')}
-            </a>
+            {/* «Захиалах» (joinme.mn): цэсний гадна жижиг товч. Нарийн дэлгэцэнд утасны цэсийн доод талд.
+                SHOW_HEADER_BOOK_BUTTON (lib/navigation.ts)-аар унтраасан */}
+            {SHOW_HEADER_BOOK_BUTTON && (
+              <a
+                href={BOOK_NOW_URL}
+                target="_blank"
+                rel="noopener"
+                className={`hidden sm:inline-flex items-center py-1.5 px-3.5 text-xs font-bold rounded-full transition-colors ${
+                  onHero
+                    ? 'text-white border border-white/70 hover:bg-white/15'
+                    : 'text-white bg-[#15803d] hover:bg-[#166534]'
+                }`}
+              >
+                {textLabel('book')}
+              </a>
+            )}
 
             {/* ХЭЛ СОНГОГЧ */}
             <div className="relative">
@@ -404,15 +408,17 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
 
               {isLangOpen && (
                 <div
+                  // Хэл бүр өөрийн нэрээр: Google Translate орчуулахгүй (EN горимд «Монгол» → «Mongolia» болж байсан)
+                  translate="no"
                   onMouseLeave={() => setIsLangOpen(false)}
-                  className="absolute right-0 z-50 py-2 mt-2 w-36 bg-white rounded-2xl border border-gray-100 shadow-xl"
+                  className="notranslate absolute right-0 z-50 py-2 mt-2 w-40 bg-white rounded-2xl border border-gray-100 shadow-xl"
                 >
                   {LANGUAGES.map((item) => (
                     <button
                       key={item.code}
                       type="button"
                       onClick={() => handleLanguageChange(item.code)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2 text-xs text-left hover:bg-neutral-50 transition-colors ${
+                      className={`w-full flex items-center justify-between px-4 py-2.5 text-sm text-left hover:bg-neutral-50 transition-colors cursor-pointer ${
                         selectedLang === item.code
                           ? 'text-[#15803d] font-bold bg-green-50/60'
                           : 'text-neutral-700'
@@ -428,7 +434,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               )}
             </div>
 
-            {/* ☰ Нарийн дэлгэц (< 1200px) дээр бүтэн дэлгэцийн цэс */}
+            {/* ☰ Нарийн дэлгэц (< 1280px; EN горимд цэсний нэрс урт тул 1280-аас нарийнд багтахгүй) дээр бүтэн дэлгэцийн цэс */}
             <button
               ref={burgerRef}
               type="button"
@@ -436,7 +442,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               aria-label={isMobileOpen ? text('closeMenu') : text('openMenu')}
               aria-expanded={isMobileOpen}
               aria-controls="nav-mobile"
-              className={`${iconBtn} min-[1200px]:hidden`}
+              className={`${iconBtn} min-[1280px]:hidden`}
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path
@@ -454,7 +460,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
             Хаалттай үед ч HTML-д байна, зөвхөн CSS-ээр нуугдана (SEO). */}
         <div
           ref={panelRef}
-          className={`overflow-y-auto absolute inset-x-0 top-full max-h-[calc(100svh-var(--nav-h))] bg-[#f3f3f3] border-t border-gray-200 shadow-xl max-[1199px]:hidden ${
+          className={`overflow-y-auto absolute inset-x-0 top-full max-h-[calc(100svh-var(--nav-h))] bg-[#f3f3f3] border-t border-gray-200 shadow-xl max-[1279px]:hidden ${
             activeMenu ? '' : 'hidden'
           }`}
         >
@@ -540,7 +546,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
         <nav
           id="nav-mobile"
           aria-label={text('mainNav')}
-          className={`overflow-y-auto fixed inset-x-0 bottom-0 top-(--nav-h) bg-white border-t border-gray-100 overscroll-contain min-[1200px]:hidden ${
+          className={`overflow-y-auto fixed inset-x-0 bottom-0 top-(--nav-h) bg-white border-t border-gray-100 overscroll-contain min-[1280px]:hidden ${
             isMobileOpen ? '' : 'hidden'
           }`}
         >
@@ -628,17 +634,20 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
               );
             })}
           </ul>
+          {/* Унтраасан үед ч доод зай (pb-16) үлдэнэ */}
           <div className="px-4 pb-16 mx-auto max-w-3xl sm:px-10">
-            <a
-              href={BOOK_NOW_URL}
-              target="_blank"
-              rel="noopener"
-              onClick={closeMenu}
-              className="inline-flex items-center py-2.5 px-5 text-base font-bold text-white bg-[#15803d] rounded-full"
-            >
-              {textLabel('book')}
-              <span aria-hidden="true">&nbsp;→</span>
-            </a>
+            {SHOW_HEADER_BOOK_BUTTON && (
+              <a
+                href={BOOK_NOW_URL}
+                target="_blank"
+                rel="noopener"
+                onClick={closeMenu}
+                className="inline-flex items-center py-2.5 px-5 text-base font-bold text-white bg-[#15803d] rounded-full"
+              >
+                {textLabel('book')}
+                <span aria-hidden="true">&nbsp;→</span>
+              </a>
+            )}
           </div>
         </nav>
       </header>
@@ -647,7 +656,7 @@ export default function Navbar({ sections }: { sections: NavSection[] }) {
       {activeMenu && (
         <div
           aria-hidden="true"
-          className="fixed inset-0 z-40 bg-black/25 max-[1199px]:hidden"
+          className="fixed inset-0 z-40 bg-black/25 max-[1279px]:hidden"
         />
       )}
 
