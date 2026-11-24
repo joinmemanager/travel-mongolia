@@ -20,7 +20,10 @@ async function revalidate(collection: string, doc: any) {
 export const revalidateAfterChange: CollectionAfterChangeHook = async ({ collection, doc, previousDoc, context }) => {
   if (context?.skipRevalidate) return doc;
   const wasOrIsPublished = doc?._status === 'published' || previousDoc?._status === 'published';
-  if (wasOrIsPublished) await revalidate(collection.slug, doc);
+  // Preview орчин (Vercel preview, локал) ноорог харуулдаг тул ноорог хадгалахад ч шинэчилнэ — редактор «Save Draft»
+  // дараад preview сайтаас шууд харна. Production-д зөвхөн нийтлэхэд.
+  const previewEnv = (process.env.SITE_ENV || process.env.VERCEL_ENV) !== 'production';
+  if (wasOrIsPublished || previewEnv) await revalidate(collection.slug, doc);
   return doc;
 };
 

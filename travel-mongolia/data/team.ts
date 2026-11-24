@@ -1,7 +1,8 @@
 // «Бидний тухай» (/about-us) хуудасны хүмүүс. Одоогоор ЖИШЭЭ мэдээлэл: production дээр харагдахгүй
 // (lib/navigation.ts SHOW_ABOUT_US = false). Жинхэнэ мэдээлэл оруулсны дараа SHOW_ABOUT_US-ийг true болгоно.
 //
-// 12-р сард Payload-ийн `team` collection руу шилжинэ. Талбар бүр нэг Payload field-тэй таарна:
+// Payload-ийн `team` collection (payload/collections.ts) нь эдгээр талбартай; CMS_SOURCE=payload үед lib/team.ts
+// тэндээс уншина, нийтлэгдсэн хүн байхгүй бол энэ жишээ. Талбарууд:
 //   id     text (unique, slug)        name   text (required)
 //   group  select: advisor | team | creator
 //   role   text (албан тушаал / мэргэжил)    bio  textarea (1–2 өгүүлбэр)

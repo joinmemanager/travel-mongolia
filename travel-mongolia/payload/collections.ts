@@ -1,11 +1,14 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import type { Access, CollectionConfig, Field, FieldAccess } from 'payload';
+import type { Access, CollectionBeforeChangeHook, CollectionConfig, Field, FieldAccess } from 'payload';
+import { APIError } from 'payload';
+import { totpAccess } from 'payload-totp';
 
 import { TRANSLATION_LOCALES } from '../lib/i18n/locales';
 import { CF_SCHEMA, type CfField } from './cfSchema';
 import { revalidateAfterChange, revalidateAfterDelete, stampCreatedAt } from './hooks';
+import { twoFactorEndpoints } from './security/twoFactor';
 
 // Contentful-ийн 18 content type → 18 Payload collection (slug нь content type-ийн id-тай ИЖИЛ, ингэснээр
 // lib/cms/payloadSource.ts-ийн Contentful хэлбэрийн query-г шууд буулгана). Талбарууд payload/cfSchema.ts-аас.
@@ -15,6 +18,13 @@ import { revalidateAfterChange, revalidateAfterDelete, stampCreatedAt } from './
 //   editor     — агуулга үүсгэх, засах, нийтлэх (устгах эрхгүй)
 //   translator — зөвхөн mn-ээс бусад хэлний localized талбарыг засна (slug, холбоос, зураг г.м. засахгүй)
 // Нэвтрээгүй (сайт, REST): зөвхөн нийтлэгдсэн хувилбар.
+//
+// ОДООХОНДОО (2026-11): бүх хэрэглэгч admin — ALL_USERS_ADMIN = true үед role талбар нуугдаж, хадгалах бүрт
+// 'admin' болно. Editor/translator эрхийг идэвхжүүлэх: false болгоход л болно (дээрх access функцууд бэлэн).
+//
+// 2FA: payload-totp plugin (payload.config.ts) бүх collection-ий access-ийг «2FA кодоор баталгаажсан сесс» гэсэн
+// шалгалтаар ороодог. Сайт Local API-аар (overrideAccess) уншдаг тул нөлөөгүй.
+export const ALL_USERS_ADMIN = true;
 
 type Role = 'admin' | 'editor' | 'translator';
 const roleOf = (req: any): Role | undefined => req?.user?.role;
@@ -27,7 +37,12 @@ const canUpdate: Access = ({ req }) => {
   // Орчуулагч монгол эхийг өөрчлөхгүй
   return r === 'translator' && req.locale !== 'mn';
 };
-const publishedOrUser: Access = ({ req }) => (req?.user ? true : { _status: { equals: 'published' } });
+// Нийтлэгдсэнийг хэн ч (REST) уншина; ноорогийг зөвхөн 2FA-гаар баталгаажсан хэрэглэгч. Plugin-ий ороолтыг
+// read-д унтраасан (custom.totp.disableAccessWrapper) — эс бөгөөс нэвтрээгүй хүнд нийтлэгдсэн ч хаагдана.
+const signedIn = totpAccess(() => true);
+const publishedOrUser: Access = async (args) =>
+  args.req?.user && (await signedIn(args)) === true ? true : { _status: { equals: 'published' } };
+const publicRead = { totp: { disableAccessWrapper: { read: true } } };
 // Хэлнээс хамаардаггүй талбар (slug, ангилал, холбоос, зураг): орчуулагч засахгүй
 const notTranslator: FieldAccess = ({ req }) => roleOf(req) !== 'translator';
 
@@ -157,6 +172,7 @@ export const contentCollections: CollectionConfig[] = Object.entries(CF_SCHEMA).
     listSearchableFields: [type.displayField, ...(type.fields.some((f) => f.id === 'slug') ? ['slug'] : [])],
   },
   access: { read: publishedOrUser, create: isEditor, update: canUpdate, delete: isAdmin, readVersions: ({ req }) => !!req.user },
+  custom: publicRead,
   versions: { drafts: { schedulePublish: true }, maxPerDoc: 25 },
   hooks: {
     beforeChange: [stampCreatedAt],
@@ -177,6 +193,8 @@ export const media: CollectionConfig = {
   labels: { singular: 'Зураг', plural: 'Зургууд' },
   admin: { group: 'Зураг', useAsTitle: 'title', defaultColumns: ['filename', 'title', 'updatedAt'] },
   access: { read: () => true, create: isEditor, update: canUpdate, delete: isAdmin },
+  // Зураг нийтэд нээлттэй (R2-гүй локалд /api/media/file/... сайтад хэрэглэгддэг)
+  custom: publicRead,
   upload: {
     // R2 байхгүй (локал) үед файлууд энд; R2-тэй үед storage-s3 локал хадгалалтыг унтраана
     staticDir: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '.payload-media'),
@@ -208,30 +226,132 @@ export const media: CollectionConfig = {
   ],
 };
 
+// «Бидний тухай» (/about-us)-ийн хүмүүс: зөвлөхүүд, гүйцэтгэх баг, уран бүтээлчид. Хуудас lib/team.ts-ээр уншина
+// (CMS_SOURCE=payload; нийтлэгдсэн хүн байхгүй бол data/team.ts-ийн жишээ). Талбарууд data/team.ts-ийн TeamMember-тэй.
+const revalidateAboutUs = async ({ doc, context }: { doc: any; context?: any }) => {
+  if (context?.skipRevalidate) return doc;
+  try {
+    const { revalidatePath } = await import('next/cache');
+    revalidatePath('/about-us');
+  } catch {
+    // Next-ээс гадуурх скрипт
+  }
+  return doc;
+};
+
+export const team: CollectionConfig = {
+  slug: 'team',
+  labels: { singular: 'Хүн (Бидний тухай)', plural: 'Бидний тухай: хүмүүс' },
+  admin: {
+    useAsTitle: 'name',
+    group: 'Бидний тухай',
+    defaultColumns: ['name', 'group', 'role', 'order', '_status'],
+    description: 'Сайтын «Бидний тухай» хуудсанд гарах хүмүүс. Нийтэлсэн хүн л харагдана; дараалал нь «Дараалал» талбараар.',
+  },
+  access: { read: publishedOrUser, create: isEditor, update: canUpdate, delete: isAdmin, readVersions: ({ req }) => !!req.user },
+  custom: publicRead,
+  versions: { drafts: true, maxPerDoc: 10 },
+  hooks: { afterChange: [revalidateAboutUs], afterDelete: [revalidateAboutUs] },
+  fields: [
+    { name: 'name', label: 'Нэр', type: 'text', required: true, localized: true },
+    {
+      name: 'group',
+      label: 'Хэсэг',
+      type: 'select',
+      required: true,
+      defaultValue: 'team',
+      options: [
+        { label: 'Зөвлөхүүд', value: 'advisor' },
+        { label: 'Гүйцэтгэх баг', value: 'team' },
+        { label: 'Уран бүтээлчид', value: 'creator' },
+      ],
+      access: { update: notTranslator },
+    },
+    { name: 'role', label: 'Албан тушаал / мэргэжил', type: 'text', localized: true },
+    { name: 'bio', label: 'Танилцуулга (1–2 өгүүлбэр)', type: 'textarea', localized: true, admin: { description: 'Карт дээр дарахад гарна.' } },
+    {
+      name: 'photo',
+      label: 'Зураг',
+      type: 'upload',
+      relationTo: 'media',
+      access: { update: notTranslator },
+      admin: { description: 'Дөрвөлжин, нүүр төвдөө байх зураг (≥400×400). Байхгүй бол нэрийн эхний үсэг гарна.' },
+    },
+    {
+      name: 'order',
+      label: 'Дараалал',
+      type: 'number',
+      defaultValue: 100,
+      access: { update: notTranslator },
+      admin: { position: 'sidebar', description: 'Хэсэг дотор бага тоо эхэнд (1, 2, 3 …).' },
+    },
+  ],
+};
+
+// Хэрэглэгчийг кодоор үүсгэхгүй: анхны хэрэглэгчийг /admin/create-first-user хуудсаар (Payload нь хэрэглэгч
+// нэг ч байхгүй үед л зөвшөөрдөг; дараа нь Forbidden). Production-д DB хоосон байсан ч тэр хуудсыг хаана
+// (гадны хүн «анхны админ» болох эрсдэл) — зөвхөн PAYLOAD_ALLOW_FIRST_USER=1 үед нээгдэнэ.
+const guardFirstUser: CollectionBeforeChangeHook = ({ data, operation, req }) => {
+  if (operation === 'create' && !req.user && process.env.VERCEL_ENV === 'production' && process.env.PAYLOAD_ALLOW_FIRST_USER !== '1') {
+    throw new APIError('Production-д анхны хэрэглэгчийг энэ хуудсаар үүсгэхгүй. Preview дээр үүсгэнэ үү.', 403, undefined, true);
+  }
+  if (ALL_USERS_ADMIN) data.role = 'admin';
+  return data;
+};
+
 export const users: CollectionConfig = {
   slug: 'users',
   labels: { singular: 'Хэрэглэгч', plural: 'Хэрэглэгчид' },
-  admin: { useAsTitle: 'email', group: 'Тохиргоо' },
-  auth: { maxLoginAttempts: 5, lockTime: 15 * 60 * 1000, useAPIKey: false },
+  admin: { useAsTitle: 'email', group: 'Тохиргоо', defaultColumns: ['email', 'name', 'role', 'updatedAt'] },
+  auth: {
+    // Нууц үг (ба 2FA код, нөөц код) 5 удаа буруу → хаяг 15 минут түгжигдэнэ
+    maxLoginAttempts: 5,
+    lockTime: 15 * 60 * 1000,
+    // Сесс: идэвхгүй 4 цаг → дахин нэвтэрнэ (admin нээлттэй, идэвхтэй байхад автоматаар сунгагдана)
+    tokenExpiration: 4 * 60 * 60,
+    cookies: { secure: process.env.NODE_ENV === 'production', sameSite: 'Lax' },
+    useAPIKey: false,
+  },
   access: {
     read: ({ req }) => (roleOf(req) === 'admin' ? true : req.user ? { id: { equals: req.user.id } } : false),
     create: isAdmin,
     update: ({ req }) => (roleOf(req) === 'admin' ? true : req.user ? { id: { equals: req.user.id } } : false),
     delete: isAdmin,
+    // Түгжээг («Force Unlock») зөвхөн админ тайлна
+    unlock: isAdmin,
   },
+  endpoints: twoFactorEndpoints,
+  hooks: { beforeChange: [guardFirstUser] },
   fields: [
-    { name: 'name', type: 'text' },
+    { name: 'name', label: 'Нэр', type: 'text' },
     {
       name: 'role',
+      label: 'Эрх',
       type: 'select',
       required: true,
-      defaultValue: 'editor',
+      defaultValue: 'admin',
       options: [
         { label: 'Админ', value: 'admin' },
         { label: 'Редактор', value: 'editor' },
         { label: 'Орчуулагч', value: 'translator' },
       ],
       access: { update: ({ req }) => roleOf(req) === 'admin' },
+      admin: {
+        hidden: ALL_USERS_ADMIN,
+        description: 'Админ — бүх эрх. Редактор — агуулга засах, нийтлэх. Орчуулагч — зөвхөн монголоос бусад хэл.',
+      },
+    },
+    {
+      name: 'twoFactorUI',
+      type: 'ui',
+      admin: { components: { Field: '/payload/admin/TwoFactorClient#UserTwoFactorField' }, disableListColumn: true },
+    },
+    // 2FA-ийн нөөц кодын HMAC (payload/security/twoFactor.ts). API-д хэзээ ч гарахгүй.
+    {
+      name: 'recoveryCodes',
+      type: 'json',
+      hidden: true,
+      access: { create: () => false, read: () => false, update: () => false },
     },
   ],
 };

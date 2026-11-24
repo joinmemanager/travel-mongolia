@@ -4,15 +4,16 @@ import React from 'react';
 
 import AboutHeroSentence from '@/components/about/AboutHeroSentence';
 import TeamGrid from '@/components/about/TeamGrid';
-import { getTeam, type TeamGroup } from '@/data/team';
+import { type TeamGroup } from '@/data/team';
 import { IMAGES, type SiteImage } from '@/lib/images';
+import { getTeamMembers, teamOf } from '@/lib/team';
 import { SITE_LANGUAGES } from '@/lib/languages';
 import { metaFor } from '@/lib/pageMeta';
 import { PROVINCE_NAMES } from '@/lib/provinceNames';
 import { getSiteStats } from '@/lib/siteStats';
 
 // «Бидний тухай». Production дээр SHOW_ABOUT_US (lib/navigation.ts) false үед noindex, sitemap-гүй
-// (PAGE_STATUS draft → metaFor), footer-ийн холбоос нуугдана. Хүмүүсийн мэдээлэл data/team.ts-д (одоо жишээ).
+// (PAGE_STATUS draft → metaFor), footer-ийн холбоос нуугдана. Хүмүүс: Payload-ийн «Бидний тухай: хүмүүс» (lib/team.ts), хоосон бол data/team.ts-ийн жишээ.
 export const metadata = metaFor('/about-us');
 
 // Коллаж: Монголынх нь шалгагдсан зургууд (lib/images.ts, docs/plan/images.md). Зүүн талд том, баруун талд 4 жижиг.
@@ -30,7 +31,7 @@ const SECTIONS: { group: TeamGroup; title: string; intro: string }[] = [
 export default async function AboutUsPage() {
   // Тоонууд footer-ийн статистиктай нэг эх сурвалжаас (өдөрт 1 кэш). Олдохгүй бол аймаг: lib/provinceNames.ts
   // (21 аймаг + нийслэл), сум: тоогүй бичнэ.
-  const stats = await getSiteStats();
+  const [stats, members] = await Promise.all([getSiteStats(), getTeamMembers()]);
   const raw = (key: string) => stats.content.find((s) => s.key === key)?.raw;
   const provinces = raw('provinces') || PROVINCE_NAMES.length - 1;
   const soums = raw('soums') ?? null;
@@ -83,7 +84,7 @@ export default async function AboutUsPage() {
               </h2>
               <p className="mx-auto mt-2 max-w-2xl text-neutral-600">{s.intro}</p>
             </div>
-            <TeamGrid members={getTeam(s.group)} group={s.group} />
+            <TeamGrid members={teamOf(members, s.group)} group={s.group} />
           </div>
         </section>
       ))}

@@ -53,6 +53,15 @@ const nextConfig = {
         source: '/hero/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
+      // Payload admin: индексжүүлэхгүй, өөр сайтад iframe-ээр оруулахгүй (clickjacking), referrer-т зам гаргахгүй
+      ...['/admin', '/admin/:path*'].map((source) => ({
+        source,
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'same-origin' },
+        ],
+      })),
     ];
   },
   typescript: {

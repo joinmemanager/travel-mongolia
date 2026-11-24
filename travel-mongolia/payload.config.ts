@@ -7,10 +7,12 @@ import { s3Storage } from '@payloadcms/storage-s3';
 import { en } from '@payloadcms/translations/languages/en';
 import { ru } from '@payloadcms/translations/languages/ru';
 import { buildConfig } from 'payload';
+import { payloadTotp } from 'payload-totp';
 import sharp from 'sharp';
 
 import { DEFAULT_LOCALE, LOCALES } from './lib/i18n/locales';
-import { contentCollections, media, users } from './payload/collections';
+import { contentCollections, media, team, users } from './payload/collections';
+import { TOTP_OPTIONS } from './payload/security/totpOptions';
 
 // Payload CMS 3 (docs/plan/payload-migration.md). Сайт өгөгдлийг Local API-аар шууд DB-ээс уншина
 // (lib/cms/payloadSource.ts), HTTP API хэрэглэхгүй. Admin: /admin.
@@ -39,14 +41,32 @@ const r2 =
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || (isProd ? '' : 'local-dev-only-secret-not-for-production'),
-  serverURL: process.env.NEXT_PUBLIC_SITE_URL || undefined,
+  // Зөвхөн production-д: preview (*.vercel.app) дээр production домэйн тавибал admin-ий redirect (2FA) болон CSRF-ийн
+  // шалгалт production руу заагдаж, preview-д нэвтэрч чадахгүй болно.
+  serverURL: process.env.VERCEL_ENV === 'production' ? process.env.NEXT_PUBLIC_SITE_URL || undefined : undefined,
   admin: {
     user: users.slug,
     importMap: { baseDir: dirname },
-    meta: { titleSuffix: ' — Travel Hub Mongolia CMS' },
+    meta: {
+      titleSuffix: ' — Travel Hub Mongolia CMS',
+      // /admin-ийг хайлтын системд индексжүүлэхгүй (robots.ts-д ч Disallow, next.config.js-д X-Robots-Tag)
+      robots: { index: false, follow: false },
+    },
+    components: {
+      afterNavLinks: ['/payload/admin/TwoFactorClient#SecurityNavLink'],
+      // payload-totp-ийн англи /setup-totp, /verify-totp хуудсыг монгол хувилбараар солино (plugin өөрийн views-ийн
+      // ДАРАА config-ийн views-ийг тавьдаг тул ижил түлхүүр дарж бичнэ). Endpoint, cookie, access нь plugin-ийх.
+      views: {
+        SetupTOTP: { Component: '/payload/admin/TwoFactorViews#SetupView', path: '/setup-totp', exact: true },
+        SetupTOTPBackslash: { Component: '/payload/admin/TwoFactorViews#SetupView', path: '/setup-totp', exact: true },
+        VerifyTOTP: { Component: '/payload/admin/TwoFactorViews#VerifyView', path: '/verify-totp', exact: true },
+        VerifyTOTPBackslash: { Component: '/payload/admin/TwoFactorViews#VerifyView', path: '/verify-totp', exact: true },
+        Security: { Component: '/payload/admin/TwoFactorViews#SecurityView', path: '/security', exact: true },
+      },
+    },
   },
   i18n: { supportedLanguages: { en, ru }, fallbackLanguage: 'en' },
-  collections: [...contentCollections, media, users],
+  collections: [...contentCollections, media, team, users],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures, EXPERIMENTAL_TableFeature()],
   }),
@@ -75,7 +95,8 @@ export default buildConfig({
   // Төрлүүдийг гараар үүсгэнэ (node scripts/payload/cli.mjs generate:types); dev-д ачаалах бүрт процесс эхлүүлэхгүй
   typescript: { autoGenerate: false, outputFile: path.resolve(dirname, 'payload/payload-types.ts') },
   upload: { limits: { fileSize: 25_000_000 } },
-  plugins: r2
+  plugins: [
+    ...(r2
     ? [
         s3Storage({
           bucket: r2.bucket,
@@ -97,6 +118,15 @@ export default buildConfig({
           clientUploads: true,
         }),
       ]
-    : [],
+    : []),
+    // Admin-ий 2FA (Google Authenticator) — БҮХ хэрэглэгчид заавал (forceSetup). Бүх collection-ий access-ийг ороодог
+    // тул ЗААВАЛ хамгийн сүүлийн plugin. Нөөц код: payload/security/twoFactor.ts. x-pathname: proxy.ts.
+    payloadTotp({
+      collection: users.slug,
+      forceSetup: true,
+      forceWhiteBackgroundOnQrCode: true,
+      totp: { ...TOTP_OPTIONS },
+    }),
+  ],
 });
 

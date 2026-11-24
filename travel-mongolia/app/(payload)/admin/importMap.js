@@ -22,7 +22,14 @@ import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93
 import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { UserTwoFactorField as UserTwoFactorField_a14eb20d10ed6a0a6a6d03c31a174b92 } from '../../../payload/admin/TwoFactorClient'
+import { TOTPField as TOTPField_4eaf6cb33cfb75be01716613e3c9a512 } from 'payload-totp/rsc'
+import { SecurityNavLink as SecurityNavLink_a14eb20d10ed6a0a6a6d03c31a174b92 } from '../../../payload/admin/TwoFactorClient'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
+import { TOTPProvider as TOTPProvider_4eaf6cb33cfb75be01716613e3c9a512 } from 'payload-totp/rsc'
+import { SetupView as SetupView_81b616c8664afdc4f70df9a6e4675415 } from '../../../payload/admin/TwoFactorViews'
+import { VerifyView as VerifyView_81b616c8664afdc4f70df9a6e4675415 } from '../../../payload/admin/TwoFactorViews'
+import { SecurityView as SecurityView_81b616c8664afdc4f70df9a6e4675415 } from '../../../payload/admin/TwoFactorViews'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -51,6 +58,13 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UnderlineFeatureClient": UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+  "/payload/admin/TwoFactorClient#UserTwoFactorField": UserTwoFactorField_a14eb20d10ed6a0a6a6d03c31a174b92,
+  "payload-totp/rsc#TOTPField": TOTPField_4eaf6cb33cfb75be01716613e3c9a512,
+  "/payload/admin/TwoFactorClient#SecurityNavLink": SecurityNavLink_a14eb20d10ed6a0a6a6d03c31a174b92,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "payload-totp/rsc#TOTPProvider": TOTPProvider_4eaf6cb33cfb75be01716613e3c9a512,
+  "/payload/admin/TwoFactorViews#SetupView": SetupView_81b616c8664afdc4f70df9a6e4675415,
+  "/payload/admin/TwoFactorViews#VerifyView": VerifyView_81b616c8664afdc4f70df9a6e4675415,
+  "/payload/admin/TwoFactorViews#SecurityView": SecurityView_81b616c8664afdc4f70df9a6e4675415,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
