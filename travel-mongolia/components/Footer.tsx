@@ -13,9 +13,11 @@ import { useSiteLang } from './useSiteLang';
 export default function Footer({
   groups,
   legal,
+  aboutHref,
 }: {
   groups: NavSection[];
   legal: NavItem[];
+  aboutHref?: string;
 }) {
   const isEnglish = useSiteLang() === 'en';
   const labelOf = (x: { mn: string; en: string }) => (isEnglish ? x.en : x.mn);
@@ -46,6 +48,19 @@ export default function Footer({
               мэдээллээр хүргэж байна.
             </p>
 
+            {/* «Бидний тухай →»: layout liveHref-ээр дамжуулна (SHOW_ABOUT_US false үед production дээр undefined) */}
+            {aboutHref && (
+              <Link
+                href={aboutHref}
+                className="inline-block text-xs font-semibold tracking-wider text-neutral-400 uppercase hover:text-white transition-colors"
+              >
+                <span {...(isEnglish ? { translate: 'no' as const, className: 'notranslate' } : {})}>
+                  {isEnglish ? 'About us' : 'Бидний тухай'}
+                </span>
+                <span aria-hidden="true"> →</span>
+              </Link>
+            )}
+
             {/* Сошиал сувгууд */}
             <div className="space-y-2">
               <span className="block text-xs font-semibold tracking-wider text-neutral-400 uppercase">
@@ -67,7 +82,7 @@ export default function Footer({
 
                 {/* Instagram */}
                 <a
-                  href="https://www.instagram.com/travelhubmongolia/?__d=1utm_sourceig_embed"
+                  href="https://www.instagram.com/travelhubmongolia/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex justify-center items-center w-9 h-9 text-neutral-300 hover:text-white bg-neutral-900 hover:bg-[#15803d] rounded-full border border-neutral-700 hover:border-[#15803d] transition-all"
@@ -80,7 +95,7 @@ export default function Footer({
 
                 {/* YouTube */}
                 <a
-                  href="https://www.youtube.com/@travelhubmongolia7049"
+                  href="https://www.youtube.com/@TravelHubMongolia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex justify-center items-center w-9 h-9 text-neutral-300 hover:text-white bg-neutral-900 hover:bg-[#15803d] rounded-full border border-neutral-700 hover:border-[#15803d] transition-all"

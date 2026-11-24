@@ -8,9 +8,13 @@ import RegionMap from '@/components/RegionMap';
 import SeasonRecommendations from '@/components/SeasonRecommendations';
 import TopDestinations from '@/components/TopDestinations';
 import { ShortsTabs } from '@/components/shorts/Shorts';
+import { VideoGrid } from '@/components/videos/Videos';
 import { client as baseClient, rethrowOutage } from '@/lib/contentful';
+import { getProvinceSliderImages } from '@/lib/provinceSlider';
 import { SHORTS_BASE } from '@/lib/shorts';
 import { getShortsTopics } from '@/lib/shortsData';
+import { VIDEOS_BASE, VIDEOS_HOME_COUNT, VIDEOS_TITLE } from '@/lib/videos';
+import { getVideos } from '@/lib/videosData';
 const client = baseClient as any;
 
 // Цаг тутам дахин үүснэ: Shorts-ийн fetch кэш (24 цаг) шинэчлэгдсэний дараа шинэ бичлэг удалгүй гарна.
@@ -51,14 +55,16 @@ export default async function Home() {
   const recommendations = await getRecommendations();
   // Бичлэггүй сэдвийн таб харагдахгүй
   const shorts = (await getShortsTopics()).filter((t) => t.videos.length > 0);
+  // «Монголын үзэсгэлэн»: API алдаатай (null) эсвэл хоосон бол хэсэг нуугдана
+  const [videos, provinceImages] = await Promise.all([getVideos(), getProvinceSliderImages()]);
 
   return (
-    <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
+    <main className="min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
       {/* 1. HERO ХЭСЭГ (ГҮЙЛГЭХЭД ТОГЛОГДОХ НИСЛЭГ) */}
       <HeroFlight />
 
       {/* 2. АЙМГУУДЫН ИНТЕРАКТИВ ЗУРАГ */}
-      <RegionMap />
+      <RegionMap images={provinceImages} />
 
       {/* 3. ОНЦЛОХ ГАЗРУУДЫН СЛАЙДЕР */}
       <TopDestinations items={destinations} />
@@ -78,6 +84,34 @@ export default async function Home() {
             </Link>
           </div>
           <ShortsTabs categories={shorts} />
+        </section>
+      )}
+
+      {/* 4б. ХЭВТЭЭ БИЧЛЭГ «Монголын үзэсгэлэн»: playlist-ийн эхний 3 (lib/videosData.ts, components/videos/) */}
+      {videos && videos.length > 0 && (
+        <section aria-labelledby="videos-heading" className="py-10 px-6 mx-auto max-w-7xl sm:px-10">
+          {/* Гар утсанд (<640px) товч гарчгийн доор бүтэн өргөнөөр, түүнээс өргөнд нэг мөрөнд босоо голлосон.
+              Ногоон нь Shorts-ийн идэвхтэй ангиллын товчтой ижил (#15803d). Серверт нэг удаа render хийгдэх
+              статик бичвэр тул Google Translate орчуулсан ч React дахин хөндөхгүй; тоо, сум notranslate. */}
+          <div className="flex flex-col gap-3 mb-5 sm:flex-row sm:gap-4 sm:justify-between sm:items-center">
+            <h2 id="videos-heading" className="text-xl font-black tracking-tight text-neutral-900 sm:text-3xl">
+              {VIDEOS_TITLE}
+            </h2>
+            <Link
+              href={VIDEOS_BASE}
+              data-ga-event="videos_view_all"
+              className="inline-flex shrink-0 gap-2 justify-center items-center py-2.5 px-5 w-full text-[15px] font-medium text-white rounded-full shadow-sm transition-colors sm:w-auto sm:text-base bg-[#15803d] hover:bg-[#166534] focus-visible:bg-[#166534] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15803d] focus-visible:ring-offset-2"
+            >
+              <span>Бүх бичлэгийг үзэх</span>
+              <span translate="no" className="notranslate">
+                ({videos.length})
+              </span>
+              <span aria-hidden="true" translate="no" className="notranslate">
+                →
+              </span>
+            </Link>
+          </div>
+          <VideoGrid videos={videos.slice(0, VIDEOS_HOME_COUNT)} source="home" />
         </section>
       )}
 

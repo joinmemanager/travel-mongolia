@@ -279,3 +279,61 @@ Contentful-ээс уншина. Build нь `DATABASE_URI` байвал migration
 **12/1-д бэлэн үү:** өгөгдөл, зураг, тулгалт — **бэлэн** (Neon дээр). Үлдсэн нь: preview-г push хийж бодит Vercel
 орчинд шалгах, admin-ий 2FA, `main`-ийн шинэ өөрчлөлтийг `feat/payload` руу merge, эцсийн экспорт/импорт
 (`--enhanced` хамт; шинэ R2 багана, collation migration аль хэдийн Neon-д).
+
+## 11. 11/24: `main`-ийг `feat/payload` руу merge
+
+`main` (`4f0c1d5`) → `feat/payload`: merge-base `3b61cc6`-аас хойших 336 commit (773 файл; ихэнх нь `data/rewrites/*.md`
+ба `docs/`). Код: цэс v2 + mega menu, «Байгалийн өв»-ийн 4 хуудас (`/nature/*`), «Монголын үзэсгэлэн» (`/videos`,
+нүүрний хэсэг), footer-ийн дээрх статистик + GA4 (`/api/stats`), «Бидний тухай» (`/about-us`), header-ийн засвар,
+аймгийн слайдерын өөрийн зураг, аймгийн alias redirect (`next.config.js`), сүлдтэй сумд, joinme/publish-run скрипт.
+
+**Байршил:** шинэ хуудсуудыг `app/(site)/about-us`, `app/(site)/nature`, `app/(site)/videos` руу зөөв; `app/api/stats`
+нь `app/api/`-д (payload-ийн хувилбарт ч `api` тэнд). Бусад өөрчлөгдсөн хуудсыг git rename-ээр `app/(site)/`-д
+автоматаар нэгтгэсэн. `app/(site)/layout.tsx`-ийн Search Console verification, GA4 хэвээр (зөвхөн statistics/footer
+нэмэгдсэн).
+
+**Зөрчил (3), хоёр талыг хадгалсан:**
+
+| Файл | Шийдэл |
+|---|---|
+| `next.config.js` | Payload-ийн `withPayload`, R2 host + main-ийн `provinceAliases` redirect хоёулаа |
+| `app/(site)/page.tsx` | main-ийн шинэ import (бичлэг, слайдер) `@/` alias-аар |
+| `app/(site)/province/[id]/[soum]/page.tsx` | main-ийн `emblemSrc` (Commons hero-той сумын сүлд) + payload-ийн `t('emblemOf')` орчуулга |
+
+**Payload горимд ажиллуулахын тулд нэмсэн засвар:**
+1. `app/(i18n)/[lang]/layout.tsx` — main `PLAN_SECTION_ID`-г хассан тул хэлний layout эвдэрч байсан; footer v2
+   (`FOOTER_NAVIGATION`, «Бидний тухай» холбоос) тусгав. Статистикийн хэсгийг хэлний хуудсанд **оруулаагүй**: шошго нь
+   зөвхөн монгол (`lib/siteStats.ts`). Орчуулсны дараа нэмнэ.
+2. `lib/cms/payloadSource.ts` — **зэрэгцээ query-ийн хязгаар (3)**: статистик layout-д build-ийн 7 worker бүрт 13 төрлийн
+   бүх entry-г sitemap-тэй зэрэг татаж Neon-ий pool (max 5)-ыг дүүргэж «timeout exceeded when trying to connect» → build
+   унаж байсан. Одоо build амжилттай.
+3. `lib/cms/payloadSource.ts` — **олон төрөлтэй холбоосын шүүлт** (`fields.place.sys.id` г.м.): өмнө нь зөвхөн
+   `place.value`-аар шүүдэг тул өөр collection-ий ижил id-тай doc таарч байв (Орхоны хөндийн хуудсанд Хөвсгөлийн
+   `visitorGuidance`). Merge-ээс өмнө ч байсан алдаа, `compare-urls`-аар илэрсэн. Одоо `relationTo`-гоор хамт.
+4. `lib/soumEmblems.ts` — 12 сүлд `images.ctfassets.net`-ээр шууд заагдсан байсан. `soumEmblemUrl()`: `CMS_SOURCE=payload`
+   үед R2 хуулбар (Neon-д 12/12 байгааг шалгав, R2 200). Contentful хаагдсаны дараа ч ажиллана.
+5. Contentful-ээс уншдаг шинэ код (`lib/contentfulAll.ts`, `lib/siteStats.ts`, `lib/provinceSlider.ts`, `app/sitemap.ts`)
+   бүгд `lib/contentful.ts`-ийн `client.getEntries`-ээр явдаг тул адаптерт өөрчлөлтгүй ажиллана (query бүгд дэмжигдсэн).
+   Бичлэг (`lib/videosData.ts`) YouTube API-аас — CMS-ээс хамааралгүй.
+
+**Шалгалт:**
+
+| | Үр дүн |
+|---|---|
+| `tsc --noEmit` | өмнөх 2 алдаа л (map/page, RoutesExplorer) + gitignore-той `_scratch` |
+| `next build` (Turbopack, `CMS_SOURCE=payload`, Neon, цэвэр кэш) | ✅ 118/118 static, pool timeout 0 |
+| `next build` (`CMS_SOURCE=snapshot`, 11/16 экспорт) | ✅ |
+| Smoke 15 хаяг × 3 горим (payload / snapshot / **contentful** dev) | бүгд 200 эсвэл хүлээгдсэн 308; цэс v2, статистик (21 аймаг, 300 сум, 2,300 хуудас, 2,200 зураг, 6 хэл), слайдер 10 зураг; payload-д зураг бүгд R2 (ctfassets 0) |
+| `/province/umnugovi` | 308 → `/province/umnugov` (гурван горимд), `/province/south-gobi/bayandalai` → `/province/umnugov/bayandalai` |
+| `compare-urls.mjs` (snapshot ↔ payload) | sitemap 2,377 = 2,377; 340 хуудаснаас **338 ижил**, 2 нь «Зургийн цомог» (Архангай, Баян-Өлгий; §10-ын хүлээгдэж буй ялгаа) → **бодит зөрүү 0** |
+
+Локалд `YOUTUBE_API_KEY`, GA4 түлхүүр байхгүй тул нүүрний бичлэгийн хэсэг нуугдаж, `/videos` noindex, зочдын мөр
+харагдахгүй — preview дээр (Vercel env-тэй) шалгана. Contentful горимын шалгалт Preview API-аар ≈ хэдэн арван унших
+хүсэлт зарцуулсан (бичилт 0).
+
+**Анхаар:** `next build`-ийг `NEXT_DIST_DIR=.next-*`-ээр ажиллуулбал тэр хавтас gitignore-д байхгүй тул Tailwind түүнийг
+сканнердаж CSS эвдэрнэ (локал dev 500), мөн build tsconfig.json-д зам нэмдэг — ажлын дараа хавтсыг устгаж,
+tsconfig-ийг буцаах.
+
+**Preview:** `/api/stats`-ийн анхны хариу payload горимд ≈20 сек (13 төрлийн бүх entry, хязгаартай зэрэгцээ),
+дараа нь өдөрт 1 кэш.

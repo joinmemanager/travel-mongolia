@@ -11,6 +11,8 @@ const r2Host = (() => {
   }
 })();
 
+const provinceAliases = require('./lib/provinceAliases.json');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Локал тулгалтад хоёр dev server зэрэг ажиллуулахад (scripts/payload/compare-urls.mjs). Анхдагч .next хэвээр.
@@ -30,16 +32,17 @@ const nextConfig = {
       // Богино бичлэгийн хуучин хуудсууд → «Фото/видео түүх» хэсэг (lib/shorts.ts SHORTS_BASE)
       { source: '/stories/shorts', destination: '/stories/photo-video', permanent: true },
       { source: '/stories/shorts/:slug', destination: '/stories/photo-video/:slug', permanent: true },
-      // Нүүрний газрын зургийн (RegionMap) хуучин аймгийн хаягууд → Contentful-ийн slug (tic-migration.md)
-      ...[
-        ['bayan-olgii', 'bayan-ulgii'],
-        ['govi-altai', 'gov-altai'],
-        ['hovsgol', 'khuvsgul'],
-        ['dundgovi', 'dundgov'],
-        ['omnogovi', 'umnugov'],
-        ['dornogovi', 'dornogov'],
-        ['govisumber', 'govsumber'],
-      ].map(([from, to]) => ({ source: `/province/${from}`, destination: `/province/${to}`, permanent: true })),
+      // Аймгийн нэрийн өөр бичлэгүүд (umnugovi, omnogovi г.м.) → сайтын slug, сумын хуудсуудтай нь.
+      // Routing түвшинд: хуудас render, ISR, Contentful-аас хамааралгүй тогтвортой 308 (lib/provinceFacts.ts).
+      // ASCII бус бичлэг (bayan-ölgii г.м.) хуудсан дахь redirect-ээр шилжинэ.
+      ...Object.entries(provinceAliases).flatMap(([to, names]) =>
+        names
+          .filter((from) => /^[a-z0-9-]+$/.test(from))
+          .flatMap((from) => [
+            { source: `/province/${from}`, destination: `/province/${to}`, permanent: true },
+            { source: `/province/${from}/:soum`, destination: `/province/${to}/:soum`, permanent: true },
+          ])
+      ),
     ];
   },
   // Hero бичлэг, poster, кадрууд: нэрэнд агуулгын hash байгаа тул (scripts/hero/build-hero-flight.sh)

@@ -7,6 +7,7 @@ import { entryUrls, submitIndexNow } from '@/lib/indexNow';
 import { revalidateEntry } from '@/lib/revalidateEntry';
 import { SHORTS_BASE, SHORTS_LANGS, SHORTS_TAG } from '@/lib/shorts';
 import { checkShortsApi } from '@/lib/shortsData';
+import { VIDEOS_BASE, VIDEOS_TAG } from '@/lib/videos';
 
 // Contentful webhook (Entry.publish / Entry.unpublish) → тухайн entry-ийн хуудсыг шууд шинэчилнэ.
 // Хуудсууд 7 хоногт нэг л дахин үүсдэг (revalidate = 604800), Contentful-ын хариу Data Cache-д 7 хоног
@@ -55,6 +56,16 @@ export async function POST(req: Request) {
     revalidatePath('/sitemap.xml');
     langPaths.forEach((p) => revalidatePath(p));
     return Response.json({ ok: true, tag: SHORTS_TAG, revalidated: paths });
+  }
+
+  // «Монголын үзэсгэлэн» бичлэгийг гараар шинэчлэх: POST /api/revalidate?tag=videos (lib/videosData.ts).
+  // Шинэчлэлт алдаа өгвөл fetch кэшийн өмнөх сайн хариу үлдэнэ (зөвхөн 200 хадгалагддаг).
+  if (new URL(req.url).searchParams.get('tag') === VIDEOS_TAG) {
+    revalidateTag(VIDEOS_TAG, { expire: 0 });
+    revalidatePath('/');
+    revalidatePath(VIDEOS_BASE);
+    revalidatePath('/sitemap.xml');
+    return Response.json({ ok: true, tag: VIDEOS_TAG, revalidated: ['/', VIDEOS_BASE, '/sitemap.xml'] });
   }
 
   let payload: any;

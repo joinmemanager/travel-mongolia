@@ -174,6 +174,20 @@ async function payloadIdsFor(payload: any, collections: string[], cfIds: string[
   return ids;
 }
 
+// fields.X.sys.id / fields.X.sys.id[in] (X нь олон төрөлтэй холбоос) → { X.relationTo = c AND X.value IN ids_c } -ийн OR
+async function polymorphicLinkWhere(payload: any, name: string, collections: string[], cfIds: string[]): Promise<Where> {
+  const or: Where[] = [];
+  const cf = cfIds.filter((x) => !/^\d+$/.test(x));
+  for (const collection of cf.length ? collections : []) {
+    const ids = await payloadIdsFor(payload, [collection], cf);
+    if (ids.length) or.push({ and: [{ [`${name}.relationTo`]: { equals: collection } }, { [`${name}.value`]: { in: ids } }] });
+  }
+  // Payload-д шинээр үүссэн doc-ийн sys.id (тоо): collection нь тодорхойгүй тул value-аар
+  const numeric = cfIds.filter((x) => /^\d+$/.test(x)).map(Number);
+  if (numeric.length) or.push({ [`${name}.value`]: { in: numeric } });
+  return or.length ? { or } : { id: { equals: -1 } };
+}
+
 const listOf = (v: any): string[] => (Array.isArray(v) ? v : String(v).split(',')).map((x) => String(x).trim()).filter(Boolean);
 
 function sysIdWhere(values: string[]): Where {
@@ -201,7 +215,14 @@ async function buildWhere(payload: any, collection: string, query: Query, draft:
       }
       let values: any[] = op === 'in' || op === 'nin' ? listOf(raw) : [raw];
       const path = f.kind === 'relationship' && (f.relationTo?.length || 0) > 1 ? `${name}.value` : name;
-      if (isLink) values = await payloadIdsFor(payload, f.relationTo || ['media'], values.map(String));
+      // Олон төрөлтэй холбоос: id нь collection бүрт тусдаа дугаарлагддаг тул relationTo-гоор хамт шүүнэ. Өмнө нь
+      // зөвхөн value-аар шүүдэг байсан тул өөр collection-ий ижил id-тай doc таарч, жишээ нь Орхоны хөндийн
+      // (heritagePlace) хуудсанд Хөвсгөл нуурын (destination) visitorGuidance гарч байв (2026-11-24, compare-urls).
+      if (isLink && path !== name && (op === 'in' || !op)) {
+        and.push(await polymorphicLinkWhere(payload, name, f.relationTo || [], values.map(String)));
+        continue;
+      }
+      if (isLink) values =await payloadIdsFor(payload, f.relationTo || ['media'], values.map(String));
       if (f.kind === 'number') values = values.map(Number);
       if (f.kind === 'checkbox') values = values.map((v) => v === true || v === 'true');
       if (op === 'exists') and.push({ [path]: { exists: raw === true || raw === 'true' } });
@@ -241,7 +262,29 @@ export interface PayloadQueryOptions {
   draft: boolean;
 }
 
-export async function payloadGetEntries(query: Query, { locale, draft }: PayloadQueryOptions) {
+// Процесс бүрт зэрэгцээ query-ийн хязгаар (payload.config.ts-ийн pool max 5-аас бага). Footer-ийн статистик
+// (lib/siteStats.ts) build-ийн worker бүрт 13 төрлийн бүх entry-г sitemap-тэй зэрэг татдаг тул хязгааргүй үед pool
+// дүүрч «timeout exceeded when trying to connect» (connectionTimeoutMillis 10 сек) гарч build унаж байв
+// (2026-11-24, main-ийг merge хийсний дараа). Дараалал pg pool-д биш энд хүлээнэ.
+const MAX_CONCURRENT = 3;
+let active = 0;
+const waiters: (() => void)[] = [];
+async function limited<T>(fn: () => Promise<T>): Promise<T> {
+  while (active >= MAX_CONCURRENT) await new Promise<void>((r) => waiters.push(r));
+  active++;
+  try {
+    return await fn();
+  } finally {
+    active--;
+    waiters.shift()?.();
+  }
+}
+
+export function payloadGetEntries(query: Query, options: PayloadQueryOptions) {
+  return limited(() => getEntriesNow(query, options));
+}
+
+async function getEntriesNow(query: Query, { locale, draft }: PayloadQueryOptions) {
   const collection = query.content_type as string;
   const limit = Math.min(Number(query.limit ?? 100), 1000);
   const skip = Number(query.skip ?? 0);

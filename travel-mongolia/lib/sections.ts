@@ -1,11 +1,11 @@
 // Хэсгийн хуудсуудын нэгдсэн загвар (docs/plan/section-layout.md).
 // Мега цэсний баганын гарчиг дээр дарахад нээгдэх хэсэг бүрийн hero, зүүн талын «Сэдвийн жагсаалт».
-// Жагсаалтын мөрүүдийг MAIN_NAVIGATION-ийн тухайн зүйлийн children-оос үүсгэнэ (нэг эх сурвалж),
-// тиймээс нэр, хаяг, төлвийг зөвхөн lib/navigation.ts-д өөрчилнө.
+// Жагсаалтын мөрүүдийг SECTION_PAGE_NAV-ийн (lib/navigation.ts) тухайн зүйлийн children-оос үүсгэнэ.
+// Цэс v2-оос (2026-11-20) хойш дээд цэс (MAIN_NAVIGATION) өөр бүтэцтэй тул хэсгийн жагсаалт тусдаа. kicker = шинэ цэсний хэсэг.
 // Hero зургийг бүгдийг энд нэг дор тохируулна.
 
 import { IMAGES, type SiteImage } from './images';
-import { MAIN_NAVIGATION, type NavItem } from './navigation';
+import { SECTION_PAGE_NAV, type NavItem } from './navigation';
 
 export interface SectionHeroConfig {
   image: SiteImage;
@@ -16,7 +16,7 @@ export interface SectionHeroConfig {
 
 export interface SectionConfig {
   id: string;
-  // MAIN_NAVIGATION дахь зүйлийн href (= хэсгийн үндсэн хаяг)
+  // SECTION_PAGE_NAV дахь зүйлийн href (= хэсгийн үндсэн хаяг)
   baseHref: string;
   hero: SectionHeroConfig;
   // Жагсаалтын эхний мөрийн нэр (үндсэн хаяг). Байхгүй бол «Тойм»
@@ -41,13 +41,13 @@ export interface SectionRow {
 // Hero зургууд docs/plan/images.md-ийн Монголынх нь шалгагдсан зургуудаас.
 // Хоол, Хүмүүс, Фото/видеод тохирох зураг хараахан байхгүй: хамгийн ойрыг түр тавьсан.
 export const SECTIONS: SectionConfig[] = [
-  // ---- Монголыг нээ
+  // kicker нь цэс v2-ийн хэсгийн нэр (хуудас аль хэсэгт хамаарахаар)
   {
     id: 'about',
     baseHref: '/about/at-a-glance',
     hero: {
       image: IMAGES.whiteHorse,
-      kicker: 'Монголыг нээ',
+      kicker: 'Түүх, соёл',
       intro: 'Мөнх хөх тэнгэрийн орон, нүүдэлчдийн өлгий нутгийн газарзүй, түүх, өнөөгийн амьдралын тухай товч танилцуулга.',
     },
   },
@@ -56,7 +56,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/things-to-do',
     hero: {
       image: IMAGES.camels,
-      kicker: 'Монголыг нээ',
+      kicker: 'Монгол орноор',
       intro: 'Байгаль, адал явдал, соёл, хоол, нүүдэлчин ахуй: Монголд үзэж, хийж болох бүхэн.',
     },
   },
@@ -65,7 +65,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/stories',
     hero: {
       image: IMAGES.gerStars,
-      kicker: 'Монголыг нээ',
+      kicker: 'Түүх, соёл',
       intro: 'Монголын соёл, байгаль, нүүдэлчдийн амьдрал, хоол, хүмүүсийн тухай түүхүүд.',
     },
   },
@@ -76,17 +76,16 @@ export const SECTIONS: SectionConfig[] = [
     overviewLabel: 'Уламжлалт баяр наадам',
     hero: {
       image: IMAGES.eagleHunter,
-      kicker: 'Монголыг нээ',
+      kicker: 'Монгол орноор',
       intro: 'Наадам, Цагаан сар, Бүргэдийн баяр зэрэг Монголын уламжлалт баяр наадам, фестивалиуд.',
     },
   },
-  // ---- Түүх & өв
   {
     id: 'culture',
     baseHref: '/about/culture',
     hero: {
       image: IMAGES.chinggisStatue,
-      kicker: 'Түүх & өв',
+      kicker: 'Түүх, соёл',
       intro: 'Монголын уламжлалт соёл, урлаг, ёс заншил, ЮНЕСКО-д бүртгэгдсэн өв.',
     },
   },
@@ -95,7 +94,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/about/nature',
     hero: {
       image: IMAGES.redCliffs,
-      kicker: 'Түүх & өв',
+      kicker: 'Байгалийн өв',
       intro: 'Говь, тал хээр, тайга, Алтайн нуруу болон Монголын ховор зэрлэг амьтад.',
     },
   },
@@ -104,7 +103,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/about/nomadic-life',
     hero: {
       image: IMAGES.herdSnow,
-      kicker: 'Түүх & өв',
+      kicker: 'Монгол орноор',
       intro: 'Гэр, таван хошуу мал, улирлын нүүдэл: нүүдэлчдийн өдөр тутмын амьдрал.',
     },
   },
@@ -113,7 +112,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/about/food',
     hero: {
       image: IMAGES.gerCamp, // түр: хоолны шалгагдсан зураг хэрэгтэй
-      kicker: 'Түүх & өв',
+      kicker: 'Түүх, соёл',
       intro: 'Цагаан идээ, айраг, бууз, хорхог: уламжлалт монгол хоол, ундаа.',
     },
   },
@@ -122,7 +121,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/about/people',
     hero: {
       image: IMAGES.herderBoy,
-      kicker: 'Түүх & өв',
+      kicker: 'Түүх, соёл',
       intro: 'Монгол үндэстэн, ястан угсаатнууд, хэл бичиг, хүмүүсийн онцлог.',
     },
   },
@@ -133,11 +132,11 @@ export const SECTIONS: SectionConfig[] = [
     overviewLabel: 'Бүгд',
     heroTitle: 'Монгол орныг богино бичлэгээр',
     // ia-plan.md C10: /stories нь «Түүх & өв» hub
-    parentCrumb: { label: 'Түүх & өв', href: '/stories' },
+    parentCrumb: { label: 'Архив, түүхүүд', href: '/stories' },
     rowEvent: { name: 'shorts_category_select', param: 'category', source: 'section_page' },
     hero: {
       image: IMAGES.eagleHunter,
-      kicker: 'Түүх & өв',
+      kicker: 'Түүх, соёл',
       intro: 'Монголын уламжлал, түүх, шашин, байгалийн өв соёлыг богино бичлэгээр сонирхоорой.',
     },
   },
@@ -146,7 +145,7 @@ export const SECTIONS: SectionConfig[] = [
     baseHref: '/plan/before-you-travel',
     hero: {
       image: IMAGES.lakeGers,
-      kicker: 'Түүх & өв',
+      kicker: 'Ээлтэй аялал',
       intro: 'Виз, мөнгө, холбоо, улирал: Монголд аялахаас өмнө мэдэх хэрэгтэй зүйлс.',
     },
   },
@@ -162,7 +161,7 @@ export function getSection(id: string): SectionConfig {
 
 // Цэсний зүйл: хэсгийн нэр (hero гарчиг, breadcrumb) болон дэд хуудсууд
 function navItemOf(section: SectionConfig): NavItem | undefined {
-  return MAIN_NAVIGATION.flatMap((s) => s.items).find(
+  return SECTION_PAGE_NAV.find(
     (i) => pathOf(i.href) === section.baseHref
   );
 }

@@ -21,11 +21,12 @@ import Navbar from '@/components/Navbar';
 import { siteFont } from '@/lib/fonts';
 import { LOCALES, localeByPrefix } from '@/lib/i18n/locales';
 import {
+  ABOUT_US_HREF,
   FOOTER_LEGAL,
   FOOTER_NAVIGATION,
   MAIN_NAVIGATION,
-  PLAN_SECTION_ID,
   isPreviewEnv,
+  liveHref,
   visibleItems,
   visibleSections,
 } from '@/lib/navigation';
@@ -49,9 +50,11 @@ export default async function LangRootLayout({ children, params }: { children: R
         <LanguageProvider>
           <Navbar sections={visibleSections(MAIN_NAVIGATION, preview)} />
           {children}
+          {/* Footer-ийн дээрх статистик (SiteStatsSection) энд байхгүй: шошгууд зөвхөн монгол (lib/siteStats.ts) */}
           <Footer
-            groups={visibleSections([...MAIN_NAVIGATION.filter((s) => s.id === PLAN_SECTION_ID), ...FOOTER_NAVIGATION], preview)}
+            groups={visibleSections(FOOTER_NAVIGATION, preview)}
             legal={visibleItems(FOOTER_LEGAL, preview)}
+            aboutHref={liveHref(ABOUT_US_HREF)}
           />
         </LanguageProvider>
       </body>

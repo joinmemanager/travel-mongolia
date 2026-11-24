@@ -1,0 +1,20 @@
+{
+  "arkhangai": ["arkhangay", "arhangai", "arkhangai-aimag"],
+  "bayan-ulgii": ["bayan-olgii", "bayan-ulgiy", "bayanulgii", "bayan-olgiy", "bayan-ölgii"],
+  "bayankhongor": ["bayanhongor", "bayan-khongor"],
+  "darkhan-uul": ["darkhan", "darkhanuul", "darhan-uul"],
+  "dornogov": ["dornogovi", "dornogobi", "dornogovi-aimag", "east-gobi"],
+  "dundgov": ["dundgovi", "dundgobi", "middle-gobi"],
+  "gov-altai": ["govi-altai", "gobi-altai", "govialtai", "gov-altay", "govi-altay"],
+  "govsumber": ["govisumber", "gobisumber", "govi-sumber", "gov-sumber"],
+  "khentii": ["hentii", "khentiy", "khentei"],
+  "khovd": ["hovd", "khovd-aimag"],
+  "khuvsgul": ["khovsgol", "hovsgol", "huvsgul", "khuvsgul-aimag"],
+  "orkhon": ["erdenet", "orhon"],
+  "umnugov": ["umnugovi", "omnogovi", "umnugobi", "omnogobi", "south-gobi"],
+  "uvurkhangai": ["ovorkhangai", "uvurhangai", "ovorhangai"],
+  "sukhbaatar": ["suhbaatar", "sükhbaatar"],
+  "tuv": ["tov", "töv", "tuv-aimag"],
+  "zavkhan": ["zavhan", "dzavkhan"],
+  "ulaanbaatar": ["ub", "ulan-bator", "ulaan-baatar"]
+}

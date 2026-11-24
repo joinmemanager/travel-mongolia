@@ -1,8 +1,9 @@
 'use client';
 
-import Image from 'next/image';
-import { photoSrc } from '@/lib/images';
 import Link from 'next/link';
+
+import { cdnImage } from '@/lib/imageUrl';
+import type { SliderImage } from '@/lib/provinceSlider';
 import React, { useState } from 'react';
 
 import { Language, useLanguage } from './LanguageContext';
@@ -11,7 +12,6 @@ interface ProvinceData {
   id: string;
   name: Record<Language, string>;
   description: Record<Language, string>;
-  images: string[];
   svgPoint: { x: number; y: number };
 }
 
@@ -35,7 +35,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'アルタイ・タワン・ボグド山脈、氷河、鷹匠文化。',
       ko: '알타이 타반 복드 산맥, 거대한 빙하, 독수리 사냥 문화.',
     },
-    images: ['/bayn-ulgii1.png'],
     svgPoint: { x: 100, y: 175 },
   },
   {
@@ -56,7 +55,6 @@ const PROVINCES: ProvinceData[] = [
       ja: '世界遺産ウヴス・ヌール湖と雄大な砂丘群。',
       ko: '유네스코 세계유산 오브스 누르 호수와 광활한 모래 언덕.',
     },
-    images: ['/uvs1.png'],
     svgPoint: { x: 215, y: 145 },
   },
   {
@@ -77,7 +75,6 @@ const PROVINCES: ProvinceData[] = [
       ja: '多様な民族の故郷、ハル・ウス湖、ホーミー発祥の地。',
       ko: '다양한 민족의 고향, 하르우스 호수와 후미 창법.',
     },
-    images: ['/hovd1.png'],
     svgPoint: { x: 175, y: 245 },
   },
   {
@@ -98,7 +95,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'オトゴンテンゲル山、ムハルト川、ウラーグチーン・ハル湖。',
       ko: '오트공 텡게르 봉우리와 울락치니 하르 호수.',
     },
-    images: ['/zavhan1.png'],
     svgPoint: { x: 305, y: 185 },
   },
   {
@@ -119,9 +115,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'アルタイ山脈とゴビ砂漠が交わる地、ゴビヒグマの生息地。',
       ko: '알타이 산맥과 고비가 만나는 곳, 고비곰의 고향.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 285, y: 310 },
   },
 
@@ -144,9 +137,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'フブスグル湖、タイガの森、トナカイ遊牧民。',
       ko: '홉스골 호수와 타이가 숲, 순록 유목민의 삶.',
     },
-    images: [
-      photoSrc('lakeGers', 800),
-    ],
     svgPoint: { x: 415, y: 115 },
   },
   {
@@ -167,9 +157,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'テルヒーン・ツァガーン湖、ホルゴ火山、温泉地帯。',
       ko: '테르힝 차강 호수, 호르고 화산, 천연 온천.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 440, y: 215 },
   },
   {
@@ -190,9 +177,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'ウラン・トゴー休火山と馬乳酒の産地。',
       ko: '우랑 토고 휴화산과 아이락의 고향.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 505, y: 165 },
   },
   {
@@ -213,9 +197,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'モンゴル第二の工業都市エルデネット。',
       ko: '몽골의 산업 중심지 에르데네트 시.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 520, y: 150 },
   },
   {
@@ -236,9 +217,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'セレンゲ川流域とアマルバヤスパラント寺院。',
       ko: '셀렝게 강 유역과 아마르바야스갈란트 사원.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 575, y: 115 },
   },
   {
@@ -259,9 +237,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'ダルハン市、若者の街と美しいモニュメント。',
       ko: '청춘의 도시 다르항과 현대적인 기념비.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1578922746465-3a80a228f223?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 565, y: 135 },
   },
 
@@ -284,7 +259,6 @@ const PROVINCES: ProvinceData[] = [
       ja: '伝統と現代が息づくモンゴルの首都。',
       ko: '전통과 현대가 공존하는 몽골의 수도.',
     },
-    images: ['/ulaanbaatar.png'],
     svgPoint: { x: 595, y: 195 },
   },
   {
@@ -305,9 +279,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'チンギスハーン騎馬像、テレルジ国立公園、野生馬タヒ。',
       ko: '칭기즈칸 기마상, 테를지 국립공원, 야생마 타키의 서식지.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 585, y: 225 },
   },
   {
@@ -328,9 +299,6 @@ const PROVINCES: ProvinceData[] = [
       ja: '古都カラコルム、エルデネ・ゾー、オルホン滝。',
       ko: '고도 하르호린, 에르데네 주 사원, 오르홍 폭포.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 470, y: 275 },
   },
 
@@ -353,9 +321,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'シャルガルジュート温泉とツァガーン洞窟。',
       ko: '샤르갈주트 천연 온천과 이흐 복드 산.',
     },
-    images: [
-      photoSrc('camels', 800),
-    ],
     svgPoint: { x: 385, y: 295 },
   },
   {
@@ -376,9 +341,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'イフ・ガズリーン・チョローの花崗岩群。',
       ko: '이흐, 바가 가즈링 촐로의 기암괴석 군락지.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 575, y: 285 },
   },
   {
@@ -399,9 +361,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'ホンゴル砂丘、バヤンザグ、ヨリーン・アム。',
       ko: '홍고린 엘스 사구, 바얀작, 욜린 암 협곡.',
     },
-    images: [
-      photoSrc('redCliffs', 800),
-    ],
     svgPoint: { x: 495, y: 375 },
   },
   {
@@ -422,9 +381,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'ハマリーン寺院とシャンバラ・エネルギーセンター。',
       ko: '하마린 사원과 샴발라 에너지 센터.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 675, y: 325 },
   },
   {
@@ -445,9 +401,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'チョイル・ボグド山と鉄道の結節点。',
       ko: '초이르 복드 산과 몽골 종단 철도의 길목.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 635, y: 250 },
   },
 
@@ -470,9 +423,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'チンギスハーン生誕の地と世界遺産ブルハン・カルドゥン山。',
       ko: '칭기즈칸 탄생지 델룬 볼독과 부르한 할둔 산.',
     },
-    images: [
-      photoSrc('herderBoy', 800),
-    ],
     svgPoint: { x: 695, y: 185 },
   },
   {
@@ -493,9 +443,6 @@ const PROVINCES: ProvinceData[] = [
       ja: 'シリーン・ボグド山と白鳥が集うガンガ湖。',
       ko: '실링 복드 화산, 탈링 동굴, 백조의 호수 강가 누르.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 775, y: 265 },
   },
   {
@@ -516,17 +463,16 @@ const PROVINCES: ProvinceData[] = [
       ja: '果てしないメネン草原とブイル湖。',
       ko: '광활한 메넹 평원과 부이르 호수.',
     },
-    images: [
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop',
-    ],
     svgPoint: { x: 835, y: 175 },
   },
 ];
 
-export default function RegionMap() {
+// images: аймаг бүрийн өөрийн Contentful зураг (lib/provinceSlider.ts, app/page.tsx серверт сонгоно)
+export default function RegionMap({ images = {} }: { images?: Record<string, SliderImage> }) {
   const { locale, t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const activeProvince = PROVINCES[currentIndex];
+  const photo = images[activeProvince.id];
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? PROVINCES.length - 1 : prev - 1));
@@ -562,35 +508,29 @@ export default function RegionMap() {
           {/* ЗҮҮН ТАЛ */}
           <div className="flex overflow-hidden relative flex-col justify-between text-white bg-neutral-900 rounded-3xl shadow-2xl lg:col-span-5">
             <div className="relative w-full h-64 bg-black sm:h-72">
-              {activeProvince.images.length === 1 ? (
-                <Image
-                  src={activeProvince.images[0]}
-                  alt={localizedName}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover transition-all duration-500"
+              {photo ? (
+                // Contentful-ийн CDN-ээс шууд (WebP, 800 px), Vercel-ийн зургийн оновчлолгүй
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={photo.src}
+                  src={cdnImage(photo.src, photo.source === 'emblem' ? 400 : 800)}
+                  alt={photo.alt}
+                  loading={currentIndex === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  className={`absolute inset-0 w-full h-full ${
+                    photo.source === 'emblem' ? 'object-contain p-10 bg-neutral-800' : 'object-cover'
+                  }`}
                 />
               ) : (
-                <div className="grid grid-cols-2 gap-1 p-1 w-full h-full">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={activeProvince.images[0]}
-                      alt={localizedName}
-                      fill
-                      sizes="25vw"
-                      className="object-cover rounded-l-2xl transition-all duration-500"
-                    />
-                  </div>
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={activeProvince.images[1]}
-                      alt={localizedName}
-                      fill
-                      sizes="25vw"
-                      className="object-cover rounded-r-2xl transition-all duration-500"
-                    />
-                  </div>
+                // Аймгийн өөрийн зураг Contentful-д байхгүй: stock зураг биш, нэрийг нь харуулна
+                <div className="flex absolute inset-0 justify-center items-center p-8 text-2xl font-black text-center text-white/80 bg-gradient-to-br from-[#14532d] to-neutral-900">
+                  {localizedName}
                 </div>
+              )}
+              {photo?.credit && (
+                <span className="absolute right-2 bottom-2 z-10 py-0.5 px-2 max-w-[80%] text-[10px] text-white/80 truncate rounded bg-black/50">
+                  Зураг: {photo.credit}
+                </span>
               )}
 
               <button
