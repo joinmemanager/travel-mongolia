@@ -12,7 +12,7 @@ Songinokhairkhan District lies in the western part of Ulaanbaatar and takes its 
 
 ## When was Songinokhairkhan District founded?
 
-The capital's Songinokhairkhan District was founded on October 1, 1992, by Resolution No. 18 of 1992 of the State Great Khural of Mongolia. The district lies on the western wing of the capital and borders [Bayangol District](/province/ulaanbaatar#bayangol) and Altanbulag, Bayanchandmani, Bornuur and Batsumber sums of Tuv Province. It covers 120.1 hectares. In 2016 it had 315,802 residents and 73,576 head of livestock. For the capital's other districts, read the [Ulaanbaatar page](/province/ulaanbaatar).
+The capital's Songinokhairkhan District was founded on October 1, 1992, by Resolution No. 18 of 1992 of the State Great Khural of Mongolia. The district lies on the western wing of the capital and borders [Bayangol District](/province/ulaanbaatar#bayangol) and Altanbulag, Bayanchandmani, Bornuur and Batsumber soums of Tuv Province. It covers 120.1 hectares. In 2016 it had 315,802 residents and 73,576 head of livestock. For the capital's other districts, read the [Ulaanbaatar page](/province/ulaanbaatar).
 
 ## How did Songinokhairkhan Mountain get its name, and what are its legends?
 

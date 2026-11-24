@@ -27,7 +27,7 @@ The place was once a low ridge stretching from north to south at the southeaster
 
 ## Where is Nalaikh District?
 
-The district is 36 km southeast of the capital, 1,050–2,060 meters above sea level. It borders [Bayanzurkh District](/province/ulaanbaatar#bayanzurkh) and Sergelen and Erdene sums of Tuv Province. The northern part lies in the forest-steppe zone and the southern part in the steppe zone. For the capital's other districts, read the [Ulaanbaatar page](/province/ulaanbaatar). Its area is 68,800 hectares, or 68,764 hectares exactly, and it is divided into 6 khoroos (sub-districts). The 2011 count found 31,422 people and 39,709 head of livestock.
+The district is 36 km southeast of the capital, 1,050–2,060 meters above sea level. It borders [Bayanzurkh District](/province/ulaanbaatar#bayanzurkh) and Sergelen and Erdene soums of Tuv Province. The northern part lies in the forest-steppe zone and the southern part in the steppe zone. For the capital's other districts, read the [Ulaanbaatar page](/province/ulaanbaatar). Its area is 68,800 hectares, or 68,764 hectares exactly, and it is divided into 6 khoroos (sub-districts). The 2011 count found 31,422 people and 39,709 head of livestock.
 
 ## What natural resources and infrastructure does Nalaikh have?
 

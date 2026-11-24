@@ -42,5 +42,5 @@ statue биш; Алтарганын «наадам» → festival, Naadam биш
 ## Хэв маягийн сонголтууд (санал өгнө үү)
 
 - H2-ыг асуулт болгосон ("How many people live in Dadal and how is it divided?"). Хэт урт санагдвал богиносгоно.
-- "sum" жижиг үсгээр ("Dadal sum", олон тоо "sums"; "soum" биш), "District" том үсгээр ("Nalaikh District").
+- "soum" жижиг үсгээр ("Dadal soum", олон тоо "soums"; "sum" биш), "District" том үсгээр ("Nalaikh District").
 - Байгалийн нэр монгол дарааллаар ("Khuvsgul Lake", "Onon River").
