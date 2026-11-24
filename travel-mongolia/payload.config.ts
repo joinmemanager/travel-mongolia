@@ -12,7 +12,7 @@ import sharp from 'sharp';
 
 import { DEFAULT_LOCALE, LOCALES } from './lib/i18n/locales';
 import { contentCollections, media, team, users } from './payload/collections';
-import { TOTP_OPTIONS } from './payload/security/totpOptions';
+import { ADMIN_2FA_ENABLED, TOTP_OPTIONS } from './payload/security/totpOptions';
 
 // Payload CMS 3 (docs/plan/payload-migration.md). Сайт өгөгдлийг Local API-аар шууд DB-ээс уншина
 // (lib/cms/payloadSource.ts), HTTP API хэрэглэхгүй. Admin: /admin.
@@ -52,18 +52,21 @@ export default buildConfig({
       // /admin-ийг хайлтын системд индексжүүлэхгүй (robots.ts-д ч Disallow, next.config.js-д X-Robots-Tag)
       robots: { index: false, follow: false },
     },
-    components: {
-      afterNavLinks: ['/payload/admin/TwoFactorClient#SecurityNavLink'],
-      // payload-totp-ийн англи /setup-totp, /verify-totp хуудсыг монгол хувилбараар солино (plugin өөрийн views-ийн
-      // ДАРАА config-ийн views-ийг тавьдаг тул ижил түлхүүр дарж бичнэ). Endpoint, cookie, access нь plugin-ийх.
-      views: {
-        SetupTOTP: { Component: '/payload/admin/TwoFactorViews#SetupView', path: '/setup-totp', exact: true },
-        SetupTOTPBackslash: { Component: '/payload/admin/TwoFactorViews#SetupView', path: '/setup-totp', exact: true },
-        VerifyTOTP: { Component: '/payload/admin/TwoFactorViews#VerifyView', path: '/verify-totp', exact: true },
-        VerifyTOTPBackslash: { Component: '/payload/admin/TwoFactorViews#VerifyView', path: '/verify-totp', exact: true },
-        Security: { Component: '/payload/admin/TwoFactorViews#SecurityView', path: '/security', exact: true },
-      },
-    },
+    // 2FA-ийн хуудсууд зөвхөн ADMIN_2FA_ENABLED үед (payload/security/totpOptions.ts)
+    components: ADMIN_2FA_ENABLED
+      ? {
+          afterNavLinks: ['/payload/admin/TwoFactorClient#SecurityNavLink'],
+          // payload-totp-ийн англи /setup-totp, /verify-totp хуудсыг монгол хувилбараар солино (plugin өөрийн views-ийн
+          // ДАРАА config-ийн views-ийг тавьдаг тул ижил түлхүүр дарж бичнэ). Endpoint, cookie, access нь plugin-ийх.
+          views: {
+            SetupTOTP: { Component: '/payload/admin/TwoFactorViews#SetupView', path: '/setup-totp', exact: true },
+            SetupTOTPBackslash: { Component: '/payload/admin/TwoFactorViews#SetupView', path: '/setup-totp', exact: true },
+            VerifyTOTP: { Component: '/payload/admin/TwoFactorViews#VerifyView', path: '/verify-totp', exact: true },
+            VerifyTOTPBackslash: { Component: '/payload/admin/TwoFactorViews#VerifyView', path: '/verify-totp', exact: true },
+            Security: { Component: '/payload/admin/TwoFactorViews#SecurityView', path: '/security', exact: true },
+          },
+        }
+      : {},
   },
   i18n: { supportedLanguages: { en, ru }, fallbackLanguage: 'en' },
   collections: [...contentCollections, media, team, users],
@@ -119,9 +122,12 @@ export default buildConfig({
         }),
       ]
     : []),
-    // Admin-ий 2FA (Google Authenticator) — БҮХ хэрэглэгчид заавал (forceSetup). Бүх collection-ий access-ийг ороодог
-    // тул ЗААВАЛ хамгийн сүүлийн plugin. Нөөц код: payload/security/twoFactor.ts. x-pathname: proxy.ts.
+    // Admin-ий 2FA (Google Authenticator) — асаалттай үед БҮХ хэрэглэгчид заавал (forceSetup). Бүх collection-ий
+    // access-ийг ороодог тул ЗААВАЛ хамгийн сүүлийн plugin. Нөөц код: payload/security/twoFactor.ts. x-pathname: proxy.ts.
+    // ADMIN_2FA_ENABLED = false үед plugin-ийн `disabled`: access, strategy, хуудас, endpoint нэмэхгүй, харин DB-ийн
+    // схем (totp_secret, totp_attempts) хэвээр — дахин асаахад migration хэрэггүй.
     payloadTotp({
+      disabled: !ADMIN_2FA_ENABLED,
       collection: users.slug,
       forceSetup: true,
       forceWhiteBackgroundOnQrCode: true,

@@ -1,13 +1,22 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import type { Access, CollectionBeforeChangeHook, CollectionConfig, Field, FieldAccess } from 'payload';
+import type {
+  Access,
+  CollectionBeforeChangeHook,
+  CollectionBeforeOperationHook,
+  CollectionBeforeValidateHook,
+  CollectionConfig,
+  Field,
+  FieldAccess,
+} from 'payload';
 import { APIError } from 'payload';
 import { totpAccess } from 'payload-totp';
 
 import { TRANSLATION_LOCALES } from '../lib/i18n/locales';
 import { CF_SCHEMA, type CfField } from './cfSchema';
 import { revalidateAfterChange, revalidateAfterDelete, stampCreatedAt } from './hooks';
+import { ADMIN_2FA_ENABLED } from './security/totpOptions';
 import { twoFactorEndpoints } from './security/twoFactor';
 
 // Contentful-ийн 18 content type → 18 Payload collection (slug нь content type-ийн id-тай ИЖИЛ, ингэснээр
@@ -22,8 +31,9 @@ import { twoFactorEndpoints } from './security/twoFactor';
 // ОДООХОНДОО (2026-11): бүх хэрэглэгч admin — ALL_USERS_ADMIN = true үед role талбар нуугдаж, хадгалах бүрт
 // 'admin' болно. Editor/translator эрхийг идэвхжүүлэх: false болгоход л болно (дээрх access функцууд бэлэн).
 //
-// 2FA: payload-totp plugin (payload.config.ts) бүх collection-ий access-ийг «2FA кодоор баталгаажсан сесс» гэсэн
-// шалгалтаар ороодог. Сайт Local API-аар (overrideAccess) уншдаг тул нөлөөгүй.
+// 2FA: ADMIN_2FA_ENABLED (payload/security/totpOptions.ts) — одоо УНТРААЛТТАЙ, имэйл + нууц үгээр нэвтэрнэ.
+// Асаалттай үед payload-totp plugin бүх collection-ий access-ийг «2FA кодоор баталгаажсан сесс» шалгалтаар ороодог;
+// унтраалттай үед totpAccess() нь доторх функцыг шууд дууддаг. Сайт Local API-аар (overrideAccess) уншдаг тул нөлөөгүй.
 export const ALL_USERS_ADMIN = true;
 
 type Role = 'admin' | 'editor' | 'translator';
@@ -37,7 +47,7 @@ const canUpdate: Access = ({ req }) => {
   // Орчуулагч монгол эхийг өөрчлөхгүй
   return r === 'translator' && req.locale !== 'mn';
 };
-// Нийтлэгдсэнийг хэн ч (REST) уншина; ноорогийг зөвхөн 2FA-гаар баталгаажсан хэрэглэгч. Plugin-ий ороолтыг
+// Нийтлэгдсэнийг хэн ч (REST) уншина; ноорогийг зөвхөн нэвтэрсэн (2FA асаалттай бол баталгаажсан) хэрэглэгч. Plugin-ий ороолтыг
 // read-д унтраасан (custom.totp.disableAccessWrapper) — эс бөгөөс нэвтрээгүй хүнд нийтлэгдсэн ч хаагдана.
 const signedIn = totpAccess(() => true);
 const publishedOrUser: Access = async (args) =>
@@ -299,12 +309,27 @@ const guardFirstUser: CollectionBeforeChangeHook = ({ data, operation, req }) =>
   return data;
 };
 
+// Нууц үг ≥ 12 тэмдэгт: үүсгэх (Create first user, Create New), солих (Change Password), сэргээх (reset-password).
+// Payload-ийн өөрийн шалгалт 3 тэмдэгт л шаарддаг. create/update-д data.password нь beforeValidate-д байна.
+export const PASSWORD_MIN_LENGTH = 12;
+const passwordTooShort = (pw: unknown) => typeof pw === 'string' && [...pw].length < PASSWORD_MIN_LENGTH;
+// APIError (isPublic): мессеж admin-ий мэдэгдэл (toast)-д шууд гарна (ValidationError бол «field is invalid» л харагдана)
+const passwordError = () => new APIError(`Нууц үг хамгийн багадаа ${PASSWORD_MIN_LENGTH} тэмдэгт байна.`, 400, undefined, true);
+const checkPasswordLength: CollectionBeforeValidateHook = ({ data }) => {
+  if (passwordTooShort(data?.password)) throw passwordError();
+  return data;
+};
+const checkResetPasswordLength: CollectionBeforeOperationHook = ({ args, operation }) => {
+  if (operation === 'resetPassword' && passwordTooShort((args as any)?.data?.password)) throw passwordError();
+  return args;
+};
+
 export const users: CollectionConfig = {
   slug: 'users',
   labels: { singular: 'Хэрэглэгч', plural: 'Хэрэглэгчид' },
   admin: { useAsTitle: 'email', group: 'Тохиргоо', defaultColumns: ['email', 'name', 'role', 'updatedAt'] },
   auth: {
-    // Нууц үг (ба 2FA код, нөөц код) 5 удаа буруу → хаяг 15 минут түгжигдэнэ
+    // Нууц үг (2FA асаалттай бол код, нөөц код ч) 5 удаа буруу → хаяг 15 минут түгжигдэнэ
     maxLoginAttempts: 5,
     lockTime: 15 * 60 * 1000,
     // Сесс: идэвхгүй 4 цаг → дахин нэвтэрнэ (admin нээлттэй, идэвхтэй байхад автоматаар сунгагдана)
@@ -320,8 +345,9 @@ export const users: CollectionConfig = {
     // Түгжээг («Force Unlock») зөвхөн админ тайлна
     unlock: isAdmin,
   },
-  endpoints: twoFactorEndpoints,
-  hooks: { beforeChange: [guardFirstUser] },
+  // 2FA (нөөц кодын endpoint, хэрэглэгчийн хуудасны 2FA хэсэг) зөвхөн ADMIN_2FA_ENABLED үед
+  endpoints: ADMIN_2FA_ENABLED ? twoFactorEndpoints : [],
+  hooks: { beforeOperation: [checkResetPasswordLength], beforeValidate: [checkPasswordLength], beforeChange: [guardFirstUser] },
   fields: [
     { name: 'name', label: 'Нэр', type: 'text' },
     {
@@ -341,12 +367,17 @@ export const users: CollectionConfig = {
         description: 'Админ — бүх эрх. Редактор — агуулга засах, нийтлэх. Орчуулагч — зөвхөн монголоос бусад хэл.',
       },
     },
-    {
-      name: 'twoFactorUI',
-      type: 'ui',
-      admin: { components: { Field: '/payload/admin/TwoFactorClient#UserTwoFactorField' }, disableListColumn: true },
-    },
-    // 2FA-ийн нөөц кодын HMAC (payload/security/twoFactor.ts). API-д хэзээ ч гарахгүй.
+    ...(ADMIN_2FA_ENABLED
+      ? [
+          {
+            name: 'twoFactorUI',
+            type: 'ui',
+            admin: { components: { Field: '/payload/admin/TwoFactorClient#UserTwoFactorField' }, disableListColumn: true },
+          } as Field,
+        ]
+      : []),
+    // 2FA-ийн нөөц кодын HMAC (payload/security/twoFactor.ts). API-д хэзээ ч гарахгүй. 2FA унтраалттай үед ч
+    // багана хэвээр (дахин асаахад migration хэрэггүй).
     {
       name: 'recoveryCodes',
       type: 'json',
