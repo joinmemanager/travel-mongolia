@@ -52,7 +52,7 @@ export default function Footer({
             {aboutHref && (
               <Link
                 href={aboutHref}
-                className="inline-block text-sm font-semibold text-white hover:text-[#86efac] transition-colors"
+                className="inline-block text-xs font-semibold tracking-wider text-neutral-400 uppercase hover:text-white transition-colors"
               >
                 <span {...(isEnglish ? { translate: 'no' as const, className: 'notranslate' } : {})}>
                   {isEnglish ? 'About us' : 'Бидний тухай'}

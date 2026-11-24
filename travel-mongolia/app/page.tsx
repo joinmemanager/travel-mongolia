@@ -59,7 +59,7 @@ export default async function Home() {
   const [videos, provinceImages] = await Promise.all([getVideos(), getProvinceSliderImages()]);
 
   return (
-    <main className="pb-36 min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
+    <main className="min-h-screen text-neutral-900 selection:text-white bg-white selection:bg-[#15803d]">
       {/* 1. HERO ХЭСЭГ (ГҮЙЛГЭХЭД ТОГЛОГДОХ НИСЛЭГ) */}
       <HeroFlight />
 
