@@ -169,7 +169,7 @@ export const TEAM: TeamMember[] = [
       en: 'In media since 1998, with a master\'s degree from the Communication University of China. He has worked as a director and producer at NTV, EDU TV and Khulegu Pictures. His documentary "Boljmor" won the UNICEF prize at the Japan Prize (2009), and "Zud" was named best documentary at the Hong Kong Independent Film and Video Awards (2011). He also worked on Discovery Channel\'s "Here is Guizhou," The HU\'s "Sad but True" music video and the feature documentary "Slow Boat to China." Speaks English, Chinese and Russian. Honoured Cultural Worker of Mongolia (2015).',
     },
     email: 'bilguunbek@hotmail.com',
-    // Эх зураг 222×222: аватар ≤112px (2x дэлгэцэнд 224px) тул сунгагдахгүй
+    // Эх зураг 400×400 (хамгийн жижиг нь): аватар ≤112px (2x дэлгэцэнд 224px) тул сунгагдахгүй
     photo: photo('bilguun.jpg'),
   },
 ];

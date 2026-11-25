@@ -10,7 +10,7 @@ import type { TeamGroup, TeamMember } from '@/data/team';
 // хэмжээ тогтмол (next/image fill + тогтмол хайрцаг) тул CLS 0. Нэрийг Google Translate орчуулахгүй.
 // Одоогоор зөвхөн mn талбарууд гарна (main дээр англи route байхгүй, data/team.ts).
 
-// Аватар ≤112px: хамгийн жижиг эх зураг 222px тул 2x дэлгэцэнд ч сунгагдахгүй
+// Аватар ≤112px: хамгийн жижиг эх зураг 400px тул 2x дэлгэцэнд ч сунгагдахгүй
 const LAYOUT: Record<TeamGroup, { grid: string; avatar: string; initials: string; sizes: string }> = {
   executive: {
     grid: 'grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6',
