@@ -384,3 +384,42 @@ robots; session 4 цаг; 5 буруу нууц үг → түгжээ. `tsc` —
   - Нийтлэгдсэн mn болон en: 313 хуудсанд 0 өөрчлөлт, сайт дээр харагдах зүйл өөрчлөгдөөгүй.
   - en ноорог: 313 хуудасны орчуулсан бүх талбар дүүрсэн.
 - Нийтлээгүй. Редактор admin-д хуудас бүрийг шалгаад нийтэлнэ. **Анхаар:** 11 хуудас нийтлээгүй mn өөрчлөлттэй тул тэдгээрийг нийтлэхэд mn өөрчлөлт хамт нийтлэгдэнэ.
+
+## 15. 11/25: «Бидний тухай»-ийн 10 хүн — Payload руу орох эсэх, төлөвлөгөө
+
+**Нөхцөл байдал.** `main` дээр (`feat/about-us-team`) `data/team.ts`-д бодит 10 хүн орсон: гүйцэтгэх баг 6, уран
+бүтээлчдийн баг 4; хүн бүр `name/role/bio` × `{mn, en}`, `email` (заавал биш), `photo` (`/images/team/<нэр>.jpg`),
+`group: 'executive' | 'creative'`, `order`. `SHOW_ABOUT_US = true`.
+
+**12/1-ний шилжилтэд өөрөө орохгүй.** Шалтгаан:
+
+| | Одоогийн `feat/payload` | Хэрэгтэй |
+|---|---|---|
+| Импорт | `scripts/payload/import.ts` нь зөвхөн Contentful-ийн экспортыг оруулна; `team` collection-д юу ч оруулдаггүй | 10 хүнийг `data/team.ts`-ээс оруулах seed |
+| `group` | `advisor \| team \| creator` (migration `20261124_024919_team`) | `executive \| creative` |
+| `email` | талбар байхгүй | `email` (text/email, localized биш, заавал биш) |
+| `slug` | талбар байхгүй (`lib/team.ts` нь `d.slug \|\| d.id`) | `slug` (unique) — seed-ийг дахин ажиллуулахад давхардахгүй |
+| Төрөл | `lib/team.ts` нь `TeamMember`-ийг `name: string` гэж буулгана | `main`-ийн шинэ төрөл `name/role/bio: {mn, en}` — main-ийг merge хийхэд `lib/team.ts`, `app/(site)/about-us/page.tsx` (`SECTIONS` → `TEAM_GROUPS`) засна |
+| Fallback | Нийтэлсэн хүн 0 бол `data/team.ts` | merge-ийн дараа энэ fallback бодит 10 хүнийг (mn) харуулна — seed хийгээгүй ч сайт эвдрэхгүй |
+
+**Төлөвлөгөө (cutover-оос өмнө, `feat/payload` дээр):**
+
+1. `main`-ийг `feat/payload` руу merge (`data/team.ts`, `components/about/TeamGrid.tsx`, `lib/navigation.ts`,
+   `lib/pageMeta.ts`, `app/about-us/page.tsx` → `app/(site)/about-us/page.tsx`).
+2. `payload/collections.ts` `team`: `group`-ийн сонголтыг `executive` («Гүйцэтгэх баг»), `creative` («Уран бүтээлчдийн
+   баг») болгох, `email`, `slug` талбар нэмэх. `migrate:create team_v2` — хуучин утгыг `team`/`advisor` → `executive`,
+   `creator` → `creative` болгох SQL (одоо Neon-ий `team` хоосон ч enum солих шаардлагатай). **Локал DB-д**
+   `DATABASE_URI=postgres://postgres:postgres@127.0.0.1:5433/postgres`-ээр туршина.
+3. `scripts/payload/seed-team.ts` (`node scripts/payload/cli.mjs run scripts/payload/seed-team.ts`):
+   `data/team.ts`-ийн `TEAM`-ийг уншиж хүн бүрт — `public/images/team/<нэр>.jpg`-ийг `media`-д (R2) upload (alt = mn нэр,
+   `slug`-аар байгаа эсэхийг шалгана) → `team`-д `locale: 'mn'`-ээр create (`_status: 'published'`) → ижил doc-ийг
+   `locale: 'en'`-ээр update (en name/role/bio). `slug`-аар upsert тул дахин ажиллуулж болно.
+4. `lib/team.ts`: Payload-ийн doc-ийг `{mn, en}` болгож буулгах (mn, en хоёр locale-оор унших эсвэл `locale: 'all'`),
+   `email` нэмэх; `GROUPS = ['executive', 'creative']`.
+5. Шалгалт: локал `next build` + `next start`, `CMS_SOURCE=payload` үед `/about-us` 6 + 4, зураг R2-оос, `/en/...`
+   route-д (`app/(i18n)/[lang]`) about-us одоо байхгүй — en талбар CMS-д хадгалагдана, харуулах route дараа.
+6. «TODO: түр текст» гэсэн 4 хүний (Отгонтөгс, Цацалмаа, Урангоо, Мичидмаа) bio-г эзэмшигч баталгаажуулсны дараа
+   admin-д засна.
+
+Зураг: 11/25-нд `C:\project\team-photos` хавтас олдоогүй тул `public/images/team/` хоосон — seed-ийн өмнө 10 файл заавал
+байх ёстой.
