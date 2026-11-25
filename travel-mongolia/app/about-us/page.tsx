@@ -4,15 +4,16 @@ import React from 'react';
 
 import AboutHeroSentence from '@/components/about/AboutHeroSentence';
 import TeamGrid from '@/components/about/TeamGrid';
-import { getTeam, type TeamGroup } from '@/data/team';
+import { getTeam, TEAM_GROUPS, type TeamGroup } from '@/data/team';
 import { IMAGES, type SiteImage } from '@/lib/images';
 import { SITE_LANGUAGES } from '@/lib/languages';
 import { metaFor } from '@/lib/pageMeta';
 import { PROVINCE_NAMES } from '@/lib/provinceNames';
 import { getSiteStats } from '@/lib/siteStats';
 
-// «Бидний тухай». Production дээр SHOW_ABOUT_US (lib/navigation.ts) false үед noindex, sitemap-гүй
-// (PAGE_STATUS draft → metaFor), footer-ийн холбоос нуугдана. Хүмүүсийн мэдээлэл data/team.ts-д (одоо жишээ).
+// «Бидний тухай». SHOW_ABOUT_US (lib/navigation.ts) true: индексжинэ, sitemap-д орно, footer-т холбоос гарна
+// (false болговол production дээр noindex, sitemap-гүй, холбоос нуугдана). Хүмүүс: data/team.ts (гүйцэтгэх баг,
+// уран бүтээлчдийн баг). Hero-ийн тоонууд зөвхөн сайтын бодит өгөгдлөөс; зохиомол тоо/статистик нэмэхгүй.
 export const metadata = metaFor('/about-us');
 
 // Коллаж: Монголынх нь шалгагдсан зургууд (lib/images.ts, docs/plan/images.md). Зүүн талд том, баруун талд 4 жижиг.
@@ -21,11 +22,12 @@ const COLLAGE: SiteImage[] = [IMAGES.whiteHorse, IMAGES.herderBoy, IMAGES.eagleH
 // Tooltip-ийн хэлний жагсаалт (lib/languages.ts-ийн дарааллаар)
 const LANGUAGE_LIST = 'MN · EN · 中文 · РУ · 한국어 · 日本語';
 
-const SECTIONS: { group: TeamGroup; title: string; intro: string }[] = [
-  { group: 'advisor', title: 'Зөвлөхүүд', intro: 'Чиглэл, чанарыг тодорхойлоход тусалдаг салбарын мэргэжилтнүүд.' },
-  { group: 'team', title: 'Гүйцэтгэх баг', intro: 'Сайтыг өдөр бүр хөгжүүлж, мэдээллийг шинэчилдэг баг.' },
-  { group: 'creator', title: 'Уран бүтээлчид', intro: 'Зураг, бичлэг, нийтлэлээрээ Монголыг харуулдаг уран бүтээлчид.' },
-];
+// Бүлгийн гарчиг data/team.ts-ийн TEAM_GROUPS-оос (mn/en), дэд тайлбар энд
+const INTROS: Record<TeamGroup, string> = {
+  executive: 'Төслийг санаачилж, удирдаж, өдөр тутмын ажлыг зохион байгуулдаг баг.',
+  creative: 'Зураг авалт, найруулга, эвлүүлгээрээ Монголыг харуулдаг уран бүтээлчид.',
+};
+const SECTIONS = TEAM_GROUPS.map((g) => ({ group: g.group, title: g.title.mn, intro: INTROS[g.group] }));
 
 export default async function AboutUsPage() {
   // Тоонууд footer-ийн статистиктай нэг эх сурвалжаас (өдөрт 1 кэш). Олдохгүй бол аймаг: lib/provinceNames.ts
@@ -69,7 +71,7 @@ export default async function AboutUsPage() {
         <p className="absolute right-3 bottom-2 text-[10px] text-white/70">Зураг: Unsplash, Travel Hub Mongolia</p>
       </section>
 
-      {/* 2–4. Зөвлөхүүд, гүйцэтгэх баг, уран бүтээлчид */}
+      {/* 2–3. Гүйцэтгэх баг, уран бүтээлчдийн баг */}
       {SECTIONS.map((s, i) => (
         <section
           key={s.group}
