@@ -1,6 +1,6 @@
 {
  "model": "claude-sonnet-5-5",
- "spent": 4.462430149999999,
+ "spent": 10.071160949999983,
  "batches": [
   {
    "at": "2026-11-20T12:54:04.003Z",
@@ -246,6 +246,251 @@
    "label": "fix1",
    "id": "msgbatch_017TLDjKUqgD8JyZEZgGNiLd",
    "requests": 7
+  },
+  {
+   "at": "2026-11-27T06:16:00.016Z",
+   "file": "en-009",
+   "label": "translate",
+   "id": "msgbatch_01EjoVh8BkGvoFcgPak7fPyu",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:18:36.051Z",
+   "file": "en-009",
+   "label": "fix1",
+   "id": "msgbatch_01J8m27Q6hTVXMTY4GXMXS9j",
+   "requests": 26
+  },
+  {
+   "at": "2026-11-27T06:20:40.539Z",
+   "file": "en-009",
+   "label": "fix2",
+   "id": "msgbatch_01M58ee5gF9JYpkoHEC7ARmD",
+   "requests": 8
+  },
+  {
+   "at": "2026-11-27T06:22:47.045Z",
+   "file": "en-010",
+   "label": "translate",
+   "id": "msgbatch_01UNHqT3RwugVVyxzCvM3qVK",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:24:51.672Z",
+   "file": "en-010",
+   "label": "fix1",
+   "id": "msgbatch_01Q9hfVbYWxCx9fjPhDtjczi",
+   "requests": 24
+  },
+  {
+   "at": "2026-11-27T06:26:56.166Z",
+   "file": "en-010",
+   "label": "fix2",
+   "id": "msgbatch_014Rr2oy6aUqGEqE2evZcYE3",
+   "requests": 3
+  },
+  {
+   "at": "2026-11-27T06:29:03.398Z",
+   "file": "en-011",
+   "label": "translate",
+   "id": "msgbatch_01PPRbQUEBzGw7rkbr97fc1J",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:31:07.383Z",
+   "file": "en-011",
+   "label": "fix1",
+   "id": "msgbatch_01Ei1nEXHLZcAt3FtrD31xdz",
+   "requests": 28
+  },
+  {
+   "at": "2026-11-27T06:33:11.227Z",
+   "file": "en-011",
+   "label": "fix2",
+   "id": "msgbatch_01JT7RZb69HY5sfNDoWezufe",
+   "requests": 6
+  },
+  {
+   "at": "2026-11-27T06:35:16.619Z",
+   "file": "en-012",
+   "label": "translate",
+   "id": "msgbatch_0194BmLDKeYpxreRshs7hp7E",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:37:15.961Z",
+   "file": "en-012",
+   "label": "fix1",
+   "id": "msgbatch_011KQD3rDTNBoJbf9qUiYUMP",
+   "requests": 21
+  },
+  {
+   "at": "2026-11-27T06:39:20.206Z",
+   "file": "en-012",
+   "label": "fix2",
+   "id": "msgbatch_01HeKCb96W6ePommyb8GFa4A",
+   "requests": 4
+  },
+  {
+   "at": "2026-11-27T06:40:24.279Z",
+   "file": "en-013",
+   "label": "translate",
+   "id": "msgbatch_01KrQvKeMtgVRzdE9NFjyeno",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:42:28.712Z",
+   "file": "en-013",
+   "label": "fix1",
+   "id": "msgbatch_0198udFTH56SCFCX8sLFHHeU",
+   "requests": 27
+  },
+  {
+   "at": "2026-11-27T06:44:32.676Z",
+   "file": "en-013",
+   "label": "fix2",
+   "id": "msgbatch_01SwbM4PH611bbcgwrSsfP88",
+   "requests": 3
+  },
+  {
+   "at": "2026-11-27T06:46:37.498Z",
+   "file": "en-014",
+   "label": "translate",
+   "id": "msgbatch_014gAvi1sccPCeYWmrUHxRPf",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:48:42.485Z",
+   "file": "en-014",
+   "label": "fix1",
+   "id": "msgbatch_01H8xXGJyt71Tn79ohr87b1a",
+   "requests": 27
+  },
+  {
+   "at": "2026-11-27T06:50:46.743Z",
+   "file": "en-014",
+   "label": "fix2",
+   "id": "msgbatch_015rr7q6AkBfUbxvje57bDc1",
+   "requests": 1
+  },
+  {
+   "at": "2026-11-27T06:52:21.218Z",
+   "file": "en-015",
+   "label": "translate",
+   "id": "msgbatch_01Qc3vVDRhN4g9fhAmDFsrKc",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:53:55.570Z",
+   "file": "en-015",
+   "label": "fix1",
+   "id": "msgbatch_01LeTaGUwxcQvLmQv8tmLRbs",
+   "requests": 22
+  },
+  {
+   "at": "2026-11-27T06:55:59.727Z",
+   "file": "en-015",
+   "label": "fix2",
+   "id": "msgbatch_01WJUXDSh181abXPbRThifFd",
+   "requests": 2
+  },
+  {
+   "at": "2026-11-27T06:57:03.867Z",
+   "file": "en-016",
+   "label": "translate",
+   "id": "msgbatch_01Xcv3gi7mKKVjh3wN9SNFoh",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T06:58:07.653Z",
+   "file": "en-016",
+   "label": "fix1",
+   "id": "msgbatch_014bABpXZw3SYosGSKijVByi",
+   "requests": 22
+  },
+  {
+   "at": "2026-11-27T07:00:42.020Z",
+   "file": "en-016",
+   "label": "fix2",
+   "id": "msgbatch_01X7wNZ1ZLeX66x8awAuNA1E",
+   "requests": 4
+  },
+  {
+   "at": "2026-11-27T07:02:46.506Z",
+   "file": "en-017",
+   "label": "translate",
+   "id": "msgbatch_01BeYCZxYuwsH1BBKCAMNfT8",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T07:04:50.207Z",
+   "file": "en-017",
+   "label": "fix1",
+   "id": "msgbatch_01EQewajD3CbYD48VTQzbxtX",
+   "requests": 10
+  },
+  {
+   "at": "2026-11-27T07:06:54.056Z",
+   "file": "en-017",
+   "label": "fix2",
+   "id": "msgbatch_01Kio6UywZbcjzxG9Eo6ZY2t",
+   "requests": 1
+  },
+  {
+   "at": "2026-11-27T07:08:58.700Z",
+   "file": "en-018",
+   "label": "translate",
+   "id": "msgbatch_014ddGZHUJoWqaD4ECx6Rfzh",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T07:11:02.639Z",
+   "file": "en-018",
+   "label": "fix1",
+   "id": "msgbatch_01TL1oGdgC1mYf1J3mPbLPp8",
+   "requests": 15
+  },
+  {
+   "at": "2026-11-27T07:13:06.437Z",
+   "file": "en-018",
+   "label": "fix2",
+   "id": "msgbatch_01FaM9t8BmPzz2CUC4A5viVV",
+   "requests": 2
+  },
+  {
+   "at": "2026-11-27T07:15:10.551Z",
+   "file": "en-019",
+   "label": "translate",
+   "id": "msgbatch_01N632DPY7sWy8L1msyxNaaj",
+   "requests": 30
+  },
+  {
+   "at": "2026-11-27T07:17:14.614Z",
+   "file": "en-019",
+   "label": "fix1",
+   "id": "msgbatch_01A71RxZpHzpaGhTEDTNdrTZ",
+   "requests": 12
+  },
+  {
+   "at": "2026-11-27T07:20:16.371Z",
+   "file": "en-008",
+   "label": "translate",
+   "id": "msgbatch_011XK8ByuoB9PS9ZA71g8btB",
+   "requests": 50
+  },
+  {
+   "at": "2026-11-27T07:22:20.292Z",
+   "file": "en-008",
+   "label": "fix1",
+   "id": "msgbatch_01D6yH48jXpEmEQkjvCZBzJt",
+   "requests": 30
+  },
+  {
+   "at": "2026-11-27T07:24:23.975Z",
+   "file": "en-008",
+   "label": "fix2",
+   "id": "msgbatch_017Ujdb5PPqmZ1oEjy1VVme9",
+   "requests": 7
   }
  ],
  "pending": null,
@@ -322,11 +567,156 @@
   },
   "en-008": {
    "pages": 50,
-   "translated": 0,
+   "translated": 50,
    "reused": 0,
    "status": "дууссан",
+   "errors": 6,
+   "errorPages": [
+    "tic-c1-263",
+    "tic-c1-279",
+    "tic-c9-1137",
+    "tic-c1-290",
+    "tic-c1-457",
+    "tic-c1-598"
+   ],
+   "missing": 0,
+   "warnings": 182
+  },
+  "en-009": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 6,
+   "errorPages": [
+    "tic-c5-13",
+    "tic-c1-365",
+    "tic-c1-461",
+    "tic-c1-67",
+    "tic-c3-9",
+    "tic-c1-338"
+   ],
+   "warnings": 141
+  },
+  "en-010": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
    "errors": 0,
-   "errorPages": []
+   "errorPages": [],
+   "warnings": 141
+  },
+  "en-011": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 2,
+   "errorPages": [
+    "tic-c5-8",
+    "tic-c9-42"
+   ],
+   "warnings": 104
+  },
+  "en-012": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 1,
+   "errorPages": [
+    "tic-c2-53"
+   ],
+   "warnings": 125
+  },
+  "en-013": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 1,
+   "errorPages": [
+    "tic-c9-121"
+   ],
+   "warnings": 116
+  },
+  "en-014": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 2,
+   "errorPages": [
+    "tic-c1-505",
+    "tic-c9-125"
+   ],
+   "warnings": 93
+  },
+  "en-015": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 1,
+   "errorPages": [
+    "tic-c9-139"
+   ],
+   "warnings": 97
+  },
+  "en-016": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 3,
+   "errorPages": [
+    "tic-c1-53",
+    "tic-c1-63",
+    "tic-c9-113"
+   ],
+   "warnings": 122
+  },
+  "en-017": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 131
+  },
+  "en-018": {
+   "pages": 50,
+   "translated": 50,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 2,
+   "errorPages": [
+    "tic-c9-52",
+    "tic-c9-59"
+   ],
+   "warnings": 93
+  },
+  "en-019": {
+   "pages": 30,
+   "translated": 30,
+   "reused": 0,
+   "status": "дууссан",
+   "missing": 0,
+   "errors": 0,
+   "errorPages": [],
+   "warnings": 64
   }
  },
  "stoppedAt": null,

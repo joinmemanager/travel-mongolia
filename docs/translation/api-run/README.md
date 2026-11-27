@@ -1,5 +1,8 @@
 # API орчуулга: Sonnet 5.5 (2026-11-20)
 
+> **2026-11-27:** en-008…en-019 (580 хуудас) дууссан, $5.61. 556 нь Neon-д en ноорог болж орсон, 24 нь алдаатай үлдсэн.
+> [report-2026-11-27.md](report-2026-11-27.md)-ийг үзнэ үү. Доорх «Үлдсэн» хэсэг 11/20-ны төлөв.
+
 Скрипт: `node scripts/translation/api-translate.mjs all --model sonnet --budget 4.5 --hard 4.9`
 (Message Batches −50%, system prompt = дүрэм + style-guide + толь бичиг, sum/khiimori дүрэмтэй, 1 цагийн кэш).
 Явцын лог: [run.log](run.log), зардал ба batch-ийн id: [ledger.json](ledger.json). Түүхий хариу: `.tools/translation-raw/` (git-д ороогүй).

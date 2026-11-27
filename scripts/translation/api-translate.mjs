@@ -258,7 +258,7 @@ async function cmdRun() {
 // - en-review-*-ийг алгасна; done/-д байгаа хуудсыг (болон эх нь өөрчлөгдөөгүй pilot-en орчуулгыг) дахин орчуулахгүй.
 // - Хариу бүр .tools/translation-raw/<file>.jsonl-д шууд бичигдэнэ; илгээсэн batch-ийн id state-д → тасарвал дахин
 //   ажиллуулахад төлбөр давхардахгүй (collect хийнэ).
-// - Шалгагч: seoTitle/seoDescription урт → богиносгох хүсэлт; бусад алдаа → алдааг нь хэлж дахин орчуулах (2 удаа).
+// - Шалгагч: seoTitle/seoDescription урт → богиносгох хүсэлт; бусад алдаа → алдааг нь хэлж дахин орчуулах (--retrans, анх 2 удаа).
 // - Зарцуулалт (энэ ажлын нийт) ≥ budget бол шинэ batch илгээхгүй; эхэлснийг дуусгана. budget-ээс доош байсан ч
 //   дараагийн batch-ийн тооцоолсон зардал hard-аас (урьдчилсан цэнэг) давахаар бол илгээхгүй.
 const RUN = path.join(T, 'api-run');
@@ -426,7 +426,9 @@ async function cmdAll() {
   for (const file of files) {
     const pages = loadPages(file);
     const st = (L.files[file] ||= { pages: pages.length, translated: 0, reused: 0, status: 'эхлээгүй' });
-    if (st.status === 'дууссан' && !(args.includes('--recheck') && st.errors)) continue;
+    // done/<file>.md байхгүй бол «дууссан» гэж тооцохгүй (өмнө нь төсвөөр зогсоход done файлгүй багц «дууссан» болж үлдэж байв)
+    const hasDone = fs.existsSync(path.join(T, 'done', `${file}.md`));
+    if (st.status === 'дууссан' && hasDone && !(args.includes('--recheck') && st.errors)) continue;
     const done = existingTranslations();
     const raw = loadRaw(file);
     const good = (id) => raw.get(id)?.kind === 'translate' && raw.get(id).text && raw.get(id).stop === 'end_turn';
@@ -470,6 +472,9 @@ async function cmdAll() {
     };
     let missing = assemble();
     let chk = await checkDone(file);
+    // --retrans N: нэг хуудсыг алдааных нь улмаас дээд тал нь N удаа дахин орчуулна (богиносгох хүсэлт тооцогдохгүй)
+    const retransMax = Number(arg('--retrans', 2));
+    const retried = new Map();
     for (let round = 1; round <= 2; round++) {
       const shorten = [];
       const retrans = [];
@@ -487,6 +492,8 @@ async function cmdAll() {
           }
         } else if (errs.length) retrans.push({ p, errs });
       }
+      retrans.splice(0, retrans.length, ...retrans.filter((x) => (retried.get(x.p.id) || 0) < retransMax));
+      for (const x of retrans) retried.set(x.p.id, (retried.get(x.p.id) || 0) + 1);
       if (!shorten.length && !retrans.length) break;
       const why = L.pending?.file === file ? null : canSend((retrans.length * perPage() + shorten.length * 0.001) * 1.3);
       if (why) { stopped = `${file} засвар: ${why}`; break; }
